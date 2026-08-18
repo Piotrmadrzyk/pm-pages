@@ -68,7 +68,7 @@ body{padding-top:76px;}
 .pagehero::before{content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 20% 20%, rgba(90,209,255,.08), transparent 55%); pointer-events:none;}
 .pagehero h1{font-weight:400; font-size:clamp(32px,4.6vw,54px); line-height:1.14; color:#fff; max-width:800px; margin-bottom:22px;}
 .pagehero h1 strong{font-weight:700;}
-.pagehero h1 em{font-style:italic; color:var(--cyan); font-weight:300;}
+.pagehero h1 em{font-style:italic; color:var(--cyan); font-weight:400;}
 .pagehero p{font-size:15.5px; color:var(--dim); max-width:560px; line-height:1.75;}
 .crumb{font-family:'Space Mono',monospace; font-size:11px; color:var(--cyan); letter-spacing:.12em; margin-bottom:24px; display:flex; align-items:center; gap:10px;}
 .crumb::before{content:''; width:8px; height:8px; border-radius:50%; background:var(--cyan); box-shadow:0 0 10px var(--cyan); animation:blink 1.8s infinite;}
