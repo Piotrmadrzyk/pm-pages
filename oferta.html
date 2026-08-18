@@ -12,6 +12,7 @@
   .offer-num{font-family:'Space Mono',monospace; font-size:38px; font-weight:700; color:transparent; -webkit-text-stroke:1px var(--cyan-dim);}
   .offer-grid2{display:grid; grid-template-columns:1fr 1fr; gap:50px;}
   .offer-orb{width:80px; height:80px; border-radius:50%; margin-bottom:26px; position:relative; background:radial-gradient(circle at 35% 30%, #eaf7ff, #2f6a86 55%, #0c1c24 80%); box-shadow:0 0 50px rgba(90,209,255,.18);}
+  .offer-orb::after{content:''; position:absolute; inset:-11px; border:1px solid var(--line); border-radius:50%;}
   .stepline{margin-top:30px;}
   .stepline .srow{display:flex; gap:16px; padding:16px 0; border-top:1px solid var(--line);}
   .stepline .srow:first-child{border-top:none;}
@@ -19,8 +20,8 @@
   .stepline .st h5{font-size:14.5px; color:#fff; font-weight:600; margin-bottom:4px;}
   .stepline .st p{font-size:13px; color:var(--dim); line-height:1.6;}
   .incl-list{list-style:none; margin-top:24px;}
-  .incl-list li{padding:10px 0 10px 26px; border-bottom:1px solid var(--line); font-size:13.5px; color:var(--dim); position:relative;}
-  .incl-list li::before{content:'—'; position:absolute; left:0; color:var(--cyan);}
+  .incl-list li{padding:10px 0 10px 24px; border-bottom:1px solid var(--line); font-size:13.5px; color:var(--dim); position:relative;}
+  .incl-list li::before{content:''; position:absolute; left:2px; top:18px; width:6px; height:6px; border-radius:50%; background:var(--cyan); box-shadow:0 0 6px var(--cyan);}
   @media(max-width:900px){.offer-grid2{grid-template-columns:1fr; gap:34px;} .offer-head{grid-template-columns:50px 1fr;} .offer-num{font-size:28px;}}
 </style>
 </head>
