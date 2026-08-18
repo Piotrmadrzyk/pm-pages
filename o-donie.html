@@ -111,36 +111,54 @@
 <section class="agents-section">
   <div class="wrap">
     <div class="sec-label">// ZESPÓŁ AGENTÓW</div>
-    <div class="sec-title">Cztery role, <strong>jeden nadzorca</strong></div>
-    <p class="sec-sub">To cztery role, z którymi masz kontakt na co dzień — każda ma wąską, jasno określoną odpowiedzialność, dzięki temu system jest przewidywalny i łatwo go kontrolować krok po kroku. Pod spodem stoi znacznie większy system — zobacz jego prawdziwą skalę poniżej.</p>
-    <div class="agent-grid reveal-stagger">
-      <div class="agent-card">
-        <div class="agent-top"><span class="agent-id">AGENT_00 / MONIA</span><span class="agent-led"></span></div>
-        <h3>Monia — Orkiestrator</h3>
-        <p>Przyjmuje zadania, rozdziela je do właściwych agentów i pilnuje kolejności pracy. To przez Monię (na Telegramie) przechodzi każde zatwierdzenie — nic nie publikuje się bez mojego kliknięcia.</p>
-        <div class="agent-tags"><span>ROUTING</span><span>TELEGRAM</span><span>ZATWIERDZENIA</span></div>
+    <div class="sec-title">Jeden system, <strong>cztery role</strong></div>
+    <p class="sec-sub">DONA to rdzeń całego systemu. W jej centrum stoi MONIA — agent-orkiestrator, przez którego przechodzi każde zatwierdzenie (na Telegramie, zawsze z moim ręcznym kliknięciem). Wokół niej krążą trzy wyspecjalizowane agenty wykonawcze. Kliknij dowolny węzeł, żeby zobaczyć szczegóły.</p>
+
+    <div class="portal-wrap reveal">
+      <div class="portal-ring"></div>
+      <div class="portal-ring r2"></div>
+      <div class="portal-ring r3"></div>
+      <button class="portal-core" type="button" onclick="document.getElementById('dlg-monia').showModal()" aria-label="Monia — Orkiestrator, zobacz szczegóły"></button>
+      <div class="core-label" style="pointer-events:none;"><b>MONIA</b><small>ORKIESTRATOR</small></div>
+
+      <div class="orbit o1">
+        <div class="spoke"></div>
+        <div class="pulse"></div>
+        <div class="agent">
+          <div class="counter">
+            <button class="agent-dot" type="button" onclick="document.getElementById('dlg-strony').showModal()" aria-label="Agent stron www, zobacz szczegóły"></button>
+            <div class="agent-label">AGENT_01<em>Strony www</em></div>
+          </div>
+        </div>
       </div>
-      <div class="agent-card">
-        <div class="agent-top"><span class="agent-id">AGENT_01 / STRONY</span><span class="agent-led"></span></div>
-        <h3>Agent stron www</h3>
-        <p>Projektuje i buduje wielostronicowe witryny dopasowane do konkretnej branży klienta — treść pisana pod firmę, nie generyczny szablon.</p>
-        <div class="agent-tags"><span>UX</span><span>TREŚĆ</span><span>PUBLIKACJA</span></div>
+
+      <div class="orbit o2">
+        <div class="spoke"></div>
+        <div class="pulse"></div>
+        <div class="agent">
+          <div class="counter">
+            <button class="agent-dot" type="button" onclick="document.getElementById('dlg-kampanie').showModal()" aria-label="Agent kampanii lejkowych, zobacz szczegóły"></button>
+            <div class="agent-label">AGENT_02<em>Kampanie lejkowe</em></div>
+          </div>
+        </div>
       </div>
-      <div class="agent-card">
-        <div class="agent-top"><span class="agent-id">AGENT_02 / KAMPANIE</span><span class="agent-led"></span></div>
-        <h3>Agent kampanii lejkowych</h3>
-        <p>Projektuje ścieżkę klienta od pierwszego kontaktu po decyzję zakupową — z jasno zdefiniowanym celem na każdym etapie lejka.</p>
-        <div class="agent-tags"><span>LEJKI</span><span>REKLAMA</span><span>KONWERSJA</span></div>
-      </div>
-      <div class="agent-card">
-        <div class="agent-top"><span class="agent-id">AGENT_03 / SOCIAL</span><span class="agent-led"></span></div>
-        <h3>Agent social media</h3>
-        <p>Prowadzi profile na bieżąco — planuje, przygotowuje i publikuje treści na podstawie materiału, który dostarcza klient.</p>
-        <div class="agent-tags"><span>HARMONOGRAM</span><span>TREŚĆ</span><span>PUBLIKACJA</span></div>
+
+      <div class="orbit o3">
+        <div class="spoke"></div>
+        <div class="pulse"></div>
+        <div class="agent">
+          <div class="counter">
+            <button class="agent-dot" type="button" onclick="document.getElementById('dlg-social').showModal()" aria-label="Agent social media, zobacz szczegóły"></button>
+            <div class="agent-label">AGENT_03<em>Social media</em></div>
+          </div>
+        </div>
       </div>
     </div>
+    <div class="orbit-hint">◆ kliknij rdzeń lub dowolny węzeł, żeby zobaczyć szczegóły agenta</div>
   </div>
 </section>
+
+<!-- DIALOGS_PLACEHOLDER -->
 
 <section class="scale-section">
   <div class="wrap">
