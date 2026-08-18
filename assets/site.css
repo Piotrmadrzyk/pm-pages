@@ -66,7 +66,7 @@ body{padding-top:76px;}
 /* PAGE HERO (non-photo, for interior pages) */
 .pagehero{padding:170px 0 80px; border-bottom:1px solid var(--line); position:relative; overflow:hidden;}
 .pagehero::before{content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 20% 20%, rgba(90,209,255,.08), transparent 55%); pointer-events:none;}
-.pagehero h1{font-weight:300; font-size:clamp(32px,4.6vw,54px); line-height:1.14; color:#fff; max-width:800px; margin-bottom:22px;}
+.pagehero h1{font-weight:400; font-size:clamp(32px,4.6vw,54px); line-height:1.14; color:#fff; max-width:800px; margin-bottom:22px;}
 .pagehero h1 strong{font-weight:700;}
 .pagehero h1 em{font-style:italic; color:var(--cyan); font-weight:300;}
 .pagehero p{font-size:15.5px; color:var(--dim); max-width:560px; line-height:1.75;}
