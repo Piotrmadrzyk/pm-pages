@@ -88,7 +88,7 @@ nav.site-nav.on-image{position:absolute; top:0; left:0; right:0; padding:34px 0;
 
 /* WORLDS / PORTFOLIO */
 .worlds{padding:90px 0;}
-.wgrid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:50px;}
+.wgrid{display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:50px;}
 .world{background:var(--void); padding:38px 24px; text-align:center; transition:background .3s;}
 .world:hover{background:var(--void2);}
 .wplanet{width:60px; height:60px; border-radius:50%; margin:0 auto 20px; position:relative; animation:float 5s ease-in-out infinite;}
