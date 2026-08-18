@@ -186,7 +186,7 @@ body{padding-top:76px;}
 .frow{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px;}
 .frow.full{grid-template-columns:1fr;}
 .field label{display:block; font-size:12px; color:var(--dim); margin-bottom:8px; letter-spacing:.03em;}
-.field input, .field select, .field textarea{width:100%; background:rgba(255,255,255,.02); border:1px solid var(--line); color:#fff; padding:13px 14px; font-family:'Manrope',sans-serif; font-size:14px; font-weight:300;}
+.field input, .field select, .field textarea{width:100%; background:rgba(255,255,255,.02); border:1px solid var(--line); color:#fff; padding:13px 14px; font-family:'Manrope',sans-serif; font-size:15px; font-weight:400;}
 .field input:focus, .field select:focus, .field textarea:focus{outline:none; border-color:var(--cyan);}
 .field textarea{resize:vertical; min-height:100px;}
 .field select{appearance:none; background-image:linear-gradient(45deg, transparent 50%, var(--cyan) 50%), linear-gradient(135deg, var(--cyan) 50%, transparent 50%); background-position:calc(100% - 18px) center, calc(100% - 13px) center; background-size:5px 5px, 5px 5px; background-repeat:no-repeat;}
