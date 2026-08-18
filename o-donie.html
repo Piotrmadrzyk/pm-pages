@@ -28,6 +28,15 @@
   .agent-tags{display:flex; gap:8px; flex-wrap:wrap; position:relative;}
   .agent-tags span{font-family:'Space Mono',monospace; font-size:10px; color:var(--cyan-dim); border:1px solid var(--line); padding:5px 9px;}
 
+  .scale-section{padding:100px 0; border-bottom:1px solid var(--line); text-align:center;}
+  .scale-big{font-family:'Space Mono',monospace; font-weight:700; font-size:clamp(64px,11vw,140px); color:var(--cyan); line-height:1; margin:30px 0 6px;}
+  .scale-big small{display:block; font-size:14px; color:var(--dim); font-weight:400; letter-spacing:.08em; margin-top:14px; font-family:'Manrope',sans-serif;}
+  .scale-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:50px; text-align:left;}
+  .scale-card{background:var(--panel); border:1px solid var(--line); padding:22px 20px; position:relative;}
+  .scale-card .sc-n{font-family:'Space Mono',monospace; font-size:26px; font-weight:700; color:var(--cyan);}
+  .scale-card .sc-l{font-size:12px; color:var(--dim); letter-spacing:.04em; margin-top:8px;}
+  @media(max-width:900px){.scale-grid{grid-template-columns:repeat(2,1fr);}}
+
   .flow-section{padding:100px 0; border-bottom:1px solid var(--line);}
   .flow{display:grid; grid-template-columns:1fr 40px 1fr 40px 1fr 40px 1fr; align-items:stretch; margin-top:50px;}
   .flowstep{border:1px solid var(--line); background:var(--panel); padding:26px 22px;}
