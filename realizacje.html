@@ -14,22 +14,26 @@
   .hero-content{position:relative; z-index:5; padding:0 40px 60px; max-width:1180px; margin:0 auto; width:100%;}
 
   .case-grid{padding:90px 0; display:grid; gap:1px; background:var(--line); border:1px solid var(--line);}
-  .case{background:var(--void); display:grid; grid-template-columns:280px 1fr; gap:0;}
-  .case-visual{background:radial-gradient(circle at 30% 30%, var(--c1), var(--c2) 60%, var(--c3) 100%); position:relative; min-height:220px; display:flex; align-items:center; justify-content:center; overflow:hidden;}
-  .case-visual::after{content:''; position:absolute; inset:0; background:repeating-linear-gradient(115deg, rgba(255,255,255,.03) 0 2px, transparent 2px 22px);}
-  .case-visual::before{content:''; position:absolute; top:0; left:0; right:0; height:26px; background:rgba(0,0,0,.16); border-bottom:1px solid rgba(255,255,255,.07); z-index:1;}
-  .case-visual .chrome-dots{position:absolute; top:9px; left:14px; display:flex; gap:6px; z-index:2;}
-  .case-visual .chrome-dots span{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.28);}
-  .case-visual .cicon{width:58px; height:58px; color:rgba(255,255,255,.5); position:relative; z-index:1;}
-  .case-body{padding:38px 36px;}
+  .case{background:var(--void); display:grid; grid-template-columns:minmax(320px,48%) 1fr; gap:0;}
+  .case:nth-child(even){grid-template-columns:1fr minmax(320px,48%);}
+  .case:nth-child(even) .case-visual{order:2; border-right:none; border-left:1px solid var(--line);}
+  .case-visual{position:relative; min-height:380px; display:block; overflow:hidden; border-right:1px solid var(--line); background:var(--void2);}
+  .case-visual img{width:100%; height:100%; object-fit:cover; object-position:top center; display:block; transition:transform .6s cubic-bezier(.2,.7,.3,1);}
+  .case-visual:hover img{transform:scale(1.045);}
+  .case-visual::before{content:''; position:absolute; top:0; left:0; right:0; height:28px; background:rgba(3,5,10,.55); backdrop-filter:blur(3px); border-bottom:1px solid rgba(255,255,255,.08); z-index:2;}
+  .case-visual .chrome-dots{position:absolute; top:10px; left:14px; display:flex; gap:6px; z-index:3;}
+  .case-visual .chrome-dots span{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.3);}
+  .case-visual-cta{position:absolute; inset:auto 0 0 0; padding:16px 20px 14px; background:linear-gradient(0deg, rgba(3,5,10,.92) 10%, rgba(3,5,10,.5) 60%, transparent); color:var(--cyan); font-size:12.5px; font-weight:600; font-family:'Space Mono',monospace; letter-spacing:.03em; opacity:0; transform:translateY(8px); transition:all .25s; z-index:2;}
+  .case-visual:hover .case-visual-cta, .case-visual:focus-visible .case-visual-cta{opacity:1; transform:translateY(0);}
+  .case-body{padding:42px 40px;}
   .case-body .cat{font-family:'Space Mono',monospace; font-size:11px; color:var(--cyan); letter-spacing:.08em; margin-bottom:10px;}
-  .case-body h3{font-size:22px; color:#fff; font-weight:600; margin-bottom:14px;}
-  .case-body p{font-size:14px; color:var(--dim); line-height:1.75; margin-bottom:20px; max-width:600px;}
+  .case-body h3{font-size:24px; color:#fff; font-weight:600; margin-bottom:16px;}
+  .case-body p{font-size:15px; color:var(--dim); line-height:1.8; margin-bottom:22px; max-width:600px;}
   .case-pages{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:22px;}
-  .case-pages a{font-family:'Space Mono',monospace; font-size:11px; color:var(--dim); border:1px solid var(--line); padding:8px 12px;}
+  .case-pages a{font-family:'Space Mono',monospace; font-size:11.5px; color:var(--dim); border:1px solid var(--line); padding:9px 13px;}
   .case-pages a:hover{color:var(--cyan); border-color:var(--cyan);}
-  .case-cta{font-size:13px; color:var(--cyan); font-weight:600;}
-  @media(max-width:800px){.case{grid-template-columns:1fr;} .case-visual{min-height:140px;}}
+  .case-cta{font-size:14px; color:var(--cyan); font-weight:600;}
+  @media(max-width:800px){.case, .case:nth-child(even){grid-template-columns:1fr;} .case:nth-child(even) .case-visual{order:0; border-left:none; border-bottom:1px solid var(--line);} .case-visual{min-height:220px; border-right:none; border-bottom:1px solid var(--line);} .case-body{padding:30px 26px;}}
 </style>
 </head>
 <body>
