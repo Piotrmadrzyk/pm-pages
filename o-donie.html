@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O Donie — system AI, który buduje strony, kampanie i social media | PM Przewaga Metodą</title>
+<meta name="description" content="Dona to rdzeń systemu AI: cztery wyspecjalizowane agenty budujące strony, kampanie i social media, pod pełnym ręcznym nadzorem Piotra.">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .hero{position:relative; min-height:78vh; display:flex; align-items:flex-end; overflow:hidden;}
+  .hero-bg{position:absolute; inset:0; z-index:0;}
+  .hero-bg video, .hero-bg img{width:100%; height:100%; object-fit:cover; object-position:center 40%;}
+  .hero-bg::after{content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(3,5,10,.4) 0%, rgba(3,5,10,.2) 35%, var(--void) 96%), linear-gradient(90deg, rgba(3,5,10,.7) 0%, rgba(3,5,10,.1) 50%, rgba(3,5,10,.55) 100%);
+  }
+  .hero-content{position:relative; z-index:5; padding:0 40px 70px; max-width:1180px; margin:0 auto; width:100%;}
+
+  .agents-section{padding:100px 0; border-bottom:1px solid var(--line);}
+  .agent-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:24px; margin-top:50px;}
+  .agent-card{background:var(--panel); border:1px solid var(--line); padding:34px; position:relative; overflow:hidden;}
+  .agent-card::before{content:''; position:absolute; top:-40%; right:-20%; width:200px; height:200px; border-radius:50%; background:radial-gradient(circle, rgba(90,209,255,.1), transparent 70%);}
+  .agent-top{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px; position:relative;}
+  .agent-id{font-family:'Space Mono',monospace; font-size:11px; color:var(--cyan); letter-spacing:.08em;}
+  .agent-led{width:9px; height:9px; border-radius:50%; background:var(--cyan); box-shadow:0 0 8px var(--cyan); animation:blink2 2.4s infinite;}
+  @keyframes blink2{0%,100%{opacity:1;}50%{opacity:.35;}}
+  .agent-card h3{font-size:19px; color:#fff; font-weight:600; margin-bottom:12px; position:relative;}
+  .agent-card p{font-size:13.5px; color:var(--dim); line-height:1.75; position:relative; margin-bottom:16px;}
+  .agent-tags{display:flex; gap:8px; flex-wrap:wrap; position:relative;}
+  .agent-tags span{font-family:'Space Mono',monospace; font-size:10px; color:var(--cyan-dim); border:1px solid var(--line); padding:5px 9px;}
+
+  .flow-section{padding:100px 0; border-bottom:1px solid var(--line);}
+  .flow{display:grid; grid-template-columns:1fr 40px 1fr 40px 1fr 40px 1fr; align-items:stretch; margin-top:50px;}
+  .flowstep{border:1px solid var(--line); background:var(--panel); padding:26px 22px;}
+  .flowstep .fn{font-family:'Space Mono',monospace; font-size:11px; color:var(--cyan); margin-bottom:12px; display:block;}
+  .flowstep h4{font-size:15px; font-weight:600; color:#fff; margin-bottom:10px;}
+  .flowstep p{font-size:12.5px; color:var(--dim); line-height:1.65;}
+  .flowarrow{display:flex; align-items:center; justify-content:center; font-size:18px; color:var(--cyan);}
+  @media(max-width:1000px){
+    .flow{grid-template-columns:1fr;}
+    .flowarrow{transform:rotate(90deg); padding:6px 0;}
+    .agent-grid{grid-template-columns:1fr;}
+  }
+
+  .principle-section{padding:100px 0;}
+  .principle-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; margin-top:50px;}
+  .principle-visual{aspect-ratio:1; border-radius:50%; background:radial-gradient(circle at 40% 35%, rgba(90,209,255,.25), rgba(3,5,10,0) 70%); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; position:relative;}
+  .principle-visual .ring{position:absolute; inset:14%; border:1px dashed var(--line); border-radius:50%; animation:rotate 50s linear infinite;}
+  .principle-visual .core-mini{width:26%; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle at 40% 35%, #eaf7ff, #2f6a86 55%, #0c1c24 80%); box-shadow:0 0 60px rgba(90,209,255,.3);}
+  .principle-list p{font-size:14.5px; color:var(--dim); line-height:1.85; margin-bottom:18px;}
+  .principle-list strong{color:#fff; font-weight:600;}
+  @media(max-width:900px){.principle-grid{grid-template-columns:1fr; gap:36px;}}
+</style>
+</head>
+<body>
+
+<nav class="site-nav on-image wrap">
+  <div class="logo">PM PRZEWAGA METODĄ <span>/ SYSTEM DONA</span></div>
+  <div class="navlinks">
+    <a href="index.html">Start</a>
+    <a href="o-donie.html" class="active">O Donie</a>
+    <a href="oferta.html">Oferta</a>
+    <a href="realizacje.html">Realizacje</a>
+    <a href="kontakt.html">Kontakt</a>
+  </div>
+  <a href="wycena.html" class="navcta">Wyceń projekt</a>
+  <div class="navburger"><span></span><span></span><span></span></div>
+</nav>
+<div class="navmobile">
+  <a href="index.html">Start</a>
+  <a href="o-donie.html">O Donie</a>
+  <a href="oferta.html">Oferta</a>
+  <a href="realizacje.html">Realizacje</a>
+  <a href="wycena.html">Wyceń projekt</a>
+  <a href="kontakt.html">Kontakt</a>
+</div>
+
+<section class="hero">
+  <div class="hero-bg">
+    <video autoplay muted loop playsinline poster="https://cms-toolkit-artifacts.artlist.io/content/-t-e-x-t_-t-o_-i-m-a-g-e-v1/media__1/-t-e-x-t_-t-o_-i-m-a-g-e-4286e280-5102-463b-a465-e4aaf8c8918d.png?Expires=2102419082&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=QVovJylWz1HQRRAgXI875h2O0o5DXKfd8jQrff4b6qWDWbXPj7MA12ZKTVpEEULL66r8NgeO6Og6keNHam3ZzmzL9lwp7GO9rWN6SIDNbY4qJ-nTypiRGpnq3cJzO1-wYlfAAukxsSrAlMEBVto6git8o100isonl5zMX6g9zspZdfSooND83LC-a7oULFe6CL-X6wjWcSGkourFA73JSTyJ3CZAi7aj6SHYLDM9nWNku7I~C4QMf67GajC8D724Uab1qvHWJWcFkRQ-t2v15UcX1oXjrURiFWIBtyTHtwUxhtm-LsDWQ25sP0DdlKPF6i5bWZAyLucowM7Gdmc~Sw__">
+      <source src="https://cms-toolkit-artifacts.artlist.io/content/-e-x-t-e-r-n-a-l_-i-m-a-g-e_-t-o_-v-i-d-e-o-v1/media__3/-e-x-t-e-r-n-a-l_-i-m-a-g-e_-t-o_-v-i-d-e-o-e8dc7d7e-afb0-4dfa-9bbc-c648f4ecde8e.mp4?Expires=2102419285&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=u0Nz-Posc1fSqAmqN7mChfrdUJNba7aJLzyxxDmaY0SkzS8IJkSKguZfDmXiC6oPOONExujLL1rFTiimDFedrXSfMpkBV8MmCufWUR7lv3iqBmB~2IqgH0uUUiCn4ymwvJ6o3uP5aUIW3z1h4q-4y5tAVXIX0oovGT0ILUNiD0zusJeI4WWJ6SZZwJdJJ~ckJvuz0UoxCGh681Piu7bCG8WEhXnM-1ZID4EokdRrX-quTfOI4VdByOrVg39Snz7sAQlj3tStzEM9kNeRzzFFrDDVgozItKT1vsG-zhccY8D0O~qQY5a9ZzCACImk-hGzw9VkOI5z7qqYNB9AUzR4ow__" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-content">
+    <div class="crumb">O SYSTEMIE</div>
+    <h1 style="max-width:760px;">Poznaj <strong>Donę</strong> — rdzeń, który<br>nie śpi, ale <em>nigdy nie działa sam</em>.</h1>
+    <p style="font-size:15.5px; color:var(--dim); max-width:560px; line-height:1.75;">Dona to nie chatbot i nie pojedynczy model. To system czterech wyspecjalizowanych agentów AI, które budują, publikują i utrzymują — a każda ich decyzja przechodzi przeze mnie ręcznie, zanim trafi do sieci.</p>
+  </div>
+</section>
+
+<section class="agents-section">
+  <div class="wrap">
+    <div class="sec-label">// ZESPÓŁ AGENTÓW</div>
+    <div class="sec-title">Cztery agenty, <strong>jeden nadzorca</strong></div>
+    <p class="sec-sub">Każdy agent ma wąską, jasno określoną odpowiedzialność — dzięki temu system jest przewidywalny i łatwo go kontrolować krok po kroku.</p>
+    <div class="agent-grid reveal-stagger">
+      <div class="agent-card">
+        <div class="agent-top"><span class="agent-id">AGENT_00 / MONIA</span><span class="agent-led"></span></div>
+        <h3>Monia — Orkiestrator</h3>
+        <p>Przyjmuje zadania, rozdziela je do właściwych agentów i pilnuje kolejności pracy. To przez Monię (na Telegramie) przechodzi każde zatwierdzenie — nic nie publikuje się bez mojego kliknięcia.</p>
+        <div class="agent-tags"><span>ROUTING</span><span>TELEGRAM</span><span>ZATWIERDZENIA</span></div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-top"><span class="agent-id">AGENT_01 / STRONY</span><span class="agent-led"></span></div>
+        <h3>Agent stron www</h3>
+        <p>Projektuje i buduje wielostronicowe witryny dopasowane do konkretnej branży klienta — treść pisana pod firmę, nie generyczny szablon.</p>
+        <div class="agent-tags"><span>UX</span><span>TREŚĆ</span><span>PUBLIKACJA</span></div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-top"><span class="agent-id">AGENT_02 / KAMPANIE</span><span class="agent-led"></span></div>
+        <h3>Agent kampanii lejkowych</h3>
+        <p>Projektuje ścieżkę klienta od pierwszego kontaktu po decyzję zakupową — z jasno zdefiniowanym celem na każdym etapie lejka.</p>
+        <div class="agent-tags"><span>LEJKI</span><span>REKLAMA</span><span>KONWERSJA</span></div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-top"><span class="agent-id">AGENT_03 / SOCIAL</span><span class="agent-led"></span></div>
+        <h3>Agent social media</h3>
+        <p>Prowadzi profile na bieżąco — planuje, przygotowuje i publikuje treści na podstawie materiału, który dostarcza klient.</p>
+        <div class="agent-tags"><span>HARMONOGRAM</span><span>TREŚĆ</span><span>PUBLIKACJA</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flow-section">
+  <div class="wrap">
+    <div class="sec-label">// JAK TO DZIAŁA</div>
+    <div class="sec-title">Od zlecenia do publikacji — <strong>krok po kroku</strong></div>
+    <div class="flow reveal-stagger">
+      <div class="flowstep"><span class="fn">01</span><h4>Zlecenie</h4><p>Zgłaszasz potrzebę — nową stronę, kampanię, treść społecznościową.</p></div>
+      <div class="flowarrow">→</div>
+      <div class="flowstep"><span class="fn">02</span><h4>Praca agenta</h4><p>Właściwy agent przygotowuje projekt na bazie realnych danych o Twojej firmie.</p></div>
+      <div class="flowarrow">→</div>
+      <div class="flowstep"><span class="fn">03</span><h4>Ręczne zatwierdzenie</h4><p>Efekt trafia do mnie na Telegram — nic nie idzie dalej bez mojego kliknięcia.</p></div>
+      <div class="flowarrow">→</div>
+      <div class="flowstep"><span class="fn">04</span><h4>Publikacja</h4><p>Dopiero zatwierdzona wersja trafia do sieci — z pełnym zapisem, co i kiedy się zmieniło.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="principle-section">
+  <div class="wrap">
+    <div class="sec-label">// ZASADA NADRZĘDNA</div>
+    <div class="sec-title">AI, które <strong>nie zgaduje</strong>.</div>
+    <div class="principle-grid">
+      <div class="principle-visual reveal">
+        <div class="ring"></div>
+        <div class="core-mini"></div>
+      </div>
+      <div class="principle-list reveal">
+        <p><strong>Żadnej publikacji bez człowieka.</strong> Każda strona, kampania i post przechodzi przez ręczne zatwierdzenie, zanim trafi do odbiorców.</p>
+        <p><strong>Żadych domysłów.</strong> Jeśli Dona nie ma pewnych danych o Twojej firmie, pyta — nie wymyśla faktów, cen ani opinii klientów.</p>
+        <p><strong>Pełna historia zmian.</strong> Każda decyzja i publikacja są zapisane — wiadomo dokładnie, co, kiedy i dlaczego się zmieniło.</p>
+        <p><strong>Maksymalnie 10 klientów naraz.</strong> System celowo pracuje w małej skali, żeby każdy projekt miał realną, ludzZ uwagę.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pillars" style="border-top:1px solid var(--line); border-bottom:none;">
+  <div class="wrap reveal" style="text-align:center;">
+    <div class="sec-title">Zobacz, co Dona <strong>już zbudowała</strong></div>
+    <p class="sec-sub center" style="margin-bottom:34px;">4 pełne, żywe realizacje — nie mockupy.</p>
+    <div class="btnrow" style="justify-content:center;">
+      <a href="realizacje.html" class="btn btn-solid">Zobacz realizacje</a>
+      <a href="wycena.html" class="btn">Wyceń swój projekt</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><h5>PM PRZEWAGA METODĄ</h5><p>Agencja marketingowa oparta o system AI Dona. Rzeszów, Podkarpacie.</p></div>
+      <div><h5>NAWIGACJA</h5><a href="o-donie.html">O Donie</a><a href="oferta.html">Oferta</a><a href="realizacje.html">Realizacje</a></div>
+      <div><h5>ROZPOCZNIJ</h5><a href="wycena.html">Wyceń projekt</a><a href="kontakt.html">Kontakt</a></div>
+      <div><h5>KONTAKT</h5><p>kontakt@przewagametoda.pl</p><p style="font-size:11px; color:var(--dim2);">(adres tymczasowy)</p></div>
+    </div>
+    <div class="foot-bottom"><div>PM PRZEWAGA METODĄ © 2026</div><div>Zbudowano przez system Dona</div></div>
+  </div>
+</footer>
+
+<button id="dona-chat-btn" aria-label="Otwórz czat">💬<span class="dot"></span></button>
+<div id="dona-chat-panel">
+  <div class="chat-head"><span class="led"></span><div><b>Asystent Moni</b><span>zwykle odpowiada od ręki</span></div></div>
+  <div class="chat-body" id="dona-chat-body">
+    <div class="msg bot">Cześć! Jestem asystentem tej strony — mogę odpowiedzieć na podstawowe pytania o ofertę. Na co masz ochotę?</div>
+  </div>
+  <div class="chat-suggest" id="dona-chat-suggest">
+    <button>Jak działa Dona?</button>
+    <button>Ile to kosztuje?</button>
+    <button>Chcę kampanię</button>
+  </div>
+  <div class="chat-input"><input type="text" id="dona-chat-input" placeholder="Napisz wiadomość..."><button id="dona-chat-send">Wyślij</button></div>
+</div>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
