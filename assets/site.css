@@ -86,7 +86,7 @@ body{padding-top:76px;}
 .porbit{width:52px; height:52px; border-radius:50%; margin-bottom:24px; position:relative; background:radial-gradient(circle at 35% 30%, #eaf7ff, #2f6a86 55%, #0c1c24 80%);}
 .porbit::after{content:''; position:absolute; inset:-9px; border:1px solid var(--line); border-radius:50%;}
 .pcard h3{font-size:17px; font-weight:600; margin-bottom:13px; color:#fff;}
-.pcard p{font-size:13.5px; color:var(--dim); line-height:1.75; font-weight:300;}
+.pcard p{font-size:15px; color:#c7cedb; line-height:1.75; font-weight:400;}
 .pcard .plink{display:inline-block; margin-top:16px; font-size:12.5px; color:var(--cyan); font-weight:500;}
 @media(max-width:900px){.pgrid{grid-template-columns:1fr; gap:38px;} .rail{display:none;} .pcard::before,.pcard::after{display:none;}}
 
