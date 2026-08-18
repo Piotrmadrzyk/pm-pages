@@ -96,6 +96,7 @@ body{padding-top:76px;}
 .world{background:var(--void); padding:38px 24px; text-align:center; transition:background .3s;}
 .world:hover{background:var(--void2);}
 .wplanet{width:60px; height:60px; border-radius:50%; margin:0 auto 20px; position:relative; animation:float 5s ease-in-out infinite;}
+.wplanet .wicon{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:26px; height:26px; color:rgba(255,255,255,.7); filter:drop-shadow(0 1px 3px rgba(0,0,0,.4));}
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
 .world.a .wplanet{background:radial-gradient(circle at 35% 30%, #ffe3c2, #b5773f 55%, #2b1a10 80%); animation-delay:0s;}
 .world.b .wplanet{background:radial-gradient(circle at 35% 30%, #e3d3f5, #8064a8 55%, #211530 80%); animation-delay:.3s;}
