@@ -17,7 +17,10 @@
   .case{background:var(--void); display:grid; grid-template-columns:280px 1fr; gap:0;}
   .case-visual{background:radial-gradient(circle at 30% 30%, var(--c1), var(--c2) 60%, var(--c3) 100%); position:relative; min-height:220px; display:flex; align-items:center; justify-content:center; overflow:hidden;}
   .case-visual::after{content:''; position:absolute; inset:0; background:repeating-linear-gradient(115deg, rgba(255,255,255,.03) 0 2px, transparent 2px 22px);}
-  .case-visual .cn{font-family:'Space Mono',monospace; font-size:60px; font-weight:700; color:rgba(255,255,255,.12); position:relative;}
+  .case-visual::before{content:''; position:absolute; top:0; left:0; right:0; height:26px; background:rgba(0,0,0,.16); border-bottom:1px solid rgba(255,255,255,.07); z-index:1;}
+  .case-visual .chrome-dots{position:absolute; top:9px; left:14px; display:flex; gap:6px; z-index:2;}
+  .case-visual .chrome-dots span{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.28);}
+  .case-visual .cicon{width:58px; height:58px; color:rgba(255,255,255,.5); position:relative; z-index:1;}
   .case-body{padding:38px 36px;}
   .case-body .cat{font-family:'Space Mono',monospace; font-size:11px; color:var(--cyan); letter-spacing:.08em; margin-bottom:10px;}
   .case-body h3{font-size:22px; color:#fff; font-weight:600; margin-bottom:14px;}
