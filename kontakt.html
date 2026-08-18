@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt | PM Przewaga Metodą</title>
+<meta name="description" content="Napisz bezpośrednio lub porozmawiaj z asystentem — odpiszę osobiście.">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .contact-section{padding:60px 0 110px;}
+  .contact-grid{display:grid; grid-template-columns:1fr 1.2fr; gap:50px; align-items:flex-start;}
+  .cinfo-card{background:var(--panel); border:1px solid var(--line); padding:34px; margin-bottom:20px;}
+  .cinfo-card .mono{color:var(--cyan); font-size:11px; letter-spacing:.08em; margin-bottom:12px; display:block;}
+  .cinfo-card b{display:block; color:#fff; font-size:16px; margin-bottom:8px;}
+  .cinfo-card p{font-size:13px; color:var(--dim); line-height:1.7;}
+  @media(max-width:900px){.contact-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav class="site-nav wrap">
+  <div class="logo">PM PRZEWAGA METODĄ <span>/ SYSTEM DONA</span></div>
+  <div class="navlinks">
+    <a href="index.html">Start</a><a href="o-donie.html">O Donie</a><a href="oferta.html">Oferta</a>
+    <a href="realizacje.html">Realizacje</a><a href="kontakt.html" class="active">Kontakt</a>
+  </div>
+  <a href="wycena.html" class="navcta">Wyceń projekt</a>
+  <div class="navburger"><span></span><span></span><span></span></div>
+</nav>
+<div class="navmobile">
+  <a href="index.html">Start</a><a href="o-donie.html">O Donie</a><a href="oferta.html">Oferta</a>
+  <a href="realizacje.html">Realizacje</a><a href="wycena.html">Wyceń projekt</a><a href="kontakt.html">Kontakt</a>
+</div>
+
+<div class="pagehero wrap" style="padding-bottom:40px;">
+  <div class="crumb">KONTAKT</div>
+  <h1>Porozmawiajmy o <strong>Twoim projekcie</strong>.</h1>
+  <p>Napisz przez formularz, wyślij e-mail albo zapytaj asystenta w prawym dolnym rogu — cokolwiek jest wygodniejsze.</p>
+</div>
+
+<section class="contact-section wrap">
+  <div class="contact-grid">
+    <div class="reveal-stagger">
+      <div class="cinfo-card">
+        <span class="mono">// E-MAIL</span>
+        <b>kontakt@przewagametoda.pl</b>
+        <p>Adres tymczasowy na czas budowy strony — zostanie zamieniony na docelowy przed pełną publikacją. Na razie pisz przez formularz obok.</p>
+      </div>
+      <div class="cinfo-card">
+        <span class="mono">// LOKALIZACJA</span>
+        <b>Rzeszów, Podkarpacie</b>
+        <p>Pracuję zdalnie z klientami z całej Polski, z naciskiem na małe i średnie firmy z regionu.</p>
+      </div>
+      <div class="cinfo-card">
+        <span class="mono">// CZAS ODPOWIEDZI</span>
+        <b>1-2 dni robocze</b>
+        <p>Każda wiadomość trafia bezpośrednio do mnie — odpisuję osobiście, bez automatycznych szablonów.</p>
+      </div>
+    </div>
+
+    <div class="formcard reveal">
+      <form id="kontakt-form" data-fake-submit data-success-target="#kontakt-ok">
+        <div class="frow">
+          <div class="field"><label>Imię i nazwisko *</label><input type="text" name="imie" required></div>
+          <div class="field"><label>E-mail *</label><input type="email" name="email" required></div>
+        </div>
+        <div class="frow full">
+          <div class="field"><label>Temat</label><input type="text" name="temat" placeholder="Np. pytanie o realizację strony"></div>
+        </div>
+        <div class="frow full">
+          <div class="field"><label>Wiadomość *</label><textarea name="wiadomosc" required placeholder="W czym mogę pomóc?"></textarea></div>
+        </div>
+        <button type="submit" class="btn btn-solid" style="width:100%; justify-content:center; margin-top:10px;">Wyślij wiadomość</button>
+      </form>
+      <div class="formok" id="kontakt-ok">
+        <div class="mono">// WIADOMOŚĆ WYSŁANA</div>
+        <h3>Dziękuję za wiadomość.</h3>
+        <p>Odpiszę osobiście, zwykle w ciągu 1-2 dni roboczych.</p>
+        <div style="margin-top:26px;"><a href="wycena.html" class="btn">Chcesz od razu wycenę? →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><h5>PM PRZEWAGA METODĄ</h5><p>Agencja marketingowa oparta o system AI Dona. Rzeszów, Podkarpacie.</p></div>
+      <div><h5>NAWIGACJA</h5><a href="o-donie.html">O Donie</a><a href="oferta.html">Oferta</a><a href="realizacje.html">Realizacje</a></div>
+      <div><h5>ROZPOCZNIJ</h5><a href="wycena.html">Wyceń projekt</a><a href="kontakt.html">Kontakt</a></div>
+      <div><h5>KONTAKT</h5><p>kontakt@przewagametoda.pl</p><p style="font-size:11px; color:var(--dim2);">(adres tymczasowy)</p></div>
+    </div>
+    <div class="foot-bottom"><div>PM PRZEWAGA METODĄ © 2026</div><div>Zbudowano przez system Dona</div></div>
+  </div>
+</footer>
+
+<button id="dona-chat-btn" aria-label="Otwórz czat">💬<span class="dot"></span></button>
+<div id="dona-chat-panel">
+  <div class="chat-head"><span class="led"></span><div><b>Asystent Moni</b><span>zwykle odpowiada od ręki</span></div></div>
+  <div class="chat-body" id="dona-chat-body"><div class="msg bot">Cześć! Możesz też po prostu zapytać mnie o coś tutaj, zanim napiszesz formularz.</div></div>
+  <div class="chat-suggest" id="dona-chat-suggest">
+    <button>Ile to kosztuje?</button>
+    <button>Jak działa Dona?</button>
+  </div>
+  <div class="chat-input"><input type="text" id="dona-chat-input" placeholder="Napisz wiadomość..."><button id="dona-chat-send">Wyślij</button></div>
+</div>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
