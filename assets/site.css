@@ -21,21 +21,25 @@ img{max-width:100%; display:block;}
 @media(max-width:640px){.wrap{padding:0 22px;}}
 
 /* NAV */
-nav.site-nav{position:relative; z-index:40; display:flex; justify-content:space-between; align-items:center; padding:30px 0;}
-nav.site-nav.on-image{position:absolute; top:0; left:0; right:0; padding:34px 0;}
+nav.site-nav{position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:20px 40px; background:rgba(3,5,10,.55); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid rgba(255,255,255,.07); transition:background .3s, border-color .3s;}
 .logo{font-weight:600; font-size:15.5px; letter-spacing:.03em; color:#fff; display:flex; align-items:baseline; gap:8px;}
 .logo span{color:var(--dim); font-family:'Space Mono',monospace; font-size:11px;}
 .navlinks{display:flex; gap:34px; font-size:13px; color:rgba(255,255,255,.72); font-weight:400;}
 .navlinks a:hover, .navlinks a.active{color:var(--cyan);}
 .navcta{border:1px solid rgba(255,255,255,.28); padding:10px 18px; font-size:12.5px; font-weight:500; color:#fff;}
 .navcta:hover{border-color:var(--cyan); color:var(--cyan);}
-.navburger{display:none; flex-direction:column; gap:5px; cursor:pointer; z-index:60;}
+.navburger{display:none; flex-direction:column; gap:5px; cursor:pointer; z-index:110;}
 .navburger span{width:22px; height:2px; background:#fff;}
-.navmobile{display:none; position:fixed; inset:0; z-index:50; background:rgba(3,5,10,.98); flex-direction:column; align-items:center; justify-content:center; gap:28px; font-size:20px;}
+.navmobile{display:none; position:fixed; inset:0; z-index:120; background:rgba(3,5,10,.98); flex-direction:column; align-items:center; justify-content:center; gap:28px; font-size:20px;}
 .navmobile.open{display:flex;}
+body{padding-top:76px;}
+.hero{margin-top:-76px;}
 @media(max-width:860px){
   .navlinks, .navcta{display:none;}
   .navburger{display:flex;}
+}
+@media(max-width:640px){
+  nav.site-nav{padding:18px 22px;}
 }
 
 /* BUTTONS */
