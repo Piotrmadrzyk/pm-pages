@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;500&display=swap');
+:root{
+  --void:#03050a;
+  --void2:#070b14;
+  --light:#f2f5f9;
+  --dim:#8b96ab;
+  --dim2:#5c667a;
+  --cyan:#5ad1ff;
+  --cyan-dim:#1c7fa8;
+  --gold:#e8c58f;
+  --line:rgba(90,209,255,.16);
+  --panel:rgba(255,255,255,.03);
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--void); color:var(--light); font-family:'Manrope',sans-serif; font-weight:300; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
+.mono{font-family:'Space Mono',monospace;}
+a{color:inherit; text-decoration:none;}
+img{max-width:100%; display:block;}
+.wrap{max-width:1180px; margin:0 auto; padding:0 40px;}
+@media(max-width:640px){.wrap{padding:0 22px;}}
+
+/* NAV */
+nav.site-nav{position:relative; z-index:40; display:flex; justify-content:space-between; align-items:center; padding:30px 0;}
+nav.site-nav.on-image{position:absolute; top:0; left:0; right:0; padding:34px 0;}
+.logo{font-weight:600; font-size:15.5px; letter-spacing:.03em; color:#fff; display:flex; align-items:baseline; gap:8px;}
+.logo span{color:var(--dim); font-family:'Space Mono',monospace; font-size:11px;}
+.navlinks{display:flex; gap:34px; font-size:13px; color:rgba(255,255,255,.72); font-weight:400;}
+.navlinks a:hover, .navlinks a.active{color:var(--cyan);}
+.navcta{border:1px solid rgba(255,255,255,.28); padding:10px 18px; font-size:12.5px; font-weight:500; color:#fff;}
+.navcta:hover{border-color:var(--cyan); color:var(--cyan);}
+.navburger{display:none; flex-direction:column; gap:5px; cursor:pointer; z-index:60;}
+.navburger span{width:22px; height:2px; background:#fff;}
+.navmobile{display:none; position:fixed; inset:0; z-index:50; background:rgba(3,5,10,.98); flex-direction:column; align-items:center; justify-content:center; gap:28px; font-size:20px;}
+.navmobile.open{display:flex;}
+@media(max-width:860px){
+  .navlinks, .navcta{display:none;}
+  .navburger{display:flex;}
+}
+
+/* BUTTONS */
+.btn{display:inline-flex; align-items:center; gap:8px; font-size:13.5px; font-weight:500; letter-spacing:.02em; padding:15px 27px; border:1px solid rgba(255,255,255,.26); color:#fff; background:rgba(255,255,255,.04); backdrop-filter:blur(6px); cursor:pointer; transition:all .2s;}
+.btn:hover{border-color:var(--cyan); color:var(--cyan);}
+.btn-solid{background:var(--cyan); color:#00131c; border-color:var(--cyan); font-weight:600;}
+.btn-solid:hover{background:#8fe0ff; color:#00131c;}
+.btnrow{display:flex; gap:16px; flex-wrap:wrap;}
+
+/* SECTION LABELS */
+.sec-label{font-family:'Space Mono',monospace; font-size:11px; color:var(--cyan); letter-spacing:.1em; margin-bottom:14px;}
+.sec-title{font-size:clamp(26px,3.4vw,36px); font-weight:300; color:#fff; margin-bottom:20px;}
+.sec-title strong{font-weight:700;}
+.sec-sub{font-size:15px; color:var(--dim); line-height:1.75; max-width:620px;}
+.center{text-align:center; margin-left:auto; margin-right:auto;}
+
+/* TELEMETRY */
+.telemetry{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--void2);}
+.tel-row{display:flex; justify-content:space-between; max-width:1180px; margin:0 auto; padding:28px 40px; flex-wrap:wrap; gap:20px;}
+.tel{flex:1; min-width:120px;}
+.tel .tv{font-family:'Space Mono',monospace; font-size:23px; color:var(--cyan); font-weight:500;}
+.tel .tl{font-size:10px; color:var(--dim); letter-spacing:.08em; margin-top:7px;}
+
+/* PAGE HERO (non-photo, for interior pages) */
+.pagehero{padding:170px 0 80px; border-bottom:1px solid var(--line); position:relative; overflow:hidden;}
+.pagehero::before{content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 20% 20%, rgba(90,209,255,.08), transparent 55%); pointer-events:none;}
+.pagehero h1{font-weight:300; font-size:clamp(32px,4.6vw,54px); line-height:1.14; color:#fff; max-width:800px; margin-bottom:22px;}
+.pagehero h1 strong{font-weight:700;}
+.pagehero h1 em{font-style:italic; color:var(--cyan); font-weight:300;}
+.pagehero {p-padding:0}
