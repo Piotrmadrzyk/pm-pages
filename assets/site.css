@@ -8,7 +8,7 @@
   --cyan:#5ad1ff;
   --cyan-dim:#1c7fa8;
   --gold:#e8c58f;
-  --line:rgba(90,209,255,.16);
+  --line:rgba(90,209,255,.34);
   --panel:rgba(255,255,255,.03);
 }
 *{box-sizing:border-box; margin:0; padding:0;}
