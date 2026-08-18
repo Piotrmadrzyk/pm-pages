@@ -97,6 +97,7 @@ nav.site-nav.on-image{position:absolute; top:0; left:0; right:0; padding:34px 0;
 .world.b .wplanet{background:radial-gradient(circle at 35% 30%, #e3d3f5, #8064a8 55%, #211530 80%); animation-delay:.3s;}
 .world.c .wplanet{background:radial-gradient(circle at 35% 30%, #cdeed6, #4f8d63 55%, #142016 80%); animation-delay:.6s;}
 .world.d .wplanet{background:radial-gradient(circle at 35% 30%, #cfe8ff, #3f7ba8 55%, #0c1c24 80%); animation-delay:.9s;}
+.world.e .wplanet{background:radial-gradient(circle at 35% 30%, #e8e0c0, #7c8f4f 55%, #1c2410 80%); animation-delay:1.2s;}
 .world small{font-family:'Space Mono',monospace; font-size:10px; color:var(--dim); letter-spacing:.06em;}
 .world h4{font-size:15.5px; font-weight:500; margin:10px 0 15px; color:#fff;}
 .world a.wlink{font-size:12px; color:var(--cyan); font-weight:500;}
