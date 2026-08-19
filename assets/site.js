@@ -6,13 +6,34 @@ document.addEventListener('DOMContentLoaded', function(){
   var burger = document.querySelector('.navburger');
   var mobileNav = document.querySelector('.navmobile');
   if(burger && mobileNav){
+    burger.setAttribute('aria-expanded', 'false');
     burger.addEventListener('click', function(){
-      mobileNav.classList.toggle('open');
+      var open = mobileNav.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
     mobileNav.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', function(){ mobileNav.classList.remove('open'); });
+      a.addEventListener('click', function(){
+        mobileNav.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
     });
   }
+
+  // Hero video: skip autoplay/preload on mobile or when the visitor prefers reduced motion
+  // (partial mitigation for oversized hero video — see audit P0-7; full re-encode still pending)
+  document.querySelectorAll('.hero-bg video').forEach(function(video){
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var isSmallScreen = window.matchMedia && window.matchMedia('(max-width: 760px)').matches;
+    if(reduceMotion || isSmallScreen){
+      video.removeAttribute('autoplay');
+      video.setAttribute('preload', 'none');
+      video.pause();
+    } else {
+      video.setAttribute('preload', 'auto');
+      var playPromise = video.play();
+      if(playPromise && playPromise.catch){ playPromise.catch(function(){}); }
+    }
+  });
 
   // Scroll reveal
   var revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
