@@ -244,3 +244,20 @@ footer.site-footer{padding:50px 0 40px; border-top:1px solid var(--line); margin
 .foot-grid a:hover{color:var(--cyan);}
 .foot-bottom{display:flex; justify-content:space-between; padding-top:24px; border-top:1px solid var(--line); font-size:11.5px; color:var(--dim2); font-family:'Space Mono',monospace; flex-wrap:wrap; gap:10px;}
 @media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr; gap:30px 20px;}}
+
+/* GLOBAL KEYBOARD FOCUS (P1-6) — visible only for keyboard/assistive nav, not mouse clicks */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible{
+  outline:2px solid var(--cyan);
+  outline-offset:3px;
+}
+
+/* REDUCED MOTION (P1-7) — respects the OS-level "prefers-reduced-motion" setting */
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+  .reveal, .reveal-stagger > *{opacity:1 !important; transform:none !important;}
+}
