@@ -82,7 +82,17 @@
         <div class="frow full">
           <div class="field"><label>Wiadomość *</label><textarea name="wiadomosc" required placeholder="W czym mogę pomóc?"></textarea></div>
         </div>
+        <div class="frow full">
+          <div class="field field-consent">
+            <label class="consent-label">
+              <input type="checkbox" name="consent" required>
+              <span>Wyrażam zgodę na przetwarzanie podanych przeze mnie danych w celu odpowiedzi na to zgłoszenie. *</span>
+            </label>
+          </div>
+        </div>
+        <div class="hp-field" aria-hidden="true"><label>Strona WWW<input type="text" name="strona_www" tabindex="-1" autocomplete="off"></label></div>
         <button type="submit" class="btn btn-solid" style="width:100%; justify-content:center; margin-top:10px;">Wyślij wiadomość</button>
+        <div class="formerr" id="kontakt-err" role="alert"></div>
       </form>
       <div class="formok" id="kontakt-ok">
         <div class="mono">// WIADOMOŚĆ WYSŁANA</div>
