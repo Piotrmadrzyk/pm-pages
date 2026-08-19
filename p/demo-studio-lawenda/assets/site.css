@@ -341,6 +341,95 @@ p{margin:0 0 1.1em}
 .mobile-cta .m-call{border:1px solid var(--line);color:var(--ink);background:var(--white)}
 .mobile-cta .m-book{background:var(--brass);color:#fff}
 
+/* ============================================================
+   PODSTRONY
+   ============================================================ */
+
+/* ---------- nagłówek podstrony ---------- */
+.page-hero{position:relative;overflow:hidden;min-height:min(46vh,420px);display:flex;align-items:flex-end}
+.page-hero-bg{position:absolute;inset:0;z-index:0}
+.page-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 46%}
+.page-hero-veil{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(120deg,rgba(251,249,251,.96) 0%,rgba(251,249,251,.88) 34%,rgba(251,249,251,.45) 58%,rgba(251,249,251,.05) 82%);
+}
+.page-hero-in{position:relative;z-index:2;width:var(--wrap);margin:0 auto;padding:52px 0 44px}
+.page-hero h1{font-size:clamp(2.3rem,5vw,3.7rem);margin-bottom:.28em}
+.page-hero .lead{margin-bottom:0}
+@media (max-width:760px){
+  .page-hero{min-height:auto;padding:14px 0 0}
+  .page-hero-veil{background:linear-gradient(175deg,rgba(251,249,251,.95) 0%,rgba(251,249,251,.9) 55%,rgba(251,249,251,.66) 100%)}
+}
+
+/* ---------- pigułki kotwiczące (prawdziwe linki) ---------- */
+.anchor-nav{
+  position:sticky;top:74px;z-index:40;
+  background:rgba(251,249,251,.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.anchor-nav ul{
+  width:var(--wrap);margin:0 auto;padding:12px 0;list-style:none;
+  display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;
+}
+.anchor-nav ul::-webkit-scrollbar{display:none}
+.anchor-nav a{
+  display:block;white-space:nowrap;padding:9px 17px;border-radius:999px;
+  font-size:.87rem;font-weight:500;color:var(--ink-soft);
+  border:1px solid var(--line);background:var(--white);
+  transition:color .2s,border-color .2s,background .2s;
+}
+.anchor-nav a:hover,.anchor-nav a:focus-visible{color:var(--brand);border-color:var(--brand);background:var(--brand-soft)}
+@media (max-width:900px){
+  .anchor-nav{top:0}
+  .anchor-nav ul{padding:10px 20px}
+}
+
+/* ---------- blok zabiegu ---------- */
+.treat{padding:clamp(52px,7vw,88px) 0;border-bottom:1px solid var(--line);scroll-margin-top:140px}
+.treat:nth-child(even){background:var(--stone)}
+.treat-grid{display:grid;gap:clamp(26px,4vw,52px);align-items:start}
+.treat-media{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.treat-media img{width:100%;display:block}
+.treat h2{margin-bottom:.2em}
+.treat-lead{font-size:1.06rem;color:var(--ink-soft);max-width:58ch;margin-bottom:1.4rem}
+
+.treat-meta{
+  display:flex;flex-wrap:wrap;gap:0;margin:0 0 26px;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.treat-meta div{flex:1 1 33%;min-width:118px;padding:15px 18px 15px 0}
+.treat-meta dt{
+  font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brand);margin-bottom:3px;
+}
+.treat-meta dd{
+  margin:0;font-family:"Cormorant Garamond",serif;font-size:1.4rem;font-weight:600;
+  color:var(--ink);line-height:1.15;
+}
+.treat-meta dd small{
+  display:block;font-family:"Inter",sans-serif;font-size:.78rem;font-weight:400;
+  color:var(--ink-soft);letter-spacing:0;margin-top:2px;
+}
+
+.facts{display:grid;gap:2px;margin:0 0 26px}
+.fact{padding:16px 0;border-bottom:1px solid var(--line)}
+.fact:last-child{border-bottom:none}
+.fact b{
+  display:block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--brand);margin-bottom:6px;font-weight:600;
+}
+.fact p{margin:0;font-size:.95rem;color:var(--ink-soft);line-height:1.65}
+.fact.warn b{color:#9A5B2E}
+.fact ol{margin:0;padding-left:1.15em;font-size:.95rem;color:var(--ink-soft)}
+.fact ol li{margin-bottom:4px}
+
+.treat-act{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+
+@media (min-width:860px){
+  .treat-grid{grid-template-columns:.92fr 1.08fr}
+  .treat:nth-child(even) .treat-media{order:2}
+  .treat-media{position:sticky;top:150px}
+}
+
 /* ---------- domykacz sprzedażowy pod sekcją ---------- */
 .closer{
   display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
