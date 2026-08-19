@@ -210,12 +210,13 @@ document.addEventListener('DOMContentLoaded', function(){
       chip.addEventListener('click', function(){
         row.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('on'); });
         chip.classList.add('on');
+        row.classList.remove('chip-error');
         if(hiddenInput) hiddenInput.value = chip.getAttribute('data-value') || chip.textContent.trim();
       });
     });
   });
 
-  // ===== Chatbot widget (canned FAQ - not a live AI connection yet) =====
+  // ===== Site FAQ assistant widget (canned FAQ answers — not a live AI connection) =====
   var chatBtn = document.getElementById('dona-chat-btn');
   var chatPanel = document.getElementById('dona-chat-panel');
   var chatBody = document.getElementById('dona-chat-body');
