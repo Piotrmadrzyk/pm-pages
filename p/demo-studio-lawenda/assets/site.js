@@ -58,6 +58,148 @@
     reveals.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---------- informacja o plikach cookie ---------- */
+  var cookieBar = document.getElementById('cookie-bar');
+  if (cookieBar) {
+    var COOKIE_KEY = 'lawenda-cookies-v1';
+    var seen = false;
+    try { seen = localStorage.getItem(COOKIE_KEY) === 'ok'; } catch (e) { seen = false; }
+    if (!seen) {
+      cookieBar.classList.add('show');
+      var accept = document.getElementById('cookie-ok');
+      if (accept) {
+        accept.addEventListener('click', function () {
+          cookieBar.classList.remove('show');
+          try { localStorage.setItem(COOKIE_KEY, 'ok'); } catch (e) {}
+        });
+      }
+    }
+  }
+
+  /* ---------- widget czatu ---------- */
+  var chatPanel = document.getElementById('chat-panel');
+  var chatFab = document.getElementById('chat-fab');
+
+  if (chatPanel && chatFab) {
+    var CHAT_URL = 'https://pmresearch.app.n8n.cloud/webhook/studio-lawenda-asystent';
+    var chatLog = document.getElementById('chat-log');
+    var chatForm = document.getElementById('chat-form');
+    var chatInput = document.getElementById('chat-input');
+    var chatSend = document.getElementById('chat-send');
+    var chatChips = document.getElementById('chat-chips');
+    var chatClose = document.getElementById('chat-close');
+    var busy = false;
+    var greeted = false;
+
+    /* identyfikator rozmowy — trzyma watek w obrebie jednej karty przegladarki */
+    var sessionId;
+    try {
+      sessionId = sessionStorage.getItem('lawenda-chat');
+      if (!sessionId) {
+        sessionId = 'w' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+        sessionStorage.setItem('lawenda-chat', sessionId);
+      }
+    } catch (e) {
+      sessionId = 'w' + Date.now().toString(36);
+    }
+
+    var scrollDown = function () { chatLog.scrollTop = chatLog.scrollHeight; };
+
+    var addMsg = function (text, kind) {
+      var el = document.createElement('div');
+      el.className = 'msg ' + kind;
+      el.textContent = text;
+      chatLog.appendChild(el);
+      scrollDown();
+      return el;
+    };
+
+    var showTyping = function () {
+      var el = document.createElement('div');
+      el.className = 'msg bot typing';
+      el.innerHTML = '<i></i><i></i><i></i>';
+      el.setAttribute('aria-label', 'Asystentka pisze');
+      chatLog.appendChild(el);
+      scrollDown();
+      return el;
+    };
+
+    var ask = function (text) {
+      if (busy || !text) return;
+      busy = true;
+      chatSend.disabled = true;
+      if (chatChips) chatChips.style.display = 'none';
+      addMsg(text, 'me');
+      chatInput.value = '';
+      var dots = showTyping();
+
+      fetch(CHAT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text, sessionId: sessionId, page: 'index' })
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (res) {
+          dots.remove();
+          addMsg(res && res.reply ? res.reply : 'Przepraszam, nie udało się odpowiedzieć. Zadzwoń proszę: 17 853 62 14.', 'bot');
+        })
+        .catch(function () {
+          dots.remove();
+          addMsg('Brak połączenia z asystentką. Zadzwoń proszę: 17 853 62 14.', 'err');
+        })
+        .finally(function () {
+          busy = false;
+          chatSend.disabled = false;
+          chatInput.focus();
+        });
+    };
+
+    var openChat = function () {
+      chatPanel.classList.add('open');
+      chatFab.style.display = 'none';
+      chatFab.setAttribute('aria-expanded', 'true');
+      if (!greeted) {
+        greeted = true;
+        addMsg('Dzień dobry! Odpowiem na pytania o zabiegi, ceny i przygotowanie do wizyty, a jeśli chcesz — pomogę dobrać termin.', 'bot');
+      }
+      chatInput.focus();
+    };
+
+    var closeChat = function () {
+      chatPanel.classList.remove('open');
+      chatFab.style.display = '';
+      chatFab.setAttribute('aria-expanded', 'false');
+      chatFab.focus();
+    };
+
+    chatFab.addEventListener('click', openChat);
+    chatClose.addEventListener('click', closeChat);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && chatPanel.classList.contains('open')) closeChat();
+    });
+
+    chatForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      ask(chatInput.value.trim());
+    });
+
+    if (chatChips) {
+      chatChips.querySelectorAll('button').forEach(function (b) {
+        b.addEventListener('click', function () { ask(b.textContent.trim()); });
+      });
+    }
+
+    /* odnosniki "zapytaj asystentki" rozsiane po stronie */
+    document.querySelectorAll('[data-chat-open]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        openChat();
+        var q = el.getAttribute('data-chat-ask');
+        if (q) ask(q);
+      });
+    });
+  }
+
   /* ---------- formularz rezerwacji ---------- */
   var form = document.getElementById('lead-form');
   if (!form) return;
