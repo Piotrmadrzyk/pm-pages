@@ -193,8 +193,9 @@ body{padding-top:76px;}
 .field textarea{resize:vertical; min-height:100px;}
 .field select{appearance:none; background-image:linear-gradient(45deg, transparent 50%, var(--cyan) 50%), linear-gradient(135deg, var(--cyan) 50%, transparent 50%); background-position:calc(100% - 18px) center, calc(100% - 13px) center; background-size:5px 5px, 5px 5px; background-repeat:no-repeat;}
 .chiprow{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px;}
-.chip{border:1px solid var(--line); padding:9px 16px; font-size:12.5px; color:var(--dim); cursor:pointer; user-select:none;}
+.chip{border:1px solid var(--line); padding:9px 16px; font-size:12.5px; color:var(--dim); cursor:pointer; user-select:none; background:transparent; font-family:'Manrope',sans-serif; appearance:none; -webkit-appearance:none;}
 .chip.on{border-color:var(--cyan); color:var(--cyan); background:rgba(90,209,255,.06);}
+.chiprow.chip-error .chip{border-color:#ff6b6b;}
 .formok{display:none; text-align:center; padding:40px 0;}
 .formok.show{display:block;}
 .formok .mono{color:var(--cyan); font-size:12px; letter-spacing:.08em; margin-bottom:14px;}
