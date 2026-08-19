@@ -91,6 +91,11 @@
     var busy = false;
     var greeted = false;
 
+    /* nazwa podstrony — trafia do logu rozmow, zeby bylo wiadomo skad pytanie */
+    var strona = (location.pathname.replace(/\/$/, '').split('/').pop() || 'index')
+      .replace('demo-studio-lawenda-', '')
+      .replace('demo-studio-lawenda', 'index');
+
     /* identyfikator rozmowy — trzyma watek w obrebie jednej karty przegladarki */
     var sessionId;
     try {
@@ -136,7 +141,7 @@
       fetch(CHAT_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text, sessionId: sessionId, page: 'index' })
+        body: JSON.stringify({ message: text, sessionId: sessionId, page: strona })
       })
         .then(function (r) { return r.json(); })
         .then(function (res) {
