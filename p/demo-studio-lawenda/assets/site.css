@@ -104,12 +104,14 @@ p{margin:0 0 1.1em}
 .site-header.is-stuck{border-bottom-color:var(--line);box-shadow:0 6px 24px -18px rgba(42,36,48,.5)}
 .nav{width:var(--wrap);margin:0 auto;min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
-.brand-mark{
-  width:36px;height:36px;border-radius:50%;flex-shrink:0;
-  background:radial-gradient(circle at 34% 32%,#fff 0 12%,var(--brand-soft) 13% 54%,var(--brand) 55% 58%,transparent 59%),
-             linear-gradient(140deg,#D9CBE2,var(--brand-soft));
-  box-shadow:inset 0 0 0 1px rgba(107,78,122,.2);
-}
+/* znak marki — gałązka lawendy */
+.brand-mark{width:36px;height:36px;flex-shrink:0;display:block}
+.brand-mark .stem{stroke:var(--brand)}
+.brand-mark .leaf{fill:var(--brand);opacity:.42}
+.brand-mark .buds{fill:var(--brass)}
+.site-footer .brand-mark .stem{stroke:#C4A8D4}
+.site-footer .brand-mark .leaf{fill:#C4A8D4;opacity:.4}
+.site-footer .brand-mark .buds{fill:#D3AB77}
 .brand-name{display:flex;flex-direction:column;line-height:1.1}
 .brand-name b{font-family:"Cormorant Garamond",serif;font-size:1.24rem;font-weight:600;letter-spacing:.02em}
 .brand-name span{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft)}
