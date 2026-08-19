@@ -45,23 +45,35 @@
   }
 
   /* ---------- suwak PRZED / PO ---------- */
+  /* Natywny input[type=range] rozciagniety na zdjeciu dziala na dotyku fatalnie:
+     iOS nie reaguje na tapniecie w tor, a przeciaganie w pionie potrafi zablokowac
+     przewijanie strony. Sterujemy wiec wskaznikiem (Pointer Events), a input
+     zostaje jako sciezka klawiaturowa i awaryjna, gdy JS nie wystartuje. */
+  var hasPointer = 'PointerEvent' in window && 'setPointerCapture' in Element.prototype;
+  if (hasPointer) document.documentElement.classList.add('ba-js');
+
   document.querySelectorAll('[data-ba]').forEach(function (fig) {
     var range = fig.querySelector('.ba-range');
-    if (!range) return;
+    var stage = fig.querySelector('.after');
+    if (!range || !stage) return;
+
     var apply = function () { fig.style.setProperty('--pos', range.value + '%'); };
     apply();
-    range.addEventListener('input', apply);
-    /* na wejściu delikatnie odsłaniamy stan „po", żeby było widać, że to suwak */
+    range.addEventListener('input', apply); /* strzalki na klawiaturze */
+
+    /* podpowiedz na wejsciu w kadr — pokazujemy, ze to suwak */
+    var tick = null;
+    var stopTeaser = function () { if (tick) { clearInterval(tick); tick = null; } };
     if (!reduce && 'IntersectionObserver' in window) {
       var teaser = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
           if (!e.isIntersecting) return;
           teaser.unobserve(e.target);
           var v = 50, dir = -1, steps = 0;
-          var tick = setInterval(function () {
+          tick = setInterval(function () {
             v += dir * 2;
             if (v <= 34) dir = 1;
-            if (v >= 50 && steps > 0) { clearInterval(tick); v = 50; }
+            if (v >= 50 && steps > 0) { stopTeaser(); v = 50; }
             if (v <= 34) steps++;
             range.value = v;
             apply();
@@ -70,6 +82,58 @@
       }, { threshold: 0.5 });
       teaser.observe(fig);
     }
+
+    if (!hasPointer) return; /* zostaje natywny suwak */
+
+    var setFromX = function (clientX) {
+      var r = stage.getBoundingClientRect();
+      if (!r.width) return;
+      var pct = (clientX - r.left) / r.width * 100;
+      range.value = pct < 0 ? 0 : (pct > 100 ? 100 : pct);
+      apply();
+    };
+
+    var id = null, startX = 0, moved = false;
+
+    fig.addEventListener('pointerdown', function (e) {
+      var r = stage.getBoundingClientRect();
+      /* podpis pod zdjeciem nie przesuwa suwaka */
+      if (e.clientY < r.top || e.clientY > r.bottom) return;
+      stopTeaser();
+      id = e.pointerId;
+      startX = e.clientX;
+      moved = false;
+      if (e.pointerType !== 'touch') {
+        /* mysz i rysik: skok od razu, przeciaganie poza kadr tez ma dzialac */
+        moved = true;
+        try { fig.setPointerCapture(id); } catch (err) {}
+        setFromX(e.clientX);
+      }
+    });
+
+    fig.addEventListener('pointermove', function (e) {
+      if (id === null || e.pointerId !== id) return;
+      /* na dotyku czekamy na wyrazny ruch w poziomie — pion zostawiamy przewijaniu */
+      if (!moved) {
+        if (Math.abs(e.clientX - startX) < 6) return;
+        moved = true;
+        try { fig.setPointerCapture(id); } catch (err) {}
+      }
+      e.preventDefault();
+      setFromX(e.clientX);
+    });
+
+    fig.addEventListener('pointerup', function (e) {
+      if (id === null || e.pointerId !== id) return;
+      if (!moved) setFromX(e.clientX); /* zwykle tapniecie w kadr */
+      try { fig.releasePointerCapture(id); } catch (err) {}
+      id = null;
+    });
+
+    fig.addEventListener('pointercancel', function (e) {
+      if (id === null || e.pointerId !== id) return; /* przejal przewijanie strony */
+      id = null;
+    });
   });
 
   /* ---------- cookies ---------- */

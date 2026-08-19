@@ -1,261 +1,333 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oferta — strony www, kampanie lejkowe, social media | PM Przewaga Metodą</title>
-<meta name="description" content="Trzy usługi: budowa stron internetowych, kampanie lejkowe i prowadzenie social mediów — wykonywane przez system Dona pod ręcznym nadzorem.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oferta — strony internetowe, kampanie lejkowe, social media | PM Przewaga Metodą</title>
+<meta name="description" content="Trzy usługi, jedna metoda: wielostronicowe witryny pod branżę, kampanie lejkowe z celem na każdym etapie i stałe prowadzenie profili społecznościowych.">
 <meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#07080b">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PM Przewaga Metodą">
-<meta property="og:title" content="Oferta — strony www, kampanie lejkowe, social media | PM Przewaga Metodą">
-<meta property="og:description" content="Trzy usługi: budowa stron internetowych, kampanie lejkowe i prowadzenie social mediów — wykonywane przez system Dona pod ręcznym nadzorem.">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:title" content="Oferta — strony internetowe, kampanie lejkowe, social media | PM Przewaga Metodą">
+<meta property="og:description" content="Trzy usługi, jedna metoda: wielostronicowe witryny pod branżę, kampanie lejkowe z celem na każdym etapie i stałe prowadzenie profili społecznościowych.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Oferta — strony www, kampanie lejkowe, social media | PM Przewaga Metodą">
-<meta name="twitter:description" content="Trzy usługi: budowa stron internetowych, kampanie lejkowe i prowadzenie social mediów — wykonywane przez system Dona pod ręcznym nadzorem.">
+<meta name="twitter:title" content="Oferta — strony internetowe, kampanie lejkowe, social media | PM Przewaga Metodą">
+<meta name="twitter:description" content="Trzy usługi, jedna metoda: wielostronicowe witryny pod branżę, kampanie lejkowe z celem na każdym etapie i stałe prowadzenie profili społecznościowych.">
+
+<script>document.documentElement.className += ' js';</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/site.css">
-<style>
-  .offer-block{padding:100px 0; border-bottom:1px solid var(--line); scroll-margin-top:100px;}
-  .offer-head{display:grid; grid-template-columns:70px 1fr; gap:26px; align-items:flex-start; margin-bottom:44px;}
-  .offer-num{font-family:'Space Mono',monospace; font-size:38px; font-weight:700; color:transparent; -webkit-text-stroke:1px var(--cyan-dim);}
-  .offer-grid2{display:grid; grid-template-columns:1fr 1fr; gap:50px;}
-  .offer-orb{width:80px; height:80px; border-radius:50%; margin-bottom:26px; position:relative; background:radial-gradient(circle at 35% 30%, #eaf7ff, #2f6a86 55%, #0c1c24 80%); box-shadow:0 0 50px rgba(90,209,255,.18);}
-  .offer-orb::after{content:''; position:absolute; inset:-11px; border:1px solid var(--line); border-radius:50%;}
-  .stepline{margin-top:30px;}
-  .stepline .srow{display:flex; gap:16px; padding:16px 0; border-top:1px solid var(--line);}
-  .stepline .srow:first-child{border-top:none;}
-  .stepline .sn{font-family:'Space Mono',monospace; color:var(--cyan); font-size:12px; min-width:26px;}
-  .stepline .st h5{font-size:14.5px; color:#fff; font-weight:600; margin-bottom:4px;}
-  .stepline .st p{font-size:13px; color:var(--dim); line-height:1.6;}
-  .incl-list{list-style:none; margin-top:24px;}
-  .incl-list li{padding:10px 0 10px 24px; border-bottom:1px solid var(--line); font-size:15px; color:#c7cedb; position:relative;}
-  .incl-list li::before{content:''; position:absolute; left:2px; top:18px; width:6px; height:6px; border-radius:50%; background:var(--cyan); box-shadow:0 0 6px var(--cyan);}
-  .offer-audience{display:inline-flex; align-items:center; gap:8px; font-family:'Space Mono',monospace; font-size:11.5px; color:var(--cyan); letter-spacing:.04em; padding:8px 14px; border:1px solid var(--line); border-radius:2px; margin-bottom:22px;}
-  .offer-audience b{color:#fff; font-weight:600;}
-  .offer-desc{font-size:16px; color:#dbe2ee; line-height:1.8; font-weight:400; margin-bottom:26px;}
-  .offer-desc strong{color:#fff;}
-  .offer-stats{display:flex; gap:0; margin:30px 0 6px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); flex-wrap:wrap;}
-  .offer-stat{flex:1; min-width:130px; padding:18px 20px 18px 0;}
-  .offer-stat .ov{font-family:'Space Mono',monospace; font-size:20px; color:var(--cyan); font-weight:500;}
-  .offer-stat .ol{font-size:11px; color:var(--dim); letter-spacing:.05em; margin-top:5px;}
-  .offer-example{margin-top:28px; padding:20px 22px; border:1px solid var(--line); background:var(--void2); font-size:14px; color:#aeb7c7; line-height:1.7;}
-  .offer-example a{color:var(--cyan); font-weight:500;}
-  .offer-example a:hover{text-decoration:underline;}
-  .stepline .st .stime{display:block; font-family:'Space Mono',monospace; font-size:10.5px; color:var(--cyan-dim); margin-top:4px;}
-  .offer-faq{margin-top:34px;}
-  .offer-faq details{border-top:1px solid var(--line); padding:16px 0;}
-  .offer-faq details:last-child{border-bottom:1px solid var(--line);}
-  .offer-faq summary{cursor:pointer; font-size:14.5px; color:#fff; font-weight:500; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:12px;}
-  .offer-faq summary::-webkit-details-marker{display:none;}
-  .offer-faq summary::after{content:'+'; font-size:18px; color:var(--cyan); flex-shrink:0;}
-  .offer-faq details[open] summary::after{content:'−';}
-  .offer-faq p{font-size:13.5px; color:var(--dim); line-height:1.7; margin-top:10px; padding-right:20px;}
-  .offer-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-top:34px;}
-  @media(max-width:900px){.offer-grid2{grid-template-columns:1fr; gap:34px;} .offer-head{grid-template-columns:50px 1fr;} .offer-num{font-size:28px;}}
-</style>
 </head>
 <body>
 
-<nav class="site-nav wrap">
-  <div class="logo">PM PRZEWAGA METODĄ <span>/ SYSTEM DONA</span></div>
-  <div class="navlinks">
+<div class="topbar">
+  <div class="wrap">
+    <span class="live"><i class="led"></i>System Dona — rdzeń aktywny</span>
+    <div class="tb-right">
+      <span>Rzeszów · Podkarpacie</span>
+      <span>Odpowiedź w 1–2 dni robocze</span>
+      <span>Maks. 10 klientów naraz</span>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <b>PM PRZEWAGA METODĄ</b>
+      <span>System Dona</span>
+    </a>
+    <div class="navlinks">
     <a href="index.html">Start</a>
-    <a href="o-donie.html">O Donie</a>
+    <a href="o-donie.html">Metoda</a>
     <a href="oferta.html" class="active">Oferta</a>
     <a href="realizacje.html">Realizacje</a>
+    <a href="automatyzacja.html">Agenty</a>
     <a href="kontakt.html">Kontakt</a>
+    </div>
+    <a href="wycena.html" class="navcta">Wyceń projekt</a>
+    <button type="button" class="burger" aria-label="Menu" aria-expanded="false" aria-controls="navmobile"><span></span><span></span><span></span></button>
   </div>
-  <a href="wycena.html" class="navcta">Wyceń projekt</a>
-  <button type="button" class="navburger" aria-label="Menu" aria-controls="navmobile-oferta" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
-<div class="navmobile" id="navmobile-oferta">
-  <a href="index.html">Start</a><a href="o-donie.html">O Donie</a><a href="oferta.html">Oferta</a>
-  <a href="realizacje.html">Realizacje</a><a href="wycena.html">Wyceń projekt</a><a href="kontakt.html">Kontakt</a>
+<div class="navmobile" id="navmobile">
+  <a href="index.html">Start</a>
+  <a href="o-donie.html">Metoda</a>
+  <a href="oferta.html">Oferta</a>
+  <a href="realizacje.html">Realizacje</a>
+  <a href="automatyzacja.html">Agenty</a>
+  <a href="kontakt.html">Kontakt</a>
+  <a href="wycena.html">Wyceń projekt</a>
 </div>
 
-<div class="pagehero wrap" style="border-bottom:1px solid var(--line);">
-  <div class="crumb">OFERTA</div>
-  <h1>Trzy usługi. <strong>Jedna metoda</strong>.</h1>
-  <p>Strony internetowe, kampanie lejkowe i social media — każda z tych usług prowadzona jest przez wyspecjalizowanego agenta Dony, pod moim ręcznym nadzorem na każdym etapie.</p>
-</div>
-
-<section id="strony" class="offer-block wrap">
-  <div class="offer-head">
-    <div class="offer-num">01</div>
-    <div>
-      <div class="sec-label">// STRONY INTERNETOWE</div>
-      <h2 class="sec-title">Witryna, która <strong>sprzedaje</strong>, nie tylko istnieje.</h2>
-    </div>
-  </div>
-  <div class="offer-audience">DLA KOGO: <b>kancelarii, gabinetów, lokalnych usług i firm B2B bez własnego działu marketingu</b></div>
-  <div class="offer-grid2 reveal-stagger">
-    <div>
-      <div class="offer-orb"></div>
-      <p class="offer-desc">Większość małych firm ma stronę, która powstała raz, dawno temu, i od tamtej pory nikt jej nie rusza — bo nie ma na to czasu ani osoby, która się tym zajmie. Efekt: strona nie odpowiada na pytania, które faktycznie zadają klienci, i nie prowadzi ich do kontaktu. Budujemy wielostronicową witrynę od zera, dopasowaną do Twojej branży — <strong>treść piszemy pod konkretną ofertę</strong>, nie wklejamy generycznego szablonu. Każda podstrona ma jasny cel: przekonać, wyjaśnić albo doprowadzić do formularza kontaktowego. Ty zatwierdzasz każdy etap, zanim trafi na żywo.</p>
-      <ul class="incl-list">
-        <li>Stronę główną i komplet podstron dopasowanych do Twojej branży — ofertę, o firmie, kontakt i inne wg potrzeby.</li>
-        <li>Treść pisaną pod Twoją firmę i lokalizację, bez lorem ipsum i frazesów.</li>
-        <li>Wersję w pełni responsywną — mobile i desktop testowane osobno.</li>
-        <li>Formularz kontaktowy lub wyceny, podłączony i przetestowany.</li>
-        <li>Publikację na Twojej domenie razem z podstawową konfiguracją SEO (tytuły, opisy, adresy podstron).</li>
-      </ul>
-      <div class="offer-stats">
-        <div class="offer-stat"><div class="ov">4–8</div><div class="ol">PODSTRON</div></div>
-        <div class="offer-stat"><div class="ov">10–14</div><div class="ol">DNI ROBOCZYCH</div></div>
-        <div class="offer-stat"><div class="ov">2</div><div class="ol">RUNDY POPRAWEK W CENIE</div></div>
-      </div>
-      <div class="offer-example">Zobacz, jak to wygląda w praktyce → <a href="realizacje.html#case-kancelaria">Kancelaria Zawadzcy i Wspólnicy</a>, strona zbudowana od zera w tym samym procesie co opisany obok.</div>
-    </div>
-    <div>
-      <div class="stepline">
-        <div class="srow"><div class="sn">01</div><div class="st"><h5>Briefing</h5><p>Krótka rozmowa o firmie, ofercie i grupie docelowej.</p><span class="stime">~30 min</span></div></div>
-        <div class="srow"><div class="sn">02</div><div class="st"><h5>Projekt</h5><p>Agent buduje pierwszą wersję strony na bazie realnych danych.</p><span class="stime">5–7 dni roboczych</span></div></div>
-        <div class="srow"><div class="sn">03</div><div class="st"><h5>Zatwierdzenie</h5><p>Przeglądasz i akceptujesz — poprawki wracają do agenta.</p><span class="stime">1–2 dni na rundę</span></div></div>
-        <div class="srow"><div class="sn">04</div><div class="st"><h5>Publikacja</h5><p>Strona trafia na Twoją domenę, gotowa do pracy.</p><span class="stime">do 24h od akceptacji</span></div></div>
-      </div>
-      <div class="offer-faq">
-        <details><summary>Czy mogę używać własnej domeny?</summary><p>Tak — podpinamy stronę pod domenę, którą już masz, albo pomagamy ją zarejestrować, jeśli jeszcze jej nie ma.</p></details>
-        <details><summary>Co jeśli zechcę zmienić treść po publikacji?</summary><p>Drobne poprawki tekstowe wprowadzamy na bieżąco. Większe zmiany (nowe podstrony, przebudowa) traktujemy jako osobne zlecenie.</p></details>
-        <details><summary>Czy strona będzie widoczna w Google?</summary><p>Publikujemy z podstawową konfiguracją SEO (tytuły, opisy, struktura nagłówków) — to fundament, od którego zaczyna się widoczność.</p></details>
-      </div>
-      <div class="offer-ctas">
-        <a href="wycena.html" class="btn btn-solid">Sprawdź wycenę strony →</a>
-        <a href="javascript:void(0)" onclick="document.getElementById('dona-chat-btn').click()" class="btn">Zapytaj o stronę</a>
-      </div>
+<section class="phead">
+  <div class="wrap">
+    <span class="eyebrow">Oferta</span>
+    <h1 class="display">Trzy usługi. <em>Jedna metoda.</em></h1>
+    <p class="lead">
+      Każdą z nich prowadzi wyspecjalizowany agent systemu Dona — pod moim ręcznym
+      nadzorem na każdym etapie. Poniżej dokładny zakres, terminy i odpowiedzi na pytania,
+      które padają najczęściej.
+    </p>
+    <div class="btnrow" style="margin-top:30px">
+      <a href="#strony" class="btn">Strony internetowe</a>
+      <a href="#kampanie" class="btn">Kampanie lejkowe</a>
+      <a href="#social" class="btn">Social media</a>
     </div>
   </div>
 </section>
 
-<section id="kampanie" class="offer-block wrap">
-  <div class="offer-head">
-    <div class="offer-num">02</div>
-    <div>
-      <div class="sec-label">// KAMPANIE LEJKOWE</div>
-      <h2 class="sec-title">Marketing z <strong>celem</strong> na każdym etapie.</h2>
+<section class="sec" id="strony">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="idx">01 — Strony internetowe</span>
+      <h2 class="display">Witryna, która <em>sprzedaje</em>, nie tylko istnieje.</h2>
+      <span class="svc-for" style="margin-top:16px">Dla kancelarii, gabinetów, usług lokalnych i firm B2B bez własnego działu marketingu</span>
+      <p class="lead">
+        Większość małych firm ma stronę, która powstała raz, dawno temu, i od tamtej pory nikt
+        jej nie ruszał — bo nie ma na to czasu ani osoby. Efekt: strona nie odpowiada na pytania,
+        które klienci naprawdę zadają, i nie prowadzi ich do kontaktu.
+      </p>
+      <p class="lead">
+        Budujemy wielostronicową witrynę od zera, dopasowaną do Twojej branży. <b>Treść piszemy
+        pod konkretną ofertę</b>, nie wklejamy generycznego szablonu. Każda podstrona ma jasny cel:
+        przekonać, wyjaśnić albo doprowadzić do formularza. Ty zatwierdzasz każdy etap, zanim trafi na żywo.
+      </p>
     </div>
-  </div>
-  <div class="offer-audience">DLA KOGO: <b>firm z ofertą wartą kilku minut rozmowy — usług B2B, edukacji i branż z wyższym progiem decyzyjnym niż zakup impulsowy</b></div>
-  <div class="offer-grid2 reveal-stagger">
-    <div>
-      <div class="offer-orb"></div>
-      <p class="offer-desc">Pojedyncze posty reklamowe bez planu generują kliknięcia, ale rzadko klientów — bo osoba, która widzi reklamę pierwszy raz, prawie nigdy nie kupuje od razu. Bez ścieżki prowadzącej ją krok po kroku od zainteresowania do decyzji, budżet reklamowy się rozmywa. Projektujemy pełny lejek: od pierwszego kontaktu, przez materiał budujący zaufanie, po moment, w którym klient jest gotowy kupić. <strong>Każdy etap ma osobny cel i osobną treść</strong> — nie jedną reklamę powtarzaną w kółko. Wyniki mierzymy i korygujemy lejek na bieżąco, zamiast czekać do końca miesiąca.</p>
-      <ul class="incl-list">
-        <li>Mapę ścieżki klienta (świadomość → rozważanie → zakup) dopasowaną do Twojej branży.</li>
-        <li>Landing page zbudowany specjalnie pod kampanię, nie ogólną stronę firmową.</li>
-        <li>Treści reklamowe dopasowane do etapu lejka, nie jedną uniwersalną reklamę.</li>
-        <li>Podstawowe śledzenie konwersji, żeby było wiadomo, co faktycznie działa.</li>
-        <li>Cykliczny przegląd wyników i korekty kampanii w trakcie jej trwania.</li>
-      </ul>
-      <div class="offer-stats">
-        <div class="offer-stat"><div class="ov">3–5</div><div class="ol">ETAPÓW LEJKA</div></div>
-        <div class="offer-stat"><div class="ov">7–10</div><div class="ol">DNI DO STARTU</div></div>
-        <div class="offer-stat"><div class="ov">14</div><div class="ol">DNI MIĘDZY PRZEGLĄDAMI</div></div>
+
+    <div class="form-wrap" style="align-items:start">
+      <div>
+        <ul class="svc-list reveal">
+          <li>Stronę główną i komplet podstron dopasowanych do branży — ofertę, o firmie, kontakt i inne wg potrzeby</li>
+          <li>Treść pisaną pod Twoją firmę i lokalizację, bez lorem ipsum i frazesów</li>
+          <li>Wersję w pełni responsywną — mobile i desktop testowane osobno</li>
+          <li>Formularz kontaktowy lub wyceny, podłączony i przetestowany</li>
+          <li>Publikację na Twojej domenie z podstawową konfiguracją SEO (tytuły, opisy, adresy podstron)</li>
+        </ul>
       </div>
-      <div class="offer-example">Kampanie lejkowe to młodsza usługa niż budowa stron, więc nie mamy jeszcze osobnego portfolio kampanii do pokazania — pierwszym dowodem będzie ta zaprojektowana dla Twojej firmy. Ten sam zespół i proces zatwierdzeń zobaczysz już w naszych <a href="realizacje.html">realizacjach stron internetowych</a>.</div>
+      <div class="reveal">
+        <div class="kv" style="margin-top:0">
+          <div><span>Liczba podstron</span><span>4–8</span></div>
+          <div><span>Czas realizacji</span><span>10–14 dni roboczych</span></div>
+          <div><span>Rundy poprawek w cenie</span><span>2</span></div>
+          <div><span>Publikacja</span><span>do 24 h od akceptacji</span></div>
+        </div>
+        <p class="small" style="margin-top:18px">
+          Zobacz, jak to wygląda w praktyce — <a href="realizacje.html" style="color:var(--amber);font-weight:600">Kancelaria Zawadzcy i Wspólnicy</a>
+          powstała dokładnie w tym procesie.
+        </p>
+      </div>
     </div>
-    <div>
-      <div class="stepline">
-        <div class="srow"><div class="sn">01</div><div class="st"><h5>Cel kampanii</h5><p>Ustalamy, co ma się wydarzyć — zapytania, zapisy, sprzedaż.</p><span class="stime">~30–45 min rozmowy</span></div></div>
-        <div class="srow"><div class="sn">02</div><div class="st"><h5>Projekt lejka</h5><p>Agent projektuje ścieżkę i materiały pod każdy jej etap.</p><span class="stime">4–6 dni roboczych</span></div></div>
-        <div class="srow"><div class="sn">03</div><div class="st"><h5>Zatwierdzenie</h5><p>Akceptujesz treści i budżet przed uruchomieniem.</p><span class="stime">1–2 dni</span></div></div>
-        <div class="srow"><div class="sn">04</div><div class="st"><h5>Uruchomienie i pomiar</h5><p>Kampania rusza, wyniki są śledzone i raportowane.</p><span class="stime">przegląd co 2 tygodnie</span></div></div>
-      </div>
-      <div class="offer-faq">
-        <details><summary>Jaki budżet reklamowy jest potrzebny?</summary><p>To zależy od branży i celu — ustalamy widełki podczas rozmowy o celu kampanii, zanim zaprojektujemy lejek.</p></details>
-        <details><summary>Czy muszę mieć już stronę internetową?</summary><p>Nie — landing page pod kampanię budujemy niezależnie od tego, czy masz już stronę główną firmy.</p></details>
-        <details><summary>Co jeśli kampania nie działa tak, jak zakładano?</summary><p>Sprawdzamy dane co dwa tygodnie i korygujemy treści lub grupę docelową — kampania nie jest ustawiana raz na zawsze.</p></details>
-      </div>
-      <div class="offer-ctas">
-        <a href="wycena.html" class="btn btn-solid">Sprawdź wycenę kampanii →</a>
-        <a href="javascript:void(0)" onclick="document.getElementById('dona-chat-btn').click()" class="btn">Zapytaj o kampanię</a>
-      </div>
+
+    <div class="proc reveal">
+      <div class="proc-i"><span class="n">01</span><b>Briefing</b><p>Krótka rozmowa o firmie, ofercie i grupie docelowej.</p><span class="t">~30 min</span></div>
+      <div class="proc-i"><span class="n">02</span><b>Projekt</b><p>Agent buduje pierwszą wersję strony na bazie realnych danych.</p><span class="t">5–7 dni roboczych</span></div>
+      <div class="proc-i"><span class="n">03</span><b>Zatwierdzenie</b><p>Przeglądasz i akceptujesz — poprawki wracają do agenta.</p><span class="t">1–2 dni na rundę</span></div>
+      <div class="proc-i"><span class="n">04</span><b>Publikacja</b><p>Strona trafia na Twoją domenę, gotowa do pracy.</p><span class="t">do 24 h od akceptacji</span></div>
+    </div>
+
+    <div class="faq reveal">
+      <details><summary>Czy mogę używać własnej domeny?</summary><p>Tak — podpinamy stronę pod domenę, którą już masz, albo pomagamy ją zarejestrować, jeśli jeszcze jej nie ma.</p></details>
+      <details><summary>Co jeśli zechcę zmienić treść po publikacji?</summary><p>Drobne poprawki tekstowe wprowadzamy na bieżąco. Większe zmiany — nowe podstrony, przebudowa — traktujemy jako osobne zlecenie.</p></details>
+      <details><summary>Czy strona będzie widoczna w Google?</summary><p>Publikujemy z podstawową konfiguracją SEO: tytuły, opisy, struktura nagłówków i adresy podstron. To fundament, od którego zaczyna się widoczność — nie obiecuję pierwszego miejsca w tydzień.</p></details>
+    </div>
+
+    <div class="btnrow" style="margin-top:34px">
+      <a href="wycena.html" class="btn btn-primary">Sprawdź wycenę strony</a>
+      <a href="realizacje.html" class="btn">Zobacz żywe realizacje</a>
     </div>
   </div>
 </section>
 
-<section id="social" class="offer-block wrap" style="border-bottom:none;">
-  <div class="offer-head">
-    <div class="offer-num">03</div>
-    <div>
-      <div class="sec-label">// SOCIAL MEDIA</div>
-      <h2 class="sec-title">Obecność, która <strong>nie znika</strong> po miesiącu.</h2>
+<section class="sec" id="kampanie" style="background:var(--ink-1);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="idx">02 — Kampanie lejkowe</span>
+      <h2 class="display">Marketing z <em>celem</em> na każdym etapie.</h2>
+      <span class="svc-for" style="margin-top:16px">Dla firm z ofertą wartą kilku minut rozmowy — usług B2B, edukacji i branż z wyższym progiem decyzyjnym</span>
+      <p class="lead">
+        Pojedyncze posty reklamowe bez planu generują kliknięcia, ale rzadko klientów — bo osoba,
+        która widzi reklamę pierwszy raz, prawie nigdy nie kupuje od razu. Bez ścieżki prowadzącej
+        ją krok po kroku budżet reklamowy się rozmywa.
+      </p>
+      <p class="lead">
+        Projektujemy pełny lejek: od pierwszego kontaktu, przez materiał budujący zaufanie, po moment
+        decyzji. <b>Każdy etap ma osobny cel i osobną treść</b> — nie jedną reklamę powtarzaną w kółko.
+        Wyniki mierzymy i korygujemy na bieżąco, zamiast czekać do końca miesiąca.
+      </p>
     </div>
-  </div>
-  <div class="offer-audience">DLA KOGO: <b>firm, które chcą być obecne w social mediach na bieżąco, ale nie mają czasu ani osoby do prowadzenia profilu</b></div>
-  <div class="offer-grid2 reveal-stagger">
-    <div>
-      <div class="offer-orb"></div>
-      <p class="offer-desc">Najczęstszy scenariusz to profil, który ożywa raz na kilka tygodni, kiedy ktoś w firmie znajdzie chwilę — a potem znowu milczy. Odbiorcy to widzą i przestają traktować profil poważnie. Ty dostarczasz materiał, jaki naturalnie powstaje w Twojej firmie — zdjęcia, informacje o bieżących wydarzeniach, nowości w ofercie — a agent zamienia to w <strong>regularny harmonogram publikacji</strong>. Treść jest przygotowywana z wyprzedzeniem, więc profil żyje nawet w tygodniach, w których nie masz czasu o nim myśleć. Ty zatwierdzasz plan, zanim cokolwiek trafi na profil.</p>
-      <ul class="incl-list">
-        <li>Miesięczny harmonogram publikacji ustalany z wyprzedzeniem.</li>
-        <li>Redakcję i przygotowanie treści na bazie materiałów, które dostarczasz.</li>
-        <li>Publikację na wybranych platformach, zgodnie z harmonogramem.</li>
-        <li>Podstawowe raportowanie zaangażowania (zasięgi, reakcje, komentarze).</li>
-      </ul>
-      <div class="offer-stats">
-        <div class="offer-stat"><div class="ov">8–12</div><div class="ol">PUBLIKACJI / MIESIĄC</div></div>
-        <div class="offer-stat"><div class="ov">1</div><div class="ol">HARMONOGRAM / MIESIĄC</div></div>
-        <div class="offer-stat"><div class="ov">48h</div><div class="ol">REAKCJA NA BIEŻĄCE WYDARZENIE</div></div>
+
+    <div class="form-wrap" style="align-items:start">
+      <div>
+        <ul class="svc-list reveal">
+          <li>Mapę ścieżki klienta (świadomość → rozważanie → zakup) dopasowaną do branży</li>
+          <li>Landing page zbudowany specjalnie pod kampanię, nie ogólną stronę firmową</li>
+          <li>Treści reklamowe dopasowane do etapu lejka, nie jedną uniwersalną reklamę</li>
+          <li>Podstawowe śledzenie konwersji, żeby było wiadomo, co faktycznie działa</li>
+          <li>Cykliczny przegląd wyników i korekty kampanii w trakcie jej trwania</li>
+        </ul>
       </div>
-      <div class="offer-example">Podobnie jak kampanie, prowadzenie social mediów to usługa, dla której nie mamy jeszcze osobnego portfolio — ale proces zatwierdzeń i jakość wykonania są identyczne jak w naszych <a href="realizacje.html">realizacjach stron internetowych</a>.</div>
+      <div class="reveal">
+        <div class="kv" style="margin-top:0">
+          <div><span>Etapy lejka</span><span>3–5</span></div>
+          <div><span>Czas do startu</span><span>7–10 dni roboczych</span></div>
+          <div><span>Przeglądy wyników</span><span>co 14 dni</span></div>
+        </div>
+        <p class="small" style="margin-top:18px">
+          Kampanie to młodsza usługa niż budowa stron — nie mam jeszcze osobnego portfolio kampanii.
+          Pierwszym dowodem będzie ta zaprojektowana dla Twojej firmy. Ten sam proces zatwierdzeń
+          zobaczysz w <a href="realizacje.html" style="color:var(--amber);font-weight:600">realizacjach stron</a>.
+        </p>
+      </div>
     </div>
-    <div>
-      <div class="stepline">
-        <div class="srow"><div class="sn">01</div><div class="st"><h5>Zbiórka materiału</h5><p>Przesyłasz zdjęcia, informacje, bieżące wydarzenia z firmy.</p><span class="stime">na bieżąco, raz w miesiącu</span></div></div>
-        <div class="srow"><div class="sn">02</div><div class="st"><h5>Plan treści</h5><p>Agent układa harmonogram i przygotowuje posty.</p><span class="stime">3–4 dni robocze</span></div></div>
-        <div class="srow"><div class="sn">03</div><div class="st"><h5>Zatwierdzenie</h5><p>Przeglądasz plan przed publikacją.</p><span class="stime">1–2 dni</span></div></div>
-        <div class="srow"><div class="sn">04</div><div class="st"><h5>Publikacja i cykl</h5><p>Profile żyją na bieżąco, proces powtarza się co miesiąc.</p><span class="stime">cyklicznie, co miesiąc</span></div></div>
-      </div>
-      <div class="offer-faq">
-        <details><summary>Na jakich platformach prowadzicie profile?</summary><p>Najczęściej Facebook i Instagram — dobieramy platformy do tego, gdzie faktycznie są Twoi klienci.</p></details>
-        <details><summary>Co jeśli nie mam gotowych zdjęć ani materiałów?</summary><p>Wystarczy to, co naturalnie powstaje w firmie — nawet z telefonu. Pomagamy dobrać, co warto pokazać.</p></details>
-        <details><summary>Czy odpowiadacie też na komentarze i wiadomości?</summary><p>Podstawowe raportowanie obejmuje monitoring zaangażowania — moderację komentarzy ustalamy indywidualnie, w zależności od zakresu.</p></details>
-      </div>
-      <div class="offer-ctas">
-        <a href="wycena.html" class="btn btn-solid">Sprawdź wycenę social media →</a>
-        <a href="javascript:void(0)" onclick="document.getElementById('dona-chat-btn').click()" class="btn">Zapytaj o social media</a>
-      </div>
+
+    <div class="proc reveal">
+      <div class="proc-i"><span class="n">01</span><b>Cel kampanii</b><p>Ustalamy, co ma się wydarzyć — zapytania, zapisy, sprzedaż.</p><span class="t">~30–45 min rozmowy</span></div>
+      <div class="proc-i"><span class="n">02</span><b>Projekt lejka</b><p>Agent projektuje ścieżkę i materiały pod każdy jej etap.</p><span class="t">4–6 dni roboczych</span></div>
+      <div class="proc-i"><span class="n">03</span><b>Zatwierdzenie</b><p>Akceptujesz treści i budżet przed uruchomieniem.</p><span class="t">1–2 dni</span></div>
+      <div class="proc-i"><span class="n">04</span><b>Uruchomienie i pomiar</b><p>Kampania rusza, wyniki są śledzone i raportowane.</p><span class="t">przegląd co 2 tygodnie</span></div>
+    </div>
+
+    <div class="faq reveal">
+      <details><summary>Jaki budżet reklamowy jest potrzebny?</summary><p>To zależy od branży i celu — ustalamy widełki podczas rozmowy o celu kampanii, zanim zaprojektujemy lejek. Nie zaczynam od kwoty, tylko od tego, co ma się wydarzyć.</p></details>
+      <details><summary>Czy muszę mieć już stronę internetową?</summary><p>Nie — landing page pod kampanię budujemy niezależnie od tego, czy masz już stronę główną firmy.</p></details>
+      <details><summary>Co jeśli kampania nie działa tak, jak zakładano?</summary><p>Sprawdzamy dane co dwa tygodnie i korygujemy treści lub grupę docelową. Kampania nie jest ustawiana raz na zawsze.</p></details>
+    </div>
+
+    <div class="btnrow" style="margin-top:34px">
+      <a href="wycena.html" class="btn btn-primary">Sprawdź wycenę kampanii</a>
     </div>
   </div>
 </section>
 
-<section class="pillars" style="border-top:1px solid var(--line); border-bottom:none;">
-  <div class="wrap reveal" style="text-align:center;">
-    <h2 class="sec-title">Nie wiesz, od czego <strong>zacząć</strong>?</h2>
-    <p class="sec-sub center" style="margin-bottom:34px;">Formularz wyceny sam podpowie, która usługa (lub kombinacja) pasuje do Twojej sytuacji.</p>
-    <div class="btnrow" style="justify-content:center;">
-      <a href="wycena.html" class="btn btn-solid">Zamów bezpłatną wycenę</a>
-      <a href="realizacje.html" class="btn">Zobacz realizacje</a>
+<section class="sec" id="social">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="idx">03 — Social media</span>
+      <h2 class="display">Obecność, która <em>nie znika</em> po miesiącu.</h2>
+      <span class="svc-for" style="margin-top:16px">Dla firm, które chcą być obecne na bieżąco, ale nie mają czasu ani osoby do prowadzenia profilu</span>
+      <p class="lead">
+        Najczęstszy scenariusz to profil, który ożywa raz na kilka tygodni, kiedy ktoś w firmie
+        znajdzie chwilę — a potem znowu milczy. Odbiorcy to widzą i przestają traktować profil poważnie.
+      </p>
+      <p class="lead">
+        Ty dostarczasz materiał, jaki naturalnie powstaje w firmie — zdjęcia, informacje o wydarzeniach,
+        nowości w ofercie — a agent zamienia to w <b>regularny harmonogram publikacji</b>. Treść
+        przygotowujemy z wyprzedzeniem, więc profil żyje nawet w tygodniach, w których nie masz czasu
+        o nim myśleć. Plan zatwierdzasz, zanim cokolwiek trafi na profil.
+      </p>
+    </div>
+
+    <div class="form-wrap" style="align-items:start">
+      <div>
+        <ul class="svc-list reveal">
+          <li>Miesięczny harmonogram publikacji ustalany z wyprzedzeniem</li>
+          <li>Redakcję i przygotowanie treści na bazie materiałów, które dostarczasz</li>
+          <li>Publikację na wybranych platformach, zgodnie z harmonogramem</li>
+          <li>Podstawowe raportowanie zaangażowania — zasięgi, reakcje, komentarze</li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <div class="kv" style="margin-top:0">
+          <div><span>Publikacje</span><span>8–12 / miesiąc</span></div>
+          <div><span>Harmonogram</span><span>1 / miesiąc</span></div>
+          <div><span>Reakcja na wydarzenie</span><span>48 h</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proc reveal">
+      <div class="proc-i"><span class="n">01</span><b>Zbiórka materiału</b><p>Przesyłasz zdjęcia, informacje i bieżące wydarzenia z firmy.</p><span class="t">na bieżąco</span></div>
+      <div class="proc-i"><span class="n">02</span><b>Plan treści</b><p>Agent układa harmonogram i przygotowuje posty.</p><span class="t">3–4 dni robocze</span></div>
+      <div class="proc-i"><span class="n">03</span><b>Zatwierdzenie</b><p>Przeglądasz plan przed publikacją.</p><span class="t">1–2 dni</span></div>
+      <div class="proc-i"><span class="n">04</span><b>Publikacja i cykl</b><p>Profile żyją na bieżąco, proces powtarza się co miesiąc.</p><span class="t">cyklicznie</span></div>
+    </div>
+
+    <div class="faq reveal">
+      <details><summary>Na jakich platformach prowadzicie profile?</summary><p>Najczęściej Facebook i Instagram — dobieramy platformy do tego, gdzie faktycznie są Twoi klienci, a nie do tego, co modne.</p></details>
+      <details><summary>Co jeśli nie mam gotowych zdjęć ani materiałów?</summary><p>Wystarczy to, co naturalnie powstaje w firmie — nawet zdjęcia z telefonu. Pomagam dobrać, co warto pokazać.</p></details>
+      <details><summary>Czy odpowiadacie też na komentarze i wiadomości?</summary><p>Podstawowy zakres obejmuje monitoring zaangażowania. Moderację komentarzy ustalamy indywidualnie, zależnie od skali.</p></details>
+    </div>
+
+    <div class="btnrow" style="margin-top:34px">
+      <a href="wycena.html" class="btn btn-primary">Sprawdź wycenę social media</a>
     </div>
   </div>
 </section>
 
-<footer class="site-footer">
+<section class="cta-end" style="background:var(--ink-1);border-top:1px solid var(--line)">
+  <div class="wrap-n">
+    <h2 class="display">Nie wiesz, od czego <em>zacząć</em>?</h2>
+    <p class="lead center">
+      Formularz wyceny sam podpowie, która usługa — albo kombinacja — pasuje do Twojej sytuacji.
+      Dwie minuty wypełniania.
+    </p>
+    <div class="btnrow">
+      <a href="wycena.html" class="btn btn-primary btn-lg">Zamów bezpłatną wycenę</a>
+      <a href="kontakt.html" class="btn btn-lg">Zapytaj bezpośrednio</a>
+    </div>
+  </div>
+</section>
+
+
+<footer class="foot">
   <div class="wrap">
     <div class="foot-grid">
-      <div><h5>PM PRZEWAGA METODĄ</h5><p>Agencja marketingowa oparta o system AI Dona. Rzeszów, Podkarpacie.</p></div>
-      <div><h5>NAWIGACJA</h5><a href="o-donie.html">O Donie</a><a href="oferta.html">Oferta</a><a href="realizacje.html">Realizacje</a></div>
-      <div><h5>ROZPOCZNIJ</h5><a href="wycena.html">Wyceń projekt</a><a href="kontakt.html">Kontakt</a></div>
-      <div><h5>KONTAKT</h5><p>kontakt@przewagametoda.pl</p><p style="font-size:11px; color:var(--dim2);">(adres tymczasowy)</p></div>
+      <div class="foot-brand">
+        <b>PM PRZEWAGA METODĄ</b>
+        <p>Strony, kampanie lejkowe i social media budowane systemem AI Dona — pod pełnym, ręcznym nadzorem. Rzeszów, Podkarpacie.</p>
+        <div class="foot-social" data-social-foot></div>
+      </div>
+      <div>
+        <h5>Nawigacja</h5>
+        <a href="o-donie.html">Metoda</a>
+        <a href="oferta.html">Oferta</a>
+        <a href="realizacje.html">Realizacje</a>
+        <a href="automatyzacja.html">Agenty</a>
+      </div>
+      <div>
+        <h5>Rozpocznij</h5>
+        <a href="wycena.html">Wyceń projekt</a>
+        <a href="kontakt.html">Kontakt</a>
+      </div>
+      <div>
+        <h5>Kontakt</h5>
+        <a href="mailto:piotr.aparat@gmail.com">piotr.aparat@gmail.com</a>
+        <p class="small" style="margin:0">Odpisuję osobiście, zwykle w 1–2 dni robocze.</p>
+      </div>
     </div>
-    <div class="foot-bottom"><div>PM PRZEWAGA METODĄ © 2026</div><div>Zbudowano przez system Dona</div></div>
+    <div class="foot-bottom">
+      <span>PM Przewaga Metodą © <span data-year>2026</span></span>
+      <span>Zbudowano systemem Dona · zatwierdzone ręcznie</span>
+    </div>
   </div>
 </footer>
 
-<button id="dona-chat-btn" aria-label="Otwórz czat">💬<span class="chat-label">Asystent strony</span><span class="dot"></span></button>
-<div id="dona-chat-panel">
-  <div class="chat-head"><span class="led"></span><div><b>Asystent strony — FAQ</b><span>odpowiada na najczęstsze pytania</span></div></div>
-  <div class="chat-body" id="dona-chat-body"><div class="msg bot">Cześć! Odpowiadam na najczęstsze pytania i mogę pomóc dobrać usługę do Twojej sytuacji. Po coś bardziej szczegółowego — napisz przez formularz, odpiszę osobiście.</div></div>
-  <div class="chat-suggest" id="dona-chat-suggest">
-    <button>Chcę stronę www</button>
-    <button>Chcę kampanię</button>
-    <button>Ile to kosztuje?</button>
+<button id="chat-btn" aria-label="Otwórz asystenta strony">Asystent strony</button>
+<div id="chat-panel" role="dialog" aria-label="Asystent strony">
+  <div class="chat-head">
+    <i class="led"></i>
+    <div><b>Asystent strony</b><span>Odpowiedzi na najczęstsze pytania</span></div>
+    <button class="chat-x" id="chat-x" aria-label="Zamknij">×</button>
   </div>
-  <div class="chat-input"><input type="text" id="dona-chat-input" placeholder="Napisz wiadomość..."><button id="dona-chat-send">Wyślij</button></div>
+  <div class="chat-body" id="chat-body">
+    <div class="msg bot">Cześć. Odpowiadam na najczęstsze pytania o ofertę, ceny i terminy. Po coś bardziej szczegółowego — napisz przez formularz, odpiszę osobiście.</div>
+  </div>
+  <div class="chat-sug" id="chat-sug">
+    <button>Ile to kosztuje?</button>
+    <button>Ile trwa strona?</button>
+    <button>Czym są agenty?</button>
+  </div>
+  <div class="chat-in">
+    <input type="text" id="chat-input" placeholder="Napisz pytanie...">
+    <button id="chat-send">Wyślij</button>
+  </div>
 </div>
 
 <script src="assets/site.js"></script>

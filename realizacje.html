@@ -1,218 +1,269 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Realizacje — 5 pełnych, żywych stron | PM Przewaga Metodą</title>
-<meta name="description" content="Pięć pełnych, wielostronicowych realizacji zbudowanych przez system Dona — kancelaria, warsztat, salon urody, firma remontowo-budowlana, restauracja.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Realizacje — pięć żywych stron, zero mockupów | PM Przewaga Metodą</title>
+<meta name="description" content="Pięć w pełni działających, wielostronicowych witryn osadzonych na żywo. Nie zrzuty ekranu — prawdziwe strony, które możesz otworzyć i sprawdzić.">
 <meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#07080b">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PM Przewaga Metodą">
-<meta property="og:title" content="Realizacje — 5 pełnych, żywych stron | PM Przewaga Metodą">
-<meta property="og:description" content="Pięć pełnych, wielostronicowych realizacji zbudowanych przez system Dona — kancelaria, warsztat, salon urody, firma remontowo-budowlana, restauracja.">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:title" content="Realizacje — pięć żywych stron, zero mockupów | PM Przewaga Metodą">
+<meta property="og:description" content="Pięć w pełni działających, wielostronicowych witryn osadzonych na żywo. Nie zrzuty ekranu — prawdziwe strony, które możesz otworzyć i sprawdzić.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Realizacje — 5 pełnych, żywych stron | PM Przewaga Metodą">
-<meta name="twitter:description" content="Pięć pełnych, wielostronicowych realizacji zbudowanych przez system Dona — kancelaria, warsztat, salon urody, firma remontowo-budowlana, restauracja.">
+<meta name="twitter:title" content="Realizacje — pięć żywych stron, zero mockupów | PM Przewaga Metodą">
+<meta name="twitter:description" content="Pięć w pełni działających, wielostronicowych witryn osadzonych na żywo. Nie zrzuty ekranu — prawdziwe strony, które możesz otworzyć i sprawdzić.">
+
+<script>document.documentElement.className += ' js';</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/site.css">
-<style>
-  .hero{position:relative; min-height:60vh; display:flex; align-items:flex-end; overflow:hidden;}
-  .hero-bg{position:absolute; inset:0; z-index:0;}
-  .hero-bg img{width:100%; height:100%; object-fit:cover; object-position:center 45%;}
-  .hero-bg::after{content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(3,5,10,.35) 0%, rgba(3,5,10,.2) 40%, var(--void) 96%), linear-gradient(90deg, rgba(3,5,10,.7) 0%, rgba(3,5,10,.1) 50%, rgba(3,5,10,.5) 100%);}
-  .hero-content{position:relative; z-index:5; padding:0 40px 60px; max-width:1180px; margin:0 auto; width:100%;}
-
-  .case-grid{padding:90px 0; display:grid; gap:1px; background:var(--line); border:1px solid var(--line);}
-  .case{background:var(--void); display:grid; grid-template-columns:minmax(320px,48%) 1fr; gap:0;}
-  .case:nth-child(even){grid-template-columns:1fr minmax(320px,48%);}
-  .case:nth-child(even) .case-visual{order:2; border-right:none; border-left:1px solid var(--line);}
-  .case-visual{position:relative; min-height:380px; display:block; overflow:hidden; border-right:1px solid var(--line); background:var(--void2);}
-  .case-visual img{width:100%; height:100%; object-fit:cover; object-position:top center; display:block; transition:transform .6s cubic-bezier(.2,.7,.3,1);}
-  .case-visual:hover img{transform:scale(1.045);}
-  .case-visual::before{content:''; position:absolute; top:0; left:0; right:0; height:28px; background:rgba(3,5,10,.55); backdrop-filter:blur(3px); border-bottom:1px solid rgba(255,255,255,.08); z-index:2;}
-  .case-visual .chrome-dots{position:absolute; top:10px; left:14px; display:flex; gap:6px; z-index:3;}
-  .case-visual .chrome-dots span{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.3);}
-  .case-visual-cta{position:absolute; inset:auto 0 0 0; padding:16px 20px 14px; background:linear-gradient(0deg, rgba(3,5,10,.92) 10%, rgba(3,5,10,.5) 60%, transparent); color:var(--cyan); font-size:12.5px; font-weight:600; font-family:'Space Mono',monospace; letter-spacing:.03em; opacity:0; transform:translateY(8px); transition:all .25s; z-index:2;}
-  .case-visual:hover .case-visual-cta, .case-visual:focus-visible .case-visual-cta{opacity:1; transform:translateY(0);}
-  .case-body{padding:42px 40px;}
-  .case-body .cat{font-family:'Space Mono',monospace; font-size:11px; color:var(--cyan); letter-spacing:.08em; margin-bottom:10px;}
-  .case-body h3{font-size:24px; color:#fff; font-weight:600; margin-bottom:16px;}
-  .case-body p{font-size:15px; color:var(--dim); line-height:1.8; margin-bottom:22px; max-width:600px;}
-  .case-pages{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:22px;}
-  .case-pages a{font-family:'Space Mono',monospace; font-size:11.5px; color:var(--dim); border:1px solid var(--line); padding:9px 13px;}
-  .case-pages a:hover{color:var(--cyan); border-color:var(--cyan);}
-  .case-cta{font-size:14px; color:var(--cyan); font-weight:600;}
-  @media(max-width:800px){.case, .case:nth-child(even){grid-template-columns:1fr;} .case:nth-child(even) .case-visual{order:0; border-left:none; border-bottom:1px solid var(--line);} .case-visual{min-height:220px; border-right:none; border-bottom:1px solid var(--line);} .case-body{padding:30px 26px;}}
-</style>
 </head>
 <body>
 
-<nav class="site-nav on-image wrap">
-  <div class="logo">PM PRZEWAGA METODĄ <span>/ SYSTEM DONA</span></div>
-  <div class="navlinks">
-    <a href="index.html">Start</a><a href="o-donie.html">O Donie</a><a href="oferta.html">Oferta</a>
-    <a href="realizacje.html" class="active">Realizacje</a><a href="kontakt.html">Kontakt</a>
+<div class="topbar">
+  <div class="wrap">
+    <span class="live"><i class="led"></i>System Dona — rdzeń aktywny</span>
+    <div class="tb-right">
+      <span>Rzeszów · Podkarpacie</span>
+      <span>Odpowiedź w 1–2 dni robocze</span>
+      <span>Maks. 10 klientów naraz</span>
+    </div>
   </div>
-  <a href="wycena.html" class="navcta">Wyceń projekt</a>
-  <button type="button" class="navburger" aria-label="Menu" aria-controls="navmobile-realizacje" aria-expanded="false"><span></span><span></span><span></span></button>
+</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <b>PM PRZEWAGA METODĄ</b>
+      <span>System Dona</span>
+    </a>
+    <div class="navlinks">
+    <a href="index.html">Start</a>
+    <a href="o-donie.html">Metoda</a>
+    <a href="oferta.html">Oferta</a>
+    <a href="realizacje.html" class="active">Realizacje</a>
+    <a href="automatyzacja.html">Agenty</a>
+    <a href="kontakt.html">Kontakt</a>
+    </div>
+    <a href="wycena.html" class="navcta">Wyceń projekt</a>
+    <button type="button" class="burger" aria-label="Menu" aria-expanded="false" aria-controls="navmobile"><span></span><span></span><span></span></button>
+  </div>
 </nav>
-<div class="navmobile" id="navmobile-realizacje">
-  <a href="index.html">Start</a><a href="o-donie.html">O Donie</a><a href="oferta.html">Oferta</a>
-  <a href="realizacje.html">Realizacje</a><a href="wycena.html">Wyceń projekt</a><a href="kontakt.html">Kontakt</a>
+<div class="navmobile" id="navmobile">
+  <a href="index.html">Start</a>
+  <a href="o-donie.html">Metoda</a>
+  <a href="oferta.html">Oferta</a>
+  <a href="realizacje.html">Realizacje</a>
+  <a href="automatyzacja.html">Agenty</a>
+  <a href="kontakt.html">Kontakt</a>
+  <a href="wycena.html">Wyceń projekt</a>
 </div>
 
-<section class="hero">
-  <div class="hero-bg">
-    <img src="https://cms-toolkit-artifacts.artlist.io/content/-t-e-x-t_-t-o_-i-m-a-g-e-v1/media__1/-t-e-x-t_-t-o_-i-m-a-g-e-2559ead6-6d44-4326-a4b1-ef8d9682dfd6.png?Expires=2102419140&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=SIEXn~vctllm3bt41YKhdHkDIOJmzkuk3pud16AXW2avA-mzcedpr~t4u~UsHrGulooQHNOXsVs-uqCzCEPWMCul5qdCjaMAad6-r~ahs~iS6N6L8z9pTjm3OlZkuYh06YI6KCMzEK2nLEo90P1xwKGbpUSyVOs2~pvS1kJCoBhnS8NkF0KWPVd8KK2UgivprBtHrjSaqjjE8j9ZQVxSFtUipbvihS45qFToQ70-c2B-kKbjkyWC1UVaIk6JOSp76Vi6HV~OPfEhGwDr8kgR56xHBbC6rB9Gh9O2BmO7Yx2UKa-B99vcHoTSi2ZeT7XMvWYQp2N4WUEn1Kl2qGvQKw__" alt="">
-  </div>
-  <div class="hero-content">
-    <div class="crumb">PORTFOLIO / DOWÓD</div>
-    <h1 style="font-weight:300; font-size:clamp(30px,4.4vw,50px); line-height:1.14; color:#fff; max-width:760px;">Pięć <strong style="font-weight:700;">światów</strong>, zero <em style="font-style:italic; color:var(--cyan); font-weight:300;">symulacji</em>.</h1>
-    <p style="font-size:15px; color:var(--dim); max-width:540px; line-height:1.75; margin-top:16px;">Każda z poniższych realizacji to w pełni działająca, wielostronicowa witryna — kliknij i sprawdź sam.</p>
+<section class="phead">
+  <div class="wrap">
+    <span class="eyebrow">Portfolio · dowód</span>
+    <h1 class="display">Pięć stron. <em>Zero mockupów.</em></h1>
+    <p class="lead">
+      Poniżej nie ma ani jednego zrzutu ekranu. W każdej ramce ładuje się prawdziwa,
+      opublikowana witryna — ta sama, którą zobaczy klient po wpisaniu adresu.
+      Kliknij dowolną, żeby wejść na pełną wersję i sprawdzić ją samodzielnie.
+    </p>
   </div>
 </section>
 
-<div class="wrap">
-  <div class="case-grid reveal-stagger">
-    <div class="case" id="case-kancelaria">
-      <a class="case-visual" href="https://piotrmadrzyk.github.io/pm-pages/p/demo-kancelaria-zawadzcy/" target="_blank" rel="noopener" aria-label="Zobacz żywą stronę: Kancelaria Zawadzcy i Wspólnicy">
-        <div class="chrome-dots"><span></span><span></span><span></span></div>
-        <img src="assets/case-shots/kancelaria-zawadzcy.webp" alt="Zrzut ekranu strony głównej Kancelarii Zawadzcy i Wspólnicy" loading="lazy">
-        <span class="case-visual-cta">Zobacz żywą stronę →</span>
-      </a>
-      <div class="case-body">
-        <div class="cat">USŁUGI PRAWNE</div>
-        <h3>Kancelaria Zawadzcy i Wspólnicy</h3>
-        <p>Pełna witryna kancelarii: oferta, zespół, obszary praktyki, proces i cennik, kontakt — treść pisana pod branżę prawną, nie generyczny szablon korporacyjny.</p>
-        <div class="case-pages">
-          <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-kancelaria-zawadzcy/" target="_blank" rel="noopener">Strona główna</a>
-          <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-kancelaria-zawadzcy-oferta/" target="_blank" rel="noopener">Oferta</a>
-          <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-kancelaria-zawadzcy-zespol/" target="_blank" rel="noopener">Zespół</a>
-          <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-kancelaria-zawadzcy-proces-cennik/" target="_blank" rel="noopener">Proces i cennik</a>
-          <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-kancelaria-zawadzcy-kontakt/" target="_blank" rel="noopener">Kontakt</a>
+<section class="sec-sm">
+  <div class="wrap">
+
+    <div class="big reveal">
+      <a class="frame" href="https://piotrmadrzyk.github.io/pm-pages/p/demo-kancelaria-zawadzcy/" target="_blank" rel="noopener" style="display:block">
+        <div class="frame-bar"><i></i><i></i><i></i><span class="frame-url">demo-kancelaria-zawadzcy</span></div>
+        <div class="stage" data-live="https://piotrmadrzyk.github.io/pm-pages/p/demo-kancelaria-zawadzcy/" data-title="Kancelaria Zawadzcy i Wspólnicy">
+          <div class="skel"></div><div class="veil"></div><span class="go">Otwórz pełną stronę →</span>
         </div>
-        <a class="case-cta" href="https://piotrmadrzyk.github.io/pm-pages/p/demo-kancelaria-zawadzcy/" target="_blank" rel="noopener">Wejdź do świata 01 →</a>
+      </a>
+      <div class="big-txt">
+        <span class="ptag">Świat 01 · Usługi prawne</span>
+        <h2>Kancelaria Zawadzcy i Wspólnicy</h2>
+        <p>
+          Pełna witryna kancelarii: oferta, zespół, obszary praktyki, proces i cennik, kontakt.
+          Treść pisana pod branżę prawną — bez korporacyjnych frazesów, za to z jasnym
+          wytłumaczeniem, jak wygląda współpraca i ile kosztuje.
+        </p>
+        <div class="pagelist"><span>Strona główna</span><span>Oferta</span><span>Zespół</span><span>Proces i cennik</span><span>Kontakt</span></div>
+        <a class="arrow" href="https://piotrmadrzyk.github.io/pm-pages/p/demo-kancelaria-zawadzcy/" target="_blank" rel="noopener">Wejdź na stronę →</a>
       </div>
     </div>
 
-    <div class="case" id="case-lawenda">
-      <a class="case-visual" href="https://piotrmadrzyk.github.io/pm-pages/p/demo-studio-lawenda/" target="_blank" rel="noopener" aria-label="Zobacz żywą stronę: Studio Lawenda">
-        <div class="chrome-dots"><span></span><span></span><span></span></div>
-        <img src="assets/case-shots/studio-lawenda.webp" alt="Zrzut ekranu strony głównej Studio Lawenda" loading="lazy">
-        <span class="case-visual-cta">Zobacz żywą stronę →</span>
-      </a>
-      <div class="case-body">
-        <div class="cat">SALON URODY</div>
-        <h3>Studio Lawenda</h3>
-        <p>Witryna salonu kosmetycznego: strona główna, zabiegi, zespół, kontakt — nastrojowa, ciepła estetyka dopasowana do branży beauty.</p>
-        <div class="case-pages">
-          <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-studio-lawenda/" target="_blank" rel="noopener">Strona główna</a>
-          <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-studio-lawenda-zabiegi/" target="_blank" rel="noopener">Zabiegi</a>
-          <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-studio-lawenda-zespol/" target="_blank" rel="noopener">Zespół</a>
-          <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-studio-lawenda-kontakt/" target="_blank" rel="noopener">Kontakt</a>
+    <div class="big flip reveal">
+      <a class="frame" href="https://piotrmadrzyk.github.io/pm-pages/p/demo-studio-lawenda/" target="_blank" rel="noopener" style="display:block">
+        <div class="frame-bar"><i></i><i></i><i></i><span class="frame-url">demo-studio-lawenda</span></div>
+        <div class="stage" data-live="https://piotrmadrzyk.github.io/pm-pages/p/demo-studio-lawenda/" data-title="Studio Lawenda">
+          <div class="skel"></div><div class="veil"></div><span class="go">Otwórz pełną stronę →</span>
         </div>
-        <a class="case-cta" href="https://piotrmadrzyk.github.io/pm-pages/p/demo-studio-lawenda/" target="_blank" rel="noopener">Wejdź do świata 02 →</a>
+      </a>
+      <div class="big-txt">
+        <span class="ptag">Świat 02 · Salon urody</span>
+        <h2>Studio Lawenda</h2>
+        <p>
+          Witryna salonu kosmetycznego: strona główna, zabiegi, zespół, kontakt.
+          Nastrojowa, ciepła estetyka dopasowana do branży beauty — tu decyduje wrażenie,
+          zanim ktokolwiek przeczyta cennik.
+        </p>
+        <div class="pagelist"><span>Strona główna</span><span>Zabiegi</span><span>Zespół</span><span>Kontakt</span></div>
+        <a class="arrow" href="https://piotrmadrzyk.github.io/pm-pages/p/demo-studio-lawenda/" target="_blank" rel="noopener">Wejdź na stronę →</a>
       </div>
     </div>
 
-    <div class="case" id="case-dom-wnetrze">
-      <a class="case-visual" href="https://piotrmadrzyk.github.io/pm-pages/p/demo-dom-i-wnetrze/" target="_blank" rel="noopener" aria-label="Zobacz żywą stronę: Dom i Wnętrze Rzeszów">
-        <div class="chrome-dots"><span></span><span></span><span></span></div>
-        <img src="assets/case-shots/dom-i-wnetrze.webp" alt="Zrzut ekranu strony głównej Dom i Wnętrze Rzeszów" loading="lazy">
-        <span class="case-visual-cta">Zobacz żywą stronę →</span>
-      </a>
-      <div class="case-body">
-        <div class="cat">REMONTY I WYKOŃCZENIA</div>
-        <h3>Dom i Wnętrze Rzeszów</h3>
-        <p>Witryna firmy remontowo-budowlanej: usługi, realizacje, kontakt — konkretna, rzemieślnicza estetyka budująca zaufanie.</p>
-        <div class="case-pages">
-          <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-dom-i-wnetrze/" target="_blank" rel="noopener">Strona główna</a>
-          <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-dom-i-wnetrze-uslugi/" target="_blank" rel="noopener">Usługi</a>
-          <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-dom-i-wnetrze-realizacje/" target="_blank" rel="noopener">Realizacje</a>
-          <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-dom-i-wnetrze-kontakt/" target="_blank" rel="noopener">Kontakt</a>
+    <div class="big reveal">
+      <a class="frame" href="https://piotrmadrzyk.github.io/pm-pages/p/demo-dom-i-wnetrze/" target="_blank" rel="noopener" style="display:block">
+        <div class="frame-bar"><i></i><i></i><i></i><span class="frame-url">demo-dom-i-wnetrze</span></div>
+        <div class="stage" data-live="https://piotrmadrzyk.github.io/pm-pages/p/demo-dom-i-wnetrze/" data-title="Dom i Wnętrze">
+          <div class="skel"></div><div class="veil"></div><span class="go">Otwórz pełną stronę →</span>
         </div>
-        <a class="case-cta" href="https://piotrmadrzyk.github.io/pm-pages/p/demo-dom-i-wnetrze/" target="_blank" rel="noopener">Wejdź do świata 03 →</a>
+      </a>
+      <div class="big-txt">
+        <span class="ptag">Świat 03 · Remonty i wykończenia</span>
+        <h2>Dom i Wnętrze</h2>
+        <p>
+          Witryna firmy remontowo-budowlanej: usługi, realizacje, kontakt. Konkretna,
+          rzemieślnicza estetyka budująca zaufanie — z suwakiem „przed i po”, który
+          pokazuje efekt bez jednego słowa marketingu.
+        </p>
+        <div class="pagelist"><span>Strona główna</span><span>Usługi</span><span>Realizacje</span><span>Kontakt</span></div>
+        <a class="arrow" href="https://piotrmadrzyk.github.io/pm-pages/p/demo-dom-i-wnetrze/" target="_blank" rel="noopener">Wejdź na stronę →</a>
       </div>
     </div>
 
-    <div class="case" id="case-serwis-podkarpacki">
-      <a class="case-visual" href="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki/" target="_blank" rel="noopener" aria-label="Zobacz żywą stronę: Serwis Podkarpacki">
-        <div class="chrome-dots"><span></span><span></span><span></span></div>
-        <img src="assets/case-shots/serwis-podkarpacki.webp" alt="Zrzut ekranu strony głównej Serwis Podkarpacki" loading="lazy">
-        <span class="case-visual-cta">Zobacz żywą stronę →</span>
-      </a>
-      <div class="case-body">
-        <div class="cat">WARSZTAT SAMOCHODOWY</div>
-        <h3>Serwis Podkarpacki</h3>
-        <p>Witryna warsztatu: usługi, o firmie, kontakt — bezpośrednia, techniczna estetyka trafiająca w oczekiwania klienta warsztatu.</p>
-        <div class="case-pages">
-          <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki/" target="_blank" rel="noopener">Strona główna</a>
-          <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki-uslugi/" target="_blank" rel="noopener">Usługi</a>
-          <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki-o-nas/" target="_blank" rel="noopener">O nas</a>
-          <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki-kontakt/" target="_blank" rel="noopener">Kontakt</a>
+    <div class="big flip reveal">
+      <a class="frame" href="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki/" target="_blank" rel="noopener" style="display:block">
+        <div class="frame-bar"><i></i><i></i><i></i><span class="frame-url">demo-serwis-podkarpacki</span></div>
+        <div class="stage" data-live="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki/" data-title="Serwis Podkarpacki">
+          <div class="skel"></div><div class="veil"></div><span class="go">Otwórz pełną stronę →</span>
         </div>
-        <a class="case-cta" href="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki/" target="_blank" rel="noopener">Wejdź do świata 04 →</a>
+      </a>
+      <div class="big-txt">
+        <span class="ptag">Świat 04 · Warsztat samochodowy</span>
+        <h2>Serwis Podkarpacki</h2>
+        <p>
+          Witryna warsztatu: usługi, o firmie, kontakt. Bezpośrednia, techniczna komunikacja,
+          która trafia w oczekiwania klienta warsztatu — konkret zamiast obietnic.
+        </p>
+        <div class="pagelist"><span>Strona główna</span><span>Usługi</span><span>O nas</span><span>Kontakt</span></div>
+        <a class="arrow" href="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki/" target="_blank" rel="noopener">Wejdź na stronę →</a>
       </div>
     </div>
 
-    <div class="case" id="case-pergola">
-      <a class="case-visual" href="https://piotrmadrzyk.github.io/radosc-website-preview/bistro.html" target="_blank" rel="noopener" aria-label="Zobacz żywą stronę: Zielona Pergola — Restauracja Zielony Gaj">
-        <div class="chrome-dots"><span></span><span></span><span></span></div>
-        <img src="assets/case-shots/zielona-pergola.webp" alt="Zrzut ekranu strony głównej Zielona Pergola — Restauracja Zielony Gaj" loading="lazy">
-        <span class="case-visual-cta">Zobacz żywą stronę →</span>
-      </a>
-      <div class="case-body">
-        <div class="cat">GASTRONOMIA</div>
-        <h3>Zielona Pergola — Restauracja Zielony Gaj</h3>
-        <p>Rozbudowana witryna restauracyjna: lunch dnia na cały tydzień, bufet, śniadania, karta, pizza, catering, realizacje, aktualności i opinie — ciepła, edytorialna estetyka gastronomiczna z bogatą, codziennie aktualną treścią.</p>
-        <div class="case-pages">
-          <a href="https://piotrmadrzyk.github.io/radosc-website-preview/bistro.html" target="_blank" rel="noopener">Strona główna</a>
-          <a href="https://piotrmadrzyk.github.io/radosc-website-preview/pizza.html" target="_blank" rel="noopener">Pizza</a>
-          <a href="https://piotrmadrzyk.github.io/radosc-website-preview/catering.html" target="_blank" rel="noopener">Catering</a>
-          <a href="https://piotrmadrzyk.github.io/radosc-website-preview/realizacje.html" target="_blank" rel="noopener">Realizacje</a>
-          <a href="https://piotrmadrzyk.github.io/radosc-website-preview/kontakt.html" target="_blank" rel="noopener">Kontakt</a>
+    <div class="big reveal">
+      <a class="frame" href="https://piotrmadrzyk.github.io/radosc-website-preview/bistro.html" target="_blank" rel="noopener" style="display:block">
+        <div class="frame-bar"><i></i><i></i><i></i><span class="frame-url">zielona-pergola</span></div>
+        <div class="stage" data-live="https://piotrmadrzyk.github.io/radosc-website-preview/bistro.html" data-title="Zielona Pergola — Zielony Gaj">
+          <div class="skel"></div><div class="veil"></div><span class="go">Otwórz pełną stronę →</span>
         </div>
-        <a class="case-cta" href="https://piotrmadrzyk.github.io/radosc-website-preview/bistro.html" target="_blank" rel="noopener">Wejdź do świata 05 →</a>
+      </a>
+      <div class="big-txt">
+        <span class="ptag">Świat 05 · Gastronomia</span>
+        <h2>Zielona Pergola — Zielony Gaj</h2>
+        <p>
+          Najbogatsza treściowo realizacja: lunch dnia na cały tydzień, bufet, śniadania, karta,
+          pizza, catering, realizacje, aktualności i opinie. Ciepła, edytorialna estetyka
+          gastronomiczna z treścią aktualizowaną codziennie.
+        </p>
+        <div class="pagelist"><span>Strona główna</span><span>Pizza</span><span>Catering</span><span>Realizacje</span><span>Kontakt</span></div>
+        <a class="arrow" href="https://piotrmadrzyk.github.io/radosc-website-preview/bistro.html" target="_blank" rel="noopener">Wejdź na stronę →</a>
       </div>
     </div>
+
   </div>
-</div>
+</section>
 
-<section class="pillars" style="border-top:1px solid var(--line); border-bottom:none;">
-  <div class="wrap reveal" style="text-align:center;">
-    <h2 class="sec-title">Twoja branża może być <strong>kolejnym światem</strong>.</h2>
-    <p class="sec-sub center" style="margin-bottom:34px;">Formularz wyceny zajmuje 2 minuty i daje konkretne widełki na start.</p>
-    <div class="btnrow" style="justify-content:center;">
-      <a href="wycena.html" class="btn btn-solid">Zamów bezpłatną wycenę</a>
-      <a href="oferta.html" class="btn">Zobacz pełną ofertę</a>
+<section class="sec-sm" style="background:var(--ink-1);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal center" style="margin-bottom:0">
+      <span class="eyebrow" style="justify-content:center">Co je łączy</span>
+      <h2 class="display">Ten sam proces. <em>Pięć różnych światów.</em></h2>
+      <p class="lead center">
+        Żadna z tych stron nie jest przerobionym szablonem poprzedniej. Wspólny jest wyłącznie
+        sposób pracy: brief, projekt agenta, ręczne zatwierdzenie, publikacja.
+      </p>
+      <div class="btnrow" style="justify-content:center;margin-top:30px">
+        <a href="o-donie.html" class="btn">Zobacz metodę od środka</a>
+        <a href="wycena.html" class="btn btn-primary">Zamów wycenę</a>
+      </div>
     </div>
   </div>
 </section>
 
-<footer class="site-footer">
+<section class="cta-end">
+  <div class="wrap-n">
+    <h2 class="display">Twoja branża może być <em>kolejnym światem</em>.</h2>
+    <p class="lead center">Formularz wyceny zajmuje dwie minuty i daje konkretne widełki na start.</p>
+    <div class="btnrow">
+      <a href="wycena.html" class="btn btn-primary btn-lg">Zamów bezpłatną wycenę</a>
+      <a href="oferta.html" class="btn btn-lg">Zobacz pełną ofertę</a>
+    </div>
+  </div>
+</section>
+
+
+<footer class="foot">
   <div class="wrap">
     <div class="foot-grid">
-      <div><h5>PM PRZEWAGA METODĄ</h5><p>Agencja marketingowa oparta o system AI Dona. Rzeszów, Podkarpacie.</p></div>
-      <div><h5>NAWIGACJA</h5><a href="o-donie.html">O Donie</a><a href="oferta.html">Oferta</a><a href="realizacje.html">Realizacje</a></div>
-      <div><h5>ROZPOCZNIJ</h5><a href="wycena.html">Wyceń projekt</a><a href="kontakt.html">Kontakt</a></div>
-      <div><h5>KONTAKT</h5><p>kontakt@przewagametoda.pl</p><p style="font-size:11px; color:var(--dim2);">(adres tymczasowy)</p></div>
+      <div class="foot-brand">
+        <b>PM PRZEWAGA METODĄ</b>
+        <p>Strony, kampanie lejkowe i social media budowane systemem AI Dona — pod pełnym, ręcznym nadzorem. Rzeszów, Podkarpacie.</p>
+        <div class="foot-social" data-social-foot></div>
+      </div>
+      <div>
+        <h5>Nawigacja</h5>
+        <a href="o-donie.html">Metoda</a>
+        <a href="oferta.html">Oferta</a>
+        <a href="realizacje.html">Realizacje</a>
+        <a href="automatyzacja.html">Agenty</a>
+      </div>
+      <div>
+        <h5>Rozpocznij</h5>
+        <a href="wycena.html">Wyceń projekt</a>
+        <a href="kontakt.html">Kontakt</a>
+      </div>
+      <div>
+        <h5>Kontakt</h5>
+        <a href="mailto:piotr.aparat@gmail.com">piotr.aparat@gmail.com</a>
+        <p class="small" style="margin:0">Odpisuję osobiście, zwykle w 1–2 dni robocze.</p>
+      </div>
     </div>
-    <div class="foot-bottom"><div>PM PRZEWAGA METODĄ © 2026</div><div>Zbudowano przez system Dona</div></div>
+    <div class="foot-bottom">
+      <span>PM Przewaga Metodą © <span data-year>2026</span></span>
+      <span>Zbudowano systemem Dona · zatwierdzone ręcznie</span>
+    </div>
   </div>
 </footer>
 
-<button id="dona-chat-btn" aria-label="Otwórz czat">💬<span class="chat-label">Asystent strony</span><span class="dot"></span></button>
-<div id="dona-chat-panel">
-  <div class="chat-head"><span class="led"></span><div><b>Asystent strony — FAQ</b><span>odpowiada na najczęstsze pytania</span></div></div>
-  <div class="chat-body" id="dona-chat-body"><div class="msg bot">Cześć! Widziałeś już 5 realizacji? Odpowiadam na najczęstsze pytania o nie i o ofertę — po coś bardziej szczegółowego napisz przez formularz, odpiszę osobiście.</div></div>
-  <div class="chat-suggest" id="dona-chat-suggest">
-    <button>Ile to kosztuje?</button>
-    <button>Chcę taką stronę</button>
+<button id="chat-btn" aria-label="Otwórz asystenta strony">Asystent strony</button>
+<div id="chat-panel" role="dialog" aria-label="Asystent strony">
+  <div class="chat-head">
+    <i class="led"></i>
+    <div><b>Asystent strony</b><span>Odpowiedzi na najczęstsze pytania</span></div>
+    <button class="chat-x" id="chat-x" aria-label="Zamknij">×</button>
   </div>
-  <div class="chat-input"><input type="text" id="dona-chat-input" placeholder="Napisz wiadomość..."><button id="dona-chat-send">Wyślij</button></div>
+  <div class="chat-body" id="chat-body">
+    <div class="msg bot">Cześć. Odpowiadam na najczęstsze pytania o ofertę, ceny i terminy. Po coś bardziej szczegółowego — napisz przez formularz, odpiszę osobiście.</div>
+  </div>
+  <div class="chat-sug" id="chat-sug">
+    <button>Ile to kosztuje?</button>
+    <button>Ile trwa strona?</button>
+    <button>Czym są agenty?</button>
+  </div>
+  <div class="chat-in">
+    <input type="text" id="chat-input" placeholder="Napisz pytanie...">
+    <button id="chat-send">Wyślij</button>
+  </div>
 </div>
 
 <script src="assets/site.js"></script>

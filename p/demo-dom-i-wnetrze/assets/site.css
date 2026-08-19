@@ -155,6 +155,10 @@ b,strong{font-weight:600}
   position:relative;margin:0;border-radius:var(--r);overflow:hidden;
   background:var(--stone);--pos:50%;box-shadow:var(--shadow-soft);
 }
+/* obsluga wskaznikiem: pion nalezy do przewijania strony, poziom do suwaka */
+.ba-js .ba{touch-action:pan-y;cursor:ew-resize;-webkit-user-select:none;user-select:none}
+.ba-js .ba figcaption{cursor:auto}
+.ba img{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:none}
 .ba .after,.ba .before{display:block;width:100%}
 .ba .before{
   position:absolute;inset:0;
@@ -178,6 +182,8 @@ b,strong{font-weight:600}
   position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;
   -webkit-appearance:none;appearance:none;background:transparent;
 }
+/* gdy suwakiem steruje skrypt, input zostaje tylko dla klawiatury */
+.ba-js .ba-range{pointer-events:none}
 .ba-range::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:100%}
 .ba-range::-moz-range-thumb{width:44px;height:100%;border:0;background:transparent}
 .ba-range:focus-visible{outline:3px solid var(--copper);outline-offset:2px}
