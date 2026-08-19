@@ -93,15 +93,113 @@ document.addEventListener('DOMContentLoaded', function(){
     obs.observe(el);
   });
 
-  // ===== Form handling (no real backend yet - client-side only) =====
-  document.querySelectorAll('form[data-fake-submit]').forEach(function(form){
+  // ===== Form handling (real backend: PM Agent OS — Lead Capture, n8n) =====
+  var LEAD_ENDPOINT = 'https://pmresearch.app.n8n.cloud/webhook/pm-lead-capture';
+
+  function qsParam(name){
+    var m = new RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return m ? decodeURIComponent(m[1].replace(/\+/g, ' ')) : '';
+  }
+
+  document.querySelectorAll('form[data-lead-form]').forEach(function(form){
+    var formKey = form.getAttribute('data-form-key');
+    var okBox = document.querySelector(form.getAttribute('data-success-target'));
+    var errBox = document.querySelector(form.getAttribute('data-error-target'));
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var submitBtnDefaultText = submitBtn ? submitBtn.textContent : '';
+    var isSubmitting = false;
+
+    function showError(msg){
+      if(!errBox) return;
+      errBox.textContent = msg;
+      errBox.classList.add('show');
+    }
+    function hideError(){
+      if(errBox) errBox.classList.remove('show');
+    }
+
+    // Chip error state clears as soon as a chip is picked (see chip handler below)
+    var uslugaInput = form.querySelector('#usluga-value');
+    var chiprow = form.querySelector('.chiprow');
+
     form.addEventListener('submit', function(e){
       e.preventDefault();
-      var okBox = document.querySelector(form.getAttribute('data-success-target'));
-      if(okBox){
-        form.style.display = 'none';
-        okBox.classList.add('show');
+      if(isSubmitting) return;
+
+      // Honeypot — real visitors never fill this hidden field
+      var honeypot = form.querySelector('input[name="strona_www"]');
+      if(honeypot && honeypot.value){ return; }
+
+      // Required chip-select validation (P0-6)
+      if(uslugaInput && uslugaInput.hasAttribute('required') && !uslugaInput.value){
+        if(chiprow) chiprow.classList.add('chip-error');
+        showError('Wybierz jedną z opcji powyżej, żeby przejść dalej.');
+        return;
       }
+
+      var consentBox = form.querySelector('input[name="consent"]');
+      if(consentBox && !consentBox.checked){
+        showError('Zaznacz zgodę na przetwarzanie danych, żeby wysłać formularz.');
+        return;
+      }
+
+      hideError();
+
+      var fd = new FormData(form);
+      var tresc = fd.get('wiadomosc') || fd.get('opis') || '';
+      if(fd.get('usluga')){
+        var extra = ['Usługa: ' + fd.get('usluga')];
+        if(fd.get('firma')) extra.push('Firma: ' + fd.get('firma'));
+        if(fd.get('branza')) extra.push('Branża: ' + fd.get('branza'));
+        if(fd.get('budzet')) extra.push('Budżet: ' + fd.get('budzet'));
+        tresc = extra.join(' | ') + ' | ' + tresc;
+      }
+      if(fd.get('temat')) tresc = 'Temat: ' + fd.get('temat') + ' | ' + tresc;
+
+      var payload = {
+        form_key: formKey,
+        imie: fd.get('imie') || '',
+        email: fd.get('email') || '',
+        telefon: fd.get('telefon') || '',
+        tresc: tresc,
+        consent: !!(consentBox && consentBox.checked),
+        zrodlo: 'przewagametoda.pl',
+        utm_source: qsParam('utm_source'),
+        utm_medium: qsParam('utm_medium'),
+        utm_campaign: qsParam('utm_campaign'),
+        utm_content: qsParam('utm_content'),
+        utm_term: qsParam('utm_term'),
+        page_url: window.location.href
+      };
+
+      isSubmitting = true;
+      if(submitBtn){ submitBtn.disabled = true; submitBtn.textContent = 'Wysyłanie...'; }
+
+      fetch(LEAD_ENDPOINT, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(payload)
+      }).then(function(res){
+        return res.json().catch(function(){ return {}; }).then(function(data){
+          return {ok: res.ok, data: data};
+        });
+      }).then(function(result){
+        isSubmitting = false;
+        if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = submitBtnDefaultText; }
+        var status = result.data && result.data.status;
+        if(result.ok && (status === 'OK' || status === 'DUPLIKAT')){
+          if(okBox){
+            form.style.display = 'none';
+            okBox.classList.add('show');
+          }
+        } else {
+          showError((result.data && result.data.wiadomosc) || 'Coś poszło nie tak. Spróbuj ponownie albo napisz bezpośrednio na e-mail.');
+        }
+      }).catch(function(){
+        isSubmitting = false;
+        if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = submitBtnDefaultText; }
+        showError('Nie udało się wysłać — sprawdź połączenie z internetem i spróbuj ponownie, albo napisz bezpośrednio na e-mail.');
+      });
     });
   });
 
