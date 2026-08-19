@@ -67,26 +67,26 @@
     </div>
 
     <div class="formcard reveal">
-      <form id="wycena-form" data-fake-submit data-success-target="#wycena-ok">
+      <form id="wycena-form" method="post" data-lead-form data-form-key="przewaga-wycena" data-success-target="#wycena-ok" data-error-target="#wycena-err">
         <div class="frow full">
           <div class="field">
-            <label>Czego dotyczy zapytanie? *</label>
-            <div class="chiprow" data-target="#usluga-value">
-              <div class="chip" data-value="Strona internetowa">Strona internetowa</div>
-              <div class="chip" data-value="Kampania lejkowa">Kampania lejkowa</div>
-              <div class="chip" data-value="Social media">Social media</div>
-              <div class="chip" data-value="Kilka usług naraz">Kilka usług naraz</div>
+            <label id="usluga-label">Czego dotyczy zapytanie? *</label>
+            <div class="chiprow" data-target="#usluga-value" role="group" aria-labelledby="usluga-label">
+              <button type="button" class="chip" data-value="Strona internetowa">Strona internetowa</button>
+              <button type="button" class="chip" data-value="Kampania lejkowa">Kampania lejkowa</button>
+              <button type="button" class="chip" data-value="Social media">Social media</button>
+              <button type="button" class="chip" data-value="Kilka usług naraz">Kilka usług naraz</button>
             </div>
             <input type="hidden" id="usluga-value" name="usluga" required>
           </div>
         </div>
         <div class="frow">
-          <div class="field"><label>Imię i nazwisko *</label><input type="text" name="imie" required></div>
-          <div class="field"><label>Nazwa firmy</label><input type="text" name="firma"></div>
+          <div class="field"><label>Imię i nazwisko *</label><input type="text" name="imie" required autocomplete="name"></div>
+          <div class="field"><label>Nazwa firmy</label><input type="text" name="firma" autocomplete="organization"></div>
         </div>
         <div class="frow">
-          <div class="field"><label>E-mail *</label><input type="email" name="email" required></div>
-          <div class="field"><label>Telefon</label><input type="tel" name="telefon"></div>
+          <div class="field"><label>E-mail *</label><input type="email" name="email" required autocomplete="email"></div>
+          <div class="field"><label>Telefon</label><input type="tel" name="telefon" autocomplete="tel"></div>
         </div>
         <div class="frow">
           <div class="field">
