@@ -16,8 +16,10 @@
   --stone:#F3EEF3;          /* sekcje wyróżnione */
   --line:#E2D9E6;
   --white:#fff;
-  --wrap:min(1220px, calc(100vw - 40px));
-  --wrap-narrow:min(880px, calc(100vw - 40px));
+  /* 100% zamiast 100vw — 100vw nie uwzglednia paska przewijania i powoduje
+     poziome przesuwanie strony na urzadzeniach, ktore ten pasek rezerwuja */
+  --wrap:min(1220px, calc(100% - 40px));
+  --wrap-narrow:min(880px, calc(100% - 40px));
   --r:20px;
   --r-sm:12px;
   --shadow:0 24px 60px -20px rgba(42,36,48,.22);
@@ -26,9 +28,13 @@
 }
 
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
 body{
   margin:0;
+  /* zabezpieczenie przed poziomym przewijaniem; "clip" nie tworzy kontenera
+     przewijania, wiec przyklejony naglowek dziala dalej */
+  overflow-x:clip;
+  max-width:100%;
   background:var(--paper);
   color:var(--ink);
   font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -587,6 +593,16 @@ p{margin:0 0 1.1em}
   .hero-bg img{object-position:64% 42%}
   .hero{min-height:auto;padding:22px 0 34px}
 }
+@media (max-width:680px){
+  /* trzy kolumny po min. 118 px nie mieszcza sie na waskim ekranie
+     i wypychaly strone w bok — na mobile ida jedna pod druga */
+  .treat-meta{display:block}
+  .treat-meta div{flex:none;min-width:0;padding:13px 0;border-bottom:1px solid var(--line)}
+  .treat-meta div:last-child{border-bottom:none}
+  .treat-meta dd{font-size:1.25rem}
+  .treat-media{position:static}
+}
+
 @media (max-width:560px){
   body{font-size:16px}
   .price-row{grid-template-columns:1fr;gap:3px}
