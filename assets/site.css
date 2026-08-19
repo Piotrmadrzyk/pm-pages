@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;500&display=swap');
+/* Fonts loaded via <link rel="preload"/stylesheet> in each page's <head> (see P2-1) — no @import here to avoid the extra render-blocking round trip. */
 :root{
   --void:#0a0e16;
   --void2:#070b14;
