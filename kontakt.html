@@ -71,10 +71,10 @@
     </div>
 
     <div class="formcard reveal">
-      <form id="kontakt-form" data-fake-submit data-success-target="#kontakt-ok">
+      <form id="kontakt-form" method="post" data-lead-form data-form-key="przewaga-kontakt" data-success-target="#kontakt-ok" data-error-target="#kontakt-err">
         <div class="frow">
-          <div class="field"><label>Imię i nazwisko *</label><input type="text" name="imie" required></div>
-          <div class="field"><label>E-mail *</label><input type="email" name="email" required></div>
+          <div class="field"><label>Imię i nazwisko *</label><input type="text" name="imie" required autocomplete="name"></div>
+          <div class="field"><label>E-mail *</label><input type="email" name="email" required autocomplete="email"></div>
         </div>
         <div class="frow full">
           <div class="field"><label>Temat</label><input type="text" name="temat" placeholder="Np. pytanie o realizację strony"></div>
