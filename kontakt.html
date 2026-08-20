@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=73f5c368c3">
+<link rel="stylesheet" href="assets/site.css?v=0c62bcd117">
 </head>
 <body>
 
@@ -79,24 +79,77 @@
       <div>
         <form class="form" data-lead-form data-form-key="kontakt"
               data-success-target="#ok-kontakt" data-error-target="#err-kontakt" novalidate>
+          <div class="obietnica">
+            <i>◆</i>
+            <p>
+              <b>Zanim oddzwonię, przygotuję wstępną wersję.</b> Na podstawie tego, co tu podasz,
+              sprawdzam Twoją branżę i konkurencję, a potem buduję pierwszy szkic. W rozmowie nie
+              pytam „w czym mogę pomóc" — pokazuję coś konkretnego i pytam, czy to dobry kierunek.
+            </p>
+          </div>
+
+          <div class="field">
+            <label>Czego dotyczy sprawa? <span class="req">*</span></label>
+            <div class="tematy" data-tematy>
+              <button type="button" class="temat-chip" aria-pressed="false" data-temat="Strona internetowa">Strona internetowa</button>
+              <button type="button" class="temat-chip" aria-pressed="false" data-temat="Kampania i pozyskiwanie klientów">Kampania i klienci</button>
+              <button type="button" class="temat-chip" aria-pressed="false" data-temat="Prowadzenie social mediów">Social media</button>
+              <button type="button" class="temat-chip" aria-pressed="false" data-temat="Automatyzacja / agenci">Automatyzacja</button>
+              <button type="button" class="temat-chip" aria-pressed="false" data-temat="Coś innego">Coś innego</button>
+            </div>
+            <input type="hidden" id="k-usluga" name="usluga" required>
+          </div>
+
           <div class="row2">
             <div class="field">
               <label for="k-imie">Imię i nazwisko <span class="req">*</span></label>
               <input class="input" type="text" id="k-imie" name="imie" required autocomplete="name">
             </div>
             <div class="field">
-              <label for="k-email">E-mail <span class="req">*</span></label>
-              <input class="input" type="email" id="k-email" name="email" required autocomplete="email">
+              <label for="k-telefon">Telefon <span class="req">*</span></label>
+              <input class="input" type="tel" id="k-telefon" name="telefon" required autocomplete="tel">
+              <span class="pomoc">Dzwonię osobiście — to szybsze niż wymiana pięciu maili.</span>
             </div>
           </div>
+
           <div class="field">
-            <label for="k-temat">Temat</label>
-            <input class="input" type="text" id="k-temat" name="temat">
+            <label for="k-email">E-mail <span class="req">*</span></label>
+            <input class="input" type="email" id="k-email" name="email" required autocomplete="email">
           </div>
+
+          <div class="pola-tematu" data-pola-firmy>
+            <div class="field">
+              <label for="k-firma">Nazwa firmy albo NIP <span class="req">*</span></label>
+              <input class="input" type="text" id="k-firma" name="firma" autocomplete="organization">
+              <span class="pomoc">
+                Wystarczy jedno. <b>Resztę danych znajdę sam</b> — nie musisz nic przepisywać.
+              </span>
+            </div>
+
+            <div class="field">
+              <label for="k-www">Adres obecnej strony</label>
+              <input class="input" type="text" id="k-www" name="www_klienta" placeholder="np. mojafirma.pl"
+                     autocomplete="url" inputmode="url">
+              <span class="pomoc">
+                Jeśli masz. Zobaczę, co już działa, a co warto zmienić — zanim porozmawiamy.
+                <b>Nie masz strony? Zostaw puste</b>, to żaden problem.
+              </span>
+            </div>
+
+            <div class="field">
+              <label for="k-social">Facebook lub Instagram</label>
+              <input class="input" type="text" id="k-social" name="social_klienta"
+                     placeholder="nazwa profilu albo link">
+              <span class="pomoc">Też opcjonalnie — sprawdzę, jak wygląda Twoja obecność w sieci.</span>
+            </div>
+          </div>
+
           <div class="field">
-            <label for="k-wiadomosc">Wiadomość <span class="req">*</span></label>
-            <textarea class="textarea" id="k-wiadomosc" name="wiadomosc" required></textarea>
+            <label for="k-wiadomosc">Czego potrzebujesz? <span class="req">*</span></label>
+            <textarea class="textarea" id="k-wiadomosc" name="wiadomosc" required
+                      placeholder="Dwa–trzy zdania wystarczą. Co ma się zmienić, na kiedy, co Cię teraz uwiera."></textarea>
           </div>
+
           <label class="hp" aria-hidden="true">Strona WWW<input type="text" name="strona_www" tabindex="-1" autocomplete="off"></label>
           <div class="consent">
             <input type="checkbox" id="k-consent" name="consent" required>
@@ -203,6 +256,6 @@
   </div>
 </div>
 
-<script src="assets/site.js?v=a03c09478a"></script>
+<script src="assets/site.js?v=ff64149fde"></script>
 </body>
 </html>

@@ -146,6 +146,50 @@ var SOCIAL = {
       sweep();
     }, 1000);
 
+    /* ---------- karuzela stron w naglowku ----------
+       Na szerokim ekranie karty stoja na okregu i CSS obraca cala os.
+       Na waskim okrag sie nie miesci, wiec karty ida w rzad — ale maja
+       plynac tak samo. Do tego potrzebny jest drugi komplet kart. */
+    (function () {
+      var globus = document.querySelector('.globus');
+      if (!globus) return;
+      var os = globus.querySelector('.globus-os');
+      if (!os) return;
+      if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var oryginaly = Array.prototype.slice.call(os.children);
+      var zduplikowane = false;
+
+      function dopasuj() {
+        var waski = window.innerWidth <= 900;
+        if (waski && !zduplikowane) {
+          oryginaly.forEach(function (k) {
+            var kopia = k.cloneNode(true);
+            kopia.setAttribute('aria-hidden', 'true');
+            kopia.setAttribute('tabindex', '-1');
+            os.appendChild(kopia);
+          });
+          os.classList.add('plynie-bok');
+          zduplikowane = true;
+        } else if (!waski && zduplikowane) {
+          /* wracamy do okregu — kopie musza zniknac, bo inaczej
+             na kazdej pozycji stalyby dwie karty */
+          while (os.children.length > oryginaly.length) {
+            os.removeChild(os.lastChild);
+          }
+          os.classList.remove('plynie-bok');
+          zduplikowane = false;
+        }
+      }
+
+      dopasuj();
+      var t = null;
+      window.addEventListener('resize', function () {
+        clearTimeout(t);
+        t = setTimeout(dopasuj, 200);
+      }, { passive: true });
+    })();
+
     /* ---------- karuzela realizacji ----------
        Pasek przewijany myszą zamienia się w taśmę, która płynie sama.
        Karty są duplikowane, więc po przejściu połowy toru animacja
@@ -344,6 +388,36 @@ var SOCIAL = {
     });
 
     /* ---------- formularze (backend: n8n — PM Agent OS Lead Capture) ---------- */
+    /* ---------- wybor tematu w formularzu kontaktu ----------
+       Kafelek zamiast listy rozwijanej: jedno klikniecie zamiast trzech,
+       a na telefonie nie otwiera sie natywny wybierak. Pola o firmie
+       pokazuja sie dopiero po wyborze — pusty formularz ma wygladac
+       krotko, zeby nie odstraszal. */
+    (function () {
+      var box = document.querySelector('[data-tematy]');
+      if (!box) return;
+      var pole = document.getElementById('k-usluga');
+      var polaFirmy = document.querySelector('[data-pola-firmy]');
+      var polaFirmyInput = polaFirmy ? polaFirmy.querySelector('#k-firma') : null;
+
+      box.addEventListener('click', function (e) {
+        var chip = e.target.closest('.temat-chip');
+        if (!chip) return;
+        Array.prototype.forEach.call(box.querySelectorAll('.temat-chip'), function (x) {
+          x.setAttribute('aria-pressed', String(x === chip));
+        });
+        if (pole) pole.value = chip.dataset.temat || '';
+
+        if (polaFirmy) {
+          polaFirmy.classList.add('widoczne');
+          /* Przy "Coś innego" nie wiadomo jeszcze, czego sprawa dotyczy,
+             wiec nie zmuszamy do podawania firmy. */
+          var wymagaj = chip.dataset.temat !== 'Coś innego';
+          if (polaFirmyInput) polaFirmyInput.required = wymagaj;
+        }
+      });
+    })();
+
     var LEAD_ENDPOINT = 'https://pmresearch.app.n8n.cloud/webhook/pm-lead-capture';
 
     function qsParam(name) {
@@ -391,7 +465,12 @@ var SOCIAL = {
         var tresc = fd.get('wiadomosc') || fd.get('opis') || '';
         if (fd.get('usluga')) {
           var extra = ['Usługa: ' + fd.get('usluga')];
-          if (fd.get('firma')) extra.push('Firma: ' + fd.get('firma'));
+          if (fd.get('firma')) extra.push('Firma/NIP: ' + fd.get('firma'));
+          /* uwaga: pole klienta to www_klienta, bo strona_www to pulapka
+             na roboty spamujace — gdyby sie nazywaly tak samo, kazde
+             zgloszenie z podana strona byloby odrzucane jako spam */
+          if (fd.get('www_klienta')) extra.push('Obecna strona: ' + fd.get('www_klienta'));
+          if (fd.get('social_klienta')) extra.push('Social: ' + fd.get('social_klienta'));
           if (fd.get('branza')) extra.push('Branża: ' + fd.get('branza'));
           if (fd.get('budzet')) extra.push('Budżet: ' + fd.get('budzet'));
           tresc = extra.join(' | ') + ' | ' + tresc;
@@ -404,6 +483,10 @@ var SOCIAL = {
           email: fd.get('email') || '',
           telefon: fd.get('telefon') || '',
           tresc: tresc,
+          usluga: fd.get('usluga') || '',
+          firma: fd.get('firma') || '',
+          www_klienta: fd.get('www_klienta') || '',
+          social_klienta: fd.get('social_klienta') || '',
           consent: !!(consentBox && consentBox.checked),
           zrodlo: 'probatum.pl',
           utm_source: qsParam('utm_source'),
