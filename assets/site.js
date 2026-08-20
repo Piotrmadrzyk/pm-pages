@@ -299,7 +299,7 @@ var SOCIAL = {
           telefon: fd.get('telefon') || '',
           tresc: tresc,
           consent: !!(consentBox && consentBox.checked),
-          zrodlo: 'przewagametoda.pl',
+          zrodlo: 'probatum.pl',
           utm_source: qsParam('utm_source'),
           utm_medium: qsParam('utm_medium'),
           utm_campaign: qsParam('utm_campaign'),
