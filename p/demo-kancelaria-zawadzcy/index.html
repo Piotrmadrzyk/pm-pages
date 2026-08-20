@@ -470,6 +470,72 @@
   display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   font-family:Inter,system-ui,sans-serif;font-size:12.5px;color:rgba(233,226,213,.56);
 }
+
+/* ————— KALKULATOR TERMINÓW ————— */
+.terminy-box{
+  display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:34px;
+  margin-top:34px;align-items:start;
+}
+@media(max-width:900px){.terminy-box{grid-template-columns:1fr;gap:24px}}
+.term-panel{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px 26px;box-shadow:var(--shadow);
+}
+.term-panel legend{
+  font-family:Inter,sans-serif;font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent);font-weight:600;padding:0;margin-bottom:14px;
+}
+.term-panel fieldset{border:0;padding:0;margin:0 0 20px}
+.term-opcje{display:grid;gap:9px}
+.term-opcje label{
+  display:flex;gap:11px;align-items:flex-start;cursor:pointer;
+  padding:13px 15px;border:1px solid var(--line);border-radius:var(--radius-sm);
+  background:var(--surface);transition:border-color .2s,background .2s;
+}
+.term-opcje label:hover{border-color:rgba(168,144,99,.6)}
+.term-opcje input{margin-top:3px;accent-color:var(--brand);flex:none}
+.term-opcje input:checked ~ span b{color:var(--brand)}
+.term-opcje label:has(input:checked){border-color:var(--accent);background:var(--paper)}
+.term-opcje span{font-family:Inter,sans-serif;font-size:14px;line-height:1.5;color:var(--muted)}
+.term-opcje span b{display:block;font-size:14.5px;color:var(--ink);margin-bottom:2px;font-weight:600}
+.term-data{display:flex;flex-direction:column;gap:7px}
+.term-data label{font-family:Inter,sans-serif;font-size:12.5px;color:var(--muted)}
+.term-data input{
+  padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius-sm);
+  font-family:Inter,sans-serif;font-size:15px;color:var(--ink);background:var(--surface);
+}
+.term-data input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(168,144,99,.16)}
+
+.term-wynik{
+  background:var(--dark);color:#ece5d8;border-radius:var(--radius);
+  padding:30px 28px;min-height:100%;display:flex;flex-direction:column;
+}
+.term-pusty{
+  font-family:Inter,sans-serif;font-size:15px;line-height:1.7;color:rgba(236,229,216,.66);
+  margin:auto 0;
+}
+.term-licznik{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.term-licznik b{
+  font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(46px,7vw,66px);
+  line-height:1;color:#f6f0e4;
+}
+.term-licznik span{font-family:Inter,sans-serif;font-size:15px;color:var(--accent);font-weight:600}
+.term-do{font-family:Inter,sans-serif;font-size:14px;color:rgba(236,229,216,.72);margin:0 0 20px}
+.term-do b{color:#f6f0e4}
+.term-co{
+  padding:17px 19px;border-radius:var(--radius-sm);margin-bottom:18px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(168,144,99,.3);
+}
+.term-co b{display:block;font-family:Inter,sans-serif;font-size:14px;color:#f6f0e4;margin-bottom:7px}
+.term-co p{margin:0;font-family:Inter,sans-serif;font-size:14px;line-height:1.65;color:rgba(236,229,216,.78)}
+.term-alarm{border-color:rgba(196,110,96,.65);background:rgba(196,110,96,.14)}
+.term-alarm b{color:#f0c9c1}
+.term-cta{margin-top:auto;display:flex;gap:11px;flex-wrap:wrap;padding-top:6px}
+.term-zastrz{
+  margin-top:22px;font-family:Inter,sans-serif;font-size:12px;line-height:1.6;
+  color:rgba(236,229,216,.56);
+}
+.term-zastrz b{color:rgba(236,229,216,.8)}
 </style>
 </head>
 <body>
@@ -568,7 +634,58 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="terminy">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Pierwsza pomoc</span>
+      <h2>Dostałeś pismo z sądu? Sprawdź, ile masz czasu</h2>
+      <p class="lead-txt">
+        W postępowaniu terminy są nieprzywracalne — spóźnienie o jeden dzień potrafi zamknąć
+        sprawę bez rozpatrzenia. Wybierz, co dostałeś, i podaj datę odbioru.
+      </p>
+    </div>
+
+    <div class="terminy-box">
+      <form class="term-panel" id="term-form" novalidate>
+        <fieldset>
+          <legend>Co znalazłeś w kopercie</legend>
+          <div class="term-opcje">
+            <label><input type="radio" name="pismo" value="nakaz-upominawczy" checked>
+              <span><b>Nakaz zapłaty</b>w postępowaniu upominawczym — sprzeciw</span></label>
+            <label><input type="radio" name="pismo" value="nakaz-nakazowy">
+              <span><b>Nakaz zapłaty</b>w postępowaniu nakazowym — zarzuty</span></label>
+            <label><input type="radio" name="pismo" value="wyrok-zaoczny">
+              <span><b>Wyrok zaoczny</b>wydany pod Twoją nieobecność — sprzeciw</span></label>
+            <label><input type="radio" name="pismo" value="uzasadnienie">
+              <span><b>Wyrok ogłoszony na rozprawie</b>wniosek o pisemne uzasadnienie</span></label>
+            <label><input type="radio" name="pismo" value="apelacja">
+              <span><b>Wyrok z uzasadnieniem</b>apelacja do sądu wyższej instancji</span></label>
+            <label><input type="radio" name="pismo" value="zazalenie">
+              <span><b>Postanowienie sądu</b>zażalenie</span></label>
+            <label><input type="radio" name="pismo" value="praca">
+              <span><b>Wypowiedzenie umowy o pracę</b>odwołanie do sądu pracy</span></label>
+            <label><input type="radio" name="pismo" value="administracja">
+              <span><b>Decyzja urzędu</b>odwołanie w postępowaniu administracyjnym</span></label>
+          </div>
+        </fieldset>
+
+        <div class="term-data">
+          <label for="term-dzien">Data odbioru pisma (albo ogłoszenia wyroku)</label>
+          <input type="date" id="term-dzien" name="dzien">
+        </div>
+      </form>
+
+      <div class="term-wynik" id="term-wynik" aria-live="polite">
+        <p class="term-pusty">
+          Wybierz rodzaj pisma i podaj datę odbioru — pokażę, ile dni zostało
+          i co dokładnie trzeba zrobić.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Wybrane sprawy</span>
@@ -992,5 +1109,168 @@
     <span>Szablon poglądowy — dane do uzupełnienia danymi konkretnej kancelarii</span>
   </div>
 </footer>
+
+<script>
+/* ————— KALKULATOR TERMINÓW —————
+   Liczy wylacznie terminy ustawowe o jednoznacznej dlugosci. Nie zgaduje
+   przy sytuacjach, gdzie termin wyznacza sad — tam odsyla do kancelarii. */
+(function () {
+  var form = document.getElementById('term-form');
+  var wynik = document.getElementById('term-wynik');
+  if (!form || !wynik) return;
+
+  var RODZAJE = {
+    'nakaz-upominawczy': {
+      nazwa: 'Sprzeciw od nakazu zapłaty', dni: 14,
+      co: 'Sprzeciw wnosi się do sądu, który wydał nakaz. Nie musi zawierać pełnego uzasadnienia — samo wniesienie w terminie powoduje, że nakaz traci moc w całości i sprawa idzie do zwykłego postępowania.',
+      uwaga: 'Po tym terminie nakaz staje się prawomocny i komornik może na jego podstawie prowadzić egzekucję.'
+    },
+    'nakaz-nakazowy': {
+      nazwa: 'Zarzuty od nakazu zapłaty', dni: 14,
+      co: 'Zarzuty muszą wskazywać, co się kwestionuje, i zawierać wnioski dowodowe — inaczej niż przy sprzeciwie w postępowaniu upominawczym. Podlegają też opłacie sądowej.',
+      uwaga: 'Nakaz w postępowaniu nakazowym jest od razu tytułem zabezpieczenia — rachunek może zostać zajęty jeszcze przed prawomocnością.'
+    },
+    'wyrok-zaoczny': {
+      nazwa: 'Sprzeciw od wyroku zaocznego', dni: 14,
+      co: 'Sprzeciw wnosi się do sądu, który wydał wyrok. Warto od razu wyjaśnić, dlaczego nie doszło do stawienia się na rozprawie.',
+      uwaga: 'Wyrok zaoczny bywa natychmiast wykonalny — sam sprzeciw nie zawsze to wstrzymuje, trzeba o to osobno wnioskować.'
+    },
+    'uzasadnienie': {
+      nazwa: 'Wniosek o pisemne uzasadnienie', dni: 7,
+      co: 'To krótkie pismo, ale kluczowe: bez wniosku o uzasadnienie w terminie nie da się później skutecznie wnieść apelacji. Wniosek podlega opłacie, którą zalicza się potem na poczet apelacji.',
+      uwaga: 'To najkrótszy i najczęściej przegapiany termin w całym postępowaniu cywilnym.'
+    },
+    'apelacja': {
+      nazwa: 'Apelacja', dni: 14,
+      co: 'Apelację wnosi się do sądu, który wydał wyrok, a ten przekazuje ją instancji wyższej. Musi wskazywać, co się zaskarża i czego się żąda.',
+      uwaga: 'Termin biegnie od doręczenia wyroku z uzasadnieniem — nie od rozprawy.'
+    },
+    'zazalenie': {
+      nazwa: 'Zażalenie', dni: 7,
+      co: 'Zażalenie dotyczy postanowień wpadkowych — na przykład o kosztach, zabezpieczeniu albo odrzuceniu pisma.',
+      uwaga: 'Nie na każde postanowienie przysługuje zażalenie; warto to sprawdzić przed napisaniem pisma.'
+    },
+    'praca': {
+      nazwa: 'Odwołanie do sądu pracy', dni: 21,
+      co: 'Odwołanie od wypowiedzenia wnosi się do sądu pracy właściwego dla siedziby pracodawcy albo miejsca wykonywania pracy. Postępowanie jest wolne od opłaty przy roszczeniach do 50 000 zł.',
+      uwaga: 'Ten sam termin dotyczy zwolnienia dyscyplinarnego i żądania sprostowania świadectwa pracy.'
+    },
+    'administracja': {
+      nazwa: 'Odwołanie od decyzji', dni: 14,
+      co: 'Odwołanie składa się za pośrednictwem organu, który wydał decyzję — nie bezpośrednio do organu wyższego stopnia. Nie musi mieć rozbudowanego uzasadnienia.',
+      uwaga: 'Jeśli w decyzji podano inny termin, obowiązuje ten z pouczenia — sprawdź je zanim policzysz.'
+    }
+  };
+
+  /* Wielkanoc metoda Gaussa — pewniejsze niz wpisywanie dat na sztywno,
+     bo dziala dla kazdego roku, takze gdy strona przelezy w sieci lata. */
+  function wielkanoc(rok) {
+    var a = rok % 19, b = Math.floor(rok / 100), c = rok % 100;
+    var d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25);
+    var g = Math.floor((b - f + 1) / 3);
+    var h = (19 * a + b - d - g + 15) % 30;
+    var i = Math.floor(c / 4), k = c % 4;
+    var l = (32 + 2 * e + 2 * i - h - k) % 7;
+    var m = Math.floor((a + 11 * h + 22 * l) / 451);
+    var mies = Math.floor((h + l - 7 * m + 114) / 31);
+    var dzien = ((h + l - 7 * m + 114) % 31) + 1;
+    return new Date(rok, mies - 1, dzien);
+  }
+
+  function swieta(rok) {
+    var w = wielkanoc(rok);
+    var poW = new Date(w); poW.setDate(w.getDate() + 1);          // poniedziałek wielkanocny
+    var boze = new Date(w); boze.setDate(w.getDate() + 60);        // Boże Ciało
+    var lista = [[0,1],[0,6],[4,1],[4,3],[7,15],[10,1],[10,11],[11,25],[11,26]];
+    var zbior = lista.map(function (x) { return new Date(rok, x[0], x[1]); });
+    zbior.push(w, poW, boze);
+    return zbior.map(function (d) { return d.toDateString(); });
+  }
+
+  function wolny(d) {
+    var dz = d.getDay();
+    if (dz === 0 || dz === 6) return true;
+    return swieta(d.getFullYear()).indexOf(d.toDateString()) !== -1;
+  }
+
+  function policz(od, dni) {
+    /* termin biegnie od dnia NASTEPNEGO po doreczeniu */
+    var koniec = new Date(od);
+    koniec.setDate(koniec.getDate() + dni);
+    /* gdy ostatni dzien wypada wolny — przesuwa sie na najblizszy roboczy */
+    var przesuniety = false;
+    while (wolny(koniec)) { koniec.setDate(koniec.getDate() + 1); przesuniety = true; }
+    return { koniec: koniec, przesuniety: przesuniety };
+  }
+
+  function polski(d) {
+    var M = ['stycznia','lutego','marca','kwietnia','maja','czerwca',
+             'lipca','sierpnia','września','października','listopada','grudnia'];
+    var D = ['niedziela','poniedziałek','wtorek','środa','czwartek','piątek','sobota'];
+    return D[d.getDay()] + ', ' + d.getDate() + ' ' + M[d.getMonth()] + ' ' + d.getFullYear();
+  }
+
+  function odmiana(n) {
+    if (n === 1) return 'dzień';
+    var d = n % 10, s = n % 100;
+    return (d >= 2 && d <= 4 && (s < 12 || s > 14)) ? 'dni' : 'dni';
+  }
+
+  function pokaz() {
+    var rodzaj = form.querySelector('input[name="pismo"]:checked').value;
+    var pole = document.getElementById('term-dzien');
+    if (!pole.value) return;
+
+    var od = new Date(pole.value + 'T00:00:00');
+    if (isNaN(od)) return;
+
+    var r = RODZAJE[rodzaj];
+    var w = policz(od, r.dni);
+    var dzis = new Date(); dzis.setHours(0,0,0,0);
+    var zostalo = Math.round((w.koniec - dzis) / 86400000);
+
+    var licznik, klasa = '';
+    if (zostalo > 1) {
+      licznik = '<div class="term-licznik"><b>' + zostalo + '</b><span>' + odmiana(zostalo) + ' zostało</span></div>';
+    } else if (zostalo === 1) {
+      licznik = '<div class="term-licznik"><b>1</b><span>dzień — to ostatni moment</span></div>';
+      klasa = ' term-alarm';
+    } else if (zostalo === 0) {
+      licznik = '<div class="term-licznik"><b>dziś</b><span>termin upływa dzisiaj</span></div>';
+      klasa = ' term-alarm';
+    } else {
+      licznik = '<div class="term-licznik"><b>po terminie</b></div>';
+      klasa = ' term-alarm';
+    }
+
+    var trescPoTerminie =
+      '<div class="term-co term-alarm"><b>Termin już minął — to nie zawsze koniec sprawy</b>' +
+      '<p>Jeśli uchybienie nastąpiło bez Twojej winy (choroba, błąd doręczenia, nieodebrana ' +
+      'przesyłka pod nieaktualnym adresem), można wnioskować o przywrócenie terminu. Wniosek ' +
+      'składa się w ciągu tygodnia od ustania przyczyny i razem z nim trzeba dokonać zaległej ' +
+      'czynności. Nie zwlekaj — ten tydzień też biegnie.</p></div>';
+
+    wynik.innerHTML =
+      licznik +
+      '<p class="term-do">' + r.nazwa + ' — termin upływa <b>' + polski(w.koniec) + '</b>' +
+      (w.przesuniety ? ' (przesunięty, bo ' + r.dni + '. dzień wypadał w dzień wolny)' : '') +
+      '</p>' +
+      (zostalo < 0 ? trescPoTerminie :
+        '<div class="term-co' + klasa + '"><b>Co trzeba zrobić</b><p>' + r.co + '</p></div>' +
+        '<div class="term-co"><b>Warto wiedzieć</b><p>' + r.uwaga + '</p></div>') +
+      '<div class="term-cta">' +
+      '<a class="btn btn-primary" href="https://piotrmadrzyk.github.io/pm-pages/p/demo-kancelaria-zawadzcy-kontakt/">Skonsultuj to z nami</a>' +
+      '</div>' +
+      '<p class="term-zastrz"><b>To wyliczenie orientacyjne.</b> Terminy liczymy od dnia następnego ' +
+      'po doręczeniu, z przesunięciem z dni wolnych. O zachowaniu terminu decyduje data nadania ' +
+      'w placówce pocztowej, nie wpływu do sądu. W konkretnej sprawie mogą obowiązywać terminy ' +
+      'szczególne albo inne pouczenie w piśmie — przed działaniem potwierdź to z prawnikiem.</p>';
+  }
+
+  form.addEventListener('change', pokaz);
+  form.addEventListener('input', pokaz);
+})();
+</script>
+
 </body>
 </html>
