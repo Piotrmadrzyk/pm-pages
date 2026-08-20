@@ -190,12 +190,24 @@ strong,b{font-weight:700}
   -webkit-mask-image:radial-gradient(ellipse 90% 70% at 30% 20%,#000 0%,transparent 78%);
   opacity:.9;
 }
-.hero-bg::after{ /* poświata */
-  content:"";position:absolute;inset:-20% -10% auto -10%;height:120%;
-  background:
-    radial-gradient(ellipse 46% 42% at 74% 18%,rgba(125,219,255,.13),transparent 70%),
-    radial-gradient(ellipse 40% 38% at 16% 62%,rgba(240,169,76,.10),transparent 70%);
-  filter:blur(8px);
+/* zdjęcie w tle hero — ciemne biurko z ciepłą lampą.
+   Przyciemnione gradientem, żeby tekst zachował pełny kontrast. */
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(100deg,var(--ink) 0%,rgba(7,8,11,.94) 34%,rgba(7,8,11,.62) 58%,rgba(7,8,11,.42) 100%),
+    linear-gradient(180deg,rgba(7,8,11,.8) 0%,transparent 30%,transparent 62%,var(--ink) 100%),
+    url("img/tlo/hero-biurko.jpg");
+  background-size:cover,cover,cover;
+  background-position:center,center,center right;
+}
+@media(max-width:900px){
+  .hero-bg::after{
+    background-image:
+      linear-gradient(180deg,rgba(7,8,11,.86) 0%,rgba(7,8,11,.9) 55%,var(--ink) 100%),
+      url("img/tlo/hero-biurko.jpg");
+    background-size:cover,cover;
+  }
 }
 .hero .wrap{position:relative;z-index:2}
 
@@ -927,3 +939,22 @@ body > *{position:relative;z-index:1}
 .pcard:hover .stage img,.big:hover .stage img{transform:scale(1.03)}
 .stage .veil{z-index:2}
 .stage .go{z-index:3}
+
+
+/* ---------- pas ze zdjęciem między sekcjami ---------- */
+.band{
+  position:relative;min-height:340px;display:flex;align-items:center;
+  background-size:cover;background-position:center;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.band::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--ink) 8%,rgba(7,8,11,.72) 46%,rgba(7,8,11,.35) 100%);
+}
+.band .wrap{position:relative;z-index:2}
+.band h2{max-width:16ch}
+.band .lead{max-width:46ch}
+@media(max-width:760px){
+  .band{min-height:auto;padding:56px 0}
+  .band::before{background:linear-gradient(180deg,rgba(7,8,11,.86),rgba(7,8,11,.92))}
+}
