@@ -146,6 +146,69 @@ var SOCIAL = {
       sweep();
     }, 1000);
 
+    /* ---------- karuzela realizacji ----------
+       Pasek przewijany myszą zamienia się w taśmę, która płynie sama.
+       Karty są duplikowane, więc po przejściu połowy toru animacja
+       wraca do zera i widz nie widzi szwu. Bez JS zostaje zwykły pasek. */
+    (function () {
+      var rail = document.querySelector('.rail');
+      if (!rail) return;
+      var karty = Array.prototype.slice.call(rail.children);
+      if (karty.length < 2) return;
+
+      /* Szanujemy systemowe ustawienie "ogranicz ruch" — dla części osób
+         ciągła animacja jest męcząca albo wręcz przyprawia o mdłości. */
+      if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var tor = document.createElement('div');
+      tor.className = 'rail-tor';
+      karty.forEach(function (k) { tor.appendChild(k); });
+      /* drugi komplet — kopie są tylko dekoracją, więc znikają dla
+         czytników ekranu i wypadają z kolejności tabulatora */
+      karty.forEach(function (k) {
+        var kopia = k.cloneNode(true);
+        kopia.setAttribute('aria-hidden', 'true');
+        kopia.setAttribute('tabindex', '-1');
+        tor.appendChild(kopia);
+      });
+      rail.appendChild(tor);
+      rail.classList.add('plynie');
+
+      /* Tempo zależy od liczby kart, żeby prędkość była zawsze ta sama
+         niezależnie od tego, ile realizacji jest na stronie. */
+      tor.style.setProperty('--czas', (karty.length * 13) + 's');
+
+      /* Paski adresu pokazują kolejne podstrony — dowód, że to
+         wielostronicowe witryny, a nie jedna ładna wizytówka. */
+      var PODSTRONY = {
+        'kancelaria-zawadzcy': ['/oferta', '/zespol', '/proces-i-cennik', '/kontakt'],
+        'studio-lawenda':      ['/zabiegi', '/zespol', '/cennik', '/kontakt'],
+        'dom-i-wnetrze':       ['/uslugi', '/realizacje', '/o-firmie', '/kontakt'],
+        'serwis-podkarpacki':  ['/uslugi', '/o-nas', '/cennik', '/kontakt'],
+        'zielona-pergola':     ['/menu', '/galeria', '/rezerwacje', '/kontakt']
+      };
+
+      var paski = Array.prototype.slice.call(tor.querySelectorAll('.frame-url'));
+      paski.forEach(function (el, i) {
+        var baza = el.textContent.trim();
+        var lista = PODSTRONY[baza];
+        if (!lista) return;
+        var krok = 0;
+        /* każdy pasek startuje w innym momencie, żeby nie przełączały
+           się wszystkie naraz jak choinka */
+        setTimeout(function () {
+          setInterval(function () {
+            krok = (krok + 1) % (lista.length + 1);
+            el.style.opacity = '0';
+            setTimeout(function () {
+              el.textContent = krok === 0 ? baza : baza + lista[krok - 1];
+              el.style.opacity = '';
+            }, 260);
+          }, 4200);
+        }, i * 900);
+      });
+    })();
+
     /* ---------- odsłanianie sekcji ---------- */
     document.querySelectorAll('.reveal, .stagger').forEach(function (el) {
       watch(el, function (e) { e.classList.add('in'); }, -30);

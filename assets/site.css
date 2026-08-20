@@ -269,6 +269,46 @@ strong,b{font-weight:700}
   overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;
   scrollbar-width:thin;scrollbar-color:var(--line-2) transparent;
 }
+
+/* ---------- karuzela, ktora plynie sama ----------
+   JS dokleja kopie kart i nadaje klase .plynie. Bez JS zostaje
+   zwykly pasek do przewijania mysza — nic sie nie psuje. */
+.rail.plynie{
+  display:block;overflow:hidden;scroll-snap-type:none;
+  /* zanikanie na krawedziach, zeby karty nie ucinaly sie ostro */
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+}
+.rail-tor{
+  display:flex;gap:20px;width:max-content;
+  animation:plyn var(--czas,60s) linear infinite;
+}
+.rail-tor > *{flex:0 0 min(420px,86vw)}
+@keyframes plyn{
+  from{transform:translateX(0)}
+  to{transform:translateX(calc(-50% - 10px))}   /* polowa toru = jeden komplet kart */
+}
+/* zatrzymanie, gdy ktos chce przeczytac albo kliknac */
+.rail.plynie:hover .rail-tor,
+.rail.plynie:focus-within .rail-tor{animation-play-state:paused}
+
+/* kadr przesuwa sie powoli w dol — jakby ktos przewijal strone */
+.rail.plynie .stage img{
+  object-fit:cover;object-position:center top;
+  animation:podglad 9s ease-in-out infinite;
+}
+@keyframes podglad{
+  0%,18%{object-position:center top}
+  50%,68%{object-position:center 55%}
+  100%{object-position:center top}
+}
+
+@media(prefers-reduced-motion:reduce){
+  /* dla osob, ktore maja wylaczone animacje w systemie — zero ruchu */
+  .rail-tor{animation:none}
+  .rail.plynie .stage img{animation:none}
+  .rail.plynie{overflow-x:auto}
+}
 .rail::-webkit-scrollbar{height:6px}
 .rail::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:10px}
 .rail::-webkit-scrollbar-track{background:transparent}
