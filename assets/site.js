@@ -182,12 +182,45 @@ var SOCIAL = {
        i strona wyglądałaby zupełnie inaczej niż w rzeczywistości. */
     var VIEW_W = 1440, VIEW_H = 900;
 
+    /* Ramka może udawać inny ekran — telefon renderuje się w 390x844,
+       dzięki czemu widać prawdziwy układ mobilny, a nie ściśnięty pulpit. */
+    function viewOf(stage) {
+      return {
+        w: parseInt(stage.getAttribute('data-vw'), 10) || VIEW_W,
+        h: parseInt(stage.getAttribute('data-vh'), 10) || VIEW_H
+      };
+    }
+
+    /* Przeglądarka potrafi nie namalować przeskalowanej, osadzonej strony,
+       mimo że treść jest poprawnie wczytana — klient widzi wtedy ciemny
+       prostokąt zamiast realizacji. Wymuszamy przemalowanie mikrozmianą
+       skali. UWAGA: każdy krok musi różnić się od poprzedniego, bo
+       ustawienie tej samej wartości nie jest dla przeglądarki żadną zmianą
+       i nic nie przemalowuje. Różnice rzędu 0,02% są niewidoczne. */
+    function nudge(stage) {
+      var frame = stage.querySelector('iframe');
+      if (!frame) return;
+      var v = viewOf(stage);
+      var base = stage.clientWidth / v.w;
+      [80, 400, 1000, 2200, 4000].forEach(function (ms, i) {
+        setTimeout(function () {
+          if (!frame.isConnected) return;
+          var eps = (i % 2 === 0) ? 0.0006 : 0.0002;
+          frame.style.transform = 'scale(' + (base + eps) + ') translateZ(0)';
+        }, ms);
+      });
+    }
+
     function fitFrame(stage) {
       var frame = stage.querySelector('iframe');
       if (!frame) return;
-      frame.style.width = VIEW_W + 'px';
-      frame.style.height = VIEW_H + 'px';
-      frame.style.transform = 'scale(' + (stage.clientWidth / VIEW_W) + ')';
+      var v = viewOf(stage);
+      frame.style.width = v.w + 'px';
+      frame.style.height = v.h + 'px';
+      /* translateZ(0) wymusza własną warstwę graficzną. Bez tego
+         przeglądarka potrafi w ogóle nie namalować przeskalowanej,
+         osadzonej strony i klient widzi czarny prostokąt. */
+      frame.style.transform = 'scale(' + (stage.clientWidth / v.w) + ') translateZ(0)';
     }
 
     var stages = document.querySelectorAll('[data-live]');
@@ -205,7 +238,17 @@ var SOCIAL = {
         f.src = stage.getAttribute('data-live');
         f.addEventListener('load', function () {
           var skel = stage.querySelector('.skel');
-          if (skel) skel.remove();
+          if (!skel) return;
+          /* Podkład zostaje jako siatka bezpieczeństwa — gasimy tylko
+             animację ładowania i podpisujemy go adresem strony. */
+          stage.classList.add('loaded');
+          skel.remove();
+          /* Przeglądarka bywa leniwa przy malowaniu przeskalowanej,
+             osadzonej strony — potrafi zostawić czarny prostokąt mimo
+             poprawnie wczytanej treści. Zachowanie jest niedeterministyczne,
+             więc zamiast szukać winnej reguły CSS trącamy ramkę kilka razy
+             mikrozmianą skali, co wymusza przemalowanie. Niewidoczne dla oka. */
+          nudge(stage);
         });
         stage.insertBefore(f, stage.firstChild);
         fitFrame(stage);
