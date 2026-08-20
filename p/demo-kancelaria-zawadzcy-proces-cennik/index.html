@@ -411,6 +411,84 @@
   display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   font-family:Inter,system-ui,sans-serif;font-size:12.5px;color:rgba(233,226,213,.56);
 }
+
+/* ————— WSPÓLNY NAGŁÓWEK TREŚCI —————
+   Kazda podstrona miala inny hero: raz jasna karta, raz granatowy
+   gradient z bialym tekstem, raz sam tekst bez tla. Klient klikajacy
+   miedzy zakladkami widzial trzy rozne strony. Ponizej jeden wzorzec,
+   ten ze strony glownej. */
+.hero-copy{
+  background:linear-gradient(180deg,rgba(255,253,249,.9),rgba(250,246,239,.94))!important;
+  border:1px solid rgba(216,209,198,.9)!important;
+  border-radius:28px!important;
+  padding:2.3rem!important;
+  box-shadow:var(--shadow)!important;
+  color:var(--ink)!important;
+}
+/* tekst byl bialy pod ciemne tlo — musi wrocic do ciemnego */
+.hero-copy h1,.hero-copy h2,.hero-copy strong,.hero-copy b{color:var(--brand)!important}
+.hero-copy p,.hero-copy li,.hero-copy span:not(.eyebrow){color:var(--muted)!important}
+.hero-copy .eyebrow{color:var(--accent-txt)!important}
+/* wyrozniona ramka wewnatrz hero — byla jasna na ciemnym, teraz odwrotnie */
+.hero-copy blockquote,.hero-copy .hero-note,.hero-copy .note,.hero-copy .callout{
+  background:rgba(11,37,69,.05)!important;
+  border-left:3px solid var(--accent)!important;
+  color:var(--ink)!important;
+}
+.hero-copy .btn-secondary,.hero-copy .btn.btn-secondary{
+  background:transparent!important;color:var(--brand)!important;
+  border:1px solid rgba(11,37,69,.28)!important;
+}
+@media(max-width:760px){.hero-copy{padding:1.6rem!important;border-radius:20px!important}}
+
+/* Przyciski w naglowku byly szyte pod ciemne tlo: bialy tekst i biala
+   ramka. Po rozjasnieniu hero staly sie niewidoczne. */
+.hero-copy .btn,.hero-copy .btn-primary{
+  background:var(--brand)!important;color:#f7f1e8!important;border:1px solid var(--brand)!important;
+}
+.hero-copy .btn:hover,.hero-copy .btn-primary:hover{background:var(--brand-2)!important}
+.hero-copy .btn-ghost,.hero-copy .btn-secondary{
+  background:transparent!important;color:var(--brand)!important;
+  border:1px solid rgba(11,37,69,.3)!important;
+}
+.hero-copy .btn-ghost:hover,.hero-copy .btn-secondary:hover{
+  background:rgba(11,37,69,.06)!important;
+}
+.hero-copy .promise{
+  background:rgba(11,37,69,.05)!important;border-left:3px solid var(--accent)!important;
+  color:var(--ink)!important;padding:14px 18px!important;border-radius:0 10px 10px 0!important;
+}
+
+/* Podpis lezacy na zdjeciu ma jasny tekst, ale nie mial wlasnego tla —
+   czytelnosc zalezala od tego, jak jasny jest kadr pod spodem. */
+.hero-note{
+  background:rgba(11,24,40,.86)!important;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  border:1px solid rgba(168,144,99,.34)!important;
+  border-radius:14px!important;padding:16px 18px!important;
+}
+.hero-note strong{display:block;margin-bottom:5px!important}
+
+/* ————— WSPÓLNA PALETA —————
+   Podstrony definiowaly rozne podzbiory zmiennych (jedna --navy, inna
+   --brand, zadna kompletu). Ponizej uzupelnienie, zeby kazda regula
+   miala do czego siegnac niezaleznie od strony. */
+:root{
+  --brand:#0b2545;
+  --brand-2:#17385f;
+  --navy:#0b2545;
+  --accent:#a89063;
+  --accent-txt:#87703f;
+  --dark:#101820;
+  --ink:#18212b;
+  --muted:#58616d;
+  --line:#d8d1c6;
+  --paper:#fffdf9;
+  --surface:#fbf8f2;
+  --sand:#f5f1ea;
+  --white:#ffffff;
+  --max:1200px;
+}
 </style>
 </head>
 <body>
