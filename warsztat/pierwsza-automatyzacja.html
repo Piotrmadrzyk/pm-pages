@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pierwsza automatyzacja: powiadomienie o nowym zapytaniu | Probatum</title>
+<meta name="description" content="Formularz na stronie wysyła maila, którego i tak przegapisz. Zrobimy tak, żeby zapytanie samo znalazło Cię na telefonie.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#07080b">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Probatum">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:title" content="Pierwsza automatyzacja: powiadomienie o nowym zapytaniu | Probatum">
+<meta property="og:description" content="Formularz na stronie wysyła maila, którego i tak przegapisz. Zrobimy tak, żeby zapytanie samo znalazło Cię na telefonie.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pierwsza automatyzacja: powiadomienie o nowym zapytaniu | Probatum">
+<meta name="twitter:description" content="Formularz na stronie wysyła maila, którego i tak przegapisz. Zrobimy tak, żeby zapytanie samo znalazło Cię na telefonie.">
+
+<script>document.documentElement.className += ' js';</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=0c5508798c">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="../index.html">
+      <span class="sygnet" aria-hidden="true">P</span>
+      <span class="brand-txt">
+        <b>Probatum<i>.</i></b>
+        <span>przewaga metodą</span>
+      </span>
+    </a>
+    <div class="navlinks">
+    <a href="../index.html">Start</a>
+    <a href="../o-donie.html">Metoda</a>
+    <a href="../oferta.html">Oferta</a>
+    <a href="../realizacje.html">Realizacje</a>
+    <a href="../automatyzacja.html">Agenci</a>
+    <a href="../warsztat.html" class="active">Warsztat</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../kontakt.html">Kontakt</a>
+    </div>
+    <a href="../wycena.html" class="navcta">Wyceń projekt</a>
+    <button type="button" class="burger" aria-label="Menu" aria-expanded="false" aria-controls="navmobile"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="navmobile" id="navmobile">
+  <a href="../index.html">Start</a>
+  <a href="../o-donie.html">Metoda</a>
+  <a href="../oferta.html">Oferta</a>
+  <a href="../realizacje.html">Realizacje</a>
+  <a href="../automatyzacja.html">Agenci</a>
+  <a href="../warsztat.html">Warsztat</a>
+  <a href="../blog.html">Blog</a>
+  <a href="../kontakt.html">Kontakt</a>
+  <a href="../wycena.html">Wyceń projekt</a>
+</div>
+
+<article class="wpis"><div class="wrap"><a class="wpis-wroc" href="../warsztat.html">← Warsztat</a><div class="wpis-meta"><time datetime="2026-08-20">20 sierpnia 2026</time> · <span>20 minut</span> · <span>dla początkujących</span> · <span>n8n, Telegram</span></div><h1 class="display">Pierwsza automatyzacja: powiadomienie o nowym zapytaniu</h1><p class="lead">Formularz na stronie wysyła maila, którego i tak przegapisz. Zrobimy tak, żeby zapytanie samo znalazło Cię na telefonie.</p><div class="wpis-tresc"><p>Większość firm traci zapytania nie dlatego, że ich nie dostaje, tylko dlatego, że <b>dowiaduje się o nich za późno</b>. Mail ląduje w skrzynce obok siedemnastu newsletterów, a klient w tym czasie pisze do trzech innych firm.</p>
+<p>Ta automatyzacja robi jedną rzecz: gdy ktoś wypełni formularz, w ciągu kilku sekund dostajesz wiadomość na telefon. Nie mail. Wiadomość, którą zobaczysz.</p>
+<h2>Co będzie potrzebne</h2>
+<ul><li>konto w n8n (darmowy plan wystarczy na start)</li><li>aplikacja Telegram na telefonie</li><li>formularz na stronie, który już masz</li></ul>
+<h2>Krok 1. Załóż bota, który będzie do Ciebie pisał</h2>
+<p>W Telegramie odszukaj <code>@BotFather</code> i wyślij mu polecenie <code>/newbot</code>. Poda Ci nazwę bota i <b>token</b> — długi ciąg znaków. Zapisz go, zaraz się przyda.</p>
+<blockquote>Token to hasło do Twojego bota. Nie wklejaj go nigdzie publicznie.</blockquote>
+<h2>Krok 2. Dowiedz się, gdzie ma pisać</h2>
+<p>Napisz cokolwiek do swojego nowego bota, a potem otwórz w przeglądarce adres, w którym zamiast <code>TOKEN</code> wstawisz swój token:</p>
+<pre class="kod"><code>https://api.telegram.org/botTOKEN/getUpdates</code></pre>
+<p>W odpowiedzi znajdziesz <code>"chat":{"id":123456789</code>. Ta liczba to Twój adres — bot będzie pisał właśnie tam.</p>
+<h2>Krok 3. Połącz formularz z botem</h2>
+<p>W n8n stwórz nowy przepływ i dodaj dwa elementy:</p>
+<ol><li><b>Webhook</b> — to adres, pod który formularz wyśle dane. n8n pokaże Ci gotowy link.</li><li><b>Telegram → Send Message</b> — wklej token i numer z kroku drugiego.</li></ol>
+<p>W treści wiadomości wstaw dane z formularza, na przykład tak:</p>
+<pre class="kod"><code>Nowe zapytanie
+Imię: {{ $json.imie }}
+Telefon: {{ $json.telefon }}
+Treść: {{ $json.tresc }}</code></pre>
+<h2>Krok 4. Wskaż formularzowi, dokąd ma wysyłać</h2>
+<p>W ustawieniach formularza na swojej stronie podmień adres wysyłki na link webhooka z n8n. Wyślij testowe zapytanie — wiadomość powinna dotrzeć w kilka sekund.</p>
+<h2>Co dalej</h2>
+<p>To jest fundament. Na nim można dołożyć kolejne rzeczy: automatyczną odpowiedź do klienta, zapis do arkusza, przypomnienie, jeśli nie odpiszesz w ciągu doby.</p>
+<p>Ale zacznij od tego jednego kroku i pożyj z nim tydzień. Automatyzacja, której nie rozumiesz, jest gorsza niż jej brak — bo gdy przestanie działać, nie będziesz wiedział dlaczego.</p></div><div class="wpis-stopka"><h3>Utknąłeś w połowie?</h3><p>Ta instrukcja jest za darmo i zawsze będzie. Ale jeśli coś nie chce zadziałać albo nie masz na to wieczorów — mogę wdrożyć to z Tobą albo za Ciebie.</p><a href="../kontakt.html" class="btn">Napisz, co chcesz zautomatyzować →</a></div></div></article>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="sygnet sygnet-lg" aria-hidden="true">P</span>
+        <b>Probatum<i>.</i></b>
+        <p>Strony internetowe, kampanie lejkowe i prowadzenie profili społecznościowych dla małych i średnich firm. Pracuję zdalnie, z całą Polską.</p>
+        <div class="foot-social" data-social-foot></div>
+      </div>
+      <div>
+        <h5>Nawigacja</h5>
+        <a href="../o-donie.html">Metoda</a>
+        <a href="../oferta.html">Oferta</a>
+        <a href="../realizacje.html">Realizacje</a>
+        <a href="../automatyzacja.html">Agenci</a>
+      </div>
+      <div>
+        <h5>Rozpocznij</h5>
+        <a href="../wycena.html">Wyceń projekt</a>
+        <a href="../kontakt.html">Kontakt</a>
+      </div>
+      <div>
+        <h5>Kontakt</h5>
+        <a href="mailto:piotr.aparat@gmail.com">piotr.aparat@gmail.com</a>
+        <p class="small" style="margin:0">Odpisuję osobiście, zwykle w 1–2 dni robocze.</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>Probatum © <span data-year>2026</span></span>
+      <span>Każda publikacja zatwierdzona ręcznie</span>
+    </div>
+  </div>
+</footer>
+
+<button id="chat-btn" aria-label="Otwórz asystenta strony">Asystent strony</button>
+<div id="chat-panel" role="dialog" aria-label="Asystent strony">
+  <div class="chat-head">
+    <i class="led"></i>
+    <div><b>Asystent strony</b><span>Odpowiedzi na najczęstsze pytania</span></div>
+    <button class="chat-x" id="chat-x" aria-label="Zamknij">×</button>
+  </div>
+  <div class="chat-body" id="chat-body">
+    <div class="msg bot">Cześć. Odpowiadam na najczęstsze pytania o ofertę, ceny i terminy. Po coś bardziej szczegółowego — napisz przez formularz, odpiszę osobiście.</div>
+  </div>
+  <div class="chat-sug" id="chat-sug">
+    <button>Ile to kosztuje?</button>
+    <button>Ile trwa strona?</button>
+    <button>Czym są agenci?</button>
+  </div>
+  <div class="chat-in">
+    <input type="text" id="chat-input" placeholder="Napisz pytanie...">
+    <button id="chat-send">Wyślij</button>
+  </div>
+</div>
+
+<script src="../assets/site.js?v=4e9cf7a6a1"></script>
+</body>
+</html>

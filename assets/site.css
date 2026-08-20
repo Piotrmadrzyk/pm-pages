@@ -1046,3 +1046,66 @@ body > *{position:relative;z-index:1}
   backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
   font-family:var(--f-ui);font-size:14px;line-height:1.6;color:#C6CCD6;
 }
+
+/* ---------- Blog i Warsztat ---------- */
+.wpis-lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr));gap:26px}
+.wpis-karta{
+  display:block;padding:28px 26px 24px;border:1px solid var(--line);border-radius:var(--r);
+  background:var(--ink-1);transition:border-color .2s,transform .2s;
+}
+.wpis-karta:hover{border-color:rgba(240,169,76,.5);transform:translateY(-3px)}
+.wpis-karta h3{font-family:var(--f-ui);font-size:21px;line-height:1.3;margin:10px 0 10px;color:#F2F4F7}
+.wpis-karta p{font-size:15px;line-height:1.6;color:var(--dim);margin:0 0 18px}
+.wpis-meta{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--signal);display:flex;flex-wrap:wrap;gap:4px;
+}
+
+.wpis{padding:70px 0 90px}
+.wpis .wrap{max-width:760px}
+.wpis-wroc{
+  font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--dim-2);display:inline-block;margin-bottom:30px;
+}
+.wpis-wroc:hover{color:var(--amber)}
+.wpis h1{margin:14px 0 18px}
+.wpis .lead{margin-bottom:44px}
+
+/* tresc wpisu — szerokosc kolumny pod czytanie, nie pod ekran */
+.wpis-tresc{font-size:17.5px;line-height:1.75;color:#C8CED8}
+.wpis-tresc h2{font-family:var(--f-display);font-size:32px;line-height:1.2;color:#F2F4F7;margin:52px 0 16px}
+.wpis-tresc h3{font-family:var(--f-ui);font-size:20px;color:#F2F4F7;margin:38px 0 12px}
+.wpis-tresc p{margin:0 0 20px}
+.wpis-tresc b{color:#EDF0F4}
+.wpis-tresc ul,.wpis-tresc ol{margin:0 0 22px;padding-left:22px}
+.wpis-tresc li{margin-bottom:10px}
+.wpis-tresc li::marker{color:var(--amber)}
+.wpis-tresc a{color:var(--amber-2);text-decoration:underline;text-underline-offset:3px}
+.wpis-tresc img{width:100%;border-radius:var(--r);border:1px solid var(--line);margin:28px 0}
+.wpis-tresc hr{border:0;border-top:1px solid var(--line);margin:44px 0}
+.wpis-tresc blockquote{
+  margin:0 0 24px;padding:16px 20px;border-left:2px solid var(--amber);
+  background:rgba(240,169,76,.06);border-radius:0 10px 10px 0;color:var(--dim);font-size:16px;
+}
+.wpis-tresc code{
+  font-family:var(--f-mono);font-size:.88em;background:rgba(125,219,255,.1);
+  color:var(--signal);padding:2px 6px;border-radius:5px;
+}
+.wpis-tresc .kod{
+  background:#0b0d12;border:1px solid var(--line);border-radius:var(--r);
+  padding:18px 20px;overflow-x:auto;margin:0 0 24px;
+}
+.wpis-tresc .kod code{background:none;color:#B6D9E8;padding:0;font-size:14px;line-height:1.6}
+
+.wpis-stopka{
+  margin-top:60px;padding:32px 30px;border:1px solid var(--line);
+  border-radius:var(--r);background:var(--ink-1);
+}
+.wpis-stopka h3{font-family:var(--f-ui);font-size:22px;color:#F2F4F7;margin:0 0 10px}
+.wpis-stopka p{color:var(--dim);margin:0 0 20px;line-height:1.65}
+.wpis-stopka a:not(.btn){color:var(--amber-2);text-decoration:underline}
+@media(max-width:560px){
+  .wpis{padding:48px 0 64px}
+  .wpis-tresc{font-size:16.5px}
+  .wpis-tresc h2{font-size:26px}
+}
