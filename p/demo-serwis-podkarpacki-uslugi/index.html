@@ -253,23 +253,106 @@
   .chat-fab{right:14px;bottom:14px;padding:12px 16px;font-size:13.5px}
 }
 @media (prefers-reduced-motion:reduce){.chat-fab,.chat-log .typing i{transition:none;animation:none}}
+
+/* ————— WSPÓLNY NAGŁÓWEK I STOPKA —————
+   Kazda podstrona miala wlasna konstrukcje paska (wrap nav-row, wrap
+   topbar, nav-links, wrap). Wlasny prefiks sp-, zeby nie zderzyc sie
+   ze stylami, ktore na kazdej stronie znacza cos innego. */
+.sp-top{
+  position:sticky;top:0;z-index:40;background:rgba(28,31,36,.92);
+  backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);
+}
+.sp-top-in{
+  max-width:var(--max,1200px);margin:0 auto;padding:13px 22px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+}
+.sp-brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.sp-mark{
+  width:34px;height:34px;border-radius:9px;flex:none;display:grid;place-items:center;
+  background:var(--accent);position:relative;
+}
+.sp-mark::before{
+  content:"";position:absolute;inset:9px;border:2px solid rgba(255,255,255,.85);
+  transform:skew(-18deg);
+}
+.sp-brand b{
+  font-family:'Space Grotesk',system-ui,sans-serif;font-size:15px;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;color:#fff;
+}
+.sp-menu{display:flex;flex-wrap:wrap;gap:5px}
+.sp-menu a{
+  font-family:Barlow,system-ui,sans-serif;font-size:14.5px;font-weight:600;
+  color:#c3cad2;padding:.6rem .95rem;border-radius:999px;text-decoration:none;
+  transition:background .2s,color .2s;
+}
+.sp-menu a:hover{background:rgba(255,255,255,.07);color:#fff}
+.sp-menu a.active{background:var(--accent);color:#fff}
+.sp-menu a.opony{color:var(--accent-2)}
+.sp-menu a.opony:hover{background:rgba(232,89,12,.16);color:#fff}
+.sp-menu a:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px}
+@media(max-width:760px){
+  .sp-top-in{padding:11px 14px;gap:10px}
+  .sp-menu a{padding:.5rem .65rem;font-size:13.5px}
+}
+
+.sp-stopka{background:#16191e;border-top:1px solid rgba(255,255,255,.07);padding:48px 22px 30px}
+.sp-stopka-in{
+  max-width:var(--max,1200px);margin:0 auto;display:grid;
+  grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:36px;
+}
+@media(max-width:820px){.sp-stopka-in{grid-template-columns:1fr;gap:26px}}
+.sp-stopka h4{
+  font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent-2);margin:0 0 12px;
+}
+.sp-stopka p{font-family:Barlow,sans-serif;font-size:14px;line-height:1.7;color:#aab2bc;margin:0}
+.sp-stopka a{color:#d3d9df;text-decoration:none;font-size:14px;line-height:2}
+.sp-stopka a:hover{color:#fff;text-decoration:underline}
+.sp-stopka nav{display:flex;flex-direction:column}
+.sp-stopka strong{
+  display:block;font-family:'Space Grotesk',sans-serif;font-size:16px;
+  letter-spacing:.05em;text-transform:uppercase;color:#fff;margin-bottom:9px;
+}
+.sp-dol{
+  max-width:var(--max,1200px);margin:30px auto 0;padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;
+  gap:14px;flex-wrap:wrap;font-family:Barlow,sans-serif;font-size:12.5px;color:#7f8790;
+}
+
+/* ————— PLAKIETKI USŁUG —————
+   Byly rozciagane przez siatke na cala wysokosc panelu i wygladaly jak
+   puste prostokaty. Teraz kafelki z ikona, wyrownane do gory. */
+.tag-row{align-self:start;display:grid!important;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.tag{
+  display:flex;align-items:flex-start;gap:10px;text-align:left;
+  padding:14px 15px!important;border-radius:12px!important;
+  background:rgba(0,0,0,.24)!important;border:1px solid rgba(255,255,255,.1)!important;
+  font-size:.9rem!important;line-height:1.35;
+}
+.tag svg{width:20px;height:20px;flex:none;stroke:var(--accent-2);fill:none;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round;margin-top:1px}
+.tag span{display:block}
+.tag span b{display:block;color:#fff;font-weight:600;margin-bottom:2px}
+.tag span i{display:block;font-style:normal;font-size:.8rem;color:#a4adb7;line-height:1.4}
+@media(max-width:900px){.tag-row{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}}
 </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="wrap">
-      <a class="brand" href="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki/" aria-label="Serwis Podkarpacki - strona główna">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span>Serwis Podkarpacki</span>
-      </a>
-      <nav class="nav" aria-label="Nawigacja główna">
+<div class="sp-top">
+  <div class="sp-top-in">
+    <a class="sp-brand" href="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki/" aria-label="Serwis Podkarpacki — strona główna">
+      <span class="sp-mark" aria-hidden="true"></span>
+      <b>Serwis Podkarpacki</b>
+    </a>
+    <nav class="sp-menu" aria-label="Nawigacja główna">
         <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki/">Strona główna</a>
+        <a class="opony" href="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki/#wymiana-opon">Wymiana opon</a>
         <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki-uslugi/" class="active" aria-current="page">Usługi</a>
         <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki-o-nas/">O nas</a>
         <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki-kontakt/">Kontakt</a>
-      </nav>
-    </div>
-  </header>
+    </nav>
+  </div>
+</div>
 
   <main>
     <section class="hero">
@@ -304,11 +387,11 @@
             <p class="muted">Poniższe kwoty mają charakter orientacyjny i pomagają oszacować zakres budżetu. Końcowa wycena zależy od modelu auta, rodzaju części, stanu podzespołów oraz wyników diagnostyki wykonanej na miejscu.</p>
           </div>
           <div class="tag-row" aria-label="Najważniejsze wyróżniki">
-            <span class="tag">Mechanika bieżąca</span>
-            <span class="tag">Diagnostyka komputerowa</span>
-            <span class="tag">Klimatyzacja</span>
-            <span class="tag">Opony i geometria</span>
-            <span class="tag">Obsługa flot</span>
+            <span class="tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 1 5.4-5.4l-2.6 2.6 2.1 2.1 2.6-2.6a4 4 0 0 1-5.1-5.1z"/></svg><span><b>Mechanika bieżąca</b><i>Wymiany, naprawy, przeglądy</i></span></span>
+            <span class="tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H4z"/><path d="M9 20h6"/><path d="M12 16v4"/><path d="M8 9h2"/><path d="M12 9h4"/><path d="M8 12h5"/></svg><span><b>Diagnostyka komputerowa</b><i>Odczyt błędów sterownika</i></span></span>
+            <span class="tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18"/><path d="M4.5 7.5l15 9"/><path d="M19.5 7.5l-15 9"/></svg><span><b>Klimatyzacja</b><i>Nabijanie i odgrzybianie</i></span></span>
+            <span class="tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"/><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M12 3v5"/><path d="M12 16v5"/><path d="M3 12h5"/><path d="M16 12h5"/></svg><span><b>Opony i geometria</b><i>Wymiana, wyważanie, ustawienie</i></span></span>
+            <span class="tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 16V9h11v7"/><path d="M14 11h3l3 3v2h-6"/><path d="M6.5 19a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/><path d="M17.5 19a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg><span><b>Obsługa flot</b><i>Rozliczenia i stały serwis</i></span></span>
           </div>
         </div>
       </div>
@@ -521,13 +604,7 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="wrap">
-      <p>Przykładowy szablon strony warsztatu samochodowego przygotowany do uzupełnienia realnymi danymi konkretnego serwisu.</p>
-    </div>
-  </footer>
-
-<!-- ————— ASYSTENT WARSZTATU ————— -->
+  <!-- ————— ASYSTENT WARSZTATU ————— -->
 <button class="chat-fab" id="chat-fab" type="button" aria-expanded="false" aria-controls="chat-panel">
   <span class="dot" aria-hidden="true"></span>
   Zapytaj o naprawę
@@ -690,5 +767,19 @@
 })();
 </script>
 
+<footer class="sp-stopka">
+  <div class="sp-stopka-in">
+    <div><strong>Serwis Podkarpacki</strong><p>Warsztat samochodowy w Rzeszowie. Mechanika, diagnostyka komputerowa, klimatyzacja i wymiana opon. Wycena przed naprawą, termin ustalony z góry.</p></div>
+    <div><h4>Nawigacja</h4><nav aria-label="Nawigacja w stopce">
+      <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki/">Strona główna</a>
+      <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki-uslugi/">Usługi</a>
+      <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki-o-nas/">O nas</a>
+      <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki-kontakt/">Kontakt</a>
+      <a href="https://piotrmadrzyk.github.io/pm-pages/p/demo-serwis-podkarpacki/#wymiana-opon">Wymiana opon</a>
+    </nav></div>
+    <div><h4>Kontakt</h4><p>ul. Przemysłowa 22, 35-105 Rzeszów<br><a href="tel:178624040">17 862 40 40</a><br><a href="mailto:kontakt@serwispodkarpacki.pl">kontakt@serwispodkarpacki.pl</a><br>pon.–pt. 8:00–17:00</p></div>
+  </div>
+  <div class="sp-dol"><span>© 2026 Serwis Podkarpacki</span><span>Szablon poglądowy — dane do uzupełnienia danymi konkretnego warsztatu</span></div>
+</footer>
 </body>
 </html>
