@@ -124,13 +124,6 @@ strong,b{font-weight:700}
 .arrow:hover{gap:15px;color:#ffc06a}
 
 /* ---------- pasek statusu ---------- */
-.topbar{
-  background:var(--ink-1);border-bottom:1px solid var(--line);
-  font-family:var(--f-mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--dim-2);
-}
-.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:40px;gap:18px}
-.topbar .live{display:inline-flex;align-items:center;gap:8px;color:var(--signal)}
 .led{
   width:6px;height:6px;border-radius:50%;background:var(--signal);
   box-shadow:0 0 0 0 rgba(125,219,255,.5);animation:pulse 2.6s infinite;
@@ -140,8 +133,6 @@ strong,b{font-weight:700}
   70%{box-shadow:0 0 0 7px rgba(125,219,255,0)}
   100%{box-shadow:0 0 0 0 rgba(125,219,255,0)}
 }
-.topbar .tb-right{display:flex;gap:22px}
-@media(max-width:820px){.topbar .tb-right{display:none}}
 
 /* ---------- nawigacja ---------- */
 .nav{position:sticky;top:0;z-index:80;background:rgba(7,8,11,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
