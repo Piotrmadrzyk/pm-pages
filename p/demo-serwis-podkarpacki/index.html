@@ -316,6 +316,92 @@
   .chat-fab{right:14px;bottom:14px;padding:12px 16px;font-size:13.5px}
 }
 @media (prefers-reduced-motion:reduce){.chat-fab,.chat-log .typing i{transition:none;animation:none}}
+
+/* ————— SEZON OPON —————
+   Osobny strumien zgloszen: inny kalendarz, inna osoba, inne tempo. */
+.opony{background:linear-gradient(160deg,#22262c,#191c21);border-top:1px solid rgba(255,255,255,.07)}
+.opony-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:38px;align-items:start;margin-top:32px}
+@media(max-width:920px){.opony-grid{grid-template-columns:1fr;gap:26px}}
+
+.op-info h3{font-family:'Space Grotesk',sans-serif;font-size:19px;color:#fff;margin:0 0 10px}
+.op-info p{font-family:Barlow,sans-serif;font-size:15px;line-height:1.7;color:var(--muted);margin:0 0 20px}
+.op-czasy{display:grid;gap:10px;margin-bottom:22px}
+.op-czas{
+  display:flex;align-items:baseline;gap:12px;padding:13px 16px;border-radius:10px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+}
+.op-czas b{font-family:'Space Grotesk',sans-serif;font-size:15px;color:var(--accent-2);flex:none;min-width:74px}
+.op-czas span{font-family:Barlow,sans-serif;font-size:14px;line-height:1.5;color:#d8dde3}
+.op-hotel{
+  padding:16px 18px;border-radius:10px;
+  background:rgba(232,89,12,.1);border:1px solid rgba(232,89,12,.32);
+}
+.op-hotel b{display:block;font-family:'Space Grotesk',sans-serif;font-size:14.5px;color:#fff;margin-bottom:6px}
+.op-hotel p{margin:0;font-size:14px;line-height:1.6;color:#d8dde3}
+
+/* formularz */
+.op-form{
+  background:#1c1f24;border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:28px 26px;
+}
+.op-form fieldset{border:0;padding:0;margin:0 0 20px}
+.op-form legend{
+  font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent-2);padding:0;margin-bottom:12px;
+}
+.op-wybor{display:grid;gap:8px}
+.op-wybor.dwa{grid-template-columns:1fr 1fr}
+@media(max-width:560px){.op-wybor.dwa{grid-template-columns:1fr}}
+.op-wybor label{
+  display:flex;gap:10px;align-items:flex-start;cursor:pointer;
+  padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.03);transition:border-color .2s,background .2s;
+}
+.op-wybor label:hover{border-color:rgba(232,89,12,.5)}
+.op-wybor label:has(input:checked){border-color:var(--accent);background:rgba(232,89,12,.1)}
+.op-wybor input{margin-top:3px;accent-color:var(--accent);flex:none}
+.op-wybor span{font-family:Barlow,sans-serif;font-size:14px;line-height:1.45;color:#d8dde3}
+.op-wybor span b{display:block;font-size:14.5px;color:#fff;font-weight:600;margin-bottom:2px}
+
+.op-pola{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+@media(max-width:560px){.op-pola{grid-template-columns:1fr}}
+.op-pole{display:flex;flex-direction:column;gap:6px}
+.op-pole.szeroko{grid-column:1 / -1}
+.op-pole label{font-family:Barlow,sans-serif;font-size:12.5px;color:var(--muted)}
+.op-pole input,.op-pole select{
+  padding:11px 13px;border:1px solid rgba(255,255,255,.14);border-radius:9px;
+  font-family:Barlow,sans-serif;font-size:15px;color:#e9edf1;background:#22262c;
+}
+.op-pole input:focus,.op-pole select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(232,89,12,.2)}
+.op-pole small{font-family:Barlow,sans-serif;font-size:11.5px;color:var(--muted);line-height:1.5}
+
+.op-podsum{
+  padding:16px 18px;border-radius:10px;margin-bottom:18px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+}
+.op-podsum b{
+  display:block;font-family:'Space Grotesk',sans-serif;font-size:22px;color:var(--accent-2);
+  margin-bottom:4px;
+}
+.op-podsum span{font-family:Barlow,sans-serif;font-size:13.5px;line-height:1.55;color:#d8dde3}
+
+.op-zgoda{display:flex;gap:9px;align-items:flex-start;margin-bottom:18px}
+.op-zgoda input{margin-top:3px;accent-color:var(--accent);flex:none}
+.op-zgoda label{font-family:Barlow,sans-serif;font-size:12.5px;line-height:1.55;color:var(--muted)}
+.op-wyslij{
+  width:100%;border:0;border-radius:999px;padding:15px;cursor:pointer;
+  background:var(--accent);color:#fff;font-family:'Space Grotesk',sans-serif;
+  font-size:15px;font-weight:600;text-transform:uppercase;letter-spacing:.03em;
+  transition:background .2s;
+}
+.op-wyslij:hover{background:var(--accent-2)}
+.op-wyslij:disabled{opacity:.55;cursor:default}
+.op-ok{
+  display:none;padding:20px;border-radius:12px;text-align:center;
+  background:rgba(232,89,12,.12);border:1px solid rgba(232,89,12,.4);
+}
+.op-ok.show{display:block}
+.op-ok b{display:block;font-family:'Space Grotesk',sans-serif;font-size:17px;color:#fff;margin-bottom:7px}
+.op-ok p{margin:0;font-family:Barlow,sans-serif;font-size:14px;line-height:1.6;color:#d8dde3}
 </style>
 </head>
 <body>
@@ -482,11 +568,135 @@
           <p style="margin-top:1.2rem"><a class="btn btn-primary" href="#umow-wizyte">Umów wizytę w warsztacie</a></p>
         </div>
         <div class="contact-shell dark-panel">
-          <section class="pm-kontakt"><h2>Kontakt</h2><p><a class="tel" href="tel:178624040">17 862 40 40</a></p><p><a href="mailto:kontakt@serwispodkarpacki.pl">kontakt@serwispodkarpacki.pl</a></p><p>ul. Przemysłowa 22, 35-105 Rzeszów &middot; <a href="https://www.google.com/maps/search/?api=1&query=ul.%20Przemys%C5%82owa%2022%2C%2035-105%20Rzesz%C3%B3w" rel="noopener" target="_blank">Pokaż na mapie</a></p></section>
+          
+
+<section class="pm-kontakt"><h2>Kontakt</h2><p><a class="tel" href="tel:178624040">17 862 40 40</a></p><p><a href="mailto:kontakt@serwispodkarpacki.pl">kontakt@serwispodkarpacki.pl</a></p><p>ul. Przemysłowa 22, 35-105 Rzeszów &middot; <a href="https://www.google.com/maps/search/?api=1&query=ul.%20Przemys%C5%82owa%2022%2C%2035-105%20Rzesz%C3%B3w" rel="noopener" target="_blank">Pokaż na mapie</a></p></section>
+
+
+
         </div>
       </div>
     </section>
-  </main>
+  
+<section class="section opony" id="wymiana-opon">
+  <div class="wrap">
+    <span class="eyebrow">Sezon opon</span>
+    <h2>Wymiana opon — osobny grafik, bez czekania w kolejce</h2>
+    <p class="lead" style="max-width:60ch">
+      W sezonie wymiana opon idzie u nas osobnym torem: dedykowane stanowisko i osobny
+      kalendarz, żeby nie blokować napraw i żeby Ty nie czekał, aż zwolni się podnośnik.
+      Zgłoszenie zajmuje minutę — oddzwaniamy z potwierdzeniem terminu.
+    </p>
+
+    <div class="opony-grid">
+      <div class="op-info">
+        <h3>Ile to zajmie</h3>
+        <p>Czas zależy głównie od jednej rzeczy: czy opony są już na osobnych felgach.</p>
+
+        <div class="op-czasy">
+          <div class="op-czas">
+            <b>ok. 30 min</b>
+            <span><b>Koła kompletne</b> — opony na osobnych felgach. Zdejmujemy jedne, zakładamy drugie, dokręcamy i sprawdzamy ciśnienie.</span>
+          </div>
+          <div class="op-czas">
+            <b>ok. 60 min</b>
+            <span><b>Same opony</b> — trzeba zdjąć je z obręczy, założyć drugi komplet i wyważyć każde koło od nowa.</span>
+          </div>
+          <div class="op-czas">
+            <b>+ 15 min</b>
+            <span><b>Czujniki ciśnienia</b> — przy przekładaniu opon trzeba je przenieść i sprawdzić, czy auto je widzi.</span>
+          </div>
+        </div>
+
+        <div class="op-hotel">
+          <b>Przechowanie kompletu</b>
+          <p>
+            Możesz zostawić zdjęte opony u nas — leżą w suchym, zaciemnionym pomieszczeniu,
+            oznaczone Twoim nazwiskiem i numerem rejestracyjnym. Na kolejny sezon wystarczy
+            zadzwonić: wyciągamy komplet, zanim przyjedziesz.
+          </p>
+        </div>
+      </div>
+
+      <form class="op-form" id="opony-form" novalidate>
+        <fieldset>
+          <legend>Co wymieniamy</legend>
+          <div class="op-wybor dwa">
+            <label><input type="radio" name="zakres" value="kola" checked>
+              <span><b>Całe koła</b>opony na felgach</span></label>
+            <label><input type="radio" name="zakres" value="opony">
+              <span><b>Same opony</b>do przełożenia</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Skąd opony</legend>
+          <div class="op-wybor dwa">
+            <label><input type="radio" name="skad" value="wlasne" checked>
+              <span><b>Mam swoje</b>przywożę komplet</span></label>
+            <label><input type="radio" name="skad" value="zamowienie">
+              <span><b>Proszę o wycenę</b>dobierzcie i zamówcie</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Dodatkowo</legend>
+          <div class="op-wybor">
+            <label><input type="checkbox" name="tpms" value="tak">
+              <span><b>Auto ma czujniki ciśnienia</b>trzeba je przenieść przy przekładaniu</span></label>
+            <label><input type="checkbox" name="hotel" value="tak">
+              <span><b>Zostawiam stary komplet u Was</b>przechowanie do następnego sezonu</span></label>
+          </div>
+        </fieldset>
+
+        <div class="op-pola">
+          <div class="op-pole szeroko">
+            <label for="op-auto">Marka i model auta</label>
+            <input type="text" id="op-auto" name="auto" placeholder="np. Skoda Octavia 2018" required>
+          </div>
+          <div class="op-pole">
+            <label for="op-rozmiar">Rozmiar opon</label>
+            <input type="text" id="op-rozmiar" name="rozmiar" placeholder="np. 205/55 R16">
+            <small>Znajdziesz go na boku opony albo w dowodzie rejestracyjnym.</small>
+          </div>
+          <div class="op-pole">
+            <label for="op-termin">Kiedy najlepiej</label>
+            <input type="date" id="op-termin" name="termin">
+          </div>
+          <div class="op-pole">
+            <label for="op-imie">Imię i nazwisko</label>
+            <input type="text" id="op-imie" name="imie" required autocomplete="name">
+          </div>
+          <div class="op-pole">
+            <label for="op-telefon">Telefon</label>
+            <input type="tel" id="op-telefon" name="telefon" required autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="op-podsum" id="op-podsum" aria-live="polite">
+          <b>ok. 30 minut</b>
+          <span>Całe koła na felgach, opony własne. Termin potwierdzamy telefonicznie.</span>
+        </div>
+
+        <div class="op-zgoda">
+          <input type="checkbox" id="op-zgoda" name="consent" required>
+          <label for="op-zgoda">
+            Zgadzam się na kontakt telefoniczny w sprawie tego zgłoszenia i przetwarzanie
+            podanych danych w celu umówienia wizyty.
+          </label>
+        </div>
+
+        <button type="submit" class="op-wyslij" id="op-wyslij">Zarezerwuj termin</button>
+      </form>
+
+      <div class="op-ok" id="op-ok">
+        <b>Zgłoszenie przyjęte</b>
+        <p>Oddzwonimy w godzinach pracy warsztatu i potwierdzimy konkretną godzinę. Do zobaczenia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
 
   <footer class="site-footer">
     <div class="wrap footer-row">
@@ -500,6 +710,8 @@
   <span class="dot" aria-hidden="true"></span>
   Zapytaj o naprawę
 </button>
+
+
 
 <div class="chat-panel" id="chat-panel" role="dialog" aria-modal="false" aria-labelledby="chat-title">
   <div class="chat-head">
@@ -654,6 +866,117 @@
     e.preventDefault();
     var t = pole.value.trim(); if (!t) return;
     pole.value = ''; odpowiedz(t);
+  });
+})();
+</script>
+
+
+<script>
+/* ————— SEZON OPON —————
+   Osobny strumien zgloszen. Idzie tym samym kanalem co reszta, ale z
+   wlasnym form_key — po drugiej stronie da sie je rozdzielic na osobny
+   kalendarz i osobna osobe, tak jak to dziala w warsztatach w sezonie. */
+(function () {
+  var form = document.getElementById('opony-form');
+  if (!form) return;
+
+  var LEAD = 'https://pmresearch.app.n8n.cloud/webhook/pm-lead-capture';
+  var podsum = document.getElementById('op-podsum');
+  var ok = document.getElementById('op-ok');
+  var btn = document.getElementById('op-wyslij');
+
+  function stan() {
+    var d = new FormData(form);
+    return {
+      zakres: d.get('zakres'),
+      skad: d.get('skad'),
+      tpms: !!d.get('tpms'),
+      hotel: !!d.get('hotel')
+    };
+  }
+
+  /* Czas liczony z tych samych zaleznosci, ktore decyduja przy stanowisku:
+     przelozenie opon z obreczy trwa dluzej niz przykrecenie gotowych kol. */
+  function przelicz() {
+    var s = stan();
+    var minuty = s.zakres === 'opony' ? 60 : 30;
+    if (s.tpms && s.zakres === 'opony') minuty += 15;
+    if (s.hotel) minuty += 10;
+
+    var opis = [];
+    opis.push(s.zakres === 'opony' ? 'Same opony do przełożenia' : 'Całe koła na felgach');
+    opis.push(s.skad === 'zamowienie' ? 'z doborem i zamówieniem opon' : 'opony własne');
+    if (s.tpms) opis.push('z czujnikami ciśnienia');
+    if (s.hotel) opis.push('ze zdaniem kompletu na przechowanie');
+
+    var uwaga = s.skad === 'zamowienie'
+      ? ' Przy zamówieniu opon oddzwonimy najpierw z propozycją i ceną, dopiero potem ustalamy termin.'
+      : ' Termin potwierdzamy telefonicznie.';
+
+    podsum.innerHTML = '<b>ok. ' + minuty + ' minut</b><span>' + opis.join(', ') + '.' + uwaga + '</span>';
+    return { minuty: minuty, opis: opis.join(', ') };
+  }
+
+  form.addEventListener('change', przelicz);
+  przelicz();
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var d = new FormData(form);
+    var zgoda = form.querySelector('#op-zgoda');
+
+    if (!d.get('auto') || !d.get('imie') || !d.get('telefon')) {
+      var brak = form.querySelector('input[required]:invalid') ||
+                 form.querySelector('#op-auto');
+      brak && brak.focus();
+      return;
+    }
+    if (!zgoda.checked) { zgoda.focus(); return; }
+
+    var w = przelicz();
+    btn.disabled = true; btn.textContent = 'Wysyłam...';
+
+    var opis = [
+      'ZGŁOSZENIE SEZONOWE — WYMIANA OPON',
+      'Auto: ' + (d.get('auto') || '—'),
+      'Rozmiar: ' + (d.get('rozmiar') || 'nie podano'),
+      'Zakres: ' + w.opis,
+      'Szacowany czas: ' + w.minuty + ' min',
+      'Preferowany termin: ' + (d.get('termin') || 'dowolny')
+    ].join(' | ');
+
+    fetch(LEAD, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        /* wlasny klucz — po nim rozdziela sie kalendarz warsztatu od sezonowego */
+        form_key: 'opony-sezon',
+        imie: d.get('imie'),
+        telefon: d.get('telefon'),
+        email: '',
+        tresc: opis,
+        consent: true,
+        zrodlo: 'demo-serwis-podkarpacki',
+        /* osobne pola, zeby nie trzeba bylo parsowac tekstu */
+        usluga: 'wymiana opon',
+        auto: d.get('auto') || '',
+        rozmiar_opon: d.get('rozmiar') || '',
+        zakres: d.get('zakres'),
+        opony_skad: d.get('skad'),
+        czujniki_tpms: !!d.get('tpms'),
+        przechowanie: !!d.get('hotel'),
+        termin_preferowany: d.get('termin') || '',
+        czas_szacowany_min: w.minuty
+      })
+    }).then(function () {
+      form.style.display = 'none';
+      ok.classList.add('show');
+      ok.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    }).catch(function () {
+      /* nie udajemy sukcesu — klient musi wiedziec, ze zgloszenie nie doszlo */
+      btn.disabled = false; btn.textContent = 'Zarezerwuj termin';
+      podsum.innerHTML = '<b>Nie udało się wysłać</b><span>Zadzwoń do nas — przyjmiemy zgłoszenie od ręki.</span>';
+    });
   });
 })();
 </script>
