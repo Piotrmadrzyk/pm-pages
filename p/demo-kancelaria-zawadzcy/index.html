@@ -1121,42 +1121,42 @@
 
   var RODZAJE = {
     'nakaz-upominawczy': {
-      nazwa: 'Sprzeciw od nakazu zapłaty', dni: 14,
+      nazwa: 'Sprzeciw od nakazu zapłaty', dni: 14, art: 'art. 480(2) i 505 KPC',
       co: 'Sprzeciw wnosi się do sądu, który wydał nakaz. Nie musi zawierać pełnego uzasadnienia — samo wniesienie w terminie powoduje, że nakaz traci moc w całości i sprawa idzie do zwykłego postępowania.',
-      uwaga: 'Po tym terminie nakaz staje się prawomocny i komornik może na jego podstawie prowadzić egzekucję.'
+      uwaga: 'Po tym terminie nakaz staje się prawomocny i komornik może na jego podstawie prowadzić egzekucję. Jeśli nakaz doręczono poza Polską, termin jest dłuższy: miesiąc na terenie UE, trzy miesiące poza nią.'
     },
     'nakaz-nakazowy': {
-      nazwa: 'Zarzuty od nakazu zapłaty', dni: 14,
+      nazwa: 'Zarzuty od nakazu zapłaty', dni: 14, art: 'art. 480(2) i 491 KPC',
       co: 'Zarzuty muszą wskazywać, co się kwestionuje, i zawierać wnioski dowodowe — inaczej niż przy sprzeciwie w postępowaniu upominawczym. Podlegają też opłacie sądowej.',
-      uwaga: 'Nakaz w postępowaniu nakazowym jest od razu tytułem zabezpieczenia — rachunek może zostać zajęty jeszcze przed prawomocnością.'
+      uwaga: 'Nakaz w postępowaniu nakazowym jest od razu tytułem zabezpieczenia — rachunek może zostać zajęty jeszcze przed prawomocnością. Przy doręczeniu poza Polską termin wynosi miesiąc (UE) lub trzy miesiące (poza UE).'
     },
     'wyrok-zaoczny': {
-      nazwa: 'Sprzeciw od wyroku zaocznego', dni: 14,
+      nazwa: 'Sprzeciw od wyroku zaocznego', dni: 14, art: 'art. 344 KPC',
       co: 'Sprzeciw wnosi się do sądu, który wydał wyrok. Warto od razu wyjaśnić, dlaczego nie doszło do stawienia się na rozprawie.',
       uwaga: 'Wyrok zaoczny bywa natychmiast wykonalny — sam sprzeciw nie zawsze to wstrzymuje, trzeba o to osobno wnioskować.'
     },
     'uzasadnienie': {
-      nazwa: 'Wniosek o pisemne uzasadnienie', dni: 7,
+      nazwa: 'Wniosek o pisemne uzasadnienie', dni: 7, art: 'art. 328 KPC',
       co: 'To krótkie pismo, ale kluczowe: bez wniosku o uzasadnienie w terminie nie da się później skutecznie wnieść apelacji. Wniosek podlega opłacie, którą zalicza się potem na poczet apelacji.',
       uwaga: 'To najkrótszy i najczęściej przegapiany termin w całym postępowaniu cywilnym.'
     },
     'apelacja': {
-      nazwa: 'Apelacja', dni: 14,
+      nazwa: 'Apelacja', dni: 14, art: 'art. 369 KPC',
       co: 'Apelację wnosi się do sądu, który wydał wyrok, a ten przekazuje ją instancji wyższej. Musi wskazywać, co się zaskarża i czego się żąda.',
-      uwaga: 'Termin biegnie od doręczenia wyroku z uzasadnieniem — nie od rozprawy.'
+      uwaga: 'Termin biegnie od doręczenia wyroku z uzasadnieniem — nie od rozprawy. Jeśli wniosek o uzasadnienie nie został złożony w ciągu tygodnia, termin apelacji liczy się od dnia, w którym ten tydzień upłynął.'
     },
     'zazalenie': {
-      nazwa: 'Zażalenie', dni: 7,
+      nazwa: 'Zażalenie', dni: 7, art: 'art. 394 KPC',
       co: 'Zażalenie dotyczy postanowień wpadkowych — na przykład o kosztach, zabezpieczeniu albo odrzuceniu pisma.',
-      uwaga: 'Nie na każde postanowienie przysługuje zażalenie; warto to sprawdzić przed napisaniem pisma.'
+      uwaga: 'Termin biegnie od doręczenia postanowienia <b>wraz z uzasadnieniem</b>, a nie od samego ogłoszenia. Nie na każde postanowienie zażalenie przysługuje — warto to sprawdzić przed napisaniem pisma.'
     },
     'praca': {
-      nazwa: 'Odwołanie do sądu pracy', dni: 21,
+      nazwa: 'Odwołanie do sądu pracy', dni: 21, art: 'art. 264 Kodeksu pracy',
       co: 'Odwołanie od wypowiedzenia wnosi się do sądu pracy właściwego dla siedziby pracodawcy albo miejsca wykonywania pracy. Postępowanie jest wolne od opłaty przy roszczeniach do 50 000 zł.',
       uwaga: 'Ten sam termin dotyczy zwolnienia dyscyplinarnego i żądania sprostowania świadectwa pracy.'
     },
     'administracja': {
-      nazwa: 'Odwołanie od decyzji', dni: 14,
+      nazwa: 'Odwołanie od decyzji', dni: 14, art: 'art. 129 KPA',
       co: 'Odwołanie składa się za pośrednictwem organu, który wydał decyzję — nie bezpośrednio do organu wyższego stopnia. Nie musi mieć rozbudowanego uzasadnienia.',
       uwaga: 'Jeśli w decyzji podano inny termin, obowiązuje ten z pouczenia — sprawdź je zanim policzysz.'
     }
@@ -1252,7 +1252,7 @@
 
     wynik.innerHTML =
       licznik +
-      '<p class="term-do">' + r.nazwa + ' — termin upływa <b>' + polski(w.koniec) + '</b>' +
+      '<p class="term-do">' + r.nazwa + ' (' + r.art + ') — termin upływa <b>' + polski(w.koniec) + '</b>' +
       (w.przesuniety ? ' (przesunięty, bo ' + r.dni + '. dzień wypadał w dzień wolny)' : '') +
       '</p>' +
       (zostalo < 0 ? trescPoTerminie :
@@ -1264,7 +1264,8 @@
       '<p class="term-zastrz"><b>To wyliczenie orientacyjne.</b> Terminy liczymy od dnia następnego ' +
       'po doręczeniu, z przesunięciem z dni wolnych. O zachowaniu terminu decyduje data nadania ' +
       'w placówce pocztowej, nie wpływu do sądu. W konkretnej sprawie mogą obowiązywać terminy ' +
-      'szczególne albo inne pouczenie w piśmie — przed działaniem potwierdź to z prawnikiem.</p>';
+      'szczególne albo inne pouczenie w piśmie — przed działaniem potwierdź to z prawnikiem. '+
+      'Terminy zweryfikowane z treścią przepisów w sierpniu 2026.</p>';
   }
 
   form.addEventListener('change', pokaz);
