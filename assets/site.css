@@ -996,7 +996,7 @@ body > *{position:relative;z-index:1}
 .tlo-foto{position:relative;background-size:cover;background-position:center;isolation:isolate}
 .tlo-foto::before{
   content:"";position:absolute;inset:0;z-index:0;
-  background:linear-gradient(100deg,var(--ink) 4%,rgba(7,8,11,.93) 38%,rgba(7,8,11,.86) 72%,rgba(7,8,11,.74) 100%);
+  background:linear-gradient(100deg,var(--ink) 2%,rgba(7,8,11,.9) 30%,rgba(7,8,11,.66) 62%,rgba(7,8,11,.34) 100%);
 }
 .tlo-foto > .wrap{position:relative;z-index:1}
 @media(max-width:900px){
@@ -1108,4 +1108,48 @@ body > *{position:relative;z-index:1}
   .wpis{padding:48px 0 64px}
   .wpis-tresc{font-size:16.5px}
   .wpis-tresc h2{font-size:26px}
+}
+
+
+/* ---------- sekcja: tekst obok widocznego zdjecia ----------
+   Tlo sekcji zawsze jest tylko tlem. Tu zdjecie jest trescia:
+   pelna wielkosc, wlasna ramka, nic go nie przykrywa. */
+.duo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+.duo-tekst h2{margin-bottom:16px}
+.duo-foto{
+  position:relative;border-radius:var(--r);overflow:hidden;
+  border:1px solid var(--line);box-shadow:0 30px 70px rgba(0,0,0,.5);
+}
+.duo-foto img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover}
+.duo-foto figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:22px 20px 16px;
+  background:linear-gradient(180deg,transparent,rgba(7,8,11,.92));
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:#C6CCD6;
+}
+.duo.odwrotnie .duo-tekst{order:2}
+@media(max-width:900px){
+  .duo{grid-template-columns:1fr;gap:32px}
+  .duo.odwrotnie .duo-tekst{order:0}
+}
+
+/* pas przerywnikowy — samo zdjecie i jedno zdanie */
+.pas{
+  position:relative;min-height:300px;display:flex;align-items:center;
+  background-size:cover;background-position:center;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.pas::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(7,8,11,.94) 6%,rgba(7,8,11,.6) 52%,rgba(7,8,11,.2) 100%);
+}
+.pas .wrap{position:relative;z-index:2}
+.pas p{
+  font-family:var(--f-display);font-size:clamp(26px,3.4vw,42px);line-height:1.25;
+  max-width:19ch;color:#F4F6F8;margin:0;
+}
+.pas em{color:var(--amber-2);font-style:italic}
+@media(max-width:760px){
+  .pas{min-height:auto;padding:52px 0}
+  .pas::before{background:linear-gradient(180deg,rgba(7,8,11,.9),rgba(7,8,11,.94))}
 }
