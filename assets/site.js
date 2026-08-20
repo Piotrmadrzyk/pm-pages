@@ -400,25 +400,89 @@ var SOCIAL = {
       var polaFirmy = document.querySelector('[data-pola-firmy]');
       var polaFirmyInput = polaFirmy ? polaFirmy.querySelector('#k-firma') : null;
 
-      box.addEventListener('click', function (e) {
-        var chip = e.target.closest('.temat-chip');
-        if (!chip) return;
+      /* Wejscie z odnosnika typu kontakt.html#analiza-strony ma od razu
+         zaznaczyc wlasciwy temat — klient nie powinien wybierac dwa razy
+         tego samego. */
+      function zaznacz(chip) {
         Array.prototype.forEach.call(box.querySelectorAll('.temat-chip'), function (x) {
           x.setAttribute('aria-pressed', String(x === chip));
         });
         if (pole) pole.value = chip.dataset.temat || '';
-
         if (polaFirmy) {
           polaFirmy.classList.add('widoczne');
-          /* Przy "Coś innego" nie wiadomo jeszcze, czego sprawa dotyczy,
-             wiec nie zmuszamy do podawania firmy. */
           var wymagaj = chip.dataset.temat !== 'Coś innego';
           if (polaFirmyInput) polaFirmyInput.required = wymagaj;
         }
+      }
+
+      var kotwica = (location.hash || '').replace('#', '');
+      if (kotwica) {
+        var zHash = box.querySelector('[data-kotwica="' + kotwica + '"]');
+        if (zHash) {
+          zaznacz(zHash);
+          setTimeout(function () {
+            zHash.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          }, 240);
+        }
+      }
+
+      box.addEventListener('click', function (e) {
+        var chip = e.target.closest('.temat-chip');
+        if (!chip) return;
+        /* Przy "Coś innego" nie wiadomo jeszcze, czego sprawa dotyczy,
+           wiec zaznacz() nie zmusza tam do podawania firmy. */
+        zaznacz(chip);
       });
     })();
 
     var LEAD_ENDPOINT = 'https://pmresearch.app.n8n.cloud/webhook/pm-lead-capture';
+
+    /* ---------- zapis na liste ----------
+       Idzie tym samym kanalem co formularze, tylko z innym form_key,
+       zeby po drugiej stronie dalo sie to rozroznic. Zgoda jest
+       wymagana tak samo jak wszedzie indziej. */
+    Array.prototype.forEach.call(document.querySelectorAll('[data-news-form]'), function (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var mail = form.querySelector('input[type="email"]');
+        var zgoda = form.querySelector('input[type="checkbox"]');
+        var ok = document.querySelector(form.dataset.newsOk || '');
+        var btn = form.querySelector('button[type="submit"]');
+
+        if (!mail || !mail.value || mail.value.indexOf('@') < 1) {
+          mail && mail.focus();
+          return;
+        }
+        if (zgoda && !zgoda.checked) { zgoda.focus(); return; }
+
+        if (btn) { btn.disabled = true; btn.textContent = 'Zapisuję...'; }
+
+        fetch(LEAD_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            form_key: 'lista',
+            imie: '',
+            email: mail.value.trim(),
+            telefon: '',
+            tresc: 'Zapis na listę · ' + (form.dataset.skad || document.title),
+            consent: true,
+            zrodlo: 'probatum.pl'
+          })
+        }).then(function () {
+          form.style.display = 'none';
+          if (ok) ok.classList.add('show');
+        }).catch(function () {
+          if (btn) { btn.disabled = false; btn.textContent = 'Zapisz mnie'; }
+          /* Nie udajemy sukcesu, gdy wysylka padla — lepiej pokazac
+             alternatywna droge niz skasowac zgloszenie po cichu. */
+          var err = form.querySelector('.news-mini');
+          if (err) err.innerHTML = 'Nie udało się zapisać. Napisz na ' +
+            '<a href="mailto:piotr.aparat@gmail.com" style="color:var(--amber-2)">piotr.aparat@gmail.com</a>, dopiszę ręcznie.';
+        });
+      });
+    });
+
 
     function qsParam(name) {
       var m = new RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
