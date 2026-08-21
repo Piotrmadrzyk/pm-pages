@@ -392,6 +392,7 @@ Sam dokument nie zawiera haseł — tylko mapę, co gdzie siedzi.
 | element | gdzie | uwagi |
 |---|---|---|
 | Kod | GitHub, `piotrmadrzyk/pm-pages`, gałąź `main` | publiczne |
+| Kolejka zadań | `DO-ZROBIENIA.md` w repozytorium | subdomeny demo i reszta |
 | Hosting i publikacja | Vercel, projekt `przewagametoda-preview` | podpięty do repozytorium, publikuje sam po `git push` |
 | Domena | `probatum.pl` + `www.probatum.pl` | obsługiwane przez ten sam projekt na Vercelu |
 | Drugie wystawienie | GitHub Pages | `piotrmadrzyk.github.io/pm-pages/` — stąd idą podglądy demo |
