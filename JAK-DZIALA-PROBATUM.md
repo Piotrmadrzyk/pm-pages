@@ -140,7 +140,7 @@ uruchomieniu `build.py` twoje zmiany znikną bez ostrzeżenia i bez śladu.
 index.html              o-donie.html         oferta.html
 realizacje.html         automatyzacja.html   wycena.html
 kontakt.html            warsztat.html        blog.html
-blog/*.html             warsztat/*.html
+blog/*.html             warsztat/*.html      p/katalog-*.html
 ```
 
 ### EDYTUJ — to są prawdziwe źródła
@@ -305,6 +305,48 @@ ruszaj demo**.
 z obrazkami wklejonymi wprost w kod (przez co ważą po kilka megabajtów) i bez
 późniejszych poprawek. **Nie publikuj z nich niczego** — cofnęłoby to całą
 robotę nad demo.
+
+---
+
+## 7a. KATALOGI FUNKCJI (`p/katalog-*.html`)
+
+Przy każdym demo na stronie „Realizacje" jest przycisk **„Zobacz, co ta strona
+potrafi →"**. Prowadzi do katalogu: prezentacji, w której klient przechodzi
+funkcja po funkcji i przy każdej zaznacza „Wybieram" albo „Wstępnie
+zainteresowany". Na końcu dostaje listę, a jego wybory trafiają do n8n.
+
+**To też jest generowane** — nie edytuj `p/katalog-*.html` ręcznie.
+
+```
+build/katalogi.py            <- treść wszystkich czterech katalogów (to edytujesz)
+assets/katalog.css           <- wygląd, wspólny dla wszystkich
+assets/katalog.js            <- mechanizm, wspólny dla wszystkich
+p/katalog-lawenda.html       <- WYNIK, nadpisywany
+p/katalog-zawadzcy.html      <- WYNIK, nadpisywany
+p/katalog-dom.html           <- WYNIK, nadpisywany
+p/katalog-serwis.html        <- WYNIK, nadpisywany
+```
+
+Budowanie: `cd build && python3 katalogi.py`
+(to osobne polecenie niż `build.py` — katalogi nie są częścią strony głównej)
+
+**Jak dodać funkcję do katalogu:** w `build/katalogi.py` znajdź właściwe demo
+i dopisz krotkę do listy `dziala` albo nazwę do listy `dodac`. Format opisany
+w komentarzu na górze pliku.
+
+**Podglądy po prawej to nie zrzuty ekranu, tylko żywe podstrony demo**
+wczytywane w ramce i ustawiane na właściwej sekcji. Dlatego przy każdej funkcji
+podaje się adres z kotwicą, np. `index.html#wymiana-opon`. Jeśli w demo zmieni
+się nazwa kotwicy, podgląd pokaże górę strony zamiast opisywanej funkcji —
+wtedy trzeba poprawić adres w `katalogi.py`.
+
+Wybory klientów idą do jednego wspólnego webhooka
+`probatum-katalog-wybory`, a w treści zgłoszenia jest pole `demo`, po którym
+poznasz, z którego katalogu przyszło.
+
+Katalog Zielonej Pergoli mieszka w osobnym repozytorium
+(`radosc-website-preview/oferta.html`) i ma własny, starszy mechanizm — nie jest
+generowany przez `katalogi.py`.
 
 ---
 
