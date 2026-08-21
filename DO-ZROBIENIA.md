@@ -5,6 +5,81 @@ ze zmianą.
 
 ---
 
+## 0. 🔴 ŻADEN FORMULARZ NA STRONIE NIE DZIAŁA
+
+**Znalezione 21 sierpnia 2026 przy testowaniu formularza wyceny w katalogu.**
+
+Każde zgłoszenie z probatum.pl jest odrzucane przez n8n z odpowiedzią:
+
+```
+HTTP 422
+{"status":"BLAD","wiadomosc":"Nieznany lub brakujacy klucz formularza (form_key)."}
+```
+
+Sprawdzone na żywo, po kolei, z pełnym poprawnym zgłoszeniem. **Wszystkie
+osiem kluczy odrzuconych**, także te używane od dawna.
+
+### Dlaczego
+
+Workflow **PM Agent OS — Lead Capture (Etap 3D)** (`HwH2M5e12fug5xLW`) po
+odebraniu zgłoszenia szuka kampanii w tabeli **`PM_kampanie`** po kolumnie
+`form_key`. Jeśli nie znajdzie wiersza — odsyła 422 i **zgłoszenie przepada**.
+
+Znaczy to, że w `PM_kampanie` nie ma wierszy z kluczami, których używa strona
+(albo mają inne wartości w kolumnie `form_key` — nie mam narzędzia, żeby
+odczytać zawartość tabeli, więc tego nie rozstrzygnę z zewnątrz).
+
+### Klucze, które strona wysyła i które muszą mieć swój wiersz
+
+| klucz | skąd wychodzi |
+|---|---|
+| `kontakt` | formularz na podstronie Kontakt |
+| `wycena` | formularz na podstronie Wyceń projekt |
+| `lista` | zapis na newsletter |
+| `lista-agenty` | lista pierwszeństwa na podstronie Agenci |
+| `katalog-lawenda` | prośba o wycenę w katalogu Studia Lawenda |
+| `katalog-zawadzcy` | katalog Kancelarii Zawadzcy |
+| `katalog-dom` | katalog Dom i Wnętrze |
+| `katalog-serwis` | katalog Serwisu Podkarpackiego |
+
+### Jak to naprawić
+
+W tabeli `PM_kampanie` (n8n, id `NKeLThYjECSaG3fH`) dodać po jednym wierszu
+na każdy klucz. Minimum, którego wymaga workflow, to wypełnione:
+
+- **`form_key`** — dokładnie jak w tabeli wyżej,
+- **`campaign_id`** — dowolny własny identyfikator, np. `probatum-kontakt`;
+  po nim odróżnisz źródło leada i po nim działa odsiewanie duplikatów.
+
+Reszta kolumn (`sequence_id`, `slug`, `nadawca`) może zostać pusta — workflow
+sobie z tym radzi. `sequence_id` wypełnij tylko wtedy, gdy dane zgłoszenie
+ma uruchamiać sekwencję mailową.
+
+### ⚠️ Czego świadomie NIE zrobiłem
+
+**Nie dopisałem tych wierszy sam.** `PM_kampanie` to twoje dane produkcyjne
+w systemie, który budujesz równolegle w innym miejscu — dopisanie kampanii
+zmienia sposób przypisywania leadów i to jest twoja decyzja, nie moja.
+Zgłoszenie testowe, które wysłałem, zostało odrzucone, więc **nic nie zapisało
+się w PM_leady**.
+
+### Jak sprawdzić, czy naprawione
+
+```bash
+curl -s -X POST "https://pmresearch.app.n8n.cloud/webhook/pm-lead-capture" \
+ -H "Content-Type: application/json" \
+ -d '{"form_key":"kontakt","imie":"Test","email":"test@probatum.pl",
+      "telefon":"000000000","tresc":"Test — mozna skasowac","consent":true}'
+```
+
+Ma odpowiedzieć `{"status":"OK","lead_id":"lead_..."}`. Jeśli dalej 422 —
+klucz w tabeli nie zgadza się co do znaku.
+
+**Dopóki to nie jest naprawione, uruchomienie strony na właściwej domenie
+nie ma sensu — każde zapytanie od klienta przepadnie bez śladu.**
+
+---
+
 ## 1. Subdomeny dla stron demonstracyjnych ⏳
 
 **Cel:** żeby demo miały adresy `lawenda.probatum.pl` zamiast
