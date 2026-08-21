@@ -340,4 +340,8 @@ button:focus-visible, a:focus-visible{outline:2px solid var(--focus); outline-of
   box-shadow:0 2px 10px rgba(0,0,0,.25);
 }
 .framecard-live .live-open:hover{background:#15321F}
-@media (max-width:900px){ .framecard-live{aspect-ratio:16/12} }
+/* Na telefonie ramka jest waska, wiec przy proporcji 16/12 podglad mialby
+   niecale 300 px wysokosci — za malo, zeby cokolwiek z niego wyczytac.
+   Kwadrat daje wiecej strony w pionie przy tej samej szerokosci. */
+@media (max-width:900px){ .framecard-live{aspect-ratio:1/1} }
+@media (max-width:520px){ .framecard-live{aspect-ratio:4/5} }

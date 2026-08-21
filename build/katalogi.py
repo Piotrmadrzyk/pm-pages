@@ -421,6 +421,14 @@ DEMA = {
 #  SKŁADANIE
 # ══════════════════════════════════════════════════════════════════════════
 
+def odcisk(sciezka):
+    """Skrot z zawartosci pliku, doklejany do adresu CSS/JS — zeby po poprawce
+    przegladarka nie serwowala starej wersji z pamieci podrecznej."""
+    import hashlib
+    with open(sciezka, 'rb') as f:
+        return hashlib.sha1(f.read()).hexdigest()[:10]
+
+
 def e(s):
     return html.escape(s, quote=False)
 
@@ -452,6 +460,7 @@ def slajd_funkcji(sekcja, nr, ile, poz, baza, licznik_etykieta):
 
 
 def zbuduj(klucz, d):
+    global ODCISK_CSS, ODCISK_JS
     baza = d['baza']
     dziala = d['dziala']
     pula = dict(WSPOLNE_DODATKI); pula.update(d.get('wlasne_dodatki', {}))
@@ -494,7 +503,7 @@ def zbuduj(klucz, d):
         <p>Podoba mi się, ale decyzja później — do omówienia przy wycenie.</p>
       </div>
     </div>
-    <p class="intro-note">Po prawej stronie każdego slajdu widać <b>tę funkcję działającą na żywo</b> — to nie są zrzuty ekranu, tylko prawdziwa strona, którą można otworzyć i kliknąć. Zaznaczenia zapisują się w tej przeglądarce i zbierają na ostatnim slajdzie. Nawigacja: strzałki &larr; &rarr;, spacja albo przyciski w rogu. Klawisz <b>M</b> otwiera spis treści.</p>
+    <p class="intro-note">Przy każdym slajdzie widać <b>tę funkcję działającą na żywo</b> — to nie są zrzuty ekranu, tylko prawdziwa strona, którą można otworzyć i kliknąć. Zaznaczenia zapisują się w tej przeglądarce i zbierają na ostatnim slajdzie. Nawigacja: strzałki &larr; &rarr;, spacja albo przyciski w rogu. Klawisz <b>M</b> otwiera spis treści.</p>
   </div>
 </section>''')
     toc.append('<li><button data-jump="intro">Jak korzystać</button></li>')
@@ -560,6 +569,7 @@ def zbuduj(klucz, d):
         slajdy='\n'.join(slajdy), toc='\n'.join(toc),
         id=klucz, demo=e(d['nazwa']),
         pozycje=repr(pozycje).replace("'", '"'),
+        css=ODCISK_CSS, js=ODCISK_JS,
     )
 
 
@@ -571,7 +581,7 @@ SZKIELET = '''<!DOCTYPE html>
 <meta name="robots" content="noindex, nofollow">
 <title>%(tytul)s</title>
 <meta name="description" content="%(opis)s">
-<link rel="stylesheet" href="../assets/katalog.css">
+<link rel="stylesheet" href="../assets/katalog.css?v=%(css)s">
 </head>
 <body>
 <div class="deck">
@@ -618,13 +628,17 @@ window.KATALOG = {
   pozycje: %(pozycje)s
 };
 </script>
-<script src="../assets/katalog.js"></script>
+<script src="../assets/katalog.js?v=%(js)s"></script>
 </body>
 </html>
 '''
 
 
 if __name__ == '__main__':
+    ASSETS = os.path.abspath(os.path.join(KAT, '..', 'assets'))
+    ODCISK_CSS = odcisk(os.path.join(ASSETS, 'katalog.css'))
+    ODCISK_JS  = odcisk(os.path.join(ASSETS, 'katalog.js'))
+    print('odcisk CSS: %s   odcisk JS: %s' % (ODCISK_CSS, ODCISK_JS))
     ile = 0
     for klucz, d in DEMA.items():
         html_out = zbuduj(klucz, d)
