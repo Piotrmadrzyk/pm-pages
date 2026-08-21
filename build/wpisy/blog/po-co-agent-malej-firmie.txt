@@ -1,0 +1,29 @@
+tytul: Po co małej firmie agent, skoro ma pracownika
+data: 2026-08-20
+opis: Najczęstsze pytanie, jakie słyszę. Odpowiedź nie brzmi „żeby zwolnić pracownika".
+---
+Za każdym razem, gdy mówię o automatyzacji, pada to samo zdanie: *„my jesteśmy za mali"*. Zwykle z tym samym uzasadnieniem — że przecież ktoś już to robi.
+
+I to prawda. Ktoś to robi. Pytanie brzmi, **czy to jest praca, za którą warto płacić człowiekowi**.
+
+## Trzy rzeczy, które człowiek robi gorzej od automatu
+
+Nie dlatego, że jest gorszy. Dlatego, że jest człowiekiem.
+
+- **Nie zapomina.** Automat nie ma gorszego dnia i nie zgubi zapytania w piątek o siedemnastej.
+- **Nie śpi.** Klient, który pisze o dwudziestej trzeciej, dostanie potwierdzenie o dwudziestej trzeciej.
+- **Nie nudzi się.** Przepisanie dwustu wierszy z maila do arkusza to praca, po której człowiek zaczyna popełniać błędy. Automat po dwustym wierszu jest dokładnie tak samo skupiony jak po pierwszym.
+
+## I trzy, których nie zrobi za człowieka
+
+- Nie zadzwoni do klienta, który się waha.
+- Nie zdecyduje, że tej oferty lepiej nie wysyłać.
+- Nie weźmie odpowiedzialności, gdy coś pójdzie nie tak.
+
+## O co naprawdę chodzi
+
+Automatyzacja w małej firmie nie polega na zastąpieniu kogokolwiek. Polega na tym, żeby **osoba, która zna się na rzeczy, przestała przepisywać dane z maila do arkusza** i zajęła się tym, po co ją zatrudniłeś.
+
+Godzina dziennie to dwadzieścia godzin miesięcznie. Policz, ile kosztuje Twoja godzina, a potem zdecyduj, czy warto ją oddawać za przeklejanie.
+
+W [Warsztacie](../warsztat.html) pokazuję, jak zbudować takie rzeczy samodzielnie — pierwsza instrukcja zajmuje dwadzieścia minut i nie wymaga umiejętności programowania.

@@ -478,7 +478,7 @@ var SOCIAL = {
              alternatywna droge niz skasowac zgloszenie po cichu. */
           var err = form.querySelector('.news-mini');
           if (err) err.innerHTML = 'Nie udało się zapisać. Napisz na ' +
-            '<a href="mailto:piotr.aparat@gmail.com" style="color:var(--amber-2)">piotr.aparat@gmail.com</a>, dopiszę ręcznie.';
+            '<a href="mailto:kontakt@probatum.pl" style="color:var(--amber-2)">kontakt@probatum.pl</a>, dopiszę ręcznie.';
         });
       });
     });

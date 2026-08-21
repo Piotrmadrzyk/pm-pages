@@ -1,0 +1,59 @@
+tytul: Pierwsza automatyzacja: powiadomienie o nowym zapytaniu
+data: 2026-08-20
+opis: Formularz na stronie wysyła maila, którego i tak przegapisz. Zrobimy tak, żeby zapytanie samo znalazło Cię na telefonie.
+czas: 20 minut
+poziom: dla początkujących
+narzedzia: n8n, Telegram
+
+---
+Większość firm traci zapytania nie dlatego, że ich nie dostaje, tylko dlatego, że **dowiaduje się o nich za późno**. Mail ląduje w skrzynce obok siedemnastu newsletterów, a klient w tym czasie pisze do trzech innych firm.
+
+Ta automatyzacja robi jedną rzecz: gdy ktoś wypełni formularz, w ciągu kilku sekund dostajesz wiadomość na telefon. Nie mail. Wiadomość, którą zobaczysz.
+
+## Co będzie potrzebne
+
+- konto w n8n (darmowy plan wystarczy na start)
+- aplikacja Telegram na telefonie
+- formularz na stronie, który już masz
+
+## Krok 1. Załóż bota, który będzie do Ciebie pisał
+
+W Telegramie odszukaj `@BotFather` i wyślij mu polecenie `/newbot`. Poda Ci nazwę bota i **token** — długi ciąg znaków. Zapisz go, zaraz się przyda.
+
+> Token to hasło do Twojego bota. Nie wklejaj go nigdzie publicznie.
+
+## Krok 2. Dowiedz się, gdzie ma pisać
+
+Napisz cokolwiek do swojego nowego bota, a potem otwórz w przeglądarce adres, w którym zamiast `TOKEN` wstawisz swój token:
+
+```
+https://api.telegram.org/botTOKEN/getUpdates
+```
+
+W odpowiedzi znajdziesz `"chat":{"id":123456789`. Ta liczba to Twój adres — bot będzie pisał właśnie tam.
+
+## Krok 3. Połącz formularz z botem
+
+W n8n stwórz nowy przepływ i dodaj dwa elementy:
+
+1. **Webhook** — to adres, pod który formularz wyśle dane. n8n pokaże Ci gotowy link.
+2. **Telegram → Send Message** — wklej token i numer z kroku drugiego.
+
+W treści wiadomości wstaw dane z formularza, na przykład tak:
+
+```
+Nowe zapytanie
+Imię: {{ $json.imie }}
+Telefon: {{ $json.telefon }}
+Treść: {{ $json.tresc }}
+```
+
+## Krok 4. Wskaż formularzowi, dokąd ma wysyłać
+
+W ustawieniach formularza na swojej stronie podmień adres wysyłki na link webhooka z n8n. Wyślij testowe zapytanie — wiadomość powinna dotrzeć w kilka sekund.
+
+## Co dalej
+
+To jest fundament. Na nim można dołożyć kolejne rzeczy: automatyczną odpowiedź do klienta, zapis do arkusza, przypomnienie, jeśli nie odpiszesz w ciągu doby.
+
+Ale zacznij od tego jednego kroku i pożyj z nim tydzień. Automatyzacja, której nie rozumiesz, jest gorsza niż jej brak — bo gdy przestanie działać, nie będziesz wiedział dlaczego.
