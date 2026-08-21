@@ -250,6 +250,76 @@
   });
   window.addEventListener('pagehide', function () { clearTimeout(notifyTimer); sendNotify(true); });
 
+  // ---------- prosba o wycene ----------
+  // Idzie tym samym kanalem co formularze na stronie (pm-lead-capture),
+  // zeby zgloszenie trafilo tam, gdzie wszystkie pozostale. Zaznaczenia
+  // wchodza do tresci, wiec od razu widac, o co klient prosi.
+  var LEAD_ENDPOINT = 'https://pmresearch.app.n8n.cloud/webhook/pm-lead-capture';
+
+  (function () {
+    var form = document.getElementById('wycena-form');
+    if (!form) return;
+    var status = document.getElementById('wycena-status');
+    var btn = document.getElementById('wycena-wyslij');
+
+    function pokaz(txt, klasa) {
+      if (!status) return;
+      status.textContent = txt;
+      status.className = 'wycena-status' + (klasa ? ' ' + klasa : '');
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var d = new FormData(form);
+      var imie = (d.get('imie') || '').trim();
+      var tel = (d.get('telefon') || '').trim();
+      var mail = (d.get('email') || '').trim();
+
+      if (!imie) { pokaz('Podaj imię — inaczej nie wiem, jak się zwracać.', 'zle'); return; }
+      if (!tel) { pokaz('Podaj telefon albo napisz w nim „tylko mail".', 'zle'); return; }
+      if (mail.indexOf('@') < 1) { pokaz('Sprawdź adres e-mail — wygląda na niepełny.', 'zle'); return; }
+      if (!d.get('consent')) { pokaz('Potrzebna jest zgoda na kontakt.', 'zle'); return; }
+      if ((d.get('strona_www') || '') !== '') { return; }   // robot spamujacy
+
+      var sel = currentSelections();
+      if (!sel.yes.length && !sel.maybe.length) {
+        pokaz('Najpierw zaznacz choć jedną funkcję — inaczej nie ma czego wyceniać.', 'zle');
+        return;
+      }
+
+      var tresc = 'Katalog funkcji: ' + (CFG.demo || DEMO_ID) + '\n\n';
+      if (sel.yes.length) tresc += 'WYBIERAM:\n- ' + sel.yes.join('\n- ') + '\n\n';
+      if (sel.maybe.length) tresc += 'WSTĘPNIE ZAINTERESOWANY:\n- ' + sel.maybe.join('\n- ');
+
+      if (btn) { btn.disabled = true; btn.textContent = 'Wysyłam...'; }
+      pokaz('');
+
+      fetch(LEAD_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          form_key: 'katalog-' + DEMO_ID,
+          imie: imie, email: mail, telefon: tel,
+          tresc: tresc,
+          consent: true,
+          zrodlo: 'probatum.pl',
+          demo: CFG.demo || DEMO_ID,
+          wybieram: sel.yes,
+          zainteresowany: sel.maybe
+        })
+      }).then(function () {
+        form.style.display = 'none';
+        var blok = document.getElementById('wycena-blok');
+        if (blok) {
+          blok.innerHTML = '<h3>Mamy to.</h3><p class="wycena-lede">Odezwiemy się z widełkami dla zaznaczonych funkcji, zwykle w 1–2 dni robocze. Listę możesz sobie skopiować przyciskiem wyżej.</p>';
+        }
+      }).catch(function () {
+        if (btn) { btn.disabled = false; btn.textContent = 'Poproś o wycenę'; }
+        pokaz('Nie udało się wysłać — sprawdź połączenie i spróbuj jeszcze raz.', 'zle');
+      });
+    });
+  })();
+
   // ---------- podsumowanie ----------
   function renderSummary() {
     var sumYes = document.getElementById('sum-yes');

@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Studio Lawenda — katalog funkcji | Probatum</title>
 <meta name="description" content="Funkcje, które ta strona już ma, i te, które można do niej dodać. Każda pokazana na żywo. Zaznacz, co Cię interesuje.">
-<link rel="stylesheet" href="../assets/katalog.css?v=950c9c2d3e">
+<link rel="stylesheet" href="../assets/katalog.css?v=5bf5334c71">
 </head>
 <body>
 <div class="deck">
@@ -446,6 +446,23 @@
       <button type="button" class="btn-reset-link" id="btn-reset-bottom">Wyczyść wszystkie zaznaczenia</button>
     </div>
     <p class="summary-hint" id="copy-hint" aria-live="polite"></p>
+
+    <div class="wycena" id="wycena-blok">
+      <h3>Chcesz wycenę tego zestawu?</h3>
+      <p class="wycena-lede">Zostaw kontakt — odeślemy widełki dla dokładnie tych funkcji, które zaznaczyłeś. Bez dzwonienia bez zapowiedzi i bez zapisywania na żadną listę.</p>
+      <form id="wycena-form" novalidate>
+        <div class="wycena-pola">
+          <label>Imię<input type="text" name="imie" autocomplete="given-name" required></label>
+          <label>Telefon<input type="tel" name="telefon" autocomplete="tel" required></label>
+          <label class="pelna">Adres e-mail<input type="email" name="email" autocomplete="email" required></label>
+        </div>
+        <label class="wycena-zgoda"><input type="checkbox" name="consent" required>
+          <span>Zgadzam się na kontakt w sprawie tej wyceny. Dane wykorzystamy wyłącznie w tym celu.</span></label>
+        <label class="pulapka" aria-hidden="true">Nie wypełniaj<input type="text" name="strona_www" tabindex="-1" autocomplete="off"></label>
+        <button type="submit" class="btn-start btn-small" id="wycena-wyslij">Poproś o wycenę</button>
+        <p class="wycena-status" id="wycena-status" aria-live="polite"></p>
+      </form>
+    </div>
   </div>
 </section>
 </div>
@@ -525,6 +542,6 @@ window.KATALOG = {
   pozycje: [["rezerwacja", "Rezerwacja terminu prosto ze strony", "feature"], ["asystent", "Asystent, który zna ofertę i ceny", "feature"], ["zespol", "Wiesz, kto Cię przyjmie", "feature"], ["cennik", "Ceny bez gwiazdek", "feature"], ["zabiegi", "Sześć zakresów, każdy opisany osobno", "feature"], ["bezpieczenstwo", "Sterylizacja, którą widać", "feature"], ["jedna_klientka", "Jedna klientka w danym czasie", "feature"], ["opinie", "Opinie klientek z imienia", "feature"], ["przed_wizyta", "Zanim przyjdziesz", "feature"], ["dojazd", "Jak do nas trafić", "feature"], ["telefon", "Telefon, w który się dotyka", "feature"], ["rodo", "Zgoda RODO przy każdym formularzu", "feature"], ["mobile", "Pełna wersja mobilna", "feature"], ["animacje", "Treść pojawia się przy przewijaniu", "feature"], ["platnosc", "Prawdziwa płatność online", "addition"], ["przypomnienia", "Przypomnienie SMS o wizycie", "addition"], ["karnety", "Karnety i vouchery na prezent", "addition"], ["lojalnosc", "Program lojalnościowy", "addition"], ["kalendarz_online", "Kalendarz z prawdziwą dostępnością", "addition"], ["messenger", "Bot na Messengerze i WhatsAppie", "addition"], ["voicebot", "Voicebot telefoniczny", "addition"], ["opinie_ai", "Opinie z automatyczną odpowiedzią", "addition"], ["social", "Generator postów na social media", "addition"], ["metamorfozy", "Galeria przed i po", "addition"], ["blog", "Blog i aktualności", "addition"], ["wideo", "Krótkie wideo na stronie", "addition"], ["panel", "Panel do samodzielnej edycji treści", "addition"], ["aplikacja", "Aplikacja bez sklepu z aplikacjami", "addition"], ["statystyki", "Statystyki bez ciasteczek", "addition"], ["jezyki", "Kolejna wersja językowa", "addition"], ["wcag", "Tryb wysokiego kontrastu i audyt dostępności", "addition"]]
 };
 </script>
-<script src="../assets/katalog.js?v=b4f75c97ff"></script>
+<script src="../assets/katalog.js?v=27472b292b"></script>
 </body>
 </html>

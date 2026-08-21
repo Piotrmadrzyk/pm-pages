@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Serwis Podkarpacki — katalog funkcji | Probatum</title>
 <meta name="description" content="Funkcje, które ta strona już ma, i te, które można do niej dodać. Każda pokazana na żywo. Zaznacz, co Cię interesuje.">
-<link rel="stylesheet" href="../assets/katalog.css?v=950c9c2d3e">
+<link rel="stylesheet" href="../assets/katalog.css?v=5bf5334c71">
 </head>
 <body>
 <div class="deck">
@@ -434,6 +434,23 @@
       <button type="button" class="btn-reset-link" id="btn-reset-bottom">Wyczyść wszystkie zaznaczenia</button>
     </div>
     <p class="summary-hint" id="copy-hint" aria-live="polite"></p>
+
+    <div class="wycena" id="wycena-blok">
+      <h3>Chcesz wycenę tego zestawu?</h3>
+      <p class="wycena-lede">Zostaw kontakt — odeślemy widełki dla dokładnie tych funkcji, które zaznaczyłeś. Bez dzwonienia bez zapowiedzi i bez zapisywania na żadną listę.</p>
+      <form id="wycena-form" novalidate>
+        <div class="wycena-pola">
+          <label>Imię<input type="text" name="imie" autocomplete="given-name" required></label>
+          <label>Telefon<input type="tel" name="telefon" autocomplete="tel" required></label>
+          <label class="pelna">Adres e-mail<input type="email" name="email" autocomplete="email" required></label>
+        </div>
+        <label class="wycena-zgoda"><input type="checkbox" name="consent" required>
+          <span>Zgadzam się na kontakt w sprawie tej wyceny. Dane wykorzystamy wyłącznie w tym celu.</span></label>
+        <label class="pulapka" aria-hidden="true">Nie wypełniaj<input type="text" name="strona_www" tabindex="-1" autocomplete="off"></label>
+        <button type="submit" class="btn-start btn-small" id="wycena-wyslij">Poproś o wycenę</button>
+        <p class="wycena-status" id="wycena-status" aria-live="polite"></p>
+      </form>
+    </div>
   </div>
 </section>
 </div>
@@ -512,6 +529,6 @@ window.KATALOG = {
   pozycje: [["opony", "Wymiana opon jako osobny strumień zgłoszeń", "feature"], ["umow", "Umów wizytę bez zbędnych formalności", "feature"], ["asystent", "Asystent, który zna usługi i widełki", "feature"], ["cennik", "Orientacyjne widełki, bez niespodzianek", "feature"], ["uslugi", "Najważniejsze usługi w jednym miejscu", "feature"], ["floty", "Stała obsługa flot bez chaosu", "feature"], ["jak_dziala", "Proces prosty dla kierowcy", "feature"], ["zasady", "Jasne zasady zamiast warsztatowych niedomówień", "feature"], ["wyposazenie", "Sprzęt, który wspiera rzetelną diagnozę", "feature"], ["marki", "Auta europejskie i azjatyckie", "feature"], ["zespol", "Cztery osoby, cztery role, jeden standard", "feature"], ["historia", "Od dwuosobowego garażu do hali serwisowej", "feature"], ["praktyczne", "Praktyczne informacje przed wizytą", "feature"], ["telefon", "Telefon, godziny i dojazd", "feature"], ["dwa_kalendarze", "Dwa prawdziwe kalendarze z wolnymi terminami", "addition"], ["przechowalnia", "Przechowalnia opon z ewidencją", "addition"], ["status_naprawy", "Status naprawy po numerze rejestracyjnym", "addition"], ["przypomnienie_przeglad", "Przypomnienie o przeglądzie i wymianie", "addition"], ["platnosc", "Prawdziwa płatność online", "addition"], ["historia_auta", "Historia serwisowa auta", "addition"], ["voicebot", "Voicebot telefoniczny", "addition"], ["messenger", "Bot na Messengerze i WhatsAppie", "addition"], ["opinie_ai", "Opinie z automatyczną odpowiedzią", "addition"], ["panel", "Panel do samodzielnej edycji treści", "addition"], ["blog", "Blog i aktualności", "addition"], ["social", "Generator postów na social media", "addition"], ["wideo", "Krótkie wideo na stronie", "addition"], ["statystyki", "Statystyki bez ciasteczek", "addition"], ["aplikacja", "Aplikacja bez sklepu z aplikacjami", "addition"], ["wcag", "Tryb wysokiego kontrastu i audyt dostępności", "addition"]]
 };
 </script>
-<script src="../assets/katalog.js?v=b4f75c97ff"></script>
+<script src="../assets/katalog.js?v=27472b292b"></script>
 </body>
 </html>

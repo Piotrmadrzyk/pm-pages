@@ -345,3 +345,31 @@ button:focus-visible, a:focus-visible{outline:2px solid var(--focus); outline-of
    Kwadrat daje wiecej strony w pionie przy tej samej szerokosci. */
 @media (max-width:900px){ .framecard-live{aspect-ratio:1/1} }
 @media (max-width:520px){ .framecard-live{aspect-ratio:4/5} }
+
+/* ── Prośba o wycenę na końcu katalogu ──────────────────────────────────
+   Bez tego katalog kończy się ślepo: klient wybiera kilkanaście rzeczy
+   i nie ma jak powiedzieć „wyceńcie mi to". */
+.wycena{
+  margin:34px auto 0; max-width:560px; text-align:left;
+  padding:22px 24px 24px; border-radius:16px;
+  background:var(--panel); border:1px solid var(--line-soft); box-shadow:var(--shadow);
+}
+.wycena h3{margin:0 0 6px; font-size:1.18rem}
+.wycena-lede{margin:0 0 16px; font-size:.92rem; opacity:.85; line-height:1.55}
+.wycena-pola{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.wycena-pola .pelna{grid-column:1 / -1}
+.wycena label{display:block; font-size:.8rem; font-weight:600; letter-spacing:.02em}
+.wycena input[type=text],.wycena input[type=tel],.wycena input[type=email]{
+  width:100%; margin-top:5px; padding:10px 12px; font:inherit; font-size:.95rem;
+  border:1px solid var(--line-soft); border-radius:9px; background:#fff; color:inherit;
+}
+.wycena input:focus{outline:2px solid var(--gold); outline-offset:1px}
+.wycena-zgoda{display:flex; gap:9px; align-items:flex-start; margin:14px 0 16px; font-weight:400}
+.wycena-zgoda input{margin-top:3px; flex:0 0 auto}
+.wycena-zgoda span{font-size:.84rem; line-height:1.5; opacity:.88}
+.wycena-status{margin:12px 0 0; font-size:.9rem; min-height:1.2em}
+.wycena-status.ok{color:#1d6b3f; font-weight:600}
+.wycena-status.zle{color:#a3341f; font-weight:600}
+/* Pułapka na roboty spamujące — człowiek tego nie widzi i nie wypełni. */
+.pulapka{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden}
+@media (max-width:560px){ .wycena-pola{grid-template-columns:1fr} }

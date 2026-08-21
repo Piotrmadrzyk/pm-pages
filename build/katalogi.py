@@ -556,6 +556,23 @@ def zbuduj(klucz, d):
       <button type="button" class="btn-reset-link" id="btn-reset-bottom">Wyczyść wszystkie zaznaczenia</button>
     </div>
     <p class="summary-hint" id="copy-hint" aria-live="polite"></p>
+
+    <div class="wycena" id="wycena-blok">
+      <h3>Chcesz wycenę tego zestawu?</h3>
+      <p class="wycena-lede">Zostaw kontakt — odeślemy widełki dla dokładnie tych funkcji, które zaznaczyłeś. Bez dzwonienia bez zapowiedzi i bez zapisywania na żadną listę.</p>
+      <form id="wycena-form" novalidate>
+        <div class="wycena-pola">
+          <label>Imię<input type="text" name="imie" autocomplete="given-name" required></label>
+          <label>Telefon<input type="tel" name="telefon" autocomplete="tel" required></label>
+          <label class="pelna">Adres e-mail<input type="email" name="email" autocomplete="email" required></label>
+        </div>
+        <label class="wycena-zgoda"><input type="checkbox" name="consent" required>
+          <span>Zgadzam się na kontakt w sprawie tej wyceny. Dane wykorzystamy wyłącznie w tym celu.</span></label>
+        <label class="pulapka" aria-hidden="true">Nie wypełniaj<input type="text" name="strona_www" tabindex="-1" autocomplete="off"></label>
+        <button type="submit" class="btn-start btn-small" id="wycena-wyslij">Poproś o wycenę</button>
+        <p class="wycena-status" id="wycena-status" aria-live="polite"></p>
+      </form>
+    </div>
   </div>
 </section>''')
     toc.append('<li class="toc-h">Koniec</li><li><button data-jump="summary">Podsumowanie</button></li>')
