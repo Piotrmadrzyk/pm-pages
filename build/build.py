@@ -31,6 +31,7 @@ NAV = [
     ('oferta.html',       'Oferta'),
     ('realizacje.html',   'Realizacje'),
     ('automatyzacja.html','Agenci'),
+    ('akademia.html',     'Akademia'),
     ('warsztat.html',     'Warsztat'),
     ('blog.html',         'Blog'),
     ('kontakt.html',      'Kontakt'),
@@ -52,6 +53,9 @@ PAGES = [
     dict(file='automatyzacja.html', active='automatyzacja.html',
          title='Agenci do automatyzacji — co powstaje | Probatum',
          desc='Wdrożenia agentów automatyzujących powtarzalną pracę w firmie. Jeszcze nie w sprzedaży — trwa lista pierwszeństwa.'),
+    dict(file='akademia.html', active='akademia.html',
+         title='Akademia AI — kurs po polsku, dla ludzi bez technicznego zaplecza | Probatum',
+         desc='62 lekcje praktyczne, 39 prezentacji, 8 prowadzonych projektów i gotowe pakiety dla pięciu branż. Każda lekcja kończy się poleceniem, które wklejasz i używasz tego samego dnia.'),
     dict(file='wycena.html', active='',
          title='Bezpłatna wycena projektu | Probatum',
          desc='Dwie minuty wypełniania, konkretne widełki w odpowiedzi. Zapytanie trafia bezpośrednio do mnie — odpisuję osobiście w 1–2 dni robocze.'),
@@ -155,6 +159,7 @@ TPL = '''<!DOCTYPE html>
         <a href="oferta.html">Oferta</a>
         <a href="realizacje.html">Realizacje</a>
         <a href="automatyzacja.html">Agenci</a>
+        <a href="akademia.html">Akademia</a>
       </div>
       <div>
         <h5>Rozpocznij</h5>
