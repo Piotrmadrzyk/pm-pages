@@ -408,10 +408,19 @@ var SOCIAL = {
           x.setAttribute('aria-pressed', String(x === chip));
         });
         if (pole) pole.value = chip.dataset.temat || '';
+        /* Prosba o kod do Akademii to nie zapytanie ofertowe — nie ma po co
+           pytac o firme ani o telefon. Kod i tak wysylamy mailem. */
+        var oKod = chip.dataset.temat === 'Kod dostępu do Akademii AI';
         if (polaFirmy) {
           polaFirmy.classList.add('widoczne');
-          var wymagaj = chip.dataset.temat !== 'Coś innego';
+          var wymagaj = chip.dataset.temat !== 'Coś innego' && !oKod;
           if (polaFirmyInput) polaFirmyInput.required = wymagaj;
+        }
+        var tel = document.getElementById('k-telefon');
+        if (tel) {
+          tel.required = !oKod;
+          var etyk = tel.closest('.field') && tel.closest('.field').querySelector('.req');
+          if (etyk) etyk.textContent = oKod ? '(nieobowiązkowo)' : etyk.dataset.orig || etyk.textContent;
         }
       }
 
