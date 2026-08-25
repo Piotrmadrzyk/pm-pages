@@ -33,9 +33,9 @@
   --wrap:1240px;
   --nav-h:72px;
 
-  --f-display:"Instrument Serif",Georgia,serif;
-  --f-ui:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-display:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --f-ui:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --f-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -1465,3 +1465,59 @@ body > *{position:relative;z-index:1}
   font-size:14px;color:#C6E8F5;
 }
 .news-ok.show{display:block}
+
+/* ================================================================
+   25.08.2026 — zdjecie "wygladu z szablonu". Zmierzone przed zmiana:
+   47 miejsc uzywalo JetBrains Mono (czcionki dla programistow), w tym
+   etykiety sekcji i podpisy WIELKIMI LITERAMI z rozstrzeleniem.
+   Mono zostaje tylko tam, gdzie naprawde jest kod. Blok stoi na koncu
+   arkusza celowo — przy tej samej precyzji wygrywa regula pozniejsza.
+   ================================================================ */
+.an-ikona,
+.brand-txt > span,
+.cal-foot,
+.cal-head span,
+.chat-head span,
+.chip-soon,
+.duo-foto figcaption,
+.etap-nr,
+.eyebrow,
+.field label,.lbl,
+.flow-in .lbl,
+.foot h5,
+.foot-bottom,
+.frame-url,
+.fstep .num,
+.fstep .out,
+.funnel .drop,
+.funnel .fs b,
+.g8 span,
+.gk .pasek span,
+.gk .podpis,
+.globus-cap,
+.hero-cap,
+.hero-trust span,
+.mail .from,
+.mock-bar span,
+.mono,
+.next-list li i,
+.pagelist span,
+.proc-i .n,
+.proc-i .t,
+.ptag,
+.rail-hint,
+.role .pills span,
+.role .tag,
+.sbtn span,
+.sec-head .idx,
+.stat span,
+.step .k,
+.svc-for,
+.svc-num,
+.svc-stats div span,
+.tg-msg .who,
+.tg-time,
+.wpis-meta,
+.wpis-wroc{
+  font-family:var(--f-ui);
+}

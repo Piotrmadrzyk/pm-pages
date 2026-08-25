@@ -20,10 +20,11 @@
 
 <script>document.documentElement.className += ' js';</script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=db457c16e1">
+<!-- 25.08.2026: zdjete Google Fonts. Instrument Serif + Manrope + JetBrains Mono to
+     domyslny zestaw generatorow stron — czytelnik rozpoznaje go od pierwszego rzutu oka.
+     Teraz czcionka systemowa: strona wyglada jak zwykly serwis, laduje sie natychmiast
+     i nie odpytuje serwerow Google przy kazdym wejsciu. -->
+<link rel="stylesheet" href="assets/site.css?v=9824bf66e5">
 </head>
 <body>
 
@@ -129,7 +130,7 @@
               <label for="k-firma">Nazwa firmy albo NIP <span class="req">*</span></label>
               <input class="input" type="text" id="k-firma" name="firma" autocomplete="organization">
               <span class="pomoc">
-                Wystarczy jedno. <b>Resztę danych znajdę sam</b> — nie musisz nic przepisywać.
+                Wystarczy jedno. <b>Resztę danych znajdę sam</b> , nie musisz nic przepisywać.
               </span>
             </div>
 
@@ -138,7 +139,7 @@
               <input class="input" type="text" id="k-www" name="www_klienta" placeholder="np. mojafirma.pl"
                      autocomplete="url" inputmode="url">
               <span class="pomoc">
-                Jeśli masz. Zobaczę, co już działa, a co warto zmienić — zanim porozmawiamy.
+                Jeśli masz. Zobaczę, co już działa, a co warto zmienić , zanim porozmawiamy.
                 <b>Nie masz strony? Zostaw puste</b>, to żaden problem.
               </span>
             </div>
@@ -205,7 +206,7 @@
   <div class="wrap">
     <div class="sec-head reveal" style="margin-bottom:0">
       <span class="eyebrow">Media społecznościowe</span>
-      <h2 class="display">Zobacz, jak pracuję — <em>zanim napiszesz</em>.</h2>
+      <h2 class="display">Zobacz, jak pracuję , <em>zanim napiszesz</em>.</h2>
       <p class="lead">Realizacje, kulisy i to, co dokładnie robi system, zanim cokolwiek zatwierdzę.</p>
     </div>
     <div class="social-grid stagger" data-social-grid></div>
