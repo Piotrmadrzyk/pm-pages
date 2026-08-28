@@ -260,3 +260,42 @@
       .then(function () { przycisk.disabled = false; });
   });
 })();
+
+/* ── otwarte czy zamknięte ──────────────────────────────────
+   Ktoś, kto wchodzi na stronę o 19:00, chce wiedzieć od razu,
+   czy ma sens dzwonić teraz, czy dopiero jutro rano.          */
+(function () {
+  var pole = document.getElementById('stan');
+  if (!pole) return;
+
+  /* 0 = niedziela … 6 = sobota; null = nieczynne */
+  var GODZINY = { 0: null, 1: null, 2: [10, 18], 3: [10, 18], 4: [10, 18],
+                  5: [10, 18], 6: [8, 13] };
+  var NAZWY = ['niedzielę', 'poniedziałek', 'wtorek', 'środę', 'czwartek',
+               'piątek', 'sobotę'];
+
+  var teraz = new Date();
+  var dzis = GODZINY[teraz.getDay()];
+  var minuty = teraz.getHours() * 60 + teraz.getMinutes();
+
+  if (dzis && minuty >= dzis[0] * 60 && minuty < dzis[1] * 60) {
+    var doKonca = dzis[1] * 60 - minuty;
+    pole.textContent = doKonca <= 60
+      ? 'Otwarte — zamykam za ' + doKonca + ' min'
+      : 'Otwarte do ' + dzis[1] + ':00';
+    pole.className = 'stan otwarte';
+  } else {
+    /* znajdz najblizszy dzien roboczy */
+    for (var i = 1; i <= 7; i++) {
+      var d = (teraz.getDay() + i) % 7;
+      if (GODZINY[d]) {
+        var kiedy = (i === 1) ? 'jutro' : 'w ' + NAZWY[d];
+        pole.textContent = 'Zamknięte · otwieram ' + kiedy + ' o ' +
+          String(GODZINY[d][0]).padStart(2, '0') + ':00';
+        break;
+      }
+    }
+    pole.className = 'stan zamkniete';
+  }
+  pole.hidden = false;
+})();

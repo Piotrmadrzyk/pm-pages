@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@200;300;400;500&display=swap">
+<link rel="canonical" href="https://probatum.pl/p/newage-lewandowska/uslugi/">
 <link rel="stylesheet" href="../styl.css">
 
 <link rel="icon" href="../img/ikona-32.png" sizes="32x32">
@@ -21,6 +22,7 @@
 <meta property="og:title" content="Usługi — koloryzacja, strzyżenie, modelowanie | new age">
 <meta property="og:description" content="Koloryzacja, strzyżenie, modelowanie i pielęgnacja w Częstochowie. Cena ustalana po rozmowie, zawsze przed zabiegiem.">
 <meta property="og:image" content="https://probatum.pl/p/newage-lewandowska/img/hero.jpg">
+<meta property="og:url" content="https://probatum.pl/p/newage-lewandowska/uslugi/">
 <meta property="og:locale" content="pl_PL">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -32,6 +34,7 @@
   "alternateName": "New Age Studio",
   "description": "Salon fryzjerski w Częstochowie. Koloryzacja, strzyżenie i modelowanie u Agnieszki Lewandowskiej — edukatorki L’Oréal Professionnel.",
   "image": "https://probatum.pl/p/newage-lewandowska/img/hero.jpg",
+  "url": "https://probatum.pl/p/newage-lewandowska/",
   "telephone": "+48 507 330 730",
   "address": {
     "@type": "PostalAddress",
@@ -56,6 +59,9 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Strona główna","item":"https://probatum.pl/p/newage-lewandowska/"},{"@type":"ListItem","position":2,"name":"Usługi","item":"https://probatum.pl/p/newage-lewandowska/uslugi/"}]}
+</script>
 </head>
 <body>
 
@@ -69,10 +75,14 @@
         <a href="../o-mnie/">O mnie</a>
         <a href="../uslugi/" aria-current="page">Usługi</a>
         <a href="../portfolio/">Portfolio</a>
+        <a href="../porady/">Poradnik</a>
         <a href="../opinie/">Opinie</a>
         <a href="../kontakt/">Kontakt</a>
     </nav>
-    <a class="naglowek-tel" href="tel:+48507330730">+48 507 330 730</a>
+    <div class="naglowek-prawo">
+      <span class="stan" id="stan" hidden></span>
+      <a class="naglowek-tel" href="tel:+48507330730">+48 507 330 730</a>
+    </div>
   </div>
 </header>
 
@@ -176,7 +186,29 @@
   </div>
 </section>
 
-<div class="mysl ciemno">
+<section class="ciemno" id="bon">
+  <div class="wrap dwie">
+    <div class="tresc">
+      <p class="nadpis">Bon podarunkowy</p>
+      <h2>Prezent, którego <span class="kursywa">nie trzeba wymieniać</span>.</h2>
+      <p>
+        Bon na dowolną kwotę albo na konkretną usługę — do wykorzystania
+        przez pół roku. Sprawdza się na urodziny, Dzień Matki i święta,
+        zwłaszcza dla kogoś, kto „ma już wszystko".
+      </p>
+      <p>
+        Wystawiam go od ręki w salonie albo wysyłam w wersji do wydruku,
+        jeśli prezent jest na ostatnią chwilę.
+      </p>
+      <p style="margin-top:1.8rem">
+        <a class="btn btn-ciemny" href="tel:+48507330730">Zamów bon telefonicznie</a>
+      </p>
+    </div>
+    <img src="../img/sesja/kadr-1727.jpg" alt="Salon new age w Częstochowie" loading="lazy">
+  </div>
+</section>
+
+<div class="mysl">
   <blockquote>Wolę odradzić, niż zrobić coś, czego obie pożałujemy.</blockquote>
   <cite>Agnieszka Lewandowska</cite>
 </div>
@@ -280,6 +312,7 @@
         <a href="../o-mnie/">O mnie</a>
         <a href="../uslugi/">Usługi</a>
         <a href="../portfolio/">Portfolio</a>
+        <a href="../porady/">Poradnik</a>
         <a href="../opinie/">Opinie</a>
         <a href="../kontakt/">Kontakt</a>
       </div>
@@ -326,8 +359,9 @@
     <a href="../o-mnie/"><b>02</b>O mnie</a>
     <a href="../uslugi/" aria-current="page"><b>03</b>Usługi</a>
     <a href="../portfolio/"><b>04</b>Portfolio</a>
-    <a href="../opinie/"><b>05</b>Opinie</a>
-    <a href="../kontakt/"><b>06</b>Kontakt</a>
+    <a href="../porady/"><b>05</b>Poradnik</a>
+    <a href="../opinie/"><b>06</b>Opinie</a>
+    <a href="../kontakt/"><b>07</b>Kontakt</a>
   </nav>
   <div class="panel-stopka">
     <a class="a1" href="tel:+48507330730">Zadzwoń</a>
@@ -345,5 +379,38 @@
 </div>
 
 <script src="../skrypt.js"></script>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Jak w takim razie poznam cenę?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Trzy sposoby, każdy działa: zadzwoń i opisz włosy, wypełnij formularz wyceny — pyta dokładnie o długość i gęstość — albo wpadnij na bezpłatną konsultację. W każdym przypadku cenę podaję przed zabiegiem."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Pracuję w pakietach — co to znaczy?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Najczęściej łączy się koloryzację ze strzyżeniem i modelowaniem albo samą koloryzację z modelowaniem. Wychodzi taniej niż każda usługa osobno i zajmuje jedną wizytę zamiast dwóch."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Czy cena może wzrosnąć w trakcie?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Tylko wtedy, gdy w trakcie okaże się, że potrzeba czegoś, czego nie dało się przewidzieć — i wtedy pytam, zanim to zrobię . Nigdy nie dopisuję kwot po fakcie."
+   }
+  }
+ ]
+}
+</script>
 </body>
 </html>

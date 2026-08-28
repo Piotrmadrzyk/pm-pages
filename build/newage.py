@@ -37,6 +37,10 @@ import shutil
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 CEL = os.path.join(ROOT, 'p', 'newage-lewandowska')
 
+# ⚠️ PRZY PRZENOSINACH NA WLASNA DOMENE zmien tylko te jedna linie —
+# stad biora sie adresy kanoniczne, mapa strony i podglad przy udostepnianiu.
+BAZA = u'https://probatum.pl/p/newage-lewandowska/'
+
 TEL_POKAZ = u'+48 507 330 730'
 TEL_LINK = u'+48507330730'
 ADRES = u'ul. Jana Kilińskiego 55/2, 42-218 Częstochowa'
@@ -49,6 +53,7 @@ MENU = [
     ('o-mnie',    u'O mnie',    'o-mnie/'),
     ('uslugi',    u'Usługi',    'uslugi/'),
     ('portfolio', u'Portfolio', 'portfolio/'),
+    ('porady',    u'Poradnik',  'porady/'),
     ('opinie',    u'Opinie',    'opinie/'),
     ('kontakt',   u'Kontakt',   'kontakt/'),
 ]
@@ -234,6 +239,228 @@ def blok_kontaktu(naglowek, zdanie):
 """ % (naglowek, zdanie, TEL_LINK, TEL_POKAZ)
 
 
+
+# ─────────────────────────────────────────────────────────────────
+#  PORADNIK
+#
+#  Po co: ludzie nie wpisuja w Google "fryzjer Czestochowa" — wpisuja
+#  "czy da sie naprawic wlosy po domowym farbowaniu" albo "ile trzyma
+#  balayage". Kazdy taki tekst to osobne wejscie na strone od kogos,
+#  kto ma dokladnie ten problem. A Agnieszka szkolila fryzjerki, wiec
+#  ma czym te teksty wypelnic.
+#
+#  Zasada: konkret, nie lanie wody. Kazdy tekst konczy sie zaproszeniem.
+# ─────────────────────────────────────────────────────────────────
+PORADY = [
+ ('domowa-koloryzacja',
+  u'Farbowałam włosy w domu. Czy da się to naprawić?',
+  u'Najczęstsze pytanie, jakie słyszę. Odpowiedź brzmi: prawie zawsze tak, '
+  u'ale rzadko za jednym razem.',
+  u'jak naprawić włosy po domowej koloryzacji, farbowanie w domu, korekta koloru',
+  u"""
+<p>
+  Farba z drogerii nie jest zła sama w sobie. Problem polega na tym, że jest
+  <b>uniwersalna</b> — ma zadziałać na każdych włosach, więc jest mocniejsza,
+  niż potrzeba na Twoich. Nakłada się ją na całą długość, także tam, gdzie
+  kolor już jest, i przy trzecim, czwartym farbowaniu końcówki robią się
+  ciemniejsze i matowe.
+</p>
+<h3>Co widzę najczęściej</h3>
+<p>
+  <b>Ciemna, martwa końcówka przy jasnych odrostach.</b> Efekt nakładania
+  farby raz za razem na to samo miejsce. Wymaga rozjaśnienia końcówek, nie
+  przyciemnienia odrostów.
+</p>
+<p>
+  <b>Zieleń albo miedź po zmianie na jaśniejszy.</b> Ciemny pigment nie schodzi
+  równo — najpierw ustępuje niebieski, zostaje żółto-czerwony. To się naprawia
+  tonowaniem, ale trzeba wiedzieć czym.
+</p>
+<p>
+  <b>Henna.</b> Osobna kategoria. Henna osadza się w włosie inaczej niż farba
+  i potrafi zareagować z rozjaśniaczem w sposób, którego nie da się przewidzieć.
+  Jeśli kiedykolwiek robiłaś hennę — powiedz o tym, nawet jeśli było to trzy lata
+  temu. To zmienia cały plan.
+</p>
+<h3>Dlaczego rzadko da się to zrobić w jeden dzień</h3>
+<p>
+  Bo każde rozjaśnienie to obciążenie dla włosa. Można wszystko zrobić za jednym
+  razem i wyjść z kolorem, o który prosiłaś — a za dwa tygodnie zobaczyć, że
+  włosy się łamią. Wolę rozpisać to na dwie albo trzy wizyty w odstępach
+  kilku tygodni i dojść do celu w całości.
+</p>
+<p>
+  Na pierwszej wizycie powiem wprost, ile to potrwa i ile będzie kosztować —
+  <b>zanim</b> cokolwiek zacznę.
+</p>
+"""),
+
+ ('ile-trzyma-balayage',
+  u'Ile trzyma balayage i jak go przedłużyć',
+  u'Dobrze zrobiony balayage wygląda dobrze przez trzy, cztery miesiące. '
+  u'To, ile faktycznie wytrzyma, zależy głównie od tego, co robisz w domu.',
+  u'ile trzyma balayage, jak dbać o balayage, koloryzacja Częstochowa',
+  u"""
+<p>
+  Balayage ma nad klasycznymi pasemkami jedną przewagę: <b>nie ma ostrej granicy
+  odrostu</b>. Przy pasemkach po sześciu tygodniach widać linię i trzeba wracać.
+  Przy balayage przejście jest miękkie, więc włosy wyglądają dobrze znacznie dłużej.
+</p>
+<h3>Realne terminy</h3>
+<p>
+  <b>3–4 miesiące</b> — tyle zwykle mija do wizyty odświeżającej. Nie dlatego,
+  że kolor znika, tylko dlatego, że włosy odrastają i proporcje przestają się
+  zgadzać.
+</p>
+<p>
+  <b>6–8 tygodni</b> — tyle trzyma tonowanie, czyli chłodny odcień blondu.
+  To osobna, krótsza i tańsza wizyta, którą można wcisnąć między pełne
+  koloryzacje.
+</p>
+<h3>Co skraca ten czas najbardziej</h3>
+<p>
+  <b>Za gorąca woda.</b> Otwiera łuskę włosa i wypłukuje pigment.
+  Myj letnią, ostatnie spłukanie chłodną — to jedna z niewielu rad,
+  które działają natychmiast i nic nie kosztują.
+</p>
+<p>
+  <b>Szampony z silnymi detergentami.</b> Sprawdź, czy na etykiecie
+  nie ma <i>sodium lauryl sulfate</i> na drugim miejscu składu.
+  Do koloryzowanych włosów potrzebny jest łagodniejszy.
+</p>
+<p>
+  <b>Prostownica bez ochrony termicznej.</b> 200 stopni na suchym włosie
+  wypala pigment szybciej niż mycie. Jeśli prostujesz codziennie, licz się
+  z tonowaniem co sześć tygodni zamiast co osiem.
+</p>
+<p>
+  <b>Basen.</b> Chlor plus blond to klasyczny zielony refleks. Przed wejściem
+  do wody zmocz włosy czystą wodą i nałóż odżywkę — nasiąknięty włos przyjmie
+  mniej chloru.
+</p>
+"""),
+
+ ('blond-bez-zolknienia',
+  u'Jak dbać o blond, żeby nie żółkł',
+  u'Żółknięcie to nie wina koloryzacji. To naturalny pigment, który wraca — '
+  u'i da się go trzymać w ryzach prostymi sposobami.',
+  u'jak dbać o blond, fioletowy szampon, żółty odcień włosów, rozjaśnianie',
+  u"""
+<p>
+  Kiedy rozjaśniamy włosy, usuwamy pigment warstwami: najpierw czarny,
+  potem czerwony, na końcu żółty. Ten żółty siedzi najgłębiej i praktycznie
+  nigdy nie znika do końca — dlatego po rozjaśnieniu nakłada się toner,
+  który go neutralizuje. Toner z czasem się zmywa i żółty wraca. To normalne,
+  a nie błąd fryzjera.
+</p>
+<h3>Fioletowy szampon — jak go używać, żeby pomagał</h3>
+<p>
+  Fiolet neutralizuje żółć, bo leży po przeciwnej stronie koła barw. Ale to
+  narzędzie, nie codzienna pielęgnacja.
+</p>
+<p>
+  <b>Raz, najwyżej dwa razy w tygodniu.</b> Codzienne używanie daje siwy,
+  szarawy odcień i wysusza włosy.
+</p>
+<p>
+  <b>Trzymaj 3–5 minut, nie dłużej.</b> „Zostawię na dziesięć, będzie lepiej"
+  kończy się fioletowymi końcówkami, zwłaszcza na porowatych włosach.
+</p>
+<p>
+  <b>Nakładaj na mokre, ale odciśnięte włosy.</b> Na ociekających rozcieńcza
+  się i nie działa.
+</p>
+<h3>Czego unikać</h3>
+<p>
+  Twarda woda z dużą zawartością żelaza potrafi dać rudy nalot — jeśli
+  mieszkasz tam, gdzie woda jest twarda, warto raz na jakiś czas użyć
+  szamponu oczyszczającego.
+</p>
+<p>
+  Zbyt częste rozjaśnianie całej długości też szkodzi bardziej niż pomaga.
+  Odrosty rozjaśniamy, długość tylko tonujemy — inaczej po roku końcówki
+  będą przezroczyste.
+</p>
+"""),
+
+ ('siwe-wlosy',
+  u'Siwe włosy: farbować czy przejść na naturalne?',
+  u'Nie ma jednej dobrej odpowiedzi. Jest natomiast kilka rzeczy, które warto '
+  u'wiedzieć, zanim podejmiesz decyzję.',
+  u'siwe włosy farbowanie, przejście na siwe, koloryzacja siwych włosów',
+  u"""
+<p>
+  To decyzja, którą klientki odkładają latami — zwykle dlatego, że boją się
+  etapu przejściowego. Słusznie, bo to on jest najtrudniejszy. Ale da się go
+  skrócić i uczynić znośnym.
+</p>
+<h3>Jeśli farbujesz i chcesz farbować dalej</h3>
+<p>
+  Siwy włos jest inny w budowie — grubszy, bardziej oporny, gorzej przyjmuje
+  pigment. Dlatego przy dużym udziale siwizny stosuje się mocniejszą bazę
+  i dłuższy czas działania. Odrost przy siwiźnie widać po trzech, czterech
+  tygodniach, nie po sześciu — to trzeba wliczyć w budżet i kalendarz.
+</p>
+<h3>Jeśli myślisz o przejściu na naturalne</h3>
+<p>
+  Najgorsze wyjście to odpuścić farbowanie i czekać. Przez rok masz wtedy
+  wyraźną, ciemną granicę, której nie da się ukryć.
+</p>
+<p>
+  Lepiej działa <b>rozjaśnienie długości pasemkami</b> tak, żeby zbliżyć ją
+  do koloru odrostu. Granica się rozmywa i po kilku miesiącach po prostu
+  przestaje być widoczna. To kilka wizyt, ale wychodzisz z każdej z fryzurą,
+  którą można pokazać.
+</p>
+<h3>Kolor to nie wszystko</h3>
+<p>
+  Siwe włosy mają inną strukturę — bywają bardziej szorstkie i sztywne.
+  Dobre cięcie i regularna pielęgnacja robią przy nich większą różnicę
+  niż przy włosach pigmentowanych. Naturalna siwizna wygląda świetnie,
+  ale zadbana; zaniedbana wygląda po prostu na zaniedbaną.
+</p>
+"""),
+
+ ('pierwsza-wizyta',
+  u'Idziesz do nowego fryzjera. Jak się przygotować?',
+  u'Kilka rzeczy, które zrobisz przed wizytą, potrafi zdecydować o tym, '
+  u'czy wyjdziesz zadowolona.',
+  u'pierwsza wizyta u fryzjera, jak przygotować się do koloryzacji',
+  u"""
+<h3>Przynieś zdjęcia — ale nie jedno</h3>
+<p>
+  Jedno zdjęcie mówi mało, bo nie wiadomo, co dokładnie Ci się w nim podoba:
+  kolor, cięcie, a może tylko modelka. Przynieś trzy albo cztery. Warto też
+  pokazać zdjęcie tego, czego <b>nie</b> chcesz — to często bardziej pomocne.
+</p>
+<h3>Powiedz całą historię włosów</h3>
+<p>
+  Henna sprzed dwóch lat, keratyna, domowe rozjaśnianie, jedna nieudana wizyta,
+  po której „coś dziwnego się działo" — wszystko to ma znaczenie i wszystko
+  wpływa na to, co da się dziś zrobić. Nie ma tu czego się wstydzić; im więcej
+  wiem, tym mniejsza szansa niespodzianki.
+</p>
+<h3>Nie myj włosów w dniu koloryzacji</h3>
+<p>
+  Naturalna warstwa tłuszczu chroni skórę głowy przed podrażnieniem. Włosy
+  umyte dzień wcześniej to idealny stan. Nie stosuj też mocnych lakierów
+  ani suchego szamponu przed wizytą.
+</p>
+<h3>Zarezerwuj więcej czasu, niż myślisz</h3>
+<p>
+  Koloryzacja to od dwóch do pięciu godzin, zależnie od tego, co robimy.
+  Jeśli masz coś zaplanowane dwie godziny później, presja czasu odbije się
+  na efekcie. Przy umawianiu podaję realny czas — warto go potraktować poważnie.
+</p>
+<h3>Powiedz, ile masz czasu rano</h3>
+<p>
+  To pytanie zadaję każdej nowej klientce i wiele osób się dziwi. A to jedna
+  z najważniejszych informacji: fryzura, która wymaga czterdziestu minut
+  i trzech urządzeń, jest bezużyteczna, jeśli rano masz dziesięć minut.
+</p>
+"""),
+]
+
 # ─────────────────────────────────────────────────────────────────
 #  SZKIELET STRONY
 # ─────────────────────────────────────────────────────────────────
@@ -248,6 +475,7 @@ SZKIELET = u"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@200;300;400;500&display=swap">
+<link rel="canonical" href="%(kanon)s">
 <link rel="stylesheet" href="%(korzen)sstyl.css">
 
 <link rel="icon" href="%(korzen)simg/ikona-32.png" sizes="32x32">
@@ -259,7 +487,8 @@ SZKIELET = u"""<!DOCTYPE html>
 <meta property="og:site_name" content="new age Lewandowska">
 <meta property="og:title" content="%(tytul)s">
 <meta property="og:description" content="%(opis)s">
-<meta property="og:image" content="https://probatum.pl/p/newage-lewandowska/img/hero.jpg">
+<meta property="og:image" content="%(baza)simg/hero.jpg">
+<meta property="og:url" content="%(kanon)s">
 <meta property="og:locale" content="pl_PL">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -270,7 +499,8 @@ SZKIELET = u"""<!DOCTYPE html>
   "name": "new age Lewandowska",
   "alternateName": "New Age Studio",
   "description": "Salon fryzjerski w Cz\u0119stochowie. Koloryzacja, strzy\u017cenie i modelowanie u Agnieszki Lewandowskiej \u2014 edukatorki L\u2019Or\u00e9al Professionnel.",
-  "image": "https://probatum.pl/p/newage-lewandowska/img/hero.jpg",
+  "image": "%(baza)simg/hero.jpg",
+  "url": "%(baza)s",
   "telephone": "%(tel_pokaz)s",
   "address": {
     "@type": "PostalAddress",
@@ -295,6 +525,7 @@ SZKIELET = u"""<!DOCTYPE html>
   ]
 }
 </script>
+%(okruszki)s
 </head>
 <body>
 
@@ -306,7 +537,10 @@ SZKIELET = u"""<!DOCTYPE html>
     <nav class="menu" aria-label="Nawigacja główna">
         %(menu)s
     </nav>
-    <a class="naglowek-tel" href="tel:%(tel_link)s">%(tel_pokaz)s</a>
+    <div class="naglowek-prawo">
+      <span class="stan" id="stan" hidden></span>
+      <a class="naglowek-tel" href="tel:%(tel_link)s">%(tel_pokaz)s</a>
+    </div>
   </div>
 </header>
 
@@ -401,7 +635,19 @@ def stopka_menu(korzen):
         u'<a href="%s%s">%s</a>' % (korzen, s, n) for _, n, s in MENU)
 
 
-def zbuduj(klucz, tytul, opis, tresc, korzen):
+def okruszki(nazwa, sciezka):
+    """Sciezka nawigacyjna dla wyszukiwarek — pokazuje sie w wynikach
+    zamiast golego adresu."""
+    if not sciezka:
+        return u''
+    return (u'<script type="application/ld+json">\n'
+            u'{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":['
+            u'{"@type":"ListItem","position":1,"name":"Strona g\u0142\u00f3wna","item":"%s"},'
+            u'{"@type":"ListItem","position":2,"name":"%s","item":"%s%s/"}]}\n'
+            u'</script>' % (BAZA, nazwa, BAZA, sciezka))
+
+
+def zbuduj(klucz, tytul, opis, tresc, korzen, sciezka='', nazwa=''):
     return SZKIELET % {
         'tytul': tytul, 'opis': opis, 'korzen': korzen,
         'menu': nawigacja(klucz, korzen),
@@ -409,6 +655,9 @@ def zbuduj(klucz, tytul, opis, tresc, korzen):
         'stopka_menu': stopka_menu(korzen),
         'tel_link': TEL_LINK, 'tel_pokaz': TEL_POKAZ,
         'tresc': tresc,
+        'baza': BAZA,
+        'kanon': BAZA + (sciezka + '/' if sciezka else ''),
+        'okruszki': okruszki(nazwa, sciezka),
     }
 
 
@@ -506,6 +755,40 @@ def strona_start():
       <div class="usluga"><h3>Pielęgnacja</h3><p>Zabiegi dobrane do stanu włosów, nie do cennika. Czasem zamiast koloru potrzebna jest regeneracja.</p></div>
     </div>
     <a class="link-dalej" href="uslugi/">Pełna oferta i dlaczego nie ma cennika</a>
+  </div>
+</section>
+
+<section id="sytuacje">
+  <div class="wrap">
+    <p class="nadpis">Z czym przychodzą</p>
+    <h2>Poznajesz się <span class="kursywa">w którymś z tych zdań</span>?</h2>
+    <p style="color:var(--srebro-jasne); max-width:56ch">
+      To cztery sytuacje, z którymi najczęściej trafiają do mnie nowe klientki
+      w Częstochowie. Przy każdej napisałam, co da się z tym zrobić.
+    </p>
+
+    <div class="sytuacje">
+      <a class="sytuacja" href="porady/domowa-koloryzacja/">
+        <span class="s-cyt">„Farbowałam w domu i teraz końcówki są ciemne."</span>
+        <span class="s-odp">Prawie zawsze da się naprawić — rzadko za jednym razem.</span>
+        <span class="opinia-wiecej">Co z tym zrobić</span>
+      </a>
+      <a class="sytuacja" href="porady/blond-bez-zolknienia/">
+        <span class="s-cyt">„Blond mi żółknie po dwóch tygodniach."</span>
+        <span class="s-odp">To wraca naturalny pigment. Da się go trzymać w ryzach.</span>
+        <span class="opinia-wiecej">Co z tym zrobić</span>
+      </a>
+      <a class="sytuacja" href="porady/siwe-wlosy/">
+        <span class="s-cyt">„Chcę przestać farbować siwe, ale boję się przejścia."</span>
+        <span class="s-odp">Da się je skrócić i przejść przez nie z fryzurą, nie z granicą.</span>
+        <span class="opinia-wiecej">Co z tym zrobić</span>
+      </a>
+      <a class="sytuacja" href="porady/pierwsza-wizyta/">
+        <span class="s-cyt">„Nie wiem, czego chcę — po prostu mi się nie podoba."</span>
+        <span class="s-odp">To dobry punkt wyjścia. Od tego zaczyna większość wizyt.</span>
+        <span class="opinia-wiecej">Co z tym zrobić</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -709,7 +992,29 @@ u"""
   </div>
 </section>
 
-<div class="mysl ciemno">
+<section class="ciemno" id="bon">
+  <div class="wrap dwie">
+    <div class="tresc">
+      <p class="nadpis">Bon podarunkowy</p>
+      <h2>Prezent, którego <span class="kursywa">nie trzeba wymieniać</span>.</h2>
+      <p>
+        Bon na dowolną kwotę albo na konkretną usługę — do wykorzystania
+        przez pół roku. Sprawdza się na urodziny, Dzień Matki i święta,
+        zwłaszcza dla kogoś, kto „ma już wszystko".
+      </p>
+      <p>
+        Wystawiam go od ręki w salonie albo wysyłam w wersji do wydruku,
+        jeśli prezent jest na ostatnią chwilę.
+      </p>
+      <p style="margin-top:1.8rem">
+        <a class="btn btn-ciemny" href="tel:%(tel_link)s">Zamów bon telefonicznie</a>
+      </p>
+    </div>
+    <img src="../img/sesja/kadr-1727.jpg" alt="Salon new age w Częstochowie" loading="lazy">
+  </div>
+</section>
+
+<div class="mysl">
   <blockquote>Wolę odradzić, niż zrobić coś, czego obie pożałujemy.</blockquote>
   <cite>Agnieszka Lewandowska</cite>
 </div>
@@ -789,7 +1094,7 @@ def strona_portfolio():
         naglowek_strony(u'Portfolio',
             u'Praca, która <span class="kursywa">wyszła poza salon</span>.',
             u'Sesje wizerunkowe, stylizacje do magazynu i katalogu. '
-            u'Włosy przy tych zdjęciach to moja robota.') +
+            u'Włosy przy tych zdjęciach to moja robota — robiona w Częstochowie.') +
 u"""
 <section style="padding-top:0">
   <div class="wrap">
@@ -827,7 +1132,8 @@ def strona_opinie():
     return (
         naglowek_strony(u'Opinie',
             u'Pięć na pięć, <span class="kursywa">53 razy</span>.',
-            u'Pięć na pięć z 53 opinii w Google — sprawdzone bezpośrednio w profilu firmy.') +
+            u'Pięć na pięć z 53 opinii w Google — od klientek salonu new age '
+            u'przy Kilińskiego w Częstochowie.') +
 u"""
 <section style="padding-top:0">
   <div class="wrap">
@@ -1136,6 +1442,63 @@ u"""
 """ % {'tel_link': TEL_LINK, 'tel_pokaz': TEL_POKAZ})
 
 
+def strona_porady():
+    kafle_porad = []
+    for slug, tytul, lead, _slowa, _tresc in PORADY:
+        kafle_porad.append(u"""
+      <a class="porada-kafel" href="../porady/%s/">
+        <h3>%s</h3>
+        <p>%s</p>
+        <span class="opinia-wiecej">Czytaj</span>
+      </a>""" % (slug, tytul, lead))
+
+    return (
+        naglowek_strony(u'Poradnik',
+            u'To, co i tak <span class="kursywa">mówię w fotelu</span>.',
+            u'Pytania, które słyszę najczęściej — z odpowiedziami dłuższymi niż '
+            u'te, na które starcza czasu przy myjce. Bez sprzedawania cudów.') +
+u"""
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="porady-siatka">""" + u''.join(kafle_porad) + u"""
+    </div>
+  </div>
+</section>
+""" + blok_kontaktu(
+        u'Masz pytanie, <span class="kursywa">którego tu nie ma</span>?',
+        u'Zadzwoń. Odpowiem, nawet jeśli miałoby się skończyć na tym, że nie '
+        u'musisz nic robić.'))
+
+
+def strona_porady_jedna(slug, tytul, lead, tresc):
+    """Kazdy poradnik to osobny adres — ludzie trafiaja tu z wyszukiwarki
+    na konkretne pytanie, nie na hub z listą."""
+    inne = [(s, ty) for s, ty, _, _, _ in PORADY if s != slug][:3]
+    dalej = u'\n      '.join(
+        u'<a class="porada-maly" href="../%s/"><span>%s</span></a>' % (s, ty)
+        for s, ty in inne)
+    return (
+        naglowek_strony(u'Poradnik', tytul, lead) +
+u"""
+<section style="padding-top:0">
+  <div class="waski artykul">
+%s
+  </div>
+</section>
+
+<section class="ciemno">
+  <div class="waski">
+    <p class="nadpis">Przeczytaj też</p>
+    <div class="porady-inne">
+      %s
+    </div>
+  </div>
+</section>
+""" % (tresc, dalej) + blok_kontaktu(
+        u'Wolisz zapytać <span class="kursywa">o swój przypadek</span>?',
+        u'Każde włosy są inne. Zadzwoń i opisz swoje — powiem, co da się zrobić.'))
+
+
 # ─────────────────────────────────────────────────────────────────
 STRONY = [
     ('start', '', u'new age Lewandowska — fryzjerstwo, Częstochowa',
@@ -1148,15 +1511,65 @@ STRONY = [
      u'Koloryzacja, strzyżenie, modelowanie i pielęgnacja w Częstochowie. '
      u'Cena ustalana po rozmowie, zawsze przed zabiegiem.', strona_uslugi, '../'),
     ('portfolio', 'portfolio', u'Portfolio — sesje i publikacje | new age Lewandowska',
-     u'Stylizacje fryzur do magazynu SPLOT i sesji katalogowych.', strona_portfolio, '../'),
+     u'Stylizacje fryzur do magazynu SPLOT i sesji katalogowych — praca '
+     u'Agnieszki Lewandowskiej, fryzjerki z Częstochowy. Sesje wizerunkowe i portfolio.', strona_portfolio, '../'),
+    ('porady', 'porady', u'Poradnik — pielęgnacja i koloryzacja włosów | new age Częstochowa',
+     u'Jak naprawić włosy po domowej koloryzacji, ile trzyma balayage, jak dbać '
+     u'o blond. Praktyczne odpowiedzi od fryzjerki z Częstochowy.',
+     strona_porady, '../'),
     ('opinie', 'opinie', u'Opinie klientek | new age Lewandowska',
-     u'Ocena 5,0 z 53 opinii w Google. Zostaw swoją opinię.', strona_opinie, '../'),
+     u'Ocena 5,0 z 53 opinii w Google. Co mówią klientki salonu new age '
+     u'w Częstochowie o koloryzacji, strzyżeniu i doradztwie. Dodaj swoją opinię.', strona_opinie, '../'),
     ('prywatnosc', 'prywatnosc', u'Polityka prywatności | new age Lewandowska',
-     u'Kto przetwarza dane z formularzy, jak długo i jakie masz prawa.',
+     u'Kto przetwarza dane z formularzy salonu new age w Częstochowie, '
+     u'jak długo je przechowuje i jakie masz prawa.',
      strona_prywatnosc, '../'),
     ('kontakt', 'kontakt', u'Kontakt — Częstochowa, ul. Kilińskiego 55 | new age',
      u'Telefon, adres, godziny otwarcia i mapa dojazdu. Kilińskiego 55/2, Częstochowa.', strona_kontakt, '../'),
 ]
+
+
+def schemat_pytan(html):
+    """Wyszukiwarki potrafia pokazac pytania i odpowiedzi wprost w wynikach,
+    ale tylko wtedy, gdy sa opisane w danych strukturalnych. Wyciagamy je
+    z gotowego HTML-a, zeby nie trzymac tresci w dwoch miejscach."""
+    import re, json
+    pary = re.findall(
+        r'<details[^>]*>\s*<summary>(.*?)</summary>\s*(.*?)</details>', html, re.S)
+    if not pary:
+        return u''
+    pozycje = []
+    for pytanie, odpowiedz in pary:
+        p_czysto = re.sub(r'<[^>]+>', '', pytanie).strip()
+        o_czysto = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', odpowiedz)).strip()
+        if not p_czysto or len(o_czysto) < 20:
+            continue
+        pozycje.append({
+            '@type': 'Question', 'name': p_czysto,
+            'acceptedAnswer': {'@type': 'Answer', 'text': o_czysto}})
+    if not pozycje:
+        return u''
+    dane = {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': pozycje}
+    return (u'\n<script type="application/ld+json">\n%s\n</script>\n'
+            % json.dumps(dane, ensure_ascii=False, indent=1))
+
+
+def mapa_strony(adresy):
+    """sitemap.xml — lista wszystkich podstron dla wyszukiwarek."""
+    wiersze = [u'<?xml version="1.0" encoding="UTF-8"?>',
+               u'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for sciezka, waga in adresy:
+        wiersze.append(u'  <url><loc>%s%s</loc><priority>%s</priority></url>'
+                       % (BAZA, (sciezka + '/' if sciezka else ''), waga))
+    wiersze.append(u'</urlset>')
+    return u'\n'.join(wiersze) + u'\n'
+
+
+def nazwa_w_menu(klucz):
+    for k, nazwa, _ in MENU:
+        if k == klucz:
+            return nazwa
+    return {'prywatnosc': u'Polityka prywatności'}.get(klucz, u'')
 
 
 def main():
@@ -1164,13 +1577,43 @@ def main():
         sciezka = os.path.join(CEL, katalog) if katalog else CEL
         if not os.path.isdir(sciezka):
             os.makedirs(sciezka)
-        html = zbuduj(klucz, tytul, opis, budowniczy(), korzen)
+        html = zbuduj(klucz, tytul, opis, budowniczy(), korzen,
+                      sciezka=katalog, nazwa=nazwa_w_menu(klucz))
         # Podstrony siegaja po zdjecia o poziom wyzej; strona glowna nie.
         if not korzen:
             html = html.replace('src="../img/', 'src="img/').replace('data-pelne="../img/', 'data-pelne="img/')
+        # Pytania i odpowiedzi opisane dla wyszukiwarek
+        pytania = schemat_pytan(html)
+        if pytania:
+            html = html.replace('</body>', pytania + '</body>', 1)
         with io.open(os.path.join(sciezka, 'index.html'), 'w', encoding='utf-8') as fh:
             fh.write(html)
         print('  %-26s %6d znakow' % ((katalog or '/') + '/index.html', len(html)))
+    # Kazdy poradnik jako osobny adres
+    for slug, tytul, lead, slowa, tresc in PORADY:
+        sciezka = os.path.join(CEL, 'porady', slug)
+        if not os.path.isdir(sciezka):
+            os.makedirs(sciezka)
+        html = zbuduj('porady', u'%s | new age Lewandowska, Częstochowa' % tytul,
+                      lead[:158], strona_porady_jedna(slug, tytul, lead, tresc),
+                      '../../', sciezka='porady/' + slug, nazwa=tytul)
+        pytania = schemat_pytan(html)
+        if pytania:
+            html = html.replace('</body>', pytania + '</body>', 1)
+        with io.open(os.path.join(sciezka, 'index.html'), 'w', encoding='utf-8') as fh:
+            fh.write(html)
+        print('  porady/%-18s %6d znakow' % (slug + '/', len(html)))
+
+    # Mapa strony i wskazowki dla robotow
+    wagi = {'': '1.0', 'uslugi': '0.9', 'kontakt': '0.9', 'o-mnie': '0.8',
+            'portfolio': '0.7', 'opinie': '0.7', 'prywatnosc': '0.3'}
+    with io.open(os.path.join(CEL, 'sitemap.xml'), 'w', encoding='utf-8') as fh:
+        adresy = [(k, wagi.get(k, '0.5')) for _, k, _, _, _, _ in STRONY]
+        adresy += [('porady/' + s, '0.6') for s, _, _, _, _ in PORADY]
+        fh.write(mapa_strony(adresy))
+    with io.open(os.path.join(CEL, 'robots.txt'), 'w', encoding='utf-8') as fh:
+        fh.write(u'User-agent: *\nAllow: /\n\nSitemap: %ssitemap.xml\n' % BAZA)
+    print('  sitemap.xml + robots.txt')
     print('\nGotowe: %d podstron' % len(STRONY))
 
 

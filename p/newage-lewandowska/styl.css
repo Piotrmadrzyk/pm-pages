@@ -277,12 +277,14 @@ textarea{min-height:130px; resize:vertical}
   display:flex; align-items:center; justify-content:space-between; gap:24px;
 }
 .marka{display:flex; align-items:center; flex:0 0 auto}
-.marka img{width:clamp(150px,17vw,215px)}
-.menu{display:none; align-items:center; gap:clamp(14px,2vw,30px)}
+.marka img{width:clamp(132px,13vw,190px)}
+@media(min-width:1500px){ .marka img{width:215px} }
+.menu{display:none; align-items:center; gap:clamp(12px,1.5vw,26px); flex-wrap:nowrap}
 @media(min-width:920px){ .menu{display:flex} }
 .menu a{
   text-decoration:none; color:var(--srebro); font-size:.8rem; letter-spacing:.14em;
   text-transform:uppercase; padding:.4rem 0; position:relative; transition:color .25s;
+  white-space:nowrap;
 }
 .menu a::after{
   content:''; position:absolute; left:0; right:0; bottom:-2px; height:1px;
@@ -299,7 +301,7 @@ textarea{min-height:130px; resize:vertical}
   color:var(--biel); border:1px solid rgba(255,255,255,.24); padding:.6rem 1.1rem;
   white-space:nowrap; transition:.25s;
 }
-@media(min-width:1080px){ .naglowek-tel{display:inline-block} }
+@media(min-width:1240px){ .naglowek-tel{display:inline-block} }
 .naglowek-tel:hover{background:var(--biel); color:var(--atrament)}
 
 .hamburger{
@@ -658,3 +660,68 @@ body{padding-bottom:0}
 .opinia-wiecej::after{content:' →'}
 .opinia-klik:hover .opinia-wiecej{color:var(--biel)}
 .opinia-klik:focus-visible{outline:2px solid var(--srebro); outline-offset:3px}
+
+/* ═══════════════════════════════════════════════════════════════
+   PORADNIK
+   Ludzie nie szukają „fryzjer Częstochowa". Szukają „czy da się
+   naprawić włosy po domowym farbowaniu". Każdy tekst to osobne
+   wejście na stronę od kogoś, kto ma dokładnie ten problem.
+   ═══════════════════════════════════════════════════════════════ */
+.porady-siatka{display:grid; gap:clamp(14px,2vw,20px); margin-top:1rem}
+@media(min-width:760px){ .porady-siatka{grid-template-columns:repeat(2,1fr)} }
+.porada-kafel{
+  display:flex; flex-direction:column; text-decoration:none; color:inherit;
+  background:var(--grafit); border:1px solid rgba(255,255,255,.09);
+  padding:clamp(26px,3.4vw,38px); transition:border-color .3s, transform .3s;
+}
+.porada-kafel:hover{border-color:rgba(255,255,255,.28); transform:translateY(-3px)}
+.porada-kafel h3{margin-bottom:.9rem; font-size:clamp(1.2rem,2.2vw,1.55rem)}
+.porada-kafel p{color:var(--srebro-jasne); font-size:.96rem; flex:1; margin-bottom:1.2rem}
+.porada-kafel:focus-visible{outline:2px solid var(--srebro); outline-offset:3px}
+
+.artykul h3{
+  font-size:clamp(1.25rem,2.4vw,1.7rem); margin:2.4rem 0 .9rem; color:var(--biel);
+}
+.artykul h3:first-child{margin-top:0}
+.artykul p{color:var(--srebro-jasne); max-width:64ch; font-size:1.03rem; line-height:1.78}
+.artykul b{color:var(--biel); font-weight:500}
+.artykul i{color:var(--srebro)}
+
+.porady-inne{display:grid; gap:12px; margin-top:2rem}
+@media(min-width:760px){ .porady-inne{grid-template-columns:repeat(3,1fr)} }
+.porada-maly{
+  display:flex; align-items:center; text-decoration:none; color:var(--srebro-jasne);
+  border:1px solid rgba(255,255,255,.13); padding:1.1rem 1.2rem; font-size:.95rem;
+  line-height:1.45; transition:.3s;
+}
+.porada-maly:hover{border-color:rgba(255,255,255,.34); color:var(--biel)}
+.porada-maly::after{content:' →'; margin-left:auto; padding-left:.7rem; color:var(--srebro-ciemne)}
+
+/* Klientka nie szuka „koloryzacji" — szuka rozwiązania swojego kłopotu.
+   Te karty mówią jej zdaniem, nie nazwą usługi. */
+.sytuacje{display:grid; gap:clamp(12px,1.6vw,18px); margin-top:2.8rem}
+@media(min-width:700px){ .sytuacje{grid-template-columns:repeat(2,1fr)} }
+.sytuacja{
+  display:flex; flex-direction:column; text-decoration:none;
+  border:1px solid rgba(255,255,255,.11); padding:clamp(24px,3vw,32px);
+  transition:border-color .3s, background .3s;
+}
+.sytuacja:hover{border-color:rgba(255,255,255,.3); background:var(--wegiel)}
+.sytuacja:focus-visible{outline:2px solid var(--srebro); outline-offset:3px}
+.s-cyt{
+  font-family:var(--display); font-size:clamp(1.1rem,2.1vw,1.4rem); color:var(--biel);
+  font-style:italic; line-height:1.3; margin-bottom:.9rem;
+}
+.s-odp{color:var(--srebro-jasne); font-size:.95rem; line-height:1.6; flex:1}
+.sytuacja .opinia-wiecej{margin-top:1.2rem}
+
+/* Ktoś, kto wchodzi o 19:00, ma od razu wiedzieć, czy dzwonić teraz. */
+.naglowek-prawo{display:flex; align-items:center; gap:16px}
+.stan{
+  display:none; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--srebro-ciemne); white-space:nowrap; align-items:center; gap:.5rem;
+}
+@media(min-width:1440px){ .stan{display:inline-flex} }
+.stan::before{content:''; width:7px; height:7px; border-radius:50%; background:currentColor}
+.stan.otwarte{color:#6fcf97}
+.stan.zamkniete{color:var(--srebro-ciemne)}
