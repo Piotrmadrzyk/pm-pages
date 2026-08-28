@@ -166,7 +166,46 @@ wyceny — wtedy zgłoszenie trafi do systemu, a nie do skrzynki.
 
 ---
 
-## 4. 🟠 probatum.pl nie ma polityki prywatności
+## 4. 🔴 Pergola miała publicznie prywatny gmail — naprawione, czeka na push
+
+**Znalezione 28 sierpnia 2026.**
+
+Na 18 stronach Zielonej Pergoli (polskich i angielskich) widniał **prywatny
+gmail właściciela i jego numer telefonu** — na ekranie, w odnośnikach
+`mailto:` i `tel:`, oraz w danych strukturalnych JSON-LD, które czytają
+wyszukiwarki. Strona stoi publicznie na GitHub Pages.
+
+Pergola została pominięta przy poprzednim porządkowaniu kontaktów, bo **mieszka
+w osobnym repozytorium** (`piotrmadrzyk/radosc-website-preview`) i na innym
+hostingu niż reszta stron. To jest ta pułapka: zmiana zrobiona „wszędzie"
+w pm-pages nie dotyka niczego poza pm-pages.
+
+### Co zostało zrobione
+
+- wszystkie kontakty przestawione na `kontakt@probatum.pl` i `573 569 141`,
+- dodany pasek sprzedażowy nad stopką (osobna wersja polska i angielska),
+- przepisana linijka na dole stopki.
+
+Robi to `build/demo_sprzedaz.py` **w repozytorium Pergoli**, nie tutaj.
+
+### ⚠️ To jeszcze nie jest opublikowane
+
+Zmiana jest zacommitowana lokalnie, ale nie wypchnięta — nie mam dostępu do
+GitHuba. Dopóki nie pójdzie push, prywatny adres **nadal jest widoczny w sieci**.
+
+Publikacja odbywa się przez GitHub Actions po pushu na gałąź
+`preview/redesign-2026` (workflow `deploy-pages.yml`) — nie na `main`.
+
+### Gdzie leży Pergola
+
+Repozytorium **nie ma kopii roboczej na dysku** — katalog
+`~/.Trash/radosc-website-preview` to niepełne szczątki bez historii gita.
+Warto sklonować repozytorium na stałe do `~/Projekty/`, żeby nie odtwarzać
+tego za każdym razem.
+
+---
+
+## 5. 🟠 probatum.pl nie ma polityki prywatności
 
 **Znalezione 28 sierpnia 2026 przy okazji dem.**
 
@@ -200,7 +239,7 @@ w pół godziny, gdy tylko ta decyzja zapadnie.
 
 ---
 
-## 5. Katalogi funkcji — treść do przejrzenia ⏳
+## 6. Katalogi funkcji — treść do przejrzenia ⏳
 
 `build/katalogi.py` zawiera 56 opisów funkcji istniejących i 65 propozycji
 rozbudowy. Napisane na podstawie tego, co faktycznie jest w demo, ale **nie
@@ -213,7 +252,7 @@ Zmiana jednej pozycji to jedna linijka w `build/katalogi.py`, potem
 
 ---
 
-## 6. Pergola na wspólnym mechanizmie katalogu ⏳
+## 7. Pergola na wspólnym mechanizmie katalogu ⏳
 
 Katalog Pergoli (`radosc-website-preview/oferta.html`) chodzi na własnym,
 starszym mechanizmie — całość wklejona w jeden plik. Pozostałe cztery używają
