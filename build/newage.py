@@ -946,7 +946,7 @@ u"""
       <div>
         <iframe class="mapa" title="Mapa — ul. Jana Kilińskiego 55/2, Częstochowa" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=Jana%%20Kili%%C5%%84skiego%%2055,%%2042-200%%20Cz%%C4%%99stochowa&output=embed"></iframe>
+          src="https://www.google.com/maps?q=Jana%%20Kili%%C5%%84skiego%%2055,%%2042-218%%20Cz%%C4%%99stochowa&output=embed"></iframe>
       </div>
     </div>
   </div>
