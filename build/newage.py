@@ -365,7 +365,10 @@ def strona_start():
 """ % {'tel_link': TEL_LINK}
 
     dyplomy_skrot = u'\n      '.join(
-        u'<img src="img/dyplomy/%s-mal.jpg" alt="%s — %s" loading="lazy">' % (p[0], p[1], p[2])
+        u'<button type="button" class="powieksz" data-pelne="img/dyplomy/%s.jpg"'
+        u' data-podpis="%s · %s" aria-label="Powiększ: %s">'
+        u'<img src="img/dyplomy/%s-mal.jpg" alt="%s — %s" loading="lazy"></button>'
+        % (p[0], p[1], p[2], p[2], p[0], p[1], p[2])
         for p in DYPLOMY)
 
     reszta = u"""
@@ -431,7 +434,10 @@ def strona_start():
     <div class="opinie-siatka">
       %(opinie)s
     </div>
-    <a class="link-dalej" href="opinie/">Przeczytaj więcej i dodaj swoją</a>
+    <div class="hero-akcje" style="margin-top:2.4rem">
+      <a class="btn btn-ciemny" href="opinie/#wystaw">Wystaw opinię</a>
+      <a class="btn btn-duch" href="opinie/">Przeczytaj wszystkie</a>
+    </div>
   </div>
 </section>
 """ % {'dyplomy': dyplomy_skrot, 'przerywnik': PRZERYWNIK,
@@ -617,6 +623,25 @@ def strona_opinie():
 u"""
 <section style="padding-top:0">
   <div class="wrap">
+    <div class="dwie odwrot" style="margin-bottom:clamp(40px,6vw,72px)">
+      <div class="tresc">
+        <h2 style="font-size:clamp(1.7rem,3.4vw,2.6rem)">
+          Najczęściej wraca <span class="kursywa">to samo zdanie</span>.
+        </h2>
+        <p>
+          Że słucham, zanim wezmę nożyczki. Że mówię wprost, czego na tych
+          włosach lepiej nie robić. I że po wyjściu z salonu fryzura daje się
+          ułożyć samodzielnie następnego dnia.
+        </p>
+        <p>
+          Najstarsza klientka przychodzi tu od dwudziestu pięciu lat.
+          To dla mnie ważniejsze niż każda pojedyncza opinia.
+        </p>
+      </div>
+      <img src="../img/sesja/kadr-1727.jpg" alt="Agnieszka Lewandowska przy pracy"
+           width="1400" height="933" loading="lazy">
+    </div>
+
     <div class="opinie-siatka" style="margin-top:0">
       %(opinie)s
     </div>
@@ -626,7 +651,7 @@ u"""
          style="color:var(--srebro-jasne)">Zobacz wszystkie 53 w Google</a>.
     </p>
 
-    <div class="form-opinia">
+    <div class="form-opinia" id="wystaw">
       <h3 style="margin-bottom:.6rem">Byłaś u mnie? Napisz, jak było.</h3>
       <p style="color:var(--srebro-jasne); font-size:.95rem; max-width:52ch">
         Nie każdy ma konto w Google, a chcę wiedzieć, co poszło dobrze,

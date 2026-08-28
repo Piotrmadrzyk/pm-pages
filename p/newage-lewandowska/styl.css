@@ -436,3 +436,26 @@ textarea{min-height:130px; resize:vertical}
 }
 body{padding-bottom:0}
 @media(max-width:919px){ body{padding-bottom:74px} }
+
+/* Pasek dyplomów na stronie głównej też ma się otwierać — wcześniej
+   były to zwykłe obrazki i kliknięcie w nie nic nie robiło. */
+.pasek-dyplomow .powieksz{
+  display:block; width:100%; padding:0; border:0; background:none; cursor:zoom-in;
+}
+.pasek-dyplomow .powieksz img{
+  transition:transform .5s cubic-bezier(.2,.7,.3,1), border-color .3s;
+}
+.pasek-dyplomow .powieksz:hover img{transform:translateY(-4px)}
+.pasek-dyplomow .powieksz:focus-visible{outline:2px solid var(--srebro); outline-offset:3px}
+
+/* Podpowiedź, że w zdjęcia można kliknąć */
+.kafel .powieksz::after,.pasek-dyplomow .powieksz::after{
+  content:'+'; position:absolute; right:10px; bottom:10px;
+  width:30px; height:30px; display:flex; align-items:center; justify-content:center;
+  background:rgba(10,10,11,.72); color:#fff; font-size:1rem; line-height:1;
+  opacity:0; transition:opacity .3s; pointer-events:none;
+}
+.pasek-dyplomow .powieksz{position:relative}
+.kafel .powieksz:hover::after,.pasek-dyplomow .powieksz:hover::after,
+.kafel .powieksz:focus-visible::after,.pasek-dyplomow .powieksz:focus-visible::after{opacity:1}
+@media(hover:none){ .kafel .powieksz::after,.pasek-dyplomow .powieksz::after{opacity:.85} }
