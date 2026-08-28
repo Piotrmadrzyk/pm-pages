@@ -1,6 +1,25 @@
 # Subdomeny stron demonstracyjnych
 
-Konfiguracja siedzi w `vercel.json` w katalogu glownym. Ten plik istnieje
+## Dlaczego `routes`, a nie `rewrites`
+
+Pierwsza wersja uzywala `rewrites` i **nie dzialala**, mimo ze wdrozenie
+konczylo sie powodzeniem. Powod: reguly `rewrites` sprawdzane sa dopiero
+wtedy, gdy **zaden plik nie pasuje** do adresu. Adres `/` pasuje do
+`index.html`, ktory istnieje — wiec przepisanie nigdy sie nie uruchamialo
+i subdomena pokazywala strone glowna Probatum.
+
+`routes` dziala inaczej: reguly stojace **przed** wpisem
+`{"handle": "filesystem"}` sprawdzane sa *zanim* Vercel siegnie po pliki.
+Dlatego przepisanie ma szanse zadzialac.
+
+`routes` nie moze wspolistniec z `rewrites`, `redirects`, `headers`,
+`cleanUrls` ani `trailingSlash`. Jesli kiedys ktores z nich bedzie potrzebne,
+trzeba przepisac cala konfiguracje na jeden z tych dwoch swiatow — nie da sie
+ich mieszac.
+
+## Dlaczego opis jest tutaj, a nie w `vercel.json`
+
+Ten plik istnieje
 dlatego, ze **`vercel.json` nie moze zawierac komentarzy ani wlasnych kluczy** —
 to czysty JSON sprawdzany przez Vercela wzgledem schematu. Wlasny klucz
 (np. `_opis` z wyjasnieniem) sprawia, ze Vercel odrzuca **cala** konfiguracje,

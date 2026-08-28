@@ -1,45 +1,48 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "rewrites": [
+  "routes": [
     {
-      "source": "/",
+      "src": "/",
       "has": [
         {
           "type": "host",
           "value": "lawenda-demo.probatum.pl"
         }
       ],
-      "destination": "/p/demo-studio-lawenda/index.html"
+      "dest": "/p/demo-studio-lawenda/index.html"
     },
     {
-      "source": "/",
+      "src": "/",
       "has": [
         {
           "type": "host",
           "value": "kancelaria-demo.probatum.pl"
         }
       ],
-      "destination": "/p/demo-kancelaria-zawadzcy/index.html"
+      "dest": "/p/demo-kancelaria-zawadzcy/index.html"
     },
     {
-      "source": "/",
+      "src": "/",
       "has": [
         {
           "type": "host",
           "value": "remonty-demo.probatum.pl"
         }
       ],
-      "destination": "/p/demo-dom-i-wnetrze/index.html"
+      "dest": "/p/demo-dom-i-wnetrze/index.html"
     },
     {
-      "source": "/",
+      "src": "/",
       "has": [
         {
           "type": "host",
           "value": "warsztat-demo.probatum.pl"
         }
       ],
-      "destination": "/p/demo-serwis-podkarpacki/index.html"
+      "dest": "/p/demo-serwis-podkarpacki/index.html"
+    },
+    {
+      "handle": "filesystem"
     }
   ]
 }
