@@ -350,6 +350,64 @@ generowany przez `katalogi.py`.
 
 ---
 
+## 7b. BLOKI PRAWNE W DEMACH (`build/prawne.py`)
+
+Każda strona demonstracyjna ma regulamin, politykę prywatności i pasek
+informacji o ciasteczkach. Robi to `build/prawne.py`:
+
+```bash
+cd build && python3 prawne.py
+```
+
+Skrypt **dokleja tylko to, czego brakuje** — można go puszczać wielokrotnie,
+nie zdubluje niczego. Po każdym uruchomieniu wypisuje, co dodał na której
+stronie.
+
+### Dlaczego demo w ogóle potrzebuje regulaminu
+
+Klient ogląda demo, żeby zobaczyć, jak będzie wyglądać jego własna strona.
+Patrzy też na to, czy są tam rzeczy, których będzie potrzebował. Brak paska
+cookie i regulaminu czyta się jako „tego nie robimy".
+
+Firmy w demach są zmyślone, więc treści są szablonowe — i każdy blok kończy
+się zdaniem, które mówi to wprost. To celowe: gdyby ktoś skopiował ten tekst
+na prawdziwą stronę bez czytania, zdanie na końcu go zatrzyma.
+
+### Gdzie te bloki lądują
+
+Zależy od strony i to nie jest kaprys — to dopasowanie do tego, co już tam jest:
+
+| demo | paleta | gdzie wchodzi |
+|---|---|---|
+| Studio Lawenda | ciemna stopka | kolejny kafel stopki, zaraz za polityką |
+| Dom i Wnętrze | ciemna stopka | to samo |
+| Kancelaria Zawadzcy | jasna (krem `#f4f0e8`) | osobna sekcja przed stopką |
+| Serwis Podkarpacki | ciemna (`#1c1f24`) | osobna sekcja przed stopką |
+
+Lawenda i Dom mają w stopce gotowe miejsce na takie treści, więc regulamin
+dziedziczy jej wygląd i nie potrzebuje ani linijki nowego CSS. Zawadzcy
+i Serwis nie mają gdzie tego wpiąć, więc dostają samodzielną sekcję ze
+zwijanymi blokami — z własnymi stylami, bo **jeden zestaw kolorów tu nie
+zadziała**: Zawadzcy są jaśni, Serwis ciemny. Kolory obu siedzą w słowniku
+`FIRMY` na górze skryptu.
+
+### Jak zmienić treść
+
+Wszystkie teksty są w `build/prawne.py` w słowniku `FIRMY` — osobno regulamin
+dla każdej firmy i wspólna klauzula RODO w funkcji `polityka_tresc()`.
+Po zmianie: cofnij stare bloki (`git checkout -- p/`) i puść skrypt ponownie,
+bo sam z siebie nie nadpisze tego, co już wstawił.
+
+### ⚠️ probatum.pl to osobna sprawa
+
+Ten skrypt dotyczy **wyłącznie stron demonstracyjnych**. Sama strona
+probatum.pl nadal nie ma polityki prywatności ani klauzuli informacyjnej,
+a formularz kontaktowy ma zgodę, która nie prowadzi do żadnego dokumentu.
+Powód jest konkretny i opisany w `DO-ZROBIENIA.md`: klauzula RODO musi
+wskazywać administratora z nazwy i adresu, a to decyzja właściciela.
+
+---
+
 ## 8. CZEGO NIE ROBIĆ
 
 **Nie edytuj plików `.html` w katalogu głównym.** Wyglądają na źródła, nie są

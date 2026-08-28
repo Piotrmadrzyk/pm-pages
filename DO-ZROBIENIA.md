@@ -80,28 +80,20 @@ nie ma sensu — każde zapytanie od klienta przepadnie bez śladu.**
 
 ---
 
-## 1. Subdomeny dla stron demonstracyjnych ⏳ — czeka na DNS
+## 1. Subdomeny dla stron demonstracyjnych ✅ — DNS gotowy
 
-**Stan na 28 sierpnia 2026:** konfiguracja `vercel.json` jest już w repozytorium
-i aktywna. Reguły zadziałają w momencie, w którym subdomeny zaczną kierować
-na ten projekt. Do tego czasu plik nic nie zmienia.
+**Stan na 28 sierpnia 2026:** zrobione po obu stronach.
 
-### Zostały dwa kroki i oba są po stronie właściciela
+- **Vercel** — cztery domeny dodane w projekcie `przewagametoda-preview`
+  (środowisko Production).
+- **home.pl** — cztery rekordy CNAME dodane do strefy `probatum.pl`, wszystkie
+  na `f159e593438ec538.vercel-dns-017.com.` Rozeszły się od razu; certyfikaty
+  HTTPS wystawione. Pozostałe 8 rekordów (MX Zoho, SPF, DKIM, weryfikacja,
+  A i www) nietknięte — sprawdzone po zmianie.
 
-**Krok 1 — wpisy w panelu home.pl** (tam siedzi DNS domeny probatum.pl):
-
-```
-lawenda-demo      CNAME   cname.vercel-dns.com
-kancelaria-demo   CNAME   cname.vercel-dns.com
-remonty-demo      CNAME   cname.vercel-dns.com
-warsztat-demo     CNAME   cname.vercel-dns.com
-```
-
-**Krok 2 — dodanie tych domen w Vercelu**, w projekcie `przewagametoda-preview`,
-zakładka **Domains**. Vercel poda tam dokładną wartość CNAME — jeśli będzie inna
-niż powyżej, użyj tej z panelu.
-
-Wpisy DNS potrafią się rozchodzić po świecie od kilkunastu minut do kilku godzin.
+**Zostało:** wypchnąć `vercel.json` z regułami przepisania. Do tego czasu
+wszystkie cztery subdomeny odpowiadają, ale pokazują stronę główną Probatum
+zamiast właściwego demo.
 
 ### Co gdzie trafi
 
@@ -143,7 +135,57 @@ Do założenia jednym poleceniem — czeka na decyzję właściciela.
 
 ---
 
-## 2. Katalogi funkcji — treść do przejrzenia ⏳
+## 2. Bloki prawne w demach ✅ — zrobione 28 sierpnia 2026
+
+Wszystkie 17 stron czterech dem ma teraz regulamin, politykę prywatności
+i pasek informacji o ciasteczkach. Generuje to `build/prawne.py`
+(opis w `JAK-DZIALA-PROBATUM.md`, sekcja 7b).
+
+Treści są szablonowe — firmy w demach są zmyślone — i każdy regulamin kończy
+się zdaniem, które mówi to wprost.
+
+**Do przejrzenia przez właściciela:** czy zapisy w regulaminach brzmią tak,
+jak chce sprzedawać. Zwłaszcza terminy odwołania wizyty u Lawendy (24 h),
+gwarancja u Serwisu (12 miesięcy na robociznę) i gwarancja u Domu i Wnętrza
+(24 miesiące). To liczby wzięte z typowej praktyki, nie z jego ustaleń.
+
+---
+
+## 3. 🟠 probatum.pl nie ma polityki prywatności
+
+**Znalezione 28 sierpnia 2026 przy okazji dem.**
+
+Sama strona probatum.pl — ta, która zbiera prawdziwe zgłoszenia — nie ma:
+
+- polityki prywatności (sprawdzone na żywo: `/polityka-prywatnosci`,
+  `/polityka`, `/prywatnosc` — wszystkie 404),
+- klauzuli informacyjnej RODO (nigdzie nie pada słowo „Administrator"),
+- dokumentu, do którego prowadziłaby zgoda z formularza kontaktowego —
+  checkbox jest, treści za nim nie ma.
+
+Strony katalogów zapisują dodatkowo zaznaczenia w pamięci przeglądarki,
+bez żadnej wzmianki.
+
+### Co to znaczy dzisiaj
+
+Nic nie wycieka, bo formularze i tak nie działają (punkt 0). Ale **oba punkty
+trzeba zamknąć przed uruchomieniem**, nie po — RODO wymaga klauzuli
+informacyjnej w momencie zbierania danych, nie później.
+
+### Dlaczego to nie jest zrobione razem z demami
+
+Klauzula musi wskazywać administratora z nazwy i adresu. Przy działalności
+jednoosobowej to imię, nazwisko i adres właściciela — czyli dokładnie to,
+czego konsekwentnie nie publikuje. Wyjścia są (adres korespondencyjny,
+wirtualne biuro, spółka), ale każde ma cenę i **to jest decyzja właściciela
+po rozmowie z prawnikiem**, a nie coś, co da się dopisać za niego.
+
+Szkielet polityki — wszystko poza danymi administratora — jest do zrobienia
+w pół godziny, gdy tylko ta decyzja zapadnie.
+
+---
+
+## 4. Katalogi funkcji — treść do przejrzenia ⏳
 
 `build/katalogi.py` zawiera 56 opisów funkcji istniejących i 65 propozycji
 rozbudowy. Napisane na podstawie tego, co faktycznie jest w demo, ale **nie
@@ -156,7 +198,7 @@ Zmiana jednej pozycji to jedna linijka w `build/katalogi.py`, potem
 
 ---
 
-## 3. Pergola na wspólnym mechanizmie katalogu ⏳
+## 5. Pergola na wspólnym mechanizmie katalogu ⏳
 
 Katalog Pergoli (`radosc-website-preview/oferta.html`) chodzi na własnym,
 starszym mechanizmie — całość wklejona w jeden plik. Pozostałe cztery używają

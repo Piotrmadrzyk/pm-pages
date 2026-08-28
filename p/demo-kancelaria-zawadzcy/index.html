@@ -921,7 +921,7 @@
       </div>
     </section>
 
-    <section class="policy">
+    <section class="policy" id="polityka">
       <div class="container">
         <div class="policy-box">
           <h2>Polityka prywatności</h2>
@@ -1154,6 +1154,59 @@
 })();
 </script>
 
+
+<style>
+  .pm-prawne{background:#ece7dd;border-top:1px solid rgba(11,37,69,.14);padding:44px 20px 52px}
+  .pm-prawne-in{max-width:900px;margin:0 auto;display:grid;gap:14px}
+  .pm-prawne h2{font-family:'Cormorant Garamond',serif;color:#18212b;font-size:1.5rem;margin:0;line-height:1.25}
+  .pm-prawne details{border:1px solid rgba(11,37,69,.14);border-radius:12px;background:transparent}
+  .pm-prawne summary{cursor:pointer;padding:15px 18px;color:#18212b;font-weight:700;font-family:'Cormorant Garamond',serif;font-size:1.06rem;list-style:none;display:flex;justify-content:space-between;gap:12px}
+  .pm-prawne summary::-webkit-details-marker{display:none}
+  .pm-prawne summary::after{content:"+";font-weight:400;opacity:.6}
+  .pm-prawne details[open] summary::after{content:"\2212"}
+  .pm-prawne summary:focus-visible{outline:2px solid #0b2545;outline-offset:2px}
+  .pm-prawne .tresc{padding:0 18px 18px;color:#58616d;font-size:.9rem;line-height:1.75}
+  .pm-prawne .tresc p{margin:0 0 12px;color:#58616d}
+  .pm-prawne .tresc p:last-child{margin-bottom:0}
+  .pm-prawne .tresc b{color:#18212b}
+  .pm-prawne a{color:#0b2545}
+  .pm-prawne .zastrzezenie{opacity:.75;font-style:italic}
+</style>
+
+<section class="pm-prawne" aria-label="Informacje prawne">
+  <div class="pm-prawne-in">
+    <h2>Informacje prawne</h2>
+      <details id="regulamin">
+        <summary>Regulamin</summary>
+        <div class="tresc">
+          <p><b>Zakres działania.</b> Kancelaria świadczy pomoc prawną w sprawach cywilnych, gospodarczych, rodzinnych i spadkowych — dla firm i klientów indywidualnych.</p>
+          <p><b>Formularz to jeszcze nie porada.</b> Wiadomość wysłana przez formularz służy umówieniu rozmowy. Nie jest poradą prawną i nie tworzy stosunku klient — kancelaria. Nie należy w niej przesyłać dokumentów ani opisywać sprawy w sposób szczegółowy; od tego jest rozmowa.</p>
+          <p><b>Pierwsza konsultacja.</b> Pierwsza rozmowa jest bezpłatna i służy ustaleniu, czy i jak kancelaria może pomóc. Nie zobowiązuje żadnej ze stron do dalszej współpracy.</p>
+          <p><b>Umowa i wynagrodzenie.</b> Współpracę poprzedza pisemna umowa określająca zakres i wynagrodzenie — stawkę godzinową albo ryczałt za sprawę. Wysokość wynagrodzenia ustalamy przed rozpoczęciem pracy, nie po niej. Koszty sądowe i opłaty urzędowe są wskazywane osobno.</p>
+          <p><b>Tajemnica zawodowa.</b> Wszystko, co klient przekazuje kancelarii — w tym podczas bezpłatnej rozmowy — objęte jest tajemnicą zawodową, niezależnie od tego, czy dojdzie do zawarcia umowy.</p>
+          <p><b>Konflikt interesów.</b> Kancelaria odmawia prowadzenia sprawy, jeśli byłoby to sprzeczne z interesem klienta już obsługiwanego. O takiej sytuacji informujemy niezwłocznie.</p>
+          <p class="zastrzezenie">Powyższy regulamin jest treścią poglądową przygotowaną na potrzeby strony demonstracyjnej. Przed uruchomieniem prawdziwej strony należy go dostosować do rzeczywistej działalności i przedstawić do akceptacji.</p>
+        </div>
+      </details>
+  </div>
+</section>
+<script>
+(function () {
+  /* Link prowadzacy do zwinietego bloku ma go otworzyc, nie tylko
+     przewinac — inaczej gosc laduje na zamknietym naglowku. */
+  function otworz() {
+    var id = (location.hash || "").slice(1);
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (el && el.tagName === "DETAILS") {
+      el.open = true;
+      el.scrollIntoView({block: "start"});
+    }
+  }
+  window.addEventListener("hashchange", otworz);
+  otworz();
+})();
+</script>
 <footer class="kz-stopka">
   <div class="kz-stopka-in">
     <div>
@@ -1351,5 +1404,49 @@
 })();
 </script>
 
+
+<!-- ————— INFORMACJA O CIASTECZKACH ————— -->
+<div class="pm-cookie" id="pm-cookie-bar" role="region" aria-label="Informacja o plikach cookie">
+  <p>
+    Ta strona nie śledzi Cię i nie profiluje — nie ma tu analityki ani reklam.
+    W pamięci przeglądarki zapisujemy jedną rzecz: informację, że ten
+    komunikat został zamknięty. <a href="#polityka">Szczegóły w informacjach prawnych</a>.
+  </p>
+  <button type="button" id="pm-cookie-ok">Rozumiem</button>
+</div>
+<style>
+  .pm-cookie{position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;
+    max-width:720px;margin:0 auto;display:none;gap:16px;align-items:center;
+    background:#15171c;color:#e7e8ea;border:1px solid rgba(255,255,255,.14);
+    border-radius:14px;padding:15px 18px;font-size:.84rem;line-height:1.6;
+    box-shadow:0 18px 44px rgba(0,0,0,.34)}
+  .pm-cookie.pokaz{display:flex}
+  .pm-cookie p{margin:0}
+  .pm-cookie a{color:#c9b6ff}
+  .pm-cookie button{flex:0 0 auto;appearance:none;border:none;cursor:pointer;
+    padding:.6rem 1.15rem;border-radius:999px;background:#fff;color:#15171c;
+    font-weight:700;font-size:.84rem;font-family:inherit}
+  .pm-cookie button:hover{opacity:.9}
+  .pm-cookie button:focus-visible{outline:2px solid #c9b6ff;outline-offset:3px}
+  @media (max-width:560px){.pm-cookie{flex-direction:column;align-items:stretch}
+    .pm-cookie button{width:100%}}
+  @media (prefers-reduced-motion:reduce){.pm-cookie{transition:none}}
+</style>
+<script>
+(function () {
+  var pasek = document.getElementById("pm-cookie-bar");
+  if (!pasek) return;
+  var KLUCZ = "zawadzcy-prawne-v1";
+  var widziane = false;
+  try { widziane = localStorage.getItem(KLUCZ) === "ok"; } catch (e) {}
+  if (widziane) return;
+  pasek.classList.add("pokaz");
+  var ok = document.getElementById("pm-cookie-ok");
+  if (ok) ok.addEventListener("click", function () {
+    pasek.classList.remove("pokaz");
+    try { localStorage.setItem(KLUCZ, "ok"); } catch (e) {}
+  });
+})();
+</script>
 </body>
 </html>
