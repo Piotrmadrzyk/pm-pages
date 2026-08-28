@@ -151,7 +151,22 @@ gwarancja u Serwisu (12 miesięcy na robociznę) i gwarancja u Domu i Wnętrza
 
 ---
 
-## 3. 🟠 probatum.pl nie ma polityki prywatności
+## 3. Dema sprzedają same siebie ✅ — zrobione 28 sierpnia 2026
+
+Każde z 17 stron ma pasek „Ta strona jest do wzięcia" nad stopką: mówi, że
+firma jest zmyślona, i daje przycisk rezerwacji plus link do katalogu funkcji.
+Wszystkie maile i telefony w demach prowadzą teraz do Probatum — wcześniej
+zainteresowany klient pisał na nieistniejący adres i przepadał.
+
+Generuje to `build/demo_sprzedaz.py` (opis w `JAK-DZIALA-PROBATUM.md`, 7c).
+
+**Do decyzji właściciela:** przycisk prowadzi dziś do maila, bo formularze
+nie działają (punkt 0). Po ich naprawie warto go przełączyć na formularz
+wyceny — wtedy zgłoszenie trafi do systemu, a nie do skrzynki.
+
+---
+
+## 4. 🟠 probatum.pl nie ma polityki prywatności
 
 **Znalezione 28 sierpnia 2026 przy okazji dem.**
 
@@ -185,7 +200,7 @@ w pół godziny, gdy tylko ta decyzja zapadnie.
 
 ---
 
-## 4. Katalogi funkcji — treść do przejrzenia ⏳
+## 5. Katalogi funkcji — treść do przejrzenia ⏳
 
 `build/katalogi.py` zawiera 56 opisów funkcji istniejących i 65 propozycji
 rozbudowy. Napisane na podstawie tego, co faktycznie jest w demo, ale **nie
@@ -198,7 +213,7 @@ Zmiana jednej pozycji to jedna linijka w `build/katalogi.py`, potem
 
 ---
 
-## 5. Pergola na wspólnym mechanizmie katalogu ⏳
+## 6. Pergola na wspólnym mechanizmie katalogu ⏳
 
 Katalog Pergoli (`radosc-website-preview/oferta.html`) chodzi na własnym,
 starszym mechanizmie — całość wklejona w jeden plik. Pozostałe cztery używają

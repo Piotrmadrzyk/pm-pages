@@ -146,11 +146,11 @@
         .then(function (r) { return r.json(); })
         .then(function (res) {
           dots.remove();
-          addMsg(res && res.reply ? res.reply : 'Przepraszam, nie udało się odpowiedzieć. Zadzwoń proszę: 17 853 62 14.', 'bot');
+          addMsg(res && res.reply ? res.reply : 'Przepraszam, nie udało się odpowiedzieć. Zadzwoń proszę: +48 573 569 141.', 'bot');
         })
         .catch(function () {
           dots.remove();
-          addMsg('Brak połączenia z asystentką. Zadzwoń proszę: 17 853 62 14.', 'err');
+          addMsg('Brak połączenia z asystentką. Zadzwoń proszę: +48 573 569 141.', 'err');
         })
         .finally(function () {
           busy = false;
@@ -262,7 +262,7 @@
       })
       .catch(function () {
         if (button) button.disabled = false;
-        setStatus('Błąd połączenia. Zadzwoń do nas: 17 853 62 14.', 'err');
+        setStatus('Błąd połączenia. Zadzwoń do nas: +48 573 569 141.', 'err');
       });
   });
 })();

@@ -45,11 +45,13 @@ STOPKA_DEMO = (u'Powy\u017cszy regulamin jest tre\u015bci\u0105 pogl\u0105dow\u0
                u'strony demonstracyjnej. Przed uruchomieniem prawdziwej strony nale\u017cy go '
                u'dostosowa\u0107 do rzeczywistej dzia\u0142alno\u015bci i przedstawi\u0107 do akceptacji.')
 
+# UWAGA: adres kontaktowy jest prawdziwy — Probatum, nie zmyslona firma.
+# Zmyslone adresy nie istnieja, wiec kazde pismo w sprawie danych by przepadlo.
 FIRMY = {
 
     'lawenda': {
         'nazwa': u'Studio Lawenda',
-        'email': u'kontakt@studiolawenda.pl',
+        'email': u'kontakt@probatum.pl',
         'tryb': 'stopka',
         'regulamin': [
             (u'Zakres us\u0142ug',
@@ -78,7 +80,7 @@ FIRMY = {
 
     'zawadzcy': {
         'nazwa': u'Kancelaria Prawna Zawadzcy i Wsp\u00f3lnicy',
-        'email': u'kontakt@zawadzcy-kancelaria.pl',
+        'email': u'kontakt@probatum.pl',
         'tryb': 'sekcja',
         'kolory': {
             'tlo':      u'#ece7dd',
@@ -114,7 +116,7 @@ FIRMY = {
 
     'dom-i-wnetrze': {
         'nazwa': u'Dom i Wn\u0119trze Warszawa',
-        'email': u'kontakt@domiwnetrze.pl',
+        'email': u'kontakt@probatum.pl',
         'tryb': 'stopka',
         'regulamin': [
             (u'Zakres us\u0142ug',
@@ -144,7 +146,7 @@ FIRMY = {
 
     'serwis-podkarpacki': {
         'nazwa': u'Serwis Podkarpacki',
-        'email': u'kontakt@serwispodkarpacki.pl',
+        'email': u'kontakt@probatum.pl',
         'tryb': 'sekcja',
         'kolory': {
             'tlo':      u'#15181c',

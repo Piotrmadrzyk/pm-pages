@@ -408,6 +408,70 @@ wskazywać administratora z nazwy i adresu, a to decyzja właściciela.
 
 ---
 
+## 7c. DEMA MAJĄ SIĘ SPRZEDAWAĆ (`build/demo_sprzedaz.py`)
+
+Strony demonstracyjne istnieją po to, żeby ktoś zamówił taką dla siebie.
+Wcześniej nic o tym nie mówiły — wyglądały jak strony prawdziwych firm.
+Ten skrypt to naprawia:
+
+```bash
+cd build && python3 demo_sprzedaz.py
+```
+
+Na każdej z 17 stron czterech dem:
+
+1. **dokłada pasek sprzedażowy nad stopką** — mówi wprost, że firma jest
+   zmyślona, że stronę można zamówić, i daje dwa przyciski: „Zarezerwuj tę
+   stronę" (mail z tematem, po którym poznasz, które demo) oraz „Zobacz,
+   co ta strona potrafi" (prowadzi do katalogu funkcji tego demo);
+2. **przestawia maile i telefony na prawdziwe** — `kontakt@probatum.pl`
+   i `+48 573 569 141`;
+3. **przepisuje linijkę na dole stopki** na jednoznaczną.
+
+### Dlaczego kontakty musiały się zmienić
+
+Zmyślone adresy (`kontakt@zawadzcy-kancelaria.pl` i podobne) **nie istnieją**.
+Ktoś, komu spodobała się strona i napisał tam zamiast na Probatum, przepadał
+bez śladu. Dokładnie ten scenariusz, którego ta instrukcja ma unikać.
+
+Zmyślone numery telefonu to osobna sprawa: `17 850 12 34` wygląda jak numer
+wymyślony, ale **może należeć do przypadkowej osoby w Rzeszowie**. Skrypt
+podmienia je w trzech miejscach — w `href="tel:"`, w numerze wypisanym na
+ekranie i w danych strukturalnych JSON-LD w nagłówku (tego nie widać, ale
+czytają to wyszukiwarki). Telefony siedzą też w `assets/site.js`,
+w komunikatach błędu asystenta („Brak połączenia, zadzwoń proszę…") — bez
+tego zmyślony numer wracałby dokładnie wtedy, gdy coś nie zadziała.
+
+**Adresy pocztowe zostają zmyślone.** Są częścią scenografii i nikogo nie mylą,
+skoro pasek mówi wprost, że firma nie istnieje. Podstawienie tam prawdziwego
+adresu oznaczałoby publikowanie danych, których właściciel nie publikuje.
+
+### Wygląd paska
+
+Pasek jest ciemny i **taki sam na wszystkich czterech demach** — celowo. To głos
+Probatum, a nie zmyślonej firmy, i ma być rozpoznawalny, gdy ktoś ogląda dwa
+dema po kolei. Zmienia się tylko kolor przycisku i górnej kreski: bierzemy
+akcent danej strony (złoto u Zawadzkich, pomarańcz u Serwisu, mosiądz
+u Lawendy, miedź u Domu), żeby pasek nie wyglądał jak wklejony przez pomyłkę.
+
+Treść jest wyśrodkowana, bo każde demo ma kontener innej szerokości — lewa
+krawędź paska i tak nie trafiłaby w krawędź stopki na wszystkich czterech,
+a rozjazd o kilkadziesiąt pikseli czyta się jak błąd.
+
+### Gdzie zmienić treść
+
+Wszystko siedzi w słowniku `DEMA` na górze skryptu — po jednym wpisie na demo:
+nazwa zmyślonej firmy, do kogo mówimy, co ta strona ma w środku, kolor akcentu
+i link do katalogu. Po zmianie: `git checkout -- p/`, potem `python3 prawne.py`
+i `python3 demo_sprzedaz.py` w tej kolejności.
+
+⚠️ **Kolejność ma znaczenie.** `prawne.py` wstawia bloki prawne z adresem
+kontaktowym, a `demo_sprzedaz.py` przechodzi po całym pliku i podmienia
+kontakty. Odwrotnie zadziała, ale bloki prawne zostaną z niepodmienionym
+adresem, jeśli kiedyś wrócą tam zmyślone dane.
+
+---
+
 ## 8. CZEGO NIE ROBIĆ
 
 **Nie edytuj plików `.html` w katalogu głównym.** Wyglądają na źródła, nie są
