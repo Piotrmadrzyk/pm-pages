@@ -245,7 +245,7 @@ textarea{min-height:130px; resize:vertical}
   font-size:.9rem}
 .stopka-siatka{display:grid; gap:32px}
 @media(min-width:760px){ .stopka-siatka{grid-template-columns:1.4fr 1fr 1fr} }
-.stopka img{width:170px; margin-bottom:1.2rem}
+.stopka img{width:220px; margin-bottom:1.2rem}
 .stopka h4{font-family:var(--tekst); font-size:.72rem; letter-spacing:.2em; text-transform:uppercase;
   color:var(--srebro-ciemne); margin:0 0 .9rem; font-weight:400}
 .stopka a{color:var(--srebro-jasne); text-decoration:none; display:block; padding:.2rem 0}
@@ -273,11 +273,11 @@ textarea{min-height:130px; resize:vertical}
   border-bottom:1px solid rgba(255,255,255,.08); transition:background .3s;
 }
 .naglowek-in{
-  width:var(--wrap); margin:0 auto; min-height:78px;
+  width:var(--wrap); margin:0 auto; min-height:92px;
   display:flex; align-items:center; justify-content:space-between; gap:24px;
 }
 .marka{display:flex; align-items:center; flex:0 0 auto}
-.marka img{width:clamp(112px,12vw,150px)}
+.marka img{width:clamp(150px,17vw,215px)}
 .menu{display:none; align-items:center; gap:clamp(14px,2vw,30px)}
 @media(min-width:920px){ .menu{display:flex} }
 .menu a{

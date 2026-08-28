@@ -37,8 +37,8 @@ import shutil
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 CEL = os.path.join(ROOT, 'p', 'newage-lewandowska')
 
-TEL_POKAZ = u'+48 506 116 008'
-TEL_LINK = u'+48506116008'
+TEL_POKAZ = u'+48 507 330 730'
+TEL_LINK = u'+48507330730'
 ADRES = u'ul. Jana Kilińskiego 55/2, 42-200 Częstochowa'
 
 # ─────────────────────────────────────────────────────────────────
@@ -76,8 +76,9 @@ def menu_mobilne(aktywna, korzen):
 DYPLOMY = [
     ('2003-toni-guy',       u'2003', u'Toni&amp;Guy Academy',
      u'Dyplom akademii, podpisany przez międzynarodowego dyrektora artystycznego'),
-    ('2005-saks-london',    u'2005', u'Saks Academies — Londyn',
-     u'Covent Garden. Szkolenie ze strzyżenia i koloryzacji'),
+    ('2005-saks-london',    u'2005', u'Saks Academies',
+     u'Szkolenie ze strzyżenia i koloryzacji — polski oddział '
+     u'brytyjskiej akademii'),
     ('2009-uprawnienia',    u'2009', u'Uprawnienia dla instruktorów',
      u'Kurs pedagogiczno-metodyczny dla wykładowców — formalne prawo do szkolenia innych'),
     ('2013-loreal-h3',      u'2013', u'L’Oréal H³',
@@ -248,6 +249,52 @@ SZKIELET = u"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@200;300;400;500&display=swap">
 <link rel="stylesheet" href="%(korzen)sstyl.css">
+
+<link rel="icon" href="%(korzen)simg/ikona-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="%(korzen)simg/ikona-180.png">
+<link rel="manifest" href="%(korzen)smanifest.json">
+<meta name="theme-color" content="#0A0A0B">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="new age Lewandowska">
+<meta property="og:title" content="%(tytul)s">
+<meta property="og:description" content="%(opis)s">
+<meta property="og:image" content="https://probatum.pl/p/newage-lewandowska/img/hero.jpg">
+<meta property="og:locale" content="pl_PL">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  "name": "new age Lewandowska",
+  "alternateName": "New Age Studio",
+  "description": "Salon fryzjerski w Cz\u0119stochowie. Koloryzacja, strzy\u017cenie i modelowanie u Agnieszki Lewandowskiej \u2014 edukatorki L\u2019Or\u00e9al Professionnel.",
+  "image": "https://probatum.pl/p/newage-lewandowska/img/hero.jpg",
+  "telephone": "%(tel_pokaz)s",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ul. Jana Kili\u0144skiego 55/2",
+    "addressLocality": "Cz\u0119stochowa",
+    "postalCode": "42-200",
+    "addressCountry": "PL"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 50.8196257, "longitude": 19.1136929 },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "53" },
+  "priceRange": "$$",
+  "sameAs": [
+    "https://www.instagram.com/new_age_lewandowska",
+    "https://www.facebook.com/profile.php?id=100057636820418"
+  ],
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "10:00", "closes": "18:00" },
+    { "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday", "opens": "08:00", "closes": "13:00" }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -289,7 +336,8 @@ SZKIELET = u"""<!DOCTYPE html>
     </div>
     <div class="stopka-dol">
       <span>© 2026 new age Lewandowska</span>
-      <span>Wersja robocza — strona w budowie</span>
+      <span><a href="%(korzen)sprywatnosc/" style="color:inherit">Polityka prywatności</a>
+        · Wersja robocza — strona w budowie</span>
     </div>
   </div>
 </footer>
@@ -323,6 +371,15 @@ SZKIELET = u"""<!DOCTYPE html>
     <a class="a1" href="tel:%(tel_link)s">Zadzwoń</a>
     <a class="a2" href="https://www.instagram.com/new_age_lewandowska" target="_blank" rel="noopener">Instagram</a>
   </div>
+</div>
+
+<div class="cookie" id="cookie" role="region" aria-label="Informacja o plikach cookie" hidden>
+  <p>
+    Ta strona nie śledzi Cię i nie profiluje — nie ma tu analityki ani reklam.
+    W pamięci przeglądarki zapisujemy jedną rzecz: informację, że ten komunikat
+    został zamknięty. <a href="%(korzen)sprywatnosc/">Polityka prywatności</a>.
+  </p>
+  <button type="button" id="cookie-ok">Rozumiem</button>
 </div>
 
 <script src="%(korzen)sskrypt.js"></script>
@@ -375,8 +432,8 @@ def strona_start():
         <h1>Włosy, które<br>ktoś <em>rozumie</em>.</h1>
         <p class="hero-lead">
           Agnieszka Lewandowska. Dwadzieścia lat przy fotelu, dyplomy Toni&amp;Guy
-          i londyńskiego Saks, cztery szkolenia w Akademii L'Oréal Professionnel —
-          i lata uczenia innych fryzjerek tego, co sama robi.
+          i Saks, cztery szkolenia w Akademii L'Oréal Professionnel — i lata
+          uczenia innych fryzjerek tego, co sama robi.
         </p>
         <div class="hero-akcje">
           <a class="btn" href="tel:%(tel_link)s">Umów wizytę</a>
@@ -408,9 +465,10 @@ def strona_start():
       <h2>Nie zgaduję. <span class="kursywa">Wiem, co robię</span> — i umiem to wytłumaczyć.</h2>
       <p>
         Zaczynałam w 2003 roku dyplomem Toni&amp;Guy, dwa lata później szkoliłam się
-        w Saks Academies w londyńskim Covent Garden. W 2009 zdobyłam uprawnienia
-        pedagogiczne dla instruktorów — i przez lata prowadziłam warsztaty
-        dla innych fryzjerek jako edukatorka L'Oréal Professionnel.
+        w Saks Academies — to brytyjskie szkoły fryzjerstwa, które prowadziły wtedy
+        zajęcia także w Polsce. W 2009 zdobyłam uprawnienia pedagogiczne dla
+        instruktorów i przez lata prowadziłam warsztaty dla innych fryzjerek
+        jako edukatorka L'Oréal Professionnel.
       </p>
       <p>
         Zanim cokolwiek zrobię z Twoimi włosami, rozmawiamy. O tym, co chcesz osiągnąć,
@@ -424,9 +482,9 @@ def strona_start():
 <section class="ciemno">
   <div class="wrap">
     <p class="nadpis">Dowód</p>
-    <h2>Dwadzieścia lat, <span class="kursywa">osiem dokumentów</span>.</h2>
+    <h2>Dwadzieścia lat, <span class="kursywa">dwadzieścia dyplomów</span>.</h2>
     <p style="color:var(--srebro-jasne); max-width:56ch">
-      Toni&amp;Guy, londyński Saks, uprawnienia instruktorskie, cztery szkolenia
+      Toni&amp;Guy, Saks, uprawnienia instruktorskie, cztery szkolenia
       w Akademii L'Oréal Professionnel — u Adama Reeda, Berniego Ottjesa i Min Kim.
       Wszystkie do obejrzenia, także w salonie.
     </p>
@@ -442,7 +500,7 @@ def strona_start():
     <p class="nadpis">Usługi</p>
     <h2>Co robię <span class="kursywa">i jak</span>.</h2>
     <div class="uslugi">
-      <div class="usluga"><h3>Koloryzacja</h3><p>Balayage, rozjaśnianie, refleksy, korekta koloru. Zawsze po rozmowie o tym, co Twoje włosy wytrzymają.</p></div>
+      <div class="usluga"><h3>Koloryzacja</h3><p>Balayage, rozjaśnianie, refleksy, korekta koloru. Zawsze po rozmowie o tym, czy kondycja Twoich włosów na to pozwoli.</p></div>
       <div class="usluga"><h3>Strzyżenie</h3><p>Fryzura, która trzyma formę także wtedy, gdy układasz ją sama, w pośpiechu, przed wyjściem.</p></div>
       <div class="usluga"><h3>Modelowanie</h3><p>Na co dzień i na okazje. Także nauka układania — żeby dało się to powtórzyć w domu.</p></div>
       <div class="usluga"><h3>Pielęgnacja</h3><p>Zabiegi dobrane do stanu włosów, nie do cennika. Czasem zamiast koloru potrzebna jest regeneracja.</p></div>
@@ -506,8 +564,8 @@ u"""
     <div class="tresc wejscie">
       <p>
         Zaczynałam w 2003 roku dyplomem akademii Toni&amp;Guy. Dwa lata później
-        szkoliłam się w Saks Academies w londyńskim Covent Garden — strzyżenie
-        i koloryzacja, u ludzi, którzy uczyli wtedy pół Europy.
+        szkoliłam się w Saks Academies — strzyżenie i koloryzacja. To brytyjskie
+        szkoły fryzjerstwa, które prowadziły wtedy zajęcia także w Polsce.
       </p>
       <p>
         W 2009 zdobyłam uprawnienia pedagogiczne dla wykładowców i instruktorów.
@@ -529,17 +587,19 @@ u"""
 </section>
 
 <div class="mysl ciemno">
-  <blockquote>Dwadzieścia lat. Osiem dokumentów. Zero zgadywania.</blockquote>
+  <blockquote>Dwadzieścia lat. Dwadzieścia dyplomów. Zero zgadywania.</blockquote>
   <cite>Droga zawodowa — 2003–2023</cite>
 </div>
 
 <section id="dyplomy" style="padding-top:clamp(28px,4vw,52px)">
   <div class="wrap">
     <p class="nadpis">Droga</p>
-    <h2>Od Londynu <span class="kursywa">do dziś</span>.</h2>
+    <h2>Od pierwszego dyplomu <span class="kursywa">do dziś</span>.</h2>
     <p style="color:var(--srebro-jasne); max-width:58ch">
-      Każdy dyplom można powiększyć i przeczytać. Oryginały wiszą w salonie —
-      dwa najstarsze wystawione są jeszcze na nazwisko panieńskie, Dziuk.
+      Dyplomów uzbierało się przez te lata około dwudziestu. Poniżej osiem,
+      które są dla mnie najważniejsze — każdy można powiększyć i przeczytać.
+      Oryginały wiszą w salonie; dwa najstarsze wystawione są jeszcze
+      na nazwisko panieńskie, Dziuk.
     </p>
 """ + u''.join(rzedy) + u"""
   </div>
@@ -564,7 +624,7 @@ u"""
       <div class="u-foto"><img src="../img/sesja/kadr-1727.jpg" alt="Koloryzacja" loading="lazy"></div>
       <div>
         <span class="u-numer">01 — Koloryzacja</span>
-        <h3>Kolor, który wytrzymają Twoje włosy</h3>
+        <h3>Kolor dobrany do kondycji Twoich włosów</h3>
         <p>
           Zaczynamy od obejrzenia włosów i rozmowy o tym, co było na nich wcześniej.
           Henna, domowe farbowanie z drogerii, rozjaśnianie sprzed pół roku — to wszystko
@@ -1010,13 +1070,79 @@ u"""
 """ % {'tel_link': TEL_LINK, 'tel_pokaz': TEL_POKAZ})
 
 
+def strona_prywatnosc():
+    return (
+        naglowek_strony(u'Polityka prywatności',
+            u'Krótko i <span class="kursywa">bez prawniczego bełkotu</span>.',
+            u'Na tej stronie są dwa formularze. Poniżej piszę dokładnie, co się '
+            u'dzieje z danymi, które w nich zostawisz.') +
+u"""
+<section style="padding-top:0">
+  <div class="waski">
+    <div class="pytania" style="margin-top:0; border-top:0">
+
+      <details open><summary>Kto przetwarza dane</summary>
+        <p>Administratorem danych podanych w formularzach jest <b>Agnieszka
+        Lewandowska, prowadząca salon fryzjerski new age</b>, ul. Jana Kilińskiego 55/2,
+        42-200 Częstochowa. W sprawach dotyczących danych najprościej zadzwonić:
+        <a href="tel:%(tel_link)s" style="color:var(--biel)">%(tel_pokaz)s</a>.</p></details>
+
+      <details><summary>Jakie dane i po co</summary>
+        <p><b>Formularz zapytania o termin i cenę:</b> imię, telefon, rodzaj usługi,
+        długość i gęstość włosów, preferowany termin oraz to, co sama dopiszesz.
+        Wykorzystuję je wyłącznie po to, żeby oddzwonić i podać cenę.</p>
+        <p><b>Formularz opinii:</b> imię, opcjonalnie adres e-mail, ocena i treść
+        opinii. Wykorzystuję je, żeby przeczytać opinię i — jeśli wyrazisz na to
+        zgodę — opublikować ją na stronie.</p>
+        <p>Podstawą jest Twoja zgoda (art. 6 ust. 1 lit. a RODO). Podanie danych
+        jest dobrowolne, ale bez telefonu nie oddzwonię.</p></details>
+
+      <details><summary>Jak długo je trzymam</summary>
+        <p>Dane z zapytania o wycenę — przez czas potrzebny do obsługi zgłoszenia
+        i umówienia wizyty, nie dłużej niż <b>12 miesięcy</b> od ostatniego kontaktu.
+        Opinie — dopóki są opublikowane na stronie albo dopóki nie poprosisz
+        o ich usunięcie.</p></details>
+
+      <details><summary>Komu je przekazuję</summary>
+        <p>Nikomu poza dostawcami technicznymi, którzy obsługują stronę i formularze —
+        firmie hostingowej oraz usłudze przyjmującej zgłoszenia. Nie sprzedaję danych,
+        nie przekazuję ich do celów marketingowych i nie profiluję.</p></details>
+
+      <details><summary>Twoje prawa</summary>
+        <p>Masz prawo dostępu do swoich danych, ich sprostowania, usunięcia
+        i ograniczenia przetwarzania, a także prawo wycofania zgody w dowolnym
+        momencie — wystarczy jeden telefon albo wiadomość. Wycofanie zgody nie
+        wpływa na to, co zdarzyło się wcześniej.</p>
+        <p>Przysługuje Ci również skarga do Prezesa Urzędu Ochrony Danych Osobowych.</p></details>
+
+      <details><summary>Ciasteczka i pamięć przeglądarki</summary>
+        <p>Ta strona <b>nie używa ciasteczek reklamowych ani analitycznych</b>.
+        Nie mierzę ruchu, nie profiluję i nie osadzam skryptów śledzących.
+        W pamięci przeglądarki zapisuje się jedna informacja: że komunikat
+        o ciasteczkach został zamknięty. Możesz ją usunąć w ustawieniach
+        przeglądarki.</p>
+        <p>Mapa dojazdu jest osadzona z Map Google — po jej wyświetleniu Google
+        może zapisać własne pliki na Twoim urządzeniu, na zasadach opisanych
+        w polityce prywatności Google.</p></details>
+
+      <details><summary>Zdjęcia na stronie</summary>
+        <p>Zdjęcia metamorfoz publikuję wyłącznie za pisemną zgodą osób, które
+        są na nich widoczne. Jeśli rozpoznajesz siebie na którymkolwiek zdjęciu
+        i nie życzysz sobie publikacji — napisz, zdejmę je tego samego dnia.</p></details>
+
+    </div>
+  </div>
+</section>
+""" % {'tel_link': TEL_LINK, 'tel_pokaz': TEL_POKAZ})
+
+
 # ─────────────────────────────────────────────────────────────────
 STRONY = [
     ('start', '', u'new age Lewandowska — fryzjerstwo, Częstochowa',
      u'Salon fryzjerski new age w Częstochowie. Koloryzacja, strzyżenie i modelowanie '
      u'u Agnieszki Lewandowskiej — edukatorki L’Oréal Professionnel.', strona_start, ''),
     ('o-mnie', 'o-mnie', u'O mnie — Agnieszka Lewandowska | new age',
-     u'Dwadzieścia lat pracy, dyplomy Toni&Guy i Saks London, cztery szkolenia '
+     u'Dwadzieścia lat pracy, dyplomy Toni&Guy i Saks, cztery szkolenia '
      u'w Akademii L’Oréal Professionnel.', strona_o_mnie, '../'),
     ('uslugi', 'uslugi', u'Usługi — koloryzacja, strzyżenie, modelowanie | new age',
      u'Koloryzacja, strzyżenie, modelowanie i pielęgnacja w Częstochowie. '
@@ -1025,6 +1151,9 @@ STRONY = [
      u'Stylizacje fryzur do magazynu SPLOT i sesji katalogowych.', strona_portfolio, '../'),
     ('opinie', 'opinie', u'Opinie klientek | new age Lewandowska',
      u'Ocena 5,0 z 53 opinii w Google. Zostaw swoją opinię.', strona_opinie, '../'),
+    ('prywatnosc', 'prywatnosc', u'Polityka prywatności | new age Lewandowska',
+     u'Kto przetwarza dane z formularzy, jak długo i jakie masz prawa.',
+     strona_prywatnosc, '../'),
     ('kontakt', 'kontakt', u'Kontakt — Częstochowa, ul. Kilińskiego 55 | new age',
      u'Telefon, adres, godziny otwarcia i mapa dojazdu. Kilińskiego 55/2, Częstochowa.', strona_kontakt, '../'),
 ]
