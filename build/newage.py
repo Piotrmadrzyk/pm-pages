@@ -192,8 +192,17 @@ LINK_GOOGLE = (u'https://www.google.com/maps/place/New+Age+Studio/'
                u'!1s0x4710b5ce3d07422f:0x4cc4e3755647bc1!9m1!1b1')
 
 
-def karty_opinii(ile=None):
+def karty_opinii(ile=None, odnosnik=None):
+    """Na stronie glownej karty prowadza do zakladki z opiniami — inaczej
+    goscia nic nie zabiera dalej i utyka na trzech cytatach."""
     lista = OPINIE if ile is None else OPINIE[:ile]
+    if odnosnik:
+        return u'\n      '.join(
+            u'<a class="opinia opinia-klik" href="%s">'
+            u'<div class="gwiazdki" aria-label="5 na 5">★★★★★</div>'
+            u'<p>%s</p><p class="kto">%s · Google</p>'
+            u'<span class="opinia-wiecej">Przeczytaj wszystkie</span></a>'
+            % (odnosnik, tresc, autor) for autor, tresc in lista)
     return u'\n      '.join(
         u'<article class="opinia"><div class="gwiazdki" aria-label="5 na 5">★★★★★</div>'
         u'<p>%s</p><p class="kto">%s · Google</p></article>' % (tresc, autor)
@@ -460,7 +469,7 @@ def strona_start():
   </div>
 </section>
 """ % {'dyplomy': dyplomy_skrot, 'przerywnik': PRZERYWNIK,
-      'opinie': karty_opinii(3)}
+      'opinie': karty_opinii(3, 'opinie/')}
 
     return czolowka + reszta + blok_kontaktu(
         u'Zadzwoń, zanim <span class="kursywa">zdecydujesz</span>.',
