@@ -417,7 +417,9 @@ textarea{min-height:130px; resize:vertical}
   color:var(--srebro-ciemne); font-size:.88rem; margin:1.8rem auto 0; max-width:44ch;
 }
 
-/* pasek telefonu na dole ekranu — tylko na telefonie */
+/* ZASTĄPIONE przez .dok — zostawione puste */
+.pasek-telefon{display:none!important}
+/* stary pasek: */
 .pasek-telefon{
   position:fixed; left:0; right:0; bottom:0; z-index:80;
   display:flex; align-items:center; justify-content:space-between; gap:12px;
@@ -459,3 +461,187 @@ body{padding-bottom:0}
 .kafel .powieksz:hover::after,.pasek-dyplomow .powieksz:hover::after,
 .kafel .powieksz:focus-visible::after,.pasek-dyplomow .powieksz:focus-visible::after{opacity:1}
 @media(hover:none){ .kafel .powieksz::after,.pasek-dyplomow .powieksz::after{opacity:.85} }
+
+/* ═══════════════════════════════════════════════════════════════
+   DOLNY DOK NA TELEFONIE + WYSUWANY PANEL
+   Na telefonie kciuk jest na dole ekranu, nie na górze. Najważniejsze
+   akcje muszą tam być przez cały czas, a nie po przewinięciu strony.
+   ═══════════════════════════════════════════════════════════════ */
+.dok{
+  position:fixed; left:0; right:0; bottom:0; z-index:90; display:grid;
+  grid-template-columns:repeat(3,1fr);
+  background:rgba(10,10,11,.95); backdrop-filter:blur(16px);
+  border-top:1px solid rgba(255,255,255,.12);
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+}
+@media(min-width:920px){ .dok{display:none} }
+.dok a,.dok button{
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px;
+  padding:.72rem 4px .68rem; background:none; border:0; cursor:pointer;
+  color:var(--srebro-jasne); font-family:var(--tekst); font-size:.66rem;
+  letter-spacing:.1em; text-transform:uppercase; text-decoration:none;
+}
+.dok a:active,.dok button:active{background:rgba(255,255,255,.06)}
+.dok .glowna{color:var(--atrament); background:var(--biel)}
+.dok svg{width:19px; height:19px; stroke-width:1.6}
+
+.zaslona{position:fixed; inset:0; z-index:95; background:rgba(6,6,7,.7);
+  opacity:0; pointer-events:none; transition:opacity .3s}
+.zaslona.widac{opacity:1; pointer-events:auto}
+
+.panel{
+  position:fixed; left:0; right:0; bottom:0; z-index:96;
+  background:var(--wegiel); border-top:1px solid rgba(255,255,255,.14);
+  border-radius:20px 20px 0 0; padding:12px 0 calc(20px + env(safe-area-inset-bottom,0px));
+  transform:translateY(101%); transition:transform .38s cubic-bezier(.2,.8,.25,1);
+  max-height:82vh; overflow-y:auto;
+}
+.panel.widac{transform:none}
+.panel-uchwyt{width:42px; height:4px; border-radius:99px; background:rgba(255,255,255,.26);
+  margin:0 auto 14px}
+.panel-glowa{display:flex; align-items:center; justify-content:space-between;
+  padding:0 20px 12px; border-bottom:1px solid rgba(255,255,255,.09)}
+.panel-glowa h2{font-size:1.3rem}
+.panel-zamknij{width:40px; height:40px; border:1px solid rgba(255,255,255,.2);
+  background:none; color:var(--biel); font-size:1.1rem; cursor:pointer}
+.panel-lista{display:flex; flex-direction:column; padding:6px 0}
+.panel-lista a{
+  display:flex; align-items:center; gap:14px; padding:.95rem 20px;
+  color:var(--srebro-jasne); text-decoration:none; font-size:1.02rem;
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.panel-lista a b{font-family:var(--display); font-size:.76rem; color:var(--srebro-ciemne);
+  font-variant-numeric:tabular-nums; font-weight:400; min-width:2ch}
+.panel-lista a[aria-current=page]{color:var(--biel)}
+.panel-stopka{padding:16px 20px 0; display:flex; gap:10px}
+.panel-stopka a{flex:1; text-align:center; padding:.85rem; text-decoration:none;
+  font-size:.78rem; letter-spacing:.12em; text-transform:uppercase}
+.panel-stopka .a1{background:var(--biel); color:var(--atrament)}
+.panel-stopka .a2{border:1px solid rgba(255,255,255,.24); color:var(--biel)}
+
+@media(max-width:919px){ body{padding-bottom:76px} }
+
+/* ═══════════════════════════════════════════════════════════════
+   ŚRODKI EDYTORSKIE — żeby strona przestała mieć jeden rytm
+   ═══════════════════════════════════════════════════════════════ */
+
+/* wielki cytat oddzielający sekcje */
+.mysl{padding:clamp(56px,8vw,110px) 0; text-align:center}
+.mysl blockquote{
+  margin:0 auto; max-width:20ch; font-family:var(--display);
+  font-size:clamp(1.9rem,4.6vw,3.4rem); line-height:1.16; color:var(--biel);
+  font-style:italic; letter-spacing:-.02em;
+}
+.mysl cite{display:block; margin-top:1.8rem; font-family:var(--tekst); font-style:normal;
+  font-size:.74rem; letter-spacing:.24em; text-transform:uppercase; color:var(--srebro-ciemne)}
+
+/* kroki z wielkimi numerami */
+.kroki{counter-reset:krok; display:grid; gap:0; margin-top:3rem}
+@media(min-width:860px){ .kroki{grid-template-columns:repeat(2,1fr); column-gap:clamp(32px,5vw,72px)} }
+.krok{position:relative; padding:clamp(24px,3vw,34px) 0;
+  border-top:1px solid rgba(255,255,255,.11)}
+.krok::before{
+  counter-increment:krok; content:counter(krok,decimal-leading-zero);
+  font-family:var(--display); font-size:clamp(2.4rem,5vw,3.6rem); color:rgba(255,255,255,.13);
+  line-height:1; display:block; margin-bottom:.5rem; font-variant-numeric:tabular-nums;
+}
+.krok h3{margin-bottom:.6rem}
+.krok p{color:var(--srebro-jasne); font-size:.97rem; margin:0; max-width:46ch}
+
+/* pas zdjęcia przez całą szerokość */
+.pas{position:relative; height:clamp(240px,38vw,460px); overflow:hidden}
+.pas img{width:100%; height:100%; object-fit:cover; object-position:50% 32%}
+.pas::after{content:''; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(10,10,11,.55), rgba(10,10,11,.15) 40%, rgba(10,10,11,.75))}
+.pas-tresc{position:absolute; inset:0; display:flex; align-items:center; z-index:2}
+.pas-tresc .wrap{width:var(--wrap)}
+.pas-tresc h2{color:var(--biel); max-width:16ch}
+
+/* rozwijane pytania */
+.pytania{margin-top:2.8rem; border-top:1px solid rgba(255,255,255,.11)}
+.pytania details{border-bottom:1px solid rgba(255,255,255,.11)}
+.pytania summary{
+  list-style:none; cursor:pointer; padding:1.3rem 2.4rem 1.3rem 0; position:relative;
+  font-family:var(--display); font-size:clamp(1.05rem,2vw,1.3rem); color:var(--biel);
+}
+.pytania summary::-webkit-details-marker{display:none}
+.pytania summary::after{
+  content:''; position:absolute; right:4px; top:50%; width:11px; height:11px;
+  border-right:1px solid var(--srebro); border-bottom:1px solid var(--srebro);
+  transform:translateY(-70%) rotate(45deg); transition:transform .3s;
+}
+.pytania details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.pytania summary:focus-visible{outline:2px solid var(--srebro); outline-offset:2px}
+.pytania p{color:var(--srebro-jasne); padding:0 2rem 1.5rem 0; margin:0; max-width:62ch;
+  font-size:.98rem}
+.pytania b{color:var(--biel); font-weight:500}
+
+/* karta usługi z numerem i zdjęciem */
+.usluga-duza{
+  display:grid; gap:clamp(24px,4vw,56px); align-items:center;
+  padding:clamp(36px,5vw,64px) 0; border-top:1px solid rgba(255,255,255,.11);
+}
+@media(min-width:900px){
+  .usluga-duza{grid-template-columns:.9fr 1.1fr}
+  .usluga-duza:nth-child(even) .u-foto{order:2}
+}
+.usluga-duza .u-foto img{width:100%; aspect-ratio:4/3; object-fit:cover}
+.u-numer{font-family:var(--display); font-size:.8rem; letter-spacing:.2em;
+  color:var(--srebro-ciemne); display:block; margin-bottom:.9rem;
+  font-variant-numeric:tabular-nums}
+.usluga-duza h3{font-size:clamp(1.5rem,3vw,2.1rem); margin-bottom:1rem}
+.usluga-duza p{color:var(--srebro-jasne); max-width:52ch}
+.u-fakty{display:flex; flex-wrap:wrap; gap:10px; margin-top:1.4rem; padding:0; list-style:none}
+.u-fakty li{
+  font-size:.76rem; letter-spacing:.1em; text-transform:uppercase; color:var(--srebro);
+  border:1px solid rgba(255,255,255,.16); padding:.45rem .8rem;
+}
+
+/* Dyplomy jako rzędy na przemian — dokument z jednej strony, opis
+   z drugiej. Wcześniej były siatką na samym dole strony i nikt
+   nie łączył ich z opowieścią obok. */
+.usluga-duza.dyplom{align-items:center}
+.usluga-duza.dyplom .u-foto .powieksz{
+  display:block; width:100%; padding:12px; border:1px solid rgba(255,255,255,.12);
+  background:var(--biel); cursor:zoom-in; position:relative;
+}
+.usluga-duza.dyplom .u-foto img{
+  width:100%; aspect-ratio:auto; height:auto; object-fit:contain;
+  max-height:440px; margin:0 auto;
+}
+.usluga-duza.dyplom .u-foto .powieksz:hover{border-color:rgba(255,255,255,.34)}
+.usluga-duza.dyplom .u-numer{
+  font-size:clamp(1.6rem,3.4vw,2.4rem); letter-spacing:0; color:var(--srebro);
+  margin-bottom:.6rem; line-height:1;
+}
+@media(min-width:900px){
+  .usluga-duza.dyplom:nth-of-type(odd) .u-foto{order:2}
+  .usluga-duza.dyplom:nth-of-type(even) .u-foto{order:0}
+}
+
+/* Strzałki i licznik w powiększeniu — bez tego trzeba było zamykać
+   zdjęcie, żeby obejrzeć następne. */
+.lupa-scena{display:flex; align-items:center; justify-content:center; max-width:100%}
+.lupa img{transition:opacity .22s ease}
+.lupa-strzalka{
+  position:absolute; top:50%; transform:translateY(-50%); z-index:2;
+  width:56px; height:56px; border:1px solid rgba(255,255,255,.22); background:rgba(10,10,11,.5);
+  color:var(--biel); font-size:2rem; line-height:1; cursor:pointer; transition:.25s;
+  display:flex; align-items:center; justify-content:center; padding-bottom:5px;
+}
+.lupa-strzalka:hover{background:var(--biel); color:var(--atrament)}
+.lupa-strzalka.wstecz{left:clamp(8px,2vw,28px)}
+.lupa-strzalka.dalej{right:clamp(8px,2vw,28px)}
+.lupa-strzalka[hidden]{display:none}
+.lupa-licznik{
+  color:var(--srebro-ciemne); font-size:.78rem; letter-spacing:.18em; margin:0;
+  font-variant-numeric:tabular-nums;
+}
+@media(max-width:560px){
+  .lupa-strzalka{width:44px; height:44px; font-size:1.5rem}
+  .lupa img{max-height:66vh}
+}
+
+/* Dyplom bez wymiarów potrafił mieć zerową wysokość, zanim się
+   doładował — przez to pierwszy rząd wyglądał na pusty. */
+.usluga-duza.dyplom .u-foto img{min-height:220px; background:#f2f2f2}

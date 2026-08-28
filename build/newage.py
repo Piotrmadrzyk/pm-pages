@@ -251,14 +251,7 @@ SZKIELET = u"""<!DOCTYPE html>
         %(menu)s
     </nav>
     <a class="naglowek-tel" href="tel:%(tel_link)s">%(tel_pokaz)s</a>
-    <button class="hamburger" id="hamburger" type="button"
-      aria-label="Otwórz menu" aria-expanded="false" aria-controls="menu-mobilne">
-      <span></span><span></span><span></span>
-    </button>
   </div>
-  <nav class="menu-mobilne" id="menu-mobilne" aria-label="Menu">
-    %(menu_mobilne)s
-  </nav>
 </header>
 
 %(tresc)s
@@ -292,9 +285,35 @@ SZKIELET = u"""<!DOCTYPE html>
   </div>
 </footer>
 
-<div class="pasek-telefon">
-  <span class="haslo">Nie wiesz, co wybrać?<b>Zadzwoń — doradzę.</b></span>
-  <a href="tel:%(tel_link)s">Zadzwoń</a>
+<nav class="dok" aria-label="Szybkie akcje">
+  <a class="glowna" href="tel:%(tel_link)s">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+    Zadzwoń
+  </a>
+  <a href="%(korzen)skontakt/#wycena">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M9 15h6M9 11h3"/></svg>
+    Wyceń
+  </a>
+  <button id="dok-menu" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="panel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    Menu
+  </button>
+</nav>
+
+<div class="zaslona" id="zaslona" aria-hidden="true"></div>
+<div class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="panel-tytul">
+  <div class="panel-uchwyt" aria-hidden="true"></div>
+  <div class="panel-glowa">
+    <h2 id="panel-tytul">Menu</h2>
+    <button class="panel-zamknij" id="panel-zamknij" type="button" aria-label="Zamknij menu">✕</button>
+  </div>
+  <nav class="panel-lista" aria-label="Nawigacja">
+    %(menu_mobilne)s
+  </nav>
+  <div class="panel-stopka">
+    <a class="a1" href="tel:%(tel_link)s">Zadzwoń</a>
+    <a class="a2" href="https://www.instagram.com/new_age_lewandowska" target="_blank" rel="noopener">Instagram</a>
+  </div>
 </div>
 
 <script src="%(korzen)sskrypt.js"></script>
@@ -450,6 +469,23 @@ def strona_start():
 
 
 def strona_o_mnie():
+    rzedy = []
+    for i, (plik, rok, tytul, opis) in enumerate(DYPLOMY, 1):
+        rzedy.append(u"""
+    <article class="usluga-duza dyplom">
+      <div class="u-foto">
+        <button type="button" class="powieksz" data-pelne="../img/dyplomy/%s.jpg"
+          data-podpis="%s · %s" aria-label="Powiększ dyplom: %s">
+          <img src="../img/dyplomy/%s-mal.jpg" alt="%s — %s" loading="lazy">
+        </button>
+      </div>
+      <div>
+        <span class="u-numer">%s</span>
+        <h3>%s</h3>
+        <p>%s</p>
+      </div>
+    </article>""" % (plik, rok, tytul, tytul, plik, tytul, opis, rok, tytul, opis))
+
     return (
         naglowek_strony(u'O mnie',
             u'Nie zgaduję. <span class="kursywa">Wiem, co robię</span>.',
@@ -476,39 +512,27 @@ u"""
       </p>
       <p>
         Praktycznie znaczy to jedno: zanim cokolwiek zrobię z Twoimi włosami,
-        rozmawiamy. O tym, co chcesz osiągnąć, co da się osiągnąć na Twoich włosach,
-        ile to potrwa i ile będzie kosztować. Bez niespodzianek w lustrze.
+        rozmawiamy. Bez niespodzianek w lustrze.
       </p>
     </div>
     <img src="../img/sesja/kadr-1743.jpg" alt="Agnieszka Lewandowska" width="733" height="1100" loading="lazy" class="wejscie">
   </div>
 </section>
 
-<section class="ciemno" id="droga">
-  <div class="waski">
+<div class="mysl ciemno">
+  <blockquote>Dwadzieścia lat. Osiem dokumentów. Zero zgadywania.</blockquote>
+  <cite>Droga zawodowa — 2003–2023</cite>
+</div>
+
+<section id="dyplomy" style="padding-top:clamp(28px,4vw,52px)">
+  <div class="wrap">
     <p class="nadpis">Droga</p>
     <h2>Od Londynu <span class="kursywa">do dziś</span>.</h2>
-    <ol class="droga" style="margin-top:3rem">
-""" +
-        u'\n'.join(
-            u'      <li><span class="rok">%s</span><p class="co">%s<span>%s</span></p></li>'
-            % (p[1], p[2], p[3]) for p in DYPLOMY) +
-u"""
-    </ol>
-  </div>
-</section>
-
-<section id="dyplomy">
-  <div class="wrap">
-    <p class="nadpis">Dyplomy</p>
-    <h2>Wszystkie <span class="kursywa">do przeczytania</span>.</h2>
-    <p style="color:var(--srebro-jasne); max-width:56ch">
-      Kliknij, żeby powiększyć. Oryginały wiszą w salonie — te dwa najstarsze
-      wystawione są jeszcze na nazwisko panieńskie, Dziuk.
+    <p style="color:var(--srebro-jasne); max-width:58ch">
+      Każdy dyplom można powiększyć i przeczytać. Oryginały wiszą w salonie —
+      dwa najstarsze wystawione są jeszcze na nazwisko panieńskie, Dziuk.
     </p>
-    <div class="galeria-siatka galeria-dyplomy">
-        """ + kafle(DYPLOMY, 'dyplomy') + """
-    </div>
+""" + u''.join(rzedy) + u"""
   </div>
 </section>
 """ + blok_kontaktu(
@@ -520,54 +544,169 @@ u"""
 def strona_uslugi():
     return (
         naglowek_strony(u'Usługi',
-            u'Co robię <span class="kursywa">i jak</span>.',
-            u'Cztery obszary, jedna zasada: najpierw rozmowa, potem nożyczki.') +
+            u'Co robię, ile to trwa <span class="kursywa">i czego się spodziewać</span>.',
+            u'Bez ogólników. Przy każdej usłudze piszę, jak wygląda, ile zajmuje '
+            u'i dla kogo ma sens — żebyś wiedziała, na co się umawiasz.') +
 u"""
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="uslugi" style="margin-top:0">
-      <div class="usluga">
-        <h3>Koloryzacja</h3>
-        <p>Od delikatnego odświeżenia po pełną zmianę. Zawsze zaczynamy od rozmowy o tym, co Twoje włosy wytrzymają.</p>
-        <ul><li>Balayage i rozjaśnianie</li><li>Refleksy, pasemka, sombré</li>
-            <li>Koloryzacja globalna i odrosty</li><li>Tonowanie i korekta koloru</li></ul>
+
+    <article class="usluga-duza">
+      <div class="u-foto"><img src="../img/sesja/kadr-1727.jpg" alt="Koloryzacja" loading="lazy"></div>
+      <div>
+        <span class="u-numer">01 — Koloryzacja</span>
+        <h3>Kolor, który wytrzymają Twoje włosy</h3>
+        <p>
+          Zaczynamy od obejrzenia włosów i rozmowy o tym, co było na nich wcześniej.
+          Henna, domowe farbowanie z drogerii, rozjaśnianie sprzed pół roku — to wszystko
+          zmienia, co da się dziś zrobić. Powiem wprost, jeśli wymarzony efekt wymaga
+          dwóch albo trzech wizyt, zamiast obiecywać go od ręki i zniszczyć włosy.
+        </p>
+        <p>
+          Pracuję na L'Oréal Professionnel — na tych produktach szkoliłam się od 2013 roku
+          i wiem, jak się zachowują na różnych włosach.
+        </p>
+        <ul class="u-fakty">
+          <li>Odrosty — ok. 2 godz.</li><li>Balayage — 3–5 godz.</li>
+          <li>Korekta koloru — po konsultacji</li>
+        </ul>
       </div>
-      <div class="usluga">
-        <h3>Strzyżenie</h3>
-        <p>Fryzura, która trzyma formę także wtedy, gdy układasz ją sama, w pośpiechu, przed wyjściem.</p>
-        <ul><li>Strzyżenie damskie i męskie</li><li>Zmiana fryzury po konsultacji</li>
-            <li>Podcięcie i odświeżenie linii</li></ul>
+    </article>
+
+    <article class="usluga-duza">
+      <div class="u-foto"><img src="../img/sesja/kadr-1743.jpg" alt="Strzyżenie" loading="lazy"></div>
+      <div>
+        <span class="u-numer">02 — Strzyżenie</span>
+        <h3>Fryzura, którą ułożysz sama w czwartek rano</h3>
+        <p>
+          Najładniejsze cięcie jest do niczego, jeśli wymaga czterdziestu minut
+          i trzech urządzeń. Dlatego pytam, ile czasu naprawdę masz rano i czego
+          używasz — i dobieram fryzurę do tego, a nie do zdjęcia z internetu.
+        </p>
+        <p>
+          Jeśli przyniesiesz zdjęcie, powiem uczciwie, czy na Twoich włosach
+          i przy Twoim typie urody to zadziała. Czasem odradzę i zaproponuję coś innego.
+        </p>
+        <ul class="u-fakty">
+          <li>Strzyżenie damskie — ok. 1 godz.</li><li>Męskie — ok. 40 min</li>
+          <li>Duża zmiana — konsultacja przed</li>
+        </ul>
       </div>
-      <div class="usluga">
-        <h3>Modelowanie</h3>
-        <p>Na co dzień i na okazje. Także nauka układania — żeby dało się to powtórzyć w domu.</p>
-        <ul><li>Modelowanie po zabiegu</li><li>Fale, prostowanie, objętość</li>
-            <li>Upięcia i stylizacje okolicznościowe</li></ul>
+    </article>
+
+    <article class="usluga-duza">
+      <div class="u-foto"><img src="../img/sesja/kadr-1741.jpg" alt="Modelowanie" loading="lazy"></div>
+      <div>
+        <span class="u-numer">03 — Modelowanie i upięcia</span>
+        <h3>Na wesele, na sesję i na zwykły wtorek</h3>
+        <p>
+          Modelowanie po zabiegu, fale, prostowanie, objętość. Przy okazji pokazuję,
+          jak to powtórzyć w domu — który produkt, w którym momencie, w którą stronę
+          prowadzić szczotkę. To zwykle robi większą różnicę niż samo cięcie.
+        </p>
+        <p>
+          Upięcia okolicznościowe robię po wcześniejszej próbie, jeśli okazja jest ważna.
+          Do sesji zdjęciowych i stylizacji — mam za sobą pracę przy publikacjach
+          w magazynie i katalogach.
+        </p>
+        <ul class="u-fakty">
+          <li>Modelowanie — 30–45 min</li><li>Upięcie — od 1 godz.</li>
+          <li>Próba przed ślubem — możliwa</li>
+        </ul>
       </div>
-      <div class="usluga">
-        <h3>Pielęgnacja</h3>
-        <p>Zabiegi dobrane do stanu włosów, nie do cennika. Czasem zamiast koloru potrzebna jest regeneracja.</p>
-        <ul><li>Regeneracja i odbudowa</li><li>Zabiegi nawilżające</li>
-            <li>Dobór pielęgnacji domowej</li></ul>
+    </article>
+
+    <article class="usluga-duza">
+      <div class="u-foto"><img src="../img/sesja/kadr-1718.jpg" alt="Pielęgnacja" loading="lazy"></div>
+      <div>
+        <span class="u-numer">04 — Pielęgnacja i regeneracja</span>
+        <h3>Czasem zamiast koloru potrzebna jest przerwa</h3>
+        <p>
+          Zdarza się, że przychodzisz po koloryzację, a ja proponuję najpierw
+          regenerację. Nie dlatego, że tak wygodniej — tylko dlatego, że na
+          przesuszonych włosach kolor i tak się nie utrzyma i wyjdziesz rozczarowana.
+        </p>
+        <p>
+          Zabiegi dobieram do stanu włosów, nie do cennika. Dostaniesz też
+          konkretne wskazówki, czego używać w domu — i czego zdecydowanie nie.
+        </p>
+        <ul class="u-fakty">
+          <li>Zabieg — 30–60 min</li><li>Często łączony z koloryzacją</li>
+          <li>Dobór pielęgnacji domowej — gratis</li>
+        </ul>
       </div>
+    </article>
+
+  </div>
+</section>
+
+<div class="mysl ciemno">
+  <blockquote>Wolę odradzić, niż zrobić coś, czego obie pożałujemy.</blockquote>
+  <cite>Agnieszka Lewandowska</cite>
+</div>
+
+<section id="jak-to-wyglada">
+  <div class="waski">
+    <p class="nadpis">Jak wygląda wizyta</p>
+    <h2>Cztery kroki, <span class="kursywa">bez niespodzianek</span>.</h2>
+    <div class="kroki">
+      <div class="krok">
+        <h3>Rozmowa</h3>
+        <p>Oglądam włosy, pytam o historię koloryzacji, o to, ile masz czasu rano
+        i czego oczekujesz. Zajmuje to kilka minut i oszczędza mnóstwo rozczarowań.</p>
+      </div>
+      <div class="krok">
+        <h3>Cena i czas</h3>
+        <p>Zanim cokolwiek zacznę, wiesz, ile to będzie kosztować i ile potrwa.
+        Jeśli w trakcie okaże się, że potrzeba czegoś więcej — pytam, nie dopisuję.</p>
+      </div>
+      <div class="krok">
+        <h3>Praca</h3>
+        <p>Jedna osoba na raz. Nie biegam między trzema fotelami, więc nie zostajesz
+        z farbą na głowie na czterdzieści minut dłużej, niż trzeba.</p>
+      </div>
+      <div class="krok">
+        <h3>Co dalej</h3>
+        <p>Na koniec pokazuję, jak ułożyć fryzurę w domu, i mówię, kiedy wrócić.
+        Jeśli coś jest nie tak — wróć, poprawię.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ciemno" id="cennik">
+  <div class="waski">
+    <p class="nadpis">Cennik</p>
+    <h2>Dlaczego nie ma tu <span class="kursywa">tabelki z cenami</span>.</h2>
+    <p style="color:var(--srebro-jasne); max-width:56ch">
+      Bo uczciwie się nie da. Ta sama koloryzacja na włosach do ramion i na włosach
+      do pasa to dwie różne ilości farby, dwa różne czasy pracy i dwie różne ceny.
+      Do tego dochodzi grubość i gęstość włosów oraz to, co było na nich wcześniej.
+    </p>
+    <p style="color:var(--srebro-jasne); max-width:56ch">
+      Tabelka „od 150 zł" nie znaczy nic — poza tym, że przy kasie usłyszysz
+      inną kwotę. Wolę powiedzieć prawdę wcześniej.
+    </p>
+
+    <div class="pytania" style="margin-top:2.6rem">
+      <details><summary>Jak w takim razie poznam cenę?</summary>
+        <p>Trzy sposoby, każdy działa: zadzwoń i opisz włosy, wypełnij
+        <a href="../kontakt/#wycena" style="color:var(--biel)">formularz wyceny</a>
+        — pyta dokładnie o długość i gęstość — albo wpadnij na bezpłatną konsultację.
+        W każdym przypadku cenę podaję <b>przed</b> zabiegiem.</p></details>
+      <details><summary>Pracuję w pakietach — co to znaczy?</summary>
+        <p>Najczęściej łączy się koloryzację ze strzyżeniem i modelowaniem albo samą
+        koloryzację z modelowaniem. Wychodzi taniej niż każda usługa osobno
+        i zajmuje jedną wizytę zamiast dwóch.</p></details>
+      <details><summary>Czy cena może wzrosnąć w trakcie?</summary>
+        <p>Tylko wtedy, gdy w trakcie okaże się, że potrzeba czegoś, czego nie
+        dało się przewidzieć — i wtedy <b>pytam, zanim to zrobię</b>. Nigdy nie
+        dopisuję kwot po fakcie.</p></details>
     </div>
 
-    <div class="nota-cena">
-      <p><b>Dlaczego nie ma tu cennika.</b></p>
-      <p>
-        Bo uczciwie się nie da. Ta sama koloryzacja na włosach do ramion i na włosach
-        do pasa to dwie różne ilości farby, dwa różne czasy pracy i dwie różne ceny.
-        Do tego dochodzi grubość i gęstość włosów oraz to, co było na nich wcześniej.
-      </p>
-      <p>
-        Dlatego pracuję w pakietach — na przykład koloryzacja ze strzyżeniem i modelowaniem
-        albo sama koloryzacja z modelowaniem — a <b>cenę podaję po rozmowie</b>, kiedy
-        zobaczę włosy albo usłyszę, o co chodzi. Zawsze <b>przed</b> zabiegiem, nigdy po.
-      </p>
-      <p style="margin-top:1.4rem">
-        <a class="btn btn-ciemny" href="tel:%(tel_link)s">Zadzwoń i zapytaj o cenę</a>
-      </p>
-    </div>
+    <p style="margin-top:2.4rem">
+      <a class="btn btn-ciemny" href="tel:%(tel_link)s">Zadzwoń i zapytaj o cenę</a>
+    </p>
   </div>
 </section>
 """ % {'tel_link': TEL_LINK} + blok_kontaktu(
@@ -704,9 +843,10 @@ u"""
 def strona_kontakt():
     return (
         naglowek_strony(u'Kontakt',
-            u'Umów się <span class="kursywa">telefonicznie</span>.',
-            u'Najprościej zadzwonić — od razu ustalimy, ile czasu zarezerwować '
-            u'i ile to będzie kosztować.') +
+            u'Zadzwoń albo <span class="kursywa">napisz</span>.',
+            u'Najprościej zadzwonić. Ale jeśli wolisz napisać — poniżej jest '
+            u'formularz, który pyta dokładnie o to, czego potrzebuję, żeby '
+            u'podać Ci cenę bez oglądania włosów na żywo.') +
 u"""
 <section style="padding-top:0">
   <div class="wrap">
@@ -714,9 +854,15 @@ u"""
       <div>
         <ul class="dane">
           <li><span class="etykieta">Telefon</span>
-            <a href="tel:%(tel_link)s" style="font-size:1.35rem">%(tel_pokaz)s</a></li>
+            <a href="tel:%(tel_link)s" style="font-size:1.45rem">%(tel_pokaz)s</a>
+            <span style="display:block; color:var(--srebro-ciemne); font-size:.86rem; margin-top:.5rem">
+              Jeśli nie odbieram, jestem przy kimś w fotelu — oddzwonię.
+            </span></li>
           <li><span class="etykieta">Adres</span>
-            ul. Jana Kilińskiego 55/2<br>42-200 Częstochowa</li>
+            ul. Jana Kilińskiego 55/2<br>42-200 Częstochowa
+            <span style="display:block; color:var(--srebro-ciemne); font-size:.86rem; margin-top:.5rem">
+              Wejście od podwórza, parter. Parking przed budynkiem.
+            </span></li>
           <li><span class="etykieta">Godziny</span>
             <span class="godziny">
               wtorek – piątek &nbsp;10:00 – 18:00<br>
@@ -729,10 +875,126 @@ u"""
         </ul>
       </div>
       <div>
-        <iframe class="mapa" title="Mapa — ul. Jana Kilińskiego 55, Częstochowa" loading="lazy"
+        <iframe class="mapa" title="Mapa — ul. Jana Kilińskiego 55/2, Częstochowa" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           src="https://www.google.com/maps?q=Jana%%20Kili%%C5%%84skiego%%2055,%%2042-200%%20Cz%%C4%%99stochowa&output=embed"></iframe>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="ciemno" id="wycena">
+  <div class="wrap">
+    <p class="nadpis">Zapytanie o termin i cenę</p>
+    <h2>Odpowiem <span class="kursywa">konkretną kwotą</span>.</h2>
+    <p style="color:var(--srebro-jasne); max-width:56ch">
+      Cena zależy od długości i grubości włosów — dlatego pytam o to od razu.
+      Dzięki temu nie musisz przyjeżdżać na samą wycenę.
+    </p>
+
+    <form class="form-opinia" id="form-wycena" novalidate style="margin-top:2.6rem">
+      <div class="pola">
+        <div class="pola dwa">
+          <div><label for="k-imie">Imię</label>
+            <input type="text" id="k-imie" name="imie" autocomplete="given-name" required maxlength="60"></div>
+          <div><label for="k-tel">Telefon</label>
+            <input type="text" id="k-tel" name="telefon" autocomplete="tel" required maxlength="20"
+              inputmode="tel" placeholder="żebym mogła oddzwonić"></div>
+        </div>
+
+        <div class="pola dwa">
+          <div><label for="k-usluga">Co chcesz zrobić</label>
+            <select id="k-usluga" name="usluga">
+              <option>Koloryzacja</option>
+              <option>Koloryzacja + strzyżenie + modelowanie</option>
+              <option>Koloryzacja + modelowanie</option>
+              <option>Samo strzyżenie</option>
+              <option>Modelowanie / upięcie</option>
+              <option>Pielęgnacja i regeneracja</option>
+              <option selected>Jeszcze nie wiem — poradź mi</option>
+            </select></div>
+          <div><label for="k-dlugosc">Długość włosów</label>
+            <select id="k-dlugosc" name="dlugosc">
+              <option>Krótkie — nad uchem</option>
+              <option selected>Do ramion</option>
+              <option>Do łopatek</option>
+              <option>Do pasa lub dłuższe</option>
+            </select></div>
+        </div>
+
+        <div class="pola dwa">
+          <div><label for="k-grubosc">Gęstość włosów</label>
+            <select id="k-grubosc" name="grubosc">
+              <option>Cienkie, mało gęste</option>
+              <option selected>Przeciętne</option>
+              <option>Gęste i grube</option>
+            </select></div>
+          <div><label for="k-termin">Kiedy najlepiej</label>
+            <select id="k-termin" name="termin">
+              <option selected>Jak najszybciej</option>
+              <option>W tym tygodniu</option>
+              <option>W przyszłym tygodniu</option>
+              <option>Termin nie jest pilny</option>
+            </select></div>
+        </div>
+
+        <div><label for="k-tresc">Coś jeszcze, o czym powinnam wiedzieć</label>
+          <textarea id="k-tresc" name="tresc" maxlength="1200"
+            placeholder="Np. włosy po rozjaśnianiu, farbowane henną, alergia, ważne wyjście za dwa tygodnie…"></textarea></div>
+
+        <div class="zgoda">
+          <input type="checkbox" id="k-zgoda" name="zgoda" required>
+          <label for="k-zgoda">Zgadzam się na przetwarzanie podanych danych w celu odpowiedzi
+            na to zgłoszenie. <span style="color:var(--srebro-ciemne)">*</span></label>
+        </div>
+
+        <div class="pulapka" aria-hidden="true">
+          <label for="k-strona">Nie wypełniaj tego pola</label>
+          <input type="text" id="k-strona" name="strona" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div>
+          <button class="btn btn-ciemny" type="submit" id="k-wyslij">Wyślij zapytanie</button>
+          <p class="status" id="k-status" role="status" aria-live="polite"></p>
+          <p style="color:var(--srebro-ciemne); font-size:.86rem; margin-top:1rem">
+            Odpowiadam zwykle tego samego dnia. Zapytanie nie rezerwuje terminu —
+            termin potwierdzam telefonicznie.
+          </p>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section id="pytania">
+  <div class="waski">
+    <p class="nadpis">Dobrze wiedzieć</p>
+    <h2>Pytania, które <span class="kursywa">słyszę najczęściej</span>.</h2>
+    <div class="pytania">
+      <details><summary>Ile trwa koloryzacja?</summary>
+        <p>Od dwóch do nawet pięciu godzin. Odrosty to zwykle dwie, rozjaśnianie
+        ciemnych włosów albo korekta nieudanego koloru — znacznie dłużej.
+        Dokładny czas podam przy umawianiu, żebyś mogła zaplanować dzień.</p></details>
+      <details><summary>Czy muszę się umawiać?</summary>
+        <p>Tak. Pracuję sama i przy jednej osobie na raz — bez umówienia
+        najprawdopodobniej nie będę mogła Cię przyjąć. Zadzwoń nawet dzień wcześniej,
+        czasem zwalniają się terminy.</p></details>
+      <details><summary>Ile to kosztuje?</summary>
+        <p>Zależy od długości i grubości włosów oraz od tego, co było na nich
+        wcześniej. Dlatego nie ma tu cennika z sufitu — cenę podaję po rozmowie
+        albo po wypełnieniu formularza wyżej. Zawsze <b>przed</b> zabiegiem.</p></details>
+      <details><summary>Mam nieudaną koloryzację z innego miejsca. Naprawisz?</summary>
+        <p>Najczęściej tak, ale rzadko za jednym razem. Przy mocno zniszczonych
+        włosach rozpisuję plan na dwie–trzy wizyty, żeby nie dołożyć szkód.
+        Powiem wprost, czego się nie da zrobić.</p></details>
+      <details><summary>Jak przygotować włosy przed wizytą?</summary>
+        <p>Przy koloryzacji nie myj ich w dniu wizyty — naturalna warstwa
+        ochronna pomaga skórze głowy. Nie stylizuj mocno lakierem. Weź zdjęcia
+        efektu, który Ci się podoba; łatwiej rozmawiać na konkretach.</p></details>
+      <details><summary>Robisz konsultacje bez zabiegu?</summary>
+        <p>Tak. Jeśli nie wiesz, czego chcesz, albo zastanawiasz się nad dużą
+        zmianą — przyjdź porozmawiać. Konsultacja jest bezpłatna i do niczego
+        nie zobowiązuje.</p></details>
     </div>
   </div>
 </section>

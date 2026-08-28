@@ -27,26 +27,14 @@
         <a href="../kontakt/" aria-current="page">Kontakt</a>
     </nav>
     <a class="naglowek-tel" href="tel:+48506116008">+48 506 116 008</a>
-    <button class="hamburger" id="hamburger" type="button"
-      aria-label="Otwórz menu" aria-expanded="false" aria-controls="menu-mobilne">
-      <span></span><span></span><span></span>
-    </button>
   </div>
-  <nav class="menu-mobilne" id="menu-mobilne" aria-label="Menu">
-    <a href="../"><b>01</b>Start</a>
-    <a href="../o-mnie/"><b>02</b>O mnie</a>
-    <a href="../uslugi/"><b>03</b>Usługi</a>
-    <a href="../portfolio/"><b>04</b>Portfolio</a>
-    <a href="../opinie/"><b>05</b>Opinie</a>
-    <a href="../kontakt/" aria-current="page"><b>06</b>Kontakt</a>
-  </nav>
 </header>
 
 <section class="tytul-strony">
   <div class="wrap">
     <p class="nadpis">Kontakt</p>
-    <h1>Umów się <span class="kursywa">telefonicznie</span>.</h1>
-    <p>Najprościej zadzwonić — od razu ustalimy, ile czasu zarezerwować i ile to będzie kosztować.</p>
+    <h1>Zadzwoń albo <span class="kursywa">napisz</span>.</h1>
+    <p>Najprościej zadzwonić. Ale jeśli wolisz napisać — poniżej jest formularz, który pyta dokładnie o to, czego potrzebuję, żeby podać Ci cenę bez oglądania włosów na żywo.</p>
   </div>
 </section>
 
@@ -56,9 +44,15 @@
       <div>
         <ul class="dane">
           <li><span class="etykieta">Telefon</span>
-            <a href="tel:+48506116008" style="font-size:1.35rem">+48 506 116 008</a></li>
+            <a href="tel:+48506116008" style="font-size:1.45rem">+48 506 116 008</a>
+            <span style="display:block; color:var(--srebro-ciemne); font-size:.86rem; margin-top:.5rem">
+              Jeśli nie odbieram, jestem przy kimś w fotelu — oddzwonię.
+            </span></li>
           <li><span class="etykieta">Adres</span>
-            ul. Jana Kilińskiego 55/2<br>42-200 Częstochowa</li>
+            ul. Jana Kilińskiego 55/2<br>42-200 Częstochowa
+            <span style="display:block; color:var(--srebro-ciemne); font-size:.86rem; margin-top:.5rem">
+              Wejście od podwórza, parter. Parking przed budynkiem.
+            </span></li>
           <li><span class="etykieta">Godziny</span>
             <span class="godziny">
               wtorek – piątek &nbsp;10:00 – 18:00<br>
@@ -71,10 +65,126 @@
         </ul>
       </div>
       <div>
-        <iframe class="mapa" title="Mapa — ul. Jana Kilińskiego 55, Częstochowa" loading="lazy"
+        <iframe class="mapa" title="Mapa — ul. Jana Kilińskiego 55/2, Częstochowa" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           src="https://www.google.com/maps?q=Jana%20Kili%C5%84skiego%2055,%2042-200%20Cz%C4%99stochowa&output=embed"></iframe>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="ciemno" id="wycena">
+  <div class="wrap">
+    <p class="nadpis">Zapytanie o termin i cenę</p>
+    <h2>Odpowiem <span class="kursywa">konkretną kwotą</span>.</h2>
+    <p style="color:var(--srebro-jasne); max-width:56ch">
+      Cena zależy od długości i grubości włosów — dlatego pytam o to od razu.
+      Dzięki temu nie musisz przyjeżdżać na samą wycenę.
+    </p>
+
+    <form class="form-opinia" id="form-wycena" novalidate style="margin-top:2.6rem">
+      <div class="pola">
+        <div class="pola dwa">
+          <div><label for="k-imie">Imię</label>
+            <input type="text" id="k-imie" name="imie" autocomplete="given-name" required maxlength="60"></div>
+          <div><label for="k-tel">Telefon</label>
+            <input type="text" id="k-tel" name="telefon" autocomplete="tel" required maxlength="20"
+              inputmode="tel" placeholder="żebym mogła oddzwonić"></div>
+        </div>
+
+        <div class="pola dwa">
+          <div><label for="k-usluga">Co chcesz zrobić</label>
+            <select id="k-usluga" name="usluga">
+              <option>Koloryzacja</option>
+              <option>Koloryzacja + strzyżenie + modelowanie</option>
+              <option>Koloryzacja + modelowanie</option>
+              <option>Samo strzyżenie</option>
+              <option>Modelowanie / upięcie</option>
+              <option>Pielęgnacja i regeneracja</option>
+              <option selected>Jeszcze nie wiem — poradź mi</option>
+            </select></div>
+          <div><label for="k-dlugosc">Długość włosów</label>
+            <select id="k-dlugosc" name="dlugosc">
+              <option>Krótkie — nad uchem</option>
+              <option selected>Do ramion</option>
+              <option>Do łopatek</option>
+              <option>Do pasa lub dłuższe</option>
+            </select></div>
+        </div>
+
+        <div class="pola dwa">
+          <div><label for="k-grubosc">Gęstość włosów</label>
+            <select id="k-grubosc" name="grubosc">
+              <option>Cienkie, mało gęste</option>
+              <option selected>Przeciętne</option>
+              <option>Gęste i grube</option>
+            </select></div>
+          <div><label for="k-termin">Kiedy najlepiej</label>
+            <select id="k-termin" name="termin">
+              <option selected>Jak najszybciej</option>
+              <option>W tym tygodniu</option>
+              <option>W przyszłym tygodniu</option>
+              <option>Termin nie jest pilny</option>
+            </select></div>
+        </div>
+
+        <div><label for="k-tresc">Coś jeszcze, o czym powinnam wiedzieć</label>
+          <textarea id="k-tresc" name="tresc" maxlength="1200"
+            placeholder="Np. włosy po rozjaśnianiu, farbowane henną, alergia, ważne wyjście za dwa tygodnie…"></textarea></div>
+
+        <div class="zgoda">
+          <input type="checkbox" id="k-zgoda" name="zgoda" required>
+          <label for="k-zgoda">Zgadzam się na przetwarzanie podanych danych w celu odpowiedzi
+            na to zgłoszenie. <span style="color:var(--srebro-ciemne)">*</span></label>
+        </div>
+
+        <div class="pulapka" aria-hidden="true">
+          <label for="k-strona">Nie wypełniaj tego pola</label>
+          <input type="text" id="k-strona" name="strona" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div>
+          <button class="btn btn-ciemny" type="submit" id="k-wyslij">Wyślij zapytanie</button>
+          <p class="status" id="k-status" role="status" aria-live="polite"></p>
+          <p style="color:var(--srebro-ciemne); font-size:.86rem; margin-top:1rem">
+            Odpowiadam zwykle tego samego dnia. Zapytanie nie rezerwuje terminu —
+            termin potwierdzam telefonicznie.
+          </p>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section id="pytania">
+  <div class="waski">
+    <p class="nadpis">Dobrze wiedzieć</p>
+    <h2>Pytania, które <span class="kursywa">słyszę najczęściej</span>.</h2>
+    <div class="pytania">
+      <details><summary>Ile trwa koloryzacja?</summary>
+        <p>Od dwóch do nawet pięciu godzin. Odrosty to zwykle dwie, rozjaśnianie
+        ciemnych włosów albo korekta nieudanego koloru — znacznie dłużej.
+        Dokładny czas podam przy umawianiu, żebyś mogła zaplanować dzień.</p></details>
+      <details><summary>Czy muszę się umawiać?</summary>
+        <p>Tak. Pracuję sama i przy jednej osobie na raz — bez umówienia
+        najprawdopodobniej nie będę mogła Cię przyjąć. Zadzwoń nawet dzień wcześniej,
+        czasem zwalniają się terminy.</p></details>
+      <details><summary>Ile to kosztuje?</summary>
+        <p>Zależy od długości i grubości włosów oraz od tego, co było na nich
+        wcześniej. Dlatego nie ma tu cennika z sufitu — cenę podaję po rozmowie
+        albo po wypełnieniu formularza wyżej. Zawsze <b>przed</b> zabiegiem.</p></details>
+      <details><summary>Mam nieudaną koloryzację z innego miejsca. Naprawisz?</summary>
+        <p>Najczęściej tak, ale rzadko za jednym razem. Przy mocno zniszczonych
+        włosach rozpisuję plan na dwie–trzy wizyty, żeby nie dołożyć szkód.
+        Powiem wprost, czego się nie da zrobić.</p></details>
+      <details><summary>Jak przygotować włosy przed wizytą?</summary>
+        <p>Przy koloryzacji nie myj ich w dniu wizyty — naturalna warstwa
+        ochronna pomaga skórze głowy. Nie stylizuj mocno lakierem. Weź zdjęcia
+        efektu, który Ci się podoba; łatwiej rozmawiać na konkretach.</p></details>
+      <details><summary>Robisz konsultacje bez zabiegu?</summary>
+        <p>Tak. Jeśli nie wiesz, czego chcesz, albo zastanawiasz się nad dużą
+        zmianą — przyjdź porozmawiać. Konsultacja jest bezpłatna i do niczego
+        nie zobowiązuje.</p></details>
     </div>
   </div>
 </section>
@@ -114,9 +224,40 @@
   </div>
 </footer>
 
-<div class="pasek-telefon">
-  <span class="haslo">Nie wiesz, co wybrać?<b>Zadzwoń — doradzę.</b></span>
-  <a href="tel:+48506116008">Zadzwoń</a>
+<nav class="dok" aria-label="Szybkie akcje">
+  <a class="glowna" href="tel:+48506116008">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+    Zadzwoń
+  </a>
+  <a href="../kontakt/#wycena">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M9 15h6M9 11h3"/></svg>
+    Wyceń
+  </a>
+  <button id="dok-menu" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="panel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    Menu
+  </button>
+</nav>
+
+<div class="zaslona" id="zaslona" aria-hidden="true"></div>
+<div class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="panel-tytul">
+  <div class="panel-uchwyt" aria-hidden="true"></div>
+  <div class="panel-glowa">
+    <h2 id="panel-tytul">Menu</h2>
+    <button class="panel-zamknij" id="panel-zamknij" type="button" aria-label="Zamknij menu">✕</button>
+  </div>
+  <nav class="panel-lista" aria-label="Nawigacja">
+    <a href="../"><b>01</b>Start</a>
+    <a href="../o-mnie/"><b>02</b>O mnie</a>
+    <a href="../uslugi/"><b>03</b>Usługi</a>
+    <a href="../portfolio/"><b>04</b>Portfolio</a>
+    <a href="../opinie/"><b>05</b>Opinie</a>
+    <a href="../kontakt/" aria-current="page"><b>06</b>Kontakt</a>
+  </nav>
+  <div class="panel-stopka">
+    <a class="a1" href="tel:+48506116008">Zadzwoń</a>
+    <a class="a2" href="https://www.instagram.com/new_age_lewandowska" target="_blank" rel="noopener">Instagram</a>
+  </div>
 </div>
 
 <script src="../skrypt.js"></script>

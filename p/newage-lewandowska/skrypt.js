@@ -30,10 +30,12 @@
   cele.forEach(function (e) { obs.observe(e); });
 })();
 
-/* ── powiększanie zdjęć ─────────────────────────────────────
-   Dyplomy trzeba dać się przeczytać, a miniatura tego nie da.  */
+/* ── powiększanie zdjęć z przewijaniem ──────────────────────
+   Wcześniej trzeba było zamknąć jedno zdjęcie, żeby otworzyć następne.
+   Teraz działają strzałki, klawiatura i przesunięcie palcem, a licznik
+   pokazuje, ile zdjęć jest w tej galerii.                              */
 (function () {
-  var przyciski = document.querySelectorAll('.powieksz');
+  var przyciski = [].slice.call(document.querySelectorAll('.powieksz'));
   if (!przyciski.length) return;
 
   var lupa = document.createElement('div');
@@ -42,19 +44,41 @@
   lupa.setAttribute('aria-modal', 'true');
   lupa.innerHTML =
     '<button class="lupa-zamknij" type="button" aria-label="Zamknij">✕</button>' +
-    '<img alt=""><p class="lupa-podpis"></p>';
+    '<button class="lupa-strzalka wstecz" type="button" aria-label="Poprzednie zdjęcie">‹</button>' +
+    '<button class="lupa-strzalka dalej" type="button" aria-label="Następne zdjęcie">›</button>' +
+    '<div class="lupa-scena"><img alt=""></div>' +
+    '<p class="lupa-podpis"></p>' +
+    '<p class="lupa-licznik"></p>';
   document.body.appendChild(lupa);
 
   var obraz = lupa.querySelector('img');
   var podpis = lupa.querySelector('.lupa-podpis');
+  var licznik = lupa.querySelector('.lupa-licznik');
   var zamknij = lupa.querySelector('.lupa-zamknij');
-  var ostatni = null;
+  var wstecz = lupa.querySelector('.wstecz');
+  var dalej = lupa.querySelector('.dalej');
+  var teraz = 0;
 
-  function otworz(przycisk) {
-    ostatni = przycisk;
-    obraz.src = przycisk.dataset.pelne;
-    obraz.alt = przycisk.querySelector('img') ? przycisk.querySelector('img').alt : '';
-    podpis.textContent = przycisk.dataset.podpis || '';
+  function pokaz(i) {
+    teraz = (i + przyciski.length) % przyciski.length;   /* zapętla się */
+    var p = przyciski[teraz];
+    obraz.style.opacity = 0;
+    var nowy = new Image();
+    nowy.onload = function () { obraz.src = nowy.src; obraz.style.opacity = 1; };
+    nowy.src = p.dataset.pelne;
+    var mini = p.querySelector('img');
+    obraz.alt = mini ? mini.alt : '';
+    podpis.textContent = p.dataset.podpis || '';
+    licznik.textContent = (teraz + 1) + ' / ' + przyciski.length;
+    /* przy jednym zdjeciu strzalki nie maja sensu */
+    var wiele = przyciski.length > 1;
+    wstecz.hidden = !wiele;
+    dalej.hidden = !wiele;
+    licznik.hidden = !wiele;
+  }
+
+  function otworz(i) {
+    pokaz(i);
     lupa.classList.add('otwarta');
     document.body.style.overflow = 'hidden';
     zamknij.focus();
@@ -63,17 +87,33 @@
     lupa.classList.remove('otwarta');
     obraz.removeAttribute('src');
     document.body.style.overflow = '';
-    if (ostatni) ostatni.focus();
+    if (przyciski[teraz]) przyciski[teraz].focus();
   }
 
-  przyciski.forEach(function (p) {
-    p.addEventListener('click', function () { otworz(p); });
+  przyciski.forEach(function (p, i) {
+    p.addEventListener('click', function () { otworz(i); });
   });
   zamknij.addEventListener('click', zamknijLupe);
+  wstecz.addEventListener('click', function (e) { e.stopPropagation(); pokaz(teraz - 1); });
+  dalej.addEventListener('click', function (e) { e.stopPropagation(); pokaz(teraz + 1); });
   lupa.addEventListener('click', function (e) { if (e.target === lupa) zamknijLupe(); });
+
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && lupa.classList.contains('otwarta')) zamknijLupe();
+    if (!lupa.classList.contains('otwarta')) return;
+    if (e.key === 'Escape') zamknijLupe();
+    if (e.key === 'ArrowLeft') pokaz(teraz - 1);
+    if (e.key === 'ArrowRight') pokaz(teraz + 1);
   });
+
+  /* przesuniecie palcem na telefonie */
+  var startX = null;
+  lupa.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, {passive: true});
+  lupa.addEventListener('touchend', function (e) {
+    if (startX === null) return;
+    var roznica = e.changedTouches[0].clientX - startX;
+    if (Math.abs(roznica) > 45) pokaz(teraz + (roznica < 0 ? 1 : -1));
+    startX = null;
+  }, {passive: true});
 })();
 
 /* ── gwiazdki oceny ─────────────────────────────────────────── */
@@ -134,6 +174,88 @@
     })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json().catch(function () { return {}; }); })
       .then(function () { form.reset(); pokaz('Dziękuję — opinia do mnie dotarła.', 'ok'); })
+      .catch(function () { pokaz('Nie udało się wysłać. Zadzwoń proszę: 506 116 008.', 'blad'); })
+      .then(function () { przycisk.disabled = false; });
+  });
+})();
+
+
+/* ── wysuwany panel z dolnego doku ──────────────────────────
+   Na telefonie kciuk siega dolu ekranu, nie gory strony.       */
+(function () {
+  var otworzGo = document.getElementById('dok-menu');
+  var panel = document.getElementById('panel');
+  var zaslona = document.getElementById('zaslona');
+  if (!otworzGo || !panel || !zaslona) return;
+  var zamknijGo = document.getElementById('panel-zamknij');
+
+  function otworz() {
+    panel.classList.add('widac');
+    zaslona.classList.add('widac');
+    otworzGo.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    if (zamknijGo) zamknijGo.focus();
+  }
+  function zamknij() {
+    panel.classList.remove('widac');
+    zaslona.classList.remove('widac');
+    otworzGo.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    otworzGo.focus();
+  }
+  otworzGo.addEventListener('click', function () {
+    panel.classList.contains('widac') ? zamknij() : otworz();
+  });
+  if (zamknijGo) zamknijGo.addEventListener('click', zamknij);
+  zaslona.addEventListener('click', zamknij);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && panel.classList.contains('widac')) zamknij();
+  });
+})();
+
+/* ── zapytanie o termin i cene ───────────────────────────── */
+(function () {
+  var form = document.getElementById('form-wycena');
+  if (!form) return;
+  var ADRES = 'https://pmresearch.app.n8n.cloud/webhook/newage-kontakt';
+  var status = document.getElementById('k-status');
+  var przycisk = document.getElementById('k-wyslij');
+
+  function pokaz(tekst, klasa) {
+    status.textContent = tekst;
+    status.className = 'status ' + (klasa || '');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (form.strona.value) return;
+
+    var imie = form.imie.value.trim();
+    var telefon = form.telefon.value.trim();
+    if (!imie || !telefon) { pokaz('Podaj imię i telefon — inaczej nie oddzwonię.', 'blad'); return; }
+    if (!form.zgoda.checked) { pokaz('Potrzebuję zgody na przetwarzanie danych.', 'blad'); return; }
+
+    przycisk.disabled = true;
+    pokaz('Wysyłam…');
+
+    fetch(ADRES, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        form_key: 'newage-kontakt',
+        imie: imie,
+        telefon: telefon,
+        usluga: form.usluga.value,
+        dlugosc: form.dlugosc.value,
+        grubosc: form.grubosc.value,
+        termin: form.termin.value,
+        tresc: form.tresc.value.trim(),
+        consent: true,
+        strona: 'new age Lewandowska'
+      })
+    })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json().catch(function () { return {}; }); })
+      .then(function () { form.reset(); pokaz('Dziękuję — odezwę się najszybciej, jak będę mogła.', 'ok'); })
       .catch(function () { pokaz('Nie udało się wysłać. Zadzwoń proszę: 506 116 008.', 'blad'); })
       .then(function () { przycisk.disabled = false; });
   });

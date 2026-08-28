@@ -27,19 +27,7 @@
         <a href="kontakt/">Kontakt</a>
     </nav>
     <a class="naglowek-tel" href="tel:+48506116008">+48 506 116 008</a>
-    <button class="hamburger" id="hamburger" type="button"
-      aria-label="Otwórz menu" aria-expanded="false" aria-controls="menu-mobilne">
-      <span></span><span></span><span></span>
-    </button>
   </div>
-  <nav class="menu-mobilne" id="menu-mobilne" aria-label="Menu">
-    <a href="" aria-current="page"><b>01</b>Start</a>
-    <a href="o-mnie/"><b>02</b>O mnie</a>
-    <a href="uslugi/"><b>03</b>Usługi</a>
-    <a href="portfolio/"><b>04</b>Portfolio</a>
-    <a href="opinie/"><b>05</b>Opinie</a>
-    <a href="kontakt/"><b>06</b>Kontakt</a>
-  </nav>
 </header>
 
 
@@ -203,9 +191,40 @@
   </div>
 </footer>
 
-<div class="pasek-telefon">
-  <span class="haslo">Nie wiesz, co wybrać?<b>Zadzwoń — doradzę.</b></span>
-  <a href="tel:+48506116008">Zadzwoń</a>
+<nav class="dok" aria-label="Szybkie akcje">
+  <a class="glowna" href="tel:+48506116008">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+    Zadzwoń
+  </a>
+  <a href="kontakt/#wycena">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M9 15h6M9 11h3"/></svg>
+    Wyceń
+  </a>
+  <button id="dok-menu" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="panel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    Menu
+  </button>
+</nav>
+
+<div class="zaslona" id="zaslona" aria-hidden="true"></div>
+<div class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="panel-tytul">
+  <div class="panel-uchwyt" aria-hidden="true"></div>
+  <div class="panel-glowa">
+    <h2 id="panel-tytul">Menu</h2>
+    <button class="panel-zamknij" id="panel-zamknij" type="button" aria-label="Zamknij menu">✕</button>
+  </div>
+  <nav class="panel-lista" aria-label="Nawigacja">
+    <a href="" aria-current="page"><b>01</b>Start</a>
+    <a href="o-mnie/"><b>02</b>O mnie</a>
+    <a href="uslugi/"><b>03</b>Usługi</a>
+    <a href="portfolio/"><b>04</b>Portfolio</a>
+    <a href="opinie/"><b>05</b>Opinie</a>
+    <a href="kontakt/"><b>06</b>Kontakt</a>
+  </nav>
+  <div class="panel-stopka">
+    <a class="a1" href="tel:+48506116008">Zadzwoń</a>
+    <a class="a2" href="https://www.instagram.com/new_age_lewandowska" target="_blank" rel="noopener">Instagram</a>
+  </div>
 </div>
 
 <script src="skrypt.js"></script>
