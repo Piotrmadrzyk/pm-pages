@@ -228,7 +228,43 @@ dodać plik `CNAME` w repozytorium.
 
 ---
 
-## 5. 🟠 probatum.pl nie ma polityki prywatności
+## 5. Prywatny adres — przeglad calosci ✅ 28 sierpnia 2026
+
+Po znalezisku w Pergoli przeszukane wszystkie projekty. Wynik:
+
+| gdzie | co bylo | stan |
+|---|---|---|
+| Pergola — 18 stron HTML | prywatny gmail + numer | ✅ podmienione |
+| Pergola — `assets/data/site-config.js` | to samo, **ladowane przez wszystkie 18 stron** | ✅ podmienione |
+| Pergola — `js/main.js`, `js/manager.js` | numer w komunikatach bledu | ✅ podmienione |
+| Pergola — `llms.txt` | adres i numer podawane **robotom AI** | ✅ podmienione |
+| probatum.pl — `p/pm-test-event/` | gmail x4, strona zywa | ✅ podmienione |
+| probatum.pl — `p/test-bridge-guard-0815/wersje/w1/` | gmail x2, strona zywa | ✅ podmienione |
+| `obiektywyhistorii`, `receptury`, `pm-command-center`, `pm-panel` | — | czysto |
+
+### Czego nauczylo to znalezisko
+
+Poprawienie samego HTML-a **nie wystarczylo**. `site-config.js` trzymal adres
+jako konfiguracje i podstawial go w czasie dzialania strony — prywatny adres
+wracalby przy kazdym odswiezeniu, mimo poprawionych 18 plikow HTML.
+Przy nastepnym takim porzadkowaniu: szukaj takze w `.js`, `.json` i `.txt`,
+nie tylko w `.html`.
+
+### Zostalo do decyzji
+
+**Dwie strony testowe sa publiczne i nie prowadzi do nich zaden odnosnik:**
+`p/pm-test-event/` i `p/test-bridge-guard-0815/`. Adres zostal z nich zdjety,
+ale same strony nie sluza niczemu — mozna je skasowac. Nie zrobilem tego sam,
+bo to kasowanie, a nie poprawka.
+
+**W kopiach zapasowych adres nadal jest:** `~/Projekty/kopie-pm` (40 plikow
+z `piotr.aparat`, 15 z `piotr.madrzyk13`) i `~/Projekty/pm-backup` (14 plikow).
+To katalogi lokalne, nigdzie nie publikowane — nie ruszalem ich, bo kopia
+zapasowa ma pokazywac stan z chwili jej zrobienia.
+
+---
+
+## 6. 🟠 probatum.pl nie ma polityki prywatności
 
 **Znalezione 28 sierpnia 2026 przy okazji dem.**
 
@@ -262,7 +298,7 @@ w pół godziny, gdy tylko ta decyzja zapadnie.
 
 ---
 
-## 6. Katalogi funkcji — treść do przejrzenia ⏳
+## 7. Katalogi funkcji — treść do przejrzenia ⏳
 
 `build/katalogi.py` zawiera 56 opisów funkcji istniejących i 65 propozycji
 rozbudowy. Napisane na podstawie tego, co faktycznie jest w demo, ale **nie
@@ -275,7 +311,7 @@ Zmiana jednej pozycji to jedna linijka w `build/katalogi.py`, potem
 
 ---
 
-## 7. Pergola na wspólnym mechanizmie katalogu ⏳
+## 8. Pergola na wspólnym mechanizmie katalogu ⏳
 
 Katalog Pergoli (`radosc-website-preview/oferta.html`) chodzi na własnym,
 starszym mechanizmie — całość wklejona w jeden plik. Pozostałe cztery używają
