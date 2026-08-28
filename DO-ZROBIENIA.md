@@ -80,94 +80,66 @@ nie ma sensu — każde zapytanie od klienta przepadnie bez śladu.**
 
 ---
 
-## 1. Subdomeny dla stron demonstracyjnych ⏳
+## 1. Subdomeny dla stron demonstracyjnych ⏳ — czeka na DNS
 
-**Cel:** żeby demo miały adresy `lawenda.probatum.pl` zamiast
-`probatum.pl/p/demo-studio-lawenda/` — krócej, poważniej i bez struktury
-katalogów widocznej w pasku adresu.
+**Stan na 28 sierpnia 2026:** konfiguracja `vercel.json` jest już w repozytorium
+i aktywna. Reguły zadziałają w momencie, w którym subdomeny zaczną kierować
+na ten projekt. Do tego czasu plik nic nie zmienia.
 
-**Stan na 21 sierpnia 2026:** przygotowane, czeka na dwie rzeczy, których
-nie da się zrobić z kodu.
+### Zostały dwa kroki i oba są po stronie właściciela
 
-### Co jest już zrobione
-
-Imię i nazwisko zniknęło z adresów. 285 odnośników w 41 plikach zamienionych
-na względne — działają na `probatum.pl` i **zadziałają pod subdomenami bez
-żadnej kolejnej zmiany w kodzie**. To był warunek konieczny; gdyby linki
-zostały sztywne, każda subdomena wyrzucałaby ludzi z powrotem na github.io.
-
-### Co trzeba zrobić — po kolei
-
-**Krok 1 — DNS u rejestratora domeny probatum.pl.**
-Dla każdej subdomeny wpis typu CNAME:
+**Krok 1 — wpisy w panelu home.pl** (tam siedzi DNS domeny probatum.pl):
 
 ```
-lawenda      CNAME  cname.vercel-dns.com
-kancelaria   CNAME  cname.vercel-dns.com
-remonty      CNAME  cname.vercel-dns.com
-warsztat     CNAME  cname.vercel-dns.com
+lawenda-demo      CNAME   cname.vercel-dns.com
+kancelaria-demo   CNAME   cname.vercel-dns.com
+remonty-demo      CNAME   cname.vercel-dns.com
+warsztat-demo     CNAME   cname.vercel-dns.com
 ```
 
-*(Dokładną wartość CNAME poda Vercel przy dodawaniu domeny — powyższa jest
-typowa, ale sprawdź w panelu, bo bywa inna dla różnych kont.)*
+**Krok 2 — dodanie tych domen w Vercelu**, w projekcie `przewagametoda-preview`,
+zakładka **Domains**. Vercel poda tam dokładną wartość CNAME — jeśli będzie inna
+niż powyżej, użyj tej z panelu.
 
-**Krok 2 — dodać każdą subdomenę w Vercelu**, w projekcie
-`przewagametoda-preview`, zakładka Domains.
+Wpisy DNS potrafią się rozchodzić po świecie od kilkunastu minut do kilku godzin.
 
-**Krok 3 — włączyć przygotowaną konfigurację.**
-W repozytorium leży gotowy plik **`vercel.json.przyklad`**. Po wykonaniu
-kroków 1 i 2 wystarczy zmienić mu nazwę na `vercel.json` i wypchnąć:
+### Co gdzie trafi
 
-```bash
-git mv vercel.json.przyklad vercel.json
-git commit -m "Subdomeny demo wlaczone"
-git push
-```
+| adres | pokazuje |
+|---|---|
+| `lawenda-demo.probatum.pl` | Studio Lawenda |
+| `kancelaria-demo.probatum.pl` | Kancelaria Zawadzcy |
+| `remonty-demo.probatum.pl` | Dom i Wnętrze |
+| `warsztat-demo.probatum.pl` | Serwis Podkarpacki |
 
-Od tego momentu `lawenda.probatum.pl` pokazuje stronę główną salonu.
+### Dlaczego z końcówką „-demo"
 
-### ⚠️ Czego ta konfiguracja NIE robi — i dlaczego
+Te firmy są zmyślone, ale ich nazwy są wiarygodne — „Zielona Pergola" mogłaby
+istnieć naprawdę. Postawienie pod adresem bez dopisku strony firmy, która nie
+istnieje, mogłoby kiedyś wprowadzić kogoś w błąd albo ściągnąć pretensje
+prawdziwego lokalu o tej nazwie. Końcówka `-demo` zdejmuje to ryzyko i nic
+nie kosztuje.
 
-Skraca **tylko adres główny** subdomeny. Po kliknięciu w „Kontakt" adres
-zrobi się `lawenda.probatum.pl/p/demo-studio-lawenda-kontakt/` — działa,
+### Droga B — skrócenie także podstron
+
+Dziś subdomena skraca **tylko adres główny**. Po kliknięciu w „Kontakt" adres
+zrobi się `lawenda-demo.probatum.pl/p/demo-studio-lawenda-kontakt/` — działa,
 ale nie jest ładny.
 
-Powód: podstrony każdego demo leżą w osobnych katalogach obok siebie
+Powód: podstrony każdego demo leżą w osobnych katalogach **obok siebie**
 (`demo-studio-lawenda`, `demo-studio-lawenda-kontakt`, `-zabiegi`, `-zespol`),
-a nie jeden w drugim. Gdyby przepisywać wszystkie adresy pod subdomeną,
-odnośniki prowadzące do `/p/...` zapętliłyby się w kółko.
+a nie jeden w drugim.
 
-**Żeby skrócić też podstrony**, trzeba dodatkowo:
-1. dopisać reguły `/kontakt → /p/demo-studio-lawenda-kontakt/` dla każdej
-   podstrony każdego demo (to jakieś 16 reguł),
-2. przerobić odnośniki wewnątrz demo z `../../p/demo-x-kontakt/` na `/kontakt`.
+Żeby dostać `lawenda-demo.probatum.pl/kontakt`, trzeba przenieść podstrony
+do środka katalogu demo i poprawić odnośniki. To kilka godzin roboty i ma sens
+dopiero wtedy, gdy droga A już stoi i wiadomo, że subdomeny się sprawdzają.
 
-Ale wtedy **demo przestaną działać pod adresem `probatum.pl/p/...`** — będą
-działać wyłącznie pod swoimi subdomenami. To jest do zrobienia, tylko musi
-być świadomą decyzją: subdomena staje się jedynym adresem demo, a podglądy
-w katalogach funkcji trzeba przestawić na nią.
+### ⚠️ Zielona Pergola — nadal osobno
 
-Moja rada: najpierw uruchomić wersję prostą i zobaczyć, czy subdomeny
-w ogóle się przyjmą. Skracanie podstron to pół godziny, ale dopiero wtedy,
-gdy DNS działa.
-
-### Dlaczego jeden projekt, a nie pięć
-
-Vercel potrafi rozpoznać, spod jakiej domeny przyszedł gość, i podać mu inny
-katalog. Dzięki temu **nie trzeba zakładać osobnego projektu na każde demo** —
-wszystko zostaje w jednym repozytorium, z jednym wdrożeniem i jedną historią
-zmian. Pięć projektów to pięć miejsc do pilnowania.
-
-### ⚠️ Zielona Pergola — osobny przypadek
-
-Pergola nadal linkuje do `piotrmadrzyk.github.io/radosc-website-preview/`,
-bo mieszka w innym repozytorium i **waży 367 MB w samych zdjęciach** — nie da
-się jej wciągnąć do `pm-pages` bez rozdęcia repozytorium do ponad pół gigabajta.
-
-Do zrobienia osobno: wdrożyć repozytorium `radosc-website-preview` jako własny
-projekt na Vercelu i podpiąć pod `pergola.probatum.pl`. Dopiero wtedy zniknie
-ostatnie miejsce z nazwiskiem w adresie (3 odnośniki: dwa na stronie głównej
-i jeden na Realizacjach).
+Mieszka w repozytorium `radosc-website-preview` i **waży 367 MB w samych
+zdjęciach**, więc nie da się jej wciągnąć do `pm-pages`. Potrzebuje własnego
+projektu w Vercelu, podpiętego pod `pergola-demo.probatum.pl`.
+Do założenia jednym poleceniem — czeka na decyzję właściciela.
 
 ---
 
