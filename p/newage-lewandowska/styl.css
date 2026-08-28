@@ -395,3 +395,44 @@ textarea{min-height:130px; resize:vertical}
 .miejsce-opinii p{color:var(--srebro-jasne); margin-bottom:.9rem; max-width:56ch}
 .miejsce-opinii p:last-child{margin-bottom:0}
 .miejsce-opinii b{color:var(--biel); font-weight:500}
+
+/* ═══════════════════════════════════════════════════════════════
+   ZAPROSZENIE DO KONTAKTU — kończy każdą podstronę
+   Strona ma sprzedawać, a nie tylko ładnie wyglądać: gość musi
+   w każdym miejscu wiedzieć, co zrobić dalej.
+   ═══════════════════════════════════════════════════════════════ */
+.zaproszenie{
+  background:var(--wegiel); border-top:1px solid rgba(255,255,255,.09);
+  padding:clamp(56px,8vw,110px) 0;
+}
+.zaproszenie .nadpis{margin-bottom:1.1rem}
+.zaproszenie h2{margin-inline:auto; max-width:18ch}
+.zaproszenie-lead{
+  color:var(--srebro-jasne); max-width:46ch; margin:1.4rem auto 0; font-size:1.05rem;
+}
+.zaproszenie-akcje{
+  display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:2.4rem;
+}
+.zaproszenie-drobne{
+  color:var(--srebro-ciemne); font-size:.88rem; margin:1.8rem auto 0; max-width:44ch;
+}
+
+/* pasek telefonu na dole ekranu — tylko na telefonie */
+.pasek-telefon{
+  position:fixed; left:0; right:0; bottom:0; z-index:80;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:.7rem 16px calc(.7rem + env(safe-area-inset-bottom, 0px));
+  background:rgba(10,10,11,.94); backdrop-filter:blur(12px);
+  border-top:1px solid rgba(255,255,255,.12);
+}
+@media(min-width:920px){ .pasek-telefon{display:none} }
+.pasek-telefon .haslo{
+  font-size:.78rem; color:var(--srebro); line-height:1.35; letter-spacing:.02em;
+}
+.pasek-telefon .haslo b{display:block; color:var(--biel); font-weight:400; font-size:.92rem}
+.pasek-telefon a{
+  flex:0 0 auto; background:var(--biel); color:var(--atrament); text-decoration:none;
+  padding:.72rem 1.25rem; font-size:.82rem; letter-spacing:.14em; text-transform:uppercase;
+}
+body{padding-bottom:0}
+@media(max-width:919px){ body{padding-bottom:74px} }

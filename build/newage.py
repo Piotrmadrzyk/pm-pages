@@ -149,6 +149,82 @@ def kafle(pozycje, katalog, klasa='galeria-siatka'):
 
 
 # ─────────────────────────────────────────────────────────────────
+#  OPINIE — PRZEPISANE Z PROFILU GOOGLE, DOSLOWNIE
+#
+#  Zrodlo: profil "New Age Studio" w Mapach Google (5,0 z 53 opinii).
+#  Cytaty sa dokladne. Tam, gdzie opinia jest dluzsza niz to, co widac
+#  w profilu bez rozwijania, cytat urwany jest na granicy zdania —
+#  NIC nie jest dopisane ani przeredagowane.
+#
+#  ⚠️ Nie wolno tu wpisywac tresci wymyslonych. Falszywe opinie sa
+#  w Polsce zakazana nieuczciwa praktyka rynkowa i odpowiada za nie
+#  przedsiebiorca, czyli klientka.
+# ─────────────────────────────────────────────────────────────────
+OPINIE = [
+    (u'Aneta Orzeł',
+     u'Ten salon polecam z całego serca. Każda wizyta u Pani Agnieszki to czysta '
+     u'przyjemność. Zawsze wychodzę z salonu zadowolona i zrelaksowana, a włosy '
+     u'zadbane i wypielęgnowane. Pani Agnieszka po prostu zna się na swojej robocie.'),
+    (u'Klaudia Muś',
+     u'Świetny salon fryzjerski! Już od kilku lat korzystam z usług Pani Agnieszki. '
+     u'Można liczyć na profesjonalne doradztwo i ogromną dbałość o włosy podczas '
+     u'koloryzacji. Efekt piękny, a włosy po zabiegu zdrowe i lśniące.'),
+    (u'Janina Nowowiejska',
+     u'Do New Age Studio chodzę już od 25 lat i nie wyobrażam sobie zmiany tego '
+     u'miejsca na inne. Za każdym razem czuję się tu naprawdę dopieszczona — '
+     u'z pełną uwagą, spokojem i troską Pani Agnieszki.'),
+    (u'Agata Morawski',
+     u'Do pani Agnieszki chodzę od dłuższego czasu i za każdym razem wychodzę '
+     u'z salonu zachwycona. Ostatnio skorzystałam z botoksu na włosy — efekt '
+     u'przerósł moje oczekiwania! Włosy są gładkie, miękkie, lśniące.'),
+    (u'Teresa Bajor',
+     u'Z usług Pani Agnieszki korzystam od wielu lat i zawsze wychodzę zadowolona, '
+     u'włosy są uporządkowane, wypielęgnowane, wystylizowane, a ja czuję się '
+     u'wyśmienicie.'),
+    (u'Maria Różycka',
+     u'Do Pani Agnieszki trafiłam dwa lata temu przez przypadek. Moja wieloletnia '
+     u'fryzjerka wyjechała na stałe z Polski i szukałam nowego zakładu fryzjerskiego. '
+     u'Ten, do którego trafiłam, nie spełnił moich oczekiwań.'),
+]
+
+LINK_GOOGLE = (u'https://www.google.com/maps/place/New+Age+Studio/'
+               u'@50.8196257,19.1136929,17z/data=!4m8!3m7'
+               u'!1s0x4710b5ce3d07422f:0x4cc4e3755647bc1!9m1!1b1')
+
+
+def karty_opinii(ile=None):
+    lista = OPINIE if ile is None else OPINIE[:ile]
+    return u'\n      '.join(
+        u'<article class="opinia"><div class="gwiazdki" aria-label="5 na 5">★★★★★</div>'
+        u'<p>%s</p><p class="kto">%s · Google</p></article>' % (tresc, autor)
+        for autor, tresc in lista)
+
+
+# ─────────────────────────────────────────────────────────────────
+#  BLOK ZAPRASZAJACY DO KONTAKTU — konczy kazda podstrone
+# ─────────────────────────────────────────────────────────────────
+def blok_kontaktu(naglowek, zdanie):
+    return u"""
+<section class="zaproszenie">
+  <div class="waski" style="text-align:center">
+    <p class="nadpis" style="justify-self:center">Umów wizytę</p>
+    <h2>%s</h2>
+    <p class="zaproszenie-lead">%s</p>
+    <div class="zaproszenie-akcje">
+      <a class="btn btn-ciemny" href="tel:%s">Zadzwoń: %s</a>
+      <a class="btn btn-duch" href="https://www.instagram.com/new_age_lewandowska"
+         target="_blank" rel="noopener">Napisz na Instagramie</a>
+    </div>
+    <p class="zaproszenie-drobne">
+      Rozmowa nic nie kosztuje i do niczego nie zobowiązuje.
+      Cenę poznasz przed zabiegiem, nie po.
+    </p>
+  </div>
+</section>
+""" % (naglowek, zdanie, TEL_LINK, TEL_POKAZ)
+
+
+# ─────────────────────────────────────────────────────────────────
 #  SZKIELET STRONY
 # ─────────────────────────────────────────────────────────────────
 SZKIELET = u"""<!DOCTYPE html>
@@ -215,6 +291,11 @@ SZKIELET = u"""<!DOCTYPE html>
     </div>
   </div>
 </footer>
+
+<div class="pasek-telefon">
+  <span class="haslo">Nie wiesz, co wybrać?<b>Zadzwoń — doradzę.</b></span>
+  <a href="tel:%(tel_link)s">Zadzwoń</a>
+</div>
 
 <script src="%(korzen)sskrypt.js"></script>
 </body>
@@ -342,20 +423,24 @@ def strona_start():
 <section class="ciemno">
   <div class="wrap">
     <p class="nadpis">Opinie</p>
-    <h2>Pięć na pięć, <span class="kursywa">setki razy</span>.</h2>
+    <h2>Pięć na pięć, <span class="kursywa">53 razy</span>.</h2>
     <p style="color:var(--srebro-jasne); max-width:54ch">
       Pięć na pięć z 53 opinii w Google. Najczęściej wraca jedno zdanie:
       że słucham, zanim wezmę nożyczki.
     </p>
-    <div class="miejsce-opinii">
-      <p>Prawdziwe opinie trafią tutaj po przeniesieniu ich z profilu Google.</p>
+    <div class="opinie-siatka">
+      %(opinie)s
     </div>
     <a class="link-dalej" href="opinie/">Przeczytaj więcej i dodaj swoją</a>
   </div>
 </section>
-""" % {'dyplomy': dyplomy_skrot, 'przerywnik': PRZERYWNIK}
+""" % {'dyplomy': dyplomy_skrot, 'przerywnik': PRZERYWNIK,
+      'opinie': karty_opinii(3)}
 
-    return czolowka + reszta
+    return czolowka + reszta + blok_kontaktu(
+        u'Zadzwoń, zanim <span class="kursywa">zdecydujesz</span>.',
+        u'Nie musisz wiedzieć, czego chcesz. Wystarczy, że powiesz, co Ci się '
+        u'w Twoich włosach nie podoba — resztę wymyślimy razem.')
 
 
 def strona_o_mnie():
@@ -420,7 +505,10 @@ u"""
     </div>
   </div>
 </section>
-""")
+""" + blok_kontaktu(
+        u'Chcesz, żeby ktoś taki <span class="kursywa">zajął się Twoimi włosami</span>?',
+        u'Zadzwoń i opowiedz, co chcesz zmienić. Doradzę, co da się zrobić '
+        u'i czego lepiej nie robić.'))
 
 
 def strona_uslugi():
@@ -476,7 +564,10 @@ u"""
     </div>
   </div>
 </section>
-""" % {'tel_link': TEL_LINK})
+""" % {'tel_link': TEL_LINK} + blok_kontaktu(
+        u'Nie wiesz, ile to <span class="kursywa">u Ciebie</span> wyjdzie?',
+        u'Jeden telefon wystarczy. Opiszesz włosy, powiem cenę — jeszcze zanim '
+        u'usiądziesz w fotelu.'))
 
 
 def strona_portfolio():
@@ -513,25 +604,27 @@ u"""
     </p>
   </div>
 </section>
-""")
+""" + blok_kontaktu(
+        u'Taką robotę mogę zrobić <span class="kursywa">i Tobie</span>.',
+        u'Sesja, ślub, ważne wyjście albo zwykły czwartek — zadzwoń i ustalmy termin.'))
 
 
 def strona_opinie():
     return (
         naglowek_strony(u'Opinie',
-            u'Pięć na pięć, <span class="kursywa">setki razy</span>.',
+            u'Pięć na pięć, <span class="kursywa">53 razy</span>.',
             u'Pięć na pięć z 53 opinii w Google — sprawdzone bezpośrednio w profilu firmy.') +
 u"""
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="miejsce-opinii" style="margin-top:0">
-      <p><b>Tu pojawią się opinie klientek.</b></p>
-      <p>
-        Nie wpisujemy tu treści wymyślonych. Opinie zostaną przeniesione
-        z profilu Google — dokładnie tak, jak zostały napisane, z imieniem
-        i datą — albo pojawią się tutaj te wysłane formularzem poniżej.
-      </p>
+    <div class="opinie-siatka" style="margin-top:0">
+      %(opinie)s
     </div>
+    <p style="color:var(--srebro-ciemne); font-size:.88rem; margin-top:1.6rem">
+      Opinie przepisane z profilu Google — dosłownie, bez zmian.
+      <a href="%(link)s" target="_blank" rel="noopener"
+         style="color:var(--srebro-jasne)">Zobacz wszystkie 53 w Google</a>.
+    </p>
 
     <div class="form-opinia">
       <h3 style="margin-bottom:.6rem">Byłaś u mnie? Napisz, jak było.</h3>
@@ -578,7 +671,9 @@ u"""
     </div>
   </div>
 </section>
-""")
+""" % {'opinie': karty_opinii(), 'link': LINK_GOOGLE} + blok_kontaktu(
+        u'Przekonana? <span class="kursywa">Umów się</span>.',
+        u'Najbliższy wolny termin ustalimy przez telefon w dwie minuty.'))
 
 
 def strona_kontakt():
