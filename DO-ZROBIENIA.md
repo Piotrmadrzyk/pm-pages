@@ -198,10 +198,33 @@ Publikacja odbywa się przez GitHub Actions po pushu na gałąź
 
 ### Gdzie leży Pergola
 
-Repozytorium **nie ma kopii roboczej na dysku** — katalog
-`~/.Trash/radosc-website-preview` to niepełne szczątki bez historii gita.
-Warto sklonować repozytorium na stałe do `~/Projekty/`, żeby nie odtwarzać
-tego za każdym razem.
+```
+~/Projekty/radosc-website-preview     (933 MB, pełna historia — 130 commitów)
+```
+
+Sklonowana 28 sierpnia 2026 z `github.com/piotrmadrzyk/radosc-website-preview`.
+Wcześniej na dysku jej nie było — w koszu leżały niepełne szczątki bez historii
+gita (`~/.Trash/radosc-website-preview`, 6,8 MB, sam katalog `.git` brakujący).
+Te szczątki można spokojnie skasować, ale to nie pali się.
+
+**Gałąź robocza to `preview/redesign-2026`**, nie `main`. Na niej wisi automat
+publikujący (`.github/workflows/deploy-pages.yml`) — push na tę gałąź stawia
+stronę na GitHub Pages i podstawia znaczniki `__RADOSC_BUILD_HASH__`
+i `__RADOSC_BUILD_TIME__`. Dlatego plik na żywo różni się kilkuset bajtami
+od tego w repozytorium; to nie jest rozjazd, tylko ostemplowanie.
+
+### Pergoli nie ma na Vercelu
+
+Sprawdzone 28 sierpnia 2026: konto Vercel ma osiem projektów
+(`przewagametoda-preview`, `akademia`, `obiektywyhistorii`, `edward-janusz`,
+`receptury`, `pm-command-center`, `pm-panel`, `skrypty`) — **żaden z nich to
+nie Pergola**. Stoi wyłącznie na GitHub Pages.
+
+Ma to znaczenie dla punktu o `pergola-demo.probatum.pl`: żeby dostać tę
+subdomenę, Pergola potrzebuje **własnego projektu na Vercelu**, a nie
+dopisania domeny do istniejącego. Alternatywa to zostawić ją na GitHub Pages
+i wskazać subdomenę rekordem CNAME na `piotrmadrzyk.github.io` — wtedy trzeba
+dodać plik `CNAME` w repozytorium.
 
 ---
 
