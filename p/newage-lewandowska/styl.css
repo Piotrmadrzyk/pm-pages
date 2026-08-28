@@ -384,3 +384,14 @@ textarea{min-height:130px; resize:vertical}
 }
 .link-dalej:hover{border-bottom-color:var(--biel)}
 .link-dalej::after{content:' →'; color:var(--srebro)}
+
+/* Miejsce na prawdziwe opinie. Swiadomie puste — na stronie firmy
+   nie wolno umieszczac opinii wymyslonych; w Polsce to nieuczciwa
+   praktyka rynkowa i odpowiada za nia przedsiebiorca. */
+.miejsce-opinii{
+  margin-top:2.6rem; padding:clamp(28px,4vw,44px); background:var(--grafit);
+  border:1px dashed rgba(255,255,255,.18);
+}
+.miejsce-opinii p{color:var(--srebro-jasne); margin-bottom:.9rem; max-width:56ch}
+.miejsce-opinii p:last-child{margin-bottom:0}
+.miejsce-opinii b{color:var(--biel); font-weight:500}

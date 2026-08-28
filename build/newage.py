@@ -347,16 +347,8 @@ def strona_start():
       Ocena 5,0 w Google i tytuł Złotej Firmy pięć lat z rzędu — od 2022 do 2026.
       Najczęściej wraca jedno zdanie: że słucham, zanim wezmę nożyczki.
     </p>
-    <div class="opinie-siatka">
-      <article class="opinia"><div class="gwiazdki" aria-label="5 na 5">★★★★★</div>
-        <p>Chodzę do Agnieszki od kilkunastu lat i nigdy nie wyszłam niezadowolona. Zawsze doradzi, nigdy nie robi niczego na siłę.</p>
-        <p class="kto">Klientka Google</p></article>
-      <article class="opinia"><div class="gwiazdki" aria-label="5 na 5">★★★★★</div>
-        <p>Kolor dokładnie taki, jak chciałam — a przy okazji usłyszałam, czego nie robić, żeby się nie zniszczył.</p>
-        <p class="kto">Klientka Google</p></article>
-      <article class="opinia"><div class="gwiazdki" aria-label="5 na 5">★★★★★</div>
-        <p>Efekt naturalny, dokładnie o to mi chodziło. Indywidualne podejście, nie taśmowa robota.</p>
-        <p class="kto">Klientka Google</p></article>
+    <div class="miejsce-opinii">
+      <p>Prawdziwe opinie trafią tutaj po przeniesieniu ich z profilu Google.</p>
     </div>
     <a class="link-dalej" href="opinie/">Przeczytaj więcej i dodaj swoją</a>
   </div>
@@ -532,25 +524,13 @@ def strona_opinie():
 u"""
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="opinie-siatka" style="margin-top:0">
-      <article class="opinia"><div class="gwiazdki" aria-label="5 na 5">★★★★★</div>
-        <p>Chodzę do Agnieszki od kilkunastu lat i nigdy nie wyszłam niezadowolona. Zawsze doradzi, nigdy nie robi niczego na siłę.</p>
-        <p class="kto">Klientka Google</p></article>
-      <article class="opinia"><div class="gwiazdki" aria-label="5 na 5">★★★★★</div>
-        <p>Kolor dokładnie taki, jak chciałam — a przy okazji usłyszałam, czego nie robić, żeby się nie zniszczył. Profesjonalizm pełną gębą.</p>
-        <p class="kto">Klientka Google</p></article>
-      <article class="opinia"><div class="gwiazdki" aria-label="5 na 5">★★★★★</div>
-        <p>Efekt naturalny, dokładnie o to mi chodziło. Indywidualne podejście do każdej osoby, nie taśmowa robota.</p>
-        <p class="kto">Klientka Google</p></article>
-      <article class="opinia"><div class="gwiazdki" aria-label="5 na 5">★★★★★</div>
-        <p>Byłam po nieudanej koloryzacji z innego miejsca. Agnieszka nie obiecywała cudów od razu — rozpisała plan na trzy wizyty i wszystko się zgadzało.</p>
-        <p class="kto">Klientka Google</p></article>
-      <article class="opinia"><div class="gwiazdki" aria-label="5 na 5">★★★★★</div>
-        <p>Salon mały, ale czuć, że osoba wie, co robi. Wychodzę z fryzurą, którą potrafię sama ułożyć następnego dnia.</p>
-        <p class="kto">Klientka Google</p></article>
-      <article class="opinia"><div class="gwiazdki" aria-label="5 na 5">★★★★★</div>
-        <p>Doradziła mi krótsze niż planowałam i miała rację. Umie powiedzieć „to nie będzie dobrze wyglądać", a to rzadkość.</p>
-        <p class="kto">Klientka Google</p></article>
+    <div class="miejsce-opinii" style="margin-top:0">
+      <p><b>Tu pojawią się opinie klientek.</b></p>
+      <p>
+        Nie wpisujemy tu treści wymyślonych. Opinie zostaną przeniesione
+        z profilu Google — dokładnie tak, jak zostały napisane, z imieniem
+        i datą — albo pojawią się tutaj te wysłane formularzem poniżej.
+      </p>
     </div>
 
     <div class="form-opinia">
