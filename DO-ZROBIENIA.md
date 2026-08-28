@@ -80,7 +80,30 @@ nie ma sensu — każde zapytanie od klienta przepadnie bez śladu.**
 
 ---
 
-## 1. Subdomeny dla stron demonstracyjnych ✅ — DNS gotowy
+## 1. Strona Agnieszki Lewandowskiej — pierwsza realna klientka 🟠
+
+Pełny opis: **`NEWAGE-LEWANDOWSKA.md`**. Podgląd:
+<https://probatum.pl/p/newage-lewandowska/>
+
+Trzynaście podstron, generator `build/newage.py`. Zrobione: menu, dyplomy,
+portfolio, poradnik pod SEO, opinie z Google, formularz wyceny, polityka
+prywatności, dane strukturalne, dok na telefonie.
+
+**Czeka:**
+
+1. **Workflow w n8n dla dwóch formularzy** — `newage-kontakt` (zapytanie
+   o termin i cenę) oraz `newage-opinia`. Bez nich formularze nie działają.
+2. **Zdjęcie `noindex`** przed uruchomieniem — inaczej całe SEO jest bez
+   znaczenia. Siedzi w `SZKIELET` w generatorze.
+3. **Domena `newagelewandowska.pl`** — sprawdzona w rejestrze NASK
+   29.08.2026, **wolna**. Kupuje Agnieszka, na swoje dane.
+4. **Zgody na zdjęcia** — metamorfozy klientek oraz prawa do zdjęć
+   z magazynu SPLOT (fot. Elżbieta Bednarek).
+5. Zdjęcia z sesji w salonie, którą miała w poniedziałek.
+
+---
+
+## 2. Subdomeny dla stron demonstracyjnych ✅ — DNS gotowy
 
 **Stan na 28 sierpnia 2026:** zrobione po obu stronach.
 
@@ -135,7 +158,7 @@ Do założenia jednym poleceniem — czeka na decyzję właściciela.
 
 ---
 
-## 2. Bloki prawne w demach ✅ — zrobione 28 sierpnia 2026
+## 3. Bloki prawne w demach ✅ — zrobione 28 sierpnia 2026
 
 Wszystkie 17 stron czterech dem ma teraz regulamin, politykę prywatności
 i pasek informacji o ciasteczkach. Generuje to `build/prawne.py`
@@ -151,7 +174,7 @@ gwarancja u Serwisu (12 miesięcy na robociznę) i gwarancja u Domu i Wnętrza
 
 ---
 
-## 3. Dema sprzedają same siebie ✅ — zrobione 28 sierpnia 2026
+## 4. Dema sprzedają same siebie ✅ — zrobione 28 sierpnia 2026
 
 Każde z 17 stron ma pasek „Ta strona jest do wzięcia" nad stopką: mówi, że
 firma jest zmyślona, i daje przycisk rezerwacji plus link do katalogu funkcji.
@@ -166,7 +189,7 @@ wyceny — wtedy zgłoszenie trafi do systemu, a nie do skrzynki.
 
 ---
 
-## 4. 🔴 Pergola miała publicznie prywatny gmail — naprawione, czeka na push
+## 5. 🔴 Pergola miała publicznie prywatny gmail — naprawione, czeka na push
 
 **Znalezione 28 sierpnia 2026.**
 
@@ -228,7 +251,7 @@ dodać plik `CNAME` w repozytorium.
 
 ---
 
-## 5. Prywatny adres — przeglad calosci ✅ 28 sierpnia 2026
+## 6. Prywatny adres — przeglad calosci ✅ 28 sierpnia 2026
 
 Po znalezisku w Pergoli przeszukane wszystkie projekty. Wynik:
 
@@ -264,7 +287,7 @@ zapasowa ma pokazywac stan z chwili jej zrobienia.
 
 ---
 
-## 6. 🟠 probatum.pl nie ma polityki prywatności
+## 7. 🟠 probatum.pl nie ma polityki prywatności
 
 **Znalezione 28 sierpnia 2026 przy okazji dem.**
 
@@ -298,7 +321,7 @@ w pół godziny, gdy tylko ta decyzja zapadnie.
 
 ---
 
-## 7. Katalogi funkcji — treść do przejrzenia ⏳
+## 8. Katalogi funkcji — treść do przejrzenia ⏳
 
 `build/katalogi.py` zawiera 56 opisów funkcji istniejących i 65 propozycji
 rozbudowy. Napisane na podstawie tego, co faktycznie jest w demo, ale **nie
@@ -311,7 +334,7 @@ Zmiana jednej pozycji to jedna linijka w `build/katalogi.py`, potem
 
 ---
 
-## 8. Pergola na wspólnym mechanizmie katalogu ⏳
+## 9. Pergola na wspólnym mechanizmie katalogu ⏳
 
 Katalog Pergoli (`radosc-website-preview/oferta.html`) chodzi na własnym,
 starszym mechanizmie — całość wklejona w jeden plik. Pozostałe cztery używają
