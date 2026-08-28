@@ -1,42 +1,44 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-
-  "_opis": [
-    "Subdomeny dla stron demonstracyjnych.",
-    "",
-    "Kazda regula mowi: jesli gosc wszedl pod danym adresem, pokaz mu",
-    "zawartosc odpowiedniego katalogu z /p/. Adres w pasku zostaje krotki.",
-    "",
-    "Reguly dzialaja dopiero wtedy, gdy subdomena naprawde kieruje na ten",
-    "projekt — czyli po dodaniu wpisu CNAME w home.pl i dodaniu domeny",
-    "w Vercelu. Do tego czasu plik nic nie zmienia i niczego nie psuje.",
-    "",
-    "Przepisywany jest TYLKO adres glowny. Podstrony kazdego demo leza",
-    "w osobnych katalogach obok siebie (demo-studio-lawenda-kontakt itd.),",
-    "wiec po kliknieciu w menu adres bedzie dluzszy. Skrocenie takze",
-    "podstron wymaga przebudowy struktury katalogow — opisane w",
-    "DO-ZROBIENIA.md jako droga B."
-  ],
-
   "rewrites": [
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "lawenda-demo.probatum.pl" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "lawenda-demo.probatum.pl"
+        }
+      ],
       "destination": "/p/demo-studio-lawenda/index.html"
     },
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "kancelaria-demo.probatum.pl" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "kancelaria-demo.probatum.pl"
+        }
+      ],
       "destination": "/p/demo-kancelaria-zawadzcy/index.html"
     },
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "remonty-demo.probatum.pl" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "remonty-demo.probatum.pl"
+        }
+      ],
       "destination": "/p/demo-dom-i-wnetrze/index.html"
     },
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "warsztat-demo.probatum.pl" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "warsztat-demo.probatum.pl"
+        }
+      ],
       "destination": "/p/demo-serwis-podkarpacki/index.html"
     }
   ]
