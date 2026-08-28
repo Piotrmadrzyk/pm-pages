@@ -39,7 +39,7 @@ CEL = os.path.join(ROOT, 'p', 'newage-lewandowska')
 
 TEL_POKAZ = u'+48 507 330 730'
 TEL_LINK = u'+48507330730'
-ADRES = u'ul. Jana Kilińskiego 55/2, 42-200 Częstochowa'
+ADRES = u'ul. Jana Kilińskiego 55/2, 42-218 Częstochowa'
 
 # ─────────────────────────────────────────────────────────────────
 #  MENU — jedno miejsce dla wszystkich podstron
@@ -276,7 +276,7 @@ SZKIELET = u"""<!DOCTYPE html>
     "@type": "PostalAddress",
     "streetAddress": "ul. Jana Kili\u0144skiego 55/2",
     "addressLocality": "Cz\u0119stochowa",
-    "postalCode": "42-200",
+    "postalCode": "42-218",
     "addressCountry": "PL"
   },
   "geo": { "@type": "GeoCoordinates", "latitude": 50.8196257, "longitude": 19.1136929 },
@@ -329,7 +329,7 @@ SZKIELET = u"""<!DOCTYPE html>
       <div>
         <h4>Kontakt</h4>
         <a href="tel:%(tel_link)s">%(tel_pokaz)s</a>
-        <span style="display:block; padding:.2rem 0">ul. Jana Kilińskiego 55/2<br>42-200 Częstochowa</span>
+        <span style="display:block; padding:.2rem 0">ul. Jana Kilińskiego 55/2<br>42-218 Częstochowa</span>
         <a href="https://www.instagram.com/new_age_lewandowska" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.facebook.com/profile.php?id=100057636820418" target="_blank" rel="noopener">Facebook</a>
       </div>
@@ -928,7 +928,7 @@ u"""
               Jeśli nie odbieram, jestem przy kimś w fotelu — oddzwonię.
             </span></li>
           <li><span class="etykieta">Adres</span>
-            ul. Jana Kilińskiego 55/2<br>42-200 Częstochowa
+            ul. Jana Kilińskiego 55/2<br>42-218 Częstochowa
             <span style="display:block; color:var(--srebro-ciemne); font-size:.86rem; margin-top:.5rem">
               Wejście od podwórza, parter. Parking przed budynkiem.
             </span></li>
@@ -1084,7 +1084,7 @@ u"""
       <details open><summary>Kto przetwarza dane</summary>
         <p>Administratorem danych podanych w formularzach jest <b>Agnieszka
         Lewandowska, prowadząca salon fryzjerski new age</b>, ul. Jana Kilińskiego 55/2,
-        42-200 Częstochowa. W sprawach dotyczących danych najprościej zadzwonić:
+        42-218 Częstochowa. W sprawach dotyczących danych najprościej zadzwonić:
         <a href="tel:%(tel_link)s" style="color:var(--biel)">%(tel_pokaz)s</a>.</p></details>
 
       <details><summary>Jakie dane i po co</summary>
