@@ -39,7 +39,7 @@ CEL = os.path.join(ROOT, 'p', 'newage-lewandowska')
 
 TEL_POKAZ = u'+48 506 116 008'
 TEL_LINK = u'+48506116008'
-ADRES = u'ul. Jana Kilińskiego 55, 42-200 Częstochowa'
+ADRES = u'ul. Jana Kilińskiego 55/2, 42-200 Częstochowa'
 
 # ─────────────────────────────────────────────────────────────────
 #  MENU — jedno miejsce dla wszystkich podstron
@@ -204,7 +204,7 @@ SZKIELET = u"""<!DOCTYPE html>
       <div>
         <h4>Kontakt</h4>
         <a href="tel:%(tel_link)s">%(tel_pokaz)s</a>
-        <span style="display:block; padding:.2rem 0">ul. Jana Kilińskiego 55<br>42-200 Częstochowa</span>
+        <span style="display:block; padding:.2rem 0">ul. Jana Kilińskiego 55/2<br>42-200 Częstochowa</span>
         <a href="https://www.instagram.com/new_age_lewandowska" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.facebook.com/profile.php?id=100057636820418" target="_blank" rel="noopener">Facebook</a>
       </div>
@@ -273,7 +273,7 @@ def strona_start():
           <a class="btn" href="tel:%(tel_link)s">Umów wizytę</a>
           <a class="btn btn-duch" href="o-mnie/">Poznaj mnie</a>
         </div>
-        <div class="odznaka"><b>5,0</b> ★ · setki opinii w Google</div>
+        <div class="odznaka"><b>5,0</b> ★ · 53 opinie w Google</div>
       </div>
       <div class="hero-foto">
         <img src="img/hero.jpg" alt="Agnieszka Lewandowska" width="1024" height="1024" fetchpriority="high">
@@ -344,8 +344,8 @@ def strona_start():
     <p class="nadpis">Opinie</p>
     <h2>Pięć na pięć, <span class="kursywa">setki razy</span>.</h2>
     <p style="color:var(--srebro-jasne); max-width:54ch">
-      Ocena 5,0 w Google i tytuł Złotej Firmy pięć lat z rzędu — od 2022 do 2026.
-      Najczęściej wraca jedno zdanie: że słucham, zanim wezmę nożyczki.
+      Pięć na pięć z 53 opinii w Google. Najczęściej wraca jedno zdanie:
+      że słucham, zanim wezmę nożyczki.
     </p>
     <div class="miejsce-opinii">
       <p>Prawdziwe opinie trafią tutaj po przeniesieniu ich z profilu Google.</p>
@@ -520,7 +520,7 @@ def strona_opinie():
     return (
         naglowek_strony(u'Opinie',
             u'Pięć na pięć, <span class="kursywa">setki razy</span>.',
-            u'Ocena 5,0 w Google i tytuł Złotej Firmy pięć lat z rzędu — od 2022 do 2026.') +
+            u'Pięć na pięć z 53 opinii w Google — sprawdzone bezpośrednio w profilu firmy.') +
 u"""
 <section style="padding-top:0">
   <div class="wrap">
@@ -596,7 +596,7 @@ u"""
           <li><span class="etykieta">Telefon</span>
             <a href="tel:%(tel_link)s" style="font-size:1.35rem">%(tel_pokaz)s</a></li>
           <li><span class="etykieta">Adres</span>
-            ul. Jana Kilińskiego 55<br>42-200 Częstochowa</li>
+            ul. Jana Kilińskiego 55/2<br>42-200 Częstochowa</li>
           <li><span class="etykieta">Godziny</span>
             <span class="godziny">
               wtorek – piątek &nbsp;10:00 – 18:00<br>
@@ -633,9 +633,9 @@ STRONY = [
     ('portfolio', 'portfolio', u'Portfolio — sesje i publikacje | new age Lewandowska',
      u'Stylizacje fryzur do magazynu SPLOT i sesji katalogowych.', strona_portfolio, '../'),
     ('opinie', 'opinie', u'Opinie klientek | new age Lewandowska',
-     u'Ocena 5,0 w Google, Złota Firma 2022–2026. Zostaw swoją opinię.', strona_opinie, '../'),
+     u'Ocena 5,0 z 53 opinii w Google. Zostaw swoją opinię.', strona_opinie, '../'),
     ('kontakt', 'kontakt', u'Kontakt — Częstochowa, ul. Kilińskiego 55 | new age',
-     u'Telefon, adres, godziny otwarcia i mapa dojazdu.', strona_kontakt, '../'),
+     u'Telefon, adres, godziny otwarcia i mapa dojazdu. Kilińskiego 55/2, Częstochowa.', strona_kontakt, '../'),
 ]
 
 
