@@ -92,16 +92,16 @@ DYPLOMY = [
      u'Techniki koloryzacji z międzynarodową artystką L’Oréal'),
 ]
 
+# Klientka przyslala kazde ujecie w dwoch wersjach — kolorowej i czarno-bialej.
+# W galerii zostaje po JEDNEJ z kazdej pary, w kolorze: to samo zdjecie dwa razy
+# to zapychanie galerii, nie portfolio. Czarno-biale zostaje wylacznie zdjecie
+# glowne na stronie startowej, bo ten konkretny kadr wybrala wprost.
+#   1743 = 1720   |   1718 = 1726   |   1727 = 1738   |   1741 = 1719
 SESJA = [
-    ('kadr-3609', u'Sesja na schodach'),
     ('kadr-1743', u'W salonie'),
-    ('kadr-1727', u'Narzędzia pracy'),
-    ('kadr-1738', u'Narzędzia pracy'),
-    ('kadr-1741', u'Warsztat'),
-    ('kadr-1719', u'Warsztat'),
     ('kadr-1718', u'Studio'),
-    ('kadr-1720', u'Studio'),
-    ('kadr-1726', u'Studio'),
+    ('kadr-1727', u'Narzędzia pracy'),
+    ('kadr-1741', u'Warsztat'),
 ]
 
 PORTFOLIO = [
