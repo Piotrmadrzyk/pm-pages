@@ -49,7 +49,119 @@ o maila przy zapisie na opony. Dwa wyjścia:
    zmienia walidację dla **wszystkich** formularzy i psuje odsiewanie
    duplikatów, które działa po parze `email + campaign_id`.
 
-**Decyzja należy do Piotra** — druga droga rusza logikę produkcyjną.
+**Piotr, 29.08: zgoda na drugą drogę.** Przygotowałem zmianę, ale
+**nie mogłem jej zapisać** — moje zabezpieczenie blokuje edycję workflow
+produkcyjnego i dopisywanie kolumn do tabel. Nie obchodzę takich blokad.
+
+Poniżej gotowa zmiana. Nie rusza schematu tabel, dotyka trzech węzłów.
+
+### Węzeł „Walidacja i normalizacja" — cały kod
+
+```javascript
+const prior = $input.first().json;
+const b = prior._raw || {};
+const email = String(b.email || '').trim().toLowerCase().slice(0, 160);
+const consent = b.consent === true || b.consent === 'true' || b.consent === 1 || b.consent === '1' || b.consent === 'on';
+const emailOk = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
+
+// 29.08.2026: formularze uslug lokalnych czesto pytaja TYLKO o telefon —
+// warsztat przy zapisie na opony nie bedzie prosil o adres e-mail. Do dzis
+// walidacja wymagala e-maila i takie zgloszenia przepadaly z bledem 422.
+// Teraz wystarczy jedno z dwojga: poprawny e-mail albo numer telefonu.
+const telCyfry = String(b.telefon || b.phone || '').replace(/\D/g, '');
+const telOk = telCyfry.length >= 9;
+
+// Te zdania widzi CZLOWIEK odwiedzajacy strone klienta, nie administrator.
+if (!consent) {
+  return [{ json: { _blad: true, wiadomosc: 'Zaznacz zgodę na przetwarzanie danych — bez niej nie wolno nam zapisać Twojego zgłoszenia.' } }];
+}
+if (!emailOk && !telOk) {
+  return [{ json: { _blad: true, wiadomosc: 'Podaj adres e-mail albo numer telefonu — bez żadnego z nich nie będziemy mieli jak odpowiedzieć.' } }];
+}
+
+const clean = (v, n) => String(v || '').trim().slice(0, n || 300);
+let tresc = clean(b.tresc || b.message || b.wiadomosc, 2000);
+// Adres wpisany z literowka nie moze wejsc do kolumny email — poszlaby na niego
+// przyszla wysylka. Ale nie wolno go tez wyrzucic do kosza: czlowiek go podal.
+if (email && !emailOk) {
+  tresc = (tresc + ' | Podany adres e-mail jest niepoprawny: ' + email).slice(0, 2000);
+}
+
+return [{ json: {
+  _blad: false,
+  lead_id: 'lead_' + Date.now() + '_' + Math.floor(Math.random() * 100000),
+  campaign_id: prior.campaign_id,
+  sequence_id: prior.sequence_id || '',
+  client_id: clean(b.client_id, 80),
+  imie: clean(b.imie || b.name, 120),
+  email: emailOk ? email : '',
+  telefon: clean(b.telefon || b.phone, 40),
+  tresc,
+  consent: true,
+  zrodlo: clean(b.zrodlo || b.source, 80) || 'landing_page',
+  utm_source: clean(b.utm_source, 120),
+  utm_medium: clean(b.utm_medium, 120),
+  utm_campaign: clean(b.utm_campaign, 120),
+  utm_content: clean(b.utm_content, 120),
+  utm_term: clean(b.utm_term, 120),
+  page_url: clean(b.page_url, 500),
+  utworzono: new Date().toISOString(),
+  _ma_email: emailOk,
+  _tel_cyfry: telCyfry
+} }];
+```
+
+### Węzeł „Szukaj duplikatu" — dwie zmiany w ustawieniach
+
+1. W filtrach **skasować warunek `email`**. Zostaje jeden: `campaign_id` = `{{ $json.campaign_id }}`.
+2. Włączyć **Return All** (dotąd był limit 1).
+
+Powód: dopóki węzeł sam szukał po parze `email + campaign_id`, zgłoszenie bez
+e-maila przechodziło zawsze jako nowe — puste pole pasowało do wszystkiego.
+Teraz węzeł podaje wszystkie leady kampanii, a porównanie robi węzeł niżej.
+
+### Węzeł „Decyzja dedup" — cały kod
+
+```javascript
+const lead = $('Walidacja i normalizacja').first().json;
+
+// 29.08.2026: porownanie przenieslo sie tutaj z wezla tabeli.
+//   * jest e-mail  -> porownujemy adresy (dokladnie jak dotad),
+//   * nie ma       -> porownujemy same cyfry numeru telefonu.
+// Bez mieszania jednego z drugim: dwie osoby z jednego telefonu firmowego,
+// ale roznymi adresami, to nadal dwa osobne zgloszenia.
+const wiersze = $input.all().map(i => i.json).filter(x => x && x.lead_id);
+let trafienie = null;
+if (lead._ma_email) {
+  trafienie = wiersze.find(x => String(x.email || '').trim().toLowerCase() === lead.email) || null;
+} else if (lead._tel_cyfry) {
+  trafienie = wiersze.find(x => String(x.telefon || '').replace(/\D/g, '') === lead._tel_cyfry) || null;
+}
+const duplikat = !!trafienie;
+return [{ json: { ...lead, duplikat, istniejacy_lead_id: duplikat ? (trafienie.lead_id || '') : '' } }];
+```
+
+### ⚠️ Po zapisaniu — PUBLIKACJA
+
+`update_workflow` zapisuje **wersję roboczą**. Bez publikacji produkcja chodzi
+dalej na starej. W n8n trzeba kliknąć publikację workflow.
+
+### Czym to sprawdzić po zmianie
+
+```bash
+# 1. samo imie i telefon, bez e-maila — ma przejsc
+curl -s -X POST "https://pmresearch.app.n8n.cloud/webhook/pm-lead-capture" \
+ -H "Content-Type: application/json" \
+ -d '{"form_key":"opony-sezon","imie":"Test","telefon":"600100200","email":"","consent":true,"tresc":"Test"}'
+
+# 2. ten sam telefon drugi raz — ma wyjsc DUPLIKAT
+# 3. e-mail bez telefonu — ma przejsc jak dotad
+# 4. ani e-maila, ani telefonu — ma wyjsc 422 z prosba o jedno z dwoch
+# 5. bez zgody — ma wyjsc 422 z prosba o zaznaczenie zgody
+```
+
+Punkt 3 jest najważniejszy: to sprawdzenie, czy nie zepsuła się ścieżka,
+którą chodzą wszystkie pozostałe formularze.
 
 ### Zgłoszenia testowe do skasowania
 
