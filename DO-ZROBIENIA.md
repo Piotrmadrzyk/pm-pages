@@ -214,6 +214,38 @@ pod subdomenami probatum.pl.**
 zostać tylko jeden adres, trzeba to ustawić świadomie — na razie oba prowadzą
 do tej samej treści, a znaczniki `og`/`hreflang` w obu wskazują subdomenę.
 
+### ✅ Pergola ma własne repozytorium — `Piotrmadrzyk/zielona-pergola`
+
+**29.08.2026.** Piotr: *„strona pergoli ma być czysta i niezależna, bo jeśli
+zaraz się znajdzie jakiś klient który chce ją kupić, to musi być gotowa"*.
+
+Strona mieszkała w `radosc-website-preview` razem z kolekcją pocztówek,
+PM Growth Lab i narzędziami roboczymi — w repozytorium nazwanym po wersji,
+której już nie ma. Takiego repozytorium nie da się oddać kupującemu.
+
+**Nowe repozytorium: `Piotrmadrzyk/zielona-pergola`, prywatne, 286 plików,
+35 MB, jeden czysty commit.** Bez historii z poprzednią nazwą, bez cudzych
+projektów, bez narzędzi.
+
+- Projekt Vercel `pergola-demo` **przepięty** ze wspólnego repozytorium na nowe.
+  Gałąź produkcyjna `main`, obie domeny zostały na miejscu.
+- Sprawdzone po przepięciu: 11 podstron, wersja angielska, zdjęcia, css, js,
+  manifest, service worker i `llms.txt` — wszystko 200. Cudze katalogi — 404.
+  Zero śladów poprzedniej nazwy.
+- Dołożony `README.md`: co jest w środku, jak uruchomić lokalnie i **ostrzeżenie,
+  że przed wdrożeniem dla prawdziwego lokalu trzeba zdjąć `noindex`** —
+  siedzi w `vercel.json` i w `<meta>` każdej podstrony.
+- W nowym repozytorium zdjęty jeszcze jeden ślad: `sw.js` miał wyjątek
+  pamięci podręcznej dla `/pm-growth-lab/`, którego tam nie ma.
+
+**Repozytorium jest prywatne.** Kod strony przeznaczonej na sprzedaż nie
+powinien leżeć publicznie — kupujący nie miałby żadnej wyłączności. Stare,
+publiczne repozytorium zostaje bez zmian; jeśli ma zniknąć z widoku, to
+osobna decyzja.
+
+**Stare repozytorium `radosc-website-preview` zostaje nietknięte** i dalej
+publikuje przez GitHub Pages. Nic z niego nie skasowałem.
+
 ### Dwie rzeczy, które wyszły przy okazji
 
 **1. Na gałęzi `main` leży stara wersja z prawdziwymi danymi.**
