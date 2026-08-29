@@ -2,15 +2,52 @@
    new age Lewandowska — wspólne zachowania wszystkich podstron
    ═══════════════════════════════════════════════════════════════ */
 
-/* ── menu na telefonie ──────────────────────────────────────── */
+/* ── dolne menu na telefonie (pasek „dok" + wysuwany panel) ──
+   BYŁO ZEPSUTE. Ten blok szukał elementów #hamburger i #menu-mobilne,
+   których na stronie NIE MA — wychodził więc od razu na warunku
+   zabezpieczającym i przycisk „Menu" w dolnym pasku nie robił zupełnie
+   nic. Tak samo martwe były krzyżyk i zasłona. Zgłoszone przez
+   właściciela 29.08.2026: „przycisk menu na dole mi nie reaguje".
+   Prawdziwe identyfikatory w szablonie (build/newage.py) to:
+   #dok-menu, #panel, #zaslona, #panel-zamknij. Klasa, której oczekuje
+   arkusz stylów, to `widac` — nie `otwarte`.                        */
 (function () {
-  var przycisk = document.getElementById('hamburger');
-  var menu = document.getElementById('menu-mobilne');
-  if (!przycisk || !menu) return;
-  przycisk.addEventListener('click', function () {
-    var otwarte = menu.classList.toggle('otwarte');
-    przycisk.setAttribute('aria-expanded', otwarte ? 'true' : 'false');
-    przycisk.setAttribute('aria-label', otwarte ? 'Zamknij menu' : 'Otwórz menu');
+  var przycisk = document.getElementById('dok-menu');
+  var panel = document.getElementById('panel');
+  var zaslona = document.getElementById('zaslona');
+  var zamknij = document.getElementById('panel-zamknij');
+  if (!przycisk || !panel || !zaslona) return;
+
+  var otwarty = false;
+  var poprzedniFokus = null;
+
+  function ustaw(stan) {
+    otwarty = stan;
+    panel.classList.toggle('widac', stan);
+    zaslona.classList.toggle('widac', stan);
+    przycisk.setAttribute('aria-expanded', stan ? 'true' : 'false');
+    zaslona.setAttribute('aria-hidden', stan ? 'false' : 'true');
+    /* strona pod spodem nie ma się przewijać, gdy panel jest otwarty */
+    document.body.style.overflow = stan ? 'hidden' : '';
+    if (stan) {
+      poprzedniFokus = document.activeElement;
+      if (zamknij) zamknij.focus({ preventScroll: true });
+    } else if (poprzedniFokus && poprzedniFokus.focus) {
+      poprzedniFokus.focus({ preventScroll: true });
+    }
+  }
+
+  przycisk.addEventListener('click', function () { ustaw(!otwarty); });
+  if (zamknij) zamknij.addEventListener('click', function () { ustaw(false); });
+  zaslona.addEventListener('click', function () { ustaw(false); });
+  document.addEventListener('keydown', function (e) {
+    if ((e.key === 'Escape' || e.key === 'Esc') && otwarty) ustaw(false);
+  });
+  /* Kliknięcie pozycji menu zamyka panel od razu. Przy zwykłym odnośniku
+     i tak wczyta się nowa strona, ale przy kotwicy (#...) nic by się nie
+     przeładowało i panel zostałby otwarty na wierzchu. */
+  panel.addEventListener('click', function (e) {
+    if (e.target && e.target.closest && e.target.closest('a')) ustaw(false);
   });
 })();
 
