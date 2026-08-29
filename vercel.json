@@ -22,7 +22,7 @@
       "dest": "/p/$1"
     },
     {
-      "src": "/(demo-studio-lawenda-[^/]+/?.*)",
+      "src": "/(demo-studio-lawenda[^/]*/?.*)",
       "has": [
         {
           "type": "host",
@@ -62,7 +62,7 @@
       "dest": "/p/$1"
     },
     {
-      "src": "/(demo-kancelaria-zawadzcy-[^/]+/?.*)",
+      "src": "/(demo-kancelaria-zawadzcy[^/]*/?.*)",
       "has": [
         {
           "type": "host",
@@ -102,7 +102,7 @@
       "dest": "/p/$1"
     },
     {
-      "src": "/(demo-dom-i-wnetrze-[^/]+/?.*)",
+      "src": "/(demo-dom-i-wnetrze[^/]*/?.*)",
       "has": [
         {
           "type": "host",
@@ -142,7 +142,7 @@
       "dest": "/p/$1"
     },
     {
-      "src": "/(demo-serwis-podkarpacki-[^/]+/?.*)",
+      "src": "/(demo-serwis-podkarpacki[^/]*/?.*)",
       "has": [
         {
           "type": "host",
