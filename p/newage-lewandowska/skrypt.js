@@ -185,19 +185,23 @@
 })();
 
 /* ── wysyłka formularzy ────────────────────────────────────
-   Formularze celuja w n8n. Dopoki workflow nie jest zalozony,
-   wysylka konczy sie bledem — a pusty blad wyglada jak zepsuta
-   strona i klientka po prostu odchodzi.
+   ŻADNEJ ZEWNĘTRZNEJ USŁUGI. Ta strona należy do Agnieszki i ma
+   działać niezależnie od kogokolwiek — także od tego, kto ją zbudował.
 
-   Dlatego jest zapasowa droga: jesli n8n nie odpowie, otwiera sie
-   program pocztowy z gotowa, wypelniona wiadomoscia. Nic nie ginie,
-   a osoba widzi, ze cos sie stalo. Po zalozeniu workflow zapasowa
-   droga po prostu przestanie sie uruchamiac.                      */
+   Domyślnie formularz otwiera program pocztowy z gotową, wypełnioną
+   wiadomością. Działa na każdym hostingu, nie wymaga konta w żadnym
+   serwisie i nic nie może przestać działać, bo ktoś zamknie subskrypcję.
+
+   Gdy strona stanie na hostingu z PHP (home.pl ma go w każdym pakiecie),
+   wystarczy wgrać plik formularz.php obok strony i zmienić poniżej
+   ADRES_WYSYLKI na 'formularz.php' — wtedy wiadomość wychodzi w tle,
+   bez otwierania programu pocztowego. Nic więcej nie trzeba zmieniać.  */
 (function () {
-  var MAIL = 'kontakt@probatum.pl';
+  var ADRES_WYSYLKI = '';            /* pusto = przez program pocztowy */
+  var MAIL = 'kontakt@probatum.pl';  /* ⚠️ zmienić na adres Agnieszki */
   var TEL = '507 330 730';
 
-  function obsluz(idFormularza, adres, klucz, zbierz, temat, gotowe) {
+  function obsluz(idFormularza, temat, zbierz, gotowe) {
     var form = document.getElementById(idFormularza);
     if (!form) return;
     var status = form.querySelector('.status');
@@ -209,15 +213,17 @@
       status.className = 'status ' + (klasa || '');
     }
 
-    function przezPoczte(dane) {
-      var tresc = Object.keys(dane)
-        .filter(function (k) { return dane[k] !== '' && dane[k] !== null; })
+    function trescWiadomosci(dane) {
+      return Object.keys(dane)
+        .filter(function (k) { return dane[k] !== '' && dane[k] != null; })
         .map(function (k) { return k + ': ' + dane[k]; })
         .join('\n');
-      var adresMail = 'mailto:' + MAIL +
+    }
+
+    function przezPoczte(dane) {
+      window.location.href = 'mailto:' + MAIL +
         '?subject=' + encodeURIComponent(temat) +
-        '&body=' + encodeURIComponent(tresc);
-      window.location.href = adresMail;
+        '&body=' + encodeURIComponent(trescWiadomosci(dane));
       pokaz('Otwieram program pocztowy — wystarczy wysłać gotową wiadomość. ' +
             'Jeśli się nie otworzył, zadzwoń: ' + TEL + '.', 'ok');
     }
@@ -229,51 +235,41 @@
       var dane = zbierz(form, pokaz);
       if (!dane) return;
 
+      if (!ADRES_WYSYLKI) { przezPoczte(dane); return; }
+
       przycisk.disabled = true;
       pokaz('Wysyłam…');
-
-      var czasomierz = setTimeout(function () { throw 0; }, 9000);
-      fetch(adres, {
+      fetch(ADRES_WYSYLKI, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(Object.assign({ form_key: klucz }, dane))
+        body: JSON.stringify({ temat: temat, tresc: trescWiadomosci(dane) })
       })
-        .then(function (r) {
-          clearTimeout(czasomierz);
-          if (!r.ok) throw new Error(r.status);
-          return r.json().catch(function () { return {}; });
-        })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); })
         .then(function () { form.reset(); pokaz(gotowe, 'ok'); })
-        .catch(function () { clearTimeout(czasomierz); przezPoczte(dane); })
+        .catch(function () { przezPoczte(dane); })
         .then(function () { przycisk.disabled = false; });
     });
   }
 
-  /* opinia */
-  obsluz('form-opinia',
-    'https://pmresearch.app.n8n.cloud/webhook/newage-opinia', 'newage-opinia',
+  obsluz('form-opinia', 'Opinia dla new age Lewandowska',
     function (f, pokaz) {
       var imie = f.imie.value.trim(), tresc = f.tresc.value.trim();
       if (!imie || !tresc) { pokaz('Podaj imię i treść opinii.', 'blad'); return null; }
       if (!f.zgoda.checked) { pokaz('Potrzebuję zgody na przetwarzanie danych.', 'blad'); return null; }
       var o = f.querySelector('input[name=ocena]:checked');
-      return { imie: imie, email: f.email.value.trim(),
-               ocena: o ? Number(o.value) : null, tresc: tresc, consent: true };
+      return { 'Imię': imie, 'E-mail': f.email.value.trim(),
+               'Ocena': o ? o.value + ' / 5' : '', 'Opinia': tresc };
     },
-    'Opinia dla new age Lewandowska',
     'Dziękuję — opinia do mnie dotarła.');
 
-  /* zapytanie o termin i cenę */
-  obsluz('form-wycena',
-    'https://pmresearch.app.n8n.cloud/webhook/newage-kontakt', 'newage-kontakt',
+  obsluz('form-wycena', 'Zapytanie o termin i cenę — new age Lewandowska',
     function (f, pokaz) {
       var imie = f.imie.value.trim(), tel = f.telefon.value.trim();
       if (!imie || !tel) { pokaz('Podaj imię i telefon — inaczej nie oddzwonię.', 'blad'); return null; }
       if (!f.zgoda.checked) { pokaz('Potrzebuję zgody na przetwarzanie danych.', 'blad'); return null; }
-      return { imie: imie, telefon: tel, usluga: f.usluga.value,
-               dlugosc: f.dlugosc.value, grubosc: f.grubosc.value,
-               termin: f.termin.value, tresc: f.tresc.value.trim(), consent: true };
+      return { 'Imię': imie, 'Telefon': tel, 'Usługa': f.usluga.value,
+               'Długość włosów': f.dlugosc.value, 'Gęstość': f.grubosc.value,
+               'Termin': f.termin.value, 'Uwagi': f.tresc.value.trim() };
     },
-    'Zapytanie o termin i cenę — new age Lewandowska',
     'Dziękuję — odezwę się najszybciej, jak będę mogła.');
 })();
