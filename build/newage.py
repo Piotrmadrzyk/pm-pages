@@ -458,6 +458,154 @@ PORADY = [
 </p>
 """),
 
+ ('dobor-szamponu',
+  u'Szampon to nie kosmetyk uniwersalny',
+  u'Najczęstszy błąd w domowej pielęgnacji: jeden szampon dla całej rodziny, '
+  u'kupowany dlatego, że ładnie pachnie.',
+  u'jak dobrać szampon, szampon do włosów farbowanych, porowatość włosów',
+  u"""
+<p>
+  Włosy różnią się od siebie bardziej, niż się wydaje. Cienkie i gęste to nie
+  to samo. Przetłuszczające się u nasady, ale suche na końcach — to jeszcze
+  co innego. Szampon dobrany do jednego typu na innym po prostu nie zadziała,
+  a czasem zaszkodzi.
+</p>
+<h3>Trzy pytania, od których zaczynam</h3>
+<p>
+  <b>Jak szybko włosy się przetłuszczają?</b> Jeśli drugiego dnia — potrzebny
+  jest szampon oczyszczający, ale łagodny; mocne detergenty podrażniają skórę,
+  a ta w odpowiedzi produkuje jeszcze więcej sebum. Błędne koło.
+</p>
+<p>
+  <b>Czy są farbowane?</b> Włosy koloryzowane mają uszkodzoną łuskę i szybciej
+  tracą pigment. Szampon do włosów farbowanych ma delikatniejsze detergenty
+  i mniej się nimi wypłukuje kolor.
+</p>
+<p>
+  <b>Jaka jest porowatość?</b> To najważniejsze, a najrzadziej sprawdzane.
+  Włos niskoporowaty ma ciasno przylegającą łuskę — ciężkie maski go obciążają
+  i włosy wiszą jak sznurki. Wysokoporowaty ma łuskę otwartą — potrzebuje
+  cięższych kosmetyków, bo lekkie nic nie dają.
+</p>
+<h3>Prosty test porowatości</h3>
+<p>
+  Wrzuć czysty, suchy włos do szklanki z wodą. Jeśli po kilku minutach pływa
+  na powierzchni — niska porowatość. Jeśli powoli tonie — średnia. Jeśli
+  opada od razu — wysoka. To nie jest badanie laboratoryjne, ale wystarcza,
+  żeby przestać kupować na oślep.
+</p>
+<h3>Czego nie robić</h3>
+<p>
+  <b>Nie kupuj szamponu tylko dlatego, że ładnie pachnie.</b> Zapach nie ma
+  nic wspólnego z tym, co produkt robi z włosem.
+</p>
+<p>
+  <b>Nie używaj jednego szamponu przez lata bez zastanowienia.</b> Włosy się
+  zmieniają — po ciąży, po zmianie koloru, po zimie, z wiekiem. To, co
+  działało trzy lata temu, dziś może nie pasować.
+</p>
+<p>
+  <b>Nie nakładaj szamponu na całą długość.</b> Myje się <b>skórę głowy</b>;
+  długość i końcówki wystarczająco oczyści piana spływająca przy spłukiwaniu.
+</p>
+"""),
+
+ ('odzywka-maska-olej',
+  u'Odżywka, maska, olej — co, kiedy i po co',
+  u'Trzy różne kosmetyki, trzy różne zadania. Najczęściej używa się ich '
+  u'w złej kolejności albo wszystkich naraz.',
+  u'odżywka czy maska, olejowanie włosów, pielęgnacja włosów w domu',
+  u"""
+<h3>Odżywka — po każdym myciu</h3>
+<p>
+  Jej zadanie jest proste: zamknąć łuskę włosa, którą otworzyło mycie.
+  Dlatego nakłada się ją <b>zawsze po szamponie</b> i tylko na długość,
+  nigdy na skórę głowy. Trzyma się dwie, trzy minuty — dłużej nic nie da,
+  bo działa powierzchniowo.
+</p>
+<h3>Maska — raz, dwa razy w tygodniu</h3>
+<p>
+  Maska odżywia głębiej i zastępuje odżywkę, a nie jest jej dodatkiem.
+  Nakładanie obu naraz to marnowanie produktu. Piętnaście minut wystarczy;
+  trzymanie godziny nie daje lepszego efektu, tylko obciąża włos.
+</p>
+<p>
+  Przy niskiej porowatości maski używaj rzadziej — co dziesięć dni, a nie
+  co trzy dni. Przeciążone włosy wyglądają gorzej niż niedożywione.
+</p>
+<h3>Olej — na sam koniec albo przed myciem</h3>
+<p>
+  Olej nie odżywia — on <b>zabezpiecza</b>. Kropla na wilgotne końcówki
+  po myciu zamyka je i ogranicza puszenie. Można też olejować przed myciem,
+  żeby ochronić włos przed detergentem — wtedy zostawia się go na godzinę
+  i zmywa szamponem.
+</p>
+<p>
+  Najczęstszy błąd: za dużo. Na włosy do ramion wystarczy ilość wielkości
+  ziarnka grochu, rozgrzana w dłoniach. Więcej znaczy tłuste, a nie
+  nawilżone.
+</p>
+<h3>Kolejność, o którą pytacie najczęściej</h3>
+<p>
+  Szampon (skóra głowy) → maska <b>albo</b> odżywka (długość) → spłukanie
+  chłodną wodą → olej lub serum na wilgotne końcówki → suszenie.
+  Nic więcej nie jest potrzebne, a większość problemów bierze się
+  z robienia więcej, nie mniej.
+</p>
+"""),
+
+ ('wlosy-wypadaja',
+  u'Włosy wypadają albo szybko się przetłuszczają',
+  u'Dwie rzeczy, z którymi klientki przychodzą najczęściej — i o których '
+  u'krąży najwięcej nieprawdziwych porad.',
+  u'wypadanie włosów, przetłuszczające się włosy, zdrowa skóra głowy',
+  u"""
+<h3>Ile włosów dziennie to normalna liczba</h3>
+<p>
+  Od pięćdziesięciu do stu. To brzmi dużo, dopóki nie zobaczy się ich razem
+  w odpływie. Włos ma swój cykl życia i wypadanie jest jego naturalną częścią.
+</p>
+<p>
+  Niepokoić powinno co innego: <b>przerzedzenie widoczne w konkretnym
+  miejscu</b>, wyraźnie szersza linia przedziałka albo nagła zmiana
+  w ciągu kilku tygodni. To sygnał, żeby pójść do lekarza, nie do fryzjera —
+  najczęstsze przyczyny to niedobory żelaza i ferrytyny, tarczyca albo
+  silny stres sprzed dwóch, trzech miesięcy.
+</p>
+<h3>Czego fryzjer nie naprawi</h3>
+<p>
+  Żaden zabieg w salonie nie zatrzyma wypadania, którego przyczyna siedzi
+  w organizmie. Mogę poprawić kondycję tego, co rośnie, dobrać strzyżenie,
+  które doda objętości, i pokazać, jak nie osłabiać włosów dodatkowo —
+  ale nie zastąpię badania krwi.
+</p>
+<p>
+  Uczciwie: jeśli ktoś obiecuje, że jedna ampułka zatrzyma wypadanie,
+  sprzedaje nadzieję, nie efekt.
+</p>
+<h3>Przetłuszczanie — zwykle sami je pogłębiamy</h3>
+<p>
+  <b>Za gorąca woda</b> pobudza gruczoły łojowe. Letnia wystarczy.
+</p>
+<p>
+  <b>Zbyt mocne szampony</b> ogałacają skórę, która broni się produkcją
+  większej ilości sebum. Efekt: włosy tłuste jeszcze szybciej.
+</p>
+<p>
+  <b>Odżywka przy nasadzie</b> obciąża włos i skraca świeżość o pół dnia.
+  Odżywka należy się długości, nie skórze.
+</p>
+<p>
+  <b>Dotykanie włosów.</b> Ile razy dziennie poprawiasz je ręką? Każde
+  dotknięcie to trochę sebum z palców.
+</p>
+<h3>Suchy szampon nie jest złem</h3>
+<p>
+  Ale jest doraźny. Używany codziennie zapycha ujścia mieszków włosowych
+  i pogarsza to, co miał ratować. Raz na jakiś czas — w porządku; zamiast
+  mycia przez tydzień — nie.
+</p>
+"""),
  ('pierwsza-wizyta',
   u'Idziesz do nowego fryzjera. Jak się przygotować?',
   u'Kilka rzeczy, które zrobisz przed wizytą, potrafi zdecydować o tym, '
@@ -1004,6 +1152,12 @@ u"""
         o każdy detal.
       </p>
       <p>
+        Na tym nie poprzestaję. <b>Od 2025 roku studiuję pedagogikę
+        — terapię pedagogiczną</b>, żeby móc uczyć zawodu także w szkołach.
+        Po dwudziestu pięciu latach przy fotelu wciąż jestem po stronie
+        uczących się, nie tylko uczących.
+      </p>
+      <p>
         Pracuję na profesjonalnych kosmetykach L'Oréal Professionnel, a moją
         ulubioną częścią pracy wciąż pozostaje <b>strzyżenie</b>. To tu
         najbardziej czuję, że mogę dopracować każdy szczegół.
@@ -1020,6 +1174,7 @@ u"""
       <div class="liczba"><b>18</b><span>lat własnego salonu</span></div>
       <div class="liczba"><b>20</b><span>dyplomów i certyfikatów</span></div>
       <div class="liczba"><b>5,0</b><span>ocena z 53 opinii Google</span></div>
+      <div class="liczba"><b>2025</b><span>studia pedagogiczne w toku</span></div>
     </div>
   </div>
 </section>
