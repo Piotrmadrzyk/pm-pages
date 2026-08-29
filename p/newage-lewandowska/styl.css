@@ -288,12 +288,12 @@ textarea{min-height:130px; resize:vertical}
   border-bottom:1px solid rgba(255,255,255,.08); transition:background .3s;
 }
 .naglowek-in{
-  width:var(--wrap); margin:0 auto; min-height:92px;
+  width:var(--wrap); margin:0 auto; min-height:104px;
   display:flex; align-items:center; justify-content:space-between; gap:24px;
 }
 .marka{display:flex; align-items:center; flex:0 0 auto}
-.marka img{width:clamp(132px,13vw,190px)}
-@media(min-width:1500px){ .marka img{width:215px} }
+.marka img{width:clamp(150px,16vw,230px)}
+@media(min-width:1500px){ .marka img{width:260px} }
 .menu{display:none; align-items:center; gap:clamp(12px,1.5vw,26px); flex-wrap:nowrap}
 @media(min-width:920px){ .menu{display:flex} }
 .menu a{
@@ -992,3 +992,21 @@ a.odznaka:hover .odznaka-strzalka{color:var(--biel)}
 .pas .powieksz-luzny{position:absolute; inset:0; height:100%}
 .pas .powieksz-luzny > img{height:100%; object-fit:cover}
 .pas .powieksz-luzny .kafel-lupa{top:auto; bottom:18px; right:18px}
+
+/* Liczby, które mówią same za siebie — ćwierć wieku w zawodzie
+   i osiemnaście lat własnego salonu to dwie różne rzeczy i obie
+   warto pokazać osobno. */
+.liczby{display:grid; gap:1px; background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.09)}
+@media(min-width:620px){ .liczby{grid-template-columns:repeat(2,1fr)} }
+@media(min-width:980px){ .liczby{grid-template-columns:repeat(4,1fr)} }
+.liczba{background:var(--wegiel); padding:clamp(26px,3.4vw,40px) clamp(20px,2.5vw,28px);
+  text-align:center}
+.liczba b{
+  display:block; font-family:var(--display); font-size:clamp(2.2rem,4.4vw,3.2rem);
+  color:var(--biel); font-weight:400; line-height:1; font-variant-numeric:tabular-nums;
+}
+.liczba span{
+  display:block; margin-top:.7rem; font-size:.78rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--srebro-ciemne); line-height:1.5;
+}

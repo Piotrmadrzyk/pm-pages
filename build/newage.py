@@ -551,9 +551,11 @@ SZKIELET = u"""<!DOCTYPE html>
     "@type": "OfferCatalog", "name": "Us\u0142ugi fryzjerskie",
     "itemListElement": [
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Koloryzacja w\u0142os\u00f3w \u2014 balayage, rozja\u015bnianie, refleksy"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Dekoloryzacja \u2014 usuwanie farby z w\u0142os\u00f3w"}},
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Strzy\u017cenie damskie i m\u0119skie"}},
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Modelowanie i upi\u0119cia okoliczno\u015bciowe"}},
-      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Piel\u0119gnacja i regeneracja w\u0142os\u00f3w"}}
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Botoks na w\u0142osy, piel\u0119gnacja i regeneracja"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Trwa\u0142a ondulacja wodna i upi\u0119cia okoliczno\u015bciowe"}}
     ]
   },
   "priceRange": "$$",
@@ -771,9 +773,9 @@ def strona_start():
     <div class="hero-siatka">
       <div>
         <p class="nadpis">Fryzjerstwo · Częstochowa</p>
-        <h1>Włosy, które<br>ktoś <em>rozumie</em>.</h1>
+        <h1>Włosy,<br>które <em>rozumiem</em>.</h1>
         <p class="hero-lead">
-          Agnieszka Lewandowska. Dwadzieścia lat przy fotelu, dyplomy Toni&amp;Guy
+          Agnieszka Lewandowska. Ponad dwadzieścia pięć lat przy fotelu, tytuł mistrza fryzjerstwa, dyplomy Toni&amp;Guy
           i Saks, cztery szkolenia w Akademii L'Oréal Professionnel — u artystów,
           którzy uczą fryzjerów na całym świecie.
         </p>
@@ -830,7 +832,7 @@ def strona_start():
 <section class="ciemno">
   <div class="wrap">
     <p class="nadpis">Dowód</p>
-    <h2>Dwadzieścia lat, <span class="kursywa">dwadzieścia dyplomów</span>.</h2>
+    <h2>Ćwierć wieku, <span class="kursywa">dwadzieścia dyplomów</span>.</h2>
     <p style="color:var(--srebro-jasne); max-width:56ch">
       Toni&amp;Guy, Saks, uprawnienia instruktorskie, cztery szkolenia
       w Akademii L'Oréal Professionnel — u Adama Reeda, Berniego Ottjesa i Min Kim.
@@ -849,9 +851,10 @@ def strona_start():
     <h2>Co robię <span class="kursywa">i jak</span>.</h2>
     <div class="uslugi">
       <div class="usluga"><h3>Koloryzacja</h3><p>Balayage, rozjaśnianie, refleksy, korekta koloru. Zawsze po rozmowie o tym, czy kondycja Twoich włosów na to pozwoli.</p></div>
-      <div class="usluga"><h3>Strzyżenie</h3><p>Fryzura, która trzyma formę także wtedy, gdy układasz ją sama, w pośpiechu, przed wyjściem.</p></div>
+      <div class="usluga"><h3>Dekoloryzacja</h3><p>Wyjście z koloru, który już nie służy. Najbardziej wymagający zabieg — zawsze po konsultacji.</p></div>
+      <div class="usluga"><h3>Strzyżenie</h3><p>Moja ulubiona część tej pracy. Damskie zawsze z myciem i modelowaniem.</p></div>
       <div class="usluga"><h3>Modelowanie</h3><p>Na co dzień i na okazje. Także nauka układania — żeby dało się to powtórzyć w domu.</p></div>
-      <div class="usluga"><h3>Pielęgnacja</h3><p>Zabiegi dobrane do stanu włosów, nie do cennika. Czasem zamiast koloru potrzebna jest regeneracja.</p></div>
+      <div class="usluga"><h3>Pielęgnacja i botoks</h3><p>Zabiegi dobrane do stanu włosów, nie do cennika. Czasem zamiast koloru potrzebna jest regeneracja.</p></div>
     </div>
     <a class="link-dalej" href="uslugi/">Pełna oferta i dlaczego nie ma cennika</a>
   </div>
@@ -981,31 +984,45 @@ u"""
   <div class="wrap dwie odwrot">
     <div class="tresc wejscie">
       <p>
-        Zaczynałam w 2003 roku dyplomem akademii Toni&amp;Guy. Dwa lata później
-        szkoliłam się w Saks Academies — strzyżenie i koloryzacja. To brytyjskie
-        szkoły fryzjerstwa, które prowadziły wtedy zajęcia także w Polsce.
+        Moja droga w fryzjerstwie nie była prosta ani szybka — to lata pracy,
+        nauki i cierpliwości. Przez ponad dwadzieścia pięć lat zdobywałam
+        doświadczenie, obserwując, jak zmienia się ten zawód: nowe techniki,
+        nowe trendy, nowe możliwości.
       </p>
       <p>
-        W 2009 skończyłam kurs pedagogiczno-metodyczny dla instruktorów.
-        Nie po to, żeby uczyć — po to, żeby lepiej rozumieć, jak tłumaczyć
-        klientce, co dzieje się z jej włosami i dlaczego.
+        Nigdy nie przestałam się uczyć. Ukończyłam liczne szkolenia, zdobyłam
+        <b>tytuł mistrza fryzjerstwa</b> oraz kurs pedagogiczny — dzięki niemu
+        dziś mogę przekazywać swoją wiedzę kolejnemu pokoleniu fryzjerów
+        w moim salonie.
       </p>
       <p>
-        Do dziś jeżdżę na szkolenia. Techniki koloryzacji u Min Kim i Berniego Ottjesa,
-        strzyżenie u Adama Reeda — to nie są nazwiska z ulotki, tylko artyści,
-        którzy uczą fryzjerów na całym świecie.
+        Od niemal osiemnastu lat prowadzę <b>New Age Lewandowska</b>
+        w Częstochowie — miejsce, które współtworzę z pasją i dbałością
+        o każdy detal.
       </p>
       <p>
-        Praktycznie znaczy to jedno: zanim cokolwiek zrobię z Twoimi włosami,
-        rozmawiamy. Bez niespodzianek w lustrze.
+        Pracuję na profesjonalnych kosmetykach L'Oréal Professionnel, a moją
+        ulubioną częścią pracy wciąż pozostaje <b>strzyżenie</b>. To tu
+        najbardziej czuję, że mogę dopracować każdy szczegół.
       </p>
     </div>
-    <img src="../img/sesja/kadr-1743.jpg" alt="Agnieszka Lewandowska" width="733" height="1100" loading="lazy" class="wejscie">
+    <img src="../img/sesja/kadr-1743.jpg" alt="Agnieszka Lewandowska, mistrzyni fryzjerstwa" width="733" height="1100" loading="lazy" class="wejscie">
+  </div>
+</section>
+
+<section class="ciemno" id="liczby">
+  <div class="wrap">
+    <div class="liczby">
+      <div class="liczba"><b>25+</b><span>lat w zawodzie</span></div>
+      <div class="liczba"><b>18</b><span>lat własnego salonu</span></div>
+      <div class="liczba"><b>20</b><span>dyplomów i certyfikatów</span></div>
+      <div class="liczba"><b>5,0</b><span>ocena z 53 opinii Google</span></div>
+    </div>
   </div>
 </section>
 
 <div class="mysl ciemno">
-  <blockquote>Dwadzieścia lat. Dwadzieścia dyplomów. Zero zgadywania.</blockquote>
+  <blockquote>Ćwierć wieku. Osiemnaście lat własnego salonu. Zero zgadywania.</blockquote>
   <cite>Droga zawodowa — 2003–2023</cite>
 </div>
 
@@ -1047,15 +1064,46 @@ u"""
           Zaczynamy od obejrzenia włosów i rozmowy o tym, co było na nich wcześniej.
           Henna, domowe farbowanie z drogerii, rozjaśnianie sprzed pół roku — to wszystko
           zmienia, co da się dziś zrobić. Powiem wprost, jeśli wymarzony efekt wymaga
-          dwóch albo trzech wizyt, zamiast obiecywać go od ręki i zniszczyć włosy.
+          dwóch albo trzech wizyt, zamiast obiecywać go od ręki.
         </p>
         <p>
-          Pracuję na L'Oréal Professionnel — na tych produktach szkoliłam się od 2013 roku
-          i wiem, jak się zachowują na różnych włosach.
+          Pracuję na L'Oréal Professionnel <b>od 2002 roku</b>. Dwadzieścia parę lat
+          na jednej linii produktów to nie przywiązanie — to wiedza, jak każdy z nich
+          zachowa się na konkretnych włosach.
         </p>
         <ul class="u-fakty">
           <li>Odrosty — ok. 2 godz.</li><li>Balayage — 3–5 godz.</li>
-          <li>Korekta koloru — po konsultacji</li>
+          <li>Refleksy i pasemka</li><li>Tonowanie i korekta koloru</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="usluga-duza">
+      <div class="u-foto"><img src="../img/sesja/kadr-1741.jpg" alt="Dekoloryzacja" loading="lazy"></div>
+      <div>
+        <span class="u-numer">02 — Dekoloryzacja</span>
+        <h3>Wyjście z koloru, który już Ci nie służy</h3>
+        <p>
+          Dekoloryzacja to usunięcie sztucznego barwnika z włosa — nie to samo co
+          rozjaśnianie. Rozjaśnianie działa na naturalny pigment; dekoloryzacja
+          zdejmuje farbę, która została po wcześniejszych koloryzacjach.
+          Potrzebna wtedy, gdy chcesz zejść o kilka tonów niżej, wyjść z ciemnej
+          bazy albo naprawić kolor położony gdzie indziej.
+        </p>
+        <p>
+          To najbardziej wymagający zabieg w całej koloryzacji i nie zawsze da się
+          go zrobić za jednym razem. Farba schodzi warstwami i po drodze pojawiają
+          się podtony — pomarańczowy, czerwony, żółty — które trzeba wyciszyć.
+          Przy mocno przefarbowanych włosach rozpisuję plan na dwie lub trzy wizyty,
+          żeby nie dołożyć szkód.
+        </p>
+        <p>
+          <b>Zawsze powiem uczciwie, czego się nie da.</b> Jeśli włosy tego nie
+          wytrzymają, usłyszysz to ode mnie przed zabiegiem, a nie po.
+        </p>
+        <ul class="u-fakty">
+          <li>Zawsze po konsultacji</li><li>Często rozłożona na kilka wizyt</li>
+          <li>Łączona z regeneracją</li>
         </ul>
       </div>
     </article>
@@ -1063,63 +1111,64 @@ u"""
     <article class="usluga-duza">
       <div class="u-foto"><img src="../img/sesja/kadr-1743.jpg" alt="Strzyżenie" loading="lazy"></div>
       <div>
-        <span class="u-numer">02 — Strzyżenie</span>
-        <h3>Fryzura, którą ułożysz sama w czwartek rano</h3>
+        <span class="u-numer">03 — Strzyżenie</span>
+        <h3>Moja ulubiona część tej pracy</h3>
         <p>
-          Najładniejsze cięcie jest do niczego, jeśli wymaga czterdziestu minut
-          i trzech urządzeń. Dlatego pytam, ile czasu naprawdę masz rano i czego
-          używasz — i dobieram fryzurę do tego, a nie do zdjęcia z internetu.
+          Tu najbardziej czuję, że mogę dopracować każdy szczegół. Najładniejsze
+          cięcie jest jednak do niczego, jeśli wymaga czterdziestu minut i trzech
+          urządzeń — dlatego pytam, ile czasu naprawdę masz rano i czego używasz.
         </p>
         <p>
+          Strzyżenie damskie zawsze w komplecie z myciem i modelowaniem.
           Jeśli przyniesiesz zdjęcie, powiem uczciwie, czy na Twoich włosach
-          i przy Twoim typie urody to zadziała. Czasem odradzę i zaproponuję coś innego.
+          to zadziała. Czasem odradzę i zaproponuję coś innego.
         </p>
         <ul class="u-fakty">
-          <li>Strzyżenie damskie — ok. 1 godz.</li><li>Męskie — ok. 40 min</li>
+          <li>Damskie z myciem i modelowaniem</li><li>Męskie</li>
           <li>Duża zmiana — konsultacja przed</li>
         </ul>
       </div>
     </article>
 
     <article class="usluga-duza">
-      <div class="u-foto"><img src="../img/sesja/kadr-1741.jpg" alt="Modelowanie" loading="lazy"></div>
+      <div class="u-foto"><img src="../img/sesja/kadr-1718.jpg" alt="Modelowanie i upięcia" loading="lazy"></div>
       <div>
-        <span class="u-numer">03 — Modelowanie i upięcia</span>
+        <span class="u-numer">04 — Modelowanie i upięcia</span>
         <h3>Na wesele, na sesję i na zwykły wtorek</h3>
         <p>
-          Modelowanie po zabiegu, fale, prostowanie, objętość. Przy okazji pokazuję,
+          Modelowanie, fale, objętość, trwała ondulacja wodna. Przy okazji pokazuję,
           jak to powtórzyć w domu — który produkt, w którym momencie, w którą stronę
           prowadzić szczotkę. To zwykle robi większą różnicę niż samo cięcie.
         </p>
         <p>
-          Upięcia okolicznościowe robię po wcześniejszej próbie, jeśli okazja jest ważna.
-          Do sesji zdjęciowych i stylizacji — mam za sobą pracę przy publikacjach
-          w magazynie i katalogach.
+          Upięcia okolicznościowe robię po wcześniejszej próbie, jeśli okazja jest
+          ważna. Mam też za sobą stylizacje do publikacji w magazynie.
         </p>
         <ul class="u-fakty">
           <li>Modelowanie — 30–45 min</li><li>Upięcie — od 1 godz.</li>
-          <li>Próba przed ślubem — możliwa</li>
+          <li>Trwała ondulacja wodna</li><li>Próba przed ślubem</li>
         </ul>
       </div>
     </article>
 
     <article class="usluga-duza">
-      <div class="u-foto"><img src="../img/sesja/kadr-1718.jpg" alt="Pielęgnacja" loading="lazy"></div>
+      <div class="u-foto"><img src="../img/sesja/kadr-1727.jpg" alt="Pielęgnacja i botoks" loading="lazy"></div>
       <div>
-        <span class="u-numer">04 — Pielęgnacja i regeneracja</span>
+        <span class="u-numer">05 — Pielęgnacja i botoks na włosy</span>
         <h3>Czasem zamiast koloru potrzebna jest przerwa</h3>
         <p>
           Zdarza się, że przychodzisz po koloryzację, a ja proponuję najpierw
           regenerację. Nie dlatego, że tak wygodniej — tylko dlatego, że na
-          przesuszonych włosach kolor i tak się nie utrzyma i wyjdziesz rozczarowana.
+          przesuszonych włosach kolor i tak się nie utrzyma.
         </p>
         <p>
-          Zabiegi dobieram do stanu włosów, nie do cennika. Dostaniesz też
-          konkretne wskazówki, czego używać w domu — i czego zdecydowanie nie.
+          <b>Botoks na włosy</b> wygładza i wypełnia włos od środka: efekt to
+          miękkość, połysk i mniej puszenia. Nie prostuje na stałe i nie zastępuje
+          pielęgnacji domowej — dobieram go do stanu włosów, nie do cennika.
         </p>
         <ul class="u-fakty">
-          <li>Zabieg — 30–60 min</li><li>Często łączony z koloryzacją</li>
-          <li>Dobór pielęgnacji domowej — gratis</li>
+          <li>Botoks — 30–60 min</li><li>Regeneracja i odbudowa</li>
+          <li>Dobór pielęgnacji domowej</li>
         </ul>
       </div>
     </article>
@@ -1423,10 +1472,14 @@ u"""
           <div><label for="k-usluga">Co chcesz zrobić</label>
             <select id="k-usluga" name="usluga">
               <option>Koloryzacja</option>
+              <option>Dekoloryzacja — wyjście z koloru</option>
               <option>Koloryzacja + strzyżenie + modelowanie</option>
               <option>Koloryzacja + modelowanie</option>
               <option>Samo strzyżenie</option>
               <option>Modelowanie / upięcie</option>
+              <option>Botoks na włosy</option>
+              <option>Trwała ondulacja wodna</option>
+              <option>Upięcie okolicznościowe</option>
               <option>Pielęgnacja i regeneracja</option>
               <option selected>Jeszcze nie wiem — poradź mi</option>
             </select></div>
@@ -1646,8 +1699,8 @@ STRONY = [
     ('start', '', u'Fryzjer Częstochowa — koloryzacja i strzyżenie | new age Lewandowska',
      u'Salon fryzjerski new age w Częstochowie. Koloryzacja, strzyżenie i modelowanie '
      u'u Agnieszki Lewandowskiej — z dwudziestoletnim doświadczeniem.', strona_start, ''),
-    ('o-mnie', 'o-mnie', u'Agnieszka Lewandowska — fryzjerka z Częstochowy, 20 lat doświadczenia',
-     u'Dwadzieścia lat pracy, dyplomy Toni&Guy i Saks, cztery szkolenia '
+    ('o-mnie', 'o-mnie', u'Agnieszka Lewandowska — mistrzyni fryzjerstwa, Częstochowa',
+     u'Ponad 25 lat pracy, tytuł mistrza fryzjerstwa, dyplomy Toni&Guy i Saks, '
      u'w Akademii L’Oréal Professionnel.', strona_o_mnie, '../'),
     ('uslugi', 'uslugi', u'Koloryzacja i strzyżenie Częstochowa — cennik po rozmowie | new age',
      u'Koloryzacja, strzyżenie, modelowanie i pielęgnacja w Częstochowie. '
