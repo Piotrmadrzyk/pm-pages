@@ -191,12 +191,60 @@ a nie jeden w drugim.
 do środka katalogu demo i poprawić odnośniki. To kilka godzin roboty i ma sens
 dopiero wtedy, gdy droga A już stoi i wiadomo, że subdomeny się sprawdzają.
 
-### ⚠️ Zielona Pergola — nadal osobno
+### 🟠 Zielona Pergola — projekt gotowy, czeka na JEDEN wpis DNS
 
-Mieszka w repozytorium `radosc-website-preview` i **waży 367 MB w samych
-zdjęciach**, więc nie da się jej wciągnąć do `pm-pages`. Potrzebuje własnego
-projektu w Vercelu, podpiętego pod `pergola-demo.probatum.pl`.
-Do założenia jednym poleceniem — czeka na decyzję właściciela.
+**29.08.2026.** Piotr: *„zajmij się zieloną pergolą, bo nie jest jako jedyna
+na subdomenie jak pozostałe"*.
+
+Zrobione po stronie Vercela — **zostaje tylko DNS, którego nie mogę dodać sam**
+(panel home.pl wymaga hasła, a haseł nie wpisuję).
+
+**Wpis do dodania w home.pl, w DNS domeny `probatum.pl`:**
+
+```
+Typ:      CNAME
+Nazwa:    pergola-demo
+Wartość:  8e964240c76d181b.vercel-dns-016.com.
+```
+
+Tyle. Certyfikat Vercel wystawi sam, gdy wpis się rozejdzie. Gdyby po godzinie
+nadal pokazywał „Invalid Configuration", trzeba wywołać
+`npx vercel certs issue pergola-demo.probatum.pl --scope piotrs-projects-82784815`
+— tak było przy `akademia.probatum.pl`.
+
+**Uwaga:** to **inna wartość** niż przy czterech pozostałych demach
+(`f159e593438ec538.vercel-dns-017.com`). Każdy projekt Vercela dostaje własną —
+nie da się przekopiować tamtej.
+
+### Co zostało zrobione po drodze
+
+- Założony projekt Vercel **`pergola-demo`**, podpięty pod repozytorium
+  `piotrmadrzyk/radosc-website-preview`.
+- **Pułapka, w którą wpadłem:** Vercel domyślnie wziął gałąź `main`, a na niej
+  leży **stara wersja strony** — „Radość — Bistro, Pizza i Catering, Jasionka
+  k. Rzeszowa", czyli wcześniejsza, nie-fikcyjna nazwa. Obecne demo („Zielona
+  Pergola, Zielony Gaj k. Lipowa") żyje na `preview/redesign-2026`. Projekt
+  **wstrzymałem w ciągu paru minut**, żeby ta wersja nie poszła w świat,
+  przestawiłem gałąź produkcyjną i dopiero wtedy odwiesiłem.
+- Domena `pergola-demo.probatum.pl` dodana do projektu, czeka na DNS.
+- **Sprawdzone na Vercelu:** strona główna, `kontakt`, `catering`, `pizza`,
+  `opinie`, `realizacje` i zdjęcia — wszystko HTTP 200. 371 MB zbudowało się
+  w 28 sekund, więc obawa o rozmiar była nieuzasadniona.
+- **GitHub Pages działa dalej bez zmian** i celowo tego nie ruszałem: gdybym
+  ustawił tam własną domenę przed dodaniem DNS, obecny adres demo
+  przekierowywałby na adres, który jeszcze nie istnieje — czyli demo
+  zniknęłoby na czas oczekiwania.
+
+### ⚠️ Do zrobienia PO tym, jak subdomena zacznie działać
+
+W plikach strony siedzi **55 miejsc** z adresami
+`https://piotrmadrzyk.github.io/radosc-website-preview/...` — w tagach
+`canonical`, Open Graph, danych strukturalnych i mapie strony. Po uruchomieniu
+subdomeny trzeba je przepisać na `https://pergola-demo.probatum.pl/...`,
+inaczej strona sama wskazuje wyszukiwarkom stary adres.
+
+Nie zrobiłem tego z góry, bo dopóki subdomena nie działa, te adresy byłyby
+błędne.
 
 ---
 
