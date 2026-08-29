@@ -89,9 +89,9 @@ DYPLOMY = [
      u'prowadząca zajęcia także w Polsce. Dwa dni o tym, jak strzyżenie '
      u'i koloryzacja pracują ze sobą, a nie osobno.'),
     ('2009-uprawnienia',    u'2009', u'Kurs pedagogiczno-metodyczny',
-     u'Dwa miesiące o tym, jak tłumaczyć trudne rzeczy prosto. Przydaje się '
-     u'codziennie — bo połowa tej pracy to wytłumaczenie klientce, co dzieje '
-     u'się z jej włosami i dlaczego akurat to.'),
+     u'Razem z tytułem mistrza daje uprawnienia do nauki zawodu. Dzięki niemu '
+     u'w salonie mogą uczyć się praktykanci — i dlatego rozmowa o włosach '
+     u'z klientką też wychodzi prościej.'),
     ('2013-loreal-h3',      u'2013', u'L’Oréal H³',
      u'Heart, Hand, Head — międzynarodowe grono stylistów L’Oréal Professionnel. '
      u'Wejście do niego oznacza dostęp do szkoleń, na które nie każdy salon '
@@ -994,9 +994,9 @@ u"""
       </p>
       <p>
         Nigdy nie przestałam się uczyć. Ukończyłam liczne szkolenia, zdobyłam
-        <b>tytuł mistrza fryzjerstwa</b> oraz kurs pedagogiczny — dzięki niemu
-        dziś mogę przekazywać swoją wiedzę kolejnemu pokoleniu fryzjerów
-        w moim salonie.
+        <b>tytuł mistrza fryzjerstwa</b> oraz kurs pedagogiczny. To one dają mi
+        uprawnienia do <b>nauki zawodu</b> — od lat przyjmuję u siebie
+        praktykantów i uczę ich fryzjerstwa od podstaw.
       </p>
       <p>
         Od niemal osiemnastu lat prowadzę <b>New Age Lewandowska</b>
