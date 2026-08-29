@@ -80,91 +80,109 @@ def menu_mobilne(aktywna, korzen):
 # ─────────────────────────────────────────────────────────────────
 DYPLOMY = [
     ('2003-toni-guy',       u'2003', u'Toni&amp;Guy Academy',
-     u'Dyplom akademii, podpisany przez międzynarodowego dyrektora artystycznego'),
+     u'Brytyjska szkoła, przez którą przeszły pokolenia fryzjerów na całym '
+     u'świecie — od lat sześćdziesiątych wyznacza to, co w strzyżeniu uchodzi '
+     u'za dobrą robotę. Dyplom podpisany przez ich międzynarodowego dyrektora '
+     u'artystycznego.'),
     ('2005-saks-london',    u'2005', u'Saks Academies',
-     u'Szkolenie ze strzyżenia i koloryzacji — polski oddział '
-     u'brytyjskiej akademii'),
+     u'Brytyjska sieć akademii fryzjerskich działająca od 1974 roku, wtedy '
+     u'prowadząca zajęcia także w Polsce. Dwa dni o tym, jak strzyżenie '
+     u'i koloryzacja pracują ze sobą, a nie osobno.'),
     ('2009-uprawnienia',    u'2009', u'Kurs pedagogiczno-metodyczny',
-     u'Dla wykładowców i instruktorów — o tym, jak tłumaczyć trudne rzeczy prosto'),
+     u'Dwa miesiące o tym, jak tłumaczyć trudne rzeczy prosto. Przydaje się '
+     u'codziennie — bo połowa tej pracy to wytłumaczenie klientce, co dzieje '
+     u'się z jej włosami i dlaczego akurat to.'),
     ('2013-loreal-h3',      u'2013', u'L’Oréal H³',
-     u'Dołączenie do międzynarodowego grona stylistów, Akademia L’Oréal Professionnel'),
+     u'Heart, Hand, Head — międzynarodowe grono stylistów L’Oréal Professionnel. '
+     u'Wejście do niego oznacza dostęp do szkoleń, na które nie każdy salon '
+     u'może się zapisać.'),
     ('2018-loreal-blondy',  u'2018', u'L’Oréal — Blondy',
-     u'Szkolenie z rozjaśniania w Akademii L’Oréal Professionnel'),
+     u'Całe szkolenie poświęcone wyłącznie rozjaśnianiu. To najtrudniejsza '
+     u'i najbardziej ryzykowna część koloryzacji — tu najłatwiej zniszczyć '
+     u'włosy i najtrudniej naprawić błąd.'),
     ('2019-adam-reed',      u'2019', u'Cut &amp; Style — Adam Reed',
-     u'Certyfikat podpisany osobiście przez Adama Reeda'),
+     u'Fryzjer brytyjskich gwiazd, ambasador L’Oréal Professionnel w Wielkiej '
+     u'Brytanii, twórca fryzur na okładki i wybiegi. Certyfikat podpisał '
+     u'osobiście — jego podpis widać na zdjęciu.'),
     ('2022-berni-ottjes',   u'2022', u'Master Class — Berni Ottjes',
-     u'Techniki koloryzacji, warsztaty praktyczne'),
+     u'Holenderski kolorysta z tytułem International Global Artist L’Oréal. '
+     u'Część warsztatowa: techniki koloryzacji ćwiczone na modelkach, '
+     u'nie na slajdach.'),
     ('2023-min-kim',        u'2023', u'Master Class — Min Kim',
-     u'Techniki koloryzacji z międzynarodową artystką L’Oréal'),
+     u'Międzynarodowa artystka L’Oréal, jedna z najbardziej rozpoznawalnych '
+     u'kolorystek na świecie. Teoria koloru — dlaczego pigment zachowuje się '
+     u'tak, a nie inaczej, i co z tego wynika przy fotelu.'),
 ]
 
-# Klientka przyslala kazde ujecie w dwoch wersjach — kolorowej i czarno-bialej.
-# W galerii zostaje po JEDNEJ z kazdej pary, w kolorze: to samo zdjecie dwa razy
-# to zapychanie galerii, nie portfolio. Czarno-biale zostaje wylacznie zdjecie
-# glowne na stronie startowej, bo ten konkretny kadr wybrala wprost.
-#   1743 = 1720   |   1718 = 1726   |   1727 = 1738   |   1741 = 1719
+# Podpisy z konkretem — „Studio" nic nie mowi. Kazdy ma tytul i drugi
+# wiersz z rzecza, ktora widz moze zabrac ze soba.
 SESJA = [
-    ('kadr-1743', u'W salonie'),
-    ('kadr-1718', u'Studio'),
-    ('kadr-1727', u'Narzędzia pracy'),
-    ('kadr-1741', u'Warsztat'),
+    ('kadr-1743', u'Sesja wizerunkowa', u'nożyczki, którymi pracuję na co dzień'),
+    ('kadr-1718', u'W salonie',         u'jedna osoba na raz, bez pośpiechu'),
+    ('kadr-1727', u'Narzędzia',         u'szczotka, grzebień, nożyczki — reszta to wprawa'),
+    ('kadr-1741', u'Warsztat',          u'wszystko, co potrzebne do jednej wizyty'),
 ]
 
 PORTFOLIO = [
-    ('sesja-3552', u'Magazyn SPLOT — sesja okładkowa'),
-    ('sesja-3555', u'Magazyn SPLOT — rozkładówka'),
-    ('sesja-3553', u'Magazyn SPLOT'),
-    ('sesja-3554', u'Magazyn SPLOT'),
-    ('sesja-3501', u'Stylizacja w klimacie lat 20.'),
-    ('sesja-3497', u'Stylizacja w klimacie lat 20.'),
-    ('sesja-3498', u'Stylizacja w klimacie lat 20.'),
-    ('sesja-3499', u'Stylizacja w klimacie lat 20.'),
-    ('sesja-3500', u'Stylizacja w klimacie lat 20.'),
-    ('sesja-3503', u'Sesja katalogowa'),
-    ('sesja-3504', u'Sesja katalogowa'),
-    ('sesja-3505', u'Sesja katalogowa'),
-    ('sesja-3506', u'Sesja katalogowa'),
-    ('sesja-3507', u'Sesja katalogowa'),
-    ('sesja-3508', u'Sesja katalogowa'),
-    ('sesja-3509', u'Sesja katalogowa'),
+    ('sesja-3552', u'Magazyn SPLOT', u'sesja okładkowa, stylizacja fryzur'),
+    ('sesja-3555', u'Magazyn SPLOT', u'rozkładówka — dwie stylizacje miejskie'),
+    ('sesja-3553', u'Magazyn SPLOT', u'publikacja drukowana'),
+    ('sesja-3554', u'Magazyn SPLOT', u'publikacja drukowana'),
+    ('sesja-3501', u'Lata dwudzieste', u'fale, opaska z piórem, wnętrza pałacowe'),
+    ('sesja-3497', u'Lata dwudzieste', u'sesja w plenerze miejskim'),
+    ('sesja-3498', u'Lata dwudzieste', u'stylizacja grupowa'),
+    ('sesja-3499', u'Lata dwudzieste', u'upięcie z falą wodną'),
+    ('sesja-3500', u'Lata dwudzieste', u'detal upięcia'),
+    ('sesja-3503', u'Sesja katalogowa', u'stylizacja do katalogu marki odzieżowej'),
+    ('sesja-3504', u'Sesja katalogowa', u'warkocz boczny, ujęcie w ruchu'),
+    ('sesja-3505', u'Sesja katalogowa', u'stylizacja dzienna'),
+    ('sesja-3506', u'Sesja katalogowa', u'ujęcie wnętrzarskie'),
+    ('sesja-3507', u'Sesja katalogowa', u'detal fryzury'),
+    ('sesja-3508', u'Sesja katalogowa', u'rozkładówka magazynu'),
+    ('sesja-3509', u'Sesja katalogowa', u'okładka magazynu SPLOT'),
 ]
 
 
-def kafle(pozycje, katalog, klasa='galeria-siatka'):
-    """Miniatury otwierajace pelne zdjecie po klknieciu."""
+def kafle(pozycje, katalog):
+    """Podpis lezy NA zdjeciu, pod gradientem — tak jak w Lawendzie
+    i Pergoli. Pod spodem drugi wiersz z konkretem. Przy najechaniu
+    zdjecie delikatnie sie przybliza i pojawia sie lupa."""
     out = []
     for p in pozycje:
-        if len(p) == 4:
+        if len(p) == 4:                       # dyplom: plik, rok, tytul, opis
             plik, rok, tytul, opis = p
-            podpis = u'%s · %s' % (rok, tytul)
-            alt = u'%s — %s' % (tytul, opis)
+            gorny, dolny = u'%s · %s' % (rok, tytul), opis
+        elif len(p) == 3:                     # zdjecie: plik, tytul, podpis
+            plik, gorny, dolny = p
         else:
-            plik, podpis = p
-            alt = podpis
+            plik, gorny = p
+            dolny = u''
+        podpis = (u'%s — %s' % (gorny, dolny)) if dolny else gorny
         out.append(
             u'<figure class="kafel">\n'
             u'          <button type="button" class="powieksz" data-pelne="../img/%s/%s.jpg"'
             u' data-podpis="%s" aria-label="Powiększ: %s">\n'
             u'            <img src="../img/%s/%s-mal.jpg" alt="%s" loading="lazy" decoding="async">\n'
+            u'            <span class="kafel-lupa" aria-hidden="true">'
+            u'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">'
+            u'<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v6M8 11h6"/></svg></span>\n'
+            u'            <figcaption><b>%s</b>%s</figcaption>\n'
             u'          </button>\n'
-            u'          <figcaption>%s</figcaption>\n'
-            u'        </figure>' % (katalog, plik, podpis.replace('"', '&quot;'),
-                                    podpis.replace('"', '&quot;'), katalog, plik,
-                                    alt.replace('"', '&quot;'), podpis))
+            u'        </figure>' % (
+                katalog, plik, podpis.replace('"', '&quot;'), gorny.replace('"', '&quot;'),
+                katalog, plik, podpis.replace('"', '&quot;'),
+                gorny, (u'<span>%s</span>' % dolny) if dolny else u''))
     return u'\n        '.join(out)
+
 
 
 # ─────────────────────────────────────────────────────────────────
 #  OPINIE — PRZEPISANE Z PROFILU GOOGLE, DOSLOWNIE
 #
-#  Zrodlo: profil "New Age Studio" w Mapach Google (5,0 z 53 opinii).
-#  Cytaty sa dokladne. Tam, gdzie opinia jest dluzsza niz to, co widac
-#  w profilu bez rozwijania, cytat urwany jest na granicy zdania —
-#  NIC nie jest dopisane ani przeredagowane.
-#
 #  ⚠️ Nie wolno tu wpisywac tresci wymyslonych. Falszywe opinie sa
 #  w Polsce zakazana nieuczciwa praktyka rynkowa i odpowiada za nie
 #  przedsiebiorca, czyli klientka.
+#  Zrodlo: https://maps.app.goo.gl/jo2415Nfnjxt4YGC6 (5,0 z 53 opinii)
 # ─────────────────────────────────────────────────────────────────
 OPINIE = [
     (u'Aneta Orzeł', u'7 miesięcy temu',
@@ -254,7 +272,6 @@ def blok_kontaktu(naglowek, zdanie):
   </div>
 </section>
 """ % (naglowek, zdanie, TEL_LINK, TEL_POKAZ, LINK_IG, LINK_IG, LINK_FB)
-
 
 
 # ─────────────────────────────────────────────────────────────────
@@ -716,6 +733,29 @@ def naglowek_strony(nadpis, h1, lead):
 #  TRESCI PODSTRON
 # ─────────────────────────────────────────────────────────────────
 
+def pas_przewijany():
+    """Zdjecia jada same, w petli, zatrzymuja sie pod kursorem.
+    Zestaw jest zdublowany — dzieki temu petla nie ma szwu."""
+    kadry = [(k, t_, d) for k, t_, d in SESJA] + \
+            [(p[0], p[1], p[2] if len(p) > 2 else u'') for p in PORTFOLIO[:8]]
+    katalogi = ['sesja'] * len(SESJA) + ['portfolio'] * 8
+    elementy = []
+    for i, ((plik, tytul, dolny), kat) in enumerate(zip(kadry, katalogi)):
+        elementy.append(
+            u'<figure class="tasma-kadr">'
+            u'<img src="img/%s/%s-mal.jpg" alt="%s" decoding="async">'
+            u'<figcaption><b>%s</b><span>%s</span></figcaption>'
+            u'</figure>' % (kat, plik, tytul, tytul, dolny))
+    jeden = u'\n        '.join(elementy)
+    return (u'\n<section class="tasma-sekcja" aria-label="Prace i sesje">\n'
+            u'  <div class="tasma" role="group">\n'
+            u'    <div class="tasma-tor">\n        %s\n        %s\n    </div>\n'
+            u'  </div>\n'
+            u'  <p class="tasma-podpis">Zatrzymaj kursorem · '
+            u'<a href="portfolio/">zobacz całe portfolio</a></p>\n'
+            u'</section>\n' % (jeden, jeden))
+
+
 def strona_start():
     czolowka = u"""
 <section class="hero" style="padding-top:clamp(28px,4vw,56px)">
@@ -809,6 +849,16 @@ def strona_start():
   </div>
 </section>
 
+<div class="pas">
+  <img src="img/sesja/kadr-1727.jpg" alt="Praca w salonie new age w Częstochowie" loading="lazy">
+  <div class="pas-tresc">
+    <div class="wrap">
+      <p class="nadpis" style="color:var(--srebro-jasne)">Od 2003 roku</p>
+      <h2>Jedna osoba przy fotelu.<br><span class="kursywa">Bez pośpiechu.</span></h2>
+    </div>
+  </div>
+</div>
+
 <section id="sytuacje">
   <div class="wrap">
     <p class="nadpis">Z czym przychodzą</p>
@@ -889,7 +939,7 @@ def strona_start():
 """ % {'dyplomy': dyplomy_skrot, 'przerywnik': PRZERYWNIK,
       'opinie': karty_opinii(3, 'opinie/')}
 
-    return czolowka + reszta + blok_kontaktu(
+    return czolowka + pas_przewijany() + reszta + blok_kontaktu(
         u'Zadzwoń, zanim <span class="kursywa">zdecydujesz</span>.',
         u'Nie musisz wiedzieć, czego chcesz. Wystarczy, że powiesz, co Ci się '
         u'w Twoich włosach nie podoba — resztę wymyślimy razem.')
