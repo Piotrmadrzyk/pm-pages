@@ -77,7 +77,9 @@ def menu_mobilne(aktywna, korzen):
 
 
 # ─────────────────────────────────────────────────────────────────
-#  DYPLOMY — osiem dokumentow, dwadziescia lat
+#  DYPLOMY
+#  Ponizej osiem — te, ktore Agnieszka uznala za najwazniejsze.
+#  Wszystkich jest okolo dwudziestu.
 # ─────────────────────────────────────────────────────────────────
 DYPLOMY = [
     ('2003-toni-guy',       u'2003', u'Toni&amp;Guy Academy',
@@ -1197,8 +1199,9 @@ def strona_o_mnie():
     return (
         naglowek_strony(u'O mnie',
             u'Nie zgaduję. <span class="kursywa">Wiem, co robię</span>.',
-            u'Agnieszka Lewandowska. Dwadzieścia lat przy fotelu i osiem dokumentów, '
-            u'które mówią, skąd to się wzięło.') +
+            u'Agnieszka Lewandowska — mistrzyni fryzjerstwa. Ponad dwadzieścia pięć lat '
+            u'przy fotelu, osiemnaście lat własnego salonu i studia pedagogiczne, '
+            u'których wciąż nie skończyła — bo nie przestała się uczyć.') +
 u"""
 <section style="padding-top:0">
   <div class="wrap dwie odwrot">
