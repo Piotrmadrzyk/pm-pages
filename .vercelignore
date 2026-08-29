@@ -1,0 +1,15 @@
+# Co NIE ma trafiac na serwer.
+#
+# 29.08.2026: sprawdzone na zywej stronie — https://probatum.pl/build/build.py
+# oddawalo HTTP 200. Caly katalog ze zrodlami byl publicznie do pobrania:
+# skrypt budujacy razem z danymi firmowymi i wszystkie czesci podstron.
+# Nikt tego nie zamierzal udostepniac; Vercel po prostu wysyla wszystko,
+# co lezy w repozytorium.
+#
+# To sama pulapka co przy Akademii: katalog roboczy wyladowal w sieci.
+# Strona jest statyczna — gotowe pliki .html leza w katalogu glownym,
+# a `build/` sluzy wylacznie do ich wytworzenia na komputerze.
+build/
+DO-ZROBIENIA.md
+JAK-DZIALA-PROBATUM.md
+README.md

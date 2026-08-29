@@ -8,6 +8,14 @@ import wpisy
 OUT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 PARTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'parts')
 
+# Odnosniki do regulaminu i polityki prywatnosci w stopce. Domyslnie WYLACZONE:
+# dokumenty czekaja na akceptacje prawna i maja jeszcze luke przy operatorze
+# platnosci. Wlacz dopiero, gdy beda gotowe:  DOKUMENTY=1 python3 build.py
+DOKUMENTY = os.environ.get('DOKUMENTY', '0') == '1'
+BLOK_DOKUMENTOW = ('        <h5 style="margin-top:1.2rem">Dokumenty</h5>\n'
+                   '        <a href="regulamin.html">Regulamin</a>\n'
+                   '        <a href="polityka-prywatnosci.html">Polityka prywatno\u015bci</a>\n')
+
 # ── JEDNO MIEJSCE NA DANE KONTAKTOWE ──────────────────────────────────────
 # Zmieniasz tutaj i uruchamiasz build.py — podmienia sie na wszystkich
 # podstronach naraz. W szablonach uzywaj znacznikow {{EMAIL}}, {{TEL}},
@@ -16,13 +24,70 @@ KONTAKT = {
     'EMAIL':    'kontakt@probatum.pl',
     'TEL':      '+48 573 569 141',
     'TEL_LINK': '+48573569141',      # bez spacji — do href="tel:"
+
+    # ── DANE DO REGULAMINU I POLITYKI PRYWATNOSCI ────────────────────────
+    # UWAGA, Piotr, 28.08: Probatum to MARKA, nie firma. Kurs sprzedaje
+    # inkubator przedsiebiorczosci — to on jest strona umowy z klientem,
+    # on wystawia fakture i on jest administratorem danych. W regulaminie
+    # musza wiec stac dane INKUBATORA, a Probatum wystepuje jako nazwa,
+    # pod ktora prowadzony jest projekt.
+    #
+    # Wpisanie tu wlasnych danych Piotra byloby bledem merytorycznym:
+    # klient zawiera umowe z podmiotem, ktory nie istnieje jako firma.
+    #
+    # Uzupelnij ponizsze pola danymi inkubatora (sa jawne w KRS) i uruchom
+    # build.py — podmienia sie w obu dokumentach naraz. Dopoki sa puste,
+    # build.py wypisuje ostrzezenie i wstawia widoczny znacznik
+    # [DO UZUPELNIENIA], zeby nie dalo sie tego przeoczyc na zywej stronie.
+    # Piotr, 28.08: inkubatorem jest TWOJ STARTUP (twojstartup.pl). Przez nich
+    # idzie sprzedaz i oni wystawiaja faktury.
+    # Dane potwierdzone 28.08 w dokumencie na serwerze samej fundacji
+    # (twojstartup.pl/ObowiazekInformacyjnyRODOFundacja23-05-2018.pdf) oraz
+    # zgodne z trzema niezaleznymi rejestrami KRS. To nie sa dane przepisane
+    # z pamieci.
+    #
+    # UWAGA, zanim to trafi na produkcje: samo posiadanie danych NIE wystarczy.
+    # Regulamin, w ktorym Fundacja wystepuje jako Sprzedawca, jest zobowiazaniem
+    # zaciagnietym w jej imieniu, a §5 ust. 11 ich Regulaminu (od 1.06.2026)
+    # mowi wprost, ze przystapienie do Programu Wsparcia NIE jest
+    # pelnomocnictwem do reprezentacji Fundacji. Dokument wymaga ich akceptacji
+    # — patrz notatka na Dysku 00_USTALENIA_BIZNESOWE_AKADEMIA.
+    'SPRZEDAWCA_NAZWA': 'Fundacja Rozwoju Przedsiębiorczości „Twój StartUp”',
+    'SPRZEDAWCA_ADRES': 'ul. Żurawia 6/12 lok. 766, 00-503 Warszawa',
+    'SPRZEDAWCA_NIP':   '5213641211',
+    'SPRZEDAWCA_KRS':   '0000442857',
+    'MARKA':            'Probatum',
+    # Przy modelu inkubatorowym najprostsza jest „Platnosc manualna” w Zanfii:
+    # przelew na rachunek fundacji, potwierdzany recznie. Wtedy nie ma zadnego
+    # zewnetrznego operatora i to pole opisuje wlasnie taki przelew.
+    'OPERATOR_PLATNOSCI': '',
+    'DATA_REGULAMINU':  '28 sierpnia 2026 r.',
 }
 
+# Pola, bez ktorych dokumenty prawne sa niekompletne.
+WYMAGANE_DO_DOKUMENTOW = ('SPRZEDAWCA_NAZWA', 'SPRZEDAWCA_ADRES', 'SPRZEDAWCA_NIP',
+                          'SPRZEDAWCA_KRS', 'OPERATOR_PLATNOSCI')
+
 def dane(html):
-    """Podmienia znaczniki kontaktowe w gotowym HTML-u."""
+    """Podmienia znaczniki kontaktowe w gotowym HTML-u.
+
+    Puste pole firmowe zostawia widoczny slad zamiast pustki — inaczej zdanie
+    „Sprzedawca:  , NIP ” wyszloby na produkcje i nikt by tego nie zauwazyl."""
+    # Odnosniki do dokumentow prawnych — tylko gdy DOKUMENTY=1.
+    html = html.replace('<!--DOKUMENTY-->', BLOK_DOKUMENTOW if DOKUMENTY else '')
     for k, v in KONTAKT.items():
+        if not v and k in WYMAGANE_DO_DOKUMENTOW:
+            v = '[DO UZUPEŁNIENIA: %s]' % k.replace('SPRZEDAWCA_', '').lower()
         html = html.replace('{{%s}}' % k, v).replace('[[%s]]' % k, v)
     return html
+
+
+def ostrzez_o_danych():
+    braki = [k for k in WYMAGANE_DO_DOKUMENTOW if not KONTAKT[k]]
+    if braki:
+        print('UWAGA: regulamin i polityka prywatnosci maja luki — uzupelnij w build.py: %s'
+              % ', '.join(braki))
+    return braki
 
 
 NAV = [
@@ -68,6 +133,15 @@ PAGES = [
     dict(file='kontakt.html', active='kontakt.html',
          title='Kontakt | Probatum',
          desc='Napisz przez formularz albo e-mail. Każda wiadomość trafia bezpośrednio do mnie — odpisuję osobiście, bez automatycznych szablonów.'),
+    # Dokumenty — poza nawigacja glowna, linkowane ze stopki. Musza byc
+    # dostepne przed zakupem i mozliwe do zapisania; stad zwykle podstrony,
+    # a nie modal czy plik do pobrania.
+    dict(file='regulamin.html', active='',
+         title='Regulamin Akademii AI | Probatum',
+         desc='Zasady sprzedaży i korzystania z kursu: co obejmuje każdy pakiet, jak dochodzi do zakupu, prawo odstąpienia, reklamacje i licencja.'),
+    dict(file='polityka-prywatnosci.html', active='',
+         title='Polityka prywatności | Probatum',
+         desc='Jakie dane zbieram, po co, jak długo je trzymam i komu przekazuję. Kurs nie zbiera analityki i nikogo nie śledzi.'),
 ]
 
 def odcisk(sciezka):
@@ -166,7 +240,7 @@ TPL = '''<!DOCTYPE html>
         <h5>Rozpocznij</h5>
         <a href="wycena.html">Wyceń projekt</a>
         <a href="kontakt.html">Kontakt</a>
-      </div>
+<!--DOKUMENTY-->      </div>
       <div>
         <h5>Kontakt</h5>
         <a href="mailto:[[EMAIL]]">[[EMAIL]]</a>
@@ -307,20 +381,20 @@ def karta_wpisu(w, katalog):
 SEKCJE_LIST = {
     'blog': dict(
         naglowek='Blog',
-        tytul='Co si\u0119 dzieje w <em>automatyzacji</em>.',
-        wstep='Nowo\u015bci, ciekawostki i rzeczy, kt\u00f3re sprawdzi\u0142em w praktyce \u2014 '
+        tytul='Co si\u0119 dzieje w automatyzacji',
+        wstep='Nowo\u015bci, ciekawostki i rzeczy, kt\u00f3re sprawdzi\u0142em w praktyce: '
               'zar\u00f3wno te, kt\u00f3re zadzia\u0142a\u0142y, jak i te, kt\u00f3re nie.',
         pusto='Pierwsze wpisy pojawi\u0105 si\u0119 w najbli\u017cszych dniach.',
-        news_h='Nie przegap tego, co <em>dzia\u0142a</em>.',
-        news_p='Dwa razy w tygodniu wysy\u0142am to, co sam sprawdzi\u0142em w praktyce \u2014 '
+        news_h='Nie przegap tego, co dzia\u0142a',
+        news_p='Dwa razy w tygodniu wysy\u0142am to, co sam sprawdzi\u0142em w praktyce, '
                'razem z tym, co nie zadzia\u0142a\u0142o. Bez ofert, bez waty, bez codziennego spamu.'),
     'warsztat': dict(
         naglowek='Warsztat',
-        tytul='Automatyzacje, kt\u00f3re <em>zbudujesz sam</em>.',
-        wstep='Instrukcje krok po kroku, za darmo. Je\u015bli utkniesz \u2014 pomog\u0119 wdro\u017cy\u0107. '
+        tytul='Automatyzacje, kt\u00f3re zbudujesz sam',
+        wstep='Instrukcje krok po kroku, za darmo. Je\u015bli utkniesz, pomog\u0119 wdro\u017cy\u0107. '
               'A je\u015bli nie masz na to czasu, zrobi\u0119 to za Ciebie.',
         pusto='Pierwsze instrukcje pojawi\u0105 si\u0119 w najbli\u017cszych dniach.',
-        news_h='Ka\u017cda nowa instrukcja <em>prosto do Ciebie</em>.',
+        news_h='Ka\u017cda nowa instrukcja prosto do Ciebie',
         news_p='Nowe automatyzacje krok po kroku, zanim trafi\u0105 gdziekolwiek indziej. '
                'Dostajesz te\u017c fragmenty podr\u0119cznika, nad kt\u00f3rym w\u0142a\u015bnie pracuj\u0119.'),
 }
@@ -388,3 +462,4 @@ for katalog, opis in SEKCJE_LIST.items():
         print('   \u2514 %s/%s.html' % (katalog, w['plik']))
 
 print('--- gotowe: %d stron' % built)
+ostrzez_o_danych()
