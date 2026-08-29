@@ -293,6 +293,53 @@ def blok_kontaktu(naglowek, zdanie):
 #  producenta. Nie obiecujemy efektow, ktorych nie da sie dotrzymac,
 #  i nie podajemy cen (te ustala salon).
 # ─────────────────────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────────
+#  ABSOLUT REPAIR MOLECULAR
+#
+#  Osobna linia od zwyklego Absolut Repair — mocniejsza, oparta na
+#  peptydach i aminokwasach, ktore odbudowuja wiazania W SRODKU wlosa,
+#  a nie oblepiaja go z wierzchu.
+#
+#  Szesc produktow. Kolejnosc to protokol, nie lista — dlatego na
+#  stronie sa ponumerowane, a nie w losowych kafelkach.
+#
+#  UWAGA: "naprawa 2 lat uszkodzen" to deklaracja PRODUCENTA. Nigdy
+#  nie podajemy jej jako faktu — zawsze z przypisaniem do L'Oreala.
+# ─────────────────────────────────────────────────────────────────
+MOLECULAR = [
+    (u'Koncentrat odbudowujący', u'tylko w salonie',
+     u'Pierwszy krok, którego nie zrobisz w domu. Nakładam go na wilgotne '
+     u'włosy przed myciem — wnika tam, gdzie struktura jest przerwana, '
+     u'i przygotowuje włos na resztę zabiegu. To on odpowiada za efekt, '
+     u'reszta go utrzymuje.'),
+
+    (u'Szampon odbudowujący', u'salon i dom',
+     u'Bez siarczanów, więc nie wypłukuje tego, co przed chwilą weszło '
+     u'we włos. Myje delikatnie — po zabiegu odbudowującym zwykły szampon '
+     u'z drogerii potrafi cofnąć połowę pracy.'),
+
+    (u'Maska odbudowująca', u'salon i dom',
+     u'Zostaje na włosach kilka minut i domyka to, co zaczął koncentrat. '
+     u'W domu wystarczy raz, dwa razy w tygodniu — częściej nie znaczy '
+     u'lepiej, przeciążony włos robi się ciężki i bez sprężystości.'),
+
+    (u'Serum odbudowujące', u'dom, bez spłukiwania',
+     u'Na mokre włosy po myciu, głównie na długości i końcówki. Nie '
+     u'spłukujesz. Jego zadanie to zbierać włókna, które już się rozwarstwiły '
+     u'— dlatego najbardziej widać je na łamiących się końcówkach.'),
+
+    (u'Krem odbudowujący', u'dom, przed suszarką',
+     u'Robi dwie rzeczy naraz: odbudowuje i chroni przed temperaturą '
+     u'do 230°C. Jeśli używasz prostownicy albo lokówki, to jest ten '
+     u'produkt z całej szóstki, który zatrzyma dalsze niszczenie. '
+     u'Suszenie bez ochrony to najczęstsza przyczyna zniszczeń, jakie widzę.'),
+
+    (u'Dwufazowy olejek odbudowujący', u'dom, na koniec',
+     u'Dwie warstwy w jednej butelce — trzeba wstrząsnąć przed użyciem. '
+     u'Nadaje połysk i wygładza, ale to wykończenie, nie leczenie. '
+     u'Kilka kropel na końcówki, nie na nasadę.'),
+]
+
 PRODUKTY = [
     (u'Metal Detox', u'Ochrona koloru i włosa przed metalami',
      u'W wodzie z kranu są metale — najwięcej wapnia i miedzi. Odkładają się '
@@ -303,6 +350,16 @@ PRODUKTY = [
      u'To jedna z niewielu rzeczy, które realnie zmieniają trwałość koloru — '
      u'zwłaszcza jeśli mieszkasz tam, gdzie woda jest twarda.',
      [u'Zabieg przed koloryzacją', u'Szampon, maska, olejek', u'Do domu i do salonu']),
+
+    (u'Absolut Repair Molecular', u'Najmocniejsza odbudowa, jaką mam',
+     u'Dla włosów, które są nie tyle suche, co <b>uszkodzone w środku</b> — '
+     u'po rozjaśnianiu, latach prostownicy albo nieudanym zabiegu. Poznasz je '
+     u'po tym, że łamią się w połowie długości i żadna odżywka już nie pomaga.',
+     u'Sześć produktów stosowanych po sobie — z peptydami i aminokwasami, '
+     u'które odbudowują wiązania wewnątrz włosa, zamiast oblepiać go '
+     u'z wierzchu. Pierwszy krok robię w salonie, resztę dostajesz do domu. '
+     u'<a href="#molecular">Rozpisałam całą szóstkę niżej →</a>',
+     [u'Włosy mocno zniszczone', u'Protokół salon + dom', u'Sześć produktów']),
 
     (u'Absolut Repair', u'Włosy zniszczone i przesuszone',
      u'Dla włosów po rozjaśnianiu, prostownicy albo latach domowego farbowania — '
@@ -1905,6 +1962,18 @@ u"""
 
 
 def strona_loreal():
+    kroki_mol = []
+    for i, (nazwa, gdzie, opis) in enumerate(MOLECULAR, 1):
+        kroki_mol.append(u"""
+        <article class="mol">
+          <div class="mol-nr">%02d</div>
+          <div class="mol-tresc">
+            <h3>%s</h3>
+            <p class="mol-gdzie">%s</p>
+            <p>%s</p>
+          </div>
+        </article>""" % (i, nazwa, gdzie, opis))
+
     karty = []
     for nazwa, dla_kogo, problem, rozwiazanie, znaczniki in PRODUKTY:
         chipy = u''.join(u'<li>%s</li>' % z for z in znaczniki)
@@ -1961,6 +2030,34 @@ u"""
     </p>
     <div class="produkty">""" + u''.join(karty) + u"""
     </div>
+  </div>
+</section>
+
+
+<section id="molecular" class="mol-sekcja">
+  <div class="wrap">
+    <p class="nadpis">Absolut Repair Molecular</p>
+    <h2>Sześć produktów, <span class="kursywa">które działają po kolei</span></h2>
+    <p class="mol-wstep">
+      To nie jest zestaw, z którego wybiera się jedną rzecz. To protokół —
+      produkty stosuje się po sobie i każdy robi coś, czego nie zrobi poprzedni.
+      Odbudowa idzie <b>od środka włosa</b>: peptydy i aminokwasy odtwarzają
+      zerwane wiązania, zamiast wygładzać włos silikonem z zewnątrz.
+      L’Oréal deklaruje naprawę dwóch lat uszkodzeń — ja mówię ostrożniej:
+      różnicę widać, ale po serii, nie po jednym myciu.
+    </p>
+    <div class="mol-lista">""" + u''.join(kroki_mol) + u"""
+    </div>
+    <p class="mol-stopka">
+      Pierwszy krok robię <b>w salonie</b> — bez niego reszta działa o połowę
+      słabiej. Resztę dobieram do Twoich włosów: czasem to komplet, czasem
+      wystarczą dwa produkty. Zapytaj przy wizycie, powiem wprost, czego
+      naprawdę potrzebujesz.
+    </p>
+    <p class="mol-cta">
+      <a class="btn btn-ciemny" href="../kontakt/">Zapytaj o odbudowę włosów</a>
+      <a class="btn btn-duch" href="tel:""" + TEL_LINK + u"""">""" + TEL_POKAZ + u"""</a>
+    </p>
   </div>
 </section>
 
@@ -2061,8 +2158,9 @@ STRONY = [
      u'Koloryzacja, strzyżenie, modelowanie i pielęgnacja w Częstochowie. '
      u'Cena ustalana po rozmowie, zawsze przed zabiegiem.', strona_uslugi, '../'),
     ('loreal', 'loreal', u'Kosmetyki L’Oréal Professionnel — salon współpracujący | Częstochowa',
-     u'Metal Detox, Absolut Repair, Vitamino Color, Blondifier i inne linie '
-     u'L’Oréal Professionnel — do czego która służy, wytłumaczone prostym językiem.',
+     u'Absolut Repair Molecular, Metal Detox, Vitamino Color, Blondifier — linie '
+     u'L’Oréal Professionnel w salonie w Częstochowie. Do czego która służy, '
+     u'wytłumaczone prostym językiem.',
      strona_loreal, '../'),
     ('portfolio', 'portfolio', u'Portfolio fryzjerskie — sesje i publikacje | new age Częstochowa',
      u'Fryzury do pierwszego numeru kwartalnika SPLOT — okładka i cała sesja. '

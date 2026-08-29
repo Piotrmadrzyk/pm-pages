@@ -1091,3 +1091,86 @@ a.odznaka:hover .odznaka-strzalka{color:var(--biel)}
   color:var(--srebro-jasne); font-size:.95rem;
 }
 .uwaga-sklep b{color:var(--biel); font-weight:500}
+
+/* ═══════════════════════════════════════════════════════════════
+   ABSOLUT REPAIR MOLECULAR — protokol szesciu produktow
+
+   Numeracja nie jest ozdoba. Te produkty stosuje sie PO SOBIE
+   i numer niesie te informacje — dlatego duzy, na lewo od tresci,
+   spiety pionowa linia jak os czasu.
+   ═══════════════════════════════════════════════════════════════ */
+.mol-sekcja{background:var(--atrament); scroll-margin-top:96px}
+.mol-sekcja h2{color:var(--biel)}
+.mol-sekcja .nadpis{color:var(--srebro)}
+
+.mol-wstep{
+  color:var(--srebro-jasne); max-width:62ch; line-height:1.75;
+  margin-top:1.4rem; font-size:1.02rem;
+}
+.mol-wstep b{color:var(--biel); font-weight:500}
+
+.mol-lista{
+  margin-top:3.2rem;
+  border-top:1px solid var(--linia);
+}
+.mol{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:clamp(18px,3vw,38px);
+  align-items:start;
+  padding:clamp(24px,3.2vw,36px) 0;
+  border-bottom:1px solid var(--linia);
+}
+.mol-nr{
+  font-family:var(--display);
+  font-size:clamp(2.1rem,5vw,3.4rem);
+  line-height:.9;
+  color:var(--mgla);
+  font-variant-numeric:tabular-nums;
+  min-width:1.9em;
+}
+.mol-tresc h3{
+  font-size:clamp(1.15rem,2.2vw,1.5rem);
+  color:var(--biel);
+  margin:0 0 .45rem;
+}
+.mol-gdzie{
+  display:inline-block;
+  font-family:var(--tekst);
+  font-size:.74rem;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--srebro);
+  border:1px solid var(--linia);
+  border-radius:999px;
+  padding:.34em .9em;
+.9em;
+  margin:0 0 1rem;
+}
+.mol-tresc > p:last-child{
+  color:var(--srebro-jasne);
+  font-size:.99rem;
+  line-height:1.75;
+  max-width:58ch;
+  margin:0;
+}
+
+.mol-stopka{
+  color:var(--srebro-jasne); max-width:58ch;
+  line-height:1.75; margin-top:2.4rem; font-size:.99rem;
+}
+.mol-stopka b{color:var(--biel); font-weight:500}
+.mol-cta{display:flex; flex-wrap:wrap; gap:14px; margin-top:1.8rem}
+
+@media (max-width:640px){
+  .mol{grid-template-columns:1fr; gap:10px}
+  .mol-nr{font-size:1.7rem; min-width:0; color:var(--srebro-ciemne)}
+}
+
+/* Odnosnik z karty Molecular do rozpisanego protokolu nizej */
+.produkt-opis a{
+  color:var(--biel); text-decoration:none;
+  border-bottom:1px solid var(--linia);
+  padding-bottom:1px; white-space:nowrap;
+}
+.produkt-opis a:hover{border-bottom-color:var(--biel)}
