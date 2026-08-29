@@ -52,6 +52,7 @@ MENU = [
     ('start',     u'Start',     ''),
     ('o-mnie',    u'O mnie',    'o-mnie/'),
     ('uslugi',    u'Usługi',    'uslugi/'),
+    ('loreal',    u'L’Oréal',   'loreal/'),
     ('portfolio', u'Portfolio', 'portfolio/'),
     ('porady',    u'Poradnik',  'porady/'),
     ('opinie',    u'Opinie',    'opinie/'),
@@ -276,6 +277,74 @@ def blok_kontaktu(naglowek, zdanie):
 </section>
 """ % (naglowek, zdanie, TEL_LINK, TEL_POKAZ, LINK_IG, LINK_IG, LINK_FB)
 
+
+
+# ─────────────────────────────────────────────────────────────────
+#  L’ORÉAL PROFESSIONNEL
+#
+#  Agnieszka jest salonem wspolpracujacym z L’Oreal Professionnel —
+#  ma pelna linie i dostaje nowosci od razu, a produkty sprzedaje
+#  na miejscu. To realna przewaga, ktorej wczesniej na stronie
+#  w ogole nie bylo widac.
+#
+#  ⚠️ Opisy mowia, DO CZEGO dana linia sluzy — to informacje
+#  producenta. Nie obiecujemy efektow, ktorych nie da sie dotrzymac,
+#  i nie podajemy cen (te ustala salon).
+# ─────────────────────────────────────────────────────────────────
+PRODUKTY = [
+    (u'Metal Detox', u'Ochrona koloru i włosa przed metalami',
+     u'W wodzie z kranu są metale — najwięcej wapnia i miedzi. Odkładają się '
+     u'we włosie i to one najczęściej odpowiadają za to, że kolor po koloryzacji '
+     u'wychodzi inaczej, niż powinien, a włos łamie się przy rozjaśnianiu.',
+     u'Linia z cząsteczką Glicoamine neutralizuje te metale. W salonie robię '
+     u'zabieg przed koloryzacją, w domu zostaje szampon, maska i olejek. '
+     u'To jedna z niewielu rzeczy, które realnie zmieniają trwałość koloru — '
+     u'zwłaszcza jeśli mieszkasz tam, gdzie woda jest twarda.',
+     [u'Zabieg przed koloryzacją', u'Szampon, maska, olejek', u'Do domu i do salonu']),
+
+    (u'Absolut Repair', u'Włosy zniszczone i przesuszone',
+     u'Dla włosów po rozjaśnianiu, prostownicy albo latach domowego farbowania — '
+     u'takich, które łamią się w połowie długości i puszą się mimo odżywki.',
+     u'Odbudowuje włos od środka, nie tylko wygładza go z wierzchu. Efekt widać '
+     u'po kilku myciach, nie po jednym — i tak to powinno działać. Kosmetyk, '
+     u'który obiecuje regenerację po jednym użyciu, zwykle tylko oblepia włos.',
+     [u'Włosy zniszczone', u'Odbudowa od środka', u'Efekt narastający']),
+
+    (u'Vitamino Color', u'Farbowane włosy, które mają trzymać kolor',
+     u'Najczęstsza przyczyna tego, że kolor blaknie po dwóch tygodniach, '
+     u'to zwykły szampon z drogerii — jego detergenty wypłukują pigment '
+     u'przy każdym myciu.',
+     u'Ta linia ma łagodniejsze detergenty i filtr chroniący przed słońcem. '
+     u'Nie sprawi, że kolor będzie trwał wiecznie, ale różnica między nią '
+     u'a przypadkowym szamponem to zwykle kilka tygodni dłużej.',
+     [u'Do włosów koloryzowanych', u'Ochrona pigmentu', u'Filtr UV']),
+
+    (u'Blondifier', u'Blond bez żółtego odcienia',
+     u'Po rozjaśnianiu naturalny żółty pigment zawsze wraca — to nie błąd '
+     u'koloryzacji, tylko budowa włosa. Pytanie brzmi, jak długo da się '
+     u'go trzymać w ryzach.',
+     u'Linia do blondu: szampon fioletowy neutralizujący żółć, maska '
+     u'odżywiająca rozjaśnione pasma. Uwaga na fiolet — raz, najwyżej dwa razy '
+     u'w tygodniu. Codziennie daje szary, przesuszony efekt.',
+     [u'Neutralizacja żółci', u'Do włosów rozjaśnianych', u'Maks. 2× w tygodniu']),
+
+    (u'Scalp Advanced', u'Skóra głowy: przetłuszczanie, łupież, podrażnienia',
+     u'Włosy zaczynają się w skórze, więc jeśli coś się dzieje u nasady, '
+     u'nie naprawi tego kosmetyk na długość.',
+     u'Osobne szampony do przetłuszczającej się skóry, do wrażliwej '
+     u'i do łupieżu, plus serum na noc. Jeśli włosy tłuszczą się drugiego dnia, '
+     u'to najczęściej ta linia, a nie mocniejszy szampon, rozwiązuje problem — '
+     u'ostre detergenty tylko pogłębiają przetłuszczanie.',
+     [u'Skóra przetłuszczająca się', u'Skóra wrażliwa', u'Łupież']),
+
+    (u'Curl Expression', u'Włosy kręcone i falowane',
+     u'Loki potrzebują innej pielęgnacji niż włosy proste: więcej nawilżenia, '
+     u'mniej obciążania i produktów, które nie sklejają skrętu.',
+     u'Szampon kremowy, odżywka do rozczesywania, żel i krem do stylizacji. '
+     u'Przy kręconych włosach dobór produktu robi większą różnicę niż samo '
+     u'strzyżenie — pokażę Ci, jak ich używać, żeby skręt się układał.',
+     [u'Włosy kręcone', u'Nawilżenie', u'Stylizacja bez sklejania']),
+]
 
 # ─────────────────────────────────────────────────────────────────
 #  PORADNIK
@@ -1832,6 +1901,94 @@ u"""
 """ % {'tel_link': TEL_LINK, 'tel_pokaz': TEL_POKAZ})
 
 
+def strona_loreal():
+    karty = []
+    for nazwa, dla_kogo, problem, rozwiazanie, znaczniki in PRODUKTY:
+        chipy = u''.join(u'<li>%s</li>' % z for z in znaczniki)
+        karty.append(u"""
+      <article class="produkt">
+        <div class="produkt-glowa">
+          <h3>%s</h3>
+          <p class="produkt-dla">%s</p>
+        </div>
+        <p class="produkt-problem">%s</p>
+        <p class="produkt-opis">%s</p>
+        <ul class="u-fakty">%s</ul>
+      </article>""" % (nazwa, dla_kogo, problem, rozwiazanie, chipy))
+
+    return (
+        naglowek_strony(u'L’Oréal Professionnel',
+            u'Czym pracuję <span class="kursywa">i dlaczego akurat tym</span>.',
+            u'Jestem salonem współpracującym z L’Oréal Professionnel. Mam pełną '
+            u'linię i nowości trafiają do mnie od razu — poniżej tłumaczę '
+            u'po ludzku, do czego która jest.') +
+u"""
+<section style="padding-top:0">
+  <div class="wrap dwie odwrot">
+    <div class="tresc">
+      <p>
+        Na L’Oréal Professionnel pracuję <b>od 2002 roku</b>. Dwadzieścia parę
+        lat na jednej linii to nie przywiązanie do marki — to wiedza, jak każdy
+        produkt zachowa się na konkretnych włosach. Wiem, co zadziała na włosach
+        po hennie, a co je zniszczy.
+      </p>
+      <p>
+        Jako salon współpracujący mam dostęp do pełnej gamy, także do rzeczy,
+        które dopiero wchodzą na rynek. W praktyce znaczy to tyle, że nie muszę
+        proponować Ci tego, co akurat mam — proponuję to, co pasuje.
+      </p>
+      <p class="uwaga-sklep">
+        <b>To nie jest sklep.</b> Niczego tu nie sprzedaję i nie ma tu cen.
+        Opisuję te produkty po to, żebyś wiedziała, co w ogóle istnieje i czemu
+        służy. Jeśli któryś Cię zainteresuje — zapytaj przy wizycie, dobiorę
+        do Twoich włosów albo powiem wprost, że nie jest Ci potrzebny.
+      </p>
+    </div>
+    <img src="../img/sesja/kadr-1727.jpg" alt="Kosmetyki L’Oréal Professionnel w salonie new age" loading="lazy">
+  </div>
+</section>
+
+<section class="ciemno">
+  <div class="wrap">
+    <p class="nadpis">Linie, które mam u siebie</p>
+    <h2>Do czego która służy</h2>
+    <p style="color:var(--srebro-jasne); max-width:58ch">
+      Bez marketingowego języka. Przy każdej piszę, jaki problem rozwiązuje
+      i czego się po niej <b style="color:var(--biel)">nie</b> spodziewać.
+    </p>
+    <div class="produkty">""" + u''.join(karty) + u"""
+    </div>
+  </div>
+</section>
+
+<section id="jak-dobrac">
+  <div class="waski">
+    <p class="nadpis">Zanim kupisz cokolwiek</p>
+    <h2>Trzy rzeczy, które warto wiedzieć</h2>
+    <div class="pytania">
+      <details open><summary>Dobry kosmetyk nie działa po jednym użyciu</summary>
+        <p>Produkt, który obiecuje regenerację po pierwszym myciu, zwykle po prostu
+        oblepia włos silikonem — wygląda dobrze przez dzień i wraca do punktu wyjścia.
+        Prawdziwa odbudowa jest stopniowa i widać ją po kilku tygodniach.</p></details>
+      <details><summary>Więcej nie znaczy lepiej</summary>
+        <p>Maska trzymana godzinę zamiast piętnastu minut nie odżywi bardziej — obciąży.
+        Fioletowy szampon codziennie zamiast raz w tygodniu daje szary, przesuszony
+        efekt. Większość problemów w domowej pielęgnacji bierze się z robienia
+        za dużo, nie za mało.</p></details>
+      <details><summary>Nie każdy potrzebuje wszystkiego</summary>
+        <p>Nie sprzedam Ci pięciu produktów, jeśli wystarczą dwa. Przy większości
+        włosów dobrze dobrany szampon i jedna maska robią więcej niż cała półka
+        kosmetyków kupionych na wyczucie. <a href="../porady/dobor-szamponu/"
+        style="color:var(--biel)">Jak dobrać szampon — osobny tekst w poradniku</a>.</p></details>
+    </div>
+  </div>
+</section>
+""" + blok_kontaktu(
+        u'Nie wiesz, czego <span class="kursywa">potrzebują Twoje włosy</span>?',
+        u'Przyjdź na bezpłatną konsultację. Obejrzę włosy i powiem, co ma sens — '
+        u'także wtedy, gdy odpowiedź brzmi „nic nie kupuj”.'))
+
+
 def strona_porady():
     kafle_porad = []
     for slug, tytul, lead, _slowa, _tresc in PORADY:
@@ -1900,6 +2057,10 @@ STRONY = [
     ('uslugi', 'uslugi', u'Koloryzacja i strzyżenie Częstochowa — cennik po rozmowie | new age',
      u'Koloryzacja, strzyżenie, modelowanie i pielęgnacja w Częstochowie. '
      u'Cena ustalana po rozmowie, zawsze przed zabiegiem.', strona_uslugi, '../'),
+    ('loreal', 'loreal', u'Kosmetyki L’Oréal Professionnel — salon współpracujący | Częstochowa',
+     u'Metal Detox, Absolut Repair, Vitamino Color, Blondifier i inne linie '
+     u'L’Oréal Professionnel — do czego która służy, wytłumaczone prostym językiem.',
+     strona_loreal, '../'),
     ('portfolio', 'portfolio', u'Portfolio fryzjerskie — sesje i publikacje | new age Częstochowa',
      u'Fryzury do pierwszego numeru kwartalnika SPLOT — okładka i cała sesja. '
      u'Praca Agnieszki Lewandowskiej, mistrzyni fryzjerstwa z Częstochowy.', strona_portfolio, '../'),
@@ -1996,7 +2157,7 @@ def main():
 
     # Mapa strony i wskazowki dla robotow
     wagi = {'': '1.0', 'uslugi': '0.9', 'kontakt': '0.9', 'o-mnie': '0.8',
-            'portfolio': '0.7', 'opinie': '0.7', 'prywatnosc': '0.3'}
+            'loreal': '0.8', 'portfolio': '0.7', 'opinie': '0.7', 'prywatnosc': '0.3'}
     with io.open(os.path.join(CEL, 'sitemap.xml'), 'w', encoding='utf-8') as fh:
         adresy = [(k, wagi.get(k, '0.5')) for _, k, _, _, _, _ in STRONY]
         adresy += [('porady/' + s, '0.6') for s, _, _, _, _ in PORADY]

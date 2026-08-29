@@ -1061,3 +1061,33 @@ a.odznaka:hover .odznaka-strzalka{color:var(--biel)}
 }
 .teraz h3{margin-bottom:.7rem}
 .teraz p{color:var(--srebro-jasne); margin:0; max-width:56ch}
+
+/* ═══════════════════════════════════════════════════════════════
+   LINIE L’ORÉAL
+   Nie sklep — wytłumaczenie. Każda karta ma tę samą budowę:
+   nazwa, dla kogo, jaki problem rozwiązuje, czego się spodziewać.
+   ═══════════════════════════════════════════════════════════════ */
+.produkty{display:grid; gap:clamp(14px,2vw,20px); margin-top:2.8rem}
+@media(min-width:900px){ .produkty{grid-template-columns:1fr 1fr} }
+.produkt{
+  background:var(--grafit); border:1px solid rgba(255,255,255,.09);
+  padding:clamp(26px,3.4vw,38px); display:flex; flex-direction:column;
+}
+.produkt-glowa{margin-bottom:1.2rem; padding-bottom:1rem;
+  border-bottom:1px solid rgba(255,255,255,.11)}
+.produkt h3{font-size:clamp(1.3rem,2.4vw,1.7rem); margin-bottom:.4rem}
+.produkt-dla{
+  margin:0; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--srebro-ciemne); line-height:1.5;
+}
+.produkt-problem{color:var(--srebro); font-size:.97rem; line-height:1.7}
+.produkt-opis{color:var(--srebro-jasne); font-size:.97rem; line-height:1.7; flex:1}
+.produkt .u-fakty{margin-top:1.2rem}
+
+/* Zdanie, które ma zdjąć podejrzenie, że to sklep. */
+.uwaga-sklep{
+  margin-top:1.8rem; padding:clamp(18px,2.4vw,24px);
+  border:1px dashed rgba(255,255,255,.22); background:var(--wegiel);
+  color:var(--srebro-jasne); font-size:.95rem;
+}
+.uwaga-sklep b{color:var(--biel); font-weight:500}
