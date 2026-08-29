@@ -123,25 +123,28 @@ SESJA = [
     ('kadr-1741', u'Warsztat',          u'wszystko, co potrzebne do jednej wizyty'),
 ]
 
+# Cala ta sesja powstala do magazynu SPLOT nr 1 (2017), wydanie limitowane,
+# temat numeru „Noszenie a Rodzicielstwo Bliskosci". Wczesniej polowa kadrow
+# byla tu podpisana „sesja katalogowa" — to bylo nieprawdziwe.
+# Fryzury: Agnieszka Lewandowska. Fotografia: Elzbieta Bednarek.
 PORTFOLIO = [
-    ('sesja-3552', u'Magazyn SPLOT', u'sesja okładkowa, stylizacja fryzur'),
-    ('sesja-3555', u'Magazyn SPLOT', u'rozkładówka — dwie stylizacje miejskie'),
-    ('sesja-3553', u'Magazyn SPLOT', u'publikacja drukowana'),
-    ('sesja-3554', u'Magazyn SPLOT', u'publikacja drukowana'),
-    ('sesja-3501', u'Lata dwudzieste', u'fale, opaska z piórem, wnętrza pałacowe'),
-    ('sesja-3497', u'Lata dwudzieste', u'sesja w plenerze miejskim'),
-    ('sesja-3498', u'Lata dwudzieste', u'stylizacja grupowa'),
-    ('sesja-3499', u'Lata dwudzieste', u'upięcie z falą wodną'),
-    ('sesja-3500', u'Lata dwudzieste', u'detal upięcia'),
-    ('sesja-3503', u'Sesja katalogowa', u'stylizacja do katalogu marki odzieżowej'),
-    ('sesja-3504', u'Sesja katalogowa', u'warkocz boczny, ujęcie w ruchu'),
-    ('sesja-3505', u'Sesja katalogowa', u'stylizacja dzienna'),
-    ('sesja-3506', u'Sesja katalogowa', u'ujęcie wnętrzarskie'),
-    ('sesja-3507', u'Sesja katalogowa', u'detal fryzury'),
-    ('sesja-3508', u'Sesja katalogowa', u'rozkładówka magazynu'),
-    ('sesja-3509', u'Sesja katalogowa', u'okładka magazynu SPLOT'),
+    ('sesja-3506', u'Okładka SPLOT nr 1',      u'wydanie limitowane, 2017'),
+    ('sesja-3509', u'Magazyn w druku',          u'temat numeru: noszenie a rodzicielstwo bliskości'),
+    ('sesja-3508', u'Rozkładówka',              u'dwie strony z sesji'),
+    ('sesja-3552', u'Strona z sesji',           u'stylizacja w plenerze miejskim'),
+    ('sesja-3555', u'Rozkładówka',              u'dwie stylizacje obok siebie'),
+    ('sesja-3553', u'Strona z sesji',           u'publikacja drukowana'),
+    ('sesja-3554', u'Strona z sesji',           u'publikacja drukowana'),
+    ('sesja-3501', u'Stylizacja lata dwudzieste', u'fale, opaska z piórem, wnętrza pałacowe'),
+    ('sesja-3497', u'Stylizacja lata dwudzieste', u'ujęcie w plenerze'),
+    ('sesja-3498', u'Stylizacja lata dwudzieste', u'kadr grupowy'),
+    ('sesja-3499', u'Stylizacja lata dwudzieste', u'upięcie z falą wodną'),
+    ('sesja-3500', u'Stylizacja lata dwudzieste', u'detal upięcia'),
+    ('sesja-3503', u'Sesja do magazynu',        u'stylizacja dzienna'),
+    ('sesja-3504', u'Sesja do magazynu',        u'warkocz boczny, ujęcie w ruchu'),
+    ('sesja-3505', u'Sesja do magazynu',        u'ujęcie wnętrzarskie'),
+    ('sesja-3507', u'Sesja do magazynu',        u'detal fryzury'),
 ]
-
 
 def kafle(pozycje, katalog):
     """Podpis lezy NA zdjeciu, pod gradientem — tak jak w Lawendzie
@@ -1276,18 +1279,55 @@ u"""
 def strona_portfolio():
     return (
         naglowek_strony(u'Portfolio',
-            u'Praca, która <span class="kursywa">wyszła poza salon</span>.',
-            u'Sesje wizerunkowe, stylizacje do magazynu i katalogu. '
-            u'Włosy przy tych zdjęciach to moja robota — robiona w Częstochowie.') +
+            u'Fryzury do <span class="kursywa">magazynu</span>.',
+            u'Cała ta sesja powstała do pierwszego numeru kwartalnika SPLOT. '
+            u'Włosy przy każdym z tych zdjęć to moja robota.') +
 u"""
 <section style="padding-top:0">
   <div class="wrap">
-    <p class="nadpis">Magazyn i katalog</p>
-    <h2>Sesje <span class="kursywa">publikowane</span></h2>
-    <p style="color:var(--srebro-jasne); max-width:58ch">
-      Stylizacje fryzur do magazynu <b style="color:var(--biel)">SPLOT</b> i do katalogu
-      marek odzieżowych — sesja w klimacie lat dwudziestych w pałacowych wnętrzach
-      oraz zdjęcia miejskie.
+    <div class="magazyn">
+      <div class="magazyn-foto">
+        <button type="button" class="powieksz" data-pelne="../img/portfolio/sesja-3506.jpg"
+          data-podpis="Okładka SPLOT nr 1 — wydanie limitowane, 2017" aria-label="Powiększ okładkę magazynu">
+          <img src="../img/portfolio/sesja-3506-mal.jpg"
+               alt="Okładka magazynu SPLOT nr 1 — Noszenie a Rodzicielstwo Bliskości" loading="eager">
+          <span class="kafel-lupa" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v6M8 11h6"/></svg>
+          </span>
+        </button>
+      </div>
+      <div class="magazyn-tresc">
+        <p class="nadpis">Publikacja</p>
+        <h2>SPLOT nr 1</h2>
+        <p>
+          Ogólnoświatowy kwartalnik bliskości, wydanie limitowane. Temat numeru:
+          <b>noszenie a rodzicielstwo bliskości</b>. Fryzury do całej sesji
+          — okładka i wnętrze numeru — robiłam ja.
+        </p>
+        <p>
+          Zdjęcia powstały w dwóch odsłonach: stylizacje w klimacie lat
+          dwudziestych w pałacowych wnętrzach oraz sesja miejska.
+        </p>
+        <ul class="u-fakty">
+          <li>Fryzury — Agnieszka Lewandowska</li>
+          <li>Fotografia — Elżbieta Bednarek</li>
+          <li>Rok 2017</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+""" + PRZERYWNIK + u"""
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="nadpis">Kadry z sesji</p>
+    <h2>Cały numer, strona po stronie</h2>
+    <p class="wyjasnienie">
+      <b>Wszystkie zdjęcia poniżej pochodzą z jednej sesji</b> — tej,
+      która ukazała się w pierwszym numerze kwartalnika <b>SPLOT</b>
+      (wydanie limitowane, 2017). Fryzury do całego numeru, od okładki
+      po ostatnią rozkładówkę, robiłam ja.
     </p>
     <div class="galeria-siatka">
         """ + kafle(PORTFOLIO, 'portfolio') + """
@@ -1298,7 +1338,7 @@ u"""
 <section style="padding-top:0">
   <div class="wrap">
     <p class="nadpis">Sesja wizerunkowa</p>
-    <h2>Ja i moje <span class="kursywa">narzędzia</span></h2>
+    <h2>Ja i moje narzędzia</h2>
     <div class="galeria-siatka">
         """ + kafle(SESJA, 'sesja') + """
     </div>
@@ -1706,8 +1746,8 @@ STRONY = [
      u'Koloryzacja, strzyżenie, modelowanie i pielęgnacja w Częstochowie. '
      u'Cena ustalana po rozmowie, zawsze przed zabiegiem.', strona_uslugi, '../'),
     ('portfolio', 'portfolio', u'Portfolio fryzjerskie — sesje i publikacje | new age Częstochowa',
-     u'Stylizacje fryzur do magazynu SPLOT i sesji katalogowych — praca '
-     u'Agnieszki Lewandowskiej, fryzjerki z Częstochowy. Sesje wizerunkowe i portfolio.', strona_portfolio, '../'),
+     u'Fryzury do pierwszego numeru kwartalnika SPLOT — okładka i cała sesja. '
+     u'Praca Agnieszki Lewandowskiej, mistrzyni fryzjerstwa z Częstochowy.', strona_portfolio, '../'),
     ('porady', 'porady', u'Poradnik — pielęgnacja i koloryzacja włosów | new age Częstochowa',
      u'Jak naprawić włosy po domowej koloryzacji, ile trzyma balayage, jak dbać '
      u'o blond. Praktyczne odpowiedzi od fryzjerki z Częstochowy.',

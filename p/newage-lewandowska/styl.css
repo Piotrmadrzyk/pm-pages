@@ -601,7 +601,17 @@ body{padding-bottom:0}
   .usluga-duza{grid-template-columns:.9fr 1.1fr}
   .usluga-duza:nth-child(even) .u-foto{order:2}
 }
-.usluga-duza .u-foto img{width:100%; aspect-ratio:4/3; object-fit:cover}
+/* Kadry przy usługach.
+   Było: sztywna ramka 4:3. Pionowe zdjęcia (733×1100) wciskane w poziomą
+   ramkę traciły górę — Adze ucinało głowę. Teraz ramka jest wyższa,
+   a punkt kadrowania przesunięty do góry, więc twarz mieści się w całości
+   już przy pierwszym spojrzeniu. */
+.usluga-duza .u-foto img{
+  width:100%; aspect-ratio:4/3.4; object-fit:cover; object-position:50% 22%;
+}
+@media(max-width:899px){
+  .usluga-duza .u-foto img{aspect-ratio:4/3.6}
+}
 .u-numer{font-family:var(--display); font-size:.8rem; letter-spacing:.2em;
   color:var(--srebro-ciemne); display:block; margin-bottom:.9rem;
   font-variant-numeric:tabular-nums}
@@ -1010,3 +1020,29 @@ a.odznaka:hover .odznaka-strzalka{color:var(--biel)}
   display:block; margin-top:.7rem; font-size:.78rem; letter-spacing:.14em;
   text-transform:uppercase; color:var(--srebro-ciemne); line-height:1.5;
 }
+
+/* Magazyn otwiera portfolio — okładka po jednej stronie, opis po drugiej.
+   Cała sesja powstała do tego jednego numeru i to ma być widać od razu,
+   a nie dopiero w podpisach pod zdjęciami. */
+.magazyn{display:grid; gap:clamp(28px,4vw,64px); align-items:center}
+@media(min-width:900px){ .magazyn{grid-template-columns:.85fr 1.15fr} }
+.magazyn-foto .powieksz{
+  display:block; width:100%; padding:0; border:1px solid rgba(255,255,255,.12);
+  background:var(--wegiel); cursor:zoom-in; overflow:hidden; position:relative;
+}
+.magazyn-foto img{
+  width:100%; display:block;
+  transition:transform 1.1s cubic-bezier(.22,.61,.36,1);
+}
+.magazyn-foto .powieksz:hover img{transform:scale(1.035)}
+.magazyn-tresc h2{margin-bottom:1.2rem}
+.magazyn-tresc p{color:var(--srebro-jasne); max-width:52ch}
+.magazyn-tresc b{color:var(--biel); font-weight:500}
+
+/* zdanie, które musi być przeczytane przed galerią */
+.wyjasnienie{
+  margin:1.6rem 0 0; padding:clamp(18px,2.4vw,24px) clamp(20px,2.6vw,28px);
+  border-left:2px solid var(--srebro); background:var(--wegiel);
+  color:var(--srebro-jasne); max-width:66ch; font-size:.98rem; line-height:1.7;
+}
+.wyjasnienie b{color:var(--biel); font-weight:500}
