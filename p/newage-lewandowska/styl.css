@@ -214,13 +214,28 @@ textarea{min-height:130px; resize:vertical}
 .zgoda input{margin-top:.35rem; flex:0 0 auto; accent-color:var(--biel)}
 .zgoda label{text-transform:none; letter-spacing:0; font-size:.86rem; color:var(--srebro-jasne);
   margin:0; line-height:1.55}
-.ocena-gwiazdki{display:flex; gap:.35rem}
-.ocena-gwiazdki input{position:absolute; opacity:0; pointer-events:none}
-.ocena-gwiazdki label{
-  margin:0; font-size:1.5rem; line-height:1; cursor:pointer; color:rgba(255,255,255,.22);
-  transition:color .18s; letter-spacing:0;
+/* Ocena gwiazdkami — przebudowana.
+   Było: cele 24 px z 5-pikselowymi przerwami. Na telefonie nie da się
+   w to trafić palcem, a i myszą łatwo kliknąć sąsiednią gwiazdkę.
+   Teraz każda ma 46 px pola dotyku i podświetla się przy najechaniu. */
+.ocena-gwiazdki{display:flex; gap:2px; margin-left:-10px}
+.ocena-gwiazdki input{
+  position:absolute; width:1px; height:1px; opacity:0; pointer-events:none;
+  clip-path:inset(50%); overflow:hidden;
 }
-.ocena-gwiazdki label:hover,.ocena-gwiazdki label.wybrana{color:var(--biel)}
+.ocena-gwiazdki label{
+  margin:0; width:46px; height:46px; display:flex; align-items:center;
+  justify-content:center; font-size:1.75rem; line-height:1; cursor:pointer;
+  color:rgba(255,255,255,.2); transition:color .15s, transform .15s;
+  letter-spacing:0; user-select:none; -webkit-tap-highlight-color:transparent;
+}
+.ocena-gwiazdki label.wybrana{color:var(--biel)}
+.ocena-gwiazdki label.podswietlona{color:rgba(255,255,255,.72)}
+.ocena-gwiazdki label:active{transform:scale(.88)}
+.ocena-gwiazdki input:focus-visible + label{outline:2px solid var(--srebro); outline-offset:2px}
+.ocena-opis{
+  margin:.5rem 0 0 -2px; font-size:.82rem; color:var(--srebro-ciemne); min-height:1.3em;
+}
 .status{margin-top:1.2rem; font-size:.92rem; min-height:1.4em}
 .status.ok{color:#7fd8a0}
 .status.blad{color:#ff9b8f}
@@ -938,3 +953,36 @@ a.odznaka:hover .odznaka-strzalka{color:var(--biel)}
 /* pas z tekstem na zdjęciu — nagłówek leży na kadrze */
 .pas-tresc .nadpis{margin-bottom:.9rem}
 .pas-tresc h2{text-shadow:0 2px 24px rgba(0,0,0,.5)}
+
+/* Kadry w taśmie są przyciskami — dało się je zobaczyć, ale nie otworzyć.
+   Przy dotknięciu taśma się zatrzymuje, żeby nie uciekała spod palca. */
+.tasma-kadr .powieksz{
+  display:block; width:100%; padding:0; border:0; background:none;
+  cursor:zoom-in; position:relative; text-align:left;
+}
+.tasma:has(.powieksz:active) .tasma-tor,
+.tasma:has(.powieksz:focus-visible) .tasma-tor{animation-play-state:paused}
+.tasma-kadr .kafel-lupa{top:12px; right:12px; width:38px; height:38px}
+.tasma-kadr .kafel-lupa svg{width:17px; height:17px}
+@media(hover:none){
+  .tasma-kadr .kafel-lupa{opacity:.92; transform:none}
+}
+
+/* Zdjęcia poza galeriami też się powiększają — człowiek odruchowo
+   w nie klika. Przycisk jest „przezroczysty": nie zmienia układu,
+   dokłada tylko kursor, lupę i lekkie przybliżenie. */
+.powieksz-luzny{
+  display:block; width:100%; padding:0; border:0; background:none;
+  cursor:zoom-in; position:relative; overflow:hidden; text-align:left;
+}
+.powieksz-luzny > img{
+  display:block; width:100%;
+  transition:transform 1.1s cubic-bezier(.22,.61,.36,1);
+}
+.powieksz-luzny:hover > img{transform:scale(1.03)}
+.powieksz-luzny .kafel-lupa{top:16px; right:16px}
+.powieksz-luzny:focus-visible{outline:2px solid var(--srebro); outline-offset:3px}
+/* w pasie z tłem zdjęcie wypełnia całą wysokość */
+.pas .powieksz-luzny{position:absolute; inset:0; height:100%}
+.pas .powieksz-luzny > img{height:100%; object-fit:cover}
+.pas .powieksz-luzny .kafel-lupa{top:auto; bottom:18px; right:18px}

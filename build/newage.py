@@ -741,11 +741,19 @@ def pas_przewijany():
     katalogi = ['sesja'] * len(SESJA) + ['portfolio'] * 8
     elementy = []
     for i, ((plik, tytul, dolny), kat) in enumerate(zip(kadry, katalogi)):
+        podpis = (u'%s — %s' % (tytul, dolny)) if dolny else tytul
         elementy.append(
             u'<figure class="tasma-kadr">'
+            u'<button type="button" class="powieksz" data-pelne="img/%s/%s.jpg"'
+            u' data-podpis="%s" aria-label="Powiększ: %s">'
             u'<img src="img/%s/%s-mal.jpg" alt="%s" decoding="async">'
+            u'<span class="kafel-lupa" aria-hidden="true">'
+            u'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">'
+            u'<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v6M8 11h6"/></svg></span>'
             u'<figcaption><b>%s</b><span>%s</span></figcaption>'
-            u'</figure>' % (kat, plik, tytul, tytul, dolny))
+            u'</button></figure>' % (
+                kat, plik, podpis.replace('"', '&quot;'), tytul.replace('"', '&quot;'),
+                kat, plik, podpis.replace('"', '&quot;'), tytul, dolny))
     jeden = u'\n        '.join(elementy)
     return (u'\n<section class="tasma-sekcja" aria-label="Prace i sesje">\n'
             u'  <div class="tasma" role="group">\n'
