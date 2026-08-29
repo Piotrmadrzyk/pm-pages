@@ -685,10 +685,15 @@ strong,b{font-weight:700}
 .big-txt h2{font-size:clamp(26px,3.2vw,38px);margin-bottom:14px;letter-spacing:-.02em}
 .big-txt p{color:#B4BAC3;font-size:16.5px;font-weight:400;line-height:1.72}
 .pagelist{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 26px}
-.pagelist span{
-  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+.pagelist span,
+.pagelist a{
+  font-size:13.5px;
   padding:6px 12px;border-radius:100px;border:1px solid var(--line-2);color:var(--dim-2);
 }
+/* 29.08.2026: to byly <span> wygladajace na przyciski. Kto je widzial,
+   probowal kliknac i nic sie nie dzialo. Teraz sa odnosnikami. */
+.pagelist a{transition:border-color .2s,color .2s}
+.pagelist a:hover{border-color:var(--amber);color:var(--paper)}
 @media(max-width:900px){
   .big{grid-template-columns:1fr;gap:26px;padding:44px 0}
   .big.flip{grid-template-columns:1fr}
@@ -1500,6 +1505,7 @@ body > *{position:relative;z-index:1}
 .mono,
 .next-list li i,
 .pagelist span,
+.pagelist a,
 .proc-i .n,
 .proc-i .t,
 .ptag,
