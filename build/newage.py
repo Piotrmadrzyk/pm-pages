@@ -84,8 +84,8 @@ DYPLOMY = [
     ('2005-saks-london',    u'2005', u'Saks Academies',
      u'Szkolenie ze strzyżenia i koloryzacji — polski oddział '
      u'brytyjskiej akademii'),
-    ('2009-uprawnienia',    u'2009', u'Uprawnienia dla instruktorów',
-     u'Kurs pedagogiczno-metodyczny dla wykładowców — formalne prawo do szkolenia innych'),
+    ('2009-uprawnienia',    u'2009', u'Kurs pedagogiczno-metodyczny',
+     u'Dla wykładowców i instruktorów — o tym, jak tłumaczyć trudne rzeczy prosto'),
     ('2013-loreal-h3',      u'2013', u'L’Oréal H³',
      u'Dołączenie do międzynarodowego grona stylistów, Akademia L’Oréal Professionnel'),
     ('2018-loreal-blondy',  u'2018', u'L’Oréal — Blondy',
@@ -498,7 +498,7 @@ SZKIELET = u"""<!DOCTYPE html>
   "@type": "HairSalon",
   "name": "new age Lewandowska",
   "alternateName": "New Age Studio",
-  "description": "Salon fryzjerski w Cz\u0119stochowie. Koloryzacja, strzy\u017cenie i modelowanie u Agnieszki Lewandowskiej \u2014 edukatorki L\u2019Or\u00e9al Professionnel.",
+  "description": "Salon fryzjerski w Cz\u0119stochowie. Koloryzacja, strzy\u017cenie i modelowanie u Agnieszki Lewandowskiej \u2014 dwadzie\u015bcia lat do\u015bwiadczenia.",
   "image": "%(baza)simg/hero.jpg",
   "url": "%(baza)s",
   "telephone": "%(tel_pokaz)s",
@@ -681,8 +681,8 @@ def strona_start():
         <h1>Włosy, które<br>ktoś <em>rozumie</em>.</h1>
         <p class="hero-lead">
           Agnieszka Lewandowska. Dwadzieścia lat przy fotelu, dyplomy Toni&amp;Guy
-          i Saks, cztery szkolenia w Akademii L'Oréal Professionnel — i lata
-          uczenia innych fryzjerek tego, co sama robi.
+          i Saks, cztery szkolenia w Akademii L'Oréal Professionnel — u artystów,
+          którzy uczą fryzjerów na całym świecie.
         </p>
         <div class="hero-akcje">
           <a class="btn" href="tel:%(tel_link)s">Umów wizytę</a>
@@ -715,9 +715,7 @@ def strona_start():
       <p>
         Zaczynałam w 2003 roku dyplomem Toni&amp;Guy, dwa lata później szkoliłam się
         w Saks Academies — to brytyjskie szkoły fryzjerstwa, które prowadziły wtedy
-        zajęcia także w Polsce. W 2009 zdobyłam uprawnienia pedagogiczne dla
-        instruktorów i przez lata prowadziłam warsztaty dla innych fryzjerek
-        jako edukatorka L'Oréal Professionnel.
+        zajęcia także w Polsce. Od tamtej pory nie przestałam się uczyć.
       </p>
       <p>
         Zanim cokolwiek zrobię z Twoimi włosami, rozmawiamy. O tym, co chcesz osiągnąć,
@@ -851,13 +849,13 @@ u"""
         szkoły fryzjerstwa, które prowadziły wtedy zajęcia także w Polsce.
       </p>
       <p>
-        W 2009 zdobyłam uprawnienia pedagogiczne dla wykładowców i instruktorów.
-        To nie jest papier dla ozdoby: przez lata prowadziłam warsztaty
-        dla innych fryzjerek jako edukatorka L'Oréal Professionnel.
+        W 2009 skończyłam kurs pedagogiczno-metodyczny dla instruktorów.
+        Nie po to, żeby uczyć — po to, żeby lepiej rozumieć, jak tłumaczyć
+        klientce, co dzieje się z jej włosami i dlaczego.
       </p>
       <p>
         Do dziś jeżdżę na szkolenia. Techniki koloryzacji u Min Kim i Berniego Ottjesa,
-        strzyżenie u Adama Reeda — to nie są nazwiska z ulotki, tylko ludzie,
+        strzyżenie u Adama Reeda — to nie są nazwiska z ulotki, tylko artyści,
         którzy uczą fryzjerów na całym świecie.
       </p>
       <p>
@@ -1503,7 +1501,7 @@ u"""
 STRONY = [
     ('start', '', u'new age Lewandowska — fryzjerstwo, Częstochowa',
      u'Salon fryzjerski new age w Częstochowie. Koloryzacja, strzyżenie i modelowanie '
-     u'u Agnieszki Lewandowskiej — edukatorki L’Oréal Professionnel.', strona_start, ''),
+     u'u Agnieszki Lewandowskiej — z dwudziestoletnim doświadczeniem.', strona_start, ''),
     ('o-mnie', 'o-mnie', u'O mnie — Agnieszka Lewandowska | new age',
      u'Dwadzieścia lat pracy, dyplomy Toni&Guy i Saks, cztery szkolenia '
      u'w Akademii L’Oréal Professionnel.', strona_o_mnie, '../'),

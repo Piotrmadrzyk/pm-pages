@@ -725,3 +725,28 @@ body{padding-bottom:0}
 .stan::before{content:''; width:7px; height:7px; border-radius:50%; background:currentColor}
 .stan.otwarte{color:#6fcf97}
 .stan.zamkniete{color:var(--srebro-ciemne)}
+
+/* ═══════════════════════════════════════════════════════════════
+   WSZYSTKIE ZDJĘCIA CZARNO-BIAŁE
+
+   Agnieszka, 29.08 o 23:34: „Myślę żeby zmienić jednak zdjęcia
+   wszystkie na czarno-białe skoro strona jest czarno biała."
+
+   ⚠️ To odwraca wcześniejszą decyzję Piotra, który chciał koloru
+   w portfolio („przecież ona robi włosy, a tam są kolory").
+   Jeśli wraca kolor — wystarczy usunąć tę jedną regułę.
+
+   Robione filtrem, nie przerabianiem plików: kolorowe oryginały
+   zostają na dysku i wracają natychmiast, gdyby decyzja się zmieniła.
+   ═══════════════════════════════════════════════════════════════ */
+.hero-foto img,
+.dwie img,
+.galeria img,
+.kafel .powieksz img,
+.pasek-dyplomow img,
+.usluga-duza img,
+.pas img,
+.lupa img{
+  filter:grayscale(1) contrast(1.03);
+}
+/* przy najechaniu kolor NIE wraca — strona ma być konsekwentnie czarno-biała */
