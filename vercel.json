@@ -22,6 +22,26 @@
       "dest": "/p/$1"
     },
     {
+      "src": "/(kancelaria-img/.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "lawenda-demo.probatum.pl"
+        }
+      ],
+      "dest": "/p/$1"
+    },
+    {
+      "src": "/(serwis-img/.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "lawenda-demo.probatum.pl"
+        }
+      ],
+      "dest": "/p/$1"
+    },
+    {
       "src": "/(demo-studio-lawenda[^/]*/?.*)",
       "has": [
         {
@@ -53,6 +73,26 @@
     },
     {
       "src": "/p/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "kancelaria-demo.probatum.pl"
+        }
+      ],
+      "dest": "/p/$1"
+    },
+    {
+      "src": "/(kancelaria-img/.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "kancelaria-demo.probatum.pl"
+        }
+      ],
+      "dest": "/p/$1"
+    },
+    {
+      "src": "/(serwis-img/.*)",
       "has": [
         {
           "type": "host",
@@ -102,6 +142,26 @@
       "dest": "/p/$1"
     },
     {
+      "src": "/(kancelaria-img/.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "remonty-demo.probatum.pl"
+        }
+      ],
+      "dest": "/p/$1"
+    },
+    {
+      "src": "/(serwis-img/.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "remonty-demo.probatum.pl"
+        }
+      ],
+      "dest": "/p/$1"
+    },
+    {
       "src": "/(demo-dom-i-wnetrze[^/]*/?.*)",
       "has": [
         {
@@ -133,6 +193,26 @@
     },
     {
       "src": "/p/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "warsztat-demo.probatum.pl"
+        }
+      ],
+      "dest": "/p/$1"
+    },
+    {
+      "src": "/(kancelaria-img/.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "warsztat-demo.probatum.pl"
+        }
+      ],
+      "dest": "/p/$1"
+    },
+    {
+      "src": "/(serwis-img/.*)",
       "has": [
         {
           "type": "host",
