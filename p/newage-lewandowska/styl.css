@@ -1174,3 +1174,153 @@ a.odznaka:hover .odznaka-strzalka{color:var(--biel)}
   padding-bottom:1px; white-space:nowrap;
 }
 .produkt-opis a:hover{border-bottom-color:var(--biel)}
+
+/* ═══════════════════════════════════════════════════════════════
+   VITAMINO COLOR SPECTRUM
+
+   Tu NIE ma numeracji, bo nie ma kolejnosci. Sa dwie grupy:
+   cztery produkty dla kazdego koloru i trzy szampony pigmentowe,
+   z ktorych wybiera sie JEDEN. Uklad musi to pokazywac.
+   ═══════════════════════════════════════════════════════════════ */
+.spec-nadpis{
+  font-family:var(--display);
+  font-size:clamp(1.15rem,2.4vw,1.55rem);
+  color:var(--biel);
+  margin:3.2rem 0 1.4rem;
+}
+.spec-lista{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:clamp(14px,2vw,22px);
+}
+.spec{
+  border:1px solid var(--linia);
+  padding:clamp(20px,2.4vw,26px);
+  background:rgba(255,255,255,.015);
+}
+.spec h3{
+  font-size:1.06rem; color:var(--biel);
+  margin:0 0 .6rem; line-height:1.35;
+}
+.spec p{
+  color:var(--srebro-jasne); font-size:.95rem;
+  line-height:1.7; margin:0;
+}
+
+.spec-uwaga{
+  color:var(--srebro); font-size:.95rem; line-height:1.7;
+  max-width:58ch; margin:0 0 1.8rem;
+}
+.spec-uwaga b{color:var(--biel); font-weight:500}
+
+/* Kropka pigmentu to jedyne miejsce na tej stronie, gdzie kolor
+   niesie tresc — bez niej nie widac, ktory szampon jest ktory. */
+.pigment-lista{display:grid; gap:0; border-top:1px solid var(--linia)}
+.pigment{
+  display:grid; grid-template-columns:auto 1fr;
+  gap:clamp(16px,2.4vw,26px); align-items:start;
+  padding:clamp(20px,2.6vw,28px) 0;
+  border-bottom:1px solid var(--linia);
+}
+.pigment-kropka{
+  display:block; width:34px; height:34px; border-radius:50%;
+  box-shadow:0 0 0 1px rgba(255,255,255,.22), 0 0 26px -6px currentColor;
+  margin-top:2px;
+}
+.pigment h3{font-size:1.06rem; color:var(--biel); margin:0 0 .35rem}
+.pigment-dla{
+  font-size:.74rem; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--srebro-ciemne); margin:0 0 .8rem;
+}
+.pigment p:last-child{
+  color:var(--srebro-jasne); font-size:.95rem;
+  line-height:1.7; margin:0; max-width:56ch;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   KERATIN ALPHA SLEEK
+
+   To usluga, nie zestaw: jedna rzecz dzieje sie w fotelu, trzy
+   w domu. Uklad dwukolumnowy pokazuje ten podzial od razu.
+   ═══════════════════════════════════════════════════════════════ */
+#keratin{background:var(--wegiel); scroll-margin-top:96px}
+#keratin h2{color:var(--biel)}
+#keratin .nadpis{color:var(--srebro)}
+
+.ker-uklad{
+  display:grid;
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  gap:clamp(24px,4vw,56px);
+  margin-top:3rem;
+  align-items:start;
+}
+.ker-etykieta{
+  font-size:.74rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--srebro-ciemne); margin:0 0 1.1rem;
+  padding-bottom:.7rem; border-bottom:1px solid var(--linia);
+}
+.ker-salon{
+  border:1px solid rgba(255,255,255,.2);
+  padding:clamp(22px,2.8vw,32px);
+  background:rgba(255,255,255,.03);
+}
+.ker-salon h3{
+  font-family:var(--display);
+  font-size:clamp(1.2rem,2.4vw,1.5rem);
+  color:var(--biel); margin:0 0 .8rem;
+}
+.ker-salon p:last-child{
+  color:var(--srebro-jasne); font-size:.96rem; line-height:1.75; margin:0;
+}
+.ker-dom .spec-lista{grid-template-columns:1fr}
+
+.ker-bez{
+  margin-top:3rem; padding:clamp(22px,2.8vw,30px);
+  border-left:2px solid var(--biel);
+  background:rgba(255,255,255,.03);
+  max-width:72ch;
+}
+.ker-bez-tytul{
+  font-family:var(--display);
+  font-size:clamp(1.05rem,2.2vw,1.3rem);
+  color:var(--biel); margin:0 0 .8rem;
+}
+.ker-bez p:last-child{
+  color:var(--srebro-jasne); font-size:.96rem; line-height:1.75; margin:0;
+}
+.ker-bez b{color:var(--biel); font-weight:500}
+
+@media (max-width:820px){
+  .ker-uklad{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .pigment{grid-template-columns:auto 1fr; gap:14px}
+  .pigment-kropka{width:26px; height:26px}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   COLOR WOW — swiadomie LEKKIE potraktowanie
+
+   Piotr nie chce katalogu tej marki, tylko informacji, ze jest
+   dostepna. Wiec to jest pas, nie sekcja z kartami — i wizualnie
+   ma sie roznic od Molecular / Spectrum / Keratin.
+   ═══════════════════════════════════════════════════════════════ */
+.wow{background:var(--atrament); border-top:1px solid var(--linia)}
+.wow h2{color:var(--biel); margin:0}
+.wow .nadpis{color:var(--srebro)}
+.wow-uklad{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);
+  gap:clamp(24px,4vw,64px);
+  align-items:start;
+}
+.wow-tresc p{
+  color:var(--srebro-jasne); font-size:.99rem;
+  line-height:1.75; margin:0 0 1.1rem; max-width:56ch;
+}
+.wow-tresc b{color:var(--biel); font-weight:500}
+.wow-cta{margin:1.6rem 0 0 !important}
+
+@media (max-width:820px){
+  .wow-uklad{grid-template-columns:1fr; gap:20px}
+}

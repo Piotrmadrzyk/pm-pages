@@ -340,6 +340,95 @@ MOLECULAR = [
      u'Kilka kropel na końcówki, nie na nasadę.'),
 ]
 
+# ─────────────────────────────────────────────────────────────────
+#  VITAMINO COLOR SPECTRUM
+#
+#  Druga, nowsza gama Vitamino Color. Inna struktura niz Molecular —
+#  tu NIE ma kolejnosci. Sa dwie grupy: cztery produkty podstawowe
+#  (dla kazdego koloru) i trzy szampony pigmentowe, z ktorych wybiera
+#  sie JEDEN, zalezny od wlasnego koloru wlosow.
+#
+#  Dlatego na stronie nie ma numeracji — numeracja klamalaby o tym,
+#  jak sie tego uzywa.
+#
+#  UWAGA: "kolor jak w dniu pierwszym przez 100 dni" i "efekt tafli
+#  do 10 myc" to deklaracje PRODUCENTA. Zawsze z przypisaniem.
+# ─────────────────────────────────────────────────────────────────
+SPECTRUM_BAZA = [
+    (u'Szampon zachowujący kolor',
+     u'Podstawa całej gamy. Myje tak, żeby nie wypłukiwać pigmentu — '
+     u'to zwykły szampon z drogerii odpowiada za większość utraty koloru, '
+     u'nie słońce i nie czas.'),
+
+    (u'Odżywka zachowująca kolor',
+     u'Po każdym myciu, na długości. Wygładza i domyka łuskę włosa — '
+     u'zamknięta łuska trzyma pigment w środku, otwarta go wypuszcza.'),
+
+    (u'Maska zachowująca kolor',
+     u'Mocniejsza od odżywki, raz albo dwa razy w tygodniu. Dla włosów '
+     u'koloryzowanych, które są przy okazji suche — a po koloryzacji '
+     u'zwykle są.'),
+
+    (u'Serum nabłyszczające',
+     u'Efekt tafli — połysk, na którym kolor w ogóle widać. Matowe włosy '
+     u'wyglądają na wyblakłe, nawet jeśli pigment jeszcze w nich jest. '
+     u'L’Oréal deklaruje utrzymanie efektu do 10 myć.'),
+]
+
+# (nazwa, kolor kropki, dla kogo, co neutralizuje)
+SPECTRUM_PIGMENT = [
+    (u'Szampon z fioletowym pigmentem', u'#8B6FB8',
+     u'Blond i włosy rozjaśniane',
+     u'Wyciąga żółć. Po rozjaśnianiu żółty pigment zawsze wraca — to nie błąd '
+     u'koloryzacji, tylko budowa włosa.'),
+
+    (u'Szampon z niebieskim pigmentem', u'#5B8AC4',
+     u'Włosy jasnobrązowe',
+     u'Wyciąga pomarańcz. Ten odcień pojawia się, kiedy ciemniejszy włos '
+     u'był rozjaśniany — brąz nie schodzi równo.'),
+
+    (u'Szampon z zielonym pigmentem', u'#5FA07A',
+     u'Włosy ciemnobrązowe',
+     u'Wyciąga czerwień. Najczęściej po farbowaniu na ciemno albo po hennie, '
+     u'kiedy w brązie zaczyna prześwitywać miedź.'),
+]
+
+# ─────────────────────────────────────────────────────────────────
+#  KERATIN ALPHA SLEEK
+#
+#  To nie jest zwykla pielegnacja — to USLUGA. Jeden zabieg w salonie
+#  daje wygladzenie na jakis czas, a trzy produkty domowe je trzymaja.
+#  Dlatego uklad na stronie jest "salon / dom", a nie lista ani numery.
+#
+#  WAZNE: klientki boja sie keratyny przez formaldehyd z dawnych
+#  zabiegow. L'Oreal deklaruje brak formaldehydu i brak keratyny
+#  zwierzecej — to trzeba napisac wprost, bo to pierwsze pytanie.
+#
+#  "2 tygodnie wygladzenia" to deklaracja PRODUCENTA. Z przypisaniem.
+# ─────────────────────────────────────────────────────────────────
+KERATIN_SALON = (
+    u'Profesjonalna kuracja wygładzająca',
+    u'To jest ten zabieg. Robię go u siebie, w fotelu — nie da się '
+    u'go kupić i zrobić w domu. Keratyna układa się wzdłuż włosa '
+    u'i domyka jego strukturę, więc włos przestaje się puszyć '
+    u'i odbijać wilgoć z powietrza. L’Oréal deklaruje około dwóch '
+    u'tygodni efektu; w praktyce zależy to od tego, jak często myjesz '
+    u'włosy i czym.')
+
+KERATIN_DOM = [
+    (u'Profesjonalny szampon wygładzający',
+     u'Bez siarczanów. To nie jest drobiazg — zwykły szampon zmywa '
+     u'efekt zabiegu szybciej, niż zdążysz go zauważyć.'),
+
+    (u'Profesjonalna maska wygładzająca',
+     u'Raz, dwa razy w tygodniu. Odbudowuje to, co woda i suszarka '
+     u'zdążyły rozluźnić między wizytami.'),
+
+    (u'Profesjonalne serum wygładzające',
+     u'Na koniec, na suche albo wilgotne włosy. Domyka powierzchnię '
+     u'włosa — to od niej zależy, czy światło się odbija, czy rozprasza.'),
+]
+
 PRODUKTY = [
     (u'Metal Detox', u'Ochrona koloru i włosa przed metalami',
      u'W wodzie z kranu są metale — najwięcej wapnia i miedzi. Odkładają się '
@@ -375,8 +464,10 @@ PRODUKTY = [
      u'przy każdym myciu.',
      u'Ta linia ma łagodniejsze detergenty i filtr chroniący przed słońcem. '
      u'Nie sprawi, że kolor będzie trwał wiecznie, ale różnica między nią '
-     u'a przypadkowym szamponem to zwykle kilka tygodni dłużej.',
-     [u'Do włosów koloryzowanych', u'Ochrona pigmentu', u'Filtr UV']),
+     u'a przypadkowym szamponem to zwykle kilka tygodni dłużej. '
+     u'Vitamino ma <b>dwie gamy</b> — tę i nowszy Spectrum. '
+     u'<a href="#spectrum">Spectrum rozpisałam niżej →</a>',
+     [u'Do włosów koloryzowanych', u'Ochrona pigmentu', u'Dwie gamy']),
 
     (u'Blondifier', u'Blond bez żółtego odcienia',
      u'Po rozjaśnianiu naturalny żółty pigment zawsze wraca — to nie błąd '
@@ -386,6 +477,16 @@ PRODUKTY = [
      u'odżywiająca rozjaśnione pasma. Uwaga na fiolet — raz, najwyżej dwa razy '
      u'w tygodniu. Codziennie daje szary, przesuszony efekt.',
      [u'Neutralizacja żółci', u'Do włosów rozjaśnianych', u'Maks. 2× w tygodniu']),
+
+    (u'Keratin Alpha Sleek', u'Włosy, które się puszą',
+     u'Dla włosów, które po wyjściu z salonu wyglądają gładko, a po dwóch '
+     u'dniach same sobie robią, co chcą — puszą się przy wilgoci, elektryzują '
+     u'się i nie dają się ułożyć bez prostownicy.',
+     u'Zabieg wygładzający, który robię w salonie, plus trzy produkty do domu, '
+     u'które go trzymają. <b>Bez formaldehydu i bez keratyny zwierzęcej</b> — '
+     u'to nie jest ta keratyna, o której było głośno lata temu. '
+     u'<a href="#keratin">Rozpisałam to niżej →</a>',
+     [u'Włosy puszące się', u'Zabieg + pielęgnacja', u'Bez formaldehydu']),
 
     (u'Scalp Advanced', u'Skóra głowy: przetłuszczanie, łupież, podrażnienia',
      u'Włosy zaczynają się w skórze, więc jeśli coś się dzieje u nasady, '
@@ -1961,6 +2062,165 @@ u"""
 """ % {'tel_link': TEL_LINK, 'tel_pokaz': TEL_POKAZ})
 
 
+def sekcja_spectrum():
+    """Vitamino Color Spectrum — cztery produkty bazowe + wybor JEDNEGO pigmentu."""
+    baza = u""""""
+    for nazwa, opis in SPECTRUM_BAZA:
+        baza += u"""
+        <article class="spec">
+          <h3>%s</h3>
+          <p>%s</p>
+        </article>""" % (nazwa, opis)
+
+    pig = u""""""
+    for nazwa, kolor, dla_kogo, opis in SPECTRUM_PIGMENT:
+        pig += u"""
+        <article class="pigment">
+          <span class="pigment-kropka" style="background:%s" aria-hidden="true"></span>
+          <div>
+            <h3>%s</h3>
+            <p class="pigment-dla">%s</p>
+            <p>%s</p>
+          </div>
+        </article>""" % (kolor, nazwa, dla_kogo, opis)
+
+    return u"""
+<section id="spectrum" class="mol-sekcja">
+  <div class="wrap">
+    <p class="nadpis">Vitamino Color Spectrum</p>
+    <h2>Nowsza gama <span class="kursywa">do włosów farbowanych</span></h2>
+    <p class="mol-wstep">
+      Robi to samo co zwykłe Vitamino Color, tylko mocniej — i dokłada coś,
+      czego tamta gama nie ma: <b>szampony z pigmentem</b>. Zwykła pielęgnacja
+      broni koloru przed wypłukaniem. Pigment robi coś innego — dokłada odrobinę
+      barwy przy każdym myciu i gasi odcień, który wychodzi z włosa sam.
+      L’Oréal deklaruje kolor jak w dniu pierwszym przez sto dni; ja powiem tyle,
+      że przy dobrym myciu różnica na farbowanych włosach jest naprawdę widoczna.
+    </p>
+
+    <p class="spec-nadpis">Cztery rzeczy dla każdego koloru</p>
+    <div class="spec-lista">""" + baza + u"""
+    </div>
+
+    <p class="spec-nadpis">I jeden szampon pigmentowy — <span class="kursywa">zależnie od Twojego koloru</span></p>
+    <p class="spec-uwaga">
+      Wybiera się <b>jeden</b>, nie wszystkie. Każdy gasi inny odcień.
+      I ważne: pigmentowego szamponu używa się <b>raz, najwyżej dwa razy
+      w tygodniu</b> — codziennie przesusza włosy i daje szary, martwy efekt.
+    </p>
+    <div class="pigment-lista">""" + pig + u"""
+    </div>
+
+    <p class="mol-stopka">
+      Nie zgaduj, który pigment jest Twój — źle dobrany potrafi przyciemnić
+      kolor albo zrobić zimny odcień, którego nie chciałaś. Przy wizycie
+      popatrzę na Twoje włosy i powiem wprost, który ma sens, a czy w ogóle
+      jest Ci potrzebny.
+    </p>
+  </div>
+</section>"""
+
+
+def sekcja_keratin():
+    """Keratin Alpha Sleek — uklad salon / dom, bo to usluga, nie zestaw."""
+    dom = u""""""
+    for nazwa, opis in KERATIN_DOM:
+        dom += u"""
+        <article class="spec">
+          <h3>%s</h3>
+          <p>%s</p>
+        </article>""" % (nazwa, opis)
+
+    naglowek = u"""
+<section id="keratin">
+  <div class="wrap">
+    <p class="nadpis">Keratin Alpha Sleek</p>
+    <h2>Na włosy, które <span class="kursywa">się puszą</span></h2>
+    <p class="mol-wstep" style="color:var(--srebro)">
+      Puszenie się to nie brak pielęgnacji. To otwarta łuska włosa, która
+      chłonie wilgoć z powietrza — dlatego włosy najgorzej zachowują się
+      w deszcz i przy zmianie pogody. Tego nie naprawi odżywka; trzeba
+      domknąć powierzchnię włosa.
+    </p>
+
+    <div class="ker-uklad">
+      <div class="ker-salon">
+        <p class="ker-etykieta">Zabieg w salonie</p>
+        <h3>%(salon_nazwa)s</h3>
+        <p>%(salon_opis)s</p>
+      </div>
+      <div class="ker-dom">
+        <p class="ker-etykieta">Co bierzesz do domu</p>
+        <div class="spec-lista">""" % {'salon_nazwa': KERATIN_SALON[0],
+                                          'salon_opis':  KERATIN_SALON[1]}
+    return naglowek + dom + u"""
+        </div>
+      </div>
+    </div>
+
+    <div class="ker-bez">
+      <p class="ker-bez-tytul">Bez formaldehydu i bez keratyny zwierzęcej</p>
+      <p>
+        Piszę o tym wprost, bo to pierwsze pytanie, jakie słyszę. Zabiegi
+        keratynowe miały kiedyś złą prasę i słusznie — używano w nich
+        formaldehydu. <b>To jest inna rzecz.</b> L’Oréal deklaruje, że
+        w tej serii nie ma ani formaldehydu, ani keratyny pochodzenia
+        zwierzęcego. Jeśli masz wątpliwości, pokażę Ci skład opakowania
+        przy wizycie.
+      </p>
+    </div>
+
+    <p class="mol-cta">
+      <a class="btn btn-ciemny" href="../kontakt/">Zapytaj o wygładzanie</a>
+    </p>
+  </div>
+</section>"""
+
+
+def sekcja_colorwow():
+    """Color Wow — SWIADOMIE bez katalogu produktow.
+
+    Piotr: "tych produktow jest mnostwo, nie dajemy tych serii na strone,
+    tylko info ze sa u Agi dostepne". Wiec to jest krotki pas, nie sekcja
+    z kartami — i tak ma zostac.
+
+    Fakt sprawdzony u zrodla: L'Oreal podpisal umowe 30.06.2025,
+    transakcja zamknieta 09.09.2025. Mozna pisac w czasie przeszlym.
+    """
+    return u"""
+<section class="wow">
+  <div class="wrap wow-uklad">
+    <div>
+      <p class="nadpis">Color Wow</p>
+      <h2>Amerykańska marka, <span class="kursywa">którą też u mnie znajdziesz</span></h2>
+    </div>
+    <div class="wow-tresc">
+      <p>
+        Color Wow to marka z USA, znana głównie z produktów do wygładzania
+        i walki z puszeniem — najgłośniejszy z nich to <b>Dream Coat</b>.
+        We wrześniu 2025 roku przejął ją L’Oréal, więc trafiła do tej samej
+        grupy, na której pracuję od lat.
+      </p>
+      <p>
+        Marka <b>zostaje przy swoim opakowaniu i swojej nazwie</b> — była za
+        mocna, żeby ją przemalowywać na L’Oréala. Więc jeśli szukasz butelki
+        z napisem Color Wow, to właśnie tej szukaj. Zmieniło się to, kto za
+        nią stoi i kto ją rozprowadza — czyli grupa, z którą pracuję.
+      </p>
+      <p>
+        Produktów w tej marce jest naprawdę dużo i nie ma sensu przepisywać
+        ich tu wszystkich — <b>mam je u siebie w salonie</b>. Jeśli słyszałaś
+        o którymś i zastanawiasz się, czy jest dla Twoich włosów, po prostu
+        zapytaj przy wizycie. Powiem, co robi naprawdę, a co jest reklamą.
+      </p>
+      <p class="wow-cta">
+        <a class="btn btn-duch" href="../kontakt/">Zapytaj, co mam</a>
+      </p>
+    </div>
+  </div>
+</section>"""
+
+
 def strona_loreal():
     kroki_mol = []
     for i, (nazwa, gdzie, opis) in enumerate(MOLECULAR, 1):
@@ -2061,6 +2321,7 @@ u"""
   </div>
 </section>
 
+""" + sekcja_spectrum() + sekcja_keratin() + sekcja_colorwow() + u"""
 <section id="jak-dobrac">
   <div class="waski">
     <p class="nadpis">Zanim kupisz cokolwiek</p>
@@ -2158,9 +2419,9 @@ STRONY = [
      u'Koloryzacja, strzyżenie, modelowanie i pielęgnacja w Częstochowie. '
      u'Cena ustalana po rozmowie, zawsze przed zabiegiem.', strona_uslugi, '../'),
     ('loreal', 'loreal', u'Kosmetyki L’Oréal Professionnel — salon współpracujący | Częstochowa',
-     u'Absolut Repair Molecular, Metal Detox, Vitamino Color, Blondifier — linie '
-     u'L’Oréal Professionnel w salonie w Częstochowie. Do czego która służy, '
-     u'wytłumaczone prostym językiem.',
+     u'Absolut Repair Molecular, Vitamino Color Spectrum, Keratin Alpha Sleek '
+     u'i Color Wow — kosmetyki L’Oréal Professionnel w salonie w Częstochowie. '
+     u'Do czego która linia służy, wytłumaczone prostym językiem.',
      strona_loreal, '../'),
     ('portfolio', 'portfolio', u'Portfolio fryzjerskie — sesje i publikacje | new age Częstochowa',
      u'Fryzury do pierwszego numeru kwartalnika SPLOT — okładka i cała sesja. '
