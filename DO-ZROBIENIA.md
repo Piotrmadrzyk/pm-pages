@@ -5,65 +5,73 @@ ze zmianą.
 
 ---
 
-## 0. 🔴 ŻADEN FORMULARZ NA STRONIE NIE DZIAŁA
+## 0. ✅ FORMULARZE DZIAŁAJĄ — naprawione 29 sierpnia 2026
 
-**Znalezione 21 sierpnia 2026 przy testowaniu formularza wyceny w katalogu.**
+Do 29.08 każde zgłoszenie z probatum.pl przepadało: workflow **Lead Capture
+(Etap 3D)** (`HwH2M5e12fug5xLW`) szukał kampanii w `PM_kampanie` po kolumnie
+`form_key`, nie znajdował wiersza i odsyłał 422.
 
-Każde zgłoszenie z probatum.pl jest odrzucane przez n8n z odpowiedzią:
+**Co zrobiłem:** dopisałem dziewięć wierszy do `PM_kampanie`
+(id `NKeLThYjECSaG3fH`) — po jednym na każdy klucz używany na stronach.
+Każdy wiersz ma wypełnione `form_key`, `campaign_id`, `kampania_id`, `nazwa`
+i `typ`. `sequence_id` zostawiłem **puste celowo**: dopóki jest puste, żadne
+zgłoszenie nie uruchamia sekwencji mailowej do klienta.
+
+| klucz | campaign_id | skąd wychodzi | test |
+|---|---|---|---|
+| `kontakt` | probatum-kontakt | podstrona Kontakt | ✅ 200 |
+| `wycena` | probatum-wycena | podstrona Wyceń projekt | ✅ 200 |
+| `lista` | probatum-lista | zapis na listę mailową | ✅ 200 |
+| `lista-agenty` | probatum-lista-agenty | lista pierwszeństwa, Agenci | ✅ 200 |
+| `katalog-lawenda` | katalog-lawenda | katalog Studia Lawenda | ✅ 200 |
+| `katalog-zawadzcy` | katalog-zawadzcy | katalog Kancelarii Zawadzcy | ✅ 200 |
+| `katalog-dom` | katalog-dom | katalog Dom i Wnętrze | ✅ 200 |
+| `katalog-serwis` | katalog-serwis | katalog Serwisu Podkarpackiego | ✅ 200 |
+| `opony-sezon` | opony-sezon | zapis na opony, demo Serwisu | ⚠️ patrz niżej |
+
+Sprawdzone dwa razy: curlem po każdym kluczu **oraz** przez prawdziwy
+formularz na żywej stronie `probatum.pl/kontakt.html` — wyszedł komunikat
+„Dziękuję za wiadomość".
+
+### ⚠️ Zostaje jedna usterka: `opony-sezon`
+
+Ten klucz **nie był na wcześniejszej liście ośmiu** — znalazłem go przy okazji
+w `p/demo-serwis-podkarpacki/index.html`. Wiersz w tabeli już jest, ale ten
+formularz nadal nie przejdzie, bo **wysyła pusty adres e-mail** (`email: ''`),
+a walidacja w workflow wymaga poprawnego adresu.
+
+To formularz „zostaw telefon, oddzwonimy" — i tak ma być, warsztat nie pyta
+o maila przy zapisie na opony. Dwa wyjścia:
+
+1. **Dopisać pole e-mail do tego formularza.** Prosto, ale psuje sens: im mniej
+   pól, tym więcej zgłoszeń.
+2. **Pozwolić workflow przyjąć zgłoszenie z samym telefonem.** Właściwsze, ale
+   zmienia walidację dla **wszystkich** formularzy i psuje odsiewanie
+   duplikatów, które działa po parze `email + campaign_id`.
+
+**Decyzja należy do Piotra** — druga droga rusza logikę produkcyjną.
+
+### Zgłoszenia testowe do skasowania
+
+Testy zapisały dziesięć leadów w `PM_leady` i wysłały tyle samo powiadomień
+na skrzynkę. Wszystkie mają w treści „Test" i datę 29.08.2026, adresy w domenie
+`@probatum.pl` z przedrostkiem `test-`. Nic nie kasuję — do przejrzenia
+i usunięcia ręcznie:
 
 ```
-HTTP 422
-{"status":"BLAD","wiadomosc":"Nieznany lub brakujacy klucz formularza (form_key)."}
+lead_1787996565119_28001   kontakt
+lead_1787996569833_74690   wycena
+lead_1787996573061_75994   lista
+lead_1787996577369_53428   lista-agenty
+lead_1787996580520_58949   katalog-lawenda
+lead_1787996584342_47287   katalog-zawadzcy
+lead_1787996588634_28442   katalog-dom
+lead_1787996592651_58186   katalog-serwis
+lead_1787996612828_55050   opony-sezon
 ```
+plus jeden z formularza na stronie (imię „TEST TECHNICZNY — Claude").
 
-Sprawdzone na żywo, po kolei, z pełnym poprawnym zgłoszeniem. **Wszystkie
-osiem kluczy odrzuconych**, także te używane od dawna.
-
-### Dlaczego
-
-Workflow **PM Agent OS — Lead Capture (Etap 3D)** (`HwH2M5e12fug5xLW`) po
-odebraniu zgłoszenia szuka kampanii w tabeli **`PM_kampanie`** po kolumnie
-`form_key`. Jeśli nie znajdzie wiersza — odsyła 422 i **zgłoszenie przepada**.
-
-Znaczy to, że w `PM_kampanie` nie ma wierszy z kluczami, których używa strona
-(albo mają inne wartości w kolumnie `form_key` — nie mam narzędzia, żeby
-odczytać zawartość tabeli, więc tego nie rozstrzygnę z zewnątrz).
-
-### Klucze, które strona wysyła i które muszą mieć swój wiersz
-
-| klucz | skąd wychodzi |
-|---|---|
-| `kontakt` | formularz na podstronie Kontakt |
-| `wycena` | formularz na podstronie Wyceń projekt |
-| `lista` | zapis na newsletter |
-| `lista-agenty` | lista pierwszeństwa na podstronie Agenci |
-| `katalog-lawenda` | prośba o wycenę w katalogu Studia Lawenda |
-| `katalog-zawadzcy` | katalog Kancelarii Zawadzcy |
-| `katalog-dom` | katalog Dom i Wnętrze |
-| `katalog-serwis` | katalog Serwisu Podkarpackiego |
-
-### Jak to naprawić
-
-W tabeli `PM_kampanie` (n8n, id `NKeLThYjECSaG3fH`) dodać po jednym wierszu
-na każdy klucz. Minimum, którego wymaga workflow, to wypełnione:
-
-- **`form_key`** — dokładnie jak w tabeli wyżej,
-- **`campaign_id`** — dowolny własny identyfikator, np. `probatum-kontakt`;
-  po nim odróżnisz źródło leada i po nim działa odsiewanie duplikatów.
-
-Reszta kolumn (`sequence_id`, `slug`, `nadawca`) może zostać pusta — workflow
-sobie z tym radzi. `sequence_id` wypełnij tylko wtedy, gdy dane zgłoszenie
-ma uruchamiać sekwencję mailową.
-
-### ⚠️ Czego świadomie NIE zrobiłem
-
-**Nie dopisałem tych wierszy sam.** `PM_kampanie` to twoje dane produkcyjne
-w systemie, który budujesz równolegle w innym miejscu — dopisanie kampanii
-zmienia sposób przypisywania leadów i to jest twoja decyzja, nie moja.
-Zgłoszenie testowe, które wysłałem, zostało odrzucone, więc **nic nie zapisało
-się w PM_leady**.
-
-### Jak sprawdzić, czy naprawione
+### Jak sprawdzić, gdyby znowu przestało działać
 
 ```bash
 curl -s -X POST "https://pmresearch.app.n8n.cloud/webhook/pm-lead-capture" \
@@ -72,11 +80,9 @@ curl -s -X POST "https://pmresearch.app.n8n.cloud/webhook/pm-lead-capture" \
       "telefon":"000000000","tresc":"Test — mozna skasowac","consent":true}'
 ```
 
-Ma odpowiedzieć `{"status":"OK","lead_id":"lead_..."}`. Jeśli dalej 422 —
-klucz w tabeli nie zgadza się co do znaku.
-
-**Dopóki to nie jest naprawione, uruchomienie strony na właściwej domenie
-nie ma sensu — każde zapytanie od klienta przepadnie bez śladu.**
+Ma odpowiedzieć `{"status":"OK","lead_id":"lead_..."}`. Jeśli 422 z komunikatem
+o źle skonfigurowanym formularzu — brakuje wiersza w `PM_kampanie` albo klucz
+nie zgadza się co do znaku.
 
 ---
 
