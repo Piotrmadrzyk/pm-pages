@@ -188,7 +188,7 @@ section{padding:clamp(56px,7vw,104px) 0}
 
 /* ── opinie ────────────────────────────────────────────────── */
 .opinie-siatka{display:grid; gap:20px; margin-top:3rem}
-@media(min-width:820px){ .opinie-siatka{grid-template-columns:repeat(3,1fr)} }
+
 .opinia{background:var(--grafit); padding:clamp(24px,3vw,32px); border:1px solid rgba(255,255,255,.09);
   display:flex; flex-direction:column}
 .gwiazdki{color:var(--biel); letter-spacing:.22em; font-size:.82rem; margin-bottom:1rem}
@@ -750,3 +750,87 @@ body{padding-bottom:0}
   filter:grayscale(1) contrast(1.03);
 }
 /* przy najechaniu kolor NIE wraca — strona ma być konsekwentnie czarno-biała */
+
+/* ═══════════════════════════════════════════════════════════════
+   OPINIE — PRZEBUDOWANE
+   Były trzy wąskie kolumny z drobnym tekstem i wyglądały źle.
+   Teraz szerokie karty w jednej kolumnie: imię, data, gwiazdki,
+   pełna treść — tak, żeby dało się je przeczytać, a nie tylko
+   zobaczyć, że są.
+   ═══════════════════════════════════════════════════════════════ */
+.opinie-siatka{display:grid; gap:clamp(14px,2vw,20px); margin-top:2.6rem}
+@media(min-width:1000px){ .opinie-siatka{grid-template-columns:1fr 1fr} }
+
+.opinia{
+  background:var(--grafit); border:1px solid rgba(255,255,255,.09);
+  padding:clamp(26px,3.4vw,38px); display:block;
+}
+.opinia-glowa{
+  display:flex; align-items:baseline; justify-content:space-between; gap:16px;
+  margin-bottom:.7rem; flex-wrap:wrap;
+}
+.opinia-kto{
+  font-family:var(--display); font-size:clamp(1.05rem,1.9vw,1.25rem);
+  color:var(--biel); letter-spacing:-.01em;
+}
+.opinia-data{font-size:.78rem; color:var(--srebro-ciemne); white-space:nowrap}
+.opinia .gwiazdki{color:var(--biel); letter-spacing:.2em; font-size:.85rem; margin:0 0 1rem}
+.opinia-tresc{
+  color:var(--srebro-jasne); font-size:1rem; line-height:1.72; margin:0; max-width:56ch;
+}
+
+/* pasek z oceną Google i wyraźnym przyciskiem */
+.google-pasek{
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+  flex-wrap:wrap; margin-top:2.6rem; padding:clamp(22px,3vw,30px);
+  border:1px solid rgba(255,255,255,.16); background:var(--wegiel);
+}
+.google-ocena{display:block; color:var(--biel); font-size:1.05rem; letter-spacing:.12em}
+.google-ocena b{font-family:var(--display); font-size:1.9rem; letter-spacing:0; margin-right:.5rem}
+.google-ile{display:block; color:var(--srebro-ciemne); font-size:.82rem;
+  letter-spacing:.14em; text-transform:uppercase; margin-top:.35rem}
+
+/* odznaka w hero jest teraz odnośnikiem */
+a.odznaka{text-decoration:none; transition:border-color .3s, background .3s}
+a.odznaka:hover{border-color:rgba(255,255,255,.5); background:rgba(255,255,255,.05)}
+.odznaka-gw{color:var(--biel)}
+.odznaka-strzalka{margin-left:.5rem; color:var(--srebro-ciemne); transition:transform .3s}
+a.odznaka:hover .odznaka-strzalka{color:var(--biel)}
+.hero-drobne{
+  margin-top:1.1rem; font-size:.84rem; color:var(--srebro-ciemne);
+}
+.hero-drobne a{color:var(--srebro-jasne); text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.22); padding-bottom:1px}
+.hero-drobne a:hover{color:var(--biel); border-bottom-color:var(--biel)}
+
+/* ═══════════════════════════════════════════════════════════════
+   MEDIA SPOŁECZNOŚCIOWE
+   Tam trafia najświeższe: metamorfozy, wolne terminy, rolki.
+   Strona nadąża później, więc ma tam zapraszać w kilku miejscach.
+   ═══════════════════════════════════════════════════════════════ */
+.social-blok{display:grid; gap:clamp(28px,4vw,56px); align-items:center}
+@media(min-width:900px){ .social-blok{grid-template-columns:1.15fr .85fr} }
+.social-przyciski{display:grid; gap:14px}
+.social-btn{
+  display:flex; flex-direction:column; gap:.3rem; text-decoration:none;
+  border:1px solid rgba(255,255,255,.18); padding:1.3rem 1.5rem;
+  transition:border-color .3s, background .3s, transform .3s;
+}
+.social-btn:hover{border-color:var(--biel); background:rgba(255,255,255,.04); transform:translateY(-2px)}
+.social-nazwa{color:var(--biel); font-size:1.05rem; letter-spacing:.04em}
+.social-uchwyt{color:var(--srebro-ciemne); font-size:.85rem}
+.social-btn::after{content:'→'; position:absolute}
+.social-btn{position:relative}
+.social-btn::after{right:1.5rem; top:50%; transform:translateY(-50%); color:var(--srebro-ciemne)}
+
+.spolecznosci{
+  margin-top:2.4rem; padding-top:1.8rem; border-top:1px solid rgba(255,255,255,.1);
+  display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:center;
+  font-size:.86rem; color:var(--srebro-ciemne);
+}
+.spolecznosci a{
+  color:var(--biel); text-decoration:none; border:1px solid rgba(255,255,255,.2);
+  padding:.5rem 1.1rem; font-size:.78rem; letter-spacing:.12em; text-transform:uppercase;
+  transition:.25s;
+}
+.spolecznosci a:hover{background:var(--biel); color:var(--atrament)}

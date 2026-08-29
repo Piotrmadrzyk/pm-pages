@@ -167,52 +167,65 @@ def kafle(pozycje, katalog, klasa='galeria-siatka'):
 #  przedsiebiorca, czyli klientka.
 # ─────────────────────────────────────────────────────────────────
 OPINIE = [
-    (u'Aneta Orzeł',
+    (u'Aneta Orzeł', u'7 miesięcy temu',
      u'Ten salon polecam z całego serca. Każda wizyta u Pani Agnieszki to czysta '
      u'przyjemność. Zawsze wychodzę z salonu zadowolona i zrelaksowana, a włosy '
-     u'zadbane i wypielęgnowane. Pani Agnieszka po prostu zna się na swojej robocie.'),
-    (u'Klaudia Muś',
+     u'zadbane i wypielęgnowane. Pani Agnieszka po prostu zna się na swojej robocie. '
+     u'Czy to cięcie, modelowanie, koloryzacja lub inny zabieg na włosach — polecam '
+     u'wizytę w tym salonie.'),
+    (u'Klaudia Muś', u'6 miesięcy temu',
      u'Świetny salon fryzjerski! Już od kilku lat korzystam z usług Pani Agnieszki. '
      u'Można liczyć na profesjonalne doradztwo i ogromną dbałość o włosy podczas '
-     u'koloryzacji. Efekt piękny, a włosy po zabiegu zdrowe i lśniące.'),
-    (u'Janina Nowowiejska',
+     u'koloryzacji. Efekt piękny, a włosy po zabiegu zdrowe i lśniące. Miła atmosfera '
+     u'i pełen profesjonalizm. Zdecydowanie polecam!'),
+    (u'Janina Nowowiejska', u'6 miesięcy temu',
      u'Do New Age Studio chodzę już od 25 lat i nie wyobrażam sobie zmiany tego '
      u'miejsca na inne. Za każdym razem czuję się tu naprawdę dopieszczona — '
      u'z pełną uwagą, spokojem i troską Pani Agnieszki.'),
-    (u'Agata Morawski',
+    (u'Sabina Gruca', u'rok temu',
+     u'Do Pani Agnieszki trafiłam ponad osiem lat temu, po nieudanej koloryzacji '
+     u'w innym salonie. Pani Agnieszka zaopiekowała się moimi włosami i wyprowadziła '
+     u'je z opresji.'),
+    (u'Paulina Tryniszewska', u'rok temu',
+     u'Pani Agnieszka zajmuje się moimi włosami już od kilku lat. Jej profesjonalne '
+     u'podejście i ogromna wiedza są na najwyższym poziomie. Każdej kobiecie polecam '
+     u'tę niesamowitą fryzjerkę. Zawsze czuję się zaopiekowana na każdym etapie wizyty.'),
+    (u'Agata Morawski', u'rok temu',
      u'Do pani Agnieszki chodzę od dłuższego czasu i za każdym razem wychodzę '
      u'z salonu zachwycona. Ostatnio skorzystałam z botoksu na włosy — efekt '
-     u'przerósł moje oczekiwania! Włosy są gładkie, miękkie, lśniące.'),
-    (u'Teresa Bajor',
-     u'Z usług Pani Agnieszki korzystam od wielu lat i zawsze wychodzę zadowolona, '
-     u'włosy są uporządkowane, wypielęgnowane, wystylizowane, a ja czuję się '
+     u'przerósł moje oczekiwania! Włosy są gładkie, miękkie, lśniące i wyglądają '
+     u'na zdecydowanie zdrowsze.'),
+    (u'Teresa Bajor', u'11 miesięcy temu',
+     u'Z usług Pani Agnieszki korzystam od wielu lat i zawsze wychodzę zadowolona. '
+     u'Włosy są uporządkowane, wypielęgnowane, wystylizowane, a ja czuję się '
      u'wyśmienicie.'),
-    (u'Maria Różycka',
+    (u'Maria Różycka', u'11 miesięcy temu',
      u'Do Pani Agnieszki trafiłam dwa lata temu przez przypadek. Moja wieloletnia '
      u'fryzjerka wyjechała na stałe z Polski i szukałam nowego zakładu fryzjerskiego. '
      u'Ten, do którego trafiłam, nie spełnił moich oczekiwań.'),
 ]
 
-LINK_GOOGLE = (u'https://www.google.com/maps/place/New+Age+Studio/'
-               u'@50.8196257,19.1136929,17z/data=!4m8!3m7'
-               u'!1s0x4710b5ce3d07422f:0x4cc4e3755647bc1!9m1!1b1')
+LINK_GOOGLE = u'https://maps.app.goo.gl/jo2415Nfnjxt4YGC6'
+LINK_IG = u'https://www.instagram.com/new_age_lewandowska'
+LINK_FB = u'https://www.facebook.com/profile.php?id=100057636820418'
 
 
 def karty_opinii(ile=None, odnosnik=None):
-    """Na stronie glownej karty prowadza do zakladki z opiniami — inaczej
-    goscia nic nie zabiera dalej i utyka na trzech cytatach."""
+    """Szerokie karty w jednej kolumnie — imie, data, gwiazdki, tresc.
+    Wczesniej byly trzy waskie kolumny z drobnym tekstem i wygladalo to zle."""
     lista = OPINIE if ile is None else OPINIE[:ile]
-    if odnosnik:
-        return u'\n      '.join(
-            u'<a class="opinia opinia-klik" href="%s">'
-            u'<div class="gwiazdki" aria-label="5 na 5">★★★★★</div>'
-            u'<p>%s</p><p class="kto">%s · Google</p>'
-            u'<span class="opinia-wiecej">Przeczytaj wszystkie</span></a>'
-            % (odnosnik, tresc, autor) for autor, tresc in lista)
-    return u'\n      '.join(
-        u'<article class="opinia"><div class="gwiazdki" aria-label="5 na 5">★★★★★</div>'
-        u'<p>%s</p><p class="kto">%s · Google</p></article>' % (tresc, autor)
-        for autor, tresc in lista)
+    out = []
+    for autor, data, tresc in lista:
+        out.append(
+            u'<article class="opinia">\n'
+            u'        <div class="opinia-glowa">\n'
+            u'          <span class="opinia-kto">%s</span>\n'
+            u'          <span class="opinia-data">%s</span>\n'
+            u'        </div>\n'
+            u'        <p class="gwiazdki" aria-label="Ocena: 5 na 5">★★★★★</p>\n'
+            u'        <p class="opinia-tresc">%s</p>\n'
+            u'      </article>' % (autor, data, tresc))
+    return u'\n      '.join(out)
 
 
 # ─────────────────────────────────────────────────────────────────
@@ -227,16 +240,20 @@ def blok_kontaktu(naglowek, zdanie):
     <p class="zaproszenie-lead">%s</p>
     <div class="zaproszenie-akcje">
       <a class="btn btn-ciemny" href="tel:%s">Zadzwoń: %s</a>
-      <a class="btn btn-duch" href="https://www.instagram.com/new_age_lewandowska"
-         target="_blank" rel="noopener">Napisz na Instagramie</a>
+      <a class="btn btn-duch" href="%s" target="_blank" rel="noopener">Napisz na Instagramie</a>
     </div>
     <p class="zaproszenie-drobne">
       Rozmowa nic nie kosztuje i do niczego nie zobowiązuje.
       Cenę poznasz przed zabiegiem, nie po.
     </p>
+    <div class="spolecznosci">
+      <span>Najświeższe prace i wolne terminy wrzucam tutaj:</span>
+      <a href="%s" target="_blank" rel="noopener">Instagram</a>
+      <a href="%s" target="_blank" rel="noopener">Facebook</a>
+    </div>
   </div>
 </section>
-""" % (naglowek, zdanie, TEL_LINK, TEL_POKAZ)
+""" % (naglowek, zdanie, TEL_LINK, TEL_POKAZ, LINK_IG, LINK_IG, LINK_FB)
 
 
 
@@ -510,7 +527,18 @@ SZKIELET = u"""<!DOCTYPE html>
     "addressCountry": "PL"
   },
   "geo": { "@type": "GeoCoordinates", "latitude": 50.8196257, "longitude": 19.1136929 },
-  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "53" },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0",
+    "reviewCount": "53", "bestRating": "5" },
+  "review": %(opinie_dane)s,
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog", "name": "Us\u0142ugi fryzjerskie",
+    "itemListElement": [
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Koloryzacja w\u0142os\u00f3w \u2014 balayage, rozja\u015bnianie, refleksy"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Strzy\u017cenie damskie i m\u0119skie"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Modelowanie i upi\u0119cia okoliczno\u015bciowe"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Piel\u0119gnacja i regeneracja w\u0142os\u00f3w"}}
+    ]
+  },
   "priceRange": "$$",
   "sameAs": [
     "https://www.instagram.com/new_age_lewandowska",
@@ -635,6 +663,22 @@ def stopka_menu(korzen):
         u'<a href="%s%s">%s</a>' % (korzen, s, n) for _, n, s in MENU)
 
 
+def opinie_dla_wyszukiwarki():
+    """Opinie opisane danymi strukturalnymi. To one sprawiaja, ze w wynikach
+    Google przy stronie pojawiaja sie gwiazdki — a wynik z gwiazdkami jest
+    klikany znacznie czesciej niz sam tytul."""
+    import json
+    poz = []
+    for autor, data, tresc in OPINIE[:6]:
+        poz.append({
+            '@type': 'Review',
+            'author': {'@type': 'Person', 'name': autor},
+            'reviewRating': {'@type': 'Rating', 'ratingValue': '5', 'bestRating': '5'},
+            'reviewBody': tresc,
+        })
+    return json.dumps(poz, ensure_ascii=False)
+
+
 def okruszki(nazwa, sciezka):
     """Sciezka nawigacyjna dla wyszukiwarek — pokazuje sie w wynikach
     zamiast golego adresu."""
@@ -658,6 +702,7 @@ def zbuduj(klucz, tytul, opis, tresc, korzen, sciezka='', nazwa=''):
         'baza': BAZA,
         'kanon': BAZA + (sciezka + '/' if sciezka else ''),
         'okruszki': okruszki(nazwa, sciezka),
+        'opinie_dane': opinie_dla_wyszukiwarki(),
     }
 
 
@@ -688,7 +733,15 @@ def strona_start():
           <a class="btn" href="tel:%(tel_link)s">Umów wizytę</a>
           <a class="btn btn-duch" href="o-mnie/">Poznaj mnie</a>
         </div>
-        <div class="odznaka"><b>5,0</b> ★ · 53 opinie w Google</div>
+        <a class="odznaka" href="opinie/">
+          <b>5,0</b> <span class="odznaka-gw">★</span> · 53 opinie w Google
+          <span class="odznaka-strzalka">→</span>
+        </a>
+        <p class="hero-drobne">
+          <a href="opinie/#wystaw">Byłaś u mnie? Wystaw opinię</a> ·
+          <a href="https://www.instagram.com/new_age_lewandowska" target="_blank" rel="noopener">Instagram</a> ·
+          <a href="https://www.facebook.com/profile.php?id=100057636820418" target="_blank" rel="noopener">Facebook</a>
+        </p>
       </div>
       <div class="hero-foto">
         <img src="img/hero.jpg" alt="Agnieszka Lewandowska" width="1024" height="1024" fetchpriority="high">
@@ -790,7 +843,33 @@ def strona_start():
   </div>
 </section>
 
-<section class="ciemno">
+<section class="ciemno" id="social">
+  <div class="wrap">
+    <div class="social-blok">
+      <div>
+        <p class="nadpis">Na bieżąco</p>
+        <h2>Najnowsze prace <span class="kursywa">wrzucam tutaj</span>.</h2>
+        <p style="color:var(--srebro-jasne); max-width:52ch">
+          Metamorfozy, efekty koloryzacji i wolne terminy pojawiają się najpierw
+          na Instagramie i Facebooku — strona nadąża później. Jeśli chcesz
+          zobaczyć, co robię w tym tygodniu, zajrzyj tam.
+        </p>
+      </div>
+      <div class="social-przyciski">
+        <a class="social-btn" href="https://www.instagram.com/new_age_lewandowska" target="_blank" rel="noopener">
+          <span class="social-nazwa">Instagram</span>
+          <span class="social-uchwyt">@new_age_lewandowska</span>
+        </a>
+        <a class="social-btn" href="https://www.facebook.com/profile.php?id=100057636820418" target="_blank" rel="noopener">
+          <span class="social-nazwa">Facebook</span>
+          <span class="social-uchwyt">New Age Studio</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ciemno" style="padding-top:0">
   <div class="wrap">
     <p class="nadpis">Opinie</p>
     <h2>Pięć na pięć, <span class="kursywa">53 razy</span>.</h2>
@@ -801,9 +880,9 @@ def strona_start():
     <div class="opinie-siatka">
       %(opinie)s
     </div>
-    <div class="hero-akcje" style="margin-top:2.4rem">
-      <a class="btn btn-ciemny" href="opinie/#wystaw">Wystaw opinię</a>
-      <a class="btn btn-duch" href="opinie/">Przeczytaj wszystkie</a>
+    <div class="hero-akcje" style="margin-top:2.6rem">
+      <a class="btn btn-ciemny" href="opinie/">Przeczytaj wszystkie opinie</a>
+      <a class="btn btn-duch" href="opinie/#wystaw">Wystaw opinię</a>
     </div>
   </div>
 </section>
@@ -1157,10 +1236,17 @@ u"""
     <div class="opinie-siatka" style="margin-top:0">
       %(opinie)s
     </div>
-    <p style="color:var(--srebro-ciemne); font-size:.88rem; margin-top:1.6rem">
-      Opinie przepisane z profilu Google — dosłownie, bez zmian.
-      <a href="%(link)s" target="_blank" rel="noopener"
-         style="color:var(--srebro-jasne)">Zobacz wszystkie 53 w Google</a>.
+    <div class="google-pasek">
+      <div>
+        <span class="google-ocena"><b>5,0</b> ★★★★★</span>
+        <span class="google-ile">53 opinie w Google</span>
+      </div>
+      <a class="btn btn-ciemny" href="%(link)s" target="_blank" rel="noopener">
+        Zobacz wszystkie w Google
+      </a>
+    </div>
+    <p style="color:var(--srebro-ciemne); font-size:.86rem; margin-top:1.2rem">
+      Opinie powyżej są przepisane z profilu Google dosłownie, bez zmian.
     </p>
 
     <div class="form-opinia" id="wystaw">
@@ -1499,30 +1585,30 @@ u"""
 
 # ─────────────────────────────────────────────────────────────────
 STRONY = [
-    ('start', '', u'new age Lewandowska — fryzjerstwo, Częstochowa',
+    ('start', '', u'Fryzjer Częstochowa — koloryzacja i strzyżenie | new age Lewandowska',
      u'Salon fryzjerski new age w Częstochowie. Koloryzacja, strzyżenie i modelowanie '
      u'u Agnieszki Lewandowskiej — z dwudziestoletnim doświadczeniem.', strona_start, ''),
-    ('o-mnie', 'o-mnie', u'O mnie — Agnieszka Lewandowska | new age',
+    ('o-mnie', 'o-mnie', u'Agnieszka Lewandowska — fryzjerka z Częstochowy, 20 lat doświadczenia',
      u'Dwadzieścia lat pracy, dyplomy Toni&Guy i Saks, cztery szkolenia '
      u'w Akademii L’Oréal Professionnel.', strona_o_mnie, '../'),
-    ('uslugi', 'uslugi', u'Usługi — koloryzacja, strzyżenie, modelowanie | new age',
+    ('uslugi', 'uslugi', u'Koloryzacja i strzyżenie Częstochowa — cennik po rozmowie | new age',
      u'Koloryzacja, strzyżenie, modelowanie i pielęgnacja w Częstochowie. '
      u'Cena ustalana po rozmowie, zawsze przed zabiegiem.', strona_uslugi, '../'),
-    ('portfolio', 'portfolio', u'Portfolio — sesje i publikacje | new age Lewandowska',
+    ('portfolio', 'portfolio', u'Portfolio fryzjerskie — sesje i publikacje | new age Częstochowa',
      u'Stylizacje fryzur do magazynu SPLOT i sesji katalogowych — praca '
      u'Agnieszki Lewandowskiej, fryzjerki z Częstochowy. Sesje wizerunkowe i portfolio.', strona_portfolio, '../'),
     ('porady', 'porady', u'Poradnik — pielęgnacja i koloryzacja włosów | new age Częstochowa',
      u'Jak naprawić włosy po domowej koloryzacji, ile trzyma balayage, jak dbać '
      u'o blond. Praktyczne odpowiedzi od fryzjerki z Częstochowy.',
      strona_porady, '../'),
-    ('opinie', 'opinie', u'Opinie klientek | new age Lewandowska',
+    ('opinie', 'opinie', u'Opinie o salonie — fryzjer Częstochowa, ocena 5,0 | new age Lewandowska',
      u'Ocena 5,0 z 53 opinii w Google. Co mówią klientki salonu new age '
      u'w Częstochowie o koloryzacji, strzyżeniu i doradztwie. Dodaj swoją opinię.', strona_opinie, '../'),
-    ('prywatnosc', 'prywatnosc', u'Polityka prywatności | new age Lewandowska',
+    ('prywatnosc', 'prywatnosc', u'Polityka prywatności | new age Lewandowska, Częstochowa',
      u'Kto przetwarza dane z formularzy salonu new age w Częstochowie, '
      u'jak długo je przechowuje i jakie masz prawa.',
      strona_prywatnosc, '../'),
-    ('kontakt', 'kontakt', u'Kontakt — Częstochowa, ul. Kilińskiego 55 | new age',
+    ('kontakt', 'kontakt', u'Kontakt i wycena — fryzjer Częstochowa, Kilińskiego 55/2 | new age',
      u'Telefon, adres, godziny otwarcia i mapa dojazdu. Kilińskiego 55/2, Częstochowa.', strona_kontakt, '../'),
 ]
 
