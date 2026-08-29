@@ -12,6 +12,26 @@
       "dest": "/p/demo-studio-lawenda/index.html"
     },
     {
+      "src": "/(demo-studio-lawenda-[^/]+/?.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "lawenda-demo.probatum.pl"
+        }
+      ],
+      "dest": "/p/$1"
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "lawenda-demo.probatum.pl"
+        }
+      ],
+      "dest": "/p/demo-studio-lawenda/$1"
+    },
+    {
       "src": "/",
       "has": [
         {
@@ -20,6 +40,26 @@
         }
       ],
       "dest": "/p/demo-kancelaria-zawadzcy/index.html"
+    },
+    {
+      "src": "/(demo-kancelaria-zawadzcy-[^/]+/?.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "kancelaria-demo.probatum.pl"
+        }
+      ],
+      "dest": "/p/$1"
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "kancelaria-demo.probatum.pl"
+        }
+      ],
+      "dest": "/p/demo-kancelaria-zawadzcy/$1"
     },
     {
       "src": "/",
@@ -32,6 +72,26 @@
       "dest": "/p/demo-dom-i-wnetrze/index.html"
     },
     {
+      "src": "/(demo-dom-i-wnetrze-[^/]+/?.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "remonty-demo.probatum.pl"
+        }
+      ],
+      "dest": "/p/$1"
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "remonty-demo.probatum.pl"
+        }
+      ],
+      "dest": "/p/demo-dom-i-wnetrze/$1"
+    },
+    {
       "src": "/",
       "has": [
         {
@@ -40,6 +100,26 @@
         }
       ],
       "dest": "/p/demo-serwis-podkarpacki/index.html"
+    },
+    {
+      "src": "/(demo-serwis-podkarpacki-[^/]+/?.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "warsztat-demo.probatum.pl"
+        }
+      ],
+      "dest": "/p/$1"
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "warsztat-demo.probatum.pl"
+        }
+      ],
+      "dest": "/p/demo-serwis-podkarpacki/$1"
     },
     {
       "handle": "filesystem"
