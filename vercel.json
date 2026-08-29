@@ -12,6 +12,16 @@
       "dest": "/p/demo-studio-lawenda/index.html"
     },
     {
+      "src": "/p/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "lawenda-demo.probatum.pl"
+        }
+      ],
+      "dest": "/p/$1"
+    },
+    {
       "src": "/(demo-studio-lawenda-[^/]+/?.*)",
       "has": [
         {
@@ -40,6 +50,16 @@
         }
       ],
       "dest": "/p/demo-kancelaria-zawadzcy/index.html"
+    },
+    {
+      "src": "/p/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "kancelaria-demo.probatum.pl"
+        }
+      ],
+      "dest": "/p/$1"
     },
     {
       "src": "/(demo-kancelaria-zawadzcy-[^/]+/?.*)",
@@ -72,6 +92,16 @@
       "dest": "/p/demo-dom-i-wnetrze/index.html"
     },
     {
+      "src": "/p/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "remonty-demo.probatum.pl"
+        }
+      ],
+      "dest": "/p/$1"
+    },
+    {
       "src": "/(demo-dom-i-wnetrze-[^/]+/?.*)",
       "has": [
         {
@@ -100,6 +130,16 @@
         }
       ],
       "dest": "/p/demo-serwis-podkarpacki/index.html"
+    },
+    {
+      "src": "/p/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "warsztat-demo.probatum.pl"
+        }
+      ],
+      "dest": "/p/$1"
     },
     {
       "src": "/(demo-serwis-podkarpacki-[^/]+/?.*)",
