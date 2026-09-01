@@ -210,10 +210,39 @@
             </select>
           </label>
         </div>
-        <label>Co zamawiasz
-          <textarea name="order" rows="3" placeholder="np. chleb żytni na zakwasie x1, bułki maślane x6" required></textarea>
+        <label style="margin-bottom:10px">Co zamawiasz — kliknij + przy wybranym pieczywie</label>
+        <div class="order-picker" id="order-picker">
+          <div class="pick-item" data-name="Chleb żytni na zakwasie" data-price="16">
+            <span class="pick-name">Chleb żytni na zakwasie<span class="pick-price">16 zł / szt.</span></span>
+            <div class="qty"><button type="button" class="qty-btn minus" aria-label="Mniej: Chleb żytni na zakwasie">−</button><span class="qty-val">0</span><button type="button" class="qty-btn plus" aria-label="Więcej: Chleb żytni na zakwasie">+</button></div>
+          </div>
+          <div class="pick-item" data-name="Bochenek pszenno-żytni" data-price="14">
+            <span class="pick-name">Bochenek pszenno-żytni<span class="pick-price">14 zł / szt.</span></span>
+            <div class="qty"><button type="button" class="qty-btn minus" aria-label="Mniej: Bochenek pszenno-żytni">−</button><span class="qty-val">0</span><button type="button" class="qty-btn plus" aria-label="Więcej: Bochenek pszenno-żytni">+</button></div>
+          </div>
+          <div class="pick-item" data-name="Chleb wieloziarnisty" data-price="18">
+            <span class="pick-name">Chleb wieloziarnisty<span class="pick-price">18 zł / szt.</span></span>
+            <div class="qty"><button type="button" class="qty-btn minus" aria-label="Mniej: Chleb wieloziarnisty">−</button><span class="qty-val">0</span><button type="button" class="qty-btn plus" aria-label="Więcej: Chleb wieloziarnisty">+</button></div>
+          </div>
+          <div class="pick-item" data-name="Bułka maślana" data-price="6">
+            <span class="pick-name">Bułka maślana<span class="pick-price">6 zł / szt.</span></span>
+            <div class="qty"><button type="button" class="qty-btn minus" aria-label="Mniej: Bułka maślana">−</button><span class="qty-val">0</span><button type="button" class="qty-btn plus" aria-label="Więcej: Bułka maślana">+</button></div>
+          </div>
+          <div class="pick-item" data-name="Rogal z nadzieniem" data-price="9">
+            <span class="pick-name">Rogal z nadzieniem<span class="pick-price">9 zł / szt.</span></span>
+            <div class="qty"><button type="button" class="qty-btn minus" aria-label="Mniej: Rogal z nadzieniem">−</button><span class="qty-val">0</span><button type="button" class="qty-btn plus" aria-label="Więcej: Rogal z nadzieniem">+</button></div>
+          </div>
+          <div class="pick-item" data-name="Drożdżówka z kruszonką" data-price="8">
+            <span class="pick-name">Drożdżówka z kruszonką<span class="pick-price">8 zł / szt.</span></span>
+            <div class="qty"><button type="button" class="qty-btn minus" aria-label="Mniej: Drożdżówka z kruszonką">−</button><span class="qty-val">0</span><button type="button" class="qty-btn plus" aria-label="Więcej: Drożdżówka z kruszonką">+</button></div>
+          </div>
+        </div>
+        <p class="order-summary" id="order-summary">Nie wybrałeś jeszcze żadnego produktu.</p>
+        <label>Uwagi <span style="font-weight:400;font-style:italic">(opcjonalnie — np. tort, placek na zamówienie, „bez maku”)</span>
+          <textarea name="notes" rows="2" placeholder="Tu możesz dopisać coś spoza listy"></textarea>
         </label>
-        <button class="btn big" type="submit">Zamawiam — odbiór osobisty</button>
+        <input type="hidden" name="order" value="">
+        <button class="btn big" type="submit" id="order-submit" disabled>Wybierz produkt, żeby zamówić</button>
         <p class="order-status" id="order-status" role="status" aria-live="polite"></p>
       </form>
     </div>
