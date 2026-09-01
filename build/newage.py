@@ -12,7 +12,7 @@ JAK URUCHOMIC
 
 CO POWSTAJE
     p/newage-lewandowska/index.html          Start
-    p/newage-lewandowska/o-mnie/index.html   O mnie + osiem dyplomow
+    p/newage-lewandowska/o-mnie/index.html   O mnie + dwanascie dyplomow
     p/newage-lewandowska/uslugi/index.html   Uslugi i dlaczego nie ma cennika
     p/newage-lewandowska/portfolio/index.html Sesje i praca w magazynie
     p/newage-lewandowska/opinie/index.html   Opinie + formularz
@@ -78,10 +78,13 @@ def menu_mobilne(aktywna, korzen):
 
 # ─────────────────────────────────────────────────────────────────
 #  DYPLOMY
-#  Ponizej osiem — te, ktore Agnieszka uznala za najwazniejsze.
-#  Wszystkich jest okolo dwudziestu.
+#  Dwanascie — wszystkie skany, ktore przeslala Agnieszka (wrzesien 2026).
+#  Wszystkich fizycznie jest okolo dwudziestu.
 # ─────────────────────────────────────────────────────────────────
 DYPLOMY = [
+    ('2002-deja-vu-kublin', u'2002', u'Akademia Déjà Vu i Kublin',
+     u'Staż strzyżeń w warszawskiej akademii — pierwszy dyplom w karierze, '
+     u'jeszcze na nazwisko panieńskie Dziuk. Tu zaczęła się nauka zawodu.'),
     ('2003-toni-guy',       u'2003', u'Toni&amp;Guy Academy',
      u'Brytyjska szkoła, przez którą przeszły pokolenia fryzjerów na całym '
      u'świecie — od lat sześćdziesiątych wyznacza to, co w strzyżeniu uchodzi '
@@ -107,6 +110,9 @@ DYPLOMY = [
      u'Fryzjer brytyjskich gwiazd, ambasador L’Oréal Professionnel w Wielkiej '
      u'Brytanii, twórca fryzur na okładki i wybiegi. Certyfikat podpisał '
      u'osobiście — jego podpis widać na zdjęciu.'),
+    ('2021-loreal-katowice', u'2021', u'L’Oréal — Strzyżenia',
+     u'Szkolenie z technik strzyżenia w katowickiej Akademii L’Oréal '
+     u'Professionnel, prowadzone przez Edytę Szymańską.'),
     ('2022-berni-ottjes',   u'2022', u'Master Class — Berni Ottjes',
      u'Holenderski kolorysta z tytułem International Global Artist L’Oréal. '
      u'Część warsztatowa: techniki koloryzacji ćwiczone na modelkach, '
@@ -115,6 +121,12 @@ DYPLOMY = [
      u'Międzynarodowa artystka L’Oréal, jedna z najbardziej rozpoznawalnych '
      u'kolorystek na świecie. Teoria koloru — dlaczego pigment zachowuje się '
      u'tak, a nie inaczej, i co z tego wynika przy fotelu.'),
+    ('2023-salon-expert',   u'2023', u'Salon Expert — L’Oréal Professionnel',
+     u'Wyróżnienie dla salonu, nie osobisty dyplom — dowód, że new age należy '
+     u'do prestiżowej grupy salonów-partnerów L’Oréal Professionnel Paris.'),
+    ('2026-loreal-wielowymiarowe', u'2026', u'L’Oréal — Wielowymiarowe Techniki',
+     u'Najświeższe szkolenie, kwiecień 2026 — wielowymiarowe techniki koloryzacji '
+     u'zgodnie z najnowszymi standardami L’Oréal Professionnel.'),
 ]
 
 # Podpisy z konkretem — „Studio" nic nie mowi. Kazdy ma tytul i drugi
@@ -1205,7 +1217,7 @@ def strona_start():
         Zanim cokolwiek zrobię z Twoimi włosami, rozmawiamy. O tym, co chcesz osiągnąć,
         co da się osiągnąć na Twoich włosach, ile to potrwa i ile będzie kosztować.
       </p>
-      <a class="link-dalej" href="o-mnie/">Cała droga i osiem dyplomów</a>
+      <a class="link-dalej" href="o-mnie/">Cała droga i dwanaście dyplomów</a>
     </div>
   </div>
 </section>
@@ -1412,7 +1424,7 @@ u"""
 
 <div class="mysl ciemno">
   <blockquote>Ćwierć wieku. Osiemnaście lat własnego salonu. Zero zgadywania.</blockquote>
-  <cite>Droga zawodowa — 2003–2023</cite>
+  <cite>Droga zawodowa — 2002–2026</cite>
 </div>
 
 <section id="dyplomy" style="padding-top:clamp(28px,4vw,52px)">
@@ -1420,10 +1432,9 @@ u"""
     <p class="nadpis">Droga</p>
     <h2>Od pierwszego dyplomu <span class="kursywa">do dziś</span>.</h2>
     <p style="color:var(--srebro-jasne); max-width:58ch">
-      Dyplomów uzbierało się przez te lata około dwudziestu. Poniżej osiem,
-      które są dla mnie najważniejsze — każdy można powiększyć i przeczytać.
-      Oryginały wiszą w salonie; dwa najstarsze wystawione są jeszcze
-      na nazwisko panieńskie, Dziuk.
+      Dyplomów uzbierało się przez te lata około dwudziestu. Poniżej dwanaście —
+      każdy można powiększyć i przeczytać. Oryginały wiszą w salonie; dwa
+      najstarsze wystawione są jeszcze na nazwisko panieńskie, Dziuk.
     </p>
 """ + u''.join(rzedy) + u"""
   </div>
