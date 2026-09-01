@@ -1156,7 +1156,7 @@ def strona_start():
         <h1>Włosy,<br>które <em>rozumiem</em>.</h1>
         <p class="hero-lead">
           Agnieszka Lewandowska. Ponad dwadzieścia pięć lat przy fotelu, tytuł mistrza fryzjerstwa, dyplomy Toni&amp;Guy
-          i Saks, cztery szkolenia w Akademii L'Oréal Professionnel — u artystów,
+          i Saks, wiele szkoleń w Akademii L'Oréal Professionnel — u artystów,
           którzy uczą fryzjerów na całym świecie.
         </p>
         <div class="hero-akcje">
@@ -1196,9 +1196,10 @@ def strona_start():
       <p class="nadpis">O mnie</p>
       <h2>Nie zgaduję. <span class="kursywa">Wiem, co robię</span> — i umiem to wytłumaczyć.</h2>
       <p>
-        Zaczynałam w 2003 roku dyplomem Toni&amp;Guy, dwa lata później szkoliłam się
-        w Saks Academies — to brytyjskie szkoły fryzjerstwa, które prowadziły wtedy
-        zajęcia także w Polsce. Od tamtej pory nie przestałam się uczyć.
+        Zaczynałam w 2002 roku stażem w warszawskiej Akademii Déjà Vu i Kublin, rok później
+        dyplomem Toni&amp;Guy, a dwa lata potem szkoliłam się w Saks Academies — to brytyjskie
+        szkoły fryzjerstwa, które prowadziły wtedy zajęcia także w Polsce. Wiele zawdzięczam
+        tamtym pierwszym latom nauki. Od tamtej pory nie przestałam się uczyć.
       </p>
       <p>
         Zanim cokolwiek zrobię z Twoimi włosami, rozmawiamy. O tym, co chcesz osiągnąć,
@@ -1214,7 +1215,7 @@ def strona_start():
     <p class="nadpis">Dowód</p>
     <h2>Ćwierć wieku, <span class="kursywa">dwadzieścia dyplomów</span>.</h2>
     <p style="color:var(--srebro-jasne); max-width:56ch">
-      Toni&amp;Guy, Saks, uprawnienia instruktorskie, cztery szkolenia
+      Toni&amp;Guy, Saks, uprawnienia instruktorskie, wiele szkoleń
       w Akademii L'Oréal Professionnel — u Adama Reeda, Berniego Ottjesa i Min Kim.
       Wszystkie do obejrzenia, także w salonie.
     </p>
@@ -1359,7 +1360,7 @@ def strona_o_mnie():
             u'Nie zgaduję. <span class="kursywa">Wiem, co robię</span>.',
             u'Agnieszka Lewandowska — mistrzyni fryzjerstwa. Ponad dwadzieścia pięć lat '
             u'przy fotelu, osiemnaście lat własnego salonu i studia pedagogiczne, '
-            u'których wciąż nie skończyła — bo nie przestała się uczyć.') +
+            u'których wciąż nie skończyłam — bo nie przestałam się uczyć.') +
 u"""
 <section style="padding-top:0">
   <div class="wrap dwie odwrot">
