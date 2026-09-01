@@ -1,0 +1,163 @@
+/* ============================================================
+   Piekarnia Kłos — arkusz stylów
+   Paleta z Business DNA wygenerowanego w Pomelli: piaskowy +
+   ciemny brąz jako akcent, kremowe tło. Fonty: EB Garamond
+   (nagłówki) + Merriweather (tekst) — te same, które dobrało
+   narzędzie przy budowie marki.
+   ============================================================ */
+
+:root{
+  --ink:#3E2723;             /* tekst główny — ciepły ciemny brąz */
+  --ink-soft:#6B5347;        /* tekst pomocniczy */
+  --brand:#5D4037;           /* brąz — marka, CTA */
+  --brand-deep:#3E2723;
+  --sand:#E2CA9C;            /* piaskowy — akcent, „Kłos” w logo */
+  --cream:#FFF9E3;           /* tło strony */
+  --wheat:#F5DEB3;           /* sekcje wyróżnione */
+  --line:#E7D9BE;
+  --white:#fff;
+  --wrap:min(1180px, calc(100% - 40px));
+  --wrap-narrow:min(760px, calc(100% - 40px));
+  --r:16px;
+  --r-sm:10px;
+  --shadow:0 24px 56px -22px rgba(62,39,35,.28);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+body{
+  margin:0;
+  overflow-x:clip;
+  max-width:100%;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:"Merriweather",Georgia,serif;
+  font-size:17px;
+  line-height:1.75;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+
+h1,h2,h3,.display{
+  font-family:"EB Garamond",Georgia,serif;
+  font-weight:600;
+  line-height:1.1;
+  margin:0 0 .4em;
+  color:var(--ink);
+}
+h1{font-size:clamp(2.6rem,6vw,4.4rem)}
+h2{font-size:clamp(1.9rem,3.6vw,2.8rem)}
+h3{font-size:clamp(1.2rem,1.8vw,1.5rem)}
+.eyebrow{
+  font-family:"EB Garamond",Georgia,serif;
+  font-style:italic;
+  color:var(--brand);
+  letter-spacing:.02em;
+  font-size:1.05rem;
+  margin-bottom:.5em;
+  display:block;
+}
+
+.skip-link{position:absolute;left:-999px;top:0;background:var(--brand);color:var(--white);padding:12px 18px;border-radius:0 0 var(--r-sm) 0;z-index:200}
+.skip-link:focus{left:0}
+
+/* ---------- header ---------- */
+.site-header{position:sticky;top:0;z-index:100;background:rgba(255,249,227,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{width:var(--wrap);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 0}
+.brand{display:flex;align-items:baseline;gap:2px;font-family:"EB Garamond",Georgia,serif;font-size:1.4rem;font-weight:600;color:var(--brand-deep)}
+.brand span{color:var(--sand)}
+.nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.nav-links a{font-size:.95rem;color:var(--ink-soft);transition:color .2s var(--ease)}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--brand)}
+.nav-cta{background:var(--brand);color:var(--white);padding:10px 20px;border-radius:999px;font-size:.9rem;white-space:nowrap}
+.nav-cta:hover{background:var(--brand-deep)}
+.nav-toggle{display:none}
+@media (max-width:760px){
+  .nav-links{position:fixed;inset:64px 0 0 0;background:var(--cream);flex-direction:column;padding:32px 24px;gap:18px;transform:translateY(-8px);opacity:0;pointer-events:none;transition:all .25s var(--ease)}
+  .nav-links.open{transform:none;opacity:1;pointer-events:auto}
+  .nav-toggle{display:block;background:none;border:1px solid var(--line);border-radius:var(--r-sm);padding:8px 12px;color:var(--ink)}
+}
+
+/* ---------- hero ---------- */
+.hero{width:var(--wrap);margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;padding:64px 0 72px}
+.hero p.lede{font-style:italic;color:var(--ink-soft);font-size:1.15rem;margin:.6em 0 0}
+.hero-img{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.hero-img img,.about-img img,.offer-photo img,.contact-photo img{width:100%}
+@media (max-width:860px){.hero{grid-template-columns:1fr;padding:40px 0 48px;gap:28px}}
+
+/* ---------- sections ---------- */
+section{padding:72px 0}
+.section-title{width:var(--wrap);margin:0 auto 40px;text-align:center}
+.section-title .line{width:60px;height:2px;background:var(--sand);margin:14px auto 0}
+
+.about{background:var(--wheat)}
+.about-grid{width:var(--wrap);margin:0 auto;display:grid;grid-template-columns:1fr 1.15fr;gap:52px;align-items:center}
+.about-img{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.quote{border-left:3px solid var(--brand);background:rgba(255,255,255,.5);padding:18px 22px;margin-top:22px;font-style:italic;color:var(--brand-deep)}
+@media (max-width:860px){.about-grid{grid-template-columns:1fr}}
+
+.values{width:var(--wrap);margin:0 auto}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:8px}
+.value-card{background:var(--wheat);border-radius:var(--r);overflow:hidden;text-align:center}
+.value-card img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.value-card .body{padding:24px 22px 30px}
+.value-card h3{color:var(--brand-deep)}
+.value-card p{color:var(--ink-soft);font-size:.95rem;margin:0}
+@media (max-width:760px){.values-grid{grid-template-columns:1fr}}
+
+.offer{background:var(--brand);color:var(--cream)}
+.offer .section-title h2,.offer .section-title{color:var(--cream)}
+.offer .section-title .line{background:var(--sand)}
+.offer-grid{width:var(--wrap);margin:0 auto;display:grid;grid-template-columns:1fr 1fr 0.9fr;gap:44px;align-items:start}
+.offer h3{color:var(--sand);font-size:1.3rem;border-bottom:1px solid rgba(255,249,227,.25);padding-bottom:10px;margin-bottom:18px}
+.offer-item{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid rgba(255,249,227,.12)}
+.offer-item:last-child{border-bottom:none}
+.offer-item .name{font-family:"EB Garamond",Georgia,serif;font-weight:600;color:var(--cream)}
+.offer-item .desc{display:block;font-style:italic;font-size:.85rem;color:rgba(255,249,227,.65);margin-top:2px}
+.offer-item .price{font-family:"EB Garamond",Georgia,serif;font-size:1.15rem;white-space:nowrap;color:var(--sand)}
+.offer-photo{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+@media (max-width:960px){.offer-grid{grid-template-columns:1fr}.offer-photo{order:-1;max-width:420px}}
+
+.gallery{width:var(--wrap);margin:0 auto}
+.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+.gallery-grid img{border-radius:var(--r-sm);width:100%;height:100%;object-fit:cover}
+.g-tall{grid-row:span 2}
+.g-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:700px){.gallery-grid{grid-template-columns:1fr}.g-tall{grid-row:auto}}
+
+.testimonials{background:var(--wheat)}
+.t-grid{width:var(--wrap);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.t-card{background:var(--cream);border-radius:var(--r-sm);padding:26px 24px;position:relative}
+.t-card .mark{font-family:"EB Garamond",Georgia,serif;font-size:2.4rem;color:var(--sand);line-height:1;display:block;margin-bottom:6px}
+.t-card p{font-style:italic;color:var(--ink-soft);margin:0 0 14px;font-size:.98rem}
+.t-card .who{font-family:"EB Garamond",Georgia,serif;font-weight:600;color:var(--brand-deep);letter-spacing:.03em;font-size:.85rem;text-transform:uppercase}
+@media (max-width:860px){.t-grid{grid-template-columns:1fr}}
+
+.contact{width:var(--wrap);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.hours dt{font-family:"EB Garamond",Georgia,serif;color:var(--brand);letter-spacing:.08em;text-transform:uppercase;font-size:.85rem;margin-bottom:10px}
+.hours dd{margin:0 0 6px;font-size:1.05rem}
+.contact-links{margin-top:22px;display:flex;flex-wrap:wrap;gap:14px}
+.btn{display:inline-block;background:var(--brand);color:var(--cream);padding:12px 24px;border-radius:999px;font-family:"EB Garamond",Georgia,serif;font-weight:600}
+.btn:hover{background:var(--brand-deep)}
+.btn.ghost{background:transparent;border:1px solid var(--brand);color:var(--brand)}
+.contact-photo{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+
+/* ---------- footer ---------- */
+.site-footer{background:var(--brand-deep);color:var(--cream);padding:56px 0 28px}
+.footer-grid{width:var(--wrap);margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.footer-grid .brand{color:var(--cream)}
+.footer-grid p{color:rgba(255,249,227,.7);font-size:.92rem;max-width:34ch}
+.footer-col h4{font-family:"EB Garamond",Georgia,serif;color:var(--sand);letter-spacing:.06em;text-transform:uppercase;font-size:.82rem;margin-bottom:14px}
+.footer-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.footer-col a{color:rgba(255,249,227,.85);font-size:.95rem}
+.footer-col a:hover{color:var(--sand)}
+.footer-bottom{width:var(--wrap);margin:36px auto 0;padding-top:20px;border-top:1px solid rgba(255,249,227,.15);font-size:.8rem;color:rgba(255,249,227,.5)}
+@media (max-width:760px){.footer-grid{grid-template-columns:1fr;gap:28px}}
+
+.fictional-note{background:var(--ink);color:rgba(255,249,227,.75);font-size:.78rem;text-align:center;padding:8px 16px}
+.fictional-note a{text-decoration:underline}
