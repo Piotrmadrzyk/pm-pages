@@ -633,7 +633,7 @@ body{padding-bottom:0}
 }
 .usluga-duza.dyplom .u-foto img{
   width:100%; aspect-ratio:auto; height:auto; object-fit:contain;
-  max-height:440px; margin:0 auto;
+  max-height:620px; margin:0 auto;
 }
 .usluga-duza.dyplom .u-foto .powieksz:hover{border-color:rgba(255,255,255,.34)}
 .usluga-duza.dyplom .u-numer{
@@ -669,8 +669,10 @@ body{padding-bottom:0}
 }
 
 /* Dyplom bez wymiarów potrafił mieć zerową wysokość, zanim się
-   doładował — przez to pierwszy rząd wyglądał na pusty. */
-.usluga-duza.dyplom .u-foto img{min-height:220px; background:#f2f2f2}
+   doładował — przez to pierwszy rząd wyglądał na pusty. Tło białe,
+   nie szare — inaczej niedopasowanie proporcji obrazu do ramki
+   pokazywało się jako brzydki szary pasek zamiast wtapiać się w kartę. */
+.usluga-duza.dyplom .u-foto img{min-height:220px; background:var(--biel)}
 
 /* Karty opinii na stronie głównej prowadzą do zakładki z opiniami. */
 .opinia-klik{
