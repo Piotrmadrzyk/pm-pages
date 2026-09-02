@@ -627,12 +627,18 @@ body{padding-bottom:0}
    z drugiej. Wcześniej były siatką na samym dole strony i nikt
    nie łączył ich z opowieścią obok. */
 .usluga-duza.dyplom{align-items:center}
+/* Ramka MUSI opinac sie ciasno wokol zdjecia (fit-content), nie stac
+   sie pelna szerokoscia kolumny — inaczej pionowy dyplom w poziomej
+   kolumnie zostawia wielka pusta bialą płachtę z boku, wygląda jak
+   niewykadrowane, choc sam plik jest przyciety poprawnie. */
+.usluga-duza.dyplom .u-foto{text-align:center}
 .usluga-duza.dyplom .u-foto .powieksz{
-  display:block; width:100%; padding:12px; border:1px solid rgba(255,255,255,.12);
+  display:inline-block; width:auto; max-width:100%; padding:12px;
+  border:1px solid rgba(255,255,255,.12);
   background:var(--biel); cursor:zoom-in; position:relative;
 }
 .usluga-duza.dyplom .u-foto img{
-  width:100%; aspect-ratio:auto; height:auto; object-fit:contain;
+  display:block; width:auto; max-width:100%; height:auto; object-fit:contain;
   max-height:620px; margin:0 auto;
 }
 .usluga-duza.dyplom .u-foto .powieksz:hover{border-color:rgba(255,255,255,.34)}
@@ -672,7 +678,7 @@ body{padding-bottom:0}
    doładował — przez to pierwszy rząd wyglądał na pusty. Tło białe,
    nie szare — inaczej niedopasowanie proporcji obrazu do ramki
    pokazywało się jako brzydki szary pasek zamiast wtapiać się w kartę. */
-.usluga-duza.dyplom .u-foto img{min-height:220px; background:var(--biel)}
+.usluga-duza.dyplom .u-foto img{min-height:220px; min-width:160px; background:var(--biel)}
 
 /* Karty opinii na stronie głównej prowadzą do zakładki z opiniami. */
 .opinia-klik{
