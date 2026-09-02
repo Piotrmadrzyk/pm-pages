@@ -13,7 +13,9 @@ CO ROBI
 Na kazdej stronie kazdego dema:
   1. dokleja pasek sprzedazowy nad stopka — mowi wprost, ze firma jest
      zmyslona, ze strone mozna zamowic, i daje przycisk rezerwacji,
-  2. przestawia maile i telefony na prawdziwe dane Probatum,
+  2. przestawia maile i telefony na prawdziwe dane Probatum — kazde dema
+     ma teraz WLASNY adres (pole 'mail' w DEMA), zeby zgloszenia z piecu
+     roznych demo nie mieszaly sie w jednej skrzynce,
   3. przepisuje linijke na samym dole stopki na jednoznaczna.
 
 Skrypt mozna puszczac wielokrotnie — pomija strony, ktore juz maja pasek.
@@ -57,6 +59,7 @@ DEMA = {
         'akcent':  u'#A8814E',
         'akcent_tekst': u'#1a1520',
         'katalog': u'https://probatum.pl/p/katalog-lawenda.html',
+        'mail': u'lawenda@probatum.pl',
         'mail_stary': u'kontakt@studiolawenda.pl',
         'tel_stary':  u'+48178536214',
         'tel_pokaz_stary': u'17 853 62 14',
@@ -71,6 +74,7 @@ DEMA = {
         'akcent':  u'#a89063',
         'akcent_tekst': u'#14161b',
         'katalog': u'https://probatum.pl/p/katalog-zawadzcy.html',
+        'mail': u'zawadzcy@probatum.pl',
         'mail_stary': u'kontakt@zawadzcy-kancelaria.pl',
         'tel_stary':  u'178501234',
         'tel_pokaz_stary': u'17 850 12 34',
@@ -85,6 +89,7 @@ DEMA = {
         'akcent':  u'#B8763A',
         'akcent_tekst': u'#14161b',
         'katalog': u'https://probatum.pl/p/katalog-dom.html',
+        'mail': u'domiwnetrze@probatum.pl',
         'mail_stary': u'kontakt@domiwnetrzewarszawa.pl',
         'tel_stary':  u'+48224905218',
         'tel_pokaz_stary': u'22 490 52 18',
@@ -99,6 +104,7 @@ DEMA = {
         'akcent':  u'#e8590c',
         'akcent_tekst': u'#ffffff',
         'katalog': u'https://probatum.pl/p/katalog-serwis.html',
+        'mail': u'serwis@probatum.pl',
         'mail_stary': u'kontakt@serwispodkarpacki.pl',
         'tel_stary':  u'178624040',
         'tel_pokaz_stary': u'17 862 40 40',
@@ -187,7 +193,7 @@ def pasek(d):
             u'    .pmd-btn:hover,.pmd-btn2:hover{transform:none}}\n'
             u'</style>\n') % {
         'firma': d['firma'], 'komu': d['komu'], 'co_dostaje': d['co_dostaje'],
-        'mail': MAIL, 'temat': temat_url, 'katalog': d['katalog'],
+        'mail': d['mail'], 'temat': temat_url, 'katalog': d['katalog'],
         'tel_link': TEL_LINK, 'tel_pokaz': TEL_POKAZ,
         'akcent': d['akcent'], 'akcent_tekst': d['akcent_tekst'],
     }
@@ -210,8 +216,16 @@ def przerob(sciezka, d):
     #    na nie napisal, przepadalby bez sladu.
     if d['mail_stary'] in t:
         ile = t.count(d['mail_stary'])
-        t = t.replace(d['mail_stary'], MAIL)
+        t = t.replace(d['mail_stary'], d['mail'])
         zrobione.append('mail x%d' % ile)
+
+    # 2b. Migracja ze starego wspolnego adresu (kontakt@probatum.pl) na
+    #     wlasny adres dema — kazde dema mialo ten sam adres i mieszalo
+    #     zgloszenia w jednej skrzynce.
+    if MAIL in t:
+        ile_wspolny = t.count(MAIL)
+        t = t.replace(MAIL, d['mail'])
+        zrobione.append('mail-wspolny x%d' % ile_wspolny)
 
     # 3. Zmyslony telefon na prawdziwy. Numer wymyslony na potrzeby dema moze
     #    nalezec do przypadkowej osoby — nie chcemy jej nasylac telefonow.
@@ -252,7 +266,11 @@ def przerob_skrypt(sciezka, d):
 
     if d['mail_stary'] in t:
         zrobione.append('mail x%d' % t.count(d['mail_stary']))
-        t = t.replace(d['mail_stary'], MAIL)
+        t = t.replace(d['mail_stary'], d['mail'])
+
+    if MAIL in t:
+        zrobione.append('mail-wspolny x%d' % t.count(MAIL))
+        t = t.replace(MAIL, d['mail'])
 
     ile = t.count('tel:' + d['tel_stary']) + t.count(d['tel_pokaz_stary'])
     if ile:
