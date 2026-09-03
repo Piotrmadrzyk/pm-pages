@@ -1594,7 +1594,7 @@ u"""
         <a class="btn btn-ciemny" href="tel:%(tel_link)s">Zamów bon telefonicznie</a>
       </p>
     </div>
-    <img src="../img/sesja/kadr-1727.jpg" alt="Salon new age w Częstochowie" loading="lazy">
+    <img src="../img/salon/bon-jez.jpg" alt="Bon podarunkowy salonu new age Lewandowska" loading="lazy">
   </div>
 </section>
 
@@ -2288,7 +2288,7 @@ u"""
         do Twoich włosów albo powiem wprost, że nie jest Ci potrzebny.
       </p>
     </div>
-    <img src="../img/sesja/kadr-1727.jpg" alt="Kosmetyki L’Oréal Professionnel w salonie new age" loading="lazy">
+    <img src="../img/salon/recepcja-szeroka.jpg" alt="Agnieszka Lewandowska z wyróżnieniem Salon Expert L’Oréal Professionnel" loading="lazy">
   </div>
 </section>
 
