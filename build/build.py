@@ -120,7 +120,7 @@ PAGES = [
          desc='Wdrożenia agentów automatyzujących powtarzalną pracę w firmie. Jeszcze nie w sprzedaży — trwa lista pierwszeństwa.'),
     dict(file='akademia.html', active='akademia.html',
          title='Akademia AI — kurs po polsku, dla ludzi bez technicznego zaplecza | Probatum',
-         desc='64 lekcje praktyczne, 39 prezentacji, 8 prowadzonych projektów i gotowe pakiety dla pięciu branż. Każda lekcja kończy się poleceniem, które wklejasz i używasz tego samego dnia.'),
+         desc='64 lekcje praktyczne, 38 prezentacji, 9 prowadzonych projektów i gotowe pakiety dla pięciu branż. Każda lekcja kończy się poleceniem, które wklejasz i używasz tego samego dnia.'),
     dict(file='wycena.html', active='',
          title='Bezpłatna wycena projektu | Probatum',
          desc='Dwie minuty wypełniania, konkretne widełki w odpowiedzi. Zapytanie trafia bezpośrednio do mnie — odpisuję osobiście w 1–2 dni robocze.'),
