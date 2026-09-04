@@ -156,17 +156,17 @@
       position:absolute;pointer-events:none;border-radius:50%;
       background:rgba(255,244,222,.22);
     }
-    .cloud-a{width:38vw;height:9vw;top:12%;left:30%;animation:driftA 46s linear infinite}
-    .cloud-b{width:26vw;height:7vw;top:20%;left:55%;opacity:.7;animation:driftB 60s linear infinite}
-    .cloud-c{width:20vw;height:6vw;top:8%;left:68%;opacity:.55;animation:driftA 38s linear infinite reverse}
+    .cloud-a{width:38vw;height:9vw;top:12%;left:30%;animation:driftA 30s ease-in-out infinite}
+    .cloud-b{width:26vw;height:7vw;top:20%;left:55%;opacity:.7;animation:driftB 38s ease-in-out infinite}
+    .cloud-c{width:20vw;height:6vw;top:8%;left:68%;opacity:.55;animation:driftA 24s ease-in-out infinite reverse}
     @keyframes driftA{
       0%{transform:translateX(0)}
-      50%{transform:translateX(3.5vw)}
+      50%{transform:translateX(7vw)}
       100%{transform:translateX(0)}
     }
     @keyframes driftB{
       0%{transform:translateX(0)}
-      50%{transform:translateX(-4vw)}
+      50%{transform:translateX(-8vw)}
       100%{transform:translateX(0)}
     }
     .lights{position:absolute;inset:0;pointer-events:none}
@@ -311,6 +311,31 @@
     .card .card-go{
       display:inline-flex;align-items:center;gap:.4rem;margin-top:.4rem;
       color:var(--brand-soft);font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;font-weight:600;
+    }
+
+    .menu-cols{display:grid;gap:2rem;margin-top:2.2rem}
+    .menu-col-head{
+      display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+      padding-bottom:.7rem;margin-bottom:.4rem;border-bottom:1px solid rgba(200,162,74,.24);
+    }
+    .menu-col-head h3{font-size:1.5rem}
+    .menu-col-head span{color:var(--muted-2);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
+    .menu-list{display:grid;list-style:none;margin:0;padding:0}
+    .menu-list li{
+      display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+      padding:.95rem 0;border-top:1px dashed rgba(200,162,74,.16);
+    }
+    .menu-list li:first-child{border-top:0}
+    .menu-item{min-width:0}
+    .menu-item b{display:block;font-family:var(--sans);font-weight:600;color:var(--text);font-size:1rem;letter-spacing:.01em}
+    .menu-item small{display:block;color:var(--muted-2);font-size:.85rem;margin-top:.2rem}
+    .menu-price{
+      flex:0 0 auto;font-family:var(--serif);font-size:1.15rem;color:var(--brand-soft);white-space:nowrap;
+    }
+    .menu-note{margin-top:1.6rem;color:var(--muted-2);font-size:.86rem}
+
+    @media (min-width:900px){
+      .menu-cols{grid-template-columns:1fr 1fr;gap:3rem}
     }
 
     .full-bleed{
@@ -503,6 +528,7 @@
         <a href="#widok">Widok</a>
         <a href="#kuchnia">Kuchnia</a>
         <a href="#bar">Bar</a>
+        <a href="#menu">Menu</a>
         <a href="#eventy">Eventy</a>
         <a href="#rezerwacje">Rezerwacje</a>
         <a href="#faq">FAQ</a>
@@ -643,10 +669,45 @@
       </div>
     </section>
 
+    <section class="section" id="menu">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Sekcja 4</span>
+          <h2>Wybrane dania i koktajle</h2>
+          <p>Karta zmienia się z porami roku — poniżej stała selekcja, na której możesz się oprzeć, planując wieczór. Pełne menu czeka na stoliku.</p>
+        </div>
+        <div class="menu-cols reveal">
+          <div>
+            <div class="menu-col-head"><h3>Wybrane dania</h3><span>À la carte</span></div>
+            <ul class="menu-list">
+              <li><div class="menu-item"><b>Carpaccio z buraka</b><small>koza, orzechy laskowe, oliwa ziołowa</small></div><span class="menu-price">42 zł</span></li>
+              <li><div class="menu-item"><b>Tatar z polędwicy wołowej</b><small>żółtko marynowane, kapary, grzanka</small></div><span class="menu-price">58 zł</span></li>
+              <li><div class="menu-item"><b>Grillowana ośmiornica</b><small>puree z topinamburu, chorizo</small></div><span class="menu-price">76 zł</span></li>
+              <li><div class="menu-item"><b>Risotto z borowikami</b><small>sezonowe grzyby, parmezan 24 mies.</small></div><span class="menu-price">64 zł</span></li>
+              <li><div class="menu-item"><b>Kaczka z wiśnią</b><small>puree pietruszkowe, jus</small></div><span class="menu-price">98 zł</span></li>
+              <li><div class="menu-item"><b>Crème brûlée z lawendą</b><small>deser dnia</small></div><span class="menu-price">36 zł</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="menu-col-head"><h3>Koktajle sygnowane</h3><span>Bar ALTO</span></div>
+            <ul class="menu-list">
+              <li><div class="menu-item"><b>ALTO Sunset</b><small>bourbon, aperol, grejpfrut, dym cedrowy</small></div><span class="menu-price">48 zł</span></li>
+              <li><div class="menu-item"><b>Złota Godzina</b><small>gin, limonka, miód, szafran</small></div><span class="menu-price">46 zł</span></li>
+              <li><div class="menu-item"><b>Dachowy Negroni</b><small>gin, campari, wermut, pomarańcza</small></div><span class="menu-price">44 zł</span></li>
+              <li><div class="menu-item"><b>Miejska Mgła</b><small>wódka, ogórek, koper, tonic</small></div><span class="menu-price">42 zł</span></li>
+              <li><div class="menu-item"><b>Panorama Spritz</b><small>prosecco, likier brzoskwiniowy, soda</small></div><span class="menu-price">40 zł</span></li>
+              <li><div class="menu-item"><b>Selekcja win naturalnych</b><small>kieliszek, karta zmienna co miesiąc</small></div><span class="menu-price">od 32 zł</span></li>
+            </ul>
+          </div>
+        </div>
+        <p class="menu-note">Ceny orientacyjne, karta sezonowa aktualizowana cztery razy w roku. Pełne menu z alergenami dostępne na miejscu.</p>
+      </div>
+    </section>
+
     <section class="section full-bleed" id="eventy">
       <div class="container-wide event-shell reveal">
         <div>
-          <span class="eyebrow">Sekcja 4</span>
+          <span class="eyebrow">Sekcja 5</span>
           <h2 style="font-size:clamp(2.3rem,6vw,4.4rem);margin-bottom:1rem;">Eventy i wynajem na wyłączność</h2>
           <p>Kolacje firmowe, urodziny, śluby i premiery. Wynajmij cały taras na wyłączność albo zarezerwuj lożę dla bliskich. Zajmiemy się każdym szczegółem wieczoru.</p>
           <div class="pill-list" aria-label="Typy wydarzeń">
@@ -690,7 +751,7 @@
     <section class="section" id="rezerwacje">
       <div class="container faq-grid reveal">
         <div>
-          <span class="eyebrow">Sekcja 5</span>
+          <span class="eyebrow">Sekcja 6</span>
           <h2 style="font-size:clamp(2.2rem,6vw,4rem);margin-bottom:1rem;">Jak rezerwujemy</h2>
           <p>Wybierasz datę i godzinę, my potwierdzamy stolik w tej samej godzinie. Na złotą godzinę i weekendy warto rezerwować z wyprzedzeniem — te terminy znikają najszybciej.</p>
           <div class="timeline">
@@ -827,16 +888,16 @@
         });
       }
 
-      /* swiatla miasta migoczace nad panorama - tylko w pasie nieba/zabudowy po prawej stronie kadru,
-         zeby nie nakladaly sie na wnetrze restauracji w lewej czesci zdjecia */
+      /* swiatla miasta migoczace w pasie zabudowy - wyraznie PONIZEJ pasa chmur (chmury siedza
+         w y:8%-33%, x:30%-88%), zeby swiatelka nie ladowaly na chmurach tylko na wiezowcach */
       const lightsHost = document.getElementById('cityLights');
       if (lightsHost && !reduce) {
         const COUNT = 34;
         for (let i = 0; i < COUNT; i++) {
           const dot = document.createElement('span');
           dot.className = 'light-dot';
-          const x = 46 + Math.random() * 52;   // 46%-98% szerokosci - zabudowa i horyzont
-          const y = 30 + Math.random() * 26;   // 30%-56% wysokosci - pas panoramy miasta
+          const x = 44 + Math.random() * 54;   // 44%-98% szerokosci - zabudowa i horyzont
+          const y = 38 + Math.random() * 22;   // 38%-60% wysokosci - pas dachow/wiezowcow, pod chmurami
           dot.style.left = x + '%';
           dot.style.top = y + '%';
           dot.style.animationDuration = (2.2 + Math.random() * 3.2) + 's';
@@ -847,8 +908,8 @@
         for (let i = 0; i < 18; i++) {
           const dot = document.createElement('span');
           dot.className = 'light-dot';
-          dot.style.left = (46 + Math.random() * 52) + '%';
-          dot.style.top = (30 + Math.random() * 26) + '%';
+          dot.style.left = (44 + Math.random() * 54) + '%';
+          dot.style.top = (38 + Math.random() * 22) + '%';
           lightsHost.appendChild(dot);
         }
       }
