@@ -90,15 +90,76 @@
     .brand span{
       color:var(--muted-2);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;margin-top:.25rem;
     }
+    /* --- nawigacja miedzy zakladkami tresci: ten sam wzorzec co na Zielonej Pergoli ---
+       desktop: pozioma lista w topbarze. mobile <1024px: hamburger + pelnoekranowe menu
+       u gory, plus staly pasek szybkich akcji przyklejony na dole (jak .mobile-cta na Pergoli). */
     .nav-links{display:none;gap:1.2rem;flex-wrap:wrap}
     .nav-links a{
-      color:var(--muted);font-size:.92rem;position:relative;padding:.35rem 0;transition:color .3s var(--ease);
+      color:var(--muted);font-size:.92rem;position:relative;padding:.35rem 0;cursor:pointer;
+      transition:color .3s var(--ease);
     }
     .nav-links a::after{
-      content:"";position:absolute;left:0;bottom:-2px;width:100%;height:1px;background:var(--brand);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);
+      content:"";position:absolute;left:0;bottom:-2px;width:100%;height:1px;background:var(--brand);
+      transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);
     }
     .nav-links a:hover{color:var(--text)}
-    .nav-links a:hover::after{transform:scaleX(1)}
+    .nav-links a:hover::after,.nav-links a.active-tab::after{transform:scaleX(1)}
+    .nav-links a.active-tab{color:var(--text)}
+
+    .burger{display:block;width:44px;height:44px;position:relative;background:none;border:0;cursor:pointer;padding:0}
+    .burger span{
+      position:absolute;left:9px;right:9px;height:1.8px;background:var(--text);
+      transition:transform .3s var(--ease), opacity .3s var(--ease);
+    }
+    .burger span:nth-child(1){top:15px}
+    .burger span:nth-child(2){top:22px}
+    .burger span:nth-child(3){top:29px}
+    .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+    .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    .mobile-menu{
+      position:fixed;inset:0;z-index:60;background:#0a0a0b;
+      display:flex;flex-direction:column;justify-content:center;gap:6px;padding:96px 2rem 60px;
+      opacity:0;visibility:hidden;pointer-events:none;
+      transition:opacity .25s var(--ease), visibility 0s linear .25s;
+    }
+    .mobile-menu.open{opacity:1;visibility:visible;pointer-events:auto;transition:none}
+    .mobile-menu a{
+      font-family:var(--serif);font-weight:400;font-size:2.1rem;text-transform:uppercase;letter-spacing:.04em;
+      color:var(--text);padding:.65rem 0;border-bottom:1px solid rgba(200,162,74,.14);
+      display:flex;align-items:baseline;gap:1rem;transition:color .25s var(--ease), padding-left .25s var(--ease);
+    }
+    .mobile-menu a b{font-family:var(--sans);font-size:.72rem;font-weight:600;color:var(--brand);letter-spacing:.15em}
+    .mobile-menu a:hover,.mobile-menu a.active-tab{color:var(--brand-soft);padding-left:.4rem}
+    body.menu-open{overflow:hidden}
+
+    .mobile-cta{display:none}
+    @media (max-width:1023px){
+      .mobile-cta{
+        position:fixed;left:0;right:0;bottom:0;z-index:55;display:flex;
+        background:rgba(10,10,11,.94);backdrop-filter:blur(12px);
+        border-top:1px solid rgba(200,162,74,.2);
+        padding-bottom:env(safe-area-inset-bottom);
+      }
+      .mobile-cta a,.mobile-cta button{
+        flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+        min-height:58px;padding:.5rem .3rem;font:inherit;
+        font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text);
+        background:none;border:0;border-right:1px solid rgba(200,162,74,.14);cursor:pointer;
+        transition:background .25s var(--ease), color .25s var(--ease);
+      }
+      .mobile-cta a:last-child,.mobile-cta button:last-child{border-right:0}
+      .mobile-cta span[aria-hidden]{font-size:1rem;line-height:1;color:var(--brand-soft)}
+      .mobile-cta a:hover,.mobile-cta a:active,.mobile-cta button:hover,.mobile-cta button:active{
+        background:rgba(200,162,74,.08);color:var(--brand-soft);
+      }
+      body{padding-bottom:calc(58px + env(safe-area-inset-bottom))}
+    }
+
+    .tabpanel{display:none}
+    .tabpanel.active{display:block}
+    #formularz,#faq{scroll-margin-top:calc(var(--nav-h) + 16px)}
 
     .btn,
     .ghost-btn,
@@ -145,30 +206,8 @@
         radial-gradient(circle at 72% 18%, rgba(200,162,74,.14), transparent 34%);
     }
 
-    /* --- widok "na zywo": chmury dryfujace + migoczace swiatla miasta, tylko nad hero ---
-       Bez dodatkowego kontenera (overflow:hidden + ujemny z-index) - dokladnie ten wzorzec
-       lokalnie renderowal sie jako pelna czarna plama zaslaniajaca zdjecie. .cloud i .lights
-       siedza teraz jak .aurora - bezposrednio w .hero, ktore samo juz ma overflow:hidden. */
-    .cloud{
-      /* zwykly polprzezroczysty kolor, nie radial-gradient() - w tym srodowisku tlo typu gradient
-         na tym elemencie renderowalo sie jako pelna czarna plama i zaslanialo zdjecie pod spodem.
-         Sprawdzone lokalnie trzykrotnie, plaski kolor dziala poprawnie i wyglada rownie miekko. */
-      position:absolute;pointer-events:none;border-radius:50%;
-      background:rgba(255,244,222,.22);
-    }
-    .cloud-a{width:38vw;height:9vw;top:12%;left:30%;animation:driftA 30s ease-in-out infinite}
-    .cloud-b{width:26vw;height:7vw;top:20%;left:55%;opacity:.7;animation:driftB 38s ease-in-out infinite}
-    .cloud-c{width:20vw;height:6vw;top:8%;left:68%;opacity:.55;animation:driftA 24s ease-in-out infinite reverse}
-    @keyframes driftA{
-      0%{transform:translateX(0)}
-      50%{transform:translateX(7vw)}
-      100%{transform:translateX(0)}
-    }
-    @keyframes driftB{
-      0%{transform:translateX(0)}
-      50%{transform:translateX(-8vw)}
-      100%{transform:translateX(0)}
-    }
+    /* --- widok "na zywo": migoczace swiatla miasta nad panorama, tylko nad hero.
+       Chmury (trzy rozmyte "kolka") usuniete na prosbe Piotra 4.09 - wygladaly zle. */
     .lights{position:absolute;inset:0;pointer-events:none}
     .light-dot{
       position:absolute;width:2px;height:2px;border-radius:50%;
@@ -180,8 +219,7 @@
       50%{opacity:.9}
     }
     @media (prefers-reduced-motion: reduce){
-      .cloud,.light-dot{animation:none !important}
-      .light-dot{opacity:.5}
+      .light-dot{animation:none !important;opacity:.5}
     }
 
     .aurora,
@@ -489,6 +527,7 @@
 
     @media (min-width:1024px){
       .nav-links{display:flex}
+      .burger{display:none}
       .hero-grid{grid-template-columns:1.4fr .7fr;gap:2.5rem}
       .hero-copy{padding:2rem 0 3rem}
       .section{padding:6.5rem 0}
@@ -524,26 +563,46 @@
         <strong>ALTO</strong>
         <span>Rooftop · 18. piętro</span>
       </a>
-      <div class="nav-links">
-        <a href="#widok">Widok</a>
-        <a href="#kuchnia">Kuchnia</a>
-        <a href="#bar">Bar</a>
-        <a href="#menu">Menu</a>
-        <a href="#eventy">Eventy</a>
-        <a href="#rezerwacje">Rezerwacje</a>
-        <a href="#faq">FAQ</a>
+      <div class="nav-links" data-tab-nav>
+        <a href="#widok" data-tab="widok">Widok</a>
+        <a href="#kuchnia" data-tab="kuchnia">Kuchnia</a>
+        <a href="#bar" data-tab="bar">Bar</a>
+        <a href="#menu" data-tab="menu">Menu</a>
+        <a href="#eventy" data-tab="eventy">Eventy</a>
+        <a href="#rezerwacje" data-tab="rezerwacje">Rezerwacje</a>
       </div>
-      <a href="#rezerwuj" class="btn">Zarezerwuj stolik</a>
+      <a href="#rezerwuj" class="btn" data-tab="rezerwacje">Zarezerwuj stolik</a>
+      <button class="burger" id="burger" type="button" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </nav>
+
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Menu mobilne" data-tab-nav>
+    <a href="#widok" data-tab="widok"><b>01</b>Widok</a>
+    <a href="#kuchnia" data-tab="kuchnia"><b>02</b>Kuchnia</a>
+    <a href="#bar" data-tab="bar"><b>03</b>Bar</a>
+    <a href="#menu" data-tab="menu"><b>04</b>Menu</a>
+    <a href="#eventy" data-tab="eventy"><b>05</b>Eventy</a>
+    <a href="#rezerwacje" data-tab="rezerwacje"><b>06</b>Rezerwacje</a>
+  </nav>
+
+  <nav class="mobile-cta" aria-label="Szybkie działania">
+    <a href="tel:+48500600700" aria-label="Zadzwoń: 500 600 700">
+      <span aria-hidden="true">☎</span>Zadzwoń
+    </a>
+    <a href="#menu" data-tab="menu" aria-label="Zobacz menu">
+      <span aria-hidden="true">☰</span>Menu
+    </a>
+    <a href="#formularz" data-tab="rezerwacje" aria-label="Zarezerwuj stolik">
+      <span aria-hidden="true">◷</span>Rezerwuj
+    </a>
   </nav>
 
   <header class="hero" id="start">
     <div class="hero-media">
       <div><img src="img/hero.jpg" width="1600" height="1066" alt="Panoramiczny widok z luksusowego rooftop baru o zachodzie słońca" loading="eager" fetchpriority="high" decoding="async"></div>
     </div>
-    <div class="cloud cloud-a" aria-hidden="true"></div>
-    <div class="cloud cloud-b" aria-hidden="true"></div>
-    <div class="cloud cloud-c" aria-hidden="true"></div>
     <div class="lights" id="cityLights" aria-hidden="true"></div>
     <div class="aurora" aria-hidden="true"></div>
     <div class="hero-grid">
@@ -578,7 +637,7 @@
   </header>
 
   <main>
-    <section class="section" id="widok">
+    <section class="section tabpanel active" id="widok">
       <div class="container-wide split reveal">
         <div class="media-frame tilt">
           <div><img src="img/widok-taras.jpg" width="1000" height="1000" alt="Taras na 18. piętrze z panoramą miasta o złotej godzinie" loading="lazy" decoding="async"></div>
@@ -602,7 +661,7 @@
       </div>
     </section>
 
-    <section class="section" id="kuchnia">
+    <section class="section tabpanel" id="kuchnia">
       <div class="container-wide split reverse reveal">
         <div class="media-frame tilt">
           <div><img src="img/danie.jpg" width="1000" height="1000" alt="Autorskie sezonowe danie podane w eleganckiej restauracji" loading="lazy" decoding="async"></div>
@@ -624,7 +683,7 @@
       </div>
     </section>
 
-    <section class="section" id="bar">
+    <section class="section tabpanel" id="bar">
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">Sekcja 3</span>
@@ -669,7 +728,7 @@
       </div>
     </section>
 
-    <section class="section" id="menu">
+    <section class="section tabpanel" id="menu">
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">Sekcja 4</span>
@@ -704,7 +763,7 @@
       </div>
     </section>
 
-    <section class="section full-bleed" id="eventy">
+    <section class="section full-bleed tabpanel" id="eventy">
       <div class="container-wide event-shell reveal">
         <div>
           <span class="eyebrow">Sekcja 5</span>
@@ -748,10 +807,20 @@
       </div>
     </section>
 
-    <section class="section" id="rezerwacje">
-      <div class="container faq-grid reveal">
-        <div>
+    <section class="section tabpanel" id="rezerwacje">
+      <div class="container reveal">
+        <div class="cta-panel">
           <span class="eyebrow">Sekcja 6</span>
+          <h2>Zarezerwuj stolik przy zachodzie słońca w 30 sekund</h2>
+          <p>Jeśli planujesz wieczór na złotą godzinę, weekend albo wyjątkową okazję, zostaw zgłoszenie wcześniej — te terminy znikają najszybciej.</p>
+          <div class="hero-actions" style="margin-top:1.2rem;">
+            <a href="#formularz" class="outline-btn">Przejdź do formularza</a>
+            <a href="#eventy" class="ghost-btn" data-tab="eventy">Zapytaj o event</a>
+          </div>
+        </div>
+      </div>
+      <div class="container faq-grid reveal" style="margin-top:3rem">
+        <div>
           <h2 style="font-size:clamp(2.2rem,6vw,4rem);margin-bottom:1rem;">Jak rezerwujemy</h2>
           <p>Wybierasz datę i godzinę, my potwierdzamy stolik w tej samej godzinie. Na złotą godzinę i weekendy warto rezerwować z wyprzedzeniem — te terminy znikają najszybciej.</p>
           <div class="timeline">
@@ -800,23 +869,8 @@
           </div>
         </div>
       </div>
-    </section>
 
-    <section class="section" id="rezerwuj">
-      <div class="container reveal">
-        <div class="cta-panel">
-          <span class="eyebrow">Rezerwacja</span>
-          <h2>Zarezerwuj stolik przy zachodzie słońca w 30 sekund</h2>
-          <p>Jeśli planujesz wieczór na złotą godzinę, weekend albo wyjątkową okazję, zostaw zgłoszenie wcześniej — te terminy znikają najszybciej.</p>
-          <div class="hero-actions" style="margin-top:1.2rem;">
-            <a href="#formularz" class="outline-btn">Przejdź do formularza</a>
-            <a href="#eventy" class="ghost-btn">Zapytaj o event</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="pm-form" id="formularz">
+      <div class="pm-form" id="formularz" style="margin-top:3rem">
       <h2>Zarezerwuj stolik</h2>
       <form id="lead-form" novalidate>
         <label>Imię <input type="text" name="imie" autocomplete="given-name"></label>
@@ -843,7 +897,9 @@
         <button type="submit">Zarezerwuj stolik</button>
         <p id="form-status" role="status"></p>
       </form>
+      </div>
     </section>
+
     <section class="pm-polityka" id="polityka"><h2>Polityka prywatności</h2><p>Administratorem danych osobowych podanych w formularzu jest ALTO Rooftop. Dane przetwarzane są wyłącznie w celu obsługi Twojego zgłoszenia i kontaktu zwrotnego, na podstawie Twojej zgody (art. 6 ust. 1 lit. a RODO). Masz prawo dostępu do danych, ich sprostowania, usunięcia oraz wycofania zgody w dowolnym momencie &mdash; napisz na <a href="mailto:rezerwacje@alto-rooftop.pl">rezerwacje@alto-rooftop.pl</a>.</p><p style="opacity:.7">To jest strona demonstracyjna (portfolio PM). Dane firmy ALTO Rooftop są fikcyjne.</p></section>
     <section class="pm-kontakt"><h2>Kontakt</h2><p><a class="tel" href="tel:+48500600700">+48 500 600 700</a></p><p><a href="mailto:rezerwacje@alto-rooftop.pl">rezerwacje@alto-rooftop.pl</a></p><p>ul. Widokowa 18, 00-001 Warszawa &middot; <a href="https://www.google.com/maps/search/?api=1&query=ul.%20Widokowa%2018%2C%2000-001%20Warszawa" rel="noopener" target="_blank">Pokaż na mapie</a></p></section>
 
@@ -912,6 +968,88 @@
           dot.style.top = (38 + Math.random() * 22) + '%';
           lightsHost.appendChild(dot);
         }
+      }
+    })();
+  </script>
+  <script>
+    /* nawigacja miedzy zakladkami tresci (Widok/Kuchnia/Bar/Menu/Eventy/Rezerwacje)
+       + hamburger na mobile. Ten sam wzorzec stanu co critical-navigation.js na Zielonej
+       Pergoli: jeden wlasciciel stanu, delegacja klikniec na document, bez zaleznosci
+       od main.js. Zamiast dlugiego przewijania - jeden panel widoczny na raz. */
+    (function(){
+      var TAB_IDS = ['widok', 'kuchnia', 'bar', 'menu', 'eventy', 'rezerwacje'];
+      var SUBSECTION_TO_TAB = { rezerwuj: 'rezerwacje', formularz: 'rezerwacje', faq: 'rezerwacje' };
+      var state = { menu: false };
+
+      function tabIdFor(id) {
+        if (TAB_IDS.indexOf(id) !== -1) return id;
+        return SUBSECTION_TO_TAB[id] || null;
+      }
+
+      function activateTab(tabId) {
+        TAB_IDS.forEach(function (t) {
+          var panel = document.getElementById(t);
+          if (panel) panel.classList.toggle('active', t === tabId);
+        });
+        document.querySelectorAll('[data-tab-nav] a, a.btn[data-tab]').forEach(function (a) {
+          a.classList.toggle('active-tab', a.getAttribute('data-tab') === tabId);
+        });
+        var activePanel = document.getElementById(tabId);
+        if (activePanel) {
+          activePanel.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('widoczny'); });
+        }
+      }
+
+      function setMobileMenu(open) {
+        var burger = document.getElementById('burger');
+        var menu = document.getElementById('mobile-menu');
+        if (!burger || !menu) return;
+        state.menu = open;
+        menu.classList.toggle('open', open);
+        document.body.classList.toggle('menu-open', open);
+        burger.setAttribute('aria-expanded', String(open));
+        burger.setAttribute('aria-label', open ? 'Zamknij menu' : 'Otwórz menu');
+      }
+
+      document.addEventListener('click', function (e) {
+        var burgerEl = document.getElementById('burger');
+        if (burgerEl && e.target.closest && e.target.closest('#burger')) {
+          setMobileMenu(!state.menu);
+          return;
+        }
+
+        var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+        if (!a) return;
+        var id = a.getAttribute('href').slice(1);
+        if (!id) return;
+        var tabId = tabIdFor(id);
+        if (!tabId) return; /* np. #polityka, #start - zwykle przewijanie, bez zakladek */
+
+        e.preventDefault();
+        if (state.menu) setMobileMenu(false);
+        activateTab(tabId);
+        history.replaceState(null, '', '#' + id);
+        requestAnimationFrame(function () {
+          var target = document.getElementById(id) || document.getElementById(tabId);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && state.menu) {
+          setMobileMenu(false);
+          var b = document.getElementById('burger');
+          if (b) b.focus();
+        }
+      });
+
+      /* stan poczatkowy: zakladka z #hasha w adresie, w przeciwnym razie "Widok" */
+      var initialId = location.hash.replace('#', '');
+      var initialTab = tabIdFor(initialId) || 'widok';
+      activateTab(initialTab);
+      if (initialId && initialId !== initialTab) {
+        var initTarget = document.getElementById(initialId);
+        if (initTarget) requestAnimationFrame(function () { initTarget.scrollIntoView({ block: 'start' }); });
       }
     })();
   </script>
