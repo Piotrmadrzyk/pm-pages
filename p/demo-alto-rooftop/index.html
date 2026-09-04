@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALTO Rooftop — Bar i restauracja nad miastem</title>
+  <meta name="description" content="ALTO Rooftop na 18. piętrze: autorska kuchnia, koktajle sygnowane i panorama miasta o zachodzie słońca. Zarezerwuj stolik przy złotej godzinie.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0b0c;
+      --bg-soft:#121214;
+      --panel:#17171a;
+      --panel-2:#1d1d21;
+      --line:rgba(200,162,74,.24);
+      --line-strong:rgba(200,162,74,.45);
+      --text:#f3efe7;
+      --muted:#cfc6b6;
+      --muted-2:#a49986;
+      --brand:#c8a24a;
+      --brand-soft:#e3cb8e;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --radius:22px;
+      --radius-sm:14px;
+      --container:min(1180px, calc(100% - 2rem));
+      --container-wide:min(1320px, calc(100% - 2rem));
+      --serif:'Cormorant Garamond', serif;
+      --sans:'Inter', sans-serif;
+      --ease:cubic-bezier(.22,1,.36,1);
+      --nav-h:72px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(200,162,74,.10), transparent 28%),
+        radial-gradient(circle at 85% 10%, rgba(200,162,74,.06), transparent 24%),
+        linear-gradient(180deg, #0a0a0b 0%, #0d0d10 40%, #111114 100%);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:linear-gradient(180deg, rgba(255,255,255,.02), transparent 18%, transparent 82%, rgba(255,255,255,.02));
+      mix-blend-mode:soft-light;
+      opacity:.5;
+    }
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    p{margin:0 0 1rem;color:var(--muted)}
+    h1,h2,h3,h4{margin:0;color:var(--text);font-family:var(--serif);font-weight:400;line-height:.95;letter-spacing:.06em;text-transform:uppercase}
+    section{position:relative}
+    .container{width:var(--container);margin:0 auto}
+    .container-wide{width:var(--container-wide);margin:0 auto}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:.65rem;
+      color:var(--brand-soft);text-transform:uppercase;letter-spacing:.24em;
+      font-size:.72rem;font-weight:600;margin-bottom:1rem;
+    }
+    .eyebrow::before{
+      content:"";width:36px;height:1px;background:linear-gradient(90deg, transparent, var(--brand), transparent);
+    }
+
+    .site-nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(16px);
+      background:rgba(8,8,10,.68);
+      border-bottom:1px solid rgba(200,162,74,.12);
+    }
+    .nav-inner{
+      min-height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;gap:1rem;
+      width:var(--container-wide);margin:0 auto;padding:.85rem 0;
+    }
+    .brand{
+      display:flex;flex-direction:column;line-height:1;
+    }
+    .brand strong{
+      font-family:var(--serif);font-weight:500;letter-spacing:.25em;text-transform:uppercase;
+      font-size:1.1rem;color:var(--text);
+    }
+    .brand span{
+      color:var(--muted-2);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;margin-top:.25rem;
+    }
+    .nav-links{display:none;gap:1.2rem;flex-wrap:wrap}
+    .nav-links a{
+      color:var(--muted);font-size:.92rem;position:relative;padding:.35rem 0;transition:color .3s var(--ease);
+    }
+    .nav-links a::after{
+      content:"";position:absolute;left:0;bottom:-2px;width:100%;height:1px;background:var(--brand);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);
+    }
+    .nav-links a:hover{color:var(--text)}
+    .nav-links a:hover::after{transform:scaleX(1)}
+
+    .btn,
+    .ghost-btn,
+    .outline-btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:.7rem;
+      min-height:48px;padding:.85rem 1.2rem;border-radius:999px;
+      border:1px solid var(--line-strong);color:var(--text);
+      background:rgba(255,255,255,.02);
+      transition:transform .35s var(--ease), background .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease), color .35s var(--ease);
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.03);
+      font-size:.92rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+      cursor:pointer;
+    }
+    .btn:hover,.ghost-btn:hover,.outline-btn:hover{
+      transform:translateY(-2px);
+      border-color:rgba(200,162,74,.72);
+      background:rgba(200,162,74,.08);
+      box-shadow:0 12px 34px rgba(0,0,0,.24), 0 0 0 1px rgba(200,162,74,.18) inset;
+    }
+
+    .hero{
+      position:relative;
+      min-height:calc(100vh - var(--nav-h));
+      display:grid;align-items:end;
+      padding:3.5rem 0 2rem;
+      overflow:hidden;
+      isolation:isolate;
+    }
+    .hero-media{
+      position:absolute;inset:0;z-index:-3;
+      background:#0a0a0b;
+    }
+    .hero-media > div,
+    .media-frame > div{width:100%;height:100%}
+    .hero-media > div > img{width:100%;height:100%;object-fit:cover;object-position:64% 38%;display:block}
+    .media-frame > div > img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero-media::after{
+      /* jasniejsza nakladka - poprzednia (do .26/.48/.92 pionowo + .68/.3/.6 poziomo, sumujac sie
+         do niemal 90-97% nieprzezroczystosci) w praktyce chowala cale zdjecie pod czarna plama.
+         Zostawiamy przyciemnienie tylko tam, gdzie faktycznie lezy tekst (dol kadru). */
+      content:"";position:absolute;inset:0;
+      background:
+        linear-gradient(180deg, rgba(5,5,7,.04) 0%, rgba(5,5,7,.14) 42%, rgba(5,5,7,.78) 100%),
+        radial-gradient(circle at 72% 18%, rgba(200,162,74,.14), transparent 34%);
+    }
+
+    /* --- widok "na zywo": chmury dryfujace + migoczace swiatla miasta, tylko nad hero ---
+       Bez dodatkowego kontenera (overflow:hidden + ujemny z-index) - dokladnie ten wzorzec
+       lokalnie renderowal sie jako pelna czarna plama zaslaniajaca zdjecie. .cloud i .lights
+       siedza teraz jak .aurora - bezposrednio w .hero, ktore samo juz ma overflow:hidden. */
+    .cloud{
+      /* zwykly polprzezroczysty kolor, nie radial-gradient() - w tym srodowisku tlo typu gradient
+         na tym elemencie renderowalo sie jako pelna czarna plama i zaslanialo zdjecie pod spodem.
+         Sprawdzone lokalnie trzykrotnie, plaski kolor dziala poprawnie i wyglada rownie miekko. */
+      position:absolute;pointer-events:none;border-radius:50%;
+      background:rgba(255,244,222,.22);
+    }
+    .cloud-a{width:38vw;height:9vw;top:12%;left:30%;animation:driftA 46s linear infinite}
+    .cloud-b{width:26vw;height:7vw;top:20%;left:55%;opacity:.7;animation:driftB 60s linear infinite}
+    .cloud-c{width:20vw;height:6vw;top:8%;left:68%;opacity:.55;animation:driftA 38s linear infinite reverse}
+    @keyframes driftA{
+      0%{transform:translateX(0)}
+      50%{transform:translateX(3.5vw)}
+      100%{transform:translateX(0)}
+    }
+    @keyframes driftB{
+      0%{transform:translateX(0)}
+      50%{transform:translateX(-4vw)}
+      100%{transform:translateX(0)}
+    }
+    .lights{position:absolute;inset:0;pointer-events:none}
+    .light-dot{
+      position:absolute;width:2px;height:2px;border-radius:50%;
+      background:#ffe6b0;box-shadow:0 0 4px 1px rgba(255,214,140,.8);
+      opacity:.25;animation-name:twinkle;animation-timing-function:ease-in-out;animation-iteration-count:infinite;
+    }
+    @keyframes twinkle{
+      0%,100%{opacity:.18}
+      50%{opacity:.9}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .cloud,.light-dot{animation:none !important}
+      .light-dot{opacity:.5}
+    }
+
+    .aurora,
+    .aurora::before,
+    .aurora::after{
+      content:"";position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;pointer-events:none;
+    }
+    .aurora{width:36vw;height:36vw;right:-8vw;top:10vh;background:rgba(200,162,74,.18);animation:floatGlow 16s ease-in-out infinite}
+    .aurora::before{width:22vw;height:22vw;left:-20vw;top:20vh;background:rgba(200,162,74,.09);animation:floatGlow 18s ease-in-out infinite reverse}
+    .aurora::after{width:18vw;height:18vw;left:-8vw;top:-6vh;background:rgba(255,255,255,.07);animation:floatGlow 14s ease-in-out infinite}
+
+    .hero-grid{
+      width:var(--container-wide);margin:0 auto;
+      display:grid;gap:2rem;align-items:end;
+    }
+    .hero-copy{
+      max-width:760px;padding:1rem 0 1rem;
+    }
+    .hero h1{
+      font-size:clamp(3.7rem, 10vw, 6rem);
+      margin-bottom:1rem;
+      text-wrap:balance;
+    }
+    .lead{
+      font-size:clamp(1.05rem, 2.1vw, 1.3rem);
+      max-width:52ch;color:#ece4d6;
+    }
+    .hero-actions{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:1.7rem}
+    .hero-card{
+      justify-self:start;
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);
+      backdrop-filter:blur(16px);
+      border-radius:var(--radius);
+      padding:1.1rem;
+      max-width:420px;
+      box-shadow:var(--shadow);
+    }
+    .hero-card .mini-label{
+      color:var(--brand-soft);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;margin-bottom:.5rem;display:block;
+    }
+    .hero-card p{margin:0;color:#efe7d8}
+    .hero-metrics{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1.2rem
+    }
+    .metric{
+      padding:.85rem .75rem;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)
+    }
+    .metric strong{display:block;font-size:1.35rem;color:var(--text);font-weight:600}
+    .metric span{display:block;font-size:.76rem;color:var(--muted-2);text-transform:uppercase;letter-spacing:.12em}
+
+    .section{padding:5rem 0}
+    .section-head{display:grid;gap:1rem;margin-bottom:2rem}
+    .section-head h2{font-size:clamp(2.2rem, 6vw, 4rem)}
+    .section-head p{max-width:64ch}
+
+    .split{
+      display:grid;gap:1.25rem;align-items:center;
+    }
+    .media-frame{
+      position:relative;aspect-ratio:1/1;min-height:280px;border-radius:calc(var(--radius) + 6px);overflow:hidden;
+      border:1px solid rgba(200,162,74,.16);box-shadow:var(--shadow);
+      background:linear-gradient(180deg, #161618, #0c0c0d);
+      transform-style:preserve-3d;perspective:1000px;
+    }
+    .media-frame::before{
+      content:"";position:absolute;inset:auto 8% -18% 8%;height:42%;
+      background:radial-gradient(circle, rgba(200,162,74,.18), transparent 60%);filter:blur(28px);z-index:1;
+    }
+    .media-frame::after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.3));pointer-events:none;z-index:2;
+    }
+    .copy-card{
+      position:relative;
+      background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.02));
+      border:1px solid rgba(200,162,74,.12);
+      border-radius:var(--radius);
+      padding:1.5rem;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .copy-card::before{
+      content:"";position:absolute;inset:-1px auto auto -1px;width:120px;height:120px;
+      background:radial-gradient(circle at top left, rgba(200,162,74,.18), transparent 70%);
+      pointer-events:none;
+    }
+    .copy-card h3{font-size:clamp(1.9rem,4vw,3rem);margin-bottom:1rem}
+    .feature-list{display:grid;gap:.8rem;margin-top:1.25rem;padding:0;list-style:none}
+    .feature-list li{
+      display:grid;grid-template-columns:auto 1fr;gap:.7rem;align-items:start;color:var(--muted)
+    }
+    .feature-list li::before{
+      content:"✦";color:var(--brand);margin-top:.06rem;font-size:.9rem
+    }
+
+    .stats-band{
+      padding:1.1rem;border:1px solid rgba(200,162,74,.14);border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.015));
+      display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;
+      margin-top:1.4rem;
+    }
+    .stats-band .stat{padding:.6rem .2rem}
+    .stats-band strong{display:block;font-size:2rem;font-family:var(--serif);letter-spacing:.06em;color:var(--text)}
+    .stats-band span{font-size:.82rem;color:var(--muted-2);text-transform:uppercase;letter-spacing:.12em}
+
+    .cards-grid{
+      display:grid;gap:1rem;
+    }
+    .card{
+      position:relative;padding:1.35rem;border-radius:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(200,162,74,.12);
+      box-shadow:var(--shadow);
+      transition:transform .45s var(--ease), border-color .3s var(--ease), box-shadow .35s var(--ease);
+      transform-style:preserve-3d;perspective:1000px;
+      display:block;cursor:pointer;
+    }
+    .card:hover{
+      transform:translateY(-4px) rotateX(2deg) rotateY(-2deg);
+      border-color:rgba(200,162,74,.34);
+      box-shadow:0 26px 64px rgba(0,0,0,.32);
+    }
+    .card:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
+    .card .num{display:block;color:var(--brand-soft);font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;margin-bottom:.7rem}
+    .card h3{font-size:1.7rem;margin-bottom:.7rem}
+    .card .card-go{
+      display:inline-flex;align-items:center;gap:.4rem;margin-top:.4rem;
+      color:var(--brand-soft);font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;font-weight:600;
+    }
+
+    .full-bleed{
+      padding:6rem 0;overflow:hidden;
+    }
+    .full-bleed::before{
+      content:"";position:absolute;inset:0;
+      background:
+        radial-gradient(circle at 12% 30%, rgba(200,162,74,.11), transparent 20%),
+        radial-gradient(circle at 90% 70%, rgba(200,162,74,.08), transparent 24%);
+      pointer-events:none;
+    }
+    .event-shell{
+      position:relative;
+      display:grid;gap:1.2rem;
+      padding:1.2rem;
+      border-radius:30px;
+      border:1px solid rgba(200,162,74,.14);
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(10px);
+    }
+    .event-aside{
+      padding:1.4rem;border-radius:24px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05)
+    }
+    .pill-list{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1rem}
+    .pill{
+      padding:.55rem .8rem;border-radius:999px;border:1px solid rgba(200,162,74,.24);color:var(--muted);font-size:.86rem;background:rgba(200,162,74,.05);
+      transition:border-color .3s var(--ease), background .3s var(--ease), color .3s var(--ease);
+      cursor:pointer;
+    }
+    .pill:hover{border-color:rgba(200,162,74,.55);background:rgba(200,162,74,.12);color:var(--text)}
+
+    .timeline{display:grid;gap:1rem;margin-top:1.25rem}
+    .step{
+      display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start;
+      padding:1rem 0;border-top:1px solid rgba(200,162,74,.10)
+    }
+    .step:first-child{border-top:0;padding-top:0}
+    .step-index{
+      width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+      color:var(--text);border:1px solid rgba(200,162,74,.35);background:rgba(200,162,74,.08);
+      font-size:.88rem;letter-spacing:.08em
+    }
+    .step h4{
+      font-family:var(--sans);font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text);font-size:.95rem;margin-bottom:.35rem
+    }
+
+    .faq-wrap{display:grid;gap:1rem;margin-top:1.8rem}
+    details{
+      border:1px solid rgba(200,162,74,.14);border-radius:18px;background:rgba(255,255,255,.02);overflow:hidden
+    }
+    summary{
+      list-style:none;cursor:pointer;padding:1.05rem 1.1rem;color:var(--text);font-weight:500;letter-spacing:.02em
+    }
+    summary::-webkit-details-marker{display:none}
+    details p{padding:0 1.1rem 1.1rem;margin:0;color:var(--muted)}
+    details[open]{border-color:rgba(200,162,74,.28);background:rgba(200,162,74,.04)}
+
+    .quote-panel{
+      padding:1.4rem;border-radius:24px;border:1px solid rgba(200,162,74,.12);
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      margin-top:1.4rem
+    }
+    .quote-panel p{font-family:var(--serif);font-size:1.7rem;line-height:1.05;color:var(--text);letter-spacing:.04em;text-transform:uppercase}
+    .quote-panel span{display:block;margin-top:.8rem;color:var(--muted-2);font-size:.85rem;letter-spacing:.12em;text-transform:uppercase}
+
+    .cta-panel{
+      position:relative;padding:1.5rem;border-radius:26px;overflow:hidden;
+      border:1px solid rgba(200,162,74,.2);
+      background:linear-gradient(135deg, rgba(200,162,74,.09), rgba(255,255,255,.025) 45%, rgba(255,255,255,.015));
+      box-shadow:var(--shadow);
+    }
+    .cta-panel h2{font-size:clamp(2rem,5vw,3.5rem);margin-bottom:.8rem}
+    .cta-panel p{max-width:52ch}
+
+    .footer-note{
+      padding:2rem 0 4rem;color:var(--muted-2);font-size:.9rem
+    }
+
+    .reveal{opacity:0;transform:translateY(36px) scale(.985);transition:opacity .8s var(--ease), transform .8s var(--ease)}
+    .reveal.widoczny{opacity:1;transform:none}
+    .tilt{transition:transform .45s var(--ease), box-shadow .35s var(--ease)}
+
+    .pm-form,
+    .pm-polityka,
+    .pm-kontakt{
+      width:var(--container);margin:0 auto;
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.018));
+      border:1px solid rgba(200,162,74,.14);
+      border-radius:26px;
+      box-shadow:var(--shadow);
+      color:var(--text);
+      padding:1.25rem;
+    }
+    .pm-form *, .pm-polityka *, .pm-kontakt *{color:inherit}
+    .pm-form label{
+      display:block;margin-bottom:.45rem;color:var(--muted);font-size:.92rem;letter-spacing:.02em
+    }
+    .pm-form input,
+    .pm-form textarea,
+    .pm-form select{
+      width:100%;background:rgba(255,255,255,.035);border:1px solid rgba(200,162,74,.16);
+      color:var(--text);border-radius:16px;padding:.95rem 1rem;font:inherit;outline:none;
+      transition:border-color .3s var(--ease), box-shadow .3s var(--ease), background .3s var(--ease);
+      margin-bottom:1rem;
+    }
+    .pm-form input::placeholder,
+    .pm-form textarea::placeholder{color:#918672}
+    .pm-form input:hover,
+    .pm-form textarea:hover,
+    .pm-form select:hover{border-color:rgba(200,162,74,.28)}
+    .pm-form input:focus,
+    .pm-form textarea:focus,
+    .pm-form select:focus{
+      border-color:rgba(200,162,74,.58);
+      box-shadow:0 0 0 4px rgba(200,162,74,.11);
+      background:rgba(255,255,255,.05);
+    }
+    .pm-form textarea{min-height:140px;resize:vertical}
+    .pm-form button{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:50px;padding:.9rem 1.25rem;border-radius:999px;cursor:pointer;
+      border:1px solid rgba(200,162,74,.42);background:rgba(200,162,74,.07);color:var(--text);
+      font:inherit;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+      transition:transform .35s var(--ease), background .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease);
+    }
+    .pm-form button:hover{
+      transform:translateY(-2px);background:rgba(200,162,74,.12);border-color:rgba(200,162,74,.65);box-shadow:0 16px 34px rgba(0,0,0,.24)
+    }
+    .pm-form button:disabled{opacity:.6;cursor:default;transform:none}
+    .pm-kontakt a,.pm-polityka a{color:var(--brand-soft)}
+    #form-status{font-size:.88rem;margin-top:.9rem;color:var(--muted-2)}
+    #form-status.ok{color:#9fd6a8}
+    #form-status.err{color:#e29a9a}
+    .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+    @keyframes floatGlow{
+      0%,100%{transform:translate3d(0,0,0) scale(1)}
+      50%{transform:translate3d(2vw,-2vh,0) scale(1.08)}
+    }
+
+    @media (min-width:640px){
+      .hero{padding:4.5rem 0 2.2rem}
+      .hero-card{padding:1.3rem}
+      .stats-band{grid-template-columns:repeat(4,1fr)}
+      .cards-grid{grid-template-columns:repeat(2,1fr)}
+      .event-shell{padding:1.5rem}
+      .pm-form,.pm-polityka,.pm-kontakt{padding:1.5rem}
+    }
+
+    @media (min-width:1024px){
+      .nav-links{display:flex}
+      .hero-grid{grid-template-columns:1.4fr .7fr;gap:2.5rem}
+      .hero-copy{padding:2rem 0 3rem}
+      .section{padding:6.5rem 0}
+      .split{grid-template-columns:1.06fr .94fr;gap:2rem}
+      .split.reverse{grid-template-columns:.94fr 1.06fr}
+      .split.reverse .media-frame{order:2}
+      .split.reverse .copy-card{order:1}
+      .copy-card{padding:2rem}
+      .cards-grid{grid-template-columns:repeat(3,1fr)}
+      .event-shell{grid-template-columns:1.05fr .95fr;padding:1.8rem}
+      .faq-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:2rem;align-items:start}
+      .pm-form,.pm-polityka,.pm-kontakt{padding:1.75rem}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation:none !important;transition:none !important}
+      .reveal{opacity:1 !important;transform:none !important}
+      .tilt,.card:hover,.btn:hover,.ghost-btn:hover,.outline-btn:hover{transform:none !important}
+    }
+  </style>
+</head>
+<body>
+  <noscript>
+    <style>
+      .reveal{opacity:1 !important;transform:none !important}
+    </style>
+  </noscript>
+
+  <nav class="site-nav" aria-label="Główna nawigacja">
+    <div class="nav-inner">
+      <a href="#start" class="brand" aria-label="ALTO Rooftop">
+        <strong>ALTO</strong>
+        <span>Rooftop · 18. piętro</span>
+      </a>
+      <div class="nav-links">
+        <a href="#widok">Widok</a>
+        <a href="#kuchnia">Kuchnia</a>
+        <a href="#bar">Bar</a>
+        <a href="#eventy">Eventy</a>
+        <a href="#rezerwacje">Rezerwacje</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a href="#rezerwuj" class="btn">Zarezerwuj stolik</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="start">
+    <div class="hero-media">
+      <div><img src="img/hero.jpg" width="1600" height="1066" alt="Panoramiczny widok z luksusowego rooftop baru o zachodzie słońca" loading="eager" fetchpriority="high" decoding="async"></div>
+    </div>
+    <div class="cloud cloud-a" aria-hidden="true"></div>
+    <div class="cloud cloud-b" aria-hidden="true"></div>
+    <div class="cloud cloud-c" aria-hidden="true"></div>
+    <div class="lights" id="cityLights" aria-hidden="true"></div>
+    <div class="aurora" aria-hidden="true"></div>
+    <div class="hero-grid">
+      <div class="hero-copy reveal">
+        <span class="eyebrow">ALTO Rooftop</span>
+        <h1>Kolacja bliżej nieba</h1>
+        <p class="lead">Rooftop bar i restauracja na 18. piętrze. Autorska kuchnia, koktajle sygnowane i panorama miasta o zachodzie słońca.</p>
+        <div class="hero-actions">
+          <a href="#rezerwuj" class="btn">Zarezerwuj stolik</a>
+          <a href="#widok" class="ghost-btn">Poznaj miejsce</a>
+        </div>
+      </div>
+      <aside class="hero-card reveal" aria-label="Najważniejsze informacje">
+        <span class="mini-label">Wieczór nad dachami miasta</span>
+        <p>ALTO to miejsce, w którym wieczór zaczyna się nad dachami miasta. Łączymy sezonową kuchnię z autorskim barem koktajlowym i widokiem na 360 stopni.</p>
+        <div class="hero-metrics">
+          <div class="metric">
+            <strong>18.</strong>
+            <span>piętro</span>
+          </div>
+          <div class="metric">
+            <strong>360°</strong>
+            <span>panoramy</span>
+          </div>
+          <div class="metric">
+            <strong>30 s</strong>
+            <span>na rezerwację</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="widok">
+      <div class="container-wide split reveal">
+        <div class="media-frame tilt">
+          <div><img src="img/widok-taras.jpg" width="1000" height="1000" alt="Taras na 18. piętrze z panoramą miasta o złotej godzinie" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="copy-card">
+          <span class="eyebrow">Sekcja 1</span>
+          <h3>Wieczór nad miastem</h3>
+          <p>18. piętro, taras z panoramą 360 stopni i szkło od podłogi do sufitu. Rezerwacja na złotą godzinę to najlepsze miejsce, by patrzeć, jak miasto zapala światła.</p>
+          <ul class="feature-list">
+            <li>Widok, który płynnie zmienia się od miękkiego światła zachodu do nocnej panoramy.</li>
+            <li>Przestrzeń zaprojektowana tak, by każdy stolik miał poczucie prywatności i szerokiego oddechu.</li>
+            <li>Idealne miejsce na pierwszą lampkę, kolację i długi wieczór bez pośpiechu.</li>
+          </ul>
+          <div class="stats-band" aria-label="Statystyki miejsca">
+            <div class="stat"><strong>1</strong><span>złota godzina, którą warto złapać</span></div>
+            <div class="stat"><strong>18.</strong><span>piętro nad rytmem miasta</span></div>
+            <div class="stat"><strong>360°</strong><span>otwartej panoramy</span></div>
+            <div class="stat"><strong>∞</strong><span>powodów, by zostać dłużej</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="kuchnia">
+      <div class="container-wide split reverse reveal">
+        <div class="media-frame tilt">
+          <div><img src="img/danie.jpg" width="1000" height="1000" alt="Autorskie sezonowe danie podane w eleganckiej restauracji" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="copy-card">
+          <span class="eyebrow">Sekcja 2</span>
+          <h3>Autorska kuchnia sezonowa</h3>
+          <p>Menu degustacyjne i karta à la carte oparte na lokalnych, sezonowych produktach. Nasz szef kuchni zmienia kartę cztery razy w roku, podążając za tym, co najlepsze w danym momencie.</p>
+          <ul class="feature-list">
+            <li>Precyzyjna kuchnia bez przesady — oparta na smaku, rytmie sezonu i świetnym produkcie.</li>
+            <li>Wieczorne doświadczenie, które możesz zbudować wokół lekkiej kolacji albo pełnego menu degustacyjnego.</li>
+            <li>Kompozycje talerzy stworzone tak, by naturalnie łączyć się z kartą win i autorskimi koktajlami.</li>
+          </ul>
+          <div class="quote-panel">
+            <p>Menu zmienia się z porami roku, ale wrażenie zostaje na długo.</p>
+            <span>Sezonowość, detal, spokój</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="bar">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Sekcja 3</span>
+          <h2>Bar koktajlowy z charakterem</h2>
+          <p>Sygnowane koktajle, klasyka w nowej odsłonie i selekcja win naturalnych. Każdy drink powstaje przy Tobie, na oczach gości, przy barze z widokiem na panoramę.</p>
+        </div>
+        <div class="cards-grid reveal">
+          <a class="card tilt" href="#rezerwuj">
+            <span class="num">01 / Sygnatury</span>
+            <h3>Autorskie kompozycje</h3>
+            <p>Karta zbudowana wokół elegancji, świeżości i wyraźnych akcentów smakowych — od lekkich aperitifów po głębsze, wieczorne koktajle.</p>
+            <span class="card-go">Zarezerwuj stolik przy barze →</span>
+          </a>
+          <a class="card tilt" href="#rezerwuj">
+            <span class="num">02 / Rzemiosło</span>
+            <h3>Klasyka w nowej odsłonie</h3>
+            <p>Znane receptury interpretujemy subtelnie, z wyczuciem i nowoczesnym balansem, bez utraty tego, co w nich kultowe.</p>
+            <span class="card-go">Zarezerwuj stolik przy barze →</span>
+          </a>
+          <a class="card tilt" href="#rezerwuj">
+            <span class="num">03 / Selekcja</span>
+            <h3>Wina naturalne</h3>
+            <p>Krótka, przemyślana karta win, która dobrze pracuje z kuchnią i pozwala odkrywać nowe etykiety bez zbędnego nadmiaru.</p>
+            <span class="card-go">Zarezerwuj stolik przy barze →</span>
+          </a>
+        </div>
+        <div class="split reveal" style="margin-top:1.2rem;">
+          <div class="copy-card">
+            <span class="eyebrow">Bar z widokiem</span>
+            <h3>Wieczór zaczyna się przy ladzie</h3>
+            <p>Otwarte stanowisko barowe buduje energię miejsca. Goście widzą proces, tempo i detal — od pierwszego ruchu shakera po finalny serwis w szkle.</p>
+            <ul class="feature-list">
+              <li>Idealna opcja na spontaniczne spotkanie przed kolacją.</li>
+              <li>Miejsce dla tych, którzy lubią obserwować rzemiosło z bliska.</li>
+              <li>Karta stworzona tak, by płynnie przechodzić od zachodu do późnego wieczoru.</li>
+            </ul>
+          </div>
+          <div class="media-frame tilt">
+            <div><img src="img/koktajle.jpg" width="1000" height="1000" alt="Sygnowane koktajle przygotowywane przy barze z widokiem na miasto" loading="lazy" decoding="async"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section full-bleed" id="eventy">
+      <div class="container-wide event-shell reveal">
+        <div>
+          <span class="eyebrow">Sekcja 4</span>
+          <h2 style="font-size:clamp(2.3rem,6vw,4.4rem);margin-bottom:1rem;">Eventy i wynajem na wyłączność</h2>
+          <p>Kolacje firmowe, urodziny, śluby i premiery. Wynajmij cały taras na wyłączność albo zarezerwuj lożę dla bliskich. Zajmiemy się każdym szczegółem wieczoru.</p>
+          <div class="pill-list" aria-label="Typy wydarzeń">
+            <a class="pill" href="#rezerwuj">Kolacje firmowe</a>
+            <a class="pill" href="#rezerwuj">Urodziny</a>
+            <a class="pill" href="#rezerwuj">Śluby</a>
+            <a class="pill" href="#rezerwuj">Premiery</a>
+            <a class="pill" href="#rezerwuj">Loże prywatne</a>
+            <a class="pill" href="#rezerwuj">Taras na wyłączność</a>
+          </div>
+        </div>
+        <aside class="event-aside">
+          <span class="eyebrow">Co zapewniamy</span>
+          <div class="timeline">
+            <div class="step">
+              <div class="step-index">01</div>
+              <div>
+                <h4>Koncepcja wieczoru</h4>
+                <p>Pomagamy dopasować układ, serwis i atmosferę do skali wydarzenia oraz charakteru gości.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-index">02</div>
+              <div>
+                <h4>Menu i bar</h4>
+                <p>Tworzymy propozycję kulinarną i koktajlową, która współgra z porą wieczoru i formą spotkania.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-index">03</div>
+              <div>
+                <h4>Opieka nad detalem</h4>
+                <p>Od pierwszego kontaktu do finału wydarzenia czuwamy nad tempem, logistyką i komfortem Twoich gości.</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="rezerwacje">
+      <div class="container faq-grid reveal">
+        <div>
+          <span class="eyebrow">Sekcja 5</span>
+          <h2 style="font-size:clamp(2.2rem,6vw,4rem);margin-bottom:1rem;">Jak rezerwujemy</h2>
+          <p>Wybierasz datę i godzinę, my potwierdzamy stolik w tej samej godzinie. Na złotą godzinę i weekendy warto rezerwować z wyprzedzeniem — te terminy znikają najszybciej.</p>
+          <div class="timeline">
+            <div class="step">
+              <div class="step-index">01</div>
+              <div>
+                <h4>Wybierz termin</h4>
+                <p>Podaj dogodną datę, liczbę gości i preferowaną porę wieczoru.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-index">02</div>
+              <div>
+                <h4>Odbierz potwierdzenie</h4>
+                <p>Wracamy z potwierdzeniem stolika możliwie szybko, najczęściej jeszcze w tej samej godzinie.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-index">03</div>
+              <div>
+                <h4>Przyjdź na gotowe</h4>
+                <p>Na miejscu czeka widok, bar i wieczór zaplanowany bez zbędnego wysiłku po Twojej stronie.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="faq">
+          <span class="eyebrow">Najczęstsze pytania</span>
+          <div class="faq-wrap">
+            <details>
+              <summary>Czy warto rezerwować stolik na zachód słońca?</summary>
+              <p>Tak — to najbardziej oblegany moment dnia. Jeśli zależy Ci na złotej godzinie albo stoliku przy panoramicznym widoku, najlepiej zrobić rezerwację wcześniej.</p>
+            </details>
+            <details>
+              <summary>Czy można zorganizować prywatny event?</summary>
+              <p>Tak. Rezerwujemy zarówno wybrane loże, jak i większe strefy lub cały taras na wyłączność — zależnie od charakteru wydarzenia.</p>
+            </details>
+            <details>
+              <summary>Czy menu zmienia się w ciągu roku?</summary>
+              <p>Tak. Karta jest sezonowa i aktualizowana cztery razy w roku, dzięki czemu pracujemy na produktach w najlepszym momencie.</p>
+            </details>
+            <details>
+              <summary>Czy mogę przyjść tylko na koktajl?</summary>
+              <p>Oczywiście. ALTO działa zarówno jako miejsce na pełną kolację, jak i na wieczór przy barze z koktajlem i widokiem.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="rezerwuj">
+      <div class="container reveal">
+        <div class="cta-panel">
+          <span class="eyebrow">Rezerwacja</span>
+          <h2>Zarezerwuj stolik przy zachodzie słońca w 30 sekund</h2>
+          <p>Jeśli planujesz wieczór na złotą godzinę, weekend albo wyjątkową okazję, zostaw zgłoszenie wcześniej — te terminy znikają najszybciej.</p>
+          <div class="hero-actions" style="margin-top:1.2rem;">
+            <a href="#formularz" class="outline-btn">Przejdź do formularza</a>
+            <a href="#eventy" class="ghost-btn">Zapytaj o event</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pm-form" id="formularz">
+      <h2>Zarezerwuj stolik</h2>
+      <form id="lead-form" novalidate>
+        <label>Imię <input type="text" name="imie" autocomplete="given-name"></label>
+        <label>Adres e-mail <input type="email" name="email" autocomplete="email" required></label>
+        <label>Telefon <input type="tel" name="telefon" autocomplete="tel"></label>
+        <label>Wiadomość <textarea name="tresc" rows="4" placeholder="Np. data, liczba gości, okazja"></textarea></label>
+
+        <div class="hp" aria-hidden="true">
+          <label for="alto-firma">Nie wypełniaj tego pola</label>
+          <input id="alto-firma" type="text" name="firma" tabindex="-1" autocomplete="off">
+        </div>
+
+        <input type="hidden" name="campaign_id" value="demo-alto-rooftop">
+        <input type="hidden" name="client_id" value="PM">
+        <input type="hidden" name="form_key" value="demo-alto-rooftop">
+        <input type="hidden" name="zrodlo" value="quick_page">
+        <input type="hidden" name="utm_source">
+        <input type="hidden" name="utm_medium">
+        <input type="hidden" name="utm_campaign">
+        <input type="hidden" name="utm_content">
+        <input type="hidden" name="utm_term">
+
+        <label class="pm-zgoda"><input type="checkbox" name="consent" required> Wyrażam zgodę na przetwarzanie moich danych w celu obsługi zgłoszenia (<a href="#polityka">polityka prywatności</a>).</label>
+        <button type="submit">Zarezerwuj stolik</button>
+        <p id="form-status" role="status"></p>
+      </form>
+    </section>
+    <section class="pm-polityka" id="polityka"><h2>Polityka prywatności</h2><p>Administratorem danych osobowych podanych w formularzu jest ALTO Rooftop. Dane przetwarzane są wyłącznie w celu obsługi Twojego zgłoszenia i kontaktu zwrotnego, na podstawie Twojej zgody (art. 6 ust. 1 lit. a RODO). Masz prawo dostępu do danych, ich sprostowania, usunięcia oraz wycofania zgody w dowolnym momencie &mdash; napisz na <a href="mailto:rezerwacje@alto-rooftop.pl">rezerwacje@alto-rooftop.pl</a>.</p><p style="opacity:.7">To jest strona demonstracyjna (portfolio PM). Dane firmy ALTO Rooftop są fikcyjne.</p></section>
+    <section class="pm-kontakt"><h2>Kontakt</h2><p><a class="tel" href="tel:+48500600700">+48 500 600 700</a></p><p><a href="mailto:rezerwacje@alto-rooftop.pl">rezerwacje@alto-rooftop.pl</a></p><p>ul. Widokowa 18, 00-001 Warszawa &middot; <a href="https://www.google.com/maps/search/?api=1&query=ul.%20Widokowa%2018%2C%2000-001%20Warszawa" rel="noopener" target="_blank">Pokaż na mapie</a></p></section>
+
+    <div class="container footer-note">
+      <p>ALTO Rooftop — bar i restauracja nad miastem. Miejsce na wieczory, które zaczynają się widokiem i zostają w pamięci dłużej niż jedna noc.</p>
+    </div>
+  </main>
+
+  <script>
+    (function(){
+      const items = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        items.forEach(el => el.classList.add('widoczny'));
+      } else {
+        const observer = new IntersectionObserver((entries)=>{
+          entries.forEach(entry=>{
+            if(entry.isIntersecting){
+              entry.target.classList.add('widoczny');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {threshold:0.16, rootMargin:'0px 0px -6% 0px'});
+        items.forEach(el => observer.observe(el));
+      }
+
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!reduce) {
+        const tilts = document.querySelectorAll('.tilt');
+        tilts.forEach(card => {
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const px = (e.clientX - rect.left) / rect.width;
+            const py = (e.clientY - rect.top) / rect.height;
+            const ry = (px - 0.5) * 8;
+            const rx = (0.5 - py) * 8;
+            card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateY(-3px)`;
+          });
+          card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+          });
+        });
+      }
+
+      /* swiatla miasta migoczace nad panorama - tylko w pasie nieba/zabudowy po prawej stronie kadru,
+         zeby nie nakladaly sie na wnetrze restauracji w lewej czesci zdjecia */
+      const lightsHost = document.getElementById('cityLights');
+      if (lightsHost && !reduce) {
+        const COUNT = 34;
+        for (let i = 0; i < COUNT; i++) {
+          const dot = document.createElement('span');
+          dot.className = 'light-dot';
+          const x = 46 + Math.random() * 52;   // 46%-98% szerokosci - zabudowa i horyzont
+          const y = 30 + Math.random() * 26;   // 30%-56% wysokosci - pas panoramy miasta
+          dot.style.left = x + '%';
+          dot.style.top = y + '%';
+          dot.style.animationDuration = (2.2 + Math.random() * 3.2) + 's';
+          dot.style.animationDelay = (Math.random() * 4) + 's';
+          lightsHost.appendChild(dot);
+        }
+      } else if (lightsHost && reduce) {
+        for (let i = 0; i < 18; i++) {
+          const dot = document.createElement('span');
+          dot.className = 'light-dot';
+          dot.style.left = (46 + Math.random() * 52) + '%';
+          dot.style.top = (30 + Math.random() * 26) + '%';
+          lightsHost.appendChild(dot);
+        }
+      }
+    })();
+  </script>
+  <script>
+    (function(){
+      var form = document.getElementById('lead-form');
+      if (!form) return;
+      var status = document.getElementById('form-status');
+
+      var params = new URLSearchParams(location.search);
+      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (key) {
+        var input = form.querySelector('input[name="' + key + '"]');
+        if (input && params.get(key)) input.value = params.get(key);
+      });
+
+      var setStatus = function (text, kind) {
+        if (!status) return;
+        status.textContent = text;
+        status.className = kind || '';
+      };
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var trap = form.querySelector('input[name="firma"]');
+        if (trap && trap.value) return;
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        var button = form.querySelector('button[type="submit"]');
+        if (button) button.disabled = true;
+        setStatus('Wysyłam zgłoszenie…');
+
+        var data = {};
+        new FormData(form).forEach(function (value, key) { data[key] = value; });
+        data.consent = form.querySelector('input[name="consent"]').checked;
+        data.page_url = location.href;
+        delete data.firma;
+
+        fetch('https://pmresearch.app.n8n.cloud/webhook/pm-lead-capture', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (res) {
+            if (res.status === 'OK' || res.status === 'DUPLIKAT') {
+              form.querySelectorAll('input,textarea,select,button').forEach(function (el) { el.disabled = true; });
+              setStatus(res.wiadomosc || 'Dziękujemy — odezwiemy się z potwierdzeniem terminu.', 'ok');
+            } else {
+              if (button) button.disabled = false;
+              setStatus(res.wiadomosc || 'Nie udało się wysłać. Sprawdź dane i spróbuj ponownie.', 'err');
+            }
+          })
+          .catch(function () {
+            if (button) button.disabled = false;
+            setStatus('Błąd połączenia. Zadzwoń do nas: +48 500 600 700.', 'err');
+          });
+      });
+    })();
+  </script>
+</body>
+</html>
