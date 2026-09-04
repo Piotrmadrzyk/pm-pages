@@ -161,6 +161,58 @@
     .tabpanel.active{display:block}
     #formularz,#faq{scroll-margin-top:calc(var(--nav-h) + 16px)}
 
+    /* --- pasek opinii - dowod spoleczny, widoczny niezaleznie od aktywnej zakladki --- */
+    .reviews{padding:2.4rem 0;border-bottom:1px solid rgba(200,162,74,.14);background:rgba(255,255,255,.015)}
+    .reviews-inner{display:grid;gap:1.6rem}
+    .reviews-score{display:flex;align-items:baseline;gap:.9rem}
+    .reviews-score strong{font-family:var(--serif);font-size:2.2rem;color:var(--text);font-weight:500}
+    .reviews-score .stars{color:var(--brand);letter-spacing:.12em;font-size:.9rem;display:block}
+    .reviews-score-meta{display:block;color:var(--muted-2);font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;margin-top:.25rem}
+    .reviews-list{display:grid;gap:1.3rem}
+    .reviews-list blockquote{margin:0}
+    .reviews-list p{color:var(--text);font-family:var(--serif);font-style:italic;font-size:1.02rem;line-height:1.35;margin:0 0 .55rem}
+    .reviews-list cite{font-style:normal;display:block;color:var(--brand-soft);font-size:.8rem;font-weight:600;letter-spacing:.04em}
+    .reviews-list cite span{color:var(--muted-2);font-weight:400;margin-left:.4rem}
+    @media (min-width:900px){
+      .reviews-inner{grid-template-columns:.55fr 2fr;align-items:start;gap:2.4rem}
+      .reviews-list{grid-template-columns:repeat(3,1fr);gap:1.6rem}
+    }
+
+    /* --- prawdziwa stopka, wielokolumnowa (zamiast doczepionych kart polityki/kontaktu) --- */
+    .site-footer{border-top:1px solid rgba(200,162,74,.16);background:rgba(0,0,0,.22);padding:3.5rem 0 0}
+    .footer-grid{display:grid;gap:2.4rem;padding-bottom:2.6rem}
+    .footer-brand p{max-width:38ch;font-size:.92rem}
+    .footer-col h5{
+      font-family:var(--sans);font-weight:600;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;
+      color:var(--brand-soft);margin:0 0 1rem;
+    }
+    .footer-col{display:flex;flex-direction:column;gap:.6rem;font-size:.92rem}
+    .footer-col a{color:var(--muted);transition:color .25s var(--ease)}
+    .footer-col a:hover{color:var(--brand-soft)}
+    .footer-hours{display:flex;justify-content:space-between;gap:1rem;margin:0;color:var(--muted);font-size:.92rem}
+    .footer-hours span{color:var(--text);font-weight:500}
+    .map-embed{
+      position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(200,162,74,.18);
+      aspect-ratio:4/3;filter:grayscale(.3) invert(.92) contrast(.9);
+    }
+    .map-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .footer-policy{
+      padding:1.8rem 0;border-top:1px solid rgba(200,162,74,.1);color:var(--muted-2);font-size:.84rem;line-height:1.55;
+    }
+    .footer-policy h5{
+      font-family:var(--sans);font-weight:600;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;
+      color:var(--brand-soft);margin:0 0 .7rem;
+    }
+    .footer-policy a{color:var(--brand-soft)}
+    .footer-legal{
+      padding:1.4rem 0;border-top:1px solid rgba(200,162,74,.1);
+      display:flex;flex-wrap:wrap;gap:.8rem 1.4rem;justify-content:space-between;
+      color:var(--muted-2);font-size:.82rem;
+    }
+    @media (min-width:900px){
+      .footer-grid{grid-template-columns:1.3fr .8fr .9fr .9fr}
+    }
+
     .btn,
     .ghost-btn,
     .outline-btn{
@@ -262,6 +314,13 @@
       color:var(--brand-soft);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;margin-bottom:.5rem;display:block;
     }
     .hero-card p{margin:0;color:#efe7d8}
+    .status-badge{
+      display:inline-flex;align-items:center;gap:.5rem;margin-bottom:.8rem;
+      font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#9fd6a8;
+    }
+    .status-badge i{width:7px;height:7px;border-radius:50%;background:#5fd68a;box-shadow:0 0 8px 1px rgba(95,214,138,.6);flex:0 0 auto}
+    .status-badge.closed{color:var(--muted-2)}
+    .status-badge.closed i{background:var(--muted-2);box-shadow:none}
     .hero-metrics{
       display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1.2rem
     }
@@ -458,9 +517,7 @@
     .reveal.widoczny{opacity:1;transform:none}
     .tilt{transition:transform .45s var(--ease), box-shadow .35s var(--ease)}
 
-    .pm-form,
-    .pm-polityka,
-    .pm-kontakt{
+    .pm-form{
       width:var(--container);margin:0 auto;
       background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.018));
       border:1px solid rgba(200,162,74,.14);
@@ -469,7 +526,7 @@
       color:var(--text);
       padding:1.25rem;
     }
-    .pm-form *, .pm-polityka *, .pm-kontakt *{color:inherit}
+    .pm-form *{color:inherit}
     .pm-form label{
       display:block;margin-bottom:.45rem;color:var(--muted);font-size:.92rem;letter-spacing:.02em
     }
@@ -505,7 +562,6 @@
       transform:translateY(-2px);background:rgba(200,162,74,.12);border-color:rgba(200,162,74,.65);box-shadow:0 16px 34px rgba(0,0,0,.24)
     }
     .pm-form button:disabled{opacity:.6;cursor:default;transform:none}
-    .pm-kontakt a,.pm-polityka a{color:var(--brand-soft)}
     #form-status{font-size:.88rem;margin-top:.9rem;color:var(--muted-2)}
     #form-status.ok{color:#9fd6a8}
     #form-status.err{color:#e29a9a}
@@ -522,7 +578,7 @@
       .stats-band{grid-template-columns:repeat(4,1fr)}
       .cards-grid{grid-template-columns:repeat(2,1fr)}
       .event-shell{padding:1.5rem}
-      .pm-form,.pm-polityka,.pm-kontakt{padding:1.5rem}
+      .pm-form{padding:1.5rem}
     }
 
     @media (min-width:1024px){
@@ -539,7 +595,7 @@
       .cards-grid{grid-template-columns:repeat(3,1fr)}
       .event-shell{grid-template-columns:1.05fr .95fr;padding:1.8rem}
       .faq-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:2rem;align-items:start}
-      .pm-form,.pm-polityka,.pm-kontakt{padding:1.75rem}
+      .pm-form{padding:1.75rem}
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -616,6 +672,7 @@
         </div>
       </div>
       <aside class="hero-card reveal" aria-label="Najważniejsze informacje">
+        <span class="status-badge" id="statusBadge" aria-live="polite"><i></i>Sprawdzam godziny…</span>
         <span class="mini-label">Wieczór nad dachami miasta</span>
         <p>ALTO to miejsce, w którym wieczór zaczyna się nad dachami miasta. Łączymy sezonową kuchnię z autorskim barem koktajlowym i widokiem na 360 stopni.</p>
         <div class="hero-metrics">
@@ -635,6 +692,32 @@
       </aside>
     </div>
   </header>
+
+  <section class="reviews" aria-label="Opinie gości">
+    <div class="container-wide reviews-inner">
+      <div class="reviews-score">
+        <strong>4.9</strong>
+        <div>
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span class="reviews-score-meta">128 opinii Google</span>
+        </div>
+      </div>
+      <div class="reviews-list">
+        <blockquote>
+          <p>„Widok robi robotę już przy wejściu, a kuchnia dotrzymuje kroku. Wracamy na każdą złotą godzinę.”</p>
+          <cite>Karolina M. <span>Google, 5★</span></cite>
+        </blockquote>
+        <blockquote>
+          <p>„Zorganizowaliśmy tu kolację firmową na 20 osób — obsługa dopięła każdy szczegół wieczoru.”</p>
+          <cite>Michał R. <span>event firmowy</span></cite>
+        </blockquote>
+        <blockquote>
+          <p>„Koktajle na poziomie najlepszych barów w mieście, a do tego ten widok o zachodzie słońca.”</p>
+          <cite>Aleksandra W. <span>Google, 5★</span></cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
 
   <main>
     <section class="section tabpanel active" id="widok">
@@ -764,10 +847,13 @@
     </section>
 
     <section class="section full-bleed tabpanel" id="eventy">
-      <div class="container-wide event-shell reveal">
-        <div>
+      <div class="container-wide split reveal">
+        <div class="media-frame tilt">
+          <div><img src="img/eventy.jpg" width="1000" height="558" alt="Prywatna kolacja na tarasie ALTO Rooftop przy zachodzie słońca" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="copy-card">
           <span class="eyebrow">Sekcja 5</span>
-          <h2 style="font-size:clamp(2.3rem,6vw,4.4rem);margin-bottom:1rem;">Eventy i wynajem na wyłączność</h2>
+          <h2 style="font-size:clamp(2rem,4.5vw,3rem);margin-bottom:1rem;">Eventy i wynajem na wyłączność</h2>
           <p>Kolacje firmowe, urodziny, śluby i premiery. Wynajmij cały taras na wyłączność albo zarezerwuj lożę dla bliskich. Zajmiemy się każdym szczegółem wieczoru.</p>
           <div class="pill-list" aria-label="Typy wydarzeń">
             <a class="pill" href="#rezerwuj">Kolacje firmowe</a>
@@ -778,6 +864,8 @@
             <a class="pill" href="#rezerwuj">Taras na wyłączność</a>
           </div>
         </div>
+      </div>
+      <div class="container-wide reveal" style="margin-top:2rem">
         <aside class="event-aside">
           <span class="eyebrow">Co zapewniamy</span>
           <div class="timeline">
@@ -900,13 +988,53 @@
       </div>
     </section>
 
-    <section class="pm-polityka" id="polityka"><h2>Polityka prywatności</h2><p>Administratorem danych osobowych podanych w formularzu jest ALTO Rooftop. Dane przetwarzane są wyłącznie w celu obsługi Twojego zgłoszenia i kontaktu zwrotnego, na podstawie Twojej zgody (art. 6 ust. 1 lit. a RODO). Masz prawo dostępu do danych, ich sprostowania, usunięcia oraz wycofania zgody w dowolnym momencie &mdash; napisz na <a href="mailto:rezerwacje@alto-rooftop.pl">rezerwacje@alto-rooftop.pl</a>.</p><p style="opacity:.7">To jest strona demonstracyjna (portfolio PM). Dane firmy ALTO Rooftop są fikcyjne.</p></section>
-    <section class="pm-kontakt"><h2>Kontakt</h2><p><a class="tel" href="tel:+48500600700">+48 500 600 700</a></p><p><a href="mailto:rezerwacje@alto-rooftop.pl">rezerwacje@alto-rooftop.pl</a></p><p>ul. Widokowa 18, 00-001 Warszawa &middot; <a href="https://www.google.com/maps/search/?api=1&query=ul.%20Widokowa%2018%2C%2000-001%20Warszawa" rel="noopener" target="_blank">Pokaż na mapie</a></p></section>
-
-    <div class="container footer-note">
-      <p>ALTO Rooftop — bar i restauracja nad miastem. Miejsce na wieczory, które zaczynają się widokiem i zostają w pamięci dłużej niż jedna noc.</p>
-    </div>
   </main>
+
+  <footer class="site-footer">
+    <div class="container-wide footer-grid">
+      <div class="footer-brand">
+        <div class="brand" style="margin-bottom:.9rem">
+          <strong>ALTO</strong>
+          <span>Rooftop · 18. piętro</span>
+        </div>
+        <p>Bar i restauracja nad miastem. Miejsce na wieczory, które zaczynają się widokiem i zostają w pamięci dłużej niż jedna noc.</p>
+      </div>
+      <div class="footer-col" data-tab-nav>
+        <h5>Nawigacja</h5>
+        <a href="#widok" data-tab="widok">Widok</a>
+        <a href="#kuchnia" data-tab="kuchnia">Kuchnia</a>
+        <a href="#bar" data-tab="bar">Bar</a>
+        <a href="#menu" data-tab="menu">Menu</a>
+        <a href="#eventy" data-tab="eventy">Eventy</a>
+        <a href="#rezerwacje" data-tab="rezerwacje">Rezerwacje</a>
+      </div>
+      <div class="footer-col">
+        <h5>Godziny i kontakt</h5>
+        <p class="footer-hours"><span>Pon&ndash;Nd</span><span>17:00&ndash;01:00</span></p>
+        <p class="footer-hours"><span>Kuchnia do</span><span>23:30</span></p>
+        <a class="tel" href="tel:+48500600700" style="margin-top:.4rem">+48 500 600 700</a>
+        <a href="mailto:rezerwacje@alto-rooftop.pl">rezerwacje@alto-rooftop.pl</a>
+        <span>ul. Widokowa 18, 00-001 Warszawa</span>
+      </div>
+      <div class="footer-col footer-map">
+        <h5>Jak trafić</h5>
+        <div class="map-embed">
+          <iframe src="https://www.google.com/maps?q=ul.+Widokowa+18,+00-001+Warszawa&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa dojazdu — ALTO Rooftop"></iframe>
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&query=ul.%20Widokowa%2018%2C%2000-001%20Warszawa" target="_blank" rel="noopener">Otwórz w Google Maps →</a>
+      </div>
+    </div>
+
+    <div class="container-wide footer-policy" id="polityka">
+      <h5>Polityka prywatności</h5>
+      <p>Administratorem danych osobowych podanych w formularzu jest ALTO Rooftop. Dane przetwarzane są wyłącznie w celu obsługi Twojego zgłoszenia i kontaktu zwrotnego, na podstawie Twojej zgody (art. 6 ust. 1 lit. a RODO). Masz prawo dostępu do danych, ich sprostowania, usunięcia oraz wycofania zgody w dowolnym momencie &mdash; napisz na <a href="mailto:rezerwacje@alto-rooftop.pl">rezerwacje@alto-rooftop.pl</a>.</p>
+    </div>
+
+    <div class="container-wide footer-legal">
+      <p>© 2026 ALTO Rooftop. Strona demonstracyjna (portfolio Probatum) — dane firmy są fikcyjne.</p>
+      <p>Zbudowane przez <a href="https://probatum.pl" target="_blank" rel="noopener">Probatum</a></p>
+    </div>
+  </footer>
 
   <script>
     (function(){
@@ -926,6 +1054,25 @@
       }
 
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* status "teraz otwarte" liczony z prawdziwego czasu przegladarki goscia -
+         godziny ALTO: codziennie 17:00-01:00 (przechodzi przez polnoc) */
+      const statusBadge = document.getElementById('statusBadge');
+      if (statusBadge) {
+        const now = new Date();
+        const h = now.getHours() + now.getMinutes() / 60;
+        const open = h >= 17 || h < 1;
+        let text;
+        if (open) {
+          text = (h < 1 ? (1 - h) : (25 - h)) <= 1
+            ? 'Zamykamy wkrótce · dziś do 01:00'
+            : 'Teraz otwarte · dziś do 01:00';
+        } else {
+          text = 'Otwieramy dziś o 17:00';
+        }
+        statusBadge.innerHTML = '<i></i>' + text;
+        statusBadge.classList.toggle('closed', !open);
+      }
 
       if (!reduce) {
         const tilts = document.querySelectorAll('.tilt');
