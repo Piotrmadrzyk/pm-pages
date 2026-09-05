@@ -78,8 +78,8 @@ def menu_mobilne(aktywna, korzen):
 
 # ─────────────────────────────────────────────────────────────────
 #  DYPLOMY
-#  Dwanascie — wszystkie skany, ktore przeslala Agnieszka (wrzesien 2026).
-#  Wszystkich fizycznie jest okolo dwudziestu.
+#  Trzynascie — wszystkie skany, ktore przeslala Agnieszka (wrzesien 2026).
+#  Wszystkich fizycznie jest ponad dwadziescia.
 # ─────────────────────────────────────────────────────────────────
 DYPLOMY = [
     ('2002-deja-vu-kublin', u'2002', u'Akademia Déjà Vu i Kublin',
@@ -98,6 +98,9 @@ DYPLOMY = [
      u'Razem z tytułem mistrza daje uprawnienia do nauki zawodu. Dzięki niemu '
      u'w salonie mogą uczyć się praktykanci — i dlatego rozmowa o włosach '
      u'z klientką też wychodzi prościej.'),
+    ('2012-tytul-mistrza',  u'2012', u'Dyplom mistrzowski',
+     u'Częstochowska Izba Rzemiosła i Przedsiębiorczości — zdany egzamin '
+     u'mistrzowski i prawo do używania tytułu mistrza w zawodzie fryzjer.'),
     ('2013-loreal-h3',      u'2013', u'L’Oréal H³',
      u'Heart, Hand, Head — międzynarodowe grono stylistów L’Oréal Professionnel. '
      u'Wejście do niego oznacza dostęp do szkoleń, na które nie każdy salon '
@@ -1215,9 +1218,9 @@ def strona_start():
       </p>
       <p>
         Zanim cokolwiek zrobię z Twoimi włosami, rozmawiamy. O tym, co chcesz osiągnąć,
-        co da się osiągnąć na Twoich włosach, ile to potrwa i ile będzie kosztować.
+        czy kondycja Twoich włosów na to pozwoli, ile to potrwa i ile będzie kosztować.
       </p>
-      <a class="link-dalej" href="o-mnie/">Cała droga i dwanaście dyplomów</a>
+      <a class="link-dalej" href="o-mnie/">Cała droga i trzynaście dyplomów</a>
     </div>
   </div>
 </section>
@@ -1225,7 +1228,7 @@ def strona_start():
 <section class="ciemno">
   <div class="wrap">
     <p class="nadpis">Dowód</p>
-    <h2>Ćwierć wieku, <span class="kursywa">dwadzieścia dyplomów</span>.</h2>
+    <h2>Ćwierć wieku, <span class="kursywa">ponad dwadzieścia dyplomów</span>.</h2>
     <p style="color:var(--srebro-jasne); max-width:56ch">
       Toni&amp;Guy, Saks, uprawnienia instruktorskie, wiele szkoleń
       w Akademii L'Oréal Professionnel — u Adama Reeda, Berniego Ottjesa i Min Kim.
@@ -1371,8 +1374,8 @@ def strona_o_mnie():
         naglowek_strony(u'O mnie',
             u'Nie zgaduję. <span class="kursywa">Wiem, co robię</span>.',
             u'Agnieszka Lewandowska — mistrzyni fryzjerstwa. Ponad dwadzieścia pięć lat '
-            u'przy fotelu, osiemnaście lat własnego salonu i studia pedagogiczne, '
-            u'których wciąż nie skończyłam — bo nie przestałam się uczyć.') +
+            u'przy fotelu, osiemnaście lat własnego salonu i trwające studia '
+            u'pedagogiczne — bo nie przestałam się uczyć.') +
 u"""
 <section style="padding-top:0">
   <div class="wrap dwie odwrot">
@@ -1415,7 +1418,7 @@ u"""
     <div class="liczby">
       <div class="liczba"><b>25+</b><span>lat w zawodzie</span></div>
       <div class="liczba"><b>18</b><span>lat własnego salonu</span></div>
-      <div class="liczba"><b>20</b><span>dyplomów i certyfikatów</span></div>
+      <div class="liczba"><b>20+</b><span>dyplomów i certyfikatów</span></div>
       <div class="liczba"><b>5,0</b><span>ocena z 53 opinii Google</span></div>
       <div class="liczba"><b>2025</b><span>studia pedagogiczne w toku</span></div>
     </div>
@@ -1432,8 +1435,8 @@ u"""
     <p class="nadpis">Droga</p>
     <h2>Od pierwszego dyplomu <span class="kursywa">do dziś</span>.</h2>
     <p style="color:var(--srebro-jasne); max-width:58ch">
-      Dyplomów uzbierało się przez te lata około dwudziestu. Poniżej dwanaście —
-      każdy można powiększyć i przeczytać. Oryginały wiszą w salonie; dwa
+      Dyplomów uzbierało się przez te lata ponad dwadzieścia. Poniżej trzynaście —
+      każdy można powiększyć i przeczytać. Oryginały wiszą w salonie; trzy
       najstarsze wystawione są jeszcze na nazwisko panieńskie, Dziuk.
     </p>
 """ + u''.join(rzedy) + u"""
