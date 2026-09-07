@@ -103,6 +103,29 @@ NAV_WIECEJ = [
     ('blog.html',         'Blog'),
 ]
 
+# Zakładka w menu obiecuje dział. Blog i Warsztat mają dziś po JEDNYM wpisie,
+# więc menu obiecuje więcej, niż dowozi — a pusty dział szkodzi bardziej niż
+# jego brak. Chowamy je z menu, dopóki nie uzbierają MIN_WPISOW. Same strony
+# zostają: są w sitemapie, linkuje do nich treść („W Warsztacie pokazuję...")
+# i wracają do menu SAME, gdy tylko dojdą wpisy — bez ruszania kodu.
+MIN_WPISOW = 3
+
+
+def _ile_wpisow(katalog):
+    sciezka = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'wpisy', katalog)
+    try:
+        return len(wpisy.wczytaj_katalog(sciezka))
+    except Exception:
+        return 0
+
+
+CHUDE_DZIALY = {plik for plik, katalog in (('blog.html', 'blog'), ('warsztat.html', 'warsztat'))
+                if _ile_wpisow(katalog) < MIN_WPISOW}
+if CHUDE_DZIALY:
+    print('poza menu (mniej niż %d wpisy): %s' % (MIN_WPISOW, ', '.join(sorted(CHUDE_DZIALY))))
+
+NAV_WIECEJ = [x for x in NAV_WIECEJ if x[0] not in CHUDE_DZIALY]
+
 NAV_MOBILE = [('index.html', 'Start')] + NAV_GLOWNA + NAV_WIECEJ + [
     ('kontakt.html', 'Kontakt'),
 ]
@@ -245,6 +268,8 @@ TPL = '''<!DOCTYPE html>
         <a href="realizacje.html">Realizacje</a>
         <a href="automatyzacja.html">Agenci AI</a>
         <a href="akademia.html">Akademia</a>
+        <a href="warsztat.html">Warsztat</a>
+        <a href="blog.html">Blog</a>
       </div>
       <div>
         <h5>Rozpocznij</h5>
