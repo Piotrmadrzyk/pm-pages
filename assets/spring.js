@@ -40,6 +40,7 @@
         attempt.catch(function () {
           world.classList.remove('is-playing');
           if (replay) replay.innerHTML = '<span>↻</span> Odtwórz';
+          if (pause) pause.hidden = true;
           showControls();
         });
       }

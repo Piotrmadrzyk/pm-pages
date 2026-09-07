@@ -186,7 +186,7 @@ TPL = '''<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#fcfdf9">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
