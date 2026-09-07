@@ -6,7 +6,7 @@
 <title>Oferta — strony, kampanie i social media | Probatum</title>
 <meta name="description" content="Trzy usługi prowadzone tym samym sposobem: wielostronicowe witryny pod branżę, kampanie lejkowe z celem na każdym etapie i stałe prowadzenie profili społecznościowych.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#07080b">
+<meta name="theme-color" content="#fcfdf9">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
 <meta property="og:type" content="website">
@@ -20,322 +20,145 @@
 
 <script>document.documentElement.className += ' js';</script>
 
-<!-- 25.08.2026: zdjete Google Fonts. Instrument Serif + Manrope + JetBrains Mono to
-     domyslny zestaw generatorow stron — czytelnik rozpoznaje go od pierwszego rzutu oka.
-     Teraz czcionka systemowa: strona wyglada jak zwykly serwis, laduje sie natychmiast
-     i nie odpytuje serwerow Google przy kazdym wejsciu. -->
-<link rel="stylesheet" href="assets/site.css?v=760b1fda28">
+<link rel="stylesheet" href="assets/site.css?v=98f3e8ce6a">
 </head>
-<body>
+<body class="site">
+<a class="skip-link" href="#main">Przejdź do treści</a>
 
 <nav class="nav">
   <div class="wrap">
-    <a class="brand" href="index.html">
-      <span class="sygnet" aria-hidden="true">P</span>
-      <span class="brand-txt">
-        <b>Probatum<i>.</i></b>
-        <span>przewaga metodą</span>
-      </span>
-    </a>
+    <a class="brand" href="index.html" aria-label="Probatum — strona główna">Probatum<i>.</i></a>
     <div class="navlinks">
-    <a href="index.html">Start</a>
-    <a href="o-donie.html">Metoda</a>
     <a href="oferta.html" class="active">Oferta</a>
     <a href="realizacje.html">Realizacje</a>
-    <a href="automatyzacja.html">Agenci</a>
-    <a href="akademia.html">Akademia</a>
-    <a href="warsztat.html">Warsztat</a>
-    <a href="blog.html">Blog</a>
-    <a href="kontakt.html">Kontakt</a>
+    <a href="o-donie.html">Jak pracuję</a>
+    <details class="navmore"><summary>Więcej</summary><div>
+        <a href="automatyzacja.html">Agenci AI</a>
+        <a href="akademia.html">Akademia AI</a>
+        <a href="warsztat.html">Warsztat</a>
+        <a href="blog.html">Blog</a>
+      </div></details>
     </div>
-    <a href="wycena.html" class="navcta">Wyceń projekt</a>
-    <button type="button" class="burger" aria-label="Menu" aria-expanded="false" aria-controls="navmobile"><span></span><span></span><span></span></button>
+    <a href="kontakt.html" class="navcta">Porozmawiajmy</a>
+    <button type="button" class="burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navmobile">Menu</button>
   </div>
 </nav>
-<div class="navmobile" id="navmobile">
+<div class="navmobile" id="navmobile" aria-label="Menu mobilne">
   <a href="index.html">Start</a>
-  <a href="o-donie.html">Metoda</a>
   <a href="oferta.html">Oferta</a>
   <a href="realizacje.html">Realizacje</a>
-  <a href="automatyzacja.html">Agenci</a>
-  <a href="akademia.html">Akademia</a>
+  <a href="o-donie.html">Jak pracuję</a>
+  <a href="automatyzacja.html">Agenci AI</a>
+  <a href="akademia.html">Akademia AI</a>
   <a href="warsztat.html">Warsztat</a>
   <a href="blog.html">Blog</a>
   <a href="kontakt.html">Kontakt</a>
-  <a href="wycena.html">Wyceń projekt</a>
+  <a href="wycena.html">Poproś o wycenę</a>
 </div>
 
-<section class="phead">
+<main id="main">
+<section class="phead pink">
   <div class="wrap">
-    <span class="eyebrow">Oferta</span>
-    <h1 class="display">Trzy usługi prowadzone tym samym sposobem</h1>
-    <p class="lead">
-      Każdą prowadzę tym samym sposobem pracy, z ręcznym sprawdzeniem
-      na każdym etapie.</p>
-    <div class="btnrow" style="margin-top:30px">
-      <a href="#strony" class="btn">Strony internetowe</a>
-      <a href="#kampanie" class="btn">Kampanie lejkowe</a>
-      <a href="#social" class="btn">Social media</a>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="strony" >
-  <div class="wrap">
-    <div class="duo reveal" style="margin-bottom:46px">
-      <div class="duo-tekst">
-      <h2 class="display">Strona, która ma coś załatwić</h2>
-      <span class="svc-for" style="margin-top:16px">Dla kancelarii, gabinetów, usług lokalnych i firm B2B bez własnego działu marketingu</span>
-      <p class="lead">
-        Większość małych firm ma stronę, która powstała raz, dawno temu, i od tamtej pory nikt
-        jej nie ruszał. Gorzej: <b>ta strona nie przyprowadza nikogo</b>.
-        Istnieje pod adresem, który trzeba komuś podyktować, zamiast pojawiać się wtedy, gdy ktoś
-        w Twoim mieście szuka dokładnie tego, co robisz.
-      </p>
-      <p class="lead">
-        Dlatego nie zaczynam od projektu graficznego, tylko od <b>researchu</b>: sprawdzam, jakich
-        słów Twoi klienci używają w wyszukiwarce, o co pytają przez telefon, czego szukają wieczorem
-        przed decyzją i co mają konkurenci w okolicy. Dopiero z tych danych powstaje mapa podstron —
-        <b>każda odpowiada na konkretne pytanie</b>, które ktoś realnie wpisuje w Google.
-      </p>
-      <p class="lead">
-        Do tego dochodzi techniczny fundament widoczności: tytuły i opisy decydujące o kliknięciu,
-        struktura nagłówków, szybkość, wersja mobilna, mapa strony i wizytówka Google ze spójnymi
-        danymi firmy. Treść piszę pod Twoją ofertę i lokalizację, bez lorem ipsum i frazesów.
-        Ty zatwierdzasz każdy etap, zanim trafi na żywo.
-      </p>
-      </div>
-      <figure class="duo-foto">
-        <img src="assets/img/sekcje/oferta-strony.jpg" width="1600" height="900" loading="lazy"
-             alt="Laptop i szkic układu strony na biurku w świetle lampy">
-        <figcaption>Struktura powstaje na papierze, zanim powstanie na ekranie</figcaption>
-      </figure>
-    </div>
-
-    <div class="form-wrap" style="align-items:start">
-      <div>
-        <ul class="svc-list reveal">
-          <li><b>Research fraz i pytań</b>, których używają Twoi klienci w Twoim mieście</li>
-          <li><b>Przegląd konkurencji</b> w branży i okolicy — co mają, czego im brakuje</li>
-          <li>Mapę podstron zbudowaną pod te frazy, nie pod gotowy szablon</li>
-          <li>Treść pisaną pod Twoją firmę i lokalizację</li>
-          <li>Fundament widoczności: tytuły, opisy, nagłówki, szybkość, wersja mobilna</li>
-          <li>Wizytówkę Google i spójne dane firmy w sieci</li>
-          <li>Publikację na Twojej domenie i formularz podłączony do skrzynki</li>
-        </ul>
-      </div>
-      <div class="reveal">
-        <div class="kv" style="margin-top:0">
-          <div><span>Liczba podstron</span><span>4–8</span></div>
-          <div><span>Czas realizacji</span><span>10–14 dni roboczych</span></div>
-          <div><span>Rundy poprawek w cenie</span><span>2</span></div>
-          <div><span>Publikacja</span><span>do 24 h od akceptacji</span></div>
-        </div>
-        <p class="small" style="margin-top:18px">
-          Zobacz, jak to wygląda w praktyce — <a href="realizacje.html" style="color:var(--amber);font-weight:600">Kancelaria Zawadzcy i Wspólnicy</a>
-          powstała dokładnie w tym procesie.
-        </p>
-      </div>
-    </div>
-
-    <div class="proc reveal">
-      <div class="proc-i"><span class="n">01</span><b>Briefing</b><p>Krótka rozmowa o firmie, ofercie i tym, kto u Ciebie kupuje.</p><span class="t">~30 min</span></div>
-      <div class="proc-i"><span class="n">02</span><b>Research</b><p>Frazy z wyszukiwarki, pytania klientów, przegląd konkurencji w okolicy.</p><span class="t">1–2 dni robocze</span></div>
-      <div class="proc-i"><span class="n">03</span><b>Projekt</b><p>Pierwsza wersja strony powstaje na bazie realnych danych o firmie.</p><span class="t">5–7 dni roboczych</span></div>
-      <div class="proc-i"><span class="n">04</span><b>Zatwierdzenie</b><p>Przeglądasz i akceptujesz — Twoje uwagi wracają do mnie.</p><span class="t">1–2 dni na rundę</span></div>
-      <div class="proc-i"><span class="n">05</span><b>Publikacja</b><p>Strona trafia na Twoją domenę, gotowa do pracy.</p><span class="t">do 24 h od akceptacji</span></div>
-    </div>
-
-    <div class="faq reveal">
-      <details><summary>Czy mogę używać własnej domeny?</summary><p>Tak — podpinam stronę pod domenę, którą już masz, albo pomagam ją zarejestrować, jeśli jeszcze jej nie ma.</p></details>
-      <details><summary>Co jeśli zechcę zmienić treść po publikacji?</summary><p>Drobne poprawki tekstowe wprowadzam na bieżąco. Większe zmiany — nowe podstrony, przebudowa — to osobne zlecenie.</p></details>
-      <details><summary>Czy strona będzie widoczna w Google?</summary><p>Publikuję z podstawową konfiguracją SEO: tytuły, opisy, struktura nagłówków i adresy podstron. To fundament, od którego zaczyna się widoczność, nie obiecuję pierwszego miejsca w tydzień.</p></details>
-    </div>
-
-    <div class="btnrow" style="margin-top:34px">
-      <a href="wycena.html" class="btn btn-primary">Sprawdź wycenę strony</a>
-      <a href="realizacje.html" class="btn">Zobacz żywe realizacje</a>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="kampanie" style="border-top:1px solid var(--line)">
-  <div class="wrap">
-    <div class="duo odwrotnie reveal" style="margin-bottom:46px">
-      <figure class="duo-foto">
-        <img src="assets/img/sekcje/oferta-kampanie.jpg" width="1600" height="900" loading="lazy"
-             alt="Telefon z wykresem i odręczny szkic lejka na biurku">
-        <figcaption>Najpierw research i plan, dopiero potem budżet</figcaption>
-      </figure>
-      <div class="duo-tekst">
-      <h2 class="display">Marketing z celem na każdym etapie</h2>
-      <span class="svc-for" style="margin-top:16px">Dla firm z ofertą wartą kilku minut rozmowy — usług B2B, edukacji i branż z wyższym progiem decyzyjnym</span>
-      <p class="lead">
-        Najdroższa reklama to ta, którą ktoś ustawił w piętnaście minut. Pieniądze idą, kliknięcia
-        są, klientów nie ma, bo nikt nie sprawdził, <b>do kogo i po co się mówi</b>.
-      </p>
-      <p class="lead">
-        Zaczynam od researchu: kto u Ciebie faktycznie kupuje, co go powstrzymuje przed decyzją,
-        co obiecuje konkurencja i gdzie ma słabe miejsce. Potem analiza tego, co już masz —
-        ruchu na stronie, dotychczasowych zapytań, wcześniejszych reklam, jeśli były.
-      </p>
-      <p class="lead">
-        Dopiero na tych danych projektuję lejek: etapy ścieżki, komunikat na każdy z nich
-        i <b>budżet testowy</b>, którym sprawdzamy, co działa. Skalujemy zwycięzców, wygaszamy resztę.
-        <b>Żadna złotówka nie idzie w reklamę na ślepo.</b>
-      </p>
-      </div>
-    </div>
-
-    <div class="form-wrap" style="align-items:start">
-      <div>
-        <ul class="svc-list reveal">
-          <li><b>Research grupy docelowej</b>: kto kupuje, co go powstrzymuje</li>
-          <li><b>Analiza konkurencji</b> i Twoich dotychczasowych wyników</li>
-          <li>Mapę ścieżki klienta (świadomość → rozważanie → zakup) pod Twoją branżę</li>
-          <li>Plan lejka z budżetem testowym przed pełnym wydatkiem</li>
-          <li>Landing page zbudowany pod kampanię, nie ogólną stronę firmową</li>
-          <li>Pomiar konwersji i skalowanie tego, co się sprawdziło</li>
-        </ul>
-      </div>
-      <div class="reveal">
-        <div class="kv" style="margin-top:0">
-          <div><span>Etapy lejka</span><span>3–5</span></div>
-          <div><span>Czas do startu</span><span>7–10 dni roboczych</span></div>
-          <div><span>Przeglądy wyników</span><span>co 14 dni</span></div>
-        </div>
-        <p class="small" style="margin-top:18px">
-          Kampanie to młodsza usługa niż budowa stron, nie mam jeszcze osobnego portfolio kampanii.
-          Pierwszym dowodem będzie ta zaprojektowana dla Twojej firmy. Ten sam proces zatwierdzeń
-          zobaczysz w <a href="realizacje.html" style="color:var(--amber);font-weight:600">realizacjach stron</a>.
-        </p>
-      </div>
-    </div>
-
-    <div class="proc reveal">
-      <div class="proc-i"><span class="n">01</span><b>Cel kampanii</b><p>Ustalamy wspólnie, co ma się wydarzyć — zapytania, zapisy, sprzedaż.</p><span class="t">~30–45 min rozmowy</span></div>
-      <div class="proc-i"><span class="n">02</span><b>Research i analiza</b><p>Kto kupuje i co go powstrzymuje, co robi konkurencja, co pokazują Twoje dane.</p><span class="t">2–3 dni robocze</span></div>
-      <div class="proc-i"><span class="n">03</span><b>Projekt lejka</b><p>Powstaje ścieżka i materiały pod każdy jej etap.</p><span class="t">4–6 dni roboczych</span></div>
-      <div class="proc-i"><span class="n">04</span><b>Zatwierdzenie</b><p>Akceptujesz treści i budżet przed uruchomieniem.</p><span class="t">1–2 dni</span></div>
-      <div class="proc-i"><span class="n">05</span><b>Uruchomienie i pomiar</b><p>Kampania rusza, wyniki są śledzone i raportowane.</p><span class="t">przegląd co 2 tygodnie</span></div>
-    </div>
-
-    <div class="faq reveal">
-      <details><summary>Jaki budżet reklamowy jest potrzebny?</summary><p>To zależy od branży i celu — ustalam widełki podczas rozmowy o celu kampanii, zanim zaprojektuję lejek. Nie zaczynam od kwoty, tylko od tego, co ma się wydarzyć.</p></details>
-      <details><summary>Czy muszę mieć już stronę internetową?</summary><p>Nie — landing page pod kampanię buduję niezależnie od tego, czy masz już stronę główną firmy.</p></details>
-      <details><summary>Co jeśli kampania nie działa tak, jak zakładano?</summary><p>Sprawdzam dane co dwa tygodnie i koryguję treści lub grupę docelową. Kampania nie jest ustawiana raz na zawsze.</p></details>
-    </div>
-
-    <div class="btnrow" style="margin-top:34px">
-      <a href="wycena.html" class="btn btn-primary">Sprawdź wycenę kampanii</a>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="social" >
-  <div class="wrap">
-    <div class="duo reveal" style="margin-bottom:46px">
-      <div class="duo-tekst">
-      <h2 class="display">Obecność, która nie znika po miesiącu</h2>
-      <span class="svc-for" style="margin-top:16px">Dla firm, które chcą być obecne na bieżąco, ale nie mają czasu ani osoby do prowadzenia profilu</span>
-      <p class="lead">
-        Najczęstszy scenariusz to profil, który ożywa raz na kilka tygodni, kiedy ktoś w firmie
-        znajdzie chwilę, a potem znowu milczy. Drugi najczęstszy: profil publikujący regularnie
-        rzeczy, których <b>nikt nie chce oglądać</b>. Odbiorcy widzą jedno i drugie.
-      </p>
-      <p class="lead">
-        Dlatego zaczynam od sprawdzenia, co w Twojej branży faktycznie zatrzymuje ludzi: jakie
-        formaty działają, o co pytają w komentarzach, co publikuje konkurencja i czego nikt
-        nie pokazuje. Z tego powstaje <b>plan na miesiąc</b> — tematy, formaty, terminy.
-      </p>
-      <p class="lead">
-        Ty dostarczasz materiał, jaki naturalnie powstaje w firmie — zdjęcia, informacje
-        o wydarzeniach, nowości w ofercie, a ja zamieniam to w gotowe publikacje.
-        Treść przygotowuję z wyprzedzeniem, więc profil żyje nawet w tygodniach, w których
-        nie masz czasu o nim myśleć. <b>Plan zatwierdzasz, zanim cokolwiek trafi na profil.</b>
-      </p>
-      </div>
-      <figure class="duo-foto">
-        <img src="assets/img/sekcje/oferta-social.jpg" width="1600" height="900" loading="lazy"
-             alt="Wydrukowane zdjęcia ułożone w siatkę obok aparatu">
-        <figcaption>Plan na miesiąc do przodu, nie post z dnia na dzień</figcaption>
-      </figure>
-    </div>
-
-    <div class="form-wrap" style="align-items:start">
-      <div>
-        <ul class="svc-list reveal">
-          <li><b>Analiza</b> tego, co działa w Twojej branży i u konkurencji</li>
-          <li>Plan tematów i formatów na miesiąc do przodu</li>
-          <li>Redakcję i przygotowanie treści na bazie Twoich materiałów</li>
-          <li>Publikację na wybranych platformach, zgodnie z harmonogramem</li>
-          <li>Raport zasięgów i reakcji z wnioskami na kolejny miesiąc</li>
-        </ul>
-      </div>
-      <div class="reveal">
-        <div class="kv" style="margin-top:0">
-          <div><span>Publikacje</span><span>8–12 / miesiąc</span></div>
-          <div><span>Harmonogram</span><span>1 / miesiąc</span></div>
-          <div><span>Reakcja na wydarzenie</span><span>48 h</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="proc reveal">
-      <div class="proc-i"><span class="n">01</span><b>Analiza</b><p>Co działa w Twojej branży, co publikuje konkurencja, czego nikt nie pokazuje.</p><span class="t">1–2 dni robocze</span></div>
-      <div class="proc-i"><span class="n">02</span><b>Zbiórka materiału</b><p>Przesyłasz zdjęcia, informacje i bieżące wydarzenia z firmy.</p><span class="t">na bieżąco</span></div>
-      <div class="proc-i"><span class="n">03</span><b>Plan treści</b><p>Powstaje harmonogram i komplet postów na miesiąc.</p><span class="t">3–4 dni robocze</span></div>
-      <div class="proc-i"><span class="n">04</span><b>Zatwierdzenie</b><p>Przeglądasz plan przed publikacją.</p><span class="t">1–2 dni</span></div>
-      <div class="proc-i"><span class="n">05</span><b>Publikacja i cykl</b><p>Profile żyją na bieżąco, proces powtarza się co miesiąc.</p><span class="t">cyklicznie</span></div>
-    </div>
-
-    <div class="faq reveal">
-      <details><summary>Na jakich platformach prowadzisz profile?</summary><p>Najczęściej Facebook i Instagram — dobieram platformy do tego, gdzie faktycznie są Twoi klienci, a nie do tego, co modne.</p></details>
-      <details><summary>Co jeśli nie mam gotowych zdjęć ani materiałów?</summary><p>Wystarczy to, co naturalnie powstaje w firmie — nawet zdjęcia z telefonu. Pomagam dobrać, co warto pokazać.</p></details>
-      <details><summary>Czy odpowiadasz też na komentarze i wiadomości?</summary><p>Podstawowy zakres obejmuje monitoring zaangażowania. Moderację komentarzy ustalamy indywidualnie, zależnie od skali.</p></details>
-    </div>
-
-    <div class="btnrow" style="margin-top:34px">
-      <a href="wycena.html" class="btn btn-primary">Sprawdź wycenę social media</a>
-    </div>
-  </div>
-</section>
-
-<section class="cta-end" style="background:var(--ink-1);border-top:1px solid var(--line)">
-  <div class="wrap-n">
-    <h2 class="display">Nie wiesz, od czego zacząć?</h2>
-    <p class="lead center">
-      Formularz wyceny sam podpowie, która usługa — albo kombinacja — pasuje do Twojej sytuacji.
-      Dwie minuty wypełniania.
-    </p>
+    <span class="eyebrow">OFERTA</span>
+    <h1>Nie potrzebujesz więcej marketingu.<br>Potrzebujesz <em>spójnej zmiany.</em></h1>
+    <p class="lead">Zaczynam od tego, co dziś zatrzymuje Twoją firmę. Dopiero potem dobieram stronę, kampanię albo stałą komunikację.</p>
     <div class="btnrow">
-      <a href="wycena.html" class="btn btn-primary btn-lg">Zamów bezpłatną wycenę</a>
-      <a href="kontakt.html" class="btn btn-lg">Zapytaj bezpośrednio</a>
+      <a class="btn btn-primary" href="kontakt.html">Opowiedz mi o firmie <span>↗</span></a>
+      <a class="text-link" href="#strony">Zobacz zakres <span>↓</span></a>
     </div>
   </div>
 </section>
 
+<section class="service-block" id="strony">
+  <div class="wrap service-detail">
+    <div>
+      <span class="eyebrow">01 · STRONY INTERNETOWE</span>
+      <h2>Strona, która pokazuje firmę taką, jaka jest <em>dzisiaj.</em></h2>
+      <p class="lead">Dla marek, które urosły, ale ich obecna strona została kilka lat z tyłu. Porządkuję ofertę, język i wygląd, a potem składam je w jeden przekonujący obraz.</p>
+      <div class="note-panel">
+        <h3>Najczęściej zaczynamy od istniejącej strony</h3>
+        <p>Nie wyrzucam tego, co działa. Zachowuję wartościowe treści, domenę i pozycje, a zmieniam to, co nie buduje już zaufania albo utrudnia kontakt.</p>
+      </div>
+      <div class="btnrow">
+        <a class="btn btn-primary" href="kontakt.html#analiza-strony">Poproś o analizę strony</a>
+        <a class="text-link" href="realizacje.html">Zobacz realizacje <span>↗</span></a>
+      </div>
+    </div>
+    <ul class="service-inclusions">
+      <li><div><b>Diagnoza i kierunek</b><p>Sprawdzam obecną stronę, konkurencję, klientów i cel biznesowy.</p></div></li>
+      <li><div><b>Architektura i treść</b><p>Układam drogę użytkownika i piszę treści zamiast wypełniać szablon.</p></div></li>
+      <li><div><b>Projekt i wdrożenie</b><p>Powstaje szybka, czytelna strona działająca na telefonie i komputerze.</p></div></li>
+      <li><div><b>Przeniesienie i publikacja</b><p>Pomagam uporządkować domenę, przekierowania i bezpieczne przejście na nową wersję.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="service-block" id="kampanie">
+  <div class="wrap service-detail">
+    <div>
+      <span class="eyebrow">02 · KAMPANIE</span>
+      <h2>Reklama, strona i kontakt muszą prowadzić w <em>jedną stronę.</em></h2>
+      <p class="lead">Projektuję drogę od pierwszego zobaczenia reklamy do zapytania. Każdy element ma konkretne zadanie i wspiera następny.</p>
+      <div class="btnrow">
+        <a class="btn btn-primary" href="kontakt.html#analiza-reklam">Porozmawiajmy o kampanii</a>
+      </div>
+    </div>
+    <ul class="service-inclusions">
+      <li><div><b>Cel i oferta</b><p>Najpierw ustalamy, kogo i do czego naprawdę chcemy przekonać.</p></div></li>
+      <li><div><b>Kreacje i komunikaty</b><p>Reklamy wynikają z realnych pytań klienta, a nie z przypadkowych pomysłów.</p></div></li>
+      <li><div><b>Strona docelowa</b><p>Osobna, skupiona ścieżka bez rozpraszaczy i pustych obietnic.</p></div></li>
+      <li><div><b>Pomiar i poprawki</b><p>Sprawdzamy, co zatrzymuje klienta, i poprawiamy na podstawie danych.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="service-block" id="social">
+  <div class="wrap service-detail">
+    <div>
+      <span class="eyebrow">03 · KOMUNIKACJA MARKI</span>
+      <h2>Marka, która żyje także <em>między kampaniami.</em></h2>
+      <p class="lead">Pomagam przełożyć prawdziwe życie firmy na regularną, rozpoznawalną komunikację. Bez publikowania czegokolwiek tylko po to, żeby „coś było”.</p>
+      <div class="btnrow">
+        <a class="btn btn-primary" href="kontakt.html#analiza-profilu">Pokaż mi swój profil</a>
+      </div>
+    </div>
+    <ul class="service-inclusions">
+      <li><div><b>Kierunek wizualny</b><p>Kolory, rytm i sposób prezentowania materiałów tworzą jedną markę.</p></div></li>
+      <li><div><b>Plan treści</b><p>Tematy wynikają z oferty, sezonu i pytań klientów.</p></div></li>
+      <li><div><b>Produkcja materiałów</b><p>Porządkuję zdjęcia, teksty i krótkie formaty potrzebne do publikacji.</p></div></li>
+      <li><div><b>Akceptacja</b><p>Wiesz wcześniej, co i kiedy zostanie opublikowane.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <span class="eyebrow">NIE MUSISZ ZNAĆ ROZWIĄZANIA</span>
+    <h2>Wystarczy, że wiesz,<br>co dziś <em>nie działa.</em></h2>
+    <a class="btn btn-primary btn-lg" href="kontakt.html">Zacznijmy od rozmowy <span>↗</span></a>
+  </div>
+</section>
+
+</main>
 
 <footer class="foot">
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <span class="sygnet sygnet-lg" aria-hidden="true">P</span>
-        <b>Probatum<i>.</i></b>
-        <p>Strony internetowe, kampanie lejkowe i prowadzenie profili społecznościowych dla małych i średnich firm. Pracuję zdalnie, z całą Polską.</p>
-        <div class="foot-social" data-social-foot></div>
+        <a class="brand" href="index.html">Probatum<i>.</i></a>
+        <p>Nowe strony i nowy wizerunek dla firm, które wyrosły ze swojej obecnej obecności w sieci.</p>
       </div>
       <div>
         <h5>Nawigacja</h5>
-        <a href="o-donie.html">Metoda</a>
+        <a href="o-donie.html">Jak pracuję</a>
         <a href="oferta.html">Oferta</a>
         <a href="realizacje.html">Realizacje</a>
-        <a href="automatyzacja.html">Agenci</a>
+        <a href="automatyzacja.html">Agenci AI</a>
         <a href="akademia.html">Akademia</a>
       </div>
       <div>
         <h5>Rozpocznij</h5>
-        <a href="wycena.html">Wyceń projekt</a>
+        <a href="wycena.html">Poproś o wycenę</a>
         <a href="kontakt.html">Kontakt</a>
       </div>
       <div>
@@ -347,32 +170,33 @@
     </div>
     <div class="foot-bottom">
       <span>Probatum © <span data-year>2026</span></span>
-      <span>Każda publikacja zatwierdzona ręcznie</span>
+      <span>Strategia · projekt · wdrożenie</span>
     </div>
   </div>
 </footer>
 
-<button id="chat-btn" aria-label="Otwórz asystenta strony">Asystent strony</button>
-<div id="chat-panel" role="dialog" aria-label="Asystent strony">
+<button id="chat-btn" aria-label="Otwórz odpowiedzi na pytania" aria-controls="chat-panel" aria-expanded="false">Masz pytanie?</button>
+<div id="chat-panel" role="dialog" aria-modal="false" aria-label="Najczęstsze pytania" aria-hidden="true">
   <div class="chat-head">
     <i class="led"></i>
-    <div><b>Asystent strony</b><span>Odpowiedzi na najczęstsze pytania</span></div>
+    <div><b>W czym mogę pomóc?</b><span>Najczęstsze pytania przed rozmową</span></div>
     <button class="chat-x" id="chat-x" aria-label="Zamknij">×</button>
   </div>
   <div class="chat-body" id="chat-body">
-    <div class="msg bot">Cześć. Odpowiadam na najczęstsze pytania o ofertę, ceny i terminy. Po coś bardziej szczegółowego — napisz przez formularz, odpiszę osobiście.</div>
+    <div class="msg bot">Cześć. Tu znajdziesz krótkie odpowiedzi o ofercie i współpracy. Przy indywidualnym pytaniu napisz przez formularz — odpowiem osobiście.</div>
   </div>
   <div class="chat-sug" id="chat-sug">
-    <button>Ile to kosztuje?</button>
-    <button>Ile trwa strona?</button>
-    <button>Czym są agenci?</button>
+    <button type="button">Ile to kosztuje?</button>
+    <button type="button">Jak wygląda współpraca?</button>
+    <button type="button">Czym są agenci AI?</button>
   </div>
   <div class="chat-in">
     <input type="text" id="chat-input" placeholder="Napisz pytanie...">
-    <button id="chat-send">Wyślij</button>
+    <button type="button" id="chat-send">Wyślij</button>
   </div>
 </div>
 
-<script src="assets/site.js?v=f21557dd2d"></script>
+<script src="assets/site.js?v=aa3885448f"></script>
+<script src="assets/spring.js?v=8d9bf9e6df"></script>
 </body>
 </html>

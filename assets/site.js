@@ -1,566 +1,211 @@
-/* ============================================================
-   PM PRZEWAGA METODĄ — site.js
-   ============================================================ */
-
-/* ------------------------------------------------------------
-   >>> LINKI DO MEDIÓW SPOŁECZNOŚCIOWYCH — JEDYNE MIEJSCE DO EDYCJI <<<
-   Wklej pełny adres profilu między apostrofy. Puste = kafelek
-   pokazuje się jako "wkrótce" i nie da się w niego kliknąć.
-   Po uzupełnieniu linki pojawią się automatycznie na wszystkich
-   podstronach — w sekcji "Obserwuj" i w stopce.
------------------------------------------------------------- */
-var SOCIAL = {
-  facebook:  '',
-  instagram: '',
-  linkedin:  '',
-  youtube:   '',
-  tiktok:    ''
-};
-
+/* Probatum — wspólne zachowanie serwisu. Bez bibliotek zewnętrznych. */
 (function () {
   'use strict';
 
-  var ICONS = {
-    facebook:'<path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>',
-    instagram:'<rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2"/>',
-    linkedin:'<path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>',
-    youtube:'<path d="M22.5 7.2a2.8 2.8 0 00-2-2C18.7 4.7 12 4.7 12 4.7s-6.7 0-8.5.5a2.8 2.8 0 00-2 2A29 29 0 001 12a29 29 0 00.5 4.8 2.8 2.8 0 002 2c1.8.5 8.5.5 8.5.5s6.7 0 8.5-.5a2.8 2.8 0 002-2A29 29 0 0023 12a29 29 0 00-.5-4.8z"/><path d="M9.8 15.3l5.5-3.3-5.5-3.2z" fill="#07080b" stroke="none"/>',
-    tiktok:'<path d="M16 3a5 5 0 005 5v3a8 8 0 01-5-1.8V15a6 6 0 11-6-6c.3 0 .7 0 1 .1V12a3 3 0 102 2.8V3z"/>'
-  };
-  var NAMES = {facebook:'Facebook',instagram:'Instagram',linkedin:'LinkedIn',youtube:'YouTube',tiktok:'TikTok'};
+  var LEAD_ENDPOINT = 'https://pmresearch.app.n8n.cloud/webhook/pm-lead-capture';
+  var lastFocus = null;
 
-  function svg(key){
-    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" ' +
-           'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICONS[key] + '</svg>';
+  function one(selector, root) {
+    return (root || document).querySelector(selector);
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
+  function all(selector, root) {
+    return Array.prototype.slice.call((root || document).querySelectorAll(selector));
+  }
 
-    /* ---------- rok w stopce ---------- */
-    document.querySelectorAll('[data-year]').forEach(function (el) {
-      el.textContent = new Date().getFullYear();
+  function setVisible(element, visible) {
+    if (element) element.classList.toggle('show', visible);
+  }
+
+  function qsParam(name) {
+    return new URLSearchParams(window.location.search).get(name) || '';
+  }
+
+  function siteHref(file) {
+    var script = one('script[src*="assets/site.js"]');
+    try {
+      return new URL('../' + file, script ? script.src : window.location.href).pathname;
+    } catch (error) {
+      return '/' + file;
+    }
+  }
+
+  function request(payload) {
+    var controller = new AbortController();
+    var timer = window.setTimeout(function () { controller.abort(); }, 15000);
+    return fetch(LEAD_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: controller.signal
+    }).then(function (response) {
+      window.clearTimeout(timer);
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      return response.text().then(function (text) {
+        if (!text) return {};
+        try { return JSON.parse(text); } catch (error) { return {}; }
+      });
+    }).catch(function (error) {
+      window.clearTimeout(timer);
+      throw error;
     });
+  }
 
-    /* ---------- nawigacja mobilna ---------- */
-    var burger = document.querySelector('.burger');
-    var navmob = document.querySelector('.navmobile');
-    if (burger && navmob) {
-      burger.addEventListener('click', function () {
-        var open = navmob.classList.toggle('open');
-        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-      navmob.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', function () {
-          navmob.classList.remove('open');
-          burger.setAttribute('aria-expanded', 'false');
-        });
-      });
+  function firstInvalid(form) {
+    return one(':invalid', form);
+  }
+
+  function showFormError(box, message) {
+    if (!box) return;
+    box.textContent = message;
+    box.classList.add('show');
+    box.setAttribute('role', 'alert');
+  }
+
+  function initNavigation() {
+    var button = one('.burger');
+    var menu = one('.navmobile');
+    if (!button || !menu) return;
+
+    function closeMenu(restoreFocus) {
+      menu.classList.remove('open');
+      button.setAttribute('aria-expanded', 'false');
+      button.setAttribute('aria-label', 'Otwórz menu');
+      if (restoreFocus) button.focus();
     }
 
-    /* ---------- media społecznościowe ---------- */
-    var order = ['facebook', 'instagram', 'linkedin', 'youtube', 'tiktok'];
-
-    document.querySelectorAll('[data-social-grid]').forEach(function (grid) {
-      grid.innerHTML = order.map(function (k) {
-        var url = (SOCIAL[k] || '').trim();
-        var open = url ? '<a class="sbtn" href="' + url + '" target="_blank" rel="noopener">'
-                       : '<span class="sbtn soon">';
-        var close = url ? '</a>' : '</span>';
-        var sub = url ? 'Obserwuj' : 'Wkrótce';
-        return open + svg(k) + '<span style="display:block"><b>' + NAMES[k] + '</b>' +
-               '<span>' + sub + '</span></span>' + close;
-      }).join('');
+    button.addEventListener('click', function () {
+      var open = !menu.classList.contains('open');
+      menu.classList.toggle('open', open);
+      button.setAttribute('aria-expanded', String(open));
+      button.setAttribute('aria-label', open ? 'Zamknij menu' : 'Otwórz menu');
+      if (open) one('a', menu).focus();
     });
 
-    document.querySelectorAll('[data-social-foot]').forEach(function (box) {
-      var live = order.filter(function (k) { return (SOCIAL[k] || '').trim(); });
-      if (!live.length) {
-        box.innerHTML = '<p class="small" style="margin:0">Profile ruszają w najbliższych dniach.</p>';
-        return;
+    all('a', menu).forEach(function (link) {
+      link.addEventListener('click', function () { closeMenu(false); });
+    });
+
+    document.addEventListener('click', function (event) {
+      if (menu.classList.contains('open') && !menu.contains(event.target) && !button.contains(event.target)) {
+        closeMenu(false);
       }
-      box.innerHTML = live.map(function (k) {
-        return '<a href="' + SOCIAL[k] + '" target="_blank" rel="noopener" aria-label="' +
-               NAMES[k] + '">' + svg(k) + '</a>';
-      }).join('');
+      all('.navmore[open]').forEach(function (details) {
+        if (!details.contains(event.target)) details.removeAttribute('open');
+      });
     });
 
-    /* ---------- co jest w kadrze: jeden wspólny mechanizm ----------
-       Świadomie bez IntersectionObserver. Obserwator bywa dławiony
-       (nieaktywna karta, słabszy telefon, osadzenie w ramce) i potrafi
-       odpalić z kilkusekundowym opóźnieniem albo wcale — a wtedy klient
-       widzi pustą sekcję albo pusty podgląd realizacji. Zwykłe sprawdzanie
-       pozycji przy przewijaniu jest mniej eleganckie, ale nie ma prawa
-       zawieść. Bez JS nic i tak nie jest ukryte (klasa .js w <head>). */
-    var watchers = [];
-
-    function watch(el, fn, margin, minBottom) {
-      watchers.push({
-        el: el, fn: fn,
-        m: margin || 0,
-        b: (minBottom === undefined ? -Infinity : minBottom)
-      });
-    }
-
-    function sweep() {
-      if (!watchers.length) return;
-      var vh = window.innerHeight || document.documentElement.clientHeight;
-      for (var i = watchers.length - 1; i >= 0; i--) {
-        var wch = watchers[i];
-        var r = wch.el.getBoundingClientRect();
-        /* Warunek jest jednostronny: wystarczy, że element wszedł w kadr
-           od dołu. Gdyby wymagał też, żeby nie wyjechał górą, sekcja
-           przeskoczona przy szybkim przewijaniu zostałaby niewidoczna. */
-        if (r.top < vh + wch.m && r.bottom > wch.b) {
-          wch.fn(wch.el);
-          watchers.splice(i, 1);
-        }
-      }
-    }
-
-    /* Throttling czasowy, nie przez requestAnimationFrame z flagą.
-       Gdyby rAF został wstrzymany (karta w tle, ramka uznana za niewidoczną),
-       flaga zostałaby na true na zawsze i przewijanie nie odsłoniłoby już nic. */
-    var lastSweep = 0, sweepTimer = null, sweepPoll = null;
-
-    function onSweepScroll() {
-      if (!watchers.length) return;
-      var now = Date.now();
-      if (now - lastSweep > 120) {
-        lastSweep = now;
-        sweep();
-      } else {
-        clearTimeout(sweepTimer);
-        sweepTimer = setTimeout(function () { lastSweep = Date.now(); sweep(); }, 120);
-      }
-    }
-
-    window.addEventListener('scroll', onSweepScroll, { passive: true });
-    window.addEventListener('resize', onSweepScroll, { passive: true });
-    window.addEventListener('load', sweep);
-    document.addEventListener('visibilitychange', sweep);
-
-    /* Ostatnia siatka bezpieczeństwa: dopóki cokolwiek czeka na odsłonięcie,
-       sprawdzamy to cyklicznie. Zatrzymuje się samo, gdy lista pustoszeje. */
-    sweepPoll = setInterval(function () {
-      if (!watchers.length) { clearInterval(sweepPoll); return; }
-      sweep();
-    }, 1000);
-
-    /* ---------- karuzela stron w naglowku ----------
-       Na szerokim ekranie karty stoja na okregu i CSS obraca cala os.
-       Na waskim okrag sie nie miesci, wiec karty ida w rzad — ale maja
-       plynac tak samo. Do tego potrzebny jest drugi komplet kart. */
-    (function () {
-      var globus = document.querySelector('.globus');
-      if (!globus) return;
-      var os = globus.querySelector('.globus-os');
-      if (!os) return;
-      if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-      var oryginaly = Array.prototype.slice.call(os.children);
-      var zduplikowane = false;
-
-      function dopasuj() {
-        var waski = window.innerWidth <= 900;
-        if (waski && !zduplikowane) {
-          oryginaly.forEach(function (k) {
-            var kopia = k.cloneNode(true);
-            kopia.setAttribute('aria-hidden', 'true');
-            kopia.setAttribute('tabindex', '-1');
-            os.appendChild(kopia);
-          });
-          os.classList.add('plynie-bok');
-          zduplikowane = true;
-        } else if (!waski && zduplikowane) {
-          /* wracamy do okregu — kopie musza zniknac, bo inaczej
-             na kazdej pozycji stalyby dwie karty */
-          while (os.children.length > oryginaly.length) {
-            os.removeChild(os.lastChild);
-          }
-          os.classList.remove('plynie-bok');
-          zduplikowane = false;
-        }
-      }
-
-      dopasuj();
-      var t = null;
-      window.addEventListener('resize', function () {
-        clearTimeout(t);
-        t = setTimeout(dopasuj, 200);
-      }, { passive: true });
-    })();
-
-    /* ---------- karuzela realizacji ----------
-       Pasek przewijany myszą zamienia się w taśmę, która płynie sama.
-       Karty są duplikowane, więc po przejściu połowy toru animacja
-       wraca do zera i widz nie widzi szwu. Bez JS zostaje zwykły pasek. */
-    (function () {
-      var rail = document.querySelector('.rail');
-      if (!rail) return;
-      var karty = Array.prototype.slice.call(rail.children);
-      if (karty.length < 2) return;
-
-      /* Szanujemy systemowe ustawienie "ogranicz ruch" — dla części osób
-         ciągła animacja jest męcząca albo wręcz przyprawia o mdłości. */
-      if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-      var tor = document.createElement('div');
-      tor.className = 'rail-tor';
-      karty.forEach(function (k) { tor.appendChild(k); });
-      /* drugi komplet — kopie są tylko dekoracją, więc znikają dla
-         czytników ekranu i wypadają z kolejności tabulatora */
-      karty.forEach(function (k) {
-        var kopia = k.cloneNode(true);
-        kopia.setAttribute('aria-hidden', 'true');
-        kopia.setAttribute('tabindex', '-1');
-        tor.appendChild(kopia);
-      });
-      rail.appendChild(tor);
-      rail.classList.add('plynie');
-
-      /* Tempo zależy od liczby kart, żeby prędkość była zawsze ta sama
-         niezależnie od tego, ile realizacji jest na stronie. */
-      tor.style.setProperty('--czas', (karty.length * 13) + 's');
-
-      /* Paski adresu pokazują kolejne podstrony — dowód, że to
-         wielostronicowe witryny, a nie jedna ładna wizytówka. */
-      var PODSTRONY = {
-        'kancelaria-zawadzcy': ['/oferta', '/zespol', '/proces-i-cennik', '/kontakt'],
-        'studio-lawenda':      ['/zabiegi', '/zespol', '/cennik', '/kontakt'],
-        'dom-i-wnetrze':       ['/uslugi', '/realizacje', '/o-firmie', '/kontakt'],
-        'serwis-podkarpacki':  ['/uslugi', '/o-nas', '/cennik', '/kontakt'],
-        'zielona-pergola':     ['/menu', '/galeria', '/rezerwacje', '/kontakt']
-      };
-
-      var paski = Array.prototype.slice.call(tor.querySelectorAll('.frame-url'));
-      paski.forEach(function (el, i) {
-        var baza = el.textContent.trim();
-        var lista = PODSTRONY[baza];
-        if (!lista) return;
-        var krok = 0;
-        /* każdy pasek startuje w innym momencie, żeby nie przełączały
-           się wszystkie naraz jak choinka */
-        setTimeout(function () {
-          setInterval(function () {
-            krok = (krok + 1) % (lista.length + 1);
-            el.style.opacity = '0';
-            setTimeout(function () {
-              el.textContent = krok === 0 ? baza : baza + lista[krok - 1];
-              el.style.opacity = '';
-            }, 260);
-          }, 4200);
-        }, i * 900);
-      });
-    })();
-
-    /* ---------- odsłanianie sekcji ---------- */
-    document.querySelectorAll('.reveal, .stagger').forEach(function (el) {
-      watch(el, function (e) { e.classList.add('in'); }, -30);
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && menu.classList.contains('open')) closeMenu(true);
     });
+  }
 
-    /* ---------- liczniki ----------
-       W HTML stoi od razu prawdziwa liczba, więc nawet gdyby animacja
-       nie ruszyła, klient widzi poprawną wartość, a nie zero. */
-    document.querySelectorAll('[data-count]').forEach(function (el) {
-      var target = parseInt(el.getAttribute('data-count'), 10);
-      if (isNaN(target)) return;
-      watch(el, function (e) {
-        /* Liczymy czasem, nie tyknięciami — przeglądarka potrafi zdławić
-           setInterval i licznik zatrzymałby się na przypadkowej liczbie. */
-        var DUR = 900, t0 = null;
-        function frame(t) {
-          if (t0 === null) t0 = t;
-          var p = Math.min(1, (t - t0) / DUR);
-          e.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
-          if (p < 1) requestAnimationFrame(frame);
-          else e.textContent = target;
-        }
-        requestAnimationFrame(frame);
-        setTimeout(function () { e.textContent = target; }, DUR + 500);
-      }, -60);
-    });
-
-    /* ---------- żywe podglądy realizacji ----------
-       Każda ramka osadza PRAWDZIWĄ stronę, nie zrzut ekranu.
-       Iframe montuje się dopiero, gdy karta wjeżdża w kadr —
-       poza kadrem nie kosztuje ani jednego bajtu transferu. */
-    /* Renderujemy w sztywnym oknie pulpitu 1440x900 — inaczej sekcje
-       o wysokości 100vh rozciągnęłyby się na całą, przeskalowaną ramkę
-       i strona wyglądałaby zupełnie inaczej niż w rzeczywistości. */
-    var VIEW_W = 1440, VIEW_H = 900;
-
-    /* Ramka może udawać inny ekran — telefon renderuje się w 390x844,
-       dzięki czemu widać prawdziwy układ mobilny, a nie ściśnięty pulpit. */
-    function viewOf(stage) {
-      return {
-        w: parseInt(stage.getAttribute('data-vw'), 10) || VIEW_W,
-        h: parseInt(stage.getAttribute('data-vh'), 10) || VIEW_H
-      };
-    }
-
-    /* Przeglądarka potrafi nie namalować przeskalowanej, osadzonej strony,
-       mimo że treść jest poprawnie wczytana — klient widzi wtedy ciemny
-       prostokąt zamiast realizacji. Wymuszamy przemalowanie mikrozmianą
-       skali. UWAGA: każdy krok musi różnić się od poprzedniego, bo
-       ustawienie tej samej wartości nie jest dla przeglądarki żadną zmianą
-       i nic nie przemalowuje. Różnice rzędu 0,02% są niewidoczne. */
-    function nudge(stage) {
-      var frame = stage.querySelector('iframe');
-      if (!frame) return;
-      var v = viewOf(stage);
-      var base = stage.clientWidth / v.w;
-      [80, 400, 1000, 2200, 4000].forEach(function (ms, i) {
-        setTimeout(function () {
-          if (!frame.isConnected) return;
-          var eps = (i % 2 === 0) ? 0.0006 : 0.0002;
-          frame.style.transform = 'scale(' + (base + eps) + ') translateZ(0)';
-        }, ms);
-      });
-    }
-
-    function fitFrame(stage) {
-      var frame = stage.querySelector('iframe');
-      if (!frame) return;
-      var v = viewOf(stage);
-      frame.style.width = v.w + 'px';
-      frame.style.height = v.h + 'px';
-      /* translateZ(0) wymusza własną warstwę graficzną. Bez tego
-         przeglądarka potrafi w ogóle nie namalować przeskalowanej,
-         osadzonej strony i klient widzi czarny prostokąt. */
-      frame.style.transform = 'scale(' + (stage.clientWidth / v.w) + ') translateZ(0)';
-    }
-
-    var stages = document.querySelectorAll('[data-live]');
-    if (stages.length) {
-      var mount = function (stage) {
-        if (stage.dataset.mounted) return;
-        stage.dataset.mounted = '1';
-        var f = document.createElement('iframe');
-        f.setAttribute('loading', 'lazy');
-        f.setAttribute('tabindex', '-1');
-        f.setAttribute('aria-hidden', 'true');
-        f.setAttribute('scrolling', 'no');
-        f.setAttribute('sandbox', 'allow-scripts allow-same-origin');
-        f.setAttribute('title', stage.getAttribute('data-title') || 'Podgląd realizacji');
-        f.src = stage.getAttribute('data-live');
-        f.addEventListener('load', function () {
-          var skel = stage.querySelector('.skel');
-          if (!skel) return;
-          /* Podkład zostaje jako siatka bezpieczeństwa — gasimy tylko
-             animację ładowania i podpisujemy go adresem strony. */
-          stage.classList.add('loaded');
-          skel.remove();
-          /* Przeglądarka bywa leniwa przy malowaniu przeskalowanej,
-             osadzonej strony — potrafi zostawić czarny prostokąt mimo
-             poprawnie wczytanej treści. Zachowanie jest niedeterministyczne,
-             więc zamiast szukać winnej reguły CSS trącamy ramkę kilka razy
-             mikrozmianą skali, co wymusza przemalowanie. Niewidoczne dla oka. */
-          nudge(stage);
-        });
-        stage.insertBefore(f, stage.firstChild);
-        fitFrame(stage);
-      };
-
-      stages.forEach(function (s) { watch(s, mount, 300, -2200); });
-      sweep();
-
-      var rt;
-      window.addEventListener('resize', function () {
-        clearTimeout(rt);
-        rt = setTimeout(function () {
-          sweep();
-          stages.forEach(fitFrame);
-        }, 150);
-      }, { passive: true });
-    }
-
-    /* ---------- wybór jednej opcji (chipy) ---------- */
-    document.querySelectorAll('.chiprow').forEach(function (row) {
-      var hidden = document.querySelector(row.getAttribute('data-target'));
-      row.querySelectorAll('.chip').forEach(function (chip) {
+  function initQuoteChoices() {
+    all('.chiprow').forEach(function (row) {
+      var hidden = one(row.getAttribute('data-target'));
+      all('.chip', row).forEach(function (chip) {
+        chip.setAttribute('aria-pressed', 'false');
         chip.addEventListener('click', function () {
-          row.querySelectorAll('.chip').forEach(function (c) { c.classList.remove('on'); });
+          all('.chip', row).forEach(function (item) {
+            item.classList.remove('on');
+            item.setAttribute('aria-pressed', 'false');
+          });
           chip.classList.add('on');
+          chip.setAttribute('aria-pressed', 'true');
           row.classList.remove('chip-error');
           if (hidden) hidden.value = chip.getAttribute('data-value') || chip.textContent.trim();
         });
       });
     });
+  }
 
-    /* ---------- formularze (backend: n8n — PM Agent OS Lead Capture) ---------- */
-    /* ---------- wybor tematu w formularzu kontaktu ----------
-       Kafelek zamiast listy rozwijanej: jedno klikniecie zamiast trzech,
-       a na telefonie nie otwiera sie natywny wybierak. Pola o firmie
-       pokazuja sie dopiero po wyborze — pusty formularz ma wygladac
-       krotko, zeby nie odstraszal. */
-    (function () {
-      var box = document.querySelector('[data-tematy]');
-      if (!box) return;
-      var pole = document.getElementById('k-usluga');
-      var polaFirmy = document.querySelector('[data-pola-firmy]');
-      var polaFirmyInput = polaFirmy ? polaFirmy.querySelector('#k-firma') : null;
+  function initContactTopics() {
+    var box = one('[data-tematy]');
+    if (!box) return;
+    var service = one('#k-usluga');
+    var companyFields = one('[data-pola-firmy]');
+    var company = one('#k-firma');
+    var phone = one('#k-telefon');
 
-      /* Wejscie z odnosnika typu kontakt.html#analiza-strony ma od razu
-         zaznaczyc wlasciwy temat — klient nie powinien wybierac dwa razy
-         tego samego. */
-      function zaznacz(chip) {
-        Array.prototype.forEach.call(box.querySelectorAll('.temat-chip'), function (x) {
-          x.setAttribute('aria-pressed', String(x === chip));
-        });
-        if (pole) pole.value = chip.dataset.temat || '';
-        /* Prosba o kod do Akademii to nie zapytanie ofertowe — nie ma po co
-           pytac o firme ani o telefon. Kod i tak wysylamy mailem. */
-        var oKod = chip.dataset.temat === 'Kod dostępu do Akademii AI';
-        if (polaFirmy) {
-          polaFirmy.classList.add('widoczne');
-          var wymagaj = chip.dataset.temat !== 'Coś innego' && !oKod;
-          if (polaFirmyInput) polaFirmyInput.required = wymagaj;
-        }
-        var tel = document.getElementById('k-telefon');
-        if (tel) {
-          tel.required = !oKod;
-          var etyk = tel.closest('.field') && tel.closest('.field').querySelector('.req');
-          if (etyk) etyk.textContent = oKod ? '(nieobowiązkowo)' : etyk.dataset.orig || etyk.textContent;
-        }
-      }
-
-      var kotwica = (location.hash || '').replace('#', '');
-      if (kotwica) {
-        var zHash = box.querySelector('[data-kotwica="' + kotwica + '"]');
-        if (zHash) {
-          zaznacz(zHash);
-          setTimeout(function () {
-            zHash.scrollIntoView({ block: 'center', behavior: 'smooth' });
-          }, 240);
-        }
-      }
-
-      box.addEventListener('click', function (e) {
-        var chip = e.target.closest('.temat-chip');
-        if (!chip) return;
-        /* Przy "Coś innego" nie wiadomo jeszcze, czego sprawa dotyczy,
-           wiec zaznacz() nie zmusza tam do podawania firmy. */
-        zaznacz(chip);
+    function choose(chip, shouldScroll) {
+      all('.temat-chip', box).forEach(function (item) {
+        item.setAttribute('aria-pressed', String(item === chip));
       });
-    })();
-
-    var LEAD_ENDPOINT = 'https://pmresearch.app.n8n.cloud/webhook/pm-lead-capture';
-
-    /* ---------- zapis na liste ----------
-       Idzie tym samym kanalem co formularze, tylko z innym form_key,
-       zeby po drugiej stronie dalo sie to rozroznic. Zgoda jest
-       wymagana tak samo jak wszedzie indziej. */
-    Array.prototype.forEach.call(document.querySelectorAll('[data-news-form]'), function (form) {
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var mail = form.querySelector('input[type="email"]');
-        var zgoda = form.querySelector('input[type="checkbox"]');
-        var ok = document.querySelector(form.dataset.newsOk || '');
-        var btn = form.querySelector('button[type="submit"]');
-
-        if (!mail || !mail.value || mail.value.indexOf('@') < 1) {
-          mail && mail.focus();
-          return;
-        }
-        if (zgoda && !zgoda.checked) { zgoda.focus(); return; }
-
-        if (btn) { btn.disabled = true; btn.textContent = 'Zapisuję...'; }
-
-        fetch(LEAD_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            form_key: 'lista',
-            imie: '',
-            email: mail.value.trim(),
-            telefon: '',
-            tresc: 'Zapis na listę · ' + (form.dataset.skad || document.title),
-            consent: true,
-            zrodlo: 'probatum.pl'
-          })
-        }).then(function () {
-          form.style.display = 'none';
-          if (ok) ok.classList.add('show');
-        }).catch(function () {
-          if (btn) { btn.disabled = false; btn.textContent = 'Zapisz mnie'; }
-          /* Nie udajemy sukcesu, gdy wysylka padla — lepiej pokazac
-             alternatywna droge niz skasowac zgloszenie po cichu. */
-          var err = form.querySelector('.news-mini');
-          if (err) err.innerHTML = 'Nie udało się zapisać. Napisz na ' +
-            '<a href="mailto:kontakt@probatum.pl" style="color:var(--amber-2)">kontakt@probatum.pl</a>, dopiszę ręcznie.';
-        });
-      });
-    });
-
-
-    function qsParam(name) {
-      var m = new RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
-      return m ? decodeURIComponent(m[1].replace(/\+/g, ' ')) : '';
+      if (service) service.value = chip.getAttribute('data-temat') || '';
+      var isAcademy = service && service.value === 'Kod dostępu do Akademii AI';
+      var isOther = service && service.value === 'Coś innego';
+      if (companyFields) companyFields.classList.add('widoczne');
+      if (company) company.required = !isAcademy && !isOther;
+      if (phone) phone.required = !isAcademy;
+      box.classList.remove('chip-error');
+      if (shouldScroll) chip.scrollIntoView({ block: 'center', behavior: 'smooth' });
     }
 
-    document.querySelectorAll('form[data-lead-form]').forEach(function (form) {
-      var formKey = form.getAttribute('data-form-key');
-      var okBox = document.querySelector(form.getAttribute('data-success-target'));
-      var errBox = document.querySelector(form.getAttribute('data-error-target'));
-      var btn = form.querySelector('button[type="submit"]');
-      var btnText = btn ? btn.textContent : '';
+    box.addEventListener('click', function (event) {
+      var chip = event.target.closest('.temat-chip');
+      if (chip && box.contains(chip)) choose(chip, false);
+    });
+
+    var anchor = (window.location.hash || '').slice(1);
+    if (/^[a-z0-9-]+$/.test(anchor)) {
+      var matching = one('[data-kotwica="' + anchor + '"]', box);
+      if (matching) window.setTimeout(function () { choose(matching, true); }, 120);
+    }
+  }
+
+  function initLeadForms() {
+    all('form[data-lead-form]').forEach(function (form) {
+      var formKey = form.getAttribute('data-form-key') || '';
+      var success = one(form.getAttribute('data-success-target'));
+      var errorBox = one(form.getAttribute('data-error-target'));
+      var button = one('button[type="submit"]', form);
+      var idleText = button ? button.textContent : '';
       var sending = false;
 
-      function showError(msg) {
-        if (!errBox) return;
-        errBox.textContent = msg;
-        errBox.classList.add('show');
-      }
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
         if (sending) return;
+        var trap = one('input[name="strona_www"]', form);
+        if (trap && trap.value) return;
 
-        var honeypot = form.querySelector('input[name="strona_www"]');
-        if (honeypot && honeypot.value) return;
-
-        var uslugaInput = form.querySelector('#usluga-value');
-        var chiprow = form.querySelector('.chiprow');
-        if (uslugaInput && uslugaInput.hasAttribute('required') && !uslugaInput.value) {
-          if (chiprow) chiprow.classList.add('chip-error');
-          showError('Wybierz jedną z opcji powyżej, żeby przejść dalej.');
+        var service = one('input[name="usluga"]', form);
+        if (service && service.required && !service.value) {
+          var choices = one('.chiprow, [data-tematy]', form);
+          if (choices) choices.classList.add('chip-error');
+          showFormError(errorBox, 'Wybierz, czego dotyczy wiadomość.');
+          if (choices) choices.scrollIntoView({ block: 'center', behavior: 'smooth' });
           return;
         }
 
-        var consentBox = form.querySelector('input[name="consent"]');
-        if (consentBox && !consentBox.checked) {
-          showError('Zaznacz zgodę na przetwarzanie danych, żeby wysłać formularz.');
+        if (!form.checkValidity()) {
+          var invalid = firstInvalid(form);
+          if (invalid) invalid.reportValidity();
+          showFormError(errorBox, 'Uzupełnij zaznaczone pola i spróbuj ponownie.');
           return;
         }
-        if (errBox) errBox.classList.remove('show');
 
-        var fd = new FormData(form);
-        var tresc = fd.get('wiadomosc') || fd.get('opis') || '';
-        if (fd.get('usluga')) {
-          var extra = ['Usługa: ' + fd.get('usluga')];
-          if (fd.get('firma')) extra.push('Firma/NIP: ' + fd.get('firma'));
-          /* uwaga: pole klienta to www_klienta, bo strona_www to pulapka
-             na roboty spamujace — gdyby sie nazywaly tak samo, kazde
-             zgloszenie z podana strona byloby odrzucane jako spam */
-          if (fd.get('www_klienta')) extra.push('Obecna strona: ' + fd.get('www_klienta'));
-          if (fd.get('social_klienta')) extra.push('Social: ' + fd.get('social_klienta'));
-          if (fd.get('branza')) extra.push('Branża: ' + fd.get('branza'));
-          if (fd.get('budzet')) extra.push('Budżet: ' + fd.get('budzet'));
-          tresc = extra.join(' | ') + ' | ' + tresc;
-        }
-        if (fd.get('temat')) tresc = 'Temat: ' + fd.get('temat') + ' | ' + tresc;
+        var data = new FormData(form);
+        var message = data.get('wiadomosc') || data.get('opis') || '';
+        var details = [];
+        if (data.get('usluga')) details.push('Usługa: ' + data.get('usluga'));
+        if (data.get('firma')) details.push('Firma/NIP: ' + data.get('firma'));
+        if (data.get('www_klienta')) details.push('Obecna strona: ' + data.get('www_klienta'));
+        if (data.get('social_klienta')) details.push('Social: ' + data.get('social_klienta'));
+        if (data.get('branza')) details.push('Branża: ' + data.get('branza'));
+        if (data.get('budzet')) details.push('Budżet: ' + data.get('budzet'));
+        if (details.length) message = details.join(' | ') + (message ? ' | ' + message : '');
 
         var payload = {
           form_key: formKey,
-          imie: fd.get('imie') || '',
-          email: fd.get('email') || '',
-          telefon: fd.get('telefon') || '',
-          tresc: tresc,
-          usluga: fd.get('usluga') || '',
-          firma: fd.get('firma') || '',
-          www_klienta: fd.get('www_klienta') || '',
-          social_klienta: fd.get('social_klienta') || '',
-          consent: !!(consentBox && consentBox.checked),
+          imie: data.get('imie') || '',
+          email: data.get('email') || '',
+          telefon: data.get('telefon') || '',
+          tresc: message,
+          usluga: data.get('usluga') || '',
+          firma: data.get('firma') || '',
+          www_klienta: data.get('www_klienta') || '',
+          social_klienta: data.get('social_klienta') || '',
+          consent: !!data.get('consent'),
           zrodlo: 'probatum.pl',
           utm_source: qsParam('utm_source'),
           utm_medium: qsParam('utm_medium'),
@@ -571,124 +216,182 @@ var SOCIAL = {
         };
 
         sending = true;
-        if (btn) { btn.disabled = true; btn.textContent = 'Wysyłanie...'; }
+        if (errorBox) errorBox.classList.remove('show');
+        if (button) {
+          button.disabled = true;
+          button.textContent = 'Wysyłanie…';
+        }
 
-        fetch(LEAD_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        })
-          .then(function (r) { return r.json().catch(function () { return {}; }); })
-          .then(function () {
-            form.style.display = 'none';
-            if (okBox) {
-              okBox.classList.add('show');
-              okBox.scrollIntoView({ block: 'center', behavior: 'smooth' });
-            }
-          })
-          .catch(function () {
-            sending = false;
-            if (btn) { btn.disabled = false; btn.textContent = btnText; }
-            showError('Nie udało się wysłać — sprawdź połączenie i spróbuj ponownie, albo napisz bezpośrednio na e-mail.');
-          });
+        request(payload).then(function () {
+          form.hidden = true;
+          setVisible(success, true);
+          if (success) success.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        }).catch(function () {
+          sending = false;
+          if (button) {
+            button.disabled = false;
+            button.textContent = idleText;
+          }
+          showFormError(errorBox, 'Nie udało się wysłać wiadomości. Spróbuj ponownie albo napisz na kontakt@probatum.pl.');
+        });
       });
     });
+  }
 
-    /* ---------- asystent FAQ (gotowe odpowiedzi, nie żywe AI) ---------- */
-    var chatBtn = document.getElementById('chat-btn');
-    var chatPanel = document.getElementById('chat-panel');
-    var chatBody = document.getElementById('chat-body');
-    var chatInput = document.getElementById('chat-input');
-    var chatSend = document.getElementById('chat-send');
-    var chatSug = document.getElementById('chat-sug');
-    var chatX = document.getElementById('chat-x');
+  function initNewsletters() {
+    all('[data-news-form]').forEach(function (form) {
+      var button = one('button[type="submit"]', form);
+      var idleText = button ? button.textContent : '';
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        var email = one('input[type="email"]', form);
+        var consent = one('input[type="checkbox"]', form);
+        var success = one(form.getAttribute('data-news-ok'));
+        var oldError = one('.news-error', form);
+        if (oldError) oldError.remove();
 
-    var FAQ = [
-      { k: ['cena', 'koszt', 'ile kosztuje', 'wycena', 'budzet', 'budżet'],
-        a: 'Wycena zależy od zakresu — strona wielostronicowa, kampania lejkowa i prowadzenie social mediów mają różne widełki. Najszybciej dostaniesz konkretną liczbę przez formularz wyceny: 2 minuty wypełniania.',
-        l: { t: 'Otwórz formularz wyceny →', h: 'wycena.html' } },
-      { k: ['strona', 'strony', 'www', 'witryna'],
-        a: 'Buduję wielostronicowe witryny pisane pod konkretną branżę — nie szablony z katalogu. W Realizacjach osadzam pięć prawdziwych, żywych stron: możesz je otworzyć i sprawdzić.',
-        l: { t: 'Zobacz realizacje →', h: 'realizacje.html' } },
-      { k: ['kampania', 'kampanie', 'lejek', 'marketing', 'reklama'],
-        a: 'Kampania lejkowa to zaprojektowana ścieżka klienta od pierwszego kontaktu po decyzję — z osobnym celem i osobną treścią na każdym etapie, nie jedna reklama powtarzana w kółko.',
-        l: { t: 'Zobacz ofertę →', h: 'oferta.html#kampanie' } },
-      { k: ['social', 'media', 'instagram', 'facebook', 'profil'],
-        a: 'Prowadzę profile na bieżąco — Ty dostarczasz materiał z firmy, ja odpowiadam za harmonogram, treść i publikację. Plan zatwierdzasz przed publikacją.',
-        l: { t: 'Zobacz ofertę →', h: 'oferta.html#social' } },
-      { k: ['agent', 'agenty', 'automatyzacja', 'automatyzacje'],
-        a: 'Wdrożenia agentów automatyzujących pracę w firmie klienta to kolejna rzecz, którą przygotowuję. Nie sprzedaję tego jeszcze — zbieram listę pierwszeństwa, żeby dać znać, gdy ruszy.',
-        l: { t: 'Zobacz, co powstaje →', h: 'automatyzacja.html' } },
-      { k: ['dona', 'ai', 'jak dziala', 'jak działa', 'system'],
-        a: 'Dona to rdzeń systemu — zarządza 87 zautomatyzowanymi elementami w 8 obszarach. Zasada jest jedna: nic nie trafia do sieci bez mojego ręcznego zatwierdzenia.',
-        l: { t: 'Poznaj metodę →', h: 'o-donie.html' } },
-      { k: ['kontakt', 'telefon', 'mail', 'email', 'napisac', 'napisać'],
-        a: 'Najprościej przez formularz — każda wiadomość trafia bezpośrednio do mnie i odpisuję osobiście, zwykle w 1–2 dni robocze.',
-        l: { t: 'Przejdź do kontaktu →', h: 'kontakt.html' } },
-      { k: ['ile trwa', 'czas', 'termin', 'szybko', 'kiedy'],
-        a: 'Pierwsza wersja strony powstaje zwykle w 5–7 dni roboczych, całość w 10–14. Tempo zależy też od tego, jak szybko wracasz z akceptacją.' }
+        if (!form.checkValidity()) {
+          var invalid = firstInvalid(form);
+          if (invalid) invalid.reportValidity();
+          return;
+        }
+
+        if (button) {
+          button.disabled = true;
+          button.textContent = 'Zapisuję…';
+        }
+        request({
+          form_key: 'lista',
+          imie: '',
+          email: email ? email.value.trim() : '',
+          telefon: '',
+          tresc: 'Zapis na listę · ' + (form.getAttribute('data-skad') || document.title),
+          consent: !!(consent && consent.checked),
+          zrodlo: 'probatum.pl',
+          page_url: window.location.href
+        }).then(function () {
+          form.hidden = true;
+          setVisible(success, true);
+        }).catch(function () {
+          if (button) {
+            button.disabled = false;
+            button.textContent = idleText;
+          }
+          var message = document.createElement('p');
+          message.className = 'news-error';
+          message.setAttribute('role', 'alert');
+          message.textContent = 'Nie udało się zapisać. Spróbuj ponownie albo napisz na kontakt@probatum.pl.';
+          form.appendChild(message);
+        });
+      });
+    });
+  }
+
+  function initChat() {
+    var openButton = one('#chat-btn');
+    var panel = one('#chat-panel');
+    var closeButton = one('#chat-x');
+    var body = one('#chat-body');
+    var input = one('#chat-input');
+    var sendButton = one('#chat-send');
+    var suggestions = one('#chat-sug');
+    if (!openButton || !panel || !body || !input) return;
+
+    var answers = [
+      { keys: ['cena', 'koszt', 'ile kosztuje', 'wycena', 'budżet', 'budzet'], text: 'Cena zależy od zakresu. Opisz firmę i cel, a przygotuję konkretne widełki.', link: ['Poproś o wycenę →', 'wycena.html'] },
+      { keys: ['współpraca', 'wspolpraca', 'jak prac', 'proces'], text: 'Zaczynam od diagnozy. Potem ustalamy kierunek, przygotowuję projekt, wdrażam i pokazuję całość do zatwierdzenia.', link: ['Zobacz, jak pracuję →', 'o-donie.html'] },
+      { keys: ['strona', 'www', 'witryna', 'realizac'], text: 'Projektuję strony dopasowane do branży i etapu firmy. Istniejące przykłady możesz otworzyć i sprawdzić w pełnym widoku.', link: ['Zobacz realizacje →', 'realizacje.html'] },
+      { keys: ['kampania', 'reklama', 'marketing'], text: 'Kampania zaczyna się od celu i drogi klienta. Kreacja, strona i pomiar muszą pracować razem.', link: ['Zobacz ofertę →', 'oferta.html#kampanie'] },
+      { keys: ['agent', 'automatyzacja', 'ai'], text: 'Agenci AI mogą przejąć część powtarzalnych zadań, ale zakres zawsze dobieram do realnego procesu firmy.', link: ['Poznaj agentów AI →', 'automatyzacja.html'] },
+      { keys: ['termin', 'ile trwa', 'kiedy'], text: 'Termin zależy od zakresu i materiałów. Po krótkim briefie podam realny harmonogram zamiast obiecywać datę w ciemno.' },
+      { keys: ['kontakt', 'telefon', 'mail', 'email'], text: 'Możesz użyć formularza albo napisać bezpośrednio. Każdą wiadomość czytam osobiście.', link: ['Przejdź do kontaktu →', 'kontakt.html'] }
     ];
 
-    function addMsg(text, cls, link) {
-      var d = document.createElement('div');
-      d.className = 'msg ' + cls;
-      d.textContent = text;
+    function addMessage(text, className, link) {
+      var message = document.createElement('div');
+      message.className = 'msg ' + className;
+      message.textContent = text;
       if (link) {
-        var a = document.createElement('a');
-        a.href = link.h;
-        a.textContent = link.t;
-        d.appendChild(document.createElement('br'));
-        d.appendChild(a);
+        var anchor = document.createElement('a');
+        anchor.href = siteHref(link[1]);
+        anchor.textContent = link[0];
+        message.appendChild(document.createElement('br'));
+        message.appendChild(anchor);
       }
-      chatBody.appendChild(d);
-      chatBody.scrollTop = chatBody.scrollHeight;
+      body.appendChild(message);
+      body.scrollTop = body.scrollHeight;
     }
 
-    function reply(text) {
-      var low = text.toLowerCase();
-      var hit = FAQ.find(function (f) {
-        return f.k.some(function (key) { return low.indexOf(key) !== -1; });
+    function respond(question) {
+      var lower = question.toLowerCase();
+      var hit = answers.find(function (item) {
+        return item.keys.some(function (key) { return lower.indexOf(key) !== -1; });
       });
-      setTimeout(function () {
-        if (hit) addMsg(hit.a, 'bot', hit.l);
-        else addMsg('Na to nie mam gotowej odpowiedzi, ale odpiszę osobiście — najszybciej przez formularz.', 'bot', { t: 'Przejdź do kontaktu →', h: 'kontakt.html' });
-      }, 420);
+      window.setTimeout(function () {
+        if (hit) addMessage(hit.text, 'bot', hit.link);
+        else addMessage('Na to nie mam gotowej odpowiedzi. Napisz przez formularz, a odpowiem osobiście.', 'bot', ['Napisz wiadomość →', 'kontakt.html']);
+      }, 220);
     }
 
-    if (chatBtn && chatPanel) {
-      chatBtn.addEventListener('click', function () {
-        chatPanel.classList.add('open');
-        chatBtn.style.display = 'none';
-        if (chatInput) chatInput.focus();
-      });
-      function closeChat() {
-        chatPanel.classList.remove('open');
-        chatBtn.style.display = '';
-      }
-      if (chatX) chatX.addEventListener('click', closeChat);
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && chatPanel.classList.contains('open')) closeChat();
-      });
-      function send() {
-        var v = chatInput.value.trim();
-        if (!v) return;
-        addMsg(v, 'user');
-        chatInput.value = '';
-        reply(v);
-      }
-      if (chatSend && chatInput) {
-        chatSend.addEventListener('click', send);
-        chatInput.addEventListener('keydown', function (e) { if (e.key === 'Enter') send(); });
-      }
-      if (chatSug) {
-        chatSug.querySelectorAll('button').forEach(function (b) {
-          b.addEventListener('click', function () {
-            addMsg(b.textContent, 'user');
-            reply(b.textContent);
-          });
-        });
-      }
+    function openChat() {
+      lastFocus = document.activeElement;
+      panel.classList.add('open');
+      panel.setAttribute('aria-hidden', 'false');
+      openButton.setAttribute('aria-expanded', 'true');
+      openButton.hidden = true;
+      input.focus();
     }
 
+    function closeChat() {
+      panel.classList.remove('open');
+      panel.setAttribute('aria-hidden', 'true');
+      openButton.setAttribute('aria-expanded', 'false');
+      openButton.hidden = false;
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    function send() {
+      var value = input.value.trim();
+      if (!value) return;
+      addMessage(value, 'user');
+      input.value = '';
+      respond(value);
+    }
+
+    openButton.addEventListener('click', openChat);
+    if (closeButton) closeButton.addEventListener('click', closeChat);
+    if (sendButton) sendButton.addEventListener('click', send);
+    input.addEventListener('keydown', function (event) { if (event.key === 'Enter') send(); });
+    if (suggestions) all('button', suggestions).forEach(function (button) {
+      button.addEventListener('click', function () {
+        addMessage(button.textContent, 'user');
+        respond(button.textContent);
+      });
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && panel.classList.contains('open')) closeChat();
+    });
+  }
+
+  function initHomeState() {
+    var hero = one('.spring-hero');
+    if (!hero) return;
+    function update() {
+      document.body.classList.toggle('past-hero', hero.getBoundingClientRect().bottom < 140);
+    }
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    all('[data-js-submit]').forEach(function (button) { button.disabled = false; });
+    all('[data-year]').forEach(function (year) { year.textContent = new Date().getFullYear(); });
+    initNavigation();
+    initQuoteChoices();
+    initContactTopics();
+    initLeadForms();
+    initNewsletters();
+    initChat();
+    initHomeState();
   });
 })();

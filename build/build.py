@@ -90,37 +90,42 @@ def ostrzez_o_danych():
     return braki
 
 
-NAV = [
-    ('index.html',        'Start'),
-    ('o-donie.html',      'Metoda'),
+NAV_GLOWNA = [
     ('oferta.html',       'Oferta'),
     ('realizacje.html',   'Realizacje'),
-    ('automatyzacja.html','Agenci'),
-    ('akademia.html',     'Akademia'),
+    ('o-donie.html',      'Jak pracuję'),
+]
+
+NAV_WIECEJ = [
+    ('automatyzacja.html','Agenci AI'),
+    ('akademia.html',     'Akademia AI'),
     ('warsztat.html',     'Warsztat'),
     ('blog.html',         'Blog'),
-    ('kontakt.html',      'Kontakt'),
+]
+
+NAV_MOBILE = [('index.html', 'Start')] + NAV_GLOWNA + NAV_WIECEJ + [
+    ('kontakt.html', 'Kontakt'),
 ]
 
 PAGES = [
     dict(file='index.html', active='index.html',
-         title='Probatum — strony internetowe, kampanie i social media',
-         desc='Wielostronicowe witryny, kampanie lejkowe i prowadzenie profili społecznościowych dla małych i średnich firm w całej Polsce. Pierwsza wersja w 5–7 dni, publikacja w 10–14.'),
+         title='Probatum — nowe życie Twojej marki',
+         desc='Nowoczesne strony internetowe, kampanie i komunikacja, które pokazują, jak naprawdę rozwinęła się Twoja firma.'),
     dict(file='o-donie.html', active='o-donie.html',
-         title='Metoda — jak powstaje Twoja strona, krok po kroku | Probatum',
-         desc='87 zautomatyzowanych elementów w 8 obszarach, cztery role wykonawcze i jedna zasada nadrzędna: żadnej publikacji bez ręcznego zatwierdzenia.'),
+         title='Jak pracuję — od starej strony do nowego wizerunku | Probatum',
+         desc='Poznaj spokojny i przejrzysty proces: diagnoza, kierunek, projekt, wdrożenie i ręczne zatwierdzenie przed publikacją.'),
     dict(file='oferta.html', active='oferta.html',
          title='Oferta — strony, kampanie i social media | Probatum',
          desc='Trzy usługi prowadzone tym samym sposobem: wielostronicowe witryny pod branżę, kampanie lejkowe z celem na każdym etapie i stałe prowadzenie profili społecznościowych.'),
     dict(file='realizacje.html', active='realizacje.html',
-         title='Realizacje — sześć stron, które naprawdę działają | Probatum',
-         desc='Sześć w pełni działających, wielostronicowych witryn osadzonych na żywo. Nie obrazki, tylko prawdziwe strony, które możesz otworzyć i sprawdzić.'),
+         title='Realizacje — strony dla różnych branż | Probatum',
+         desc='Zobacz działające strony przygotowane dla różnych branż i otwórz każdą realizację w pełnym widoku.'),
     dict(file='automatyzacja.html', active='automatyzacja.html',
          title='Agenci do automatyzacji — co powstaje | Probatum',
          desc='Wdrożenia agentów automatyzujących powtarzalną pracę w firmie. Jeszcze nie w sprzedaży — trwa lista pierwszeństwa.'),
     dict(file='akademia.html', active='akademia.html',
          title='Akademia AI — kurs po polsku, dla ludzi bez technicznego zaplecza | Probatum',
-         desc='64 lekcje praktyczne, 35 prezentacji, 9 prowadzonych projektów i gotowe pakiety dla pięciu branż. Każda lekcja kończy się poleceniem, które wklejasz i używasz tego samego dnia.'),
+         desc='Praktyczna nauka AI po polsku, przygotowana dla osób, które chcą usprawnić codzienną pracę bez technicznego zaplecza.'),
     dict(file='wycena.html', active='',
          title='Bezpłatna wycena projektu | Probatum',
          desc='Dwie minuty wypełniania, konkretne widełki w odpowiedzi. Zapytanie trafia bezpośrednio do mnie — odpisuję osobiście w 1–2 dni robocze.'),
@@ -155,16 +160,23 @@ def odcisk(sciezka):
 
 def nav_links(active):
     out = []
-    for href, label in NAV:
+    for href, label in NAV_GLOWNA:
         cls = ' class="active"' if href == active else ''
         out.append('    <a href="%s"%s>%s</a>' % (href, cls, label))
+    wiecej_active = ' class="active"' if active in [x[0] for x in NAV_WIECEJ] else ''
+    extra = []
+    for href, label in NAV_WIECEJ:
+        cls = ' class="active"' if href == active else ''
+        extra.append('        <a href="%s"%s>%s</a>' % (href, cls, label))
+    out.append('    <details class="navmore"%s><summary>Więcej</summary><div>\n%s\n      </div></details>'
+               % (wiecej_active, '\n'.join(extra)))
     return '\n'.join(out)
 
 def nav_mobile():
     out = []
-    for href, label in NAV:
+    for href, label in NAV_MOBILE:
         out.append('  <a href="%s">%s</a>' % (href, label))
-    out.append('  <a href="wycena.html">Wyceń projekt</a>')
+    out.append('  <a href="wycena.html">Poproś o wycenę</a>')
     return '\n'.join(out)
 
 TPL = '''<!DOCTYPE html>
@@ -175,7 +187,7 @@ TPL = '''<!DOCTYPE html>
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#07080b">
+<meta name="theme-color" content="#fcfdf9">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
 <meta property="og:type" content="website">
@@ -189,56 +201,47 @@ TPL = '''<!DOCTYPE html>
 
 <script>document.documentElement.className += ' js';</script>
 
-<!-- 25.08.2026: zdjete Google Fonts. Instrument Serif + Manrope + JetBrains Mono to
-     domyslny zestaw generatorow stron — czytelnik rozpoznaje go od pierwszego rzutu oka.
-     Teraz czcionka systemowa: strona wyglada jak zwykly serwis, laduje sie natychmiast
-     i nie odpytuje serwerow Google przy kazdym wejsciu. -->
 <link rel="stylesheet" href="assets/site.css?v={ODCISK_CSS}">
 </head>
-<body>
+<body class="site">
+<a class="skip-link" href="#main">Przejdź do treści</a>
 
 <nav class="nav">
   <div class="wrap">
-    <a class="brand" href="index.html">
-      <span class="sygnet" aria-hidden="true">P</span>
-      <span class="brand-txt">
-        <b>Probatum<i>.</i></b>
-        <span>przewaga metodą</span>
-      </span>
-    </a>
+    <a class="brand" href="index.html" aria-label="Probatum — strona główna">Probatum<i>.</i></a>
     <div class="navlinks">
 {navlinks}
     </div>
-    <a href="wycena.html" class="navcta">Wyceń projekt</a>
-    <button type="button" class="burger" aria-label="Menu" aria-expanded="false" aria-controls="navmobile"><span></span><span></span><span></span></button>
+    <a href="kontakt.html" class="navcta">Porozmawiajmy</a>
+    <button type="button" class="burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navmobile">Menu</button>
   </div>
 </nav>
-<div class="navmobile" id="navmobile">
+<div class="navmobile" id="navmobile" aria-label="Menu mobilne">
 {navmobile}
 </div>
 
+<main id="main">
 {body}
+</main>
 
 <footer class="foot">
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <span class="sygnet sygnet-lg" aria-hidden="true">P</span>
-        <b>Probatum<i>.</i></b>
-        <p>Strony internetowe, kampanie lejkowe i prowadzenie profili społecznościowych dla małych i średnich firm. Pracuję zdalnie, z całą Polską.</p>
-        <div class="foot-social" data-social-foot></div>
+        <a class="brand" href="index.html">Probatum<i>.</i></a>
+        <p>Nowe strony i nowy wizerunek dla firm, które wyrosły ze swojej obecnej obecności w sieci.</p>
       </div>
       <div>
         <h5>Nawigacja</h5>
-        <a href="o-donie.html">Metoda</a>
+        <a href="o-donie.html">Jak pracuję</a>
         <a href="oferta.html">Oferta</a>
         <a href="realizacje.html">Realizacje</a>
-        <a href="automatyzacja.html">Agenci</a>
+        <a href="automatyzacja.html">Agenci AI</a>
         <a href="akademia.html">Akademia</a>
       </div>
       <div>
         <h5>Rozpocznij</h5>
-        <a href="wycena.html">Wyceń projekt</a>
+        <a href="wycena.html">Poproś o wycenę</a>
         <a href="kontakt.html">Kontakt</a>
 <!--DOKUMENTY-->      </div>
       <div>
@@ -250,40 +253,44 @@ TPL = '''<!DOCTYPE html>
     </div>
     <div class="foot-bottom">
       <span>Probatum © <span data-year>2026</span></span>
-      <span>Każda publikacja zatwierdzona ręcznie</span>
+      <span>Strategia · projekt · wdrożenie</span>
     </div>
   </div>
 </footer>
 
-<button id="chat-btn" aria-label="Otwórz asystenta strony">Asystent strony</button>
-<div id="chat-panel" role="dialog" aria-label="Asystent strony">
+<button id="chat-btn" aria-label="Otwórz odpowiedzi na pytania" aria-controls="chat-panel" aria-expanded="false">Masz pytanie?</button>
+<div id="chat-panel" role="dialog" aria-modal="false" aria-label="Najczęstsze pytania" aria-hidden="true">
   <div class="chat-head">
     <i class="led"></i>
-    <div><b>Asystent strony</b><span>Odpowiedzi na najczęstsze pytania</span></div>
+    <div><b>W czym mogę pomóc?</b><span>Najczęstsze pytania przed rozmową</span></div>
     <button class="chat-x" id="chat-x" aria-label="Zamknij">×</button>
   </div>
   <div class="chat-body" id="chat-body">
-    <div class="msg bot">Cześć. Odpowiadam na najczęstsze pytania o ofertę, ceny i terminy. Po coś bardziej szczegółowego — napisz przez formularz, odpiszę osobiście.</div>
+    <div class="msg bot">Cześć. Tu znajdziesz krótkie odpowiedzi o ofercie i współpracy. Przy indywidualnym pytaniu napisz przez formularz — odpowiem osobiście.</div>
   </div>
   <div class="chat-sug" id="chat-sug">
-    <button>Ile to kosztuje?</button>
-    <button>Ile trwa strona?</button>
-    <button>Czym są agenci?</button>
+    <button type="button">Ile to kosztuje?</button>
+    <button type="button">Jak wygląda współpraca?</button>
+    <button type="button">Czym są agenci AI?</button>
   </div>
   <div class="chat-in">
     <input type="text" id="chat-input" placeholder="Napisz pytanie...">
-    <button id="chat-send">Wyślij</button>
+    <button type="button" id="chat-send">Wyślij</button>
   </div>
 </div>
 
 <script src="assets/site.js?v={ODCISK_JS}"></script>
+<script src="assets/spring.js?v={ODCISK_SPRING}"></script>
 </body>
 </html>
 '''
 
 ODCISK_CSS = odcisk(os.path.join(OUT, 'assets', 'site.css'))
 ODCISK_JS  = odcisk(os.path.join(OUT, 'assets', 'site.js'))
-print('odcisk CSS: %s   odcisk JS: %s' % (ODCISK_CSS, ODCISK_JS))
+SPRING_JS_PATH = os.path.join(OUT, 'assets', 'spring.js')
+ODCISK_SPRING = odcisk(SPRING_JS_PATH) if os.path.exists(SPRING_JS_PATH) else 'dev'
+print('odcisk CSS: %s   odcisk JS: %s   odcisk filmu: %s' %
+      (ODCISK_CSS, ODCISK_JS, ODCISK_SPRING))
 
 built = 0
 for p in PAGES:
@@ -293,7 +300,14 @@ for p in PAGES:
     body = io.open(part, encoding='utf-8').read()
     html = TPL.format(title=p['title'], desc=p['desc'], body=body,
                       navlinks=nav_links(p['active']), navmobile=nav_mobile(),
-                      ODCISK_CSS=ODCISK_CSS, ODCISK_JS=ODCISK_JS)
+                      ODCISK_CSS=ODCISK_CSS, ODCISK_JS=ODCISK_JS,
+                      ODCISK_SPRING=ODCISK_SPRING)
+    if p['file'] == 'index.html':
+        preloads = ('<link rel="preload" as="image" href="assets/spring/dormant.webp" '
+                    'media="(min-width:701px)" fetchpriority="high">\n'
+                    '<link rel="preload" as="image" href="assets/spring/dormant-mobile.webp" '
+                    'media="(max-width:700px)" fetchpriority="high">\n')
+        html = html.replace('</head>', preloads + '</head>')
     io.open(os.path.join(OUT, p['file']), 'w', encoding='utf-8').write(dane(html))
     print('zbudowano: %s (%d znaków)' % (p['file'], len(html)))
     built += 1
@@ -333,7 +347,7 @@ def blok_listy(skad, naglowek, opis, prefiks=''):
         '<form class="news-form" data-news-form data-skad="%s" data-news-ok="#news-ok-%s">'
         '<input class="input" type="email" placeholder="twoj@adres.pl" required '
         'autocomplete="email" aria-label="Twój adres e-mail">'
-        '<button type="submit" class="btn btn-primary">Zapisz mnie</button>'
+        '<button type="submit" class="btn btn-primary" data-js-submit disabled>Zapisz mnie</button>'
         '<label class="news-mini" style="width:100%%;display:flex;gap:8px;align-items:flex-start">'
         '<input type="checkbox" required style="margin-top:3px;flex:none">'
         '<span>Zgadzam się na otrzymywanie wiadomości. '
@@ -406,7 +420,7 @@ for katalog, opis in SEKCJE_LIST.items():
             '<p class="small">%s</p>' % opis['pusto']
 
     body = (
-        '<section class="phead tlo-foto" style="background-image:url(assets/img/sekcje/%s)">'
+        '<section class="phead %s">'
         '<div class="wrap">'
         '<span class="eyebrow">%s</span>'
         '<h1 class="display">%s</h1>'
@@ -416,14 +430,14 @@ for katalog, opis in SEKCJE_LIST.items():
         '<div class="wpis-lista">%s</div>'
         '%s'
         '</div></section>'
-    ) % ('agenci-nocne-biuro.jpg' if katalog == 'blog' else 'metoda-zatwierdzenie.jpg',
-         opis['naglowek'], opis['tytul'], opis['wstep'], karty,
+    ) % ('blue' if katalog == 'blog' else 'pink', opis['naglowek'], opis['tytul'], opis['wstep'], karty,
          blok_listy(katalog, opis['news_h'], opis['news_p']))
 
     strona = [x for x in PAGES if x['file'] == katalog + '.html'][0]
     html = TPL.format(title=strona['title'], desc=strona['desc'], body=body,
                       navlinks=nav_links(strona['active']), navmobile=nav_mobile(),
-                      ODCISK_CSS=ODCISK_CSS, ODCISK_JS=ODCISK_JS)
+                      ODCISK_CSS=ODCISK_CSS, ODCISK_JS=ODCISK_JS,
+                      ODCISK_SPRING=ODCISK_SPRING)
     io.open(os.path.join(OUT, katalog + '.html'), 'w', encoding='utf-8').write(dane(html))
     print('zbudowano: %s.html (%d wpis\u00f3w)' % (katalog, len(lista)))
 
@@ -457,7 +471,8 @@ for katalog, opis in SEKCJE_LIST.items():
                           desc=w.get('opis', '')[:180],
                           body=body,
                           navlinks=nav_links(katalog + '.html'), navmobile=nav_mobile(),
-                          ODCISK_CSS=ODCISK_CSS, ODCISK_JS=ODCISK_JS)
+                          ODCISK_CSS=ODCISK_CSS, ODCISK_JS=ODCISK_JS,
+                          ODCISK_SPRING=ODCISK_SPRING)
         io.open(os.path.join(kat_out, w['plik'] + '.html'), 'w', encoding='utf-8').write(dane(do_podkatalogu(html)))
         print('   \u2514 %s/%s.html' % (katalog, w['plik']))
 

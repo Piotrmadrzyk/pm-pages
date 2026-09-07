@@ -1,10 +1,8 @@
-<section class="phead tlo-foto" style="background-image:url(assets/img/tlo/hero-biurko.jpg)">
+<section class="phead pink">
   <div class="wrap">
     <span class="eyebrow">Kontakt</span>
-    <h1 class="display">Porozmawiajmy o Twoim projekcie</h1>
-    <p class="lead">
-      Napisz przez formularz, wyślij e-mail albo zapytaj asystenta w prawym dolnym rogu. Wybierz, co Ci wygodniej. Każda wiadomość trafia bezpośrednio do mnie.
-    </p>
+    <h1>Od czego ma zacząć się<br><em>zmiana?</em></h1>
+    <p class="lead">Pokaż mi obecną stronę albo opisz, co przestało pasować do Twojej firmy. Każdą wiadomość czytam osobiście.</p>
   </div>
 </section>
 
@@ -17,23 +15,22 @@
           <div class="obietnica">
             <i>◆</i>
             <p>
-              <b>Zanim oddzwonię, przygotuję wstępną wersję.</b> Na podstawie tego, co tu podasz,
-              sprawdzam Twoją branżę i konkurencję, a potem buduję pierwszy szkic. W rozmowie nie
-              pytam „w czym mogę pomóc" — pokazuję coś konkretnego i pytam, czy to dobry kierunek.
+              <b>Nie musisz pisać pełnego briefu.</b> Kilka zdań wystarczy, żebym przed rozmową
+              zobaczył obecną stronę, branżę i możliwy kierunek zmiany.
             </p>
           </div>
 
           <div class="field">
             <label>Czego dotyczy sprawa? <span class="req">*</span></label>
             <div class="tematy" data-tematy>
-              <button type="button" class="temat-chip" aria-pressed="false" data-temat="Bezpłatna analiza strony (SEO)" data-kotwica="analiza-strony">Bezpłatna analiza strony</button>
-              <button type="button" class="temat-chip" aria-pressed="false" data-temat="Bezpłatny przegląd reklam" data-kotwica="analiza-reklam">Przegląd reklam</button>
-              <button type="button" class="temat-chip" aria-pressed="false" data-temat="Bezpłatny przegląd profilu" data-kotwica="analiza-profilu">Przegląd profilu</button>
+              <button type="button" class="temat-chip" id="analiza-strony" aria-pressed="false" data-temat="Bezpłatna analiza strony (SEO)" data-kotwica="analiza-strony">Bezpłatna analiza strony</button>
+              <button type="button" class="temat-chip" id="analiza-reklam" aria-pressed="false" data-temat="Bezpłatny przegląd reklam" data-kotwica="analiza-reklam">Przegląd reklam</button>
+              <button type="button" class="temat-chip" id="analiza-profilu" aria-pressed="false" data-temat="Bezpłatny przegląd profilu" data-kotwica="analiza-profilu">Przegląd profilu</button>
               <button type="button" class="temat-chip" aria-pressed="false" data-temat="Strona internetowa">Strona internetowa</button>
               <button type="button" class="temat-chip" aria-pressed="false" data-temat="Kampania i pozyskiwanie klientów">Kampania i klienci</button>
               <button type="button" class="temat-chip" aria-pressed="false" data-temat="Prowadzenie social mediów">Social media</button>
               <button type="button" class="temat-chip" aria-pressed="false" data-temat="Automatyzacja / agenci">Automatyzacja</button>
-              <button type="button" class="temat-chip" aria-pressed="false"
+              <button type="button" class="temat-chip" id="akademia" aria-pressed="false"
                       data-temat="Kod dostępu do Akademii AI" data-kotwica="akademia">Kod do Akademii</button>
               <button type="button" class="temat-chip" aria-pressed="false" data-temat="Coś innego">Coś innego</button>
             </div>
@@ -95,7 +92,7 @@
             <input type="checkbox" id="k-consent" name="consent" required>
             <label for="k-consent">Wyrażam zgodę na przetwarzanie podanych przeze mnie danych w celu odpowiedzi na to zgłoszenie. <span class="req">*</span></label>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg" style="width:100%">Wyślij wiadomość</button>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%" data-js-submit disabled>Wyślij wiadomość</button>
           <div class="form-error" id="err-kontakt"></div>
         </form>
 
@@ -112,35 +109,32 @@
         <div class="aside-block reveal">
           <span class="lbl">E-mail</span>
           <b><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></b>
-          <p>Piszę i odpisuję osobiście, bez automatycznych szablonów. Jeśli wolisz formularz — jest obok, trafia w to samo miejsce.</p>
+          <p>Formularz obok i wiadomość e-mail trafiają w to samo miejsce.</p>
         </div>
         <div class="aside-block reveal">
           <span class="lbl">Telefon</span>
           <b><a href="tel:{{TEL_LINK}}">{{TEL}}</a></b>
-          <p>Wolisz od razu porozmawiać? Dzwoń — na telefonie wystarczy dotknąć numeru. Jeśli nie odbieram, jestem w trakcie rozmowy; oddzwonię tego samego dnia.</p>
+          <p>Jeśli nie odbiorę, zostaw wiadomość albo wyślij formularz — wrócę z odpowiedzią.</p>
         </div>
         <div class="aside-block reveal">
           <span class="lbl">Lokalizacja</span>
-          <b>Cała Polska, zdalnie</b>
-          <p>Pracuję przez internet, więc nie ma znaczenia, gdzie masz firmę. Rozmowy prowadzę online, a jeśli wolisz telefon, umawiamy termin.</p>
+          <b>Rzeszów, Śląsk i zdalnie</b>
+          <p>Projekt możemy przeprowadzić całkowicie online, niezależnie od lokalizacji firmy.</p>
         </div>
         <div class="aside-block reveal">
           <span class="lbl">Czas odpowiedzi</span>
-          <b>1–2 dni robocze</b>
-          <p>Jeśli sprawa jest pilna, napisz to w pierwszym zdaniu. Wtedy odpowiadam poza kolejnością.</p>
+          <b>Zwykle 1–2 dni robocze</b>
+          <p>Jeśli sprawa jest pilna, zaznacz to w pierwszym zdaniu.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sec-sm" style="background:var(--ink-1);border-top:1px solid var(--line)">
+<section class="closing">
   <div class="wrap">
-    <div class="sec-head reveal" style="margin-bottom:0">
-      <span class="eyebrow">Media społecznościowe</span>
-      <h2 class="display">Zobacz, jak pracuję, zanim napiszesz</h2>
-      <p class="lead">Realizacje, kulisy i to, co dokładnie robi system, zanim cokolwiek zatwierdzę.</p>
-    </div>
-    <div class="social-grid stagger" data-social-grid></div>
+    <span class="eyebrow">MOŻESZ ZACZĄĆ PROSTO</span>
+    <h2>Wyślij tylko adres<br>obecnej <em>strony.</em></h2>
+    <a class="btn btn-primary btn-lg" href="mailto:{{EMAIL}}">Napisz na {{EMAIL}}</a>
   </div>
 </section>
