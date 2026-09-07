@@ -1,18 +1,18 @@
 tytul: Pierwsza automatyzacja: powiadomienie o nowym zapytaniu
 data: 2026-08-20
 opis: Formularz na stronie wysyła maila, którego i tak przegapisz. Zrobimy tak, żeby zapytanie samo znalazło Cię na telefonie.
-czas: 20 minut
-poziom: dla początkujących
+czas: 30–60 minut
+poziom: podstawowy
 narzedzia: n8n, Telegram
 
 ---
-Większość firm traci zapytania nie dlatego, że ich nie dostaje, tylko dlatego, że **dowiaduje się o nich za późno**. Mail ląduje w skrzynce obok siedemnastu newsletterów, a klient w tym czasie pisze do trzech innych firm.
+Zapytanie może zginąć nie dlatego, że nie dotarło, lecz dlatego, że **zostało zauważone za późno**. Mail ląduje w skrzynce obok newsletterów i bieżącej korespondencji, a klient czeka na odpowiedź.
 
-Ta automatyzacja robi jedną rzecz: gdy ktoś wypełni formularz, w ciągu kilku sekund dostajesz wiadomość na telefon. Nie mail. Wiadomość, którą zobaczysz.
+Ta automatyzacja robi jedną rzecz: gdy ktoś wypełni formularz, dostajesz osobne powiadomienie na telefon. Nie kolejny mail, tylko wiadomość, którą łatwiej zauważyć.
 
 ## Co będzie potrzebne
 
-- konto w n8n (darmowy plan wystarczy na start)
+- konto w [n8n](https://n8n.io/pricing/) — możesz zacząć od bezpłatnego okresu próbnego w chmurze albo samodzielnie hostowanej wersji Community
 - aplikacja Telegram na telefonie
 - formularz na stronie, który już masz
 
@@ -48,9 +48,17 @@ Telefon: {{ $json.telefon }}
 Treść: {{ $json.tresc }}
 ```
 
-## Krok 4. Wskaż formularzowi, dokąd ma wysyłać
+## Krok 4. Połącz formularz — najpierw w trybie testowym
 
-W ustawieniach formularza na swojej stronie podmień adres wysyłki na link webhooka z n8n. Wyślij testowe zapytanie — wiadomość powinna dotrzeć w kilka sekund.
+Ten krok zależy od technologii Twojej strony. Potrzebujesz miejsca, w którym można ustawić adres odbiorcy danych formularza albo dodać integrację webhook. Jeśli panel strony nie daje takiej możliwości, nie zmieniaj kodu w ciemno — poproś osobę opiekującą się stroną o podłączenie adresu.
+
+1. W n8n przełącz Webhook na **Test URL** i wybierz **Listen for test event**.
+2. W kopii formularza albo środowisku testowym ustaw wysyłkę metodą `POST` na ten adres.
+3. Wyślij przykładowe zgłoszenie i sprawdź w n8n, pod jakimi nazwami dotarły pola, np. `imie`, `telefon` i `tresc`.
+4. Dopasuj te nazwy w wiadomości Telegram i wykonaj jeszcze jeden test.
+5. Dopiero potem opublikuj workflow i podłącz **Production URL** do działającego formularza.
+
+> Nie wklejaj adresu produkcyjnego do formularza, dopóki test nie przejdzie od początku do końca. Różne systemy stron przechowują konfigurację formularza w innym miejscu.
 
 ## Co dalej
 

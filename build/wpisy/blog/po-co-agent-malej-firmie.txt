@@ -26,4 +26,4 @@ Automatyzacja w małej firmie nie polega na zastąpieniu kogokolwiek. Polega na 
 
 Godzina dziennie to dwadzieścia godzin miesięcznie. Policz, ile kosztuje Twoja godzina, a potem zdecyduj, czy warto ją oddawać za przeklejanie.
 
-W [Warsztacie](../warsztat.html) pokazuję, jak zbudować takie rzeczy samodzielnie — pierwsza instrukcja zajmuje dwadzieścia minut i nie wymaga umiejętności programowania.
+W [Warsztacie](../warsztat.html) pokazuję, jak zbudować takie rzeczy samodzielnie. Pierwsza instrukcja prowadzi przez mały przepływ od formularza do powiadomienia i jasno zaznacza moment, w którym może być potrzebny dostęp do ustawień strony.

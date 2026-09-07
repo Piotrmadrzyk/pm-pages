@@ -116,22 +116,22 @@ PAGES = [
          desc='Poznaj spokojny i przejrzysty proces: diagnoza, kierunek, projekt, wdrożenie i ręczne zatwierdzenie przed publikacją.'),
     dict(file='oferta.html', active='oferta.html',
          title='Oferta — strony, kampanie i social media | Probatum',
-         desc='Trzy usługi prowadzone tym samym sposobem: wielostronicowe witryny pod branżę, kampanie lejkowe z celem na każdym etapie i stałe prowadzenie profili społecznościowych.'),
+         desc='Strony internetowe, kampanie i komunikacja marki prowadzone jako jedna spójna zmiana — od diagnozy i treści po projekt, wdrożenie i kontakt.'),
     dict(file='realizacje.html', active='realizacje.html',
-         title='Realizacje — strony dla różnych branż | Probatum',
-         desc='Zobacz działające strony przygotowane dla różnych branż i otwórz każdą realizację w pełnym widoku.'),
+         title='Projekty demonstracyjne stron dla różnych branż | Probatum',
+         desc='Otwórz działające koncepcje demonstracyjne stron dla różnych branż i zobacz, jak odmienny charakter może mieć każdy projekt.'),
     dict(file='automatyzacja.html', active='automatyzacja.html',
          title='Agenci do automatyzacji — co powstaje | Probatum',
-         desc='Wdrożenia agentów automatyzujących powtarzalną pracę w firmie. Jeszcze nie w sprzedaży — trwa lista pierwszeństwa.'),
+         desc='Program pilotażowy automatyzacji powtarzalnej pracy w firmie. Usługa nie jest jeszcze w sprzedaży — trwa lista pierwszeństwa.'),
     dict(file='akademia.html', active='akademia.html',
-         title='Akademia AI — kurs po polsku, dla ludzi bez technicznego zaplecza | Probatum',
+         title='Akademia AI po polsku dla początkujących | Probatum',
          desc='Praktyczna nauka AI po polsku, przygotowana dla osób, które chcą usprawnić codzienną pracę bez technicznego zaplecza.'),
-    dict(file='wycena.html', active='',
+    dict(file='wycena.html', active='wycena.html',
          title='Bezpłatna wycena projektu | Probatum',
-         desc='Dwie minuty wypełniania, konkretne widełki w odpowiedzi. Zapytanie trafia bezpośrednio do mnie — odpisuję osobiście w 1–2 dni robocze.'),
+         desc='Opisz zakres projektu. Zapytanie trafia bezpośrednio do mnie — wrócę z pytaniami albo wstępną wyceną, zwykle w 1–2 dni robocze.'),
     dict(file='warsztat.html', active='warsztat.html',
          title='Warsztat — automatyzacje, które zbudujesz sam | Probatum',
-         desc='Instrukcje krok po kroku: jak własnymi rękami zbudować małe automatyzacje w swojej firmie. Za darmo, z prawdziwymi zrzutami ekranu.'),
+         desc='Bezpłatne instrukcje krok po kroku pokazujące, jak własnymi rękami zbudować małe automatyzacje w swojej firmie.'),
     dict(file='blog.html', active='blog.html',
          title='Blog — nowości i ciekawostki o agentach | Probatum',
          desc='Co nowego w automatyzacji, co się sprawdza w praktyce i czego lepiej nie robić. Krótko i bez marketingowej waty.'),
@@ -161,22 +161,24 @@ def odcisk(sciezka):
 def nav_links(active):
     out = []
     for href, label in NAV_GLOWNA:
-        cls = ' class="active"' if href == active else ''
-        out.append('    <a href="%s"%s>%s</a>' % (href, cls, label))
-    wiecej_active = ' class="active"' if active in [x[0] for x in NAV_WIECEJ] else ''
+        attrs = ' class="active" aria-current="page"' if href == active else ''
+        out.append('    <a href="%s"%s>%s</a>' % (href, attrs, label))
+    wiecej_class = 'navmore active' if active in [x[0] for x in NAV_WIECEJ] else 'navmore'
     extra = []
     for href, label in NAV_WIECEJ:
-        cls = ' class="active"' if href == active else ''
-        extra.append('        <a href="%s"%s>%s</a>' % (href, cls, label))
-    out.append('    <details class="navmore"%s><summary>Więcej</summary><div>\n%s\n      </div></details>'
-               % (wiecej_active, '\n'.join(extra)))
+        attrs = ' class="active" aria-current="page"' if href == active else ''
+        extra.append('        <a href="%s"%s>%s</a>' % (href, attrs, label))
+    out.append('    <details class="%s"><summary>Więcej</summary><div>\n%s\n      </div></details>'
+               % (wiecej_class, '\n'.join(extra)))
     return '\n'.join(out)
 
-def nav_mobile():
+def nav_mobile(active):
     out = []
     for href, label in NAV_MOBILE:
-        out.append('  <a href="%s">%s</a>' % (href, label))
-    out.append('  <a href="wycena.html">Poproś o wycenę</a>')
+        attrs = ' class="active" aria-current="page"' if href == active else ''
+        out.append('  <a href="%s"%s>%s</a>' % (href, attrs, label))
+    quote_attrs = ' class="active" aria-current="page"' if active == 'wycena.html' else ''
+    out.append('  <a href="wycena.html"%s>Poproś o wycenę</a>' % quote_attrs)
     return '\n'.join(out)
 
 TPL = '''<!DOCTYPE html>
@@ -189,15 +191,20 @@ TPL = '''<!DOCTYPE html>
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#fcfdf9">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="canonical" href="{canonical}">
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="{og_type}">
 <meta property="og:site_name" content="Probatum">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta name="twitter:card" content="summary">
+<meta property="og:url" content="{canonical}">
+<meta property="og:image" content="{og_image}">
+<meta property="og:image:alt" content="Kwitnące drzewo — nowe życie marki Probatum">
+{extra_meta}<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{desc}">
+<meta name="twitter:image" content="{og_image}">
 
 <script>document.documentElement.className += ' js';</script>
 
@@ -206,19 +213,19 @@ TPL = '''<!DOCTYPE html>
 <body class="site">
 <a class="skip-link" href="#main">Przejdź do treści</a>
 
-<nav class="nav">
+<nav class="nav" aria-label="Główna">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Probatum — strona główna">Probatum<i>.</i></a>
     <div class="navlinks">
 {navlinks}
     </div>
-    <a href="kontakt.html" class="navcta">Porozmawiajmy</a>
+    <a href="kontakt.html" class="navcta"{contact_current}>Porozmawiajmy</a>
     <button type="button" class="burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navmobile">Menu</button>
   </div>
 </nav>
-<div class="navmobile" id="navmobile" aria-label="Menu mobilne">
+<nav class="navmobile" id="navmobile" aria-label="Mobilna">
 {navmobile}
-</div>
+</nav>
 
 <main id="main">
 {body}
@@ -265,7 +272,7 @@ TPL = '''<!DOCTYPE html>
     <div><b>W czym mogę pomóc?</b><span>Najczęstsze pytania przed rozmową</span></div>
     <button class="chat-x" id="chat-x" aria-label="Zamknij">×</button>
   </div>
-  <div class="chat-body" id="chat-body">
+  <div class="chat-body" id="chat-body" aria-live="polite" aria-relevant="additions">
     <div class="msg bot">Cześć. Tu znajdziesz krótkie odpowiedzi o ofercie i współpracy. Przy indywidualnym pytaniu napisz przez formularz — odpowiem osobiście.</div>
   </div>
   <div class="chat-sug" id="chat-sug">
@@ -274,7 +281,7 @@ TPL = '''<!DOCTYPE html>
     <button type="button">Czym są agenci AI?</button>
   </div>
   <div class="chat-in">
-    <input type="text" id="chat-input" placeholder="Napisz pytanie...">
+    <input type="text" id="chat-input" placeholder="Napisz pytanie..." aria-label="Twoje pytanie">
     <button type="button" id="chat-send">Wyślij</button>
   </div>
 </div>
@@ -292,6 +299,14 @@ ODCISK_SPRING = odcisk(SPRING_JS_PATH) if os.path.exists(SPRING_JS_PATH) else 'd
 print('odcisk CSS: %s   odcisk JS: %s   odcisk filmu: %s' %
       (ODCISK_CSS, ODCISK_JS, ODCISK_SPRING))
 
+BASE_URL = 'https://probatum.pl/'
+OG_IMAGE = BASE_URL + 'assets/spring/bloom.webp'
+
+
+def canonical_url(path):
+    return BASE_URL if path == 'index.html' else BASE_URL + path
+
+sitemap_urls = []
 built = 0
 for p in PAGES:
     part = os.path.join(PARTS, p['file'])
@@ -299,7 +314,10 @@ for p in PAGES:
         print('POMINIĘTO (brak części): ' + p['file']); continue
     body = io.open(part, encoding='utf-8').read()
     html = TPL.format(title=p['title'], desc=p['desc'], body=body,
-                      navlinks=nav_links(p['active']), navmobile=nav_mobile(),
+                      canonical=canonical_url(p['file']), og_type='website',
+                      og_image=OG_IMAGE, extra_meta='',
+                      navlinks=nav_links(p['active']), navmobile=nav_mobile(p['active']),
+                      contact_current=' aria-current="page"' if p['active'] == 'kontakt.html' else '',
                       ODCISK_CSS=ODCISK_CSS, ODCISK_JS=ODCISK_JS,
                       ODCISK_SPRING=ODCISK_SPRING)
     if p['file'] == 'index.html':
@@ -309,6 +327,7 @@ for p in PAGES:
                     'media="(max-width:700px)" fetchpriority="high">\n')
         html = html.replace('</head>', preloads + '</head>')
     io.open(os.path.join(OUT, p['file']), 'w', encoding='utf-8').write(dane(html))
+    sitemap_urls.append(canonical_url(p['file']))
     print('zbudowano: %s (%d znaków)' % (p['file'], len(html)))
     built += 1
 
@@ -337,7 +356,7 @@ def blok_listy(skad, naglowek, opis, prefiks=''):
     """Zachęta do zapisania się — inna tresc na blogu i w warsztacie,
        bo ludzie trafiaja tam z roznymi oczekiwaniami."""
     return (
-        '<div class="news reveal">'
+        '<div class="news" data-reveal>'
         '<div class="news-w">'
         '<div>'
         '<h3>%s</h3>'
@@ -350,8 +369,8 @@ def blok_listy(skad, naglowek, opis, prefiks=''):
         '<button type="submit" class="btn btn-primary" data-js-submit disabled>Zapisz mnie</button>'
         '<label class="news-mini" style="width:100%%;display:flex;gap:8px;align-items:flex-start">'
         '<input type="checkbox" required style="margin-top:3px;flex:none">'
-        '<span>Zgadzam się na otrzymywanie wiadomości. '
-        'Wypisujesz się jednym kliknięciem, adresu nie przekazuję nikomu.</span>'
+        '<span>Zgadzam się na otrzymywanie wiadomości związanych z tym materiałem. '
+        'Adresu nie sprzedaję ani nie udostępniam w celach marketingowych.</span>'
         '</label>'
         '</form>'
         '<div class="news-ok" id="news-ok-%s">'
@@ -400,17 +419,25 @@ SEKCJE_LIST = {
               'zar\u00f3wno te, kt\u00f3re zadzia\u0142a\u0142y, jak i te, kt\u00f3re nie.',
         pusto='Pierwsze wpisy pojawi\u0105 si\u0119 w najbli\u017cszych dniach.',
         news_h='Nie przegap tego, co dzia\u0142a',
-        news_p='Dwa razy w tygodniu wysy\u0142am to, co sam sprawdzi\u0142em w praktyce, '
-               'razem z tym, co nie zadzia\u0142a\u0142o. Bez ofert, bez waty, bez codziennego spamu.'),
+        news_p='Wysy\u0142am tylko wtedy, gdy mam konkretny materia\u0142 sprawdzony w praktyce \u2014 '
+               'razem z tym, co nie zadzia\u0142a\u0142o. Bez ofert i bez codziennego spamu.',
+        art='assets/visuals/automation.webp',
+        alt='Jasna kompozycja pokazuj\u0105ca uporz\u0105dkowany przep\u0142yw informacji',
+        akcent='Godzina dziennie to dwadzie\u015bcia godzin miesi\u0119cznie.',
+        akcent_opis='Jedno zdanie z pierwszego tekstu dobrze pokazuje, po co zajmowa\u0107 si\u0119 automatyzacj\u0105.'),
     'warsztat': dict(
         naglowek='Warsztat',
         tytul='Automatyzacje, kt\u00f3re zbudujesz sam',
         wstep='Instrukcje krok po kroku, za darmo. Je\u015bli utkniesz, pomog\u0119 wdro\u017cy\u0107. '
               'A je\u015bli nie masz na to czasu, zrobi\u0119 to za Ciebie.',
         pusto='Pierwsze instrukcje pojawi\u0105 si\u0119 w najbli\u017cszych dniach.',
-        news_h='Ka\u017cda nowa instrukcja prosto do Ciebie',
-        news_p='Nowe automatyzacje krok po kroku, zanim trafi\u0105 gdziekolwiek indziej. '
-               'Dostajesz te\u017c fragmenty podr\u0119cznika, nad kt\u00f3rym w\u0142a\u015bnie pracuj\u0119.'),
+        news_h='Nowa instrukcja bez szukania',
+        news_p='Gdy opublikuj\u0119 now\u0105 automatyzacj\u0119 krok po kroku, dam Ci zna\u0107. '
+               'Bez sta\u0142ego harmonogramu i bez wiadomo\u015bci wysy\u0142anych tylko po to, by co\u015b wys\u0142a\u0107.',
+        art='assets/visuals/method.webp',
+        alt='Jasny st\u00f3\u0142 roboczy z elementami projektu uk\u0142adanymi krok po kroku',
+        akcent='Formularz \u2192 n8n \u2192 Telegram \u2192 Tw\u00f3j telefon',
+        akcent_opis='Pierwsza instrukcja prowadzi przez jeden ma\u0142y przep\u0142yw od pocz\u0105tku do dzia\u0142aj\u0105cego powiadomienia.'),
 }
 
 for katalog, opis in SEKCJE_LIST.items():
@@ -420,25 +447,40 @@ for katalog, opis in SEKCJE_LIST.items():
             '<p class="small">%s</p>' % opis['pusto']
 
     body = (
-        '<section class="phead %s">'
-        '<div class="wrap">'
-        '<span class="eyebrow">%s</span>'
+        '<section class="visual-head journal-head %s">'
+        '<div class="wrap visual-head-grid">'
+        '<div class="visual-head-copy" data-reveal>'
+        '<span class="eyebrow">%s \u00b7 PRAKTYCZNE NOTATKI</span>'
         '<h1 class="display">%s</h1>'
         '<p class="lead">%s</p>'
+        '</div>'
+        '<figure class="hero-art journal-art" data-reveal="visual">'
+        '<img src="%s" width="1600" height="900" alt="%s">'
+        '<figcaption><span>pytanie</span><i></i><span>pr\u00f3ba</span><i></i><b>wniosek</b></figcaption>'
+        '</figure>'
         '</div></section>'
-        '<section class="sec"><div class="wrap">'
-        '<div class="wpis-lista">%s</div>'
+        '<section class="journal-list sec"><div class="wrap">'
+        '<div class="section-intro" data-reveal><span class="eyebrow">NAJNOWSZY MATERIA\u0141</span>'
+        '<h2>Jedna rzecz.<br><em>Dok\u0142adnie wyja\u015bniona.</em></h2></div>'
+        '<div class="wpis-lista featured-list">%s</div>'
+        '<div class="journal-accent" data-reveal><small>Z TEGO MATERIA\u0141U</small><blockquote>%s</blockquote><p>%s</p></div>'
         '%s'
         '</div></section>'
-    ) % ('blue' if katalog == 'blog' else 'pink', opis['naglowek'], opis['tytul'], opis['wstep'], karty,
+    ) % ('journal-blog' if katalog == 'blog' else 'journal-workshop', opis['naglowek'], opis['tytul'], opis['wstep'],
+         opis['art'], opis['alt'], karty, opis['akcent'], opis['akcent_opis'],
          blok_listy(katalog, opis['news_h'], opis['news_p']))
 
     strona = [x for x in PAGES if x['file'] == katalog + '.html'][0]
     html = TPL.format(title=strona['title'], desc=strona['desc'], body=body,
-                      navlinks=nav_links(strona['active']), navmobile=nav_mobile(),
+                      canonical=canonical_url(strona['file']), og_type='website',
+                      og_image=OG_IMAGE, extra_meta='',
+                      navlinks=nav_links(strona['active']), navmobile=nav_mobile(strona['active']),
+                      contact_current='',
                       ODCISK_CSS=ODCISK_CSS, ODCISK_JS=ODCISK_JS,
                       ODCISK_SPRING=ODCISK_SPRING)
     io.open(os.path.join(OUT, katalog + '.html'), 'w', encoding='utf-8').write(dane(html))
+    sitemap_urls.append(canonical_url(katalog + '.html'))
+    built += 1
     print('zbudowano: %s.html (%d wpis\u00f3w)' % (katalog, len(lista)))
 
     # pojedyncze wpisy
@@ -455,26 +497,42 @@ for katalog, opis in SEKCJE_LIST.items():
 
         body = (
             '<article class="wpis">'
-            '<div class="wrap">'
+            '<div class="reading-progress" aria-hidden="true"><span></span></div>'
+            '<div class="wrap article-layout">'
+            '<aside class="article-toc" data-article-toc hidden><small>W TYM MATERIALE</small><nav aria-label="Spis treści"></nav></aside>'
+            '<div class="article-main">'
             '<a class="wpis-wroc" href="%s.html">\u2190 %s</a>'
             '<div class="wpis-meta">%s</div>'
             '<h1 class="display">%s</h1>'
             '<p class="lead">%s</p>'
+            '<figure class="article-hero" data-reveal="visual"><img src="%s" width="1600" height="900" alt="%s"></figure>'
             '<div class="wpis-tresc">%s</div>'
             '<div class="wpis-stopka">%s</div>'
-            '</div></article>'
+            '</div></div></article>'
         ) % (katalog, SEKCJE_LIST[katalog]['naglowek'], ' \u00b7 '.join(meta),
-             w['tytul'], w.get('opis', ''), wpisy.na_html(w['tresc']),
+             w['tytul'], w.get('opis', ''), SEKCJE_LIST[katalog]['art'], SEKCJE_LIST[katalog]['alt'],
+             wpisy.na_html(w['tresc']),
              STOPKA_WARSZTAT if katalog == 'warsztat' else STOPKA_BLOG)
 
+        article_path = katalog + '/' + w['plik'] + '.html'
+        article_meta = ('<meta property="article:published_time" content="%s">\n' % w['data']) if w.get('data') else ''
         html = TPL.format(title=w['tytul'] + ' | Probatum',
-                          desc=w.get('opis', '')[:180],
+                          desc=w.get('opis', '')[:180], canonical=canonical_url(article_path),
+                          og_type='article', og_image=OG_IMAGE, extra_meta=article_meta,
                           body=body,
-                          navlinks=nav_links(katalog + '.html'), navmobile=nav_mobile(),
+                          navlinks=nav_links(katalog + '.html'), navmobile=nav_mobile(katalog + '.html'),
+                          contact_current='',
                           ODCISK_CSS=ODCISK_CSS, ODCISK_JS=ODCISK_JS,
                           ODCISK_SPRING=ODCISK_SPRING)
         io.open(os.path.join(kat_out, w['plik'] + '.html'), 'w', encoding='utf-8').write(dane(do_podkatalogu(html)))
+        sitemap_urls.append(canonical_url(article_path))
+        built += 1
         print('   \u2514 %s/%s.html' % (katalog, w['plik']))
 
+mapa = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n%s\n</urlset>\n') % '\n'.join(
+            '  <url><loc>%s</loc></url>' % url for url in sitemap_urls)
+io.open(os.path.join(OUT, 'sitemap.xml'), 'w', encoding='utf-8').write(mapa)
+print('zbudowano: sitemap.xml (%d adres\u00f3w)' % len(sitemap_urls))
 print('--- gotowe: %d stron' % built)
 ostrzez_o_danych()

@@ -4,28 +4,33 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bezpłatna wycena projektu | Probatum</title>
-<meta name="description" content="Dwie minuty wypełniania, konkretne widełki w odpowiedzi. Zapytanie trafia bezpośrednio do mnie — odpisuję osobiście w 1–2 dni robocze.">
+<meta name="description" content="Opisz zakres projektu. Zapytanie trafia bezpośrednio do mnie — wrócę z pytaniami albo wstępną wyceną, zwykle w 1–2 dni robocze.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#fcfdf9">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="canonical" href="https://probatum.pl/wycena.html">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Probatum">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:title" content="Bezpłatna wycena projektu | Probatum">
-<meta property="og:description" content="Dwie minuty wypełniania, konkretne widełki w odpowiedzi. Zapytanie trafia bezpośrednio do mnie — odpisuję osobiście w 1–2 dni robocze.">
-<meta name="twitter:card" content="summary">
+<meta property="og:description" content="Opisz zakres projektu. Zapytanie trafia bezpośrednio do mnie — wrócę z pytaniami albo wstępną wyceną, zwykle w 1–2 dni robocze.">
+<meta property="og:url" content="https://probatum.pl/wycena.html">
+<meta property="og:image" content="https://probatum.pl/assets/spring/bloom.webp">
+<meta property="og:image:alt" content="Kwitnące drzewo — nowe życie marki Probatum">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Bezpłatna wycena projektu | Probatum">
-<meta name="twitter:description" content="Dwie minuty wypełniania, konkretne widełki w odpowiedzi. Zapytanie trafia bezpośrednio do mnie — odpisuję osobiście w 1–2 dni robocze.">
+<meta name="twitter:description" content="Opisz zakres projektu. Zapytanie trafia bezpośrednio do mnie — wrócę z pytaniami albo wstępną wyceną, zwykle w 1–2 dni robocze.">
+<meta name="twitter:image" content="https://probatum.pl/assets/spring/bloom.webp">
 
 <script>document.documentElement.className += ' js';</script>
 
-<link rel="stylesheet" href="assets/site.css?v=e7a4127aa9">
+<link rel="stylesheet" href="assets/site.css?v=793721fe0c">
 </head>
 <body class="site">
 <a class="skip-link" href="#main">Przejdź do treści</a>
 
-<nav class="nav">
+<nav class="nav" aria-label="Główna">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Probatum — strona główna">Probatum<i>.</i></a>
     <div class="navlinks">
@@ -43,7 +48,7 @@
     <button type="button" class="burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navmobile">Menu</button>
   </div>
 </nav>
-<div class="navmobile" id="navmobile" aria-label="Menu mobilne">
+<nav class="navmobile" id="navmobile" aria-label="Mobilna">
   <a href="index.html">Start</a>
   <a href="oferta.html">Oferta</a>
   <a href="realizacje.html">Realizacje</a>
@@ -53,28 +58,33 @@
   <a href="warsztat.html">Warsztat</a>
   <a href="blog.html">Blog</a>
   <a href="kontakt.html">Kontakt</a>
-  <a href="wycena.html">Poproś o wycenę</a>
-</div>
+  <a href="wycena.html" class="active" aria-current="page">Poproś o wycenę</a>
+</nav>
 
 <main id="main">
-<section class="phead blue">
-  <div class="wrap">
-    <span class="eyebrow">Formularz wyceny</span>
-    <h1>Opowiedz mi, czego<br>potrzebuje <em>Twoja firma.</em></h1>
-    <p class="lead">Krótki formularz wystarczy, żebym zrozumiał zakres i wrócił z pytaniami albo wstępną wyceną.</p>
+<section class="visual-head quote-head">
+  <div class="wrap visual-head-grid">
+    <div class="visual-head-copy" data-reveal>
+      <span class="eyebrow">WYCENA · BEZ ZOBOWIĄZANIA</span>
+      <h1>Opowiedz mi, czego potrzebuje <em>Twoja firma.</em></h1>
+      <p class="lead">Krótki formularz wystarczy, żebym zrozumiał zakres i wrócił z pytaniami albo wstępną wyceną.</p>
+    </div>
+    <figure class="hero-art quote-art" data-reveal="visual"><img src="assets/visuals/method.webp" width="1600" height="900" alt="Materiały projektu strony układane na jasnym stole"><figcaption><span>Zakres</span><i></i><span>Kierunek</span><i></i><b>Wycena</b></figcaption></figure>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
+    <div class="section-intro" data-reveal><span class="eyebrow">ZAKRES PRZED CENĄ</span><h2>Najpierw zrozumiem projekt.<br>Potem wrócę z <em>konkretem.</em></h2><p class="lead">Wypełnij tylko te pola, na które dziś znasz odpowiedź. Resztę doprecyzujemy wspólnie.</p></div>
     <div class="form-wrap">
       <div>
-        <form class="form" data-lead-form data-form-key="wycena"
+        <form class="form quote-form" data-lead-form data-form-key="wycena"
               data-success-target="#ok-wycena" data-error-target="#err-wycena" novalidate>
 
+          <div class="form-step-label"><span>01</span><b>Zakres projektu</b><small>wybierz najbliższą opcję</small></div>
           <div class="field">
-            <span class="lbl">Czego dotyczy zapytanie? <span class="req">*</span></span>
-            <div class="chiprow" data-target="#usluga-value">
+            <span class="lbl" id="w-usluga-label">Czego dotyczy zapytanie? <span class="req">*</span></span>
+            <div class="chiprow" data-target="#usluga-value" role="group" aria-labelledby="w-usluga-label" aria-required="true">
               <button type="button" class="chip" data-value="Strona internetowa">Strona internetowa</button>
               <button type="button" class="chip" data-value="Kampania lejkowa">Kampania lejkowa</button>
               <button type="button" class="chip" data-value="Social media">Social media</button>
@@ -83,6 +93,7 @@
             <input type="hidden" id="usluga-value" name="usluga" required>
           </div>
 
+          <div class="form-step-label"><span>02</span><b>Kontakt</b><small>żebym mógł wrócić z odpowiedzią</small></div>
           <div class="row2">
             <div class="field">
               <label for="w-imie">Imię i nazwisko <span class="req">*</span></label>
@@ -132,6 +143,7 @@
             </div>
           </div>
 
+          <div class="form-step-label"><span>03</span><b>Kontekst</b><small>nie musisz znać wszystkich odpowiedzi</small></div>
           <div class="field">
             <label for="w-opis">Opisz swój projekt <span class="req">*</span></label>
             <textarea class="textarea" id="w-opis" name="opis" required placeholder="Czym zajmuje się firma, co ma się zmienić, czy masz już stronę lub domenę..."></textarea>
@@ -157,21 +169,12 @@
         </div>
       </div>
 
-      <div>
-        <div class="aside-block reveal">
-          <span class="lbl">DLACZEGO WARTO PODAĆ SZCZEGÓŁY</span>
-          <b>Lepszy kontekst to trafniejsza odpowiedź</b>
-          <p>Jeśli czegoś nie wiesz, zostaw pole puste. Dopracujemy zakres wspólnie.</p>
-        </div>
-        <div class="kv" style="margin-top:0">
-          <div><span>Odpowiedź</span><span>zwykle 1–2 dni robocze</span></div>
-          <div><span>Zakres</span><span>dopasowany do celu</span></div>
-          <div><span>Podgląd</span><span>przed publikacją</span></div>
-          <div><span>Decyzja o starcie</span><span>po Twojej stronie</span></div>
-        </div>
-        <p class="small" style="margin-top:22px">
-          Formularz trafia bezpośrednio do mnie. Wysłanie zapytania nie jest zobowiązaniem do rozpoczęcia projektu.
-        </p>
+      <div class="quote-side" data-reveal>
+        <span class="eyebrow">CO DOSTAJĘ Z FORMULARZA</span>
+        <div class="quote-compass" aria-hidden="true"><i></i><span class="q-a">Cel</span><span class="q-b">Zakres</span><span class="q-c">Kontekst</span><b>Dobry<br>punkt startu</b></div>
+        <h3>Lepszy kontekst to trafniejsza odpowiedź.</h3><p>Jeśli czegoś nie wiesz, zostaw pole puste. Dopracujemy zakres wspólnie.</p>
+        <div class="kv"><div><span>Odpowiedź</span><span>zwykle 1–2 dni robocze</span></div><div><span>Zakres</span><span>dopasowany do celu</span></div><div><span>Podgląd</span><span>przed publikacją</span></div><div><span>Decyzja o starcie</span><span>po Twojej stronie</span></div></div>
+        <p class="small">Formularz trafia bezpośrednio do mnie. Wysłanie zapytania nie jest zobowiązaniem do rozpoczęcia projektu.</p>
       </div>
     </div>
   </div>
@@ -220,7 +223,7 @@
     <div><b>W czym mogę pomóc?</b><span>Najczęstsze pytania przed rozmową</span></div>
     <button class="chat-x" id="chat-x" aria-label="Zamknij">×</button>
   </div>
-  <div class="chat-body" id="chat-body">
+  <div class="chat-body" id="chat-body" aria-live="polite" aria-relevant="additions">
     <div class="msg bot">Cześć. Tu znajdziesz krótkie odpowiedzi o ofercie i współpracy. Przy indywidualnym pytaniu napisz przez formularz — odpowiem osobiście.</div>
   </div>
   <div class="chat-sug" id="chat-sug">
@@ -229,12 +232,12 @@
     <button type="button">Czym są agenci AI?</button>
   </div>
   <div class="chat-in">
-    <input type="text" id="chat-input" placeholder="Napisz pytanie...">
+    <input type="text" id="chat-input" placeholder="Napisz pytanie..." aria-label="Twoje pytanie">
     <button type="button" id="chat-send">Wyślij</button>
   </div>
 </div>
 
-<script src="assets/site.js?v=aa3885448f"></script>
+<script src="assets/site.js?v=5a16f57a59"></script>
 <script src="assets/spring.js?v=7a33b4f822"></script>
 </body>
 </html>

@@ -8,24 +8,29 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#fcfdf9">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="canonical" href="https://probatum.pl/kontakt.html">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Probatum">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:title" content="Kontakt | Probatum">
 <meta property="og:description" content="Napisz przez formularz albo e-mail. Każda wiadomość trafia bezpośrednio do mnie — odpisuję osobiście, bez automatycznych szablonów.">
-<meta name="twitter:card" content="summary">
+<meta property="og:url" content="https://probatum.pl/kontakt.html">
+<meta property="og:image" content="https://probatum.pl/assets/spring/bloom.webp">
+<meta property="og:image:alt" content="Kwitnące drzewo — nowe życie marki Probatum">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Kontakt | Probatum">
 <meta name="twitter:description" content="Napisz przez formularz albo e-mail. Każda wiadomość trafia bezpośrednio do mnie — odpisuję osobiście, bez automatycznych szablonów.">
+<meta name="twitter:image" content="https://probatum.pl/assets/spring/bloom.webp">
 
 <script>document.documentElement.className += ' js';</script>
 
-<link rel="stylesheet" href="assets/site.css?v=e7a4127aa9">
+<link rel="stylesheet" href="assets/site.css?v=793721fe0c">
 </head>
 <body class="site">
 <a class="skip-link" href="#main">Przejdź do treści</a>
 
-<nav class="nav">
+<nav class="nav" aria-label="Główna">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Probatum — strona główna">Probatum<i>.</i></a>
     <div class="navlinks">
@@ -39,11 +44,11 @@
         <a href="blog.html">Blog</a>
       </div></details>
     </div>
-    <a href="kontakt.html" class="navcta">Porozmawiajmy</a>
+    <a href="kontakt.html" class="navcta" aria-current="page">Porozmawiajmy</a>
     <button type="button" class="burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navmobile">Menu</button>
   </div>
 </nav>
-<div class="navmobile" id="navmobile" aria-label="Menu mobilne">
+<nav class="navmobile" id="navmobile" aria-label="Mobilna">
   <a href="index.html">Start</a>
   <a href="oferta.html">Oferta</a>
   <a href="realizacje.html">Realizacje</a>
@@ -52,21 +57,27 @@
   <a href="akademia.html">Akademia AI</a>
   <a href="warsztat.html">Warsztat</a>
   <a href="blog.html">Blog</a>
-  <a href="kontakt.html">Kontakt</a>
+  <a href="kontakt.html" class="active" aria-current="page">Kontakt</a>
   <a href="wycena.html">Poproś o wycenę</a>
-</div>
+</nav>
 
 <main id="main">
-<section class="phead pink">
-  <div class="wrap">
-    <span class="eyebrow">Kontakt</span>
-    <h1>Od czego ma zacząć się<br><em>zmiana?</em></h1>
-    <p class="lead">Pokaż mi obecną stronę albo opisz, co przestało pasować do Twojej firmy. Każdą wiadomość czytam osobiście.</p>
+<section class="visual-head contact-head">
+  <div class="wrap visual-head-grid">
+    <div class="visual-head-copy" data-reveal>
+      <span class="eyebrow">KONTAKT · PIERWSZY KROK</span>
+      <h1>Od czego ma zacząć się<br><em>zmiana?</em></h1>
+      <p class="lead">Pokaż mi obecną stronę albo opisz, co przestało pasować do Twojej firmy. Każdą wiadomość czytam osobiście.</p>
+    </div>
+    <figure class="contact-bloom" data-reveal="visual"><picture><source media="(max-width:700px)" srcset="assets/spring/bloom-mobile.webp"><img src="assets/spring/bloom.webp" width="1672" height="941" alt="Kwitnące drzewo jako symbol nowego etapu marki"></picture><figcaption><span>Nie potrzebujesz gotowego briefu.</span><b>Zacznij od dwóch zdań.</b></figcaption></figure>
   </div>
 </section>
 
+<section class="contact-channels"><div class="wrap contact-channel-grid"><div data-reveal><small>01 · FORMULARZ</small><b>Najlepszy, jeśli chcesz pokazać kontekst.</b></div><a data-reveal href="mailto:kontakt@probatum.pl"><small>02 · E-MAIL</small><b>kontakt@probatum.pl</b><span>↗</span></a><a data-reveal href="tel:+48573569141"><small>03 · TELEFON</small><b>+48 573 569 141</b><span>↗</span></a></div></section>
+
 <section class="sec">
   <div class="wrap">
+    <div class="section-intro" data-reveal><span class="eyebrow">NAPISZ PO SWOJEMU</span><h2>Kilka zdań wystarczy,<br>żeby <em>zacząć.</em></h2><p class="lead">Nie musisz znać technologii ani gotowego zakresu. Najbardziej pomaga mi prawdziwy kontekst.</p></div>
     <div class="form-wrap">
       <div>
         <form class="form" data-lead-form data-form-key="kontakt"
@@ -79,9 +90,10 @@
             </p>
           </div>
 
+          <div class="form-step-label"><span>01</span><b>Wybierz temat</b><small>żebym od razu wiedział, na co spojrzeć</small></div>
           <div class="field">
-            <label>Czego dotyczy sprawa? <span class="req">*</span></label>
-            <div class="tematy" data-tematy>
+            <span class="lbl" id="k-usluga-label">Czego dotyczy sprawa? <span class="req">*</span></span>
+            <div class="tematy" data-tematy role="group" aria-labelledby="k-usluga-label" aria-required="true">
               <button type="button" class="temat-chip" id="analiza-strony" aria-pressed="false" data-temat="Bezpłatna analiza strony (SEO)" data-kotwica="analiza-strony">Bezpłatna analiza strony</button>
               <button type="button" class="temat-chip" id="analiza-reklam" aria-pressed="false" data-temat="Bezpłatny przegląd reklam" data-kotwica="analiza-reklam">Przegląd reklam</button>
               <button type="button" class="temat-chip" id="analiza-profilu" aria-pressed="false" data-temat="Bezpłatny przegląd profilu" data-kotwica="analiza-profilu">Przegląd profilu</button>
@@ -96,13 +108,14 @@
             <input type="hidden" id="k-usluga" name="usluga" required>
           </div>
 
+          <div class="form-step-label"><span>02</span><b>Zostaw kontakt</b><small>odpowiadam osobiście</small></div>
           <div class="row2">
             <div class="field">
               <label for="k-imie">Imię i nazwisko <span class="req">*</span></label>
               <input class="input" type="text" id="k-imie" name="imie" required autocomplete="name">
             </div>
             <div class="field">
-              <label for="k-telefon">Telefon <span class="req">*</span></label>
+              <label for="k-telefon">Telefon <span class="req" data-phone-required>*</span></label>
               <input class="input" type="tel" id="k-telefon" name="telefon" required autocomplete="tel">
               <span class="pomoc">Dzwonię osobiście — to szybsze niż wymiana pięciu maili.</span>
             </div>
@@ -113,9 +126,10 @@
             <input class="input" type="email" id="k-email" name="email" required autocomplete="email">
           </div>
 
+          <div class="form-step-label"><span>03</span><b>Dodaj kontekst</b><small>tylko tyle, ile teraz wiesz</small></div>
           <div class="pola-tematu" data-pola-firmy>
             <div class="field">
-              <label for="k-firma">Nazwa firmy albo NIP <span class="req">*</span></label>
+              <label for="k-firma">Nazwa firmy albo NIP <span class="req" data-company-required>*</span></label>
               <input class="input" type="text" id="k-firma" name="firma" autocomplete="organization">
               <span class="pomoc">
                 Wystarczy jedno. <b>Resztę danych znajdę sam</b>, nie musisz nic przepisywać.
@@ -164,37 +178,21 @@
         </div>
       </div>
 
-      <div>
-        <div class="aside-block reveal">
-          <span class="lbl">E-mail</span>
-          <b><a href="mailto:kontakt@probatum.pl">kontakt@probatum.pl</a></b>
-          <p>Formularz obok i wiadomość e-mail trafiają w to samo miejsce.</p>
-        </div>
-        <div class="aside-block reveal">
-          <span class="lbl">Telefon</span>
-          <b><a href="tel:+48573569141">+48 573 569 141</a></b>
-          <p>Jeśli nie odbiorę, zostaw wiadomość albo wyślij formularz — wrócę z odpowiedzią.</p>
-        </div>
-        <div class="aside-block reveal">
-          <span class="lbl">Lokalizacja</span>
-          <b>Rzeszów, Śląsk i zdalnie</b>
-          <p>Projekt możemy przeprowadzić całkowicie online, niezależnie od lokalizacji firmy.</p>
-        </div>
-        <div class="aside-block reveal">
-          <span class="lbl">Czas odpowiedzi</span>
-          <b>Zwykle 1–2 dni robocze</b>
-          <p>Jeśli sprawa jest pilna, zaznacz to w pierwszym zdaniu.</p>
-        </div>
+      <div class="contact-next" data-reveal>
+        <span class="eyebrow">CO DZIEJE SIĘ POTEM</span>
+        <ol><li><span>01</span><div><b>Czytam wiadomość</b><p>Nie trafia do bezosobowego działu obsługi.</p></div></li><li><span>02</span><div><b>Sprawdzam to, co podasz</b><p>Jeśli dołączysz adres strony lub profilu, zobaczę je przed odpowiedzią.</p></div></li><li><span>03</span><div><b>Wracam z konkretem</b><p>Z pytaniami, pierwszym kierunkiem albo informacją, czego potrzebuję do wyceny.</p></div></li></ol>
+        <div class="contact-facts"><div><small>ODPOWIEDŹ</small><b>Zwykle 1–2 dni robocze</b></div><div><small>WSPÓŁPRACA</small><b>Rzeszów, Śląsk i zdalnie</b></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="closing">
+<section class="closing closing-rich">
+  <div class="closing-bloom" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="wrap">
     <span class="eyebrow">MOŻESZ ZACZĄĆ PROSTO</span>
     <h2>Wyślij tylko adres<br>obecnej <em>strony.</em></h2>
-    <a class="btn btn-primary btn-lg" href="mailto:kontakt@probatum.pl">Napisz na kontakt@probatum.pl</a>
+    <a class="btn btn-light btn-lg" href="mailto:kontakt@probatum.pl">Napisz na kontakt@probatum.pl</a>
   </div>
 </section>
 
@@ -241,7 +239,7 @@
     <div><b>W czym mogę pomóc?</b><span>Najczęstsze pytania przed rozmową</span></div>
     <button class="chat-x" id="chat-x" aria-label="Zamknij">×</button>
   </div>
-  <div class="chat-body" id="chat-body">
+  <div class="chat-body" id="chat-body" aria-live="polite" aria-relevant="additions">
     <div class="msg bot">Cześć. Tu znajdziesz krótkie odpowiedzi o ofercie i współpracy. Przy indywidualnym pytaniu napisz przez formularz — odpowiem osobiście.</div>
   </div>
   <div class="chat-sug" id="chat-sug">
@@ -250,12 +248,12 @@
     <button type="button">Czym są agenci AI?</button>
   </div>
   <div class="chat-in">
-    <input type="text" id="chat-input" placeholder="Napisz pytanie...">
+    <input type="text" id="chat-input" placeholder="Napisz pytanie..." aria-label="Twoje pytanie">
     <button type="button" id="chat-send">Wyślij</button>
   </div>
 </div>
 
-<script src="assets/site.js?v=aa3885448f"></script>
+<script src="assets/site.js?v=5a16f57a59"></script>
 <script src="assets/spring.js?v=7a33b4f822"></script>
 </body>
 </html>

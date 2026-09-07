@@ -1,13 +1,19 @@
-<section class="phead pink">
-  <div class="wrap">
-    <span class="eyebrow">Kontakt</span>
-    <h1>Od czego ma zacząć się<br><em>zmiana?</em></h1>
-    <p class="lead">Pokaż mi obecną stronę albo opisz, co przestało pasować do Twojej firmy. Każdą wiadomość czytam osobiście.</p>
+<section class="visual-head contact-head">
+  <div class="wrap visual-head-grid">
+    <div class="visual-head-copy" data-reveal>
+      <span class="eyebrow">KONTAKT · PIERWSZY KROK</span>
+      <h1>Od czego ma zacząć się<br><em>zmiana?</em></h1>
+      <p class="lead">Pokaż mi obecną stronę albo opisz, co przestało pasować do Twojej firmy. Każdą wiadomość czytam osobiście.</p>
+    </div>
+    <figure class="contact-bloom" data-reveal="visual"><picture><source media="(max-width:700px)" srcset="assets/spring/bloom-mobile.webp"><img src="assets/spring/bloom.webp" width="1672" height="941" alt="Kwitnące drzewo jako symbol nowego etapu marki"></picture><figcaption><span>Nie potrzebujesz gotowego briefu.</span><b>Zacznij od dwóch zdań.</b></figcaption></figure>
   </div>
 </section>
 
+<section class="contact-channels"><div class="wrap contact-channel-grid"><div data-reveal><small>01 · FORMULARZ</small><b>Najlepszy, jeśli chcesz pokazać kontekst.</b></div><a data-reveal href="mailto:{{EMAIL}}"><small>02 · E-MAIL</small><b>{{EMAIL}}</b><span>↗</span></a><a data-reveal href="tel:{{TEL_LINK}}"><small>03 · TELEFON</small><b>{{TEL}}</b><span>↗</span></a></div></section>
+
 <section class="sec">
   <div class="wrap">
+    <div class="section-intro" data-reveal><span class="eyebrow">NAPISZ PO SWOJEMU</span><h2>Kilka zdań wystarczy,<br>żeby <em>zacząć.</em></h2><p class="lead">Nie musisz znać technologii ani gotowego zakresu. Najbardziej pomaga mi prawdziwy kontekst.</p></div>
     <div class="form-wrap">
       <div>
         <form class="form" data-lead-form data-form-key="kontakt"
@@ -20,9 +26,10 @@
             </p>
           </div>
 
+          <div class="form-step-label"><span>01</span><b>Wybierz temat</b><small>żebym od razu wiedział, na co spojrzeć</small></div>
           <div class="field">
-            <label>Czego dotyczy sprawa? <span class="req">*</span></label>
-            <div class="tematy" data-tematy>
+            <span class="lbl" id="k-usluga-label">Czego dotyczy sprawa? <span class="req">*</span></span>
+            <div class="tematy" data-tematy role="group" aria-labelledby="k-usluga-label" aria-required="true">
               <button type="button" class="temat-chip" id="analiza-strony" aria-pressed="false" data-temat="Bezpłatna analiza strony (SEO)" data-kotwica="analiza-strony">Bezpłatna analiza strony</button>
               <button type="button" class="temat-chip" id="analiza-reklam" aria-pressed="false" data-temat="Bezpłatny przegląd reklam" data-kotwica="analiza-reklam">Przegląd reklam</button>
               <button type="button" class="temat-chip" id="analiza-profilu" aria-pressed="false" data-temat="Bezpłatny przegląd profilu" data-kotwica="analiza-profilu">Przegląd profilu</button>
@@ -37,13 +44,14 @@
             <input type="hidden" id="k-usluga" name="usluga" required>
           </div>
 
+          <div class="form-step-label"><span>02</span><b>Zostaw kontakt</b><small>odpowiadam osobiście</small></div>
           <div class="row2">
             <div class="field">
               <label for="k-imie">Imię i nazwisko <span class="req">*</span></label>
               <input class="input" type="text" id="k-imie" name="imie" required autocomplete="name">
             </div>
             <div class="field">
-              <label for="k-telefon">Telefon <span class="req">*</span></label>
+              <label for="k-telefon">Telefon <span class="req" data-phone-required>*</span></label>
               <input class="input" type="tel" id="k-telefon" name="telefon" required autocomplete="tel">
               <span class="pomoc">Dzwonię osobiście — to szybsze niż wymiana pięciu maili.</span>
             </div>
@@ -54,9 +62,10 @@
             <input class="input" type="email" id="k-email" name="email" required autocomplete="email">
           </div>
 
+          <div class="form-step-label"><span>03</span><b>Dodaj kontekst</b><small>tylko tyle, ile teraz wiesz</small></div>
           <div class="pola-tematu" data-pola-firmy>
             <div class="field">
-              <label for="k-firma">Nazwa firmy albo NIP <span class="req">*</span></label>
+              <label for="k-firma">Nazwa firmy albo NIP <span class="req" data-company-required>*</span></label>
               <input class="input" type="text" id="k-firma" name="firma" autocomplete="organization">
               <span class="pomoc">
                 Wystarczy jedno. <b>Resztę danych znajdę sam</b>, nie musisz nic przepisywać.
@@ -105,36 +114,20 @@
         </div>
       </div>
 
-      <div>
-        <div class="aside-block reveal">
-          <span class="lbl">E-mail</span>
-          <b><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></b>
-          <p>Formularz obok i wiadomość e-mail trafiają w to samo miejsce.</p>
-        </div>
-        <div class="aside-block reveal">
-          <span class="lbl">Telefon</span>
-          <b><a href="tel:{{TEL_LINK}}">{{TEL}}</a></b>
-          <p>Jeśli nie odbiorę, zostaw wiadomość albo wyślij formularz — wrócę z odpowiedzią.</p>
-        </div>
-        <div class="aside-block reveal">
-          <span class="lbl">Lokalizacja</span>
-          <b>Rzeszów, Śląsk i zdalnie</b>
-          <p>Projekt możemy przeprowadzić całkowicie online, niezależnie od lokalizacji firmy.</p>
-        </div>
-        <div class="aside-block reveal">
-          <span class="lbl">Czas odpowiedzi</span>
-          <b>Zwykle 1–2 dni robocze</b>
-          <p>Jeśli sprawa jest pilna, zaznacz to w pierwszym zdaniu.</p>
-        </div>
+      <div class="contact-next" data-reveal>
+        <span class="eyebrow">CO DZIEJE SIĘ POTEM</span>
+        <ol><li><span>01</span><div><b>Czytam wiadomość</b><p>Nie trafia do bezosobowego działu obsługi.</p></div></li><li><span>02</span><div><b>Sprawdzam to, co podasz</b><p>Jeśli dołączysz adres strony lub profilu, zobaczę je przed odpowiedzią.</p></div></li><li><span>03</span><div><b>Wracam z konkretem</b><p>Z pytaniami, pierwszym kierunkiem albo informacją, czego potrzebuję do wyceny.</p></div></li></ol>
+        <div class="contact-facts"><div><small>ODPOWIEDŹ</small><b>Zwykle 1–2 dni robocze</b></div><div><small>WSPÓŁPRACA</small><b>Rzeszów, Śląsk i zdalnie</b></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="closing">
+<section class="closing closing-rich">
+  <div class="closing-bloom" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="wrap">
     <span class="eyebrow">MOŻESZ ZACZĄĆ PROSTO</span>
     <h2>Wyślij tylko adres<br>obecnej <em>strony.</em></h2>
-    <a class="btn btn-primary btn-lg" href="mailto:{{EMAIL}}">Napisz na {{EMAIL}}</a>
+    <a class="btn btn-light btn-lg" href="mailto:{{EMAIL}}">Napisz na {{EMAIL}}</a>
   </div>
 </section>
