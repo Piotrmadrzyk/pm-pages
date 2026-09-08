@@ -88,12 +88,12 @@
   const steps = qa('[data-restoration-step]', scene);
   const chapters = qa('[data-restoration-chapter]', scene);
   const header = q('.site-header');
-  const phases = [0, .21, .5, .89];
+  const phases = [0, .27, .52, .78];
   let ready = false, visible = false, started = false, resume = false, intended = false, failed = false;
   let currentStage = -1, playRequest = 0;
   const alignScene = () => scene.style.setProperty('--header', `${Math.ceil(header ? header.getBoundingClientRect().height : 90)}px`);
   const setStage = progress => {
-    const index = progress < .14 ? 0 : progress < .4 ? 1 : progress < .83 ? 2 : 3;
+    const index = progress < .25 ? 0 : progress < .5 ? 1 : progress < .75 ? 2 : 3;
     if (index === currentStage) return;
     currentStage = index;
     scene.dataset.stage = String(index);
