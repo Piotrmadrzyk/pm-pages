@@ -1,5 +1,5 @@
 <?php
-/*  formularz.php — wysyłka formularzy ze strony new age Lewandowska
+/*  formularz.php — wysyłka formularzy ze strony New Age Lewandowska
  *
  *  DO CZEGO TO JEST
  *  Domyślnie formularze na stronie otwierają program pocztowy z gotową
@@ -18,7 +18,7 @@
  */
 
 $ADRES_ODBIORCY = 'kontakt@probatum.pl';   // ⚠️ zmień na swój adres
-$NAZWA_NADAWCY  = 'Strona new age Lewandowska';
+$NAZWA_NADAWCY  = 'Strona New Age Lewandowska';
 
 header('Content-Type: application/json; charset=utf-8');
 

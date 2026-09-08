@@ -1,4 +1,4 @@
-# new age Lewandowska — strona Agnieszki Lewandowskiej
+# New Age Lewandowska — strona Agnieszki Lewandowskiej
 
 Pierwsza **realna klientka** Probatum. Salon fryzjerski w Częstochowie,
 ul. Jana Kilińskiego 55/2. Strona docelowo idzie na jej własny hosting.

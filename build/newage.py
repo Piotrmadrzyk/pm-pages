@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-build/newage.py — strona new age Lewandowska (Czestochowa).
+build/newage.py — strona New Age Lewandowska (Czestochowa).
 
 DLACZEGO GENERATOR, A NIE PIEC RECZNYCH PLIKOW
 Strona ma szesc podstron ze wspolnym naglowkiem, menu i stopka. Gdyby kazda
@@ -125,7 +125,7 @@ DYPLOMY = [
      u'kolorystek na świecie. Teoria koloru — dlaczego pigment zachowuje się '
      u'tak, a nie inaczej, i co z tego wynika przy fotelu.'),
     ('2023-salon-expert',   u'2023', u'Salon Expert — L’Oréal Professionnel',
-     u'Wyróżnienie dla salonu, nie osobisty dyplom — dowód, że new age należy '
+     u'Wyróżnienie dla salonu, nie osobisty dyplom — dowód, że New Age należy '
      u'do prestiżowej grupy salonów-partnerów L’Oréal Professionnel Paris.'),
     ('2026-loreal-wielowymiarowe', u'2026', u'L’Oréal — Wielowymiarowe Techniki',
      u'Najświeższe szkolenie, kwiecień 2026 — wielowymiarowe techniki koloryzacji '
@@ -913,7 +913,7 @@ SZKIELET = u"""<!DOCTYPE html>
 <meta name="theme-color" content="#0A0A0B">
 
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="new age Lewandowska">
+<meta property="og:site_name" content="New Age Lewandowska">
 <meta property="og:title" content="%(tytul)s">
 <meta property="og:description" content="%(opis)s">
 <meta property="og:image" content="%(baza)simg/hero.jpg">
@@ -925,7 +925,7 @@ SZKIELET = u"""<!DOCTYPE html>
 {
   "@context": "https://schema.org",
   "@type": "HairSalon",
-  "name": "new age Lewandowska",
+  "name": "New Age Lewandowska",
   "alternateName": "New Age Studio",
   "description": "Salon fryzjerski w Cz\u0119stochowie. Koloryzacja, strzy\u017cenie i modelowanie u Agnieszki Lewandowskiej \u2014 dwadzie\u015bcia lat do\u015bwiadczenia.",
   "image": "%(baza)simg/hero.jpg",
@@ -950,7 +950,7 @@ SZKIELET = u"""<!DOCTYPE html>
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Strzy\u017cenie damskie i m\u0119skie"}},
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Modelowanie i upi\u0119cia okoliczno\u015bciowe"}},
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Botoks na w\u0142osy, piel\u0119gnacja i regeneracja"}},
-      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Trwa\u0142a ondulacja wodna i upi\u0119cia okoliczno\u015bciowe"}}
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Ondulacja wodna i upi\u0119cia okoliczno\u015bciowe"}}
     ]
   },
   "priceRange": "$$",
@@ -973,8 +973,8 @@ SZKIELET = u"""<!DOCTYPE html>
 
 <header class="naglowek">
   <div class="naglowek-in">
-    <a class="marka" href="%(korzen)s" aria-label="new age Lewandowska — strona główna">
-      <img src="%(korzen)simg/logo-biale.png" alt="new age Lewandowska" width="900" height="357">
+    <a class="marka" href="%(korzen)s" aria-label="New Age Lewandowska — strona główna">
+      <img src="%(korzen)simg/logo-biale.png" alt="New Age Lewandowska" width="900" height="357">
     </a>
     <nav class="menu" aria-label="Nawigacja główna">
         %(menu)s
@@ -992,7 +992,7 @@ SZKIELET = u"""<!DOCTYPE html>
   <div class="wrap">
     <div class="stopka-siatka">
       <div>
-        <img src="%(korzen)simg/logo-biale.png" alt="new age Lewandowska" width="900" height="357">
+        <img src="%(korzen)simg/logo-biale.png" alt="New Age Lewandowska" width="900" height="357">
         <p style="max-width:34ch">
           Salon fryzjerski w Częstochowie. Koloryzacja, strzyżenie i modelowanie —
           po rozmowie, nie na skróty.
@@ -1011,7 +1011,7 @@ SZKIELET = u"""<!DOCTYPE html>
       </div>
     </div>
     <div class="stopka-dol">
-      <span>© 2026 new age Lewandowska</span>
+      <span>© 2026 New Age Lewandowska</span>
       <span><a href="%(korzen)sprywatnosc/" style="color:inherit">Polityka prywatności</a>
         · Wersja robocza — strona w budowie</span>
     </div>
@@ -1257,7 +1257,7 @@ def strona_start():
 </section>
 
 <div class="pas">
-  <img src="img/sesja/kadr-1727.jpg" alt="Praca w salonie new age w Częstochowie" loading="lazy">
+  <img src="img/sesja/kadr-1727.jpg" alt="Praca w salonie New Age w Częstochowie" loading="lazy">
   <div class="pas-tresc">
     <div class="wrap">
       <p class="nadpis" style="color:var(--srebro-jasne)">Od 2003 roku</p>
@@ -1539,7 +1539,7 @@ u"""
         <span class="u-numer">04 — Modelowanie i upięcia</span>
         <h3>Na wesele, na sesję i na zwykły wtorek</h3>
         <p>
-          Modelowanie, fale, objętość, trwała ondulacja wodna. Przy okazji pokazuję,
+          Modelowanie, fale, objętość, ondulacja wodna. Przy okazji pokazuję,
           jak to powtórzyć w domu — który produkt, w którym momencie, w którą stronę
           prowadzić szczotkę. To zwykle robi większą różnicę niż samo cięcie.
         </p>
@@ -1549,7 +1549,7 @@ u"""
         </p>
         <ul class="u-fakty">
           <li>Modelowanie — 30–45 min</li><li>Upięcie — od 1 godz.</li>
-          <li>Trwała ondulacja wodna</li><li>Próba przed ślubem</li>
+          <li>Ondulacja wodna</li><li>Próba przed ślubem</li>
         </ul>
       </div>
     </article>
@@ -1570,7 +1570,7 @@ u"""
           pielęgnacji domowej — dobieram go do stanu włosów, nie do cennika.
         </p>
         <ul class="u-fakty">
-          <li>Botoks — 30–60 min</li><li>Regeneracja i odbudowa</li>
+          <li>Botoks — 60–120 min</li><li>Regeneracja i odbudowa</li>
           <li>Dobór pielęgnacji domowej</li>
         </ul>
       </div>
@@ -1597,7 +1597,7 @@ u"""
         <a class="btn btn-ciemny" href="tel:%(tel_link)s">Zamów bon telefonicznie</a>
       </p>
     </div>
-    <img src="../img/salon/bon-jez.jpg" alt="Bon podarunkowy salonu new age Lewandowska" loading="lazy">
+    <img src="../img/salon/bon-jez.jpg" alt="Bon podarunkowy salonu New Age Lewandowska" loading="lazy">
   </div>
 </section>
 
@@ -1756,7 +1756,7 @@ def strona_opinie():
     return (
         naglowek_strony(u'Opinie',
             u'Pięć na pięć, <span class="kursywa">53 razy</span>.',
-            u'Pięć na pięć z 53 opinii w Google — od klientek salonu new age '
+            u'Pięć na pięć z 53 opinii w Google — od klientek salonu New Age '
             u'przy Kilińskiego w Częstochowie.') +
 u"""
 <section style="padding-top:0">
@@ -1918,7 +1918,7 @@ u"""
               <option>Samo strzyżenie</option>
               <option>Modelowanie / upięcie</option>
               <option>Botoks na włosy</option>
-              <option>Trwała ondulacja wodna</option>
+              <option>Ondulacja wodna</option>
               <option>Upięcie okolicznościowe</option>
               <option>Pielęgnacja i regeneracja</option>
               <option selected>Jeszcze nie wiem — poradź mi</option>
@@ -2024,7 +2024,7 @@ u"""
 
       <details open><summary>Kto przetwarza dane</summary>
         <p>Administratorem danych podanych w formularzach jest <b>Agnieszka
-        Lewandowska, prowadząca salon fryzjerski new age</b>, ul. Jana Kilińskiego 55/2,
+        Lewandowska, prowadząca salon fryzjerski New Age</b>, ul. Jana Kilińskiego 55/2,
         42-218 Częstochowa. W sprawach dotyczących danych najprościej zadzwonić:
         <a href="tel:%(tel_link)s" style="color:var(--biel)">%(tel_pokaz)s</a>.</p></details>
 
@@ -2424,13 +2424,13 @@ u"""
 
 # ─────────────────────────────────────────────────────────────────
 STRONY = [
-    ('start', '', u'Fryzjer Częstochowa — koloryzacja i strzyżenie | new age Lewandowska',
-     u'Salon fryzjerski new age w Częstochowie. Koloryzacja, strzyżenie i modelowanie '
+    ('start', '', u'Fryzjer Częstochowa — koloryzacja i strzyżenie | New Age Lewandowska',
+     u'Salon fryzjerski New Age w Częstochowie. Koloryzacja, strzyżenie i modelowanie '
      u'u Agnieszki Lewandowskiej — z dwudziestoletnim doświadczeniem.', strona_start, ''),
     ('o-mnie', 'o-mnie', u'Agnieszka Lewandowska — mistrzyni fryzjerstwa, Częstochowa',
      u'Ponad 25 lat pracy, tytuł mistrza fryzjerstwa, dyplomy Toni&Guy i Saks, '
      u'w Akademii L’Oréal Professionnel.', strona_o_mnie, '../'),
-    ('uslugi', 'uslugi', u'Koloryzacja i strzyżenie Częstochowa — cennik po rozmowie | new age',
+    ('uslugi', 'uslugi', u'Koloryzacja i strzyżenie Częstochowa — cennik po rozmowie | New Age',
      u'Koloryzacja, strzyżenie, modelowanie i pielęgnacja w Częstochowie. '
      u'Cena ustalana po rozmowie, zawsze przed zabiegiem.', strona_uslugi, '../'),
     ('loreal', 'loreal', u'Kosmetyki L’Oréal Professionnel — salon współpracujący | Częstochowa',
@@ -2438,21 +2438,21 @@ STRONY = [
      u'i Color Wow — kosmetyki L’Oréal Professionnel w salonie w Częstochowie. '
      u'Do czego która linia służy, wytłumaczone prostym językiem.',
      strona_loreal, '../'),
-    ('portfolio', 'portfolio', u'Portfolio fryzjerskie — sesje i publikacje | new age Częstochowa',
+    ('portfolio', 'portfolio', u'Portfolio fryzjerskie — sesje i publikacje | New Age Częstochowa',
      u'Fryzury do pierwszego numeru kwartalnika SPLOT — okładka i cała sesja. '
      u'Praca Agnieszki Lewandowskiej, mistrzyni fryzjerstwa z Częstochowy.', strona_portfolio, '../'),
-    ('porady', 'porady', u'Poradnik — pielęgnacja i koloryzacja włosów | new age Częstochowa',
+    ('porady', 'porady', u'Poradnik — pielęgnacja i koloryzacja włosów | New Age Częstochowa',
      u'Jak naprawić włosy po domowej koloryzacji, ile trzyma balayage, jak dbać '
      u'o blond. Praktyczne odpowiedzi od fryzjerki z Częstochowy.',
      strona_porady, '../'),
-    ('opinie', 'opinie', u'Opinie o salonie — fryzjer Częstochowa, ocena 5,0 | new age Lewandowska',
-     u'Ocena 5,0 z 53 opinii w Google. Co mówią klientki salonu new age '
+    ('opinie', 'opinie', u'Opinie o salonie — fryzjer Częstochowa, ocena 5,0 | New Age Lewandowska',
+     u'Ocena 5,0 z 53 opinii w Google. Co mówią klientki salonu New Age '
      u'w Częstochowie o koloryzacji, strzyżeniu i doradztwie. Dodaj swoją opinię.', strona_opinie, '../'),
-    ('prywatnosc', 'prywatnosc', u'Polityka prywatności | new age Lewandowska, Częstochowa',
-     u'Kto przetwarza dane z formularzy salonu new age w Częstochowie, '
+    ('prywatnosc', 'prywatnosc', u'Polityka prywatności | New Age Lewandowska, Częstochowa',
+     u'Kto przetwarza dane z formularzy salonu New Age w Częstochowie, '
      u'jak długo je przechowuje i jakie masz prawa.',
      strona_prywatnosc, '../'),
-    ('kontakt', 'kontakt', u'Kontakt i wycena — fryzjer Częstochowa, Kilińskiego 55/2 | new age',
+    ('kontakt', 'kontakt', u'Kontakt i wycena — fryzjer Częstochowa, Kilińskiego 55/2 | New Age',
      u'Telefon, adres, godziny otwarcia i mapa dojazdu. Kilińskiego 55/2, Częstochowa.', strona_kontakt, '../'),
 ]
 
@@ -2522,7 +2522,7 @@ def main():
         sciezka = os.path.join(CEL, 'porady', slug)
         if not os.path.isdir(sciezka):
             os.makedirs(sciezka)
-        html = zbuduj('porady', u'%s | new age Lewandowska, Częstochowa' % tytul,
+        html = zbuduj('porady', u'%s | New Age Lewandowska, Częstochowa' % tytul,
                       lead[:158], strona_porady_jedna(slug, tytul, lead, tresc),
                       '../../', sciezka='porady/' + slug, nazwa=tytul)
         pytania = schemat_pytan(html)

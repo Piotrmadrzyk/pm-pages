@@ -31,7 +31,7 @@ strony (albo wskaż folder, jeśli używasz Claude Code):
 
 ```
 Zajmujesz się moją stroną internetową. Jestem Agnieszka Lewandowska,
-prowadzę salon fryzjerski new age w Częstochowie. Nie jestem
+prowadzę salon fryzjerski New Age w Częstochowie. Nie jestem
 programistką — tłumacz mi skutki, nie kod.
 
 JAK ZBUDOWANA JEST STRONA

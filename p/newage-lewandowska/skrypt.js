@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   new age Lewandowska — wspólne zachowania wszystkich podstron
+   New Age Lewandowska — wspólne zachowania wszystkich podstron
    ═══════════════════════════════════════════════════════════════ */
 
 /* ── dolne menu na telefonie (pasek „dok" + wysuwany panel) ──
@@ -288,7 +288,7 @@
     });
   }
 
-  obsluz('form-opinia', 'Opinia dla new age Lewandowska',
+  obsluz('form-opinia', 'Opinia dla New Age Lewandowska',
     function (f, pokaz) {
       var imie = f.imie.value.trim(), tresc = f.tresc.value.trim();
       if (!imie || !tresc) { pokaz('Podaj imię i treść opinii.', 'blad'); return null; }
@@ -299,7 +299,7 @@
     },
     'Dziękuję — opinia do mnie dotarła.');
 
-  obsluz('form-wycena', 'Zapytanie o termin i cenę — new age Lewandowska',
+  obsluz('form-wycena', 'Zapytanie o termin i cenę — New Age Lewandowska',
     function (f, pokaz) {
       var imie = f.imie.value.trim(), tel = f.telefon.value.trim();
       if (!imie || !tel) { pokaz('Podaj imię i telefon — inaczej nie oddzwonię.', 'blad'); return null; }
