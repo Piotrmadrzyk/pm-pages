@@ -898,7 +898,7 @@ SZKIELET = u"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>%(tytul)s</title>
 <meta name="description" content="%(opis)s">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1013,7 +1013,7 @@ SZKIELET = u"""<!DOCTYPE html>
     <div class="stopka-dol">
       <span>© 2026 New Age Lewandowska</span>
       <span><a href="%(korzen)sprywatnosc/" style="color:inherit">Polityka prywatności</a>
-        · Wersja robocza — strona w budowie</span>
+        · <a href="https://probatum.pl/" style="color:inherit">realizacja: Probatum</a></span>
     </div>
   </div>
 </footer>
