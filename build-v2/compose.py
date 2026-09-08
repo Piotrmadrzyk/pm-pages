@@ -222,7 +222,12 @@ def write_pages():
     if PRYWATNY:
         (OUT/'robots.txt').write_text('User-agent: *\nDisallow: /\n')
     else:
-        (OUT/'robots.txt').write_text('User-agent: *\nAllow: /\n\nSitemap: '+BASE+'/sitemap.xml\n')
+        # Strony klientow w p/ maja wlasne mapy strony i nic do nich nie linkuje
+        # z poziomu probatum.pl — bez tego wpisu robot nie ma jak ich znalezc.
+        mapy = [BASE + '/sitemap.xml',
+                BASE + '/p/newage-lewandowska/sitemap.xml']
+        (OUT/'robots.txt').write_text('User-agent: *\nAllow: /\n\n'
+                                      + ''.join('Sitemap: %s\n' % m for m in mapy))
         from datetime import date
         dzis = date.today().isoformat()
         # cookies.html to strona techniczna — zostaje poza sitemapa

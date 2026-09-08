@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://probatum.pl/sitemap.xml
+Sitemap: https://probatum.pl/p/newage-lewandowska/sitemap.xml
