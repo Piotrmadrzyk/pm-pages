@@ -10,6 +10,7 @@
 # Strona jest statyczna — gotowe pliki .html leza w katalogu glownym,
 # a `build/` sluzy wylacznie do ich wytworzenia na komputerze.
 build/
+build-v2/
 DO-ZROBIENIA.md
 JAK-DZIALA-PROBATUM.md
 README.md

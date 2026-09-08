@@ -1,0 +1,13 @@
+{
+  "name": "probatum-studio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "python3 compose.py",
+    "check": "python3 validate.py && node tests/studio-runtime.cjs"
+  },
+  "devDependencies": {
+    "vite": "8.0.13"
+  }
+}

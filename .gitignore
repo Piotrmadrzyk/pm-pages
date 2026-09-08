@@ -1,4 +1,5 @@
 __pycache__/
+build-v2/dist/
 *.pyc
 .DS_Store
 .vercel

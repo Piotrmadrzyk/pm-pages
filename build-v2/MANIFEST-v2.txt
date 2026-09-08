@@ -1,0 +1,17 @@
+akademia.html
+automatyzacja.html
+blog.html
+blog/po-co-agent-malej-firmie.html
+cookies.html
+horyzont.html
+index.html
+kontakt.html
+marketing.html
+o-donie.html
+oferta.html
+realizacje.html
+social-media.html
+strony-www.html
+warsztat.html
+warsztat/pierwsza-automatyzacja.html
+wycena.html

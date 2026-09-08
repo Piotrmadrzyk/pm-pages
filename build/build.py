@@ -4,6 +4,22 @@
 import io, os, sys
 import wpisy
 
+# ── ARCHIWUM — TEN GENERATOR JUZ NIE BUDUJE PRODUKCJI ─────────────────────
+# 08.09.2026 strone firmowa probatum.pl przejal generator v11:
+#     python3 build-v2/publikuj.py
+# build.py sklada STARY wyglad i pisze prosto do korzenia repozytorium, wiec
+# jedno uruchomienie przez pomylke cofnelo by cala nowa strone. Zostaje jako
+# archiwum i zrodlo tresci, ale trzeba go swiadomie odblokowac:
+#     ARCHIWUM=1 python3 build/build.py
+# Pozostale generatory w build/ (newage.py, katalogi.py, demo_sprzedaz.py,
+# wpisy.py, prawne.py) dzialaja normalnie — obsluguja strony klientow i dema.
+if os.environ.get('ARCHIWUM') != '1':
+    raise SystemExit(
+        'build/build.py to ARCHIWUM starej strony probatum.pl.\n'
+        'Produkcje buduje teraz:  python3 build-v2/publikuj.py\n'
+        'Jesli naprawde chcesz uruchomic stary generator (nadpisze nowa\n'
+        'strone w korzeniu repozytorium):  ARCHIWUM=1 python3 build/build.py')
+
 # build/ lezy w katalogu repozytorium, wiec gotowe strony ida poziom wyzej.
 OUT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 PARTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'parts')
