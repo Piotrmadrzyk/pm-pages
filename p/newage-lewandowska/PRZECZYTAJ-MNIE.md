@@ -127,7 +127,7 @@ będzie gotowa — Claude zrobi to jednym poleceniem.
 przeniesieniu na własną domenę trzeba je podmienić na Twój adres.
 To też jedno polecenie dla Claude'a.
 
-**Zmień adres e-mail w formularzach** z `kontakt@probatum.pl` na swój.
+**Adres e-mail w formularzach jest już ustawiony** na `newage@onet.com.pl` — tam trafiają zgłoszenia z formularza kontaktowego i z formularza opinii. Gdyby kiedyś się zmienił, jest w jednym miejscu: stała `MAIL` na początku sekcji „wysyłka formularzy" w pliku `skrypt.js`.
 
 ---
 

@@ -235,7 +235,7 @@
    bez otwierania programu pocztowego. Nic więcej nie trzeba zmieniać.  */
 (function () {
   var ADRES_WYSYLKI = '';            /* pusto = przez program pocztowy */
-  var MAIL = 'kontakt@probatum.pl';  /* ⚠️ zmienić na adres Agnieszki */
+  var MAIL = 'newage@onet.com.pl';    /* adres salonu — tu trafiają zgłoszenia */
   var TEL = '507 330 730';
 
   function obsluz(idFormularza, temat, zbierz, gotowe) {

@@ -17,7 +17,7 @@
  *  Poniżej ustaw swój adres — ten, na który mają przychodzić zgłoszenia.
  */
 
-$ADRES_ODBIORCY = 'kontakt@probatum.pl';   // ⚠️ zmień na swój adres
+$ADRES_ODBIORCY = 'newage@onet.com.pl';     // adres salonu
 $NAZWA_NADAWCY  = 'Strona New Age Lewandowska';
 
 header('Content-Type: application/json; charset=utf-8');

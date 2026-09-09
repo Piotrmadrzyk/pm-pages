@@ -78,7 +78,7 @@ const micro=async()=>{await Promise.resolve();await Promise.resolve()};
  }
  x.flush();
  // Real user-triggered clipboard action with a usable permission-denied fallback.
- x=setup('akademia.html');await q(x,'[data-prompt-option="research"]').emit('click');await q(x,'[data-prompt-copy]').emit('click');assert(x.ctx.copied.includes('research'));assert(x.ctx.copied.includes('Nie wymyślaj'));
+ x=setup('akademia.html');await q(x,'[data-prompt-option="explain"]').emit('click');await q(x,'[data-prompt-copy]').emit('click');assert(x.ctx.copied.includes('Wytłumacz'));assert(x.ctx.copied.includes('nie zgaduj'));
  x.ctx.navigator.clipboard.writeText=async()=>{throw new Error('Denied')};await q(x,'[data-prompt-copy]').emit('click');assert(!q(x,'[data-prompt-export]').hidden);assert(q(x,'[data-prompt-export]').selected);x.flush();
  // No external iframe requests until an explicit click. Closing releases the frame.
  x=setup('realizacje.html');assert.equal(x.doc.querySelectorAll('iframe').length,0);
