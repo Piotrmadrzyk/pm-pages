@@ -262,16 +262,6 @@
       "dest": "/p/newage-lewandowska/$1"
     },
     {
-      "src": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.newagelewandowska.pl"
-        }
-      ],
-      "dest": "/p/newage-lewandowska/index.html"
-    },
-    {
       "src": "/(.*)",
       "has": [
         {
@@ -279,7 +269,36 @@
           "value": "www.newagelewandowska.pl"
         }
       ],
-      "dest": "/p/newage-lewandowska/$1"
+      "status": 301,
+      "headers": {
+        "Location": "https://newagelewandowska.pl/$1"
+      }
+    },
+    {
+      "src": "/p/newage-lewandowska/?(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "probatum.pl"
+        }
+      ],
+      "status": 301,
+      "headers": {
+        "Location": "https://newagelewandowska.pl/$1"
+      }
+    },
+    {
+      "src": "/p/newage-lewandowska/?(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.probatum.pl"
+        }
+      ],
+      "status": 301,
+      "headers": {
+        "Location": "https://newagelewandowska.pl/$1"
+      }
     },
     {
       "handle": "filesystem"

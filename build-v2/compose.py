@@ -224,8 +224,9 @@ def write_pages():
     else:
         # Strony klientow w p/ maja wlasne mapy strony i nic do nich nie linkuje
         # z poziomu probatum.pl — bez tego wpisu robot nie ma jak ich znalezc.
-        mapy = [BASE + '/sitemap.xml',
-                BASE + '/p/newage-lewandowska/sitemap.xml']
+        # Strona New Age ma od 09.09.2026 wlasna domene i wlasny robots.txt
+        # w jej korzeniu — nie trzeba jej juz zglaszac stad.
+        mapy = [BASE + '/sitemap.xml']
         (OUT/'robots.txt').write_text('User-agent: *\nAllow: /\n\n'
                                       + ''.join('Sitemap: %s\n' % m for m in mapy))
         from datetime import date

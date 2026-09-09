@@ -39,7 +39,7 @@ CEL = os.path.join(ROOT, 'p', 'newage-lewandowska')
 
 # ⚠️ PRZY PRZENOSINACH NA WLASNA DOMENE zmien tylko te jedna linie —
 # stad biora sie adresy kanoniczne, mapa strony i podglad przy udostepnianiu.
-BAZA = u'https://probatum.pl/p/newage-lewandowska/'
+BAZA = u'https://newagelewandowska.pl/'
 
 TEL_POKAZ = u'+48 507 330 730'
 TEL_LINK = u'+48507330730'

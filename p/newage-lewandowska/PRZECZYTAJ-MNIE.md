@@ -123,7 +123,7 @@ znaleźć w wyszukiwarce. **Usuń ją ze wszystkich plików**, gdy strona
 będzie gotowa — Claude zrobi to jednym poleceniem.
 
 **Zmień adres bazowy.** W każdym `index.html` są linijki z adresem
-`https://probatum.pl/p/newage-lewandowska/` — to adres roboczy. Po
+`https://newagelewandowska.pl/` — to adres roboczy. Po
 przeniesieniu na własną domenę trzeba je podmienić na Twój adres.
 To też jedno polecenie dla Claude'a.
 
