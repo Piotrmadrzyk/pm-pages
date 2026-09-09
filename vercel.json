@@ -242,6 +242,46 @@
       "dest": "/p/demo-serwis-podkarpacki/$1"
     },
     {
+      "src": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "newagelewandowska.pl"
+        }
+      ],
+      "dest": "/p/newage-lewandowska/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "newagelewandowska.pl"
+        }
+      ],
+      "dest": "/p/newage-lewandowska/$1"
+    },
+    {
+      "src": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.newagelewandowska.pl"
+        }
+      ],
+      "dest": "/p/newage-lewandowska/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.newagelewandowska.pl"
+        }
+      ],
+      "dest": "/p/newage-lewandowska/$1"
+    },
+    {
       "handle": "filesystem"
     }
   ]

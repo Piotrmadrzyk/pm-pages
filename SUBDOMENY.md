@@ -35,6 +35,8 @@ awarie strony.
 | `kancelaria-demo.probatum.pl` | Kancelaria Zawadzcy |
 | `remonty-demo.probatum.pl` | Dom i Wnetrze |
 | `warsztat-demo.probatum.pl` | Serwis Podkarpacki |
+| `newagelewandowska.pl` | New Age Lewandowska (strona klientki) |
+| `www.newagelewandowska.pl` | to samo |
 
 Regula mowi: jesli gosc wszedl pod danym adresem, pokaz mu zawartosc
 odpowiedniego katalogu z `/p/`. Adres w pasku zostaje krotki.
@@ -46,6 +48,12 @@ w osobnych katalogach obok siebie (`demo-studio-lawenda-kontakt` itd.),
 wiec po kliknieciu w menu adres bedzie dluzszy:
 `lawenda-demo.probatum.pl/p/demo-studio-lawenda-kontakt/`.
 
+**Wyjatek: `newagelewandowska.pl`.** Ta strona ma podstrony w JEDNYM
+katalogu (`/p/newage-lewandowska/uslugi/` itd.), wiec regula `/(.*)`
+przepisuje takze je i wszystkie adresy zostaja krotkie:
+`newagelewandowska.pl/uslugi/`. To nie jest demo, tylko strona klientki —
+docelowo przechodzi na jej wlasny hosting, a domena zostaje ta sama.
+
 Dziala, ale nie jest ladne. Skrocenie takze podstron wymaga przebudowy
 struktury katalogow — opisane w `DO-ZROBIENIA.md` jako droga B.
 
@@ -54,3 +62,9 @@ struktury katalogow — opisane w `DO-ZROBIENIA.md` jako droga B.
 Reguly dzialaja dopiero wtedy, gdy subdomena naprawde kieruje na ten projekt —
 czyli po dodaniu domeny w Vercelu i wpisu CNAME w home.pl. Oba kroki zrobione
 28 sierpnia 2026.
+
+Dla `newagelewandowska.pl` (kupiona 09.09.2026): domena dodana do projektu
+w Vercelu 09.09.2026. **Brakuje jeszcze wpisow DNS w home.pl** — dopoki ich
+nie ma, adres nie odpowiada, a ponizsze reguly po prostu lezą bezczynnie.
+Potrzebne wpisy: `A` dla nazwy glownej na `76.76.21.21` oraz `CNAME` dla
+`www` na `cname.vercel-dns.com`.
