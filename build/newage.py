@@ -899,6 +899,7 @@ SZKIELET = u"""<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="index, follow">
+<meta name="google-site-verification" content="511ec7hJT96eUCzhuhECRpFP8bzP3BDD3AFPZPBmaKI">
 <title>%(tytul)s</title>
 <meta name="description" content="%(opis)s">
 <link rel="preconnect" href="https://fonts.googleapis.com">
