@@ -9,7 +9,9 @@ kontakt.html
 marketing.html
 o-donie.html
 oferta.html
+polityka-prywatnosci.html
 realizacje.html
+regulamin.html
 social-media.html
 strony-www.html
 warsztat.html

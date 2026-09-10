@@ -5,11 +5,10 @@ build-v2/dist/
 .vercel
 .env*
 
-# Dokumenty prawne probatum.pl — NIE PUBLIKOWAC, dopoki nie przejda przez
-# prawnika (otwarte pytanie: kto jest administratorem danych) i dopoki
-# w build.py puste jest OPERATOR_PLATNOSCI. Buduja sie normalnie do podgladu
-# lokalnego, a odnosniki w stopce wlacza DOKUMENTY=1 python3 build.py.
-/regulamin.html
-/polityka-prywatnosci.html
+# regulamin.html i polityka-prywatnosci.html opisane tu nizej byly stara
+# wersja (z build/build.py, zablokowanego generatora) — czekaly na prawnika.
+# Od 10.09.2026 generuje je build-v2/legal_pages.py z wypelnionych wzorow
+# Fundacji Twoj StartUp i sa publikowane normalnie (poza .gitignore).
+# Stare zrodla build/parts/ zostaja zignorowane jako archiwum.
 /build/parts/regulamin.html
 /build/parts/polityka-prywatnosci.html
