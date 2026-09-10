@@ -1,0 +1,17 @@
+.consent-banner{position:fixed;left:0;right:0;bottom:0;z-index:95;background:var(--ink);color:var(--paper);padding:18px var(--gutter);box-shadow:0 -4px 20px rgba(0,0,0,.15)}
+.consent-banner[hidden]{display:none}
+.consent-banner-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.consent-banner-inner p{font-size:14px;line-height:1.6;max-width:640px;margin:0}
+.consent-banner-inner a{color:var(--lime);text-decoration:underline;text-underline-offset:3px}
+.consent-buttons{display:flex;gap:10px;flex-shrink:0}
+.consent-buttons button{font-size:13px;font-weight:600;padding:11px 20px;border-radius:4px;cursor:pointer;border:1px solid var(--paper)}
+.consent-reject{background:transparent;color:var(--paper)}
+.consent-accept{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.consent-reject:hover{background:rgba(244,245,241,.1)}
+.consent-accept:hover{filter:brightness(0.95)}
+@media(max-width:700px){
+  .consent-banner{padding:16px var(--gutter);bottom:68px}
+  .consent-banner-inner{gap:14px}
+  .consent-buttons{width:100%}
+  .consent-buttons button{flex:1}
+}

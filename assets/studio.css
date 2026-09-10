@@ -547,6 +547,10 @@ a:hover .image-action{transform:rotate(45deg);background:var(--lime)}
 .cookie-content li{padding-left:5px;margin:10px 0}
 .cookie-content a,.external-site-notice a{text-decoration:underline;text-underline-offset:4px}
 .cookie-content .cookie-updated{font-size:14px;color:#526455;margin-top:35px}
+.cookie-content table.kv{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}
+.cookie-content table.kv td{border:1px solid var(--line);padding:10px 14px;vertical-align:top}
+.cookie-content table.kv td:first-child{white-space:nowrap;font-weight:700}
+.consent-manage-btn{margin-top:6px;font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:4px;background:none;border:0;padding:0;cursor:pointer;color:var(--ink)}
 .external-site-notice{font-size:14px;line-height:1.65;max-width:750px;margin:16px 0 24px}
 .footer-bottom>a{white-space:normal}
 @media(max-width:700px){.cookie-page{padding-top:42px;padding-bottom:50px}.cookie-lead{font-size:17px}.cookie-content{margin-top:30px}.cookie-content h2{font-size:23px}.cookie-content p{font-size:16px}.external-site-notice{font-size:14px}}
