@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Maszynka do szortsów — Probatum</title>
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <h1>Maszynka<br /><em>do szortsów.</em></h1>
+    <p class="hint">Lokalne narzędzie do generowania krótkich rolek dla Probatum.</p>
+
+    <form id="new-project-form" class="new-project-form">
+      <label>Tytuł roboczy
+        <input type="text" name="title" placeholder="np. Budowa stron www" required />
+      </label>
+      <label>Brief — o czym ma być ten short?
+        <textarea name="brief" rows="4" placeholder="Opisz temat i treść, którą ma poruszyć rolka."></textarea>
+      </label>
+      <label>Długość docelowa (sekundy)
+        <input type="number" name="targetSeconds" value="30" min="5" max="120" />
+      </label>
+      <button type="submit" class="button primary">+ Nowy projekt</button>
+    </form>
+
+    <div class="project-list" id="project-list">
+      <p class="hint">Ładowanie projektów…</p>
+    </div>
+  </aside>
+
+  <main class="workspace" id="workspace">
+    <div class="empty-state">
+      <p>Wybierz projekt z listy po lewej albo utwórz nowy, żeby zacząć.</p>
+    </div>
+  </main>
+</div>
+
+<template id="scene-template">
+  <li class="scene-card" draggable="true">
+    <div class="scene-handle" title="Przeciągnij, żeby zmienić kolejność">⠿</div>
+    <div class="scene-body">
+      <div class="scene-row">
+        <label>Typ sceny
+          <select class="scene-type">
+            <option value="tekst">Tekst / hasło</option>
+            <option value="lista">Lista punktów</option>
+            <option value="cytat">Cytat</option>
+            <option value="cta">Wezwanie do działania (CTA)</option>
+          </select>
+        </label>
+        <label>Długość sceny (s, puste = auto)
+          <input type="number" class="scene-duration" min="1" max="60" placeholder="auto" />
+        </label>
+        <button type="button" class="button ghost small scene-delete">Usuń scenę</button>
+      </div>
+      <label>Tekst na ekranie
+        <textarea class="scene-text" rows="2" placeholder="Duży tekst widoczny w scenie"></textarea>
+      </label>
+      <label>Tekst lektora
+        <textarea class="scene-lektor" rows="2" placeholder="To wypowie lektor (ElevenLabs)"></textarea>
+      </label>
+      <div class="scene-audio-row">
+        <button type="button" class="button small scene-generate-narration">🔊 Generuj lektora</button>
+        <span class="scene-narration-status"></span>
+        <audio class="scene-audio-player" controls hidden></audio>
+      </div>
+    </div>
+  </li>
+</template>
+
+<script src="/app.js" type="module"></script>
+</body>
+</html>
