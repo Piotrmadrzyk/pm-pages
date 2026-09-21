@@ -49,6 +49,13 @@ CHRONIONE_KATALOGI = ['p']
 # Poza stronami z manifestu generator wytwarza jeszcze te pliki.
 DODATKOWE_WYNIKI = ['robots.txt', 'sitemap.xml', 'assets/flow-data.js']
 
+# Samodzielne strony HTML w korzeniu repo, pisane ręcznie (nie przez generator
+# compose.py/studio.py) - np. lead magnety z własną szatą graficzną. Nie są
+# częścią manifestu i publikuj.py nigdy ich nie nadpisuje ani nie kasuje, ale
+# muszą trafić do katalogu roboczego, żeby validate.py widział je przy
+# sprawdzaniu linków (np. przycisk z akademia.html do darmowego poradnika).
+STRONY_STATYCZNE = ['darmowy-poradnik-chatgpt.html']
+
 
 def odcisk(sciezka):
     return hashlib.sha256(sciezka.read_bytes()).hexdigest()
@@ -103,6 +110,10 @@ def main():
     try:
         print(u'\nKatalog roboczy: %s' % roboczy)
         shutil.copytree(REPO / 'assets', roboczy / 'assets')
+        for wzgledna in STRONY_STATYCZNE:
+            zrodlo = REPO / wzgledna
+            if zrodlo.exists():
+                shutil.copy2(zrodlo, roboczy / wzgledna)
 
         srodowisko = dict(os.environ, PROBATUM_OUT=str(roboczy))
         if prywatna:
