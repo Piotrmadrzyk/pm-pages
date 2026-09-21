@@ -3,22 +3,11 @@
 // Dony/Probatum). Ta appka woli webhook n8n, ktory sam woli ElevenLabs.
 // Wzorzec 1:1 z tym, jak panel Dony (dona-panel) woli n8n zamiast trzymac
 // klucze w kodzie frontu/backendu — patrz DONA_2 dokumentacja architektury.
+import { getSharedSecret } from "./dona-secret.js";
+
 const N8N_WEBHOOK_URL =
   process.env.DONA_N8N_ELEVENLABS_URL ||
   "https://pmresearch.app.n8n.cloud/webhook/maszynka-elevenlabs";
-
-function getSharedSecret() {
-  const secret = process.env.DONA_N8N_SHARED_SECRET;
-  if (!secret) {
-    const err = new Error(
-      "Brak DONA_N8N_SHARED_SECRET w .env. Skopiuj .env.example do .env i wklej sekret " +
-        "(w n8n: tabela PM_sekrety_wspolne, wpis 'maszynka_szortow_sekret')."
-    );
-    err.status = 400;
-    throw err;
-  }
-  return secret;
-}
 
 async function callN8nElevenLabs(operation, payload) {
   const sekret = getSharedSecret();

@@ -154,5 +154,8 @@ input:focus, textarea:focus, select:focus { outline: 2px solid var(--blue); outl
 .render-status { font-size: 13px; color: var(--gray); min-height: 18px; }
 .render-status.error { color: #c0392b; }
 .render-status.ok { color: #1e824c; }
+.render-status.is-working { color: var(--blue); }
+
+.scene-list-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 
 a.download-link { text-align: center; }

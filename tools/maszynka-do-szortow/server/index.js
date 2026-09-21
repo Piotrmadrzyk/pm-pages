@@ -16,6 +16,7 @@ import {
 } from "./store.js";
 import { textToSpeech, soundEffect, defaultVoiceId } from "./elevenlabs.js";
 import { hasNativeFfmpeg, transcodeWebmToMp4 } from "./render.js";
+import { generateScenesFromBrief } from "./scenegen.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.join(__dirname, "..", ".env") });
@@ -159,6 +160,38 @@ app.put("/api/projects/:id/scenes-order", async (req, res, next) => {
       return res.status(400).json({ error: "order nie zgadza sie ze scenami projektu" });
     }
     project.scenes = reordered;
+    project.updatedAt = new Date().toISOString();
+    await saveProject(project);
+    res.json(project);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// --- Generator scen z briefu (AI) — dopisuje sceny na koncu, nigdy nie
+// kasuje istniejacych (bezpieczne dla reczna juz zaczetej pracy) ---
+
+app.post("/api/projects/:id/scenes/generate", async (req, res, next) => {
+  try {
+    const project = await getProject(req.params.id);
+    if (!project) return res.status(404).json({ error: "Nie znaleziono projektu" });
+    if (!project.brief || !project.brief.trim()) {
+      return res.status(400).json({ error: "Projekt nie ma briefu — wpisz go najpierw." });
+    }
+    const generated = await generateScenesFromBrief({
+      title: project.title,
+      brief: project.brief,
+      targetSeconds: project.targetSeconds,
+    });
+    const newScenes = generated.map((s) =>
+      newScene({
+        text: s.text,
+        lektorText: s.lektorText,
+        type: s.type,
+        durationSeconds: s.durationSeconds,
+      })
+    );
+    project.scenes.push(...newScenes);
     project.updatedAt = new Date().toISOString();
     await saveProject(project);
     res.json(project);

@@ -32,6 +32,39 @@ npm start               # http://localhost:3000
   z `assets/site.css` (`--paper #f4f5f1`, `--ink #1b201e`, `--blue
   #254bfa`, `--lime #d9f975`, `--pale #e9eddf`).
 
+## Generator scen z briefu (AI) — 21.09.2026
+
+Piotr: „tego typu pola powinno AI wypełniać" — po napisaniu briefu i tytułu,
+przycisk **„✨ Wygeneruj sceny z briefu (AI)"** (obok „+ Dodaj scenę") woła
+`POST /api/projects/:id/scenes/generate`, który przez n8n:
+
+1. **Szuka linku w briefie** (prosty regex) — jeśli jest, pobiera realną
+   treść tej strony przez istniejący subworkflow n8n `otworz_link`
+   (Jina Reader, ten sam co Dona już używa do czytania stron). Dzięki temu
+   model pisze na podstawie prawdziwej oferty, nie zmyśla cen/gwarancji/
+   liczb — to była świadoma decyzja, zgodna z zasadą „nie wymyślaj opinii
+   ani liczb" (sprawdź `docs/memory/nie-wymyslaj-opinii.md` w repo Dona).
+2. Generuje sceny przez **Anthropic (`claude-sonnet-5`)**, credential
+   `Anthropic account` już istniejący w n8n (ten sam co inne narzędzia PM),
+   nie osobny klucz. Workflow: `DONA — Integracja: Maszynka do Szortsów
+   (Generator scen AI)` (`DlNnrC8j2Rngs2Zn`, folder `DONA — INTEGRATIONS`,
+   webhook `maszynka-generuj-sceny`), ten sam sekret co TTS/SFX.
+3. **Zawsze DOPISUJE sceny na końcu listy, nigdy nie kasuje istniejących**
+   — bezpieczne dla ręcznie już zaczętej pracy.
+
+**Pułapka złapana przy budowie:** odpowiedź Anthropic ma najpierw blok
+`{type:"thinking"}`, dopiero potem `{type:"text"}` w `content[]` — zakładanie
+`content[0].text` psuło parsowanie za każdym razem. Kod szuka pierwszego
+bloku z `type === "text"`, nie indeksu 0.
+
+Przetestowane żywo na prawdziwym projekcie Piotra („Budowa stron www",
+brief z linkiem do `probatum.pl/realizacje.html`) — 5 wygenerowanych scen,
+treść trzymająca się faktów ze strony, poprawne typy i sumujące się w
+przybliżeniu do długości docelowej `durationSeconds`.
+
+`server/scenegen.js` — analogiczny do `server/elevenlabs.js` (sekret
+wyciągnięty do wspólnego `server/dona-secret.js`, żeby nie duplikować).
+
 ## Render MP4: najpierw serwer (szybko), ffmpeg.wasm tylko jako zapas (21.09.2026)
 
 Pierwsza wersja renderowała WYŁĄCZNIE w przeglądarce przez ffmpeg.wasm

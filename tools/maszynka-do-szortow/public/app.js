@@ -117,7 +117,11 @@ function renderWorkspace() {
       <section class="scenes-panel">
         <h2>Sceny (${p.scenes.length})</h2>
         <ul class="scene-list" id="scene-list"></ul>
-        <button type="button" class="button" id="add-scene">+ Dodaj scenę</button>
+        <div class="scene-list-actions">
+          <button type="button" class="button" id="add-scene">+ Dodaj scenę</button>
+          <button type="button" class="button accent" id="generate-scenes">✨ Wygeneruj sceny z briefu (AI)</button>
+        </div>
+        <div class="render-status" id="generate-scenes-status"></div>
       </section>
       <section class="preview-panel">
         <h2>Podgląd</h2>
@@ -140,6 +144,7 @@ function renderWorkspace() {
   document.getElementById("project-voice").addEventListener("change", (e) => updateProjectField("voiceId", e.target.value || null));
   document.getElementById("delete-project").addEventListener("click", onDeleteProject);
   document.getElementById("add-scene").addEventListener("click", onAddScene);
+  document.getElementById("generate-scenes").addEventListener("click", onGenerateScenes);
   document.getElementById("preview-play").addEventListener("click", () => playPreview(false));
   document.getElementById("render-mp4").addEventListener("click", () => renderMp4());
 
@@ -171,6 +176,33 @@ async function onAddScene() {
   });
   state.currentProject = await api(`/api/projects/${p.id}`);
   renderScenes();
+  document.querySelector('.scenes-panel h2').textContent = `Sceny (${state.currentProject.scenes.length})`;
+}
+
+async function onGenerateScenes() {
+  const p = state.currentProject;
+  const btn = document.getElementById("generate-scenes");
+  const statusEl = document.getElementById("generate-scenes-status");
+  if (!p.brief || !p.brief.trim()) {
+    statusEl.textContent = "Wpisz najpierw brief (pole powyżej) — na jego podstawie AI napisze sceny.";
+    statusEl.className = "render-status error";
+    return;
+  }
+  btn.disabled = true;
+  statusEl.className = "render-status is-working";
+  statusEl.textContent = "Generuję sceny z briefu (Claude, przez DONĘ)…";
+  try {
+    state.currentProject = await api(`/api/projects/${p.id}/scenes/generate`, { method: "POST" });
+    renderScenes();
+    document.querySelector('.scenes-panel h2').textContent = `Sceny (${state.currentProject.scenes.length})`;
+    statusEl.textContent = "Gotowe! Dopisano nowe sceny na końcu listy — sprawdź i popraw, jeśli trzeba.";
+    statusEl.className = "render-status ok";
+  } catch (err) {
+    statusEl.textContent = `Błąd: ${err.message}`;
+    statusEl.className = "render-status error";
+  } finally {
+    btn.disabled = false;
+  }
 }
 
 // ---------- Scenes list (drag to reorder) ----------
@@ -236,6 +268,7 @@ async function deleteScene(sceneId) {
   await api(`/api/projects/${p.id}/scenes/${sceneId}`, { method: "DELETE" });
   p.scenes = p.scenes.filter((s) => s.id !== sceneId);
   renderScenes();
+  document.querySelector('.scenes-panel h2').textContent = `Sceny (${p.scenes.length})`;
 }
 
 async function reorderScenes(draggedId, targetId) {
