@@ -11,7 +11,7 @@ treści itd.).
 ```
 cd tools/maszynka-do-szortow
 npm install
-cp .env.example .env   # wklej ELEVENLABS_API_KEY
+cp .env.example .env   # wklej DONA_N8N_SHARED_SECRET (patrz nizej)
 npm start               # http://localhost:3000
 ```
 
@@ -21,8 +21,9 @@ npm start               # http://localhost:3000
   sceny, reorder, ElevenLabs, zapis renderu).
 - `server/store.js` — persystencja w plikach JSON (`data/projects/*.json`),
   bez bazy danych.
-- `server/elevenlabs.js` — wrapper na REST API ElevenLabs (TTS + sound
-  generation). Klucz tylko w `.env`, nigdy nie trafia do frontu ani do gita.
+- `server/elevenlabs.js` — TTS + sound generation, ale **nie woła już
+  ElevenLabs bezpośrednio** (patrz sekcja „Integracja z n8n zamiast
+  lokalnego klucza ElevenLabs” niżej).
 - `public/index.html` + `styles.css` + `app.js` — panel: lista
   projektów, edycja scen (drag&drop reorder przez natywne HTML5 DnD),
   podgląd na `<canvas>`, render do MP4.
@@ -72,12 +73,47 @@ dłuży.
 - Drag-and-drop reorder scen, usuwanie scen.
 - Pełny render: 2 sceny bez lektora → poprawny plik MP4 (ISO Media,
   1080×1920) zapisany w `output/`.
-- Kontrolowany błąd, gdy brak `ELEVENLABS_API_KEY` w `.env`.
+- Kontrolowany błąd, gdy brak `DONA_N8N_SHARED_SECRET` w `.env`.
+- **21.09.2026, druga sesja (integracja z n8n):** cała trasa
+  webhook→sekret→routing tts/sfx przetestowana żywo (patrz sekcja niżej) —
+  droga jest poprawna, ale sam klucz ElevenLabs w n8n jest dziś nieważny
+  (`401 Invalid API key`), więc realny dźwięk jeszcze nie wyszedł.
 
-**Nieprzetestowane realnie:** generowanie lektora/efektów przez
-ElevenLabs (potrzebny prawdziwy klucz API użytkownika) — kod wywołań API
-jest gotowy (`server/elevenlabs.js`), ale nie było czym go odpalić w tej
-sesji.
+**Nieprzetestowane realnie:** wygenerowanie prawdziwego pliku audio —
+blokuje to nieważny klucz API w credentialu n8n „PM Marketing OS —
+ElevenLabs”, nie kod tego narzędzia ani workflow. Wymaga odświeżenia
+klucza przez Piotra w n8n (Credentials → „PM Marketing OS — ElevenLabs”).
+
+## Integracja z n8n zamiast lokalnego klucza ElevenLabs (21.09.2026)
+
+Na prośbę Piotra klucz ElevenLabs przestał żyć w `.env` tego narzędzia.
+`server/elevenlabs.js` woła teraz webhook n8n zamiast `api.elevenlabs.io`
+bezpośrednio — dokładnie ten wzorzec, którego DONA już używa (panel nigdy
+nie trzyma kluczy dostawców, tylko woła webhooki n8n, a sekrety leżą w
+credentialach/Data Table n8n).
+
+- **Webhook:** `POST https://pmresearch.app.n8n.cloud/webhook/maszynka-elevenlabs`
+  (workflow n8n `DONA — Integracja: Maszynka do Szortsów (ElevenLabs)`,
+  id `wy6PQYVvtJ1BXiHg`, folder `DONA — INTEGRATIONS`, projekt „PM Command
+  Center”). Body: `{ sekret, operation: "tts"|"sfx", text, voiceId?,
+  durationSeconds? }`. Odpowiedź: binarny `audio/mpeg`, albo JSON błędu
+  (401 zły sekret, 400 nieznana operacja).
+- **Sekret** (`DONA_N8N_SHARED_SECRET` w `.env`) — NIE jest kluczem
+  ElevenLabs, tylko hasłem między tym narzędziem a n8n. Trzymany w n8n
+  Data Table `PM_sekrety_wspolne`, wiersz `nazwa=maszynka_szortow_sekret`.
+  Ta sama konwencja co reszta Dony (np. `panel_haslo` dla `dona-tts`).
+- **Klucz ElevenLabs** żyje wyłącznie w istniejącym credentialu n8n „PM
+  Marketing OS — ElevenLabs” (`httpHeaderAuth`, id `7MA9n0mrtChwQk8f`) —
+  tym samym, którego już używają workflow „Webinar ChatGPT — ElevenLabs
+  TTS” i „Zielona Pergola — głos managera”. Nie duplikowano credentiala.
+- **Dlaczego tak, a nie n8n `headerAuth` na samym webhooku:** bo cała
+  reszta webhooków Dony (np. `dona-tts`, `panel-agent`) sprawdza sekret
+  ręcznie w treści żądania, nie przez wbudowaną autoryzację n8n — ten sam
+  wzorzec, żeby nie mieszać dwóch konwencji bezpieczeństwa w jednym
+  systemie.
+- **Funkcje `textToSpeech(text, voiceId)` i `soundEffect(description,
+  durationSeconds)` mają identyczną sygnaturę co przed zmianą** —
+  `server/index.js` nie wymagał żadnej modyfikacji.
 
 ## Co dalej / możliwe rozszerzenia
 
