@@ -32,6 +32,41 @@ npm start               # http://localhost:3000
   z `assets/site.css` (`--paper #f4f5f1`, `--ink #1b201e`, `--blue
   #254bfa`, `--lime #d9f975`, `--pale #e9eddf`).
 
+## Render MP4: najpierw serwer (szybko), ffmpeg.wasm tylko jako zapas (21.09.2026)
+
+Pierwsza wersja renderowała WYŁĄCZNIE w przeglądarce przez ffmpeg.wasm
+(jednowątkowo, programowo) — dla 30-sekundowej rolki 1080×1920 potrafiło to
+trwać wiele minut i **wyglądało jak zawieszona appka** (Piotr zgłosił: „dałem
+generowanie rolki i nic nie ma"). Realny stan: przeglądarka faktycznie
+liczyła (91% CPU), tylko bez widocznego postępu i bardzo wolno.
+
+Naprawione dwa niezależne problemy:
+
+1. **Brak widocznego postępu** — teraz `statusEl` pokazuje żywy licznik przy
+   nagrywaniu (`Nagrywam podgląd: N / total s…`) i realny procent z eventu
+   `ffmpeg.on('progress', ...)` przy konwersji w WASM, zamiast statycznego
+   napisu przez całą operację.
+2. **Sam WASM jest z natury wolny** — `server/render.js` dodaje ścieżkę
+   renderu PO STRONIE SERWERA przez natywny `ffmpeg`, jeśli jest zainstalowany
+   na komputerze, na którym appka działa (sprawdzane przez `hasNativeFfmpeg()`,
+   `ffmpeg -version`). Na tym komputerze `ffmpeg` jest (Homebrew, ze sprzętowym
+   przyspieszeniem) — 30-sekundowa rolka: ~30 s nagrywania (to jest realny
+   czas trwania rolki, nie da się przyspieszyć — to nagranie na żywo canvas+
+   audio) + **~11 s konwersji** (zmierzone), zamiast dziesiątek minut w WASM.
+
+**Kolejność w `public/app.js` (`renderMp4`):** po nagraniu WebM appka najpierw
+próbuje `POST /api/projects/:id/render-native` (webm → serwer → natywny
+ffmpeg → mp4, appka od razu zapisuje kopię w `output/`). Jeśli serwer
+odpowie `501` (brak natywnego ffmpeg na TYM komputerze — appka ma to
+sprawdzać za każdym razem, bo może działać na innym komputerze niż ten, na
+którym budowano), appka **po cichu** wraca do starej ścieżki ffmpeg.wasm —
+zero zmiany zachowania dla kogoś bez zainstalowanego ffmpeg, zgodnie z
+pierwotnym założeniem „nie powinnaś musieć niczego instalować ręcznie poza
+npm install" z `zakres-prac.md`.
+
+`GET /api/config` zwraca dodatkowo `nativeFfmpeg: boolean` (informacyjne,
+front go dziś nie odczytuje — render sam próbuje i się cofa w razie 501).
+
 ## Kluczowa decyzja techniczna: render MP4 bez CDN
 
 `@ffmpeg/ffmpeg`, `@ffmpeg/util` i `@ffmpeg/core` są zainstalowane jako

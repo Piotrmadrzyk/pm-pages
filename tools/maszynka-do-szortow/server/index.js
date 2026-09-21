@@ -15,6 +15,7 @@ import {
   projectAudioDir,
 } from "./store.js";
 import { textToSpeech, soundEffect, defaultVoiceId } from "./elevenlabs.js";
+import { hasNativeFfmpeg, transcodeWebmToMp4 } from "./render.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.join(__dirname, "..", ".env") });
@@ -22,6 +23,7 @@ dotenv.config({ path: path.join(__dirname, "..", ".env") });
 const app = express();
 app.use(express.json({ limit: "10mb" }));
 app.use(express.raw({ type: "video/mp4", limit: "200mb" }));
+app.use(express.raw({ type: "video/webm", limit: "200mb" }));
 
 const PUBLIC_DIR = path.join(__dirname, "..", "public");
 const OUTPUT_DIR = path.join(__dirname, "..", "output");
@@ -36,8 +38,8 @@ app.use("/vendor/ffmpeg-core", express.static(path.join(NODE_MODULES, "@ffmpeg",
 
 // --- Projects ---
 
-app.get("/api/config", (req, res) => {
-  res.json({ defaultVoiceId: defaultVoiceId() });
+app.get("/api/config", async (req, res) => {
+  res.json({ defaultVoiceId: defaultVoiceId(), nativeFfmpeg: await hasNativeFfmpeg() });
 });
 
 app.get("/api/projects", async (req, res, next) => {
@@ -219,7 +221,37 @@ app.get("/api/audio/:projectId/:filename", async (req, res, next) => {
   }
 });
 
+// --- Render: przegladarka wysyla surowy WebM, serwer konwertuje natywnym
+// ffmpeg (szybko, jesli jest zainstalowany) i od razu zapisuje wynik ---
+
+app.post("/api/projects/:id/render-native", async (req, res, next) => {
+  try {
+    const project = await getProject(req.params.id);
+    if (!project) return res.status(404).json({ error: "Nie znaleziono projektu" });
+    if (!Buffer.isBuffer(req.body) || req.body.length === 0) {
+      return res.status(400).json({ error: "Brak danych wideo (Content-Type: video/webm)" });
+    }
+    if (!(await hasNativeFfmpeg())) {
+      return res.status(501).json({
+        error: "Brak natywnego ffmpeg na tym serwerze — uzyj renderu w przegladarce.",
+        fallback: true,
+      });
+    }
+    const mp4 = await transcodeWebmToMp4(req.body);
+    await fs.mkdir(OUTPUT_DIR, { recursive: true });
+    const safeTitle = (project.title || "rolka").replace(/[^a-z0-9-_]+/gi, "-").toLowerCase();
+    const filename = `${safeTitle}-${Date.now()}.mp4`;
+    await fs.writeFile(path.join(OUTPUT_DIR, filename), mp4);
+    res.setHeader("Content-Type", "video/mp4");
+    res.setHeader("X-Saved-To", `output/${filename}`);
+    res.send(mp4);
+  } catch (err) {
+    next(err);
+  }
+});
+
 // --- Render output: przegladarka wysyla gotowy MP4, zapisujemy lokalnie ---
+// (uzywane tylko jako zapasowa sciezka, gdy renderu natywnego nie ma - patrz wyzej)
 
 app.post("/api/projects/:id/render", async (req, res, next) => {
   try {

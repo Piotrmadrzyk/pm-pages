@@ -448,7 +448,6 @@ async function renderMp4() {
       })
     );
 
-    statusEl.textContent = "Nagrywam podgląd (canvas + audio)…";
     const canvas = document.getElementById("preview-canvas");
     // captureStream(0) = tryb reczny: sami wymuszamy kazda klatke przez
     // requestFrame() po narysowaniu. Automatyczny tryb (captureStream(FPS))
@@ -500,6 +499,7 @@ async function renderMp4() {
           resolve();
           return;
         }
+        statusEl.textContent = `Nagrywam podgląd: ${Math.min(t, total).toFixed(0)} / ${total.toFixed(0)} s…`;
         const entry = timeline.find((e) => t >= e.start && t < e.end) || timeline[0];
         drawScene(ctx, entry.scene, Math.max(0, t - entry.start));
         videoTrack.requestFrame();
@@ -514,44 +514,80 @@ async function renderMp4() {
     await recordingDone;
     await audioCtx.close();
 
-    statusEl.textContent = "Konwertuję do MP4 (ffmpeg.wasm, pierwszy raz może pobrać ~30MB)…";
     const webmBlob = new Blob(chunks, { type: chunks[0]?.type || "video/webm" });
     console.log("[render] chunks:", chunks.length, "size:", webmBlob.size, "type:", webmBlob.type, "recorderMime:", recorder.mimeType);
-    const ffmpeg = await getFfmpeg((msg) => {
-      statusEl.textContent = `ffmpeg: ${msg}`;
-      console.log("[ffmpeg]", msg);
-    });
 
-    await ffmpeg.writeFile("input.webm", await fetchFileFn(webmBlob));
-    const exitCode = await ffmpeg.exec([
-      "-i", "input.webm",
-      "-c:v", "libx264", "-preset", "veryfast", "-crf", "23", "-pix_fmt", "yuv420p",
-      "-c:a", "aac", "-b:a", "128k",
-      "output.mp4",
-    ]);
-    if (exitCode !== 0) {
-      throw new Error(`ffmpeg zakonczyl sie kodem ${exitCode} (zobacz konsole przegladarki)`);
+    // Wolimy render na serwerze przez natywny ffmpeg (dziesiatki razy szybszy,
+    // czesto ze sprzetowym przyspieszeniem) - patrz server/render.js. Jesli tego
+    // komputera/serwera nie ma czym uruchomic (kod 501), appka nie utyka: cicho
+    // wraca do sprawdzonej sciezki ffmpeg.wasm w przegladarce (dziala wszedzie,
+    // ale jednowatkowo i wolniej - dla dluzszej rolki moze to potrwac minuty).
+    let mp4Blob = null;
+    let savedServerSide = false;
+    statusEl.textContent = "Konwertuję do MP4 (próbuję szybkiego renderu na serwerze)…";
+    try {
+      const nativeRes = await fetch(`/api/projects/${p.id}/render-native`, {
+        method: "POST",
+        headers: { "Content-Type": "video/webm" },
+        body: webmBlob,
+      });
+      if (nativeRes.ok) {
+        mp4Blob = await nativeRes.blob();
+        savedServerSide = true;
+      } else if (nativeRes.status !== 501) {
+        const body = await nativeRes.json().catch(() => ({}));
+        throw new Error(body.error || `Render serwerowy: błąd ${nativeRes.status}`);
+      }
+      // 501 = brak natywnego ffmpeg na serwerze -> celowo lecimy dalej do WASM.
+    } catch (err) {
+      console.warn("[render] serwerowy render nieudany, wracam do ffmpeg.wasm:", err);
     }
-    const data = await ffmpeg.readFile("output.mp4");
-    const mp4Blob = new Blob([data.buffer], { type: "video/mp4" });
+
+    if (!mp4Blob) {
+      statusEl.textContent = "Konwertuję do MP4 (ffmpeg.wasm w przeglądarce, pierwszy raz może pobrać ~30MB)…";
+      const ffmpeg = await getFfmpeg((msg) => console.log("[ffmpeg]", msg));
+      ffmpeg.on("progress", ({ progress }) => {
+        if (Number.isFinite(progress)) {
+          statusEl.textContent = `Konwertuję do MP4 (ffmpeg.wasm): ${Math.round(Math.min(1, Math.max(0, progress)) * 100)}%`;
+        }
+      });
+
+      await ffmpeg.writeFile("input.webm", await fetchFileFn(webmBlob));
+      const exitCode = await ffmpeg.exec([
+        "-i", "input.webm",
+        "-c:v", "libx264", "-preset", "veryfast", "-crf", "23", "-pix_fmt", "yuv420p",
+        "-c:a", "aac", "-b:a", "128k",
+        "output.mp4",
+      ]);
+      if (exitCode !== 0) {
+        throw new Error(`ffmpeg zakonczyl sie kodem ${exitCode} (zobacz konsole przegladarki)`);
+      }
+      const data = await ffmpeg.readFile("output.mp4");
+      mp4Blob = new Blob([data.buffer], { type: "video/mp4" });
+    }
 
     const url = URL.createObjectURL(mp4Blob);
     downloadLink.href = url;
     downloadLink.download = `${slugify(p.title)}.mp4`;
     downloadLink.hidden = false;
 
-    statusEl.textContent = "Zapisuję kopię w output/…";
-    try {
-      await fetch(`/api/projects/${p.id}/render`, {
-        method: "POST",
-        headers: { "Content-Type": "video/mp4" },
-        body: mp4Blob,
-      });
-      statusEl.textContent = "Gotowe! Plik zapisany w output/ i dostępny do pobrania.";
-    } catch {
-      statusEl.textContent = "Gotowe! Pobierz plik (zapis lokalny w output/ się nie udał).";
+    if (savedServerSide) {
+      statusEl.textContent = "Gotowe! Plik zapisany w output/ i dostępny do pobrania (render serwerowy).";
+      statusEl.className = "render-status ok";
+    } else {
+      statusEl.textContent = "Zapisuję kopię w output/…";
+      try {
+        await fetch(`/api/projects/${p.id}/render`, {
+          method: "POST",
+          headers: { "Content-Type": "video/mp4" },
+          body: mp4Blob,
+        });
+        statusEl.textContent = "Gotowe! Plik zapisany w output/ i dostępny do pobrania.";
+      } catch {
+        statusEl.textContent = "Gotowe! Pobierz plik (zapis lokalny w output/ się nie udał).";
+      }
+      statusEl.className = "render-status ok";
     }
-    statusEl.className = "render-status ok";
   } catch (err) {
     console.error("RENDER ERROR", err);
     const msg = err?.message || err?.toString?.() || JSON.stringify(err);
