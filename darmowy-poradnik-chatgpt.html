@@ -539,6 +539,18 @@ ul.zw li, ol.zw li{margin-bottom:.4em;}
 <span class="dzial-tag">Dział 1 · Ustawienia od A do Z</span>
 <h2 class="tytul-rozdzialu"><span class="nr">4</span>Personalizacja i pamięć</h2>
 <p class="lead-r">Ustawienia otwierasz, klikając ikonę profilu → Settings. Ta sekcja to serce personalizacji: jak ChatGPT dopasowuje się do Ciebie.</p>
+<h3>Sześć pojęć, które łatwo pomylić</h3>
+<p>Zanim wejdziesz w ustawienia, rozdziel te sześć rzeczy — mieszają się w głowie najczęściej:</p>
+<div class="tabwrap"><table class="ak-tab">
+<tr><th>Element</th><th>Co oznacza</th></tr>
+<tr><td>Historia rozmów</td><td>Lista zapisanych czatów na koncie — do przeglądania, nie wspólna pamięć wszystkich rozmów naraz.</td></tr>
+<tr><td>Kontekst czatu</td><td>Treść TEJ jednej, bieżącej rozmowy — dlatego „skróć poprzednią wersję" działa tylko w tym samym czacie.</td></tr>
+<tr><td>Pamięć</td><td>Wybrane informacje wykorzystywane do personalizacji poza jednym czatem — nie pełny zapis wszystkiego, co napisałeś.</td></tr>
+<tr><td>Instrukcje użytkownika</td><td>Stałe zasady JAK odpowiadać (język, ton, format) — nie archiwum faktów o Twoich projektach.</td></tr>
+<tr><td>Projekt</td><td>Teczka robocza na powiązane czaty, pliki i instrukcje dla jednego, dłuższego tematu (rozdział 13).</td></tr>
+<tr><td>Czat tymczasowy</td><td>Rozmowa z ograniczonym zapisem i personalizacją, do jednorazowych albo wrażliwych tematów.</td></tr>
+</table></div>
+<p>Jeśli nie wiesz, do którego elementu coś należy, nie włączaj wszystkiego naraz — po prostu podaj informację w bieżącym poleceniu. To najbezpieczniejszy wariant.</p>
 <figure class="zrzut">
 <img src="assets/ebook-gpt/interfejs/f-gptl7-02.jpg" alt="Ustawienia - Personalizacja" loading="lazy">
 <figcaption>Ustawienia → Personalizacja: przełącznik personalizacji, szybkie odpowiedzi i pole instrukcji niestandardowych.</figcaption>
@@ -560,6 +572,7 @@ ul.zw li, ol.zw li{margin-bottom:.4em;}
 </ul>
 <div class="callout uwaga"><b class="lab">Ważne</b>Żeby w pełni usunąć informacje o sobie, trzeba skasować je z: przeszłych i zarchiwizowanych czatów, plików, podsumowania pamięci — oraz odłączyć podłączone aplikacje. Samo wyłączenie pamięci tego nie robi.</div>
 <div class="callout uwaga"><b class="lab">Czego nie wpisywać do pamięci ani instrukcji</b>Custom Instructions i Saved memories mają opisywać JAK ChatGPT ma z Tobą pracować (język, ton, poziom szczegółowości) — nie przechowywać haseł, kluczy dostępu, danych klientów ani innych poufnych faktów firmowych. To pole zapamiętane „na zawsze" w każdej przyszłej rozmowie, nie sejf.</div>
+<div class="callout tip"><b class="lab">Gdy pamięć przeszkadza</b>Nie musisz od razu jej czyścić ani wyłączać na stałe — w pojedynczej rozmowie wystarczy jedno zdanie: „W tej rozmowie zignoruj wcześniejsze informacje o [temat]. Pracujemy wyłącznie na założeniach podanych poniżej." Jeśli problem wraca w kolejnych czatach, dopiero wtedy warto przejrzeć i posprzątać samą listę zapamiętanych informacji.</div>
 <div class="promptbox"><div class="promptbox-top"><span>AUDYT PAMIĘCI</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Pokaż podsumowanie tego, co wiesz o mnie z pamięci i wcześniejszych rozmów.
 Podziel na: fakty stałe, fakty które mogły się zmienić, i te, których nie jesteś pewien.
 Jeśli coś jest nieaktualne, powiedz mi, żebym poprawił to u źródła — nie zgaduj, że nadal jest prawdziwe.</pre></div>
@@ -1234,6 +1247,9 @@ Nie generuj od razu nowej wersji.
 Najpierw wskaż 3–5 konkretnych powodów, dlaczego wynik był słaby względem mojego celu.
 Następnie zaproponuj poprawki i dopiero potem przygotuj nową wersję.
 Zachowaj elementy, które były dobre.</pre></div>
+<h3>Niezależna analiza wymaga osobnej linii</h3>
+<p>Jeśli model pomógł Ci zbudować tekst, a potem prosisz „oceń to krytycznie" w TEJ SAMEJ rozmowie — bywa skłonny bronić własnej wersji albo poprawiać ją zbyt łagodnie. Skopiuj finalny tekst, otwórz nowy czat i poproś o ocenę bez historii powstawania: „Oceń poniższy tekst tak, jakbyś go nie pisał. Wskaż słabe założenia, obietnice bez pokrycia i miejsca do weryfikacji. Nie chwal ogólnie."</p>
+<div class="callout tip"><b class="lab">Nieaktualne założenia w długiej rozmowie</b>Jeśli w trakcie czatu zmieniłeś wcześniejszą decyzję (np. budżet), model może dalej ważyć starą wersję. Unieważnij ją wprost: „Budżet obowiązujący od teraz to [KWOTA]. Wcześniejsza kwota [STARA KWOTA] jest nieaktualna, nie używaj jej." Jeśli takich odwołań robi się dużo, czytelniejszy będzie nowy czat z aktualnym briefem niż kolejne łatanie tego samego.</div>
 </article>
 </div>
 </section>
