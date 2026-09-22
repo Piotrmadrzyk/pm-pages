@@ -316,7 +316,7 @@ ul.zw li, ol.zw li{margin-bottom:.4em;}
     </div>
     <div class="hero-cards">
       <div class="hero-card"><h4>Jak czytać</h4><p>Nie musisz zaczynać od początku. Wejdź od razu do funkcji, której potrzebujesz — spis treści po lewej prowadzi wszędzie jednym kliknięciem.</p></div>
-      <div class="hero-card"><h4>Co jest aktualne</h4><p>Fakty sprawdzone na 5 września 2026 na bazie oficjalnej dokumentacji OpenAI. Tam, gdzie coś zmienia się szybko, zaznaczamy to wprost.</p></div>
+      <div class="hero-card"><h4>Co jest aktualne</h4><p>Fakty sprawdzone i doprecyzowane 22 września 2026 na bazie oficjalnej dokumentacji OpenAI. Tam, gdzie coś zmienia się szybko, zaznaczamy to wprost.</p></div>
     </div>
     <div class="cta-row">
       <a class="btn primary" href="https://akademia.probatum.pl/?free=1">Wypróbuj Akademię za darmo →</a>
@@ -753,7 +753,25 @@ Porównaj koszt abonamentu z realną oszczędnością czasu. Nie uznawaj „wię
 <div class="callout tip"><b class="lab">Schemat oszczędnej pracy</b>Przy większym zadaniu nie zaczynaj od razu w najmocniejszym trybie z jednym gigantycznym poleceniem — to kosztuje więcej niż daje. Trzy tanie kroki: (1) w szybkim trybie doprecyzuj problem — „zadaj mi tylko najważniejsze pytania, zanim cokolwiek napiszesz"; (2) dopiero z kompletem odpowiedzi przejdź do mocniejszego trybu i zleć właściwą pracę; (3) na końcu osobno zleć weryfikację — „wskaż założenia, luki i ryzyka, nie poprawiaj jeszcze tekstu". Jedno wielkie polecenie „napisz mi wszystko" prawie zawsze wychodzi drożej, bo poprawiasz zgadywanie zamiast gotowej pracy.</div>
 <h3>Chronologia rodziny GPT-5.x/GPT-6</h3>
 <p>GPT-5 → GPT-5.1 → GPT-5.2 → GPT-5.3-Codex → GPT-5.4 → GPT-5.5 (pierwszy w pełni retrenowany model bazowy od GPT-4.5, jawnie trenowany „agentic-first") → GPT-5.6 (GA 9.07.2026) → GPT-6 Astra — najnowszy model flagowy.</p>
-<div class="callout uwaga"><b class="lab">Uwaga — dostępność zależy od powierzchni, nie tylko planu</b>Na Plus Astra jest dostępna w Work i Codex, ale NIE w zwykłym oknie czatu — tam nadal domyślnie odpowiada GPT-5.6 Sol. Żeby dostać Astrę w zwykłej rozmowie, potrzebny jest plan Pro. Free i Go nie mają do niej dostępu wcale. Nie zakładaj, że nazwa planu z tej tabeli gwarantuje dostęp w każdym miejscu aplikacji — sprawdź, w którym trybie akurat pracujesz.</div>
+<h3>GPT-6 Astra — co zmienia i kiedy warto jej używać</h3>
+<p>Astra łączy pogłębione rozumowanie z korzystaniem z internetu, aplikacji, plików i komputera. W praktyce: nie tylko opisuje plan, ale potrafi go wykonać — znaleźć informacje, porównać źródła, popracować w dokumentach, przygotować prezentację, przejrzeć stronę i sprawdzić rezultat. To nie osobna aplikacja — to model (silnik) dostępny w wybranych miejscach ChatGPT.</p>
+<div class="callout uwaga"><b class="lab">Uwaga — dostępność zależy od powierzchni, nie tylko planu</b>Na Plus Astra jest dostępna w Work i Codex, ale NIE w zwykłym oknie czatu — tam nadal domyślnie odpowiada GPT-5.6 Sol. Żeby dostać Astrę w zwykłej rozmowie (jako „GPT-6 Pro"), potrzebny jest plan Pro, Business albo Enterprise. Free i Go nie mają do niej dostępu wcale. Jeśli jej nie widzisz — zaktualizuj aplikację i sprawdź, czy pracujesz w Chat, Work czy Codex, zanim uznasz to za błąd.</div>
+<div class="tabwrap"><table class="ak-tab">
+<tr><th>Zwykły czat</th><th>Astra w zadaniu z narzędziami</th></tr>
+<tr><td>Odpowiada na pytanie albo tworzy tekst</td><td>Może zaplanować i wykonać serię czynności prowadzących do rezultatu</td></tr>
+<tr><td>Najczęściej pracuje na treści rozmowy</td><td>Może korzystać z plików, internetu, aplikacji i przeglądarki chmurowej</td></tr>
+<tr><td>Zwykle kończy po jednej odpowiedzi</td><td>Może pracować dłużej, raportować postęp i zatrzymywać się po zgodę</td></tr>
+<tr><td>Daje poradę, co zrobić</td><td>W obsługiwanych środowiskach może wykonać część pracy za Ciebie</td></tr>
+<tr><td>Ty sam sprawdzasz kolejne kroki</td><td>Model sprawdza własny rezultat, ale Ty nadal zatwierdzasz wynik i działania wiążące</td></tr>
+</table></div>
+<p><b>Dobry wybór, gdy:</b> zadanie ma kilka etapów i łatwo pominąć szczegół; wynik ma być gotowy do użycia (raport, arkusz, prezentacja, strona, plan); trzeba połączyć internet, pliki i aplikacje; jakość liczy się bardziej niż szybkość. <b>Nie warto zużywać limitu, gdy:</b> to proste tłumaczenie, krótki mail albo definicja (szybszy tryb wystarczy); nie masz jeszcze ustalonego celu (najpierw doprecyzuj w zwykłym czacie); oczekujesz nieomylności — Astra nadal może źle zinterpretować dane albo poprawnie wykonać zły plan.</p>
+<div class="promptbox"><div class="promptbox-top"><span>ZLEĆ DUŻE ZADANIE ASTRZE</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>CEL: przygotuj gotowy [RAPORT / PREZENTACJĘ / ARKUSZ / STRONĘ].
+MATERIAŁY: korzystaj z [PLIKI / WSKAZANE APLIKACJE / INTERNET].
+ODBIORCA: materiał jest dla [KOGO] i ma pomóc mu [W CZYM].
+KRYTERIA: wynik musi zawierać [LISTA OBOWIĄZKOWA].
+OGRANICZENIA: nie rób [CZEGO]; budżet/czas/zakres wynosi [DANE].
+KONTROLA: najpierw pokaż krótki plan. Zatrzymaj się przed wysłaniem, publikacją, zakupem, usunięciem danych albo inną trudną do cofnięcia czynnością. Na końcu sprawdź wynik względem kryteriów i wypisz, co wymaga mojej decyzji.</pre></div>
+<div class="callout tip"><b class="lab">Jak kontrolować pracę Astry</b>Im bardziej samodzielny model, tym ważniejsza kontrola — nie oceniaj tylko, czy wynik wygląda profesjonalnie. Przed startem zaakceptuj plan i zakres źródeł; przed działaniem zewnętrznym potwierdź odbiorcę, treść, kwotę i datę; po zakończeniu poproś o listę wykonanych kroków, użytych źródeł i nierozstrzygniętych ryzyk. Mocniejszy model zmniejsza liczbę błędów, ale nie przenosi odpowiedzialności z Ciebie na model.</div>
 <h3>Trzy warianty GPT-5.6</h3>
 <div class="tabwrap"><table class="ak-tab">
 <tr><th>Wariant</th><th>Charakter</th></tr>
@@ -763,7 +781,8 @@ Porównaj koszt abonamentu z realną oszczędnością czasu. Nie uznawaj „wię
 </table></div>
 <p>Wszystkie trzy: 1,05 mln tokenów okna kontekstu, 128K tokenów max output.</p>
 <h3>GPT Image 2 — obrazy</h3>
-<p>Następca DALL·E (usuniętego z API 12.05.2026): rozumowanie przy generowaniu, ~99% skuteczność renderowania tekstu (vs ~60% DALL-E 3), 4K, edycja „subject-lock" (zachowanie identyczności obiektu przy zmianie tła/stroju), natywna wielojęzyczność.</p>
+<p>Następca DALL·E (usuniętego z API 12.05.2026): rozumowanie przy generowaniu, natywne 4K, edycja „subject-lock" (zachowanie identyczności obiektu przy zmianie tła/stroju), natywna wielojęzyczność. To osobny model od Astry — nie mylić jednego z drugim, mimo że oba to „najnowsze" produkty OpenAI z tego samego okresu.</p>
+<div class="callout uwaga"><b class="lab">Liczby producenta</b>Parametry typu „~99% skuteczności renderowania tekstu" pochodzą z materiałów promocyjnych producenta, nie z niezależnego testu — traktuj je jako deklarację, nie gwarancję, i sprawdź na własnym przykładzie przed użyciem produkcyjnym.</div>
 <div class="callout uwaga"><b class="lab">Sora — wygaszana</b>API Sora ma zostać wygaszone 24 września 2026. Nie ucz się jej jako aktywnej funkcji — zweryfikuj status przed użyciem.</div>
 <h3>Pięć elementów dobrego promptu obrazkowego</h3>
 <p>Przedmiot (co/kto), styl (fotografia, akwarela, 3D, minimalizm), oświetlenie, kompozycja/kadr i nastrój.</p>
@@ -797,6 +816,17 @@ Proporcje: [1:1 / 16:9 / 9:16]. Przygotuj jedną wersję, a na końcu wypisz, kt
 <span class="dzial-tag">Dział 2 · Plany, modele, tryby</span>
 <h2 class="tytul-rozdzialu"><span class="nr">10</span>ChatGPT Work</h2>
 <p class="lead-r">To najbardziej przebudowana część produktu w 2026 roku — tryb/doświadczenie wewnątrz Twojego istniejącego planu, nie osobna subskrypcja. Dostęp zależy od tego, jaki plan już masz (Plus i wyżej), nie od dodatkowej opłaty.</p>
+<h3>Pięć poziomów działania ChatGPT</h3>
+<p>Zanim zdecydujesz, czy potrzebujesz Work, zobacz gdzie on właściwie leży. Nie każdy problem wymaga najwyższego poziomu — zacznij od najprostszego, który go rozwiązuje.</p>
+<div class="tabwrap"><table class="ak-tab">
+<tr><th>Poziom</th><th>Co się dzieje</th><th>Przykład</th></tr>
+<tr><td>1. Rozmowa</td><td>Pytasz teraz, dostajesz odpowiedź teraz</td><td>Napisz mail z odpowiedzią na reklamację</td></tr>
+<tr><td>2. Narzędzie</td><td>ChatGPT korzysta z Search, pliku, obrazu, analizy danych</td><td>Porównaj trzy oferty z załączonych PDF-ów</td></tr>
+<tr><td>3. Agent / Work</td><td>Podajesz cel, model planuje i wykonuje kilka kroków</td><td>Znajdź dane, przygotuj prezentację, sprawdź ją</td></tr>
+<tr><td>4. Zadanie czasowe</td><td>Wykonanie później albo cyklicznie (rozdział 15)</td><td>W każdy poniedziałek o 8:00 przygotuj raport</td></tr>
+<tr><td>5. Zadanie zdarzeniowe</td><td>Uruchamia się, gdy coś wydarzy się w aplikacji (rozdział 15)</td><td>Gdy przyjdzie nowy mail z formularza, oceń leada</td></tr>
+</table></div>
+<p>Reguła wyboru: jeśli praca ma być wykonana raz i od razu — czat albo Work. Jeśli ma wracać według kalendarza — zadanie zaplanowane. Jeśli ma reagować na zdarzenie w innej aplikacji — zadanie zdarzeniowe.</p>
 <figure class="zrzut">
 <img src="assets/ebook-gpt/interfejs/f-gptl2-11.jpg" alt="ChatGPT proponuje przejście na Work" loading="lazy">
 <figcaption>Tak ChatGPT sam proponuje przejście na tryb Work — to inny sposób pracy w tym samym planie, nie osobny produkt do dokupienia.</figcaption>
@@ -814,6 +844,34 @@ KRYTERIA JAKOŚCI: [CO MUSI BYĆ PRAWDĄ, ŻEBY WYNIK BYŁ DOBRY].
 OGRANICZENIA: [BUDŻET / CZAS / ZAKRES / CZEGO NIE ROBIĆ].
 Przed rozpoczęciem: 1. rozbij pracę na etapy, 2. wskaż ryzyka i zależności, 3. zaplanuj punkty kontroli, przy których potrzebujesz mojego zatwierdzenia.
 Jeśli którejś z powyższych informacji brakuje — zapytaj, zanim zaczniesz, zamiast zakładać.</pre></div>
+<h3>Jak zlecić pierwszą pracę w Work — krok po kroku</h3>
+<ol class="zw">
+<li>Otwórz nową rozmowę i wybierz tryb Work. Jeśli go nie widzisz — sprawdź plan, aktualizację aplikacji i dostępność regionalną.</li>
+<li>Napisz, co ma konkretnie powstać — „prezentacja 12 slajdów", nie ogólne „zajmij się marketingiem".</li>
+<li>Dodaj źródła: pliki, folder z Library albo połączoną aplikację. Powiedz, które materiały są najważniejsze.</li>
+<li>Podaj odbiorcę, ograniczenia i kryteria jakości.</li>
+<li>Poproś o plan i wskaż punkty wymagające Twojej zgody, zanim model zacznie.</li>
+<li>Obserwuj postęp — możesz dopisać instrukcję, zawęzić zakres albo zatrzymać zadanie w trakcie.</li>
+<li>Odbierz plik i sprawdź go jak pracę człowieka: treść, liczby, źródła, wygląd, kompletność.</li>
+</ol>
+<div class="promptbox"><div class="promptbox-top"><span>PRZYKŁAD: PREZENTACJA DLA MAŁEJ FIRMY</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Przygotuj prezentację sprzedażową mojej usługi budowy stron internetowych. Użyj załączonego cennika, trzech realizacji i opisu klienta.
+Prezentacja ma mieć 10-12 slajdów, prosty język i wyraźne wezwanie do rozmowy. Nie wymyślaj wyników, referencji ani terminów realizacji.
+Najpierw zaproponuj układ slajdów. Po mojej akceptacji przygotuj edytowalny plik i na końcu sprawdź, czy każda informacja pochodzi z materiałów albo jest wyraźnie oznaczona jako propozycja.</pre></div>
+<h3>Agent w praktyce — z czego składa się dobre zlecenie</h3>
+<p>Agent to model, który dostaje wirtualną przeglądarkę i „ręce": otwiera stronę, czyta, klika, wypełnia formularz. Nie zna automatycznie Twoich zasad ani budżetu — potrzebuje jasno opisanego rezultatu i granic.</p>
+<div class="tabwrap"><table class="ak-tab">
+<tr><th>Element</th><th>Pytanie pomocnicze</th><th>Przykład</th></tr>
+<tr><td>Cel</td><td>Co dokładnie ma powstać?</td><td>Tabela 20 potencjalnych klientów z uzasadnieniem</td></tr>
+<tr><td>Źródła</td><td>Gdzie wolno szukać?</td><td>Strony firm, połączony Drive i CRM</td></tr>
+<tr><td>Warunki</td><td>Co musi się zgadzać?</td><td>Firma sprzedaje szkolenia online w Polsce</td></tr>
+<tr><td>Granice</td><td>Czego agent nie może zrobić?</td><td>Nie wysyłaj wiadomości i nie zmieniaj CRM</td></tr>
+<tr><td>Punkt zgody</td><td>Przed czym ma się zatrzymać?</td><td>Przed dodaniem rekordu albo wysłaniem maila</td></tr>
+<tr><td>Kontrola</td><td>Jak sprawdzić wynik?</td><td>Każdy lead ma źródło, stronę i powód kwalifikacji</td></tr>
+</table></div>
+<div class="callout uwaga"><b class="lab">Przeglądarka chmurowa</b>W Work agent może dostać osobną przeglądarkę działającą na komputerze w chmurze — ma własne cookies i sesje, NIE korzysta z logowania w Twoim Safari/Chrome. Hasło wpisuj tylko w bezpiecznym formularzu logowania, nigdy w treści rozmowy. Gdy potrzebne jest logowanie, kod dwuskładnikowy albo potwierdzenie ważnej czynności, praca się zatrzymuje — możesz przejąć przeglądarkę ręcznie. Niektóre serwisy blokują automatyczne przeglądarki; wtedy zadania nie da się dokończyć tą drogą.</div>
+<div class="promptbox"><div class="promptbox-top"><span>PIERWSZE BEZPIECZNE ZADANIE AGENTOWE</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Znajdź trzy firmy w [MIASTO] oferujące [USŁUGA]. Dla każdej zapisz nazwę, adres strony, ofertę, dane kontaktowe widoczne publicznie i jednozdaniowe uzasadnienie dopasowania.
+Nie kontaktuj się z firmami, nie wypełniaj formularzy i nie zapisuj danych w żadnej aplikacji.
+Na końcu pokaż tabelę ze źródłami i zaznacz informacje, których nie udało się potwierdzić.</pre></div>
 </article>
 </div>
 </section>
@@ -947,11 +1005,13 @@ Najpierw pokaż plan badania. Po akceptacji przygotuj raport z: faktami, rozbie�
 <article class="rozdzial" id="r15">
 <span class="dzial-tag">Dział 3 · Codzienna praca</span>
 <h2 class="tytul-rozdzialu"><span class="nr">15</span>Zaplanowane zadania</h2>
-<p class="lead-r">ChatGPT może wykonywać zadania później, cyklicznie albo obserwować warunek.</p>
+<p class="lead-r">Najprostsza automatyzacja w ChatGPT nie wymaga n8n, kodu ani serwera. Podajesz, co ma się wydarzyć i kiedy — reszta dzieje się bez Ciebie.</p>
 <ol class="zw">
 <li>Przejdź do sekcji Scheduled w menu bocznym (web lub mobile).</li>
-<li>Poproś o czynność zawierającą czas lub powtarzalność, np. „Codziennie w dni robocze o 8:00 podsumuj najważniejsze wiadomości AI z ostatnich 24h."</li>
-<li>ChatGPT pokaże kartę potwierdzenia harmonogramu — potwierdzasz.</li>
+<li>Napisz polecenie zawierające czynność, dokładny termin i oczekiwany wynik, np. „Codziennie w dni robocze o 8:00 podsumuj najważniejsze wiadomości AI z ostatnich 24h."</li>
+<li>Sprawdź kartę harmonogramu — datę, godzinę, strefę czasową i częstotliwość — i potwierdź.</li>
+<li>Wejdź do Scheduled, żeby zobaczyć następne uruchomienie; w Ustawienia → Powiadomienia wybierz Push, e-mail albo obie opcje.</li>
+<li>Po pierwszym wykonaniu oceń wynik. Jeśli coś nie pasuje — edytuj ten sam prompt albo harmonogram, zamiast tworzyć duplikat zadania.</li>
 </ol>
 <div class="tabwrap"><table class="ak-tab">
 <tr><th>Plan</th><th>Aktywne zadania</th><th>Częstotliwość</th></tr>
@@ -960,10 +1020,33 @@ Najpierw pokaż plan badania. Po akceptacji przygotuj raport z: faktami, rozbie�
 <tr><td>Business / Edu</td><td>10</td><td>do raz na godzinę</td></tr>
 <tr><td>Pro / Enterprise</td><td>15</td><td>do raz na godzinę</td></tr>
 </table></div>
-<p>Zarządzanie: sekcja Scheduled, Settings → Notifications → „Manage tasks", albo bezpośrednio chatgpt.com/schedules.</p>
+<p>Zarządzanie: sekcja Scheduled, Settings → Notifications → „Manage tasks", albo bezpośrednio chatgpt.com/schedules. Jeśli zmieniasz kraj albo strefę czasową, sprawdź godzinę następnego uruchomienia — potrafi się przesunąć.</p>
+<div class="callout uwaga"><b class="lab">Dobre zadanie cykliczne rozpoznasz po tym</b>Ma jednoznaczny harmonogram albo warunek czasowy; za każdym razem wykorzystuje podobną procedurę; wynik da się szybko ocenić; nie wymaga za każdym razem ryzykownej decyzji bez człowieka; oszczędza więcej czasu, niż zajmuje kontrola powiadomień.</div>
 <div class="promptbox"><div class="promptbox-top"><span>COTYGODNIOWY RAPORT</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>W każdy poniedziałek rano przygotuj krótki raport z najważniejszych zmian w [BRANŻA / TEMAT] z poprzednich 7 dni.
 Uwzględnij tylko informacje, które mogą wpłynąć na [MÓJ CEL]. Dla każdej informacji podaj źródło i datę.
 Na końcu dodaj sekcję: „Co warto zrobić w tym tygodniu".</pre></div>
+<div class="promptbox"><div class="promptbox-top"><span>PORANNY PLAN</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>W każdy dzień roboczy o 7:30 poproś mnie o trzy najważniejsze zadania na dziś.
+Gdy odpowiem, ułóż realistyczny plan dnia z jedną przerwą i wskaż zadanie, które najlepiej usunąć, jeśli zabraknie czasu.</pre></div>
+<h3>Gdy automatyzacja reaguje na zdarzenie, nie na zegar</h3>
+<p>Automatyzacja czasowa uruchamia się o określonej porze. <b>Automatyzacja zdarzeniowa</b> uruchamia się, gdy coś wydarzy się w połączonej aplikacji: nowy mail w Gmailu, wiadomość na wskazanym kanale Slacka, aktywność przy pull requeście na GitHubie. Do tego potrzebny jest ChatGPT Work (rozdział 10), kwalifikujący się plan i podłączona aplikacja — zadanie widzi tylko to, co widać z tego konta.</p>
+<div class="tabwrap"><table class="ak-tab">
+<tr><th>Część</th><th>Znaczenie</th><th>Przykład</th></tr>
+<tr><td>Trigger</td><td>Co uruchamia zadanie</td><td>Nowy mail w Gmailu</td></tr>
+<tr><td>Condition</td><td>Które zdarzenia obsłużyć</td><td>Mail zawiera „zapytanie ofertowe"</td></tr>
+<tr><td>Prompt</td><td>Co ChatGPT ma zrobić</td><td>Streść potrzebę, oceń kompletność, przygotuj szkic odpowiedzi</td></tr>
+</table></div>
+<div class="callout tip"><b class="lab">Zacznij od obserwacji, nie od działania</b>Na początku nie pozwalaj automatyzacji niczego wysyłać — niech tylko analizuje i przygotowuje szkic. Zobaczysz, czy poprawnie rozpoznaje sprawy, zanim jej zaufasz. Bezpieczne zwiększanie autonomii: (1) obserwacja — czyta i klasyfikuje; (2) szkic — proponuje, niczego nie wysyła; (3) zapis roboczy — tworzy draft do zatwierdzenia; (4) działanie niskiego ryzyka — wykonuje odwracalne kroki wg ścisłych reguł; (5) działanie wysokiego ryzyka (wysyłka, publikacja, płatność, usunięcie) — tego nie automatyzuj bez potwierdzenia człowieka, nigdy.</div>
+<div class="promptbox"><div class="promptbox-top"><span>PIERWSZA AUTOMATYZACJA MAILOWA BEZ RYZYKA</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>TRIGGER: nowa wiadomość w połączonym Gmailu.
+WARUNEK: wiadomość dotyczy zapytania o [USŁUGA]. Pomiń newslettery i automatyczne potwierdzenia.
+DZIAŁANIE: przygotuj notatkę z nazwą nadawcy, firmą, potrzebą, terminem, budżetem, brakującymi informacjami i oceną pilności. Napisz szkic odpowiedzi z maksymalnie 5 pytaniami uzupełniającymi.
+ZASADA BEZPIECZEŃSTWA: nie wysyłaj maila, nie dodawaj kontaktu do CRM i nie obiecuj ceny ani terminu. Zatrzymaj się na szkicu do mojego zatwierdzenia.</pre></div>
+<p>Uruchomienie: połącz Gmail w Ustawienia → Apps, opisz trigger/warunek/działanie w Work, ustaw uprawnienia zachowawczo (odczyt + zgoda przed działaniem), wyślij sobie testowy mail spełniający warunek i sprawdź, czy zadanie nie zareagowało na coś innego ani nie zmyśliło danych. Dopiero po kilku poprawnych testach rozważ kolejny krok.</p>
+<h3>Zanim zbudujesz automatyzację — najpierw opisz proces</h3>
+<p>Najczęstszy błąd to pytanie „jakiego agenta zbudować?" zamiast opisania, jak dana praca wygląda dziś, wykonywana przez człowieka. Automatyzacja nie naprawia chaotycznego procesu — wykonuje ten sam chaos szybciej.</p>
+<div class="promptbox"><div class="promptbox-top"><span>ZAPROJEKTUJ AUTOMATYZACJĘ ZE MNĄ</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Pomóż mi zaprojektować prostą automatyzację w ChatGPT bez kodowania. Najpierw zapytaj, jak wykonuję tę pracę dzisiaj.
+Następnie opisz: trigger, dane wejściowe, warunki, kolejne kroki, wynik, punkt zatwierdzenia, możliwe błędy i sposób testu.
+Wybierz najprostszy wariant: zadanie czasowe, zadanie zdarzeniowe w Work albo zwykły agent jednorazowy. Nie proponuj płatnego narzędzia zewnętrznego, jeśli da się to zrobić funkcją mojego planu ChatGPT.
+Na końcu daj mi jedno gotowe polecenie do wklejenia oraz test kontrolny.</pre></div>
 </article>
 </div>
 </section>
@@ -1084,7 +1167,7 @@ Jeśli czegoś nie ma w jednym z plików, napisz "brak zapisu" — nie uznawaj m
 <img src="assets/ebook-gpt/interfejs/f-gptl18-06.jpg" alt="Strona Codex na chatgpt.com" loading="lazy">
 <figcaption>Strona Codex na chatgpt.com.</figcaption>
 </figure>
-<p>Jeśli nie programujesz, prawdopodobnie nie skorzystasz z tego bezpośrednio — ale warto wiedzieć, że istnieje, bo to on stoi za funkcją ChatGPT Work (rozdział 10).</p>
+<p>Jeśli nie programujesz, prawdopodobnie nie skorzystasz z tego bezpośrednio — ale warto wiedzieć, że istnieje. Codex i Work (rozdział 10) to odrębne tryby w tej samej aplikacji — mogą korzystać z tych samych modeli i narzędzi, ale jeden nie „stoi za" drugim: Codex jest wyspecjalizowany w kodzie, Work w reszcie pracy biurowej.</p>
 <h3>Powierzchnie dostępu</h3>
 <ul class="zw">
 <li>CLI w terminalu; rozszerzenie VS Code i JetBrains.</li>
@@ -1125,6 +1208,9 @@ Na końcu podaj listę zmienionych plików.</pre></div>
 <li>Zgodność: SOC 2 Type 2, szyfrowanie danych w tranzycie i w spoczynku, ISO/IEC 27001:2022.</li>
 <li>Rezydencja danych: USA, Europa, Wielka Brytania, Japonia.</li>
 </ul>
+<h3>Agent firmowy — powtarzalny proces dla zespołu</h3>
+<p>W przestrzeniach Business i Enterprise można skonfigurować agenta do powtarzalnego procesu zespołu: stałe instrukcje, wybrany model, dozwolone aplikacje i narzędzia, zasady udostępniania. Można go przetestować przed publikacją i uruchamiać ręcznie, według harmonogramu, przez API albo w Slacku. Przykłady: notatka po spotkaniu, kwalifikacja leadów, kompletowanie dokumentów dostawcy, obsługa wniosków zakupowych, kontrola zgodności materiału z procedurą, cotygodniowy raport z kilku systemów.</p>
+<div class="callout uwaga"><b class="lab">To nie to samo co odegranie roli w promptcie</b>Agent firmowy jest skonfigurowanym, udostępnianym narzędziem z dostępem do konkretnych aplikacji i działań — administrator decyduje, kto go widzi, jakich danych używa i co wolno mu zrobić. Dla osoby prywatnej albo małej firmy bez workspace Business najprostszym punktem startu pozostają Work, zaplanowane zadania i połączone aplikacje (rozdziały 10, 15 i 7) — nie trzeba od razu budować firmowego agenta.</div>
 </article>
 </div>
 </section>
@@ -1190,13 +1276,13 @@ Dla zmiennych lub ważnych faktów użyj aktualnych źródeł. Jeżeli źródła
 
 <div class="pojecie"><h4>Context window (okno kontekstu)</h4><p>To „ile model pamięta naraz" w trakcie jednej rozmowy, mierzone w tokenach. Porównanie: biurko — im większe okno, tym więcej dokumentów model może mieć „rozłożonych" jednocześnie. Gdy rozmowa przekroczy okno kontekstu, najstarsze fragmenty „spadają z biurka".</p></div>
 
-<div class="pojecie"><h4>Prompt i system prompt</h4><p><b>Prompt</b> to po prostu Twoje polecenie wpisane do modelu. „Dobry prompt" jasno mówi, czego chcesz, w jakim kontekście i w jakiej formie ma odpowiedzieć. <b>System prompt</b> to najbardziej fundamentalna, ukryta warstwa instrukcji — ustawiana przez OpenAI (i czasem twórcę Custom GPT), której zwykły użytkownik nie widzi ani nie edytuje. To coś innego niż <b>Custom Instructions</b>: Twoje własne, jawne ustawienie w Twoich ustawieniach, które działa jako warstwa NAD system promptem, nie zamiast niego — obie warstwy obowiązują jednocześnie, przez całą rozmowę.</p></div>
+<div class="pojecie"><h4>Prompt i system prompt</h4><p><b>Prompt</b> to po prostu Twoje polecenie wpisane do modelu. „Dobry prompt" jasno mówi, czego chcesz, w jakim kontekście i w jakiej formie ma odpowiedzieć. <b>System prompt</b> to najbardziej fundamentalna, ukryta warstwa instrukcji — ustawiana przez OpenAI (i czasem twórcę Custom GPT), której zwykły użytkownik nie widzi ani nie edytuje. To coś innego niż <b>Custom Instructions</b>: Twoje własne, jawne ustawienie w ustawieniach konta. Obie warstwy obowiązują jednocześnie przez całą rozmowę, ale w razie konfliktu instrukcje systemowe i deweloperskie mają pierwszeństwo — Custom Instructions to warstwa niższa, nie nadrzędna.</p></div>
 
 <div class="pojecie"><h4>Halucynacja</h4><p>Sytuacja, w której model podaje informację brzmiącą pewnie i wiarygodnie, która jest fałszywa lub zmyślona. Dzieje się tak, bo model nie „sprawdza faktów" w bazie danych — przewiduje najbardziej prawdopodobny kolejny fragment tekstu. Dlatego zawsze warto sprawdzać ważne fakty.</p></div>
 
 <div class="pojecie"><h4>Reasoning effort („myślenie")</h4><p>Ile czasu i wewnętrznych kroków rozumowania model poświęca, zanim odpowie. Niski poziom = szybka odpowiedź „z marszu"; wysoki = model dłużej „myśli" wewnętrznie, kosztem czasu, ale zyskiem dokładności przy trudnych zadaniach.</p></div>
 
-<div class="pojecie"><h4>Agent (czym różni się od zwykłego czatu)</h4><p>W zwykłym czacie model tylko rozmawia z Tobą tekstem. „Agent" to model, który dostaje wirtualną przeglądarkę i „ręce" — robi zrzuty ekranu strony, klika przyciski, wypełnia formularze, może dokonać zakupu czy zaplanować powtarzalne zadanie. Działa za Ciebie, a nie tylko doradza.</p></div>
+<div class="pojecie"><h4>Agent (czym różni się od zwykłego czatu)</h4><p>W zwykłym czacie model tylko rozmawia z Tobą tekstem. „Agent" to model, który dostaje wirtualną przeglądarkę i „ręce" — robi zrzuty ekranu strony, klika przyciski, wypełnia formularze i może zaplanować powtarzalne zadanie. Działania wiążące (zakup, wysyłka, publikacja, usunięcie danych) wymagają Twojego potwierdzenia i zależą od tego, czy dana witryna w ogóle na nie pozwala, jakie masz uprawnienia i w jakim jesteś regionie — agent nie robi tego w pełni samodzielnie.</p></div>
 
 <div class="pojecie"><h4>MCP / connector</h4><p>MCP (Model Context Protocol) to rodzaj „uniwersalnego gniazdka" (jak USB-C dla danych), które pozwala modelowi bezpiecznie łączyć się z zewnętrznymi programami i danymi bez budowania osobnego połączenia dla każdej aplikacji. „Connector" (albo „App") to konkretne, gotowe podłączenie zbudowane na tym standardzie.</p></div>
 
@@ -3188,7 +3274,7 @@ ZACZYNAJ TERAZ od etapu 1. Zadaj mi pierwsze pytanie i czekaj.</pre></div>
   </div>
 </section>
 
-<div class="footer-note">Wersja: 22.09.2026 · Poradnik Akademii AI Probatum · źródła funkcji: oficjalna dokumentacja OpenAI, stan na 5 września 2026.</div>
+<div class="footer-note">Wersja: 22.09.2026 · Poradnik Akademii AI Probatum · źródła funkcji: oficjalna dokumentacja OpenAI, stan na 22 września 2026.</div>
 
 <button class="print-btn" id="printBtn">⬇ Pobierz jako PDF</button>
 
