@@ -189,10 +189,56 @@ ul.zw li, ol.zw li{margin-bottom:.4em;}
 .cta-final .cta-row{justify-content:center;}
 .footer-note{padding:26px 0; text-align:center; color:var(--dim-2); font-size:12.5px;}
 
+/* Spis treści — tylko do druku */
+.print-toc{display:none;}
+
+/* ===== Druk / PDF: wygląd papierowego podręcznika ===== */
 @media print{
-  .side,.menu-otw,.zaslona,.skip,.cta-row,.print-btn{display:none!important;}
-  body{padding-left:0!important;}
-  .hero{background:#12261E!important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  @page{ size:A4; margin:16mm 15mm; }
+
+  .side,.menu-otw,.zaslona,.skip,.cta-row,.print-btn,.hero-cards{display:none!important;}
+  body{padding-left:0!important; font-size:11.5pt; line-height:1.5; color:#1B241E;}
+  a{color:inherit!important; text-decoration:none;}
+  .wrap{max-width:none; padding:0;}
+  img{max-width:100%;}
+
+  /* Okładka: bez pełnokolorowego tła (oszczędza atrament, czytelne czarno-białe) */
+  .hero{background:none!important; color:var(--tekst)!important; padding:0 0 10mm; border-bottom:2px solid var(--z-600); margin-bottom:10mm;}
+  .hero .eyebrow{color:var(--z-700)!important;}
+  .hero h1{color:var(--tekst)!important; font-size:26pt;}
+  .hero h1 .accent{color:var(--z-700)!important;}
+  .hero .lead{color:var(--lead)!important;}
+  .badge{background:var(--z-050)!important; color:var(--z-800)!important; border:1px solid var(--line-2); -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+
+  /* Spis treści na osobnej stronie, zaraz po okładce */
+  .print-toc{display:grid!important; grid-template-columns:1fr 1fr; gap:0 24px; page-break-after:always; break-after:page; padding-top:4mm;}
+  .print-toc h2{grid-column:1/-1; font-size:20pt; margin-bottom:6mm;}
+  .toc-grp{font-family:var(--f-mono); font-size:9.5pt; letter-spacing:.08em; text-transform:uppercase; color:var(--z-700); margin:9px 0 3px;}
+  .toc-grp:first-child{margin-top:0;}
+  .toc-item{font-size:10.5pt; padding:2.5px 0; border-bottom:1px dotted var(--line-2);}
+
+  section.section, section.section.alt{background:none!important;}
+
+  /* Jeden rozdział = nowa strona */
+  .rozdzial{page-break-before:always; break-before:page;}
+  #r1{page-break-before:avoid; break-before:avoid;}
+
+  h2,h3,h4{page-break-after:avoid; break-after:avoid;}
+  .promptbox,.zrzut,.pojecie,.przed-po,.kroki,.gallery,.callout,.tabwrap,table,figure,.lib-card,ul,ol,.toc-item{
+    page-break-inside:avoid; break-inside:avoid;}
+
+  .promptbox-copy{display:none!important;}
+  .promptbox-top{padding:8px 14px;}
+  .promptbox-top span{font-size:9.5pt;}
+  .promptbox pre{font-size:10pt; padding:12px 14px;}
+
+  /* Strona końcowa: zamknięcie bez przycisków, czytelne na papierze */
+  .cta-final{background:none!important; color:var(--tekst)!important; padding:0; text-align:left;
+    page-break-before:always; break-before:page; border-top:2px solid var(--z-600); padding-top:10mm;}
+  .cta-final .section-eyebrow{color:var(--z-700)!important;}
+  .cta-final h2{color:var(--tekst)!important;}
+  .cta-final p{color:var(--lead)!important; max-width:none; margin:0 0 1em;}
+  .footer-note{text-align:left; padding:10mm 0 0; color:var(--dim);}
 }
 .print-btn{position:fixed; bottom:22px; right:22px; z-index:90; background:#fff; border:1px solid var(--line-2);
   border-radius:100px; padding:11px 20px; font:700 13.5px var(--f); color:var(--tekst); box-shadow:var(--cien-2); cursor:pointer;}
@@ -278,6 +324,53 @@ ul.zw li, ol.zw li{margin-bottom:.4em;}
     </div>
   </div>
 </section>
+
+<div class="print-toc">
+  <h2>Spis treści</h2>
+  <div class="toc-col">
+    <div class="toc-grp">Start i konto</div>
+    <div class="toc-item"><b>1.</b> Czym jest ChatGPT, konto</div>
+    <div class="toc-item"><b>2.</b> Ekran główny</div>
+    <div class="toc-item"><b>3.</b> Rozmowa, edycja, foldery</div>
+    <div class="toc-grp">Ustawienia</div>
+    <div class="toc-item"><b>4.</b> Personalizacja i pamięć</div>
+    <div class="toc-item"><b>5.</b> Głos</div>
+    <div class="toc-item"><b>6.</b> Bezpieczeństwo i dane</div>
+    <div class="toc-item"><b>7.</b> Aplikacje i konektory</div>
+    <div class="toc-grp">Plany i modele</div>
+    <div class="toc-item"><b>8.</b> Plany i ceny</div>
+    <div class="toc-item"><b>9.</b> Modele: GPT-6, obrazy</div>
+    <div class="toc-item"><b>10.</b> ChatGPT Work</div>
+    <div class="toc-item"><b>11.</b> Study Mode</div>
+    <div class="toc-grp">Codzienna praca</div>
+    <div class="toc-item"><b>12.</b> Custom GPT</div>
+    <div class="toc-item"><b>13.</b> Projekty</div>
+    <div class="toc-item"><b>14.</b> Search i Deep Research</div>
+    <div class="toc-item"><b>15.</b> Zaplanowane zadania</div>
+    <div class="toc-item"><b>16.</b> Canvas</div>
+    <div class="toc-item"><b>17.</b> Pliki i analiza danych</div>
+  </div>
+  <div class="toc-col">
+    <div class="toc-grp">Więcej platform</div>
+    <div class="toc-item"><b>18.</b> Aplikacje mobilne, desktop</div>
+    <div class="toc-item"><b>19.</b> Codex</div>
+    <div class="toc-item"><b>20.</b> Dla firm i deweloperów</div>
+    <div class="toc-grp">Szerszy kontekst</div>
+    <div class="toc-item"><b>21.</b> Weryfikacja i halucynacje</div>
+    <div class="toc-item"><b>22.</b> Słowniczek pojęć</div>
+    <div class="toc-grp">Prompty</div>
+    <div class="toc-item"><b>23.</b> Formuła dobrego promptu</div>
+    <div class="toc-item"><b>24.</b> Zastosowania wg profesji</div>
+    <div class="toc-item"><b>25.</b> Case study: marketing</div>
+    <div class="toc-item"><b>26.</b> Case study: biuro</div>
+    <div class="toc-item"><b>27.</b> Gdy GPT daje słaby wynik</div>
+    <div class="toc-grp">Na koniec</div>
+    <div class="toc-item"><b>28.</b> Subskrypcja i płatności</div>
+    <div class="toc-item"><b>29.</b> FAQ</div>
+    <div class="toc-grp">Biblioteka</div>
+    <div class="toc-item"><b>30.</b> 18 gotowych promptów</div>
+  </div>
+</div>
 
 <section class="section" id="czym-jest">
   <div class="wrap">
@@ -2939,7 +3032,7 @@ ZACZYNAJ TERAZ od etapu 1. Zadaj mi pierwsze pytanie i czekaj.</pre></div>
   </div>
 </section>
 
-<div class="footer-note">Wersja: 22.09.2026 · Poradnik Akademii AI Probatum · źródła funkcji: oficjalna dokumentacja OpenAI (openai.com, help.openai.com, developers.openai.com), stan na 5 września 2026.</div>
+<div class="footer-note">Wersja: 22.09.2026 · Poradnik Akademii AI Probatum · źródła funkcji: oficjalna dokumentacja OpenAI, stan na 5 września 2026.</div>
 
 <button class="print-btn" id="printBtn">⬇ Pobierz jako PDF</button>
 
