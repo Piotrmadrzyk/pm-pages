@@ -518,13 +518,14 @@ ul.zw li, ol.zw li{margin-bottom:.4em;}
 </ul>
 <h3>Organizacja rozmów</h3>
 <ul class="zw">
-<li><b>Wyszukiwanie</b> — pole nad listą czatów przeszukuje tytuły i treść wiadomości.</li>
+<li><b>Wyszukiwanie</b> — pole nad listą czatów przeszukuje TYLKO Twoje rozmowy (tytuły i treść), nie internet — do przeszukiwania sieci służy Search (rozdział 14).</li>
 <li><b>Przypinanie</b> — trzy kropki przy czacie → Pin. Czat trafia do stałej sekcji na górze.</li>
 <li><b>Foldery</b> — ChatGPT nie ma klasycznych folderów; najbliższym odpowiednikiem są Projekty (rozdział 13).</li>
 <li><b>Archiwizacja</b> — trzy kropki → Archive. Czat znika z sidebara, ale zostaje przeszukiwalny.</li>
 <li><b>Usuwanie</b> — trzy kropki → Delete → potwierdzenie. Nieodwracalne (trafia do kolejki trwałego usunięcia w ciągu 30 dni).</li>
 </ul>
 <div class="callout uwaga"><b class="lab">Czat tymczasowy</b>Przycisk „Temporary" w prawym górnym rogu nowej rozmowy — dwa warianty: niespersonalizowany (nie korzysta z pamięci, nie pojawia się w historii) i spersonalizowany (odwołuje się do wspomnień, ale niczego nowego nie zapamiętuje). Mimo to OpenAI przechowuje te rozmowy do 30 dni ze względów bezpieczeństwa — nigdy nie służą do trenowania modeli.</div>
+<div class="callout tip"><b class="lab">Dobra praktyka</b>Regenerate nie zastępuje jasnego polecenia — jeśli wynik jest słaby, bo pytanie było niejasne, najpierw popraw pytanie, nie klikaj w kółko „spróbuj jeszcze raz". Trzymaj się też zasady: jedna rozmowa = jeden temat albo jeden projekt — a skoro wyszukiwanie działa po tytule, nazywaj rozmowy jak pliki („Oferta — klient X", nie „Napisz maila"), żeby po tygodniu dało się je odnaleźć.</div>
 <div class="zrob-teraz"><b class="lab">Zrób teraz</b>Otwórz Ctrl/Cmd+/ i przejrzyj pełną listę skrótów na swoim koncie — część zależy od platformy (web/desktop/mobile).</div>
 </article>
 </div>
@@ -774,6 +775,7 @@ Nie przechodź dalej, dopóki nie pokażę, że rozumiem poprzedni etap.</pre></
 <h2 class="tytul-rozdzialu"><span class="nr">12</span>Custom GPT: co dziś jest możliwe</h2>
 <p class="lead-r">GPT to skonfigurowana wersja ChatGPT do konkretnego celu. W 2026 zmieniły się zasady tworzenia nowych GPT na kontach osobistych.</p>
 <div class="callout uwaga"><b class="lab">Ważna zmiana</b>Tworzenie nowych GPT-ów jest dziś zarezerwowane dla kont w workspace'ach Business, Enterprise i Edu. Konta osobiste (Free, Go, Plus, Pro) mogą EDYTOWAĆ istniejące GPT-y, ale nie tworzyć nowych od zera — to zmiana względem starszych poradników, gdzie każdy Plus mógł tworzyć GPT-y.</div>
+<div class="callout uwaga"><b class="lab">Zanim skorzystasz z cudzego GPT</b>Katalog Explore GPTs to nie oficjalna, zweryfikowana lista narzędzi OpenAI — każdy z odpowiednim kontem mógł tam coś opublikować. Zanim wkleisz dane firmowe albo klienckie do cudzego GPT (np. "asystenta prawnego" albo "eksperta podatkowego"), sprawdź, kto go stworzył i czego dokładnie wymaga — działa na tej samej zasadzie co każda inna aplikacja trzecia, nie jak funkcja samego OpenAI.</div>
 <h3>Jak wygląda tworzenie (tam, gdzie jest dostępne)</h3>
 <ol class="zw">
 <li>Otwórz Explore GPTs w sidebarze albo chatgpt.com/gpts, kliknij Create.</li>
@@ -1020,6 +1022,9 @@ Na końcu podaj listę zmienionych plików.</pre></div>
 <h2 class="tytul-rozdzialu"><span class="nr">21</span>Weryfikacja: GPT może brzmieć pewnie i się mylić</h2>
 <p class="lead-r">Ważne liczby, prawo, finanse, zdrowie i decyzje biznesowe wymagają sprawdzenia. Pewny ton nie jest dowodem.</p>
 <p><b>Oddziel fakt od wniosku.</b> Fakt można sprawdzić w źródle. Wniosek powstaje na podstawie faktów. Hipoteza wymaga dalszego potwierdzenia.</p>
+<h3>Trzy pytania do każdej odpowiedzi</h3>
+<p>Nie czytaj odpowiedzi jak gotowy wyrok — czytaj ją jak szkic do sprawdzenia. Zanim ją wykorzystasz, zapytaj: (1) czy to w ogóle odpowiada na moje pytanie, (2) czy język jest dla mnie zrozumiały, (3) czy mogę to wykorzystać bez dodatkowego sprawdzenia.</p>
+<div class="callout uwaga"><b class="lab">Kto jest autorem</b>Skopiowanie odpowiedzi nie zwalnia Cię z odpowiedzialności za jej treść. Jeśli wysyłasz tekst dalej — do klienta, szefa, na stronę — to Ty jesteś autorem tego komunikatu, nie ChatGPT.</div>
 <h3>Trzy czerwone lampki</h3>
 <ul class="zw"><li>bardzo dokładna liczba bez źródła,</li><li>cytat, którego nie potrafisz znaleźć,</li><li>funkcja programu opisana tak pewnie, jakby na pewno istniała na Twoim koncie.</li></ul>
 <h3>Potrafi / nie zakładaj</h3>
