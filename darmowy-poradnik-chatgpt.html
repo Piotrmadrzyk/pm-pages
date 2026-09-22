@@ -707,6 +707,24 @@ Porównaj koszt abonamentu z realną oszczędnością czasu. Nie uznawaj „wię
 <span class="dzial-tag">Dział 2 · Plany, modele, tryby</span>
 <h2 class="tytul-rozdzialu"><span class="nr">9</span>Modele: GPT-6, obrazy i wideo</h2>
 <p class="lead-r">Nie ucz się nazw modeli na pamięć — zmieniają się szybciej niż ten dokument. Naucz się kategorii.</p>
+<h3>Zanim wybierzesz model — pięć funkcjonalnych trybów</h3>
+<p>Zamiast pytać „który model jest najlepszy?", pytaj „jakiego rodzaju pracy teraz potrzebuję?". Nazwy się zmieniają, te pięć kategorii zostaje:</p>
+<ul class="zw">
+<li><b>Szybki</b> — proste pytania, krótkie przeróbki tekstu, burza mózgów, zmiana tonu. Nie zakładaj, że krótka odpowiedź jest mniej podatna na błędy tylko dlatego, że jest krótka.</li>
+<li><b>Mocniejszy</b> — złożone pisanie, redakcja dłuższych dokumentów, porównywanie materiałów, łączenie kilku źródeł. Lepiej trzyma strukturę, ale to nadal nie gwarancja prawdziwości.</li>
+<li><b>Głębszego rozumowania</b> — problemy wieloetapowe, sprzeczne dane, ukryte założenia. Bywa wolniejszy — to sygnał, że model przechodzi przez kroki, nie wada.</li>
+<li><b>Z wyszukiwaniem</b> — ceny, przepisy, wydarzenia, wszystko co „jak jest teraz" (rozdział 14).</li>
+<li><b>Analizy danych</b> — tabele, CSV, arkusze, wykresy (rozdział 17).</li>
+</ul>
+<div class="tabwrap"><table class="ak-tab">
+<tr><th>Potrzeba</th><th>Lepszy tryb</th><th>Sygnał, że wybrałeś źle</th></tr>
+<tr><td>Skrócić maila, wymyślić pomysły</td><td>Szybki</td><td>Odpowiedź zbyt rozbudowana, a i tak potrzebujesz tylko szkicu</td></tr>
+<tr><td>Napisać dłuższy dokument, spiąć plan</td><td>Mocniejszy</td><td>Tekst gładki, ale płytki, gubi Twoje ograniczenia</td></tr>
+<tr><td>Rozplątać sprzeczności, zależne kroki</td><td>Głębszego rozumowania</td><td>Model od razu podaje pewny wniosek bez założeń</td></tr>
+<tr><td>Cena, przepis, data, aktualne wydarzenie</td><td>Z wyszukiwaniem</td><td>Odpowiedź bez daty i źródła</td></tr>
+<tr><td>CSV, arkusz, wykres, statystyka</td><td>Analizy danych</td><td>Model opowiada o danych, zamiast je policzyć z pliku</td></tr>
+</table></div>
+<div class="callout tip"><b class="lab">Schemat oszczędnej pracy</b>Przy większym zadaniu nie zaczynaj od razu w najmocniejszym trybie z jednym gigantycznym poleceniem — to kosztuje więcej niż daje. Trzy tanie kroki: (1) w szybkim trybie doprecyzuj problem — „zadaj mi tylko najważniejsze pytania, zanim cokolwiek napiszesz"; (2) dopiero z kompletem odpowiedzi przejdź do mocniejszego trybu i zleć właściwą pracę; (3) na końcu osobno zleć weryfikację — „wskaż założenia, luki i ryzyka, nie poprawiaj jeszcze tekstu". Jedno wielkie polecenie „napisz mi wszystko" prawie zawsze wychodzi drożej, bo poprawiasz zgadywanie zamiast gotowej pracy.</div>
 <h3>Chronologia rodziny GPT-5.x/GPT-6</h3>
 <p>GPT-5 → GPT-5.1 → GPT-5.2 → GPT-5.3-Codex → GPT-5.4 → GPT-5.5 (pierwszy w pełni retrenowany model bazowy od GPT-4.5, jawnie trenowany „agentic-first") → GPT-5.6 (GA 9.07.2026) → GPT-6 Astra — najnowszy model flagowy, dostępny na Plus i wyżej.</p>
 <h3>Trzy warianty GPT-5.6</h3>
@@ -836,6 +854,7 @@ Gdy dostajesz nowe zadanie, najpierw dopasuj je do tych zasad, a potem wykonaj. 
 <tr><td>Pro, Business, Edu, Enterprise</td><td>40</td></tr>
 </table></div>
 <div class="callout tip"><b class="lab">Pro tip</b>Projekt to nie archiwum wszystkiego. Usuwaj stare lub sprzeczne materiały — więcej plików nie zawsze oznacza lepszy kontekst.</div>
+<div class="callout uwaga"><b class="lab">Kiedy warto, a kiedy nie</b>Zakładaj projekt, gdy wrócisz do tematu więcej niż raz, masz materiały do których model ma się odnosić, i praca ma etapy. NIE zakładaj projektu do zadania jednorazowego, gdy nie masz jeszcze żadnych materiałów, albo gdy temat jest tak wrażliwy, że w ogóle nie powinien trafiać do narzędzia. Przy danych poufnych (klienci, rekrutacja) sprawdź też w ustawieniach projektu, czy korzysta z ogólnej pamięci konta, czy trzyma się wyłącznie plików tego projektu — do wrażliwych tematów lepiej ograniczyć to pierwsze.</div>
 <div class="promptbox"><div class="promptbox-top"><span>INSTRUKCJA STARTOWA DO PROJEKTU</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Ten projekt dotyczy: [TEMAT]. Cel końcowy: [EFEKT].
 Najważniejsze źródła prawdy: [PLIKI / DOKUMENTY].
 Zasady pracy:
@@ -856,6 +875,10 @@ Zasady pracy:
 <h3>Search — to nie lista dziesięciu linków</h3>
 <p>Włączone wyszukiwanie w sieci (ikona „+" → Search, albo automatycznie przy pytaniach o bieżące wydarzenia) nie pokazuje Ci listy stron do przejrzenia — model sam czyta wybrane strony i składa z nich jedną odpowiedź. Przy tym składaniu może: pominąć istotny wyjątek, połączyć dane z dwóch różnych lat, wybrać wygodniejsze, ale słabsze źródło, albo streścić zbyt pewnym językiem.</p>
 <div class="callout uwaga"><b class="lab">Uwaga</b>Nawet przy włączonym Search sprawdzaj źródła przy decyzjach, na których Ci zależy — „szuka w internecie" nie znaczy „wynik jest kompletny i aktualny co do minuty".</div>
+<div class="promptbox"><div class="promptbox-top"><span>SZYBKIE SPRAWDZENIE FAKTU</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Sprawdź aktualne informacje na temat [TEMAT].
+Korzystaj przede wszystkim ze źródeł pierwotnych i oficjalnych, nie forów ani starych poradników.
+Podaj datę dostępu i linki. Oddziel fakty potwierdzone od wniosków i niepewności.
+Jeśli nie znajdziesz potwierdzenia — napisz to wprost, nie uzupełniaj luki typową wartością.</pre></div>
 <h3>Trzy sposoby rozpoczęcia Deep Research</h3>
 <p>Wpisz <b>/Deepresearch</b> w polu promptu, wybierz „Deep research" z menu narzędzi (ikona „+"), albo z menu bocznego.</p>
 <figure class="zrzut">
