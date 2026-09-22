@@ -322,11 +322,20 @@ ul.zw li, ol.zw li{margin-bottom:.4em;}
 <li><b>Twoje rozmowy mogą trenować przyszłe modele</b>, chyba że to wyłączysz w ustawieniach (rozdział 6) — a wszystko, co wygenerujesz, możesz wykorzystywać, także komercyjnie.</li>
 </ul>
 <h3>ChatGPT to nie wyszukiwarka — inne narzędzie do innej pracy</h3>
-<p>Najczęstszy błąd początkujących: otwierać ChatGPT tak jak Google, wpisać hasło i czekać na jedną gotową „prawdę". To dwa różne narzędzia do różnych zadań.</p>
+<p>Najczęstszy błąd początkujących: otwierać ChatGPT tak jak Google, wpisać hasło i czekać na jedną gotową „prawdę". To dwa różne narzędzia do dwóch różnych pytań: wyszukiwarka odpowiada na „gdzie to znaleźć?", ChatGPT na „co z tym zrobić?".</p>
 <ul class="zw">
 <li><b>Wyszukiwarka wygrywa</b>, gdy potrzebujesz: konkretnej strony, aktualnej ceny, adresu, numeru telefonu, dokumentu źródłowego, albo czegoś co zmienia się z dnia na dzień. Wyszukiwarka prowadzi Cię do źródła.</li>
 <li><b>ChatGPT wygrywa</b>, gdy potrzebujesz: złożyć kilka informacji w jedną spójną odpowiedź, coś napisać/przerobić/streścić, zaplanować, porównać warianty albo dopracować tekst w rozmowie. ChatGPT składa dla Ciebie gotowy wynik, zamiast odsyłać po niego dalej.</li>
 </ul>
+<div class="tabwrap"><table class="ak-tab">
+<tr><th>Potrzebujesz</th><th>Zacznij od</th><th>Zrób potem</th></tr>
+<tr><td>Zrozumieć pojęcie</td><td>ChatGPT</td><td>porównaj z jednym pewnym źródłem</td></tr>
+<tr><td>Znaleźć konkretną stronę, cenę, adres</td><td>Wyszukiwarka</td><td>otwórz i sprawdź źródło</td></tr>
+<tr><td>Napisać albo poprawić tekst</td><td>ChatGPT</td><td>przeczytaj, zanim wyślesz</td></tr>
+<tr><td>Streścić własny plik</td><td>ChatGPT z plikiem (rozdział 17)</td><td>sprawdź kluczowe liczby i nazwiska</td></tr>
+<tr><td>Aktualny przepis, stawkę, komunikat urzędu</td><td>Źródło oficjalne</td><td>ChatGPT pomoże to zrozumieć</td></tr>
+<tr><td>Poradę medyczną, prawną, finansową</td><td>Specjalista</td><td>ChatGPT tylko do przygotowania pytań</td></tr>
+</table></div>
 <p>Dla faktów, które się zmieniają (ceny, wydarzenia, aktualności) — włącz w ChatGPT wyszukiwanie w sieci (Search, rozdział 14) albo i tak sprawdź w przeglądarce. Sam model bez włączonego Search „wie" tylko to, czego nauczył się do pewnej daty granicznej — patrz punkt wyżej.</p>
 <h3>Trzy poziomy korzystania z ChatGPT</h3>
 <p>Większość osób zaczyna na poziomie pierwszym i tam zostaje, tracąc większość realnej wartości narzędzia. Ten podręcznik prowadzi Cię przez wszystkie trzy.</p>
@@ -727,6 +736,9 @@ Zasady pracy:
 <span class="dzial-tag">Dział 3 · Codzienna praca</span>
 <h2 class="tytul-rozdzialu"><span class="nr">14</span>Search czy Deep Research?</h2>
 <p class="lead-r">Search sprawdza bieżące informacje szybko. Deep Research jest lepsze, gdy pytanie ma wiele części, a źródła mogą sobie przeczyć.</p>
+<h3>Search — to nie lista dziesięciu linków</h3>
+<p>Włączone wyszukiwanie w sieci (ikona „+" → Search, albo automatycznie przy pytaniach o bieżące wydarzenia) nie pokazuje Ci listy stron do przejrzenia — model sam czyta wybrane strony i składa z nich jedną odpowiedź. Przy tym składaniu może: pominąć istotny wyjątek, połączyć dane z dwóch różnych lat, wybrać wygodniejsze, ale słabsze źródło, albo streścić zbyt pewnym językiem.</p>
+<div class="callout uwaga"><b class="lab">Uwaga</b>Nawet przy włączonym Search sprawdzaj źródła przy decyzjach, na których Ci zależy — „szuka w internecie" nie znaczy „wynik jest kompletny i aktualny co do minuty".</div>
 <h3>Trzy sposoby rozpoczęcia Deep Research</h3>
 <p>Wpisz <b>/Deepresearch</b> w polu promptu, wybierz „Deep research" z menu narzędzi (ikona „+"), albo z menu bocznego.</p>
 <figure class="zrzut">
@@ -910,6 +922,26 @@ Na końcu podaj listę zmienionych plików.</pre></div>
 <p><b>Oddziel fakt od wniosku.</b> Fakt można sprawdzić w źródle. Wniosek powstaje na podstawie faktów. Hipoteza wymaga dalszego potwierdzenia.</p>
 <h3>Trzy czerwone lampki</h3>
 <ul class="zw"><li>bardzo dokładna liczba bez źródła,</li><li>cytat, którego nie potrafisz znaleźć,</li><li>funkcja programu opisana tak pewnie, jakby na pewno istniała na Twoim koncie.</li></ul>
+<h3>Potrafi / nie zakładaj</h3>
+<p>Kilka konkretnych par: co ChatGPT robi dobrze, i czego przy tym nie wolno zakładać.</p>
+<div class="tabwrap"><table class="ak-tab">
+<tr><th>Potrafi</th><th>Nie zakładaj</th></tr>
+<tr><td>Napisać dobry szkic tekstu</td><td>że szkic jest gotowy do wysłania bez czytania</td></tr>
+<tr><td>Streścić PDF</td><td>że nie pominie ważnego wyjątku gdzieś w środku dokumentu</td></tr>
+<tr><td>Wyjaśnić przepis</td><td>że zna najnowszą nowelizację bez sprawdzenia</td></tr>
+<tr><td>Policzyć na podstawie tabeli</td><td>że każda liczba jest poprawna</td></tr>
+<tr><td>Opisać zdjęcie dokumentu</td><td>że odczytał każdą cyfrę bezbłędnie</td></tr>
+<tr><td>Zapamiętać wybrane informacje (rozdział 4)</td><td>że pamięta wszystko i zawsze</td></tr>
+<tr><td>Szukać w internecie (rozdział 14)</td><td>że wynik jest kompletny i aktualny co do minuty</td></tr>
+<tr><td>Brzmieć pewnie</td><td>że ma rację</td></tr>
+</table></div>
+<h3>Trzy poziomy ryzyka odpowiedzi</h3>
+<p>Nie każda pomyłka kosztuje tyle samo — warto dopasować ile czasu poświęcasz na sprawdzanie do tego, ile można stracić.</p>
+<ul class="zw">
+<li><b>Niskie ryzyko.</b> Hasło na koszulkę, pomysł na kolację, konspekt wewnętrznej prezentacji. Pomyłka nic nie kosztuje — pisz krótkie pytania i idź dalej.</li>
+<li><b>Średnie ryzyko.</b> Mail do klienta, oferta, treść na stronę, podsumowanie spotkania, które wyślesz zespołowi. Przeczytaj przed wysłaniem, popraw co nie pasuje.</li>
+<li><b>Wysokie ryzyko.</b> Umowa, zdrowie, podatki, dane osobowe, decyzja finansowa, publikacja ekspercka. Pracuj etapami, dawaj więcej własnych danych wejściowych i sprawdzaj każdy istotny fakt w źródle.</li>
+</ul>
 <div class="callout uwaga"><b class="lab">Badania</b>Badania Duke University (styczeń 2026) potwierdzają: modele, w tym ChatGPT, nadal produkują wiarygodnie brzmiące, ale błędne informacje — bez wiarygodnego wewnętrznego sygnału ostrzegawczego.</div>
 <div class="callout tip"><b class="lab">Pro tip</b>Do ważnych zadań dopisz: „Jeżeli czegoś nie możesz potwierdzić, napisz NIEPOTWIERDZONE zamiast zgadywać." To proste zdanie mocno zmienia jakość odpowiedzi.</div>
 <div class="promptbox"><div class="promptbox-top"><span>TRYB WERYFIKACJI</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Przeanalizuj odpowiedź w czterech warstwach:
