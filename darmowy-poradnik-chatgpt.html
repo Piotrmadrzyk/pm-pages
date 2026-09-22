@@ -633,6 +633,17 @@ Gdy powiem „podsumuj", przygotuj 5 najważniejszych decyzji i listę następny
 <li><b>„Delete all chats"</b> — kasuje wszystkie rozmowy, także w Projektach.</li>
 </ul>
 <div class="callout uwaga"><b class="lab">Prywatne konto to nie sejf firmowy</b>Nie wklejaj danych klientów, umów, haseł, dokumentacji medycznej ani poufnych plików firmowych do prywatnego konta „bo szybciej". Jeśli pracujesz zawodowo z cudzymi danymi — sprawdź najpierw, czy firma ma własne konto ChatGPT i własne zasady (rozdział 10), zamiast zakładać, że domowy Plus działa tak samo jak konto firmowe.</div>
+<h3>Szybka reguła trzech pytań przed wysłaniem</h3>
+<p>Przed wklejeniem wiadomości, pliku albo zdjęcia zapytaj: (1) czy to naprawdę potrzebne do TEGO zadania, (2) czy da się zastąpić przykładem albo wersją bez identyfikatorów, (3) czy szkoda z ujawnienia byłaby poważna. Jeśli odpowiedź to „niepotrzebne", „da się mniej" albo „szkoda poważna" — nie wysyłaj całości.</p>
+<div class="tabwrap"><table class="ak-tab">
+<tr><th>Zamiast</th><th>Wyślij</th></tr>
+<tr><td>Hasło</td><td>Informację, że hasło przekażesz innym kanałem</td></tr>
+<tr><td>Klucz API / token</td><td>Fragment kodu z ukrytym sekretem (np. API_KEY=********)</td></tr>
+<tr><td>Pełny rekord klienta</td><td>Rolę, problem, oczekiwany ton i ograniczenia odpowiedzi</td></tr>
+<tr><td>Całą umowę</td><td>Jeden paragraf, pytanie i — jeśli wolno — wersję zanonimizowaną</td></tr>
+<tr><td>Wyniki badań z danymi osobowymi</td><td>Pytanie o pojęcie albo listę pytań do lekarza</td></tr>
+<tr><td>Tabelę z nazwiskami i kwotami</td><td>Strukturę kolumn i przykładowe, fikcyjne wiersze</td></tr>
+</table></div>
 <div class="callout tip"><b class="lab">Dla firm</b>Na planach Business/Enterprise/Edu dane domyślnie NIE trenują modeli (odwrotnie niż na Free/Plus/Pro, gdzie trzeba samemu wyłączyć opcję).</div>
 <div class="promptbox"><div class="promptbox-top"><span>CHECKLISTA PRYWATNOŚCI DLA FIRMY</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Przygotuj checklistę ustawień ChatGPT dla małej firmy.
 Uwzględnij: pamięć, kontrolę danych, udostępnione linki, aplikacje i ich uprawnienia, zasady dla danych klientów, zasady dla haseł i sekretów.
@@ -659,6 +670,15 @@ Jeśli czegoś nie jesteś pewien co do aktualnych ustawień OpenAI — powiedz 
 </ol>
 <p>Odłączanie: Settings → Apps → wybierz aplikację → „Connected accounts" → (•••) → Disconnect. Blokuje przyszły dostęp, ale nie kasuje już wykonanej pracy.</p>
 <div class="callout uwaga"><b class="lab">Bezpieczeństwo</b>Przed połączeniem konta sprawdź zakres uprawnień. Przy działaniach wychodzących — wysyłka maila, zmiana danych, publikacja — stosuj zasadę potwierdzenia przed wykonaniem.</div>
+<h3>Zanim klikniesz „Connect" — cztery pytania</h3>
+<p>Nadawaj tylko tyle dostępu, ile wymaga konkretne zadanie — zasada najmniejszych uprawnień. Jeśli na któreś z poniższych nie umiesz odpowiedzieć, zatrzymaj się:</p>
+<ul class="zw">
+<li><b>Do jakich danych sięga?</b> „Dysk" to za mało — sprawdź, czy to cały magazyn, czy wybrany folder, i czy w zasięgu mogą być dane klientów albo pracowników, nawet jeśli o nie akurat nie pytasz.</li>
+<li><b>Tylko odczyt, czy też działania?</b> Odczyt (szukaj, streszczaj) to inny poziom ryzyka niż działanie (twórz, zmieniaj, wysyłaj) — do nauki i analizy zwykle wystarczy odczyt.</li>
+<li><b>Kto jeszcze może z tego skorzystać?</b> Na koncie zespołowym/firmowym Twoje połączenie może otworzyć dostęp do plików innych osób udostępnionych Tobie, nie tylko Twoich własnych.</li>
+<li><b>Jak to później odwołać?</b> Sprawdź ODRAZU, gdzie cofniesz zgodę po obu stronach (ChatGPT i druga usługa) — nieużywane, zapomniane połączenie to otwarte drzwi, z których akurat nikt dziś nie korzysta.</li>
+</ul>
+<div class="callout tip"><b class="lab">Konto firmowe</b>Jeśli pracujesz na koncie organizacji, decyzja o połączeniu rzadko powinna należeć wyłącznie do jednej osoby — sprawdź politykę firmy, zanim podłączysz. Do testowania promptu i formatu wystarczą dane przykładowe albo zanonimizowane; na prawdziwych danych klientów pracuj dopiero, gdy masz do tego prawo.</div>
 <div class="promptbox"><div class="promptbox-top"><span>PRACA Z DYSKIEM GOOGLE</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Znajdź na moim Dysku Google najnowszy dokument dotyczący [TEMAT].
 Najpierw potwierdź nazwę i datę dokumentu, z którego korzystasz — jeśli znajdziesz więcej niż jeden pasujący, zapytaj który mam na myśli, zamiast zgadywać.
 Następnie: 1. podsumuj ustalenia, 2. wypisz otwarte decyzje, 3. znajdź terminy i osoby odpowiedzialne, 4. przygotuj listę następnych kroków.</pre></div>
