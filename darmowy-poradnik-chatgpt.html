@@ -182,13 +182,6 @@ ul.zw li, ol.zw li{margin-bottom:.4em;}
 .btn.ghost:hover{border-color:var(--z-600); color:var(--z-700)!important;}
 .cta-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:22px;}
 
-/* Biblioteka promptów */
-.lib-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
-@media (max-width:700px){ .lib-grid{grid-template-columns:1fr;} }
-.lib-card h4{font-family:var(--f); font-size:14.5px; color:var(--z-800); margin-bottom:8px;}
-.lib-grp{font-family:var(--f-mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--z-600);
-  font-weight:700; margin:30px 0 4px;}
-
 /* CTA finalne */
 .cta-final{background:linear-gradient(104deg,var(--z-900) 0%,var(--z-800) 46%,#2C4B36 100%); color:#fff; padding:64px 0; text-align:center;}
 .cta-final h2{color:#fff;}
@@ -1101,130 +1094,1773 @@ Zachowaj elementy, które były dobre.</pre></div>
 <div class="wrap">
 <div class="section-eyebrow">Rozdział 30 · Biblioteka</div>
 <h2 class="tytul-rozdzialu"><span class="nr">30</span>Biblioteka gotowych promptów: kopiuj, dopasuj, użyj</h2>
-<p class="lead-r">18 promptów do codziennej pracy i do domu, napisanych na tym samym standardzie co gotowce w Akademii: nie zgadują Twoich danych, pytają zanim założą, zatrzymują się gdy czegoś brakuje, i nie kończą rozmowy na samym wyniku. Każdy ma aktywny przycisk „Kopiuj" — kopiuje się całe polecenie.</p>
+<p class="lead-r">18 gotowców do codziennej pracy i do domu, napisanych na tym samym standardzie co gotowce w Akademii: każdy jest samodzielnym poleceniem — wklej go w całości jako JEDNĄ wiadomość, a model przeprowadzi Cię etapami do końca, pytając jedno na raz i pokazując wynik po każdym kroku. Nic nie trzeba doklejać ani wklejać osobno.</p>
+<p style="font-size:14px;color:var(--dim);">Każdy gotowiec ma tę samą architekturę, jaką Akademia stosuje w swoich 60 lekcjach: najpierw przypomnienie, w jakim programie pracujesz, potem zasady prowadzenia rozmowy (jedno pytanie naraz, pokazywanie wyników, „Karteczka do wklejenia" na później), potem <b>ZESPÓŁ</b> — kilka ról naraz, którym wolno się nie zgadzać — i <b>ETAPY</b> z przystankiem do akceptacji po każdym z nich, a na końcu uczciwe podsumowanie: co nie zostało sprawdzone i gdzie zaczyna się rola specjalisty. Sprawdzone na żywo, na kilkunastu prawdziwych lekcjach w Akademii.</p>
+<h3 style="margin-top:34px;">Praca</h3>
+<h4 style="font-family:var(--f);font-size:15px;color:var(--z-800);margin:22px 0 6px;">1. Mail do klienta</h4>
+<div class="promptbox"><div class="promptbox-top"><span>KOPIUJ CAŁY GOTOWIEC</span><button class="promptbox-copy">Kopiuj</button></div><pre>═══ W KTÓRYM PROGRAMIE JESTEŚ ═══
 
-<div class="promptbox"><div class="promptbox-top"><span>ZASADY, KTÓRE OBOWIĄZUJĄ PRZEZ CAŁĄ ROZMOWĘ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Zanim zaczniesz wykonywać moje polecenia, trzymaj się tych zasad przez całą naszą rozmowę:
-1. Nie wymyślaj moich danych, cen ani faktów. Czegoś brakuje — zapytaj. Ale najpierw sprawdź, co już wiesz z tej rozmowy i z plików, które wgrałem, i o to drugi raz nie pytaj. Jeśli wracam po tygodniu do czegoś, co już raz ustaliliśmy — pokaż w punktach, co pamiętasz, i dopytaj tylko o to, co mogło się zmienić.
-2. Sprawy prawne, podatkowe, umowne i zdrowotne — nie zgaduj, powiedz że to pytanie do specjalisty, i napisz dalej to, co da się napisać bez tej wiedzy.
-3. Jeśli powiem, że czegoś nie mam — najpierw oceń, czy bez tego da się iść dalej. Jeśli to prawdziwa blokada (zadanie fizycznie nie ma jak ruszyć) — zatrzymaj się, nazwij przeszkodę i zaproponuj inną kolejność pracy. Jeśli to tylko jeden szczegół (np. nie mam jeszcze logo) — wspomnij o tym jednym zdaniem i pytaj dalej normalnie, bez zatrzymywania całej rozmowy.
-4. Nie zostawiaj mnie samego z wynikiem. Powiedz krótko, co dostałem i do czego to służy. Jeśli wynik jest długi albo wieloczęściowy — zapytaj, czy wolę go w tym oknie, czy jako plik.
-5. Nie kończ na samym wyniku. Zapytaj wprost, czy o to chodziło i co zmienić — a jeśli sprawa jest firmowa, dopytaj też, co ma zostać po mojemu (szablon, ton, nazwy). Jeśli sprawa jest prywatna (dom, rodzina, nauka) — o firmę ani logo nie pytaj w ogóle. Dopiero gdy powiem, że jest dobrze: zapytaj gdzie mam to zapisać, żebym znalazł to jutro i za miesiąc, i czy masz to zapamiętać na przyszłość.
-6. Pamiętaj, że to nie jest wersja ostateczna — mogę zmienić zdanie w trakcie, nawet po tym, jak coś już ustaliliśmy.</pre></div>
-<p style="font-size:14px;color:var(--dim);margin-top:-6px;">Wklej ten blok raz, na początku rozmowy — potem używaj dowolnego polecenia z biblioteki poniżej, ile razy chcesz, w tej samej rozmowie. To skrócona wersja zasad, którymi Akademia obudowuje każdą ze swoich 60 lekcji — sprawdzone na żywo, na kilkunastu prawdziwych lekcjach w Akademii.</p>
+Pracuję w ChatGPT i to jest okno, w którym właśnie czytasz to polecenie.
+Nigdy nie każ mi otwierać programu, w którym już jestem.
 
-<p style="font-size:14px;color:var(--dim);">Każdy prompt ma jeszcze jeden element ze standardu Akademii: sekcję <b>ZESPÓŁ</b>. Model patrzy na wynik oczami kilku różnych ról naraz, którym wolno się nie zgadzać — jedna „ekspercka" opinia nie wyłapie tego, co wyłapie kilka różnych spojrzeń razem. Przy zadaniach, w których jest o co się spierać (cena, ocena, decyzja) zespół się <b>NARADZA</b> i pokazuje różnicę zdań; przy zadaniach z jednym dobrym wykonaniem (mail, redakcja) zespół tylko <b>SPRAWDZA</b> wynik przed oddaniem, bez odgrywania narady.</p>
+Jeśli dalej w tym poleceniu pojawi się propozycja użycia aplikacji albo konektora
+(np. do Dysku Google, Gmaila, Kalendarza) — to funkcja ChatGPT dostępna w
+Ustawienia → Apps (rozdział 7 tego poradnika). Sprawdź najpierw, czy mam to
+podłączone. Jeśli nie mam i nie chcę teraz podłączać — prowadź mnie dalej bez
+tego, samym tekstem w tej rozmowie, i nie wracaj już do tematu.
 
-<div class="lib-grp">Praca</div>
-<div class="lib-grid">
-<div class="lib-card"><h4>1. Mail do klienta</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>ZESPÓŁ (tryb: SPRAWDZENIE — jedno dobre wykonanie, bez narady): jesteś trzema osobami naraz, wolno wam się nie zgadzać — SPRZEDAWCA (zależy mu na odpowiedzi klienta), SAM KLIENT (czyta to na szybko w telefonie), REDAKTOR (pilnuje, żeby nic nie brzmiało jak szablon).
+Robimy razem jedną rzecz: Mail do klienta — od pustej kartki do gotowej wiadomości, która brzmi jak ja, nie jak szablon.
 
-Napisz krótki mail do [ODBIORCA] w sprawie [TEMAT]. Cel: [CEL]. Ton: rzeczowy, ludzki, bez korporacyjnych frazesów.
-Jeśli mam już podobny mail z przeszłości albo swój styl pisania — zapytaj, czy mogę go wkleić jako wzór, zanim zaczniesz pisać od zera.
-Maksymalnie 130 słów. Na końcu jedno konkretne pytanie lub CTA, i zapytaj, czy wysyłam to teraz, czy jeszcze coś zmienić.</pre></div></div>
-<div class="lib-card"><h4>2. Spotkanie → plan</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>ZESPÓŁ (tryb: SPRAWDZENIE): jesteś trzema osobami naraz — UCZESTNIK SPOTKANIA (pamięta kontekst), OSOBA NIEOBECNA (czyta tylko notatkę i nie zgadnie niczego więcej), OSOBA PILNUJĄCA TERMINÓW.
+Prowadź mnie od początku do końca. To jest jedyne polecenie, jakie dostaniesz —
+nie będę wklejał kolejnych.
 
-Na podstawie poniższych notatek przygotuj: 1. decyzje, 2. zadania, 3. właściciela każdego zadania, 4. termin, jeśli występuje, 5. pytania bez odpowiedzi.
-Nie dopowiadaj brakujących osób, dat ani ustaleń, których nie ma w notatkach — zostaw puste miejsce i zapytaj, zamiast zgadywać.
-Na końcu zapytaj, czy to rozesłać zespołowi teraz, czy najpierw coś poprawić.
+═══ JAK MASZ ZE MNĄ PRACOWAĆ — to jest ważniejsze niż samo zadanie ═══
 
-NOTATKI: [WKLEJ NOTATKI]</pre></div></div>
-<div class="lib-card"><h4>3. Oferta</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>ZESPÓŁ (tryb: NARADA — jest o co się spierać): SPRZEDAWCA (chce usłyszeć „tak"), SAM KLIENT (szuka haczyka), OSOBA PILNUJĄCA RACHUNKÓW w firmie (sprawdza czy oferta się spina finansowo). Wolno wam się nie zgadzać.
+— Prowadzisz mnie od początku do końca. Nie mam żadnych innych poleceń do wklejenia.
+— JEDNO pytanie naraz. Zadaj je i czekaj na odpowiedź.
+— Za każdym razem, gdy coś wytworzysz — POKAŻ MI TO i ZAPYTAJ: czy o to chodziło i co zmienić.
+  Nie przechodź dalej, dopóki nie powiem, że pasuje.
+— Ciągnij mnie za język. Ja nie wiem, co jest tu ważne. Ty wiesz.
+— Jeśli odpowiem ogólnikiem, dopytaj o konkrety zamiast zgadywać.
+— Po każdym etapie powiedz jednym zdaniem, co mamy i co dalej.
+— Jeśli czegoś nie wiesz na pewno — powiedz wprost i wskaż, gdzie sprawdzić. Nie zgaduj.
+— Mogę zmienić zdanie w każdej chwili. To normalne.
+— Nie streszczaj — po prostu zacznij.
+— ZANIM O COŚ ZAPYTASZ — SPRAWDŹ, CZY JUŻ TEGO NIE WIESZ: pamięć, pliki które wgrałem,
+  wcześniejsza część rozmowy, „Karteczka", którą wkleiłem. Co już wiesz — wypisz jednym
+  zdaniem do potwierdzenia i o to drugi raz nie pytaj. Gdy wracam po tygodniu albo
+  miesiącu — nie prowadź mnie tą samą ścieżką od nowa: pokaż, co masz zapisane, i
+  dopytaj tylko o to, co mogło się zmienić.
+— GDY WIDZISZ, ŻE NIE WIEM, JAK COŚ NAPISAĆ — powiedz mi wprost, że mogę pisać na
+  luzie, urwać w pół zdania, opisać naokoło, wrzucić zdjęcie albo zrzut ekranu. Im
+  więcej sobie wyjaśnimy, tym lepszy wynik. Nie poprawiaj mojego sposobu mówienia.
+— NA SAMYM KOŃCU, gdy powiem że jest dobrze, zapytaj jeszcze o dwie rzeczy: GDZIE MAM
+  TO ZAPISAĆ (konkretne miejsce, żebym znalazł to jutro i za miesiąc) oraz CZY MAM TO
+  ZAPAMIĘTAĆ NA PRZYSZŁOŚĆ. Jeśli powiem „tak" — zapisz w pamięci, jeśli u mnie działa,
+  i wypisz co zapamiętujesz; jeśli nie potrafisz — powiedz to szczerze i daj mi
+  „Karteczkę do wklejenia" na następny raz.
 
-Przygotuj ofertę dla [KLIENT]. Problem klienta: [PROBLEM]. Zakres: [ZAKRES]. Wartość: [KORZYŚĆ]. Ograniczenia: [WARUNKI].
-Zanim zaczniesz, zapytaj, czy mam już swój szablon oferty albo wzór z poprzedniego projektu.
-Nie wymyślaj cen, terminów ani warunków, których nie podałem.
-Najpierw pokaż krótką strukturę oferty, potem wersję finalną. Na końcu zapytaj, czy to ma iść jako mail, czy jako osobny plik.</pre></div></div>
-<div class="lib-card"><h4>4. Audyt pomysłu</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>ZESPÓŁ (tryb: NARADA): ENTUZJASTA pomysłu, SCEPTYK (szuka dziury w każdym założeniu), OSOBA KTÓRA BĘDZIE TO WDRAŻAĆ RĘKAMI (wie, co naprawdę jest trudne). Niech się nie zgadzają, zanim dojdą do wspólnego wniosku.
+═══ PRZEZ CO MASZ MNIE PRZEPROWADZIĆ ═══
 
-Przeprowadź krytyczny audyt tego pomysłu: [POMYSŁ].
-Znajdź: założenia, które mogą być fałszywe; ukryte koszty; ryzyka wdrożenia; prostsze alternatywy; test, który można zrobić najtaniej przed większą inwestycją.
-Jeśli czegoś o mojej sytuacji nie wiesz (budżet, czas, dla kogo to jest) — zapytaj, zanim ocenisz, zamiast zgadywać.
-Na końcu podaj jedną skonsolidowaną rekomendację, zależną od jasno nazwanych założeń.</pre></div></div>
-<div class="lib-card"><h4>5. Research konkurencji</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>ZESPÓŁ (tryb: NARADA): OSOBA ZNAJĄCA TEN RYNEK OD ŚRODKA (odróżnia realną przewagę od marketingowego blichtru), SCEPTYK (nie wierzy w żadną liczbę bez źródła, pyta „skąd to wiesz?"), JA (mam podjąć decyzję, nie przeczytać ciekawostkę).
+───────────────────────────────────────────
+ETAP 1 z 3 — Powołaj zespół i zbierz kontekst
 
-Zbadaj [RYNEK] i porównaj [FIRMY]. Kryteria: [KRYTERIA].
-Jeśli masz dostęp do wyszukiwania — użyj go i podaj źródło przy każdej informacji. Jeśli nie masz — powiedz to wprost, zamiast zmyślać dane.
-W tabeli pokaż tylko potwierdzone informacje, a braki oznacz „brak danych". Na końcu napisz, co z tego wynika dla [MOJA FIRMA / CEL].</pre></div></div>
-<div class="lib-card"><h4>6. Nauka nowej umiejętności</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>ZESPÓŁ (tryb: SPRAWDZENIE): NAUCZYCIEL (tłumaczy krok po kroku), UCZEŃ POCZĄTKUJĄCY (mówi „nie rozumiem", gdy coś jest za trudne), EGZAMINATOR (sprawdza, czy naprawdę to ogarnąłem, nie tylko przeczytałem).
+ZESPÓŁ: SPRZEDAWCA (zależy mu na odpowiedzi klienta), SAM KLIENT (czyta to na szybko w telefonie), REDAKTOR (pilnuje, żeby nic nie brzmiało jak szablon).
 
-Naucz mnie [TEMAT] tak, żebym potrafił zastosować go w praktyce.
-Najpierw zapytaj o mój poziom w kilku krótkich pytaniach — nie zakładaj go z góry.
-Wyjaśnij podstawę jednym przykładem, potem daj mi zadanie. Oceń moją odpowiedź konkretnie, nie tylko „dobrze".
-Nie przechodź do kolejnego etapu, dopóki nie pokażę, że rozumiem ten.</pre></div></div>
-<div class="lib-card"><h4>7. Porównanie narzędzi</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>ZESPÓŁ (tryb: NARADA): OSOBA, KTÓRA BĘDZIE TEGO CODZIENNIE UŻYWAĆ, OSOBA PŁACĄCA ZA SUBSKRYPCJĘ (liczy każdy koszt), SCEPTYK wobec marketingu obu narzędzi.
+Zapytaj mnie, jedno pytanie naraz:
+1) Do kogo piszę i w jakiej sprawie?
+2) Jaki jest cel tego maila — co ma się stać, gdy klient go przeczyta?
+3) Jaki ton pasuje do tej relacji — formalny, koleżeński, coś pomiędzy?
+Zapytaj też, czy mam podobny mail z przeszłości albo swój styl pisania do wklejenia
+jako wzór, zanim zaczniesz pisać od zera.
 
-Porównaj [A] i [B] dla mojego zastosowania: [ZASTOSOWANIE].
-Nie rób ogólnego zestawienia funkcji ze stron marketingowych — oceń pod kątem MOJEGO przypadku: koszt całkowity, czas wdrożenia, ograniczenia, ryzyko.
-Jeśli dane mogą być nieaktualne — sprawdź je, zamiast podawać z pamięci.
-Na końcu wskaż, od jakiego JEDNEGO założenia zależy wybór.</pre></div></div>
-<div class="lib-card"><h4>8. Plan dnia / tygodnia</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>ZESPÓŁ (tryb: SPRAWDZENIE): TY ZAPRACOWANY (chce zrobić wszystko), REALISTA (wie, ile naprawdę trwa każda rzecz), OSOBA PILNUJĄCA, żeby został choć kawałek wolnego czasu.
+  Na koniec tego etapu mam mieć: jasny obraz odbiorcy, celu i tonu — bez zgadywania.
 
-Mam następujące zadania: [LISTA]. Dostępny czas: [CZAS].
-Najpierw oddziel zadania pilne od ważnych — zapytaj, jeśli nie jest oczywiste, które to które.
-Ułóż realistyczny plan bez upychania wszystkiego. Zostaw bufor 20% czasu.
-Jeżeli czegoś nie da się zmieścić — powiedz to wprost i zapytaj, co przesunąć.</pre></div></div>
-<div class="lib-card"><h4>9. Redakcja tekstu</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>ZESPÓŁ (tryb: SPRAWDZENIE): AUTOR ORYGINAŁU (pilnuje sensu), REDAKTOR (skraca bez litości), CZYTELNIK (przeczyta to raz i albo zrozumie, albo nie).
+  ZANIM PRZEJDZIESZ DO ETAPU 2: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
 
-Zredaguj poniższy tekst: [WKLEJ TEKST]
-Zachowaj mój sens i fakty — nie dopisuj niczego, czego nie było, nawet jeśli „brzmiałoby lepiej".
-Usuń powtórzenia, sztuczne zwroty i frazesy. Jeśli coś jest niejasne — zapytaj, o co mi chodziło, zamiast zgadywać.
-Pokaż wersję finalną gotową do publikacji, bez komentarza pod nią.</pre></div></div>
-<div class="lib-card"><h4>10. Kontrola jakości</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>ZESPÓŁ (tryb: SPRAWDZENIE): TY (zlecający zadanie), SUROWY RECENZENT (szuka dziur), ODBIORCA WYNIKU (dostanie to bez znajomości naszej rozmowy i musi z tego skorzystać).
+───────────────────────────────────────────
+ETAP 2 z 3 — Napisz mail
 
-Zanim oddasz wynik, zrób kontrolę jakości. Sprawdź: czy odpowiedziałeś na właściwe pytanie, czy nie ma sprzeczności, czy liczby i fakty są potwierdzone, a nie zmyślone, czy nie pominąłeś moich ograniczeń, czy istnieje prostsze rozwiązanie.
-Popraw błędy przed pokazaniem finalnej odpowiedzi, a na końcu zapytaj, czy to trafione, zamiast zakładać, że tak.</pre></div></div>
-</div>
+ZESPÓŁ pracuje razem, bez narady — to jedno dobre wykonanie, nie spór.
 
-<div class="lib-grp">W domu i dla siebie</div>
-<div class="lib-grid">
-<div class="lib-card"><h4>11. Plan posiłków na tydzień</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>ZESPÓŁ (tryb: SPRAWDZENIE): OSOBA GOTUJĄCA na co dzień (liczy się z czasem), OSOBA, KTÓRA TO JE (ma swoje upodobania i alergie), OSOBA PILNUJĄCA BUDŻETU zakupów.
+Napisz mail. Maksymalnie 130 słów, rzeczowo, bez korporacyjnych frazesów.
+Na końcu jedno konkretne pytanie albo CTA. REDAKTOR sprawdza brzmienie, KLIENT
+sprawdza czy to się czyta w 20 sekund na telefonie, zanim mi to pokażesz.
 
-Ułóż plan posiłków na 7 dni dla [LICZBA OSÓB] osób.
-Zanim zaczniesz, zapytaj o alergie, nielubiane składniki i budżet — nie zakładaj, że mogę jeść wszystko.
-Nie powtarzaj tego samego dania częściej niż raz, chyba że o to poproszę.
-Na końcu przygotuj jedną zbiorczą listę zakupów wg działów sklepu, i zapytaj, czy mam już coś z tego w domu.</pre></div></div>
-<div class="lib-card"><h4>12. Budżet domowy pod kontrolą</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>ZESPÓŁ (tryb: NARADA): TY (patrzysz na wydatki), OSZCZĘDNY SCEPTYK (pyta „czy to na pewno było potrzebne?"), REALISTA (pilnuje, żeby plan dało się utrzymać, a nie tylko dobrze wyglądał na papierze).
+  Na koniec tego etapu mam mieć: gotowy mail do przeczytania.
 
-Pomóż mi przejrzeć wydatki domowe za ostatni miesiąc: [WKLEJ LISTĘ / OPIS WYDATKÓW].
-Nie zgaduj kategorii, których nie jesteś pewien — zapytaj, do czego zaliczyć niejasny wydatek.
-Pogrupuj wydatki i wskaż trzy, na których najłatwiej oszczędzić bez utraty jakości życia. Zaproponuj konkretne, małe kroki na następny miesiąc.
-To sprawy finansowe, nie porady podatkowe — jeśli coś dotyka podatków czy kredytu, powiedz, że to pytanie do doradcy.</pre></div></div>
-<div class="lib-card"><h4>13. Odrabianie lekcji z dzieckiem</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>ZESPÓŁ (tryb: SPRAWDZENIE): CIERPLIWY NAUCZYCIEL (zadaje pytania zamiast dawać odpowiedzi), DZIECKO (łatwo się zniechęca, gdy jest za trudno), RODZIC (pilnuje, żeby to dziecko naprawdę zrozumiało, nie żebyś Ty zrobił zadanie za nie).
+  ZANIM PRZEJDZIESZ DO ETAPU 3: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
 
-Moje dziecko (klasa [KLASA]) ma zadanie z [PRZEDMIOT]: [TREŚĆ ZADANIA].
-Nie rozwiązuj zadania za nie i nie podawaj gotowej odpowiedzi, nawet jeśli o nią poprosi wprost.
-Zadawaj pytania, które naprowadzą je na rozwiązanie, po jednym na raz — czekaj na odpowiedź. Jeśli utknie, daj podpowiedź o jeden krok, nie całe rozwiązanie.
-Na końcu zapytaj, czy potrafi wytłumaczyć rozwiązanie własnymi słowami.</pre></div></div>
-<div class="lib-card"><h4>14. Plan wyjazdu</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>ZESPÓŁ (tryb: NARADA): OSOBA PLANUJĄCA LOGISTYKĘ, UCZESTNIK WYJAZDU (chce odpocząć, nie biegać z planem w ręku), OSOBA PILNUJĄCA BUDŻETU.
+───────────────────────────────────────────
+ETAP 3 z 3 — Uczciwe podsumowanie
 
-Planuję wyjazd do [MIEJSCE] na [LICZBA DNI] dni, z [KTO JEDZIE]. Budżet: [BUDŻET]. Styl: [np. spokojnie, aktywnie, z dzieckiem].
-Jeśli masz dostęp do wyszukiwania — sprawdź aktualne ceny i godziny otwarcia; jeśli nie masz, powiedz to wprost i zaznacz, co warto zweryfikować samemu.
-Zaproponuj plan dzień po dniu z jedną alternatywą na złą pogodę. Zapytaj, czy przygotować listę rzeczy do spakowania.</pre></div></div>
-<div class="lib-card"><h4>15. Trening w domu</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>ZESPÓŁ (tryb: SPRAWDZENIE): TRENER (motywuje), FIZJOTERAPEUTA (ostrożny przy kontuzjach i bólu — milknie przy sprawach medycznych), TY (realistycznie oceniasz, ile czasu i energii masz dzisiaj).
 
-Przygotuj plan treningowy w domu, bez sprzętu, na [LICZBA] dni w tygodniu.
-Zanim ułożysz plan, zapytaj o kontuzje i ograniczenia zdrowotne — nie zakładaj, że mogę robić wszystko.
-To nie jest porada medyczna — jeśli coś boli, powiedz, żebym zapytał lekarza, nie ucz mnie na siłę przez ból.
-Mój poziom: [POZIOM]. Czas na sesję: [MINUTY]. Cel: [CEL]. Dla każdego dnia: rozgrzewka, ćwiczenia z liczbą powtórzeń, wyciszenie.</pre></div></div>
-<div class="lib-card"><h4>16. Pomysł na prezent</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>ZESPÓŁ (tryb: NARADA): OSOBA ZNAJĄCA OBDAROWYWANEGO NAJLEPIEJ, SCEPTYK wobec banalnych pomysłów („kolejny kubek"), OSOBA PILNUJĄCA BUDŻETU.
 
-Szukam prezentu dla [OSOBA], z okazji [OKAZJA]. Budżet: [BUDŻET].
-Zanim zaczniesz zgadywać — zapytaj o wiek, zainteresowania i czego na pewno unikać, jeśli tego jeszcze nie podałem.
-Zaproponuj 5 konkretnych pomysłów, nie kategorii ogólnych — dla każdego napisz, czemu pasuje do TEJ osoby.
-Nie wymyślaj, że coś jest dostępne w konkretnym sklepie czy cenie, jeśli tego nie sprawdziłeś.</pre></div></div>
-<div class="lib-card"><h4>17. Porządki i organizacja domu</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>ZESPÓŁ (tryb: NARADA): OSOBA UKŁADAJĄCA SYSTEM, REALISTA (wie, ile czasu ludzie faktycznie poświęcają na sprzątanie), OSOBA, KTÓRA MA TO UTRZYMAĆ po dwóch tygodniach, gdy entuzjazm minie.
+Zanim uznamy to za gotowe, powiedz wprost:
+1) Czy coś w tym mailu może zostać źle odczytane przez kogoś, kto nie zna kontekstu?
+2) Czy jest w nim coś, co brzmi jak obietnica, której nie potwierdziłem?
+Jeśli tak — wskaż to zdanie po zdaniu, zanim wyślę.
 
-Chcę wprowadzić trwały system porządków w domu, nie jednorazową akcję.
-Zapytaj najpierw, ile osób realnie pomaga i ile czasu dziennie/tygodniowo mamy. Pomieszczenia: [LISTA].
-Zaproponuj podział zadań i harmonogram, który realnie da się utrzymać dłużej niż dwa tygodnie — jeśli plan wygląda na zbyt ambitny, powiedz to wprost.
-Zapytaj, czy mam już listę obowiązków, którą ktoś prowadzi — jeśli tak, poproś o nią jako punkt wyjścia.</pre></div></div>
-<div class="lib-card"><h4>18. Nauka języka obcego</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>ZESPÓŁ (tryb: SPRAWDZENIE): NAUCZYCIEL JĘZYKA, NATIVE SPEAKER (sprawdza, czy to brzmi naturalnie), TY (mówisz „za trudne" albo „za nudne", gdy trzeba zmienić tempo).
+  Na koniec tego etapu mam mieć: pewność, że nic w tym mailu mnie nie zaskoczy po wysłaniu.
 
-Ucz mnie [JĘZYK] codziennie po [MINUTY] minut. Mój poziom: [POZIOM]. Cel: [np. rozmowa w podróży, praca, egzamin].
-Zapytaj na start, czego już się uczyłem i czego unikać powtarzania od zera.
-Każdą sesję zacznij krótkim powtórzeniem z ostatniej, potem nowy materiał, na końcu 3 pytania sprawdzające — nie przechodź dalej, jeśli widzisz, że coś nie weszło.
-Rozmawiaj ze mną częściowo w [JĘZYK], ale przełącz się na polski, jeśli poproszę.</pre></div></div>
-</div>
+ZACZYNAJ TERAZ od etapu 1. Zadaj mi pierwsze pytanie i czekaj.</pre></div>
+<h4 style="font-family:var(--f);font-size:15px;color:var(--z-800);margin:22px 0 6px;">2. Spotkanie → plan</h4>
+<div class="promptbox"><div class="promptbox-top"><span>KOPIUJ CAŁY GOTOWIEC</span><button class="promptbox-copy">Kopiuj</button></div><pre>═══ W KTÓRYM PROGRAMIE JESTEŚ ═══
+
+Pracuję w ChatGPT i to jest okno, w którym właśnie czytasz to polecenie.
+Nigdy nie każ mi otwierać programu, w którym już jestem.
+
+Jeśli dalej w tym poleceniu pojawi się propozycja użycia aplikacji albo konektora
+(np. do Dysku Google, Gmaila, Kalendarza) — to funkcja ChatGPT dostępna w
+Ustawienia → Apps (rozdział 7 tego poradnika). Sprawdź najpierw, czy mam to
+podłączone. Jeśli nie mam i nie chcę teraz podłączać — prowadź mnie dalej bez
+tego, samym tekstem w tej rozmowie, i nie wracaj już do tematu.
+
+Robimy razem jedną rzecz: Spotkanie → plan — z surowych notatek do jasnego planu działań z właścicielami i terminami.
+
+Prowadź mnie od początku do końca. To jest jedyne polecenie, jakie dostaniesz —
+nie będę wklejał kolejnych.
+
+═══ JAK MASZ ZE MNĄ PRACOWAĆ — to jest ważniejsze niż samo zadanie ═══
+
+— Prowadzisz mnie od początku do końca. Nie mam żadnych innych poleceń do wklejenia.
+— JEDNO pytanie naraz. Zadaj je i czekaj na odpowiedź.
+— Za każdym razem, gdy coś wytworzysz — POKAŻ MI TO i ZAPYTAJ: czy o to chodziło i co zmienić.
+  Nie przechodź dalej, dopóki nie powiem, że pasuje.
+— Ciągnij mnie za język. Ja nie wiem, co jest tu ważne. Ty wiesz.
+— Jeśli odpowiem ogólnikiem, dopytaj o konkrety zamiast zgadywać.
+— Po każdym etapie powiedz jednym zdaniem, co mamy i co dalej.
+— Jeśli czegoś nie wiesz na pewno — powiedz wprost i wskaż, gdzie sprawdzić. Nie zgaduj.
+— Mogę zmienić zdanie w każdej chwili. To normalne.
+— Nie streszczaj — po prostu zacznij.
+— ZANIM O COŚ ZAPYTASZ — SPRAWDŹ, CZY JUŻ TEGO NIE WIESZ: pamięć, pliki które wgrałem,
+  wcześniejsza część rozmowy, „Karteczka", którą wkleiłem. Co już wiesz — wypisz jednym
+  zdaniem do potwierdzenia i o to drugi raz nie pytaj. Gdy wracam po tygodniu albo
+  miesiącu — nie prowadź mnie tą samą ścieżką od nowa: pokaż, co masz zapisane, i
+  dopytaj tylko o to, co mogło się zmienić.
+— GDY WIDZISZ, ŻE NIE WIEM, JAK COŚ NAPISAĆ — powiedz mi wprost, że mogę pisać na
+  luzie, urwać w pół zdania, opisać naokoło, wrzucić zdjęcie albo zrzut ekranu. Im
+  więcej sobie wyjaśnimy, tym lepszy wynik. Nie poprawiaj mojego sposobu mówienia.
+— NA SAMYM KOŃCU, gdy powiem że jest dobrze, zapytaj jeszcze o dwie rzeczy: GDZIE MAM
+  TO ZAPISAĆ (konkretne miejsce, żebym znalazł to jutro i za miesiąc) oraz CZY MAM TO
+  ZAPAMIĘTAĆ NA PRZYSZŁOŚĆ. Jeśli powiem „tak" — zapisz w pamięci, jeśli u mnie działa,
+  i wypisz co zapamiętujesz; jeśli nie potrafisz — powiedz to szczerze i daj mi
+  „Karteczkę do wklejenia" na następny raz.
+
+═══ PRZEZ CO MASZ MNIE PRZEPROWADZIĆ ═══
+
+───────────────────────────────────────────
+ETAP 1 z 3 — Powołaj zespół i przejrzyj notatki
+
+ZESPÓŁ: UCZESTNIK SPOTKANIA (pamięta kontekst), OSOBA NIEOBECNA (czyta tylko notatkę i nie zgadnie niczego więcej), OSOBA PILNUJĄCA TERMINÓW.
+
+Poproś mnie o notatki ze spotkania (wklejone albo z pliku). Nie dopowiadaj
+brakujących osób, dat ani ustaleń, których nie ma w notatkach — zostaw puste miejsce
+i zapytaj, zamiast zgadywać.
+
+  Na koniec tego etapu mam mieć: notatki przełożone przez zespół, bez zmyślonych szczegółów.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 2: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 2 z 3 — Zbuduj plan działań
+
+ZESPÓŁ pracuje razem, bez narady.
+
+Na podstawie notatek przygotuj: 1. decyzje, 2. zadania, 3. właściciela każdego
+zadania, 4. termin (jeśli występuje), 5. pytania bez odpowiedzi. OSOBA NIEOBECNA
+sprawdza, czy ktoś kto NIE był na spotkaniu zrozumie plan bez dopytywania.
+
+  Na koniec tego etapu mam mieć: gotowy plan działań do rozesłania zespołowi.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 3: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 3 z 3 — Uczciwe podsumowanie
+
+
+
+Zapytaj mnie: czy rozsyłamy to teraz, czy chcę najpierw coś poprawić? Jeśli w
+notatkach był punkt sporny bez jasnej decyzji — wypisz go osobno, żeby nie zniknął w
+tekście.
+
+  Na koniec tego etapu mam mieć: plan gotowy do wysłania, ze świadomością tego, co jeszcze nie zostało ustalone.
+
+ZACZYNAJ TERAZ od etapu 1. Zadaj mi pierwsze pytanie i czekaj.</pre></div>
+<h4 style="font-family:var(--f);font-size:15px;color:var(--z-800);margin:22px 0 6px;">3. Oferta</h4>
+<div class="promptbox"><div class="promptbox-top"><span>KOPIUJ CAŁY GOTOWIEC</span><button class="promptbox-copy">Kopiuj</button></div><pre>═══ W KTÓRYM PROGRAMIE JESTEŚ ═══
+
+Pracuję w ChatGPT i to jest okno, w którym właśnie czytasz to polecenie.
+Nigdy nie każ mi otwierać programu, w którym już jestem.
+
+Jeśli dalej w tym poleceniu pojawi się propozycja użycia aplikacji albo konektora
+(np. do Dysku Google, Gmaila, Kalendarza) — to funkcja ChatGPT dostępna w
+Ustawienia → Apps (rozdział 7 tego poradnika). Sprawdź najpierw, czy mam to
+podłączone. Jeśli nie mam i nie chcę teraz podłączać — prowadź mnie dalej bez
+tego, samym tekstem w tej rozmowie, i nie wracaj już do tematu.
+
+Robimy razem jedną rzecz: Oferta — przygotuj i wypróbuj ofertę zanim wyślesz ją klientowi.
+
+Prowadź mnie od początku do końca. To jest jedyne polecenie, jakie dostaniesz —
+nie będę wklejał kolejnych.
+
+═══ JAK MASZ ZE MNĄ PRACOWAĆ — to jest ważniejsze niż samo zadanie ═══
+
+— Prowadzisz mnie od początku do końca. Nie mam żadnych innych poleceń do wklejenia.
+— JEDNO pytanie naraz. Zadaj je i czekaj na odpowiedź.
+— Za każdym razem, gdy coś wytworzysz — POKAŻ MI TO i ZAPYTAJ: czy o to chodziło i co zmienić.
+  Nie przechodź dalej, dopóki nie powiem, że pasuje.
+— Ciągnij mnie za język. Ja nie wiem, co jest tu ważne. Ty wiesz.
+— Jeśli odpowiem ogólnikiem, dopytaj o konkrety zamiast zgadywać.
+— Po każdym etapie powiedz jednym zdaniem, co mamy i co dalej.
+— Jeśli czegoś nie wiesz na pewno — powiedz wprost i wskaż, gdzie sprawdzić. Nie zgaduj.
+— Mogę zmienić zdanie w każdej chwili. To normalne.
+— Nie streszczaj — po prostu zacznij.
+— ZANIM O COŚ ZAPYTASZ — SPRAWDŹ, CZY JUŻ TEGO NIE WIESZ: pamięć, pliki które wgrałem,
+  wcześniejsza część rozmowy, „Karteczka", którą wkleiłem. Co już wiesz — wypisz jednym
+  zdaniem do potwierdzenia i o to drugi raz nie pytaj. Gdy wracam po tygodniu albo
+  miesiącu — nie prowadź mnie tą samą ścieżką od nowa: pokaż, co masz zapisane, i
+  dopytaj tylko o to, co mogło się zmienić.
+— GDY WIDZISZ, ŻE NIE WIEM, JAK COŚ NAPISAĆ — powiedz mi wprost, że mogę pisać na
+  luzie, urwać w pół zdania, opisać naokoło, wrzucić zdjęcie albo zrzut ekranu. Im
+  więcej sobie wyjaśnimy, tym lepszy wynik. Nie poprawiaj mojego sposobu mówienia.
+— NA SAMYM KOŃCU, gdy powiem że jest dobrze, zapytaj jeszcze o dwie rzeczy: GDZIE MAM
+  TO ZAPISAĆ (konkretne miejsce, żebym znalazł to jutro i za miesiąc) oraz CZY MAM TO
+  ZAPAMIĘTAĆ NA PRZYSZŁOŚĆ. Jeśli powiem „tak" — zapisz w pamięci, jeśli u mnie działa,
+  i wypisz co zapamiętujesz; jeśli nie potrafisz — powiedz to szczerze i daj mi
+  „Karteczkę do wklejenia" na następny raz.
+
+═══ PRZEZ CO MASZ MNIE PRZEPROWADZIĆ ═══
+
+───────────────────────────────────────────
+ETAP 1 z 4 — Powołaj zespół i zbierz fakty
+
+ZESPÓŁ: SPRZEDAWCA (chce usłyszeć „tak"), SAM KLIENT (szuka haczyka), OSOBA
+PILNUJĄCA RACHUNKÓW w firmie (sprawdza czy oferta się spina finansowo). Wolno
+wam się nie zgadzać.
+
+Zapytaj mnie po kolei: co sprzedaję, komu, za ile, i co klient dostaje dokładnie
+za tę cenę. Nie zgaduj zakresu usługi ani ceny — jeśli czegoś nie powiem, zapytaj.
+
+  Na koniec tego etapu mam mieć: twarde fakty o ofercie, bez założeń.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 2: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 2 z 4 — Napiszcie ofertę — i pokażcie różnicę zdań
+
+ZESPÓŁ się NARADZA.
+
+SPRZEDAWCA pisze wersję, która ma przekonać. KLIENT czyta ją i mówi wprost, co
+by go zniechęciło albo czego by nie zrozumiał. OSOBA PILNUJĄCA RACHUNKÓW sprawdza,
+czy któryś zapis nie naraża mnie finansowo (np. brak limitu poprawek). Pokażcie mi
+wersję końcową PLUS te dwa zastrzeżenia osobno — nie chowajcie sporu w gładkim tekście.
+
+  Na koniec tego etapu mam mieć: ofertę gotową do wysłania i jawną listę ryzyk, które zespół zauważył.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 3: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 3 z 4 — Popraw po mojej informacji zwrotnej
+
+
+
+Zapytaj, co budzi wątpliwość — cena, zakres, ton — i popraw tylko to miejsce,
+nie całość.
+
+  Na koniec tego etapu mam mieć: ofertę dopasowaną do tego, co faktycznie mnie martwiło.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 4: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 4 z 4 — Uczciwe podsumowanie
+
+
+
+Sprawy cenowe i umowne w tej ofercie mogą wymagać konsultacji prawnej albo
+księgowej, jeśli dotyczą stałych zobowiązań — powiedz to wprost, jeśli coś takiego
+zauważysz, zamiast przemilczeć.
+
+  Na koniec tego etapu mam mieć: świadomość, gdzie kończy się rola tego promptu, a zaczyna rola specjalisty.
+
+ZACZYNAJ TERAZ od etapu 1. Zadaj mi pierwsze pytanie i czekaj.</pre></div>
+<h4 style="font-family:var(--f);font-size:15px;color:var(--z-800);margin:22px 0 6px;">4. Audyt pomysłu</h4>
+<div class="promptbox"><div class="promptbox-top"><span>KOPIUJ CAŁY GOTOWIEC</span><button class="promptbox-copy">Kopiuj</button></div><pre>═══ W KTÓRYM PROGRAMIE JESTEŚ ═══
+
+Pracuję w ChatGPT i to jest okno, w którym właśnie czytasz to polecenie.
+Nigdy nie każ mi otwierać programu, w którym już jestem.
+
+Jeśli dalej w tym poleceniu pojawi się propozycja użycia aplikacji albo konektora
+(np. do Dysku Google, Gmaila, Kalendarza) — to funkcja ChatGPT dostępna w
+Ustawienia → Apps (rozdział 7 tego poradnika). Sprawdź najpierw, czy mam to
+podłączone. Jeśli nie mam i nie chcę teraz podłączać — prowadź mnie dalej bez
+tego, samym tekstem w tej rozmowie, i nie wracaj już do tematu.
+
+Robimy razem jedną rzecz: Audyt pomysłu — zderz swój pomysł z trzema różnymi spojrzeniami, zanim w niego zainwestujesz.
+
+Prowadź mnie od początku do końca. To jest jedyne polecenie, jakie dostaniesz —
+nie będę wklejał kolejnych.
+
+═══ JAK MASZ ZE MNĄ PRACOWAĆ — to jest ważniejsze niż samo zadanie ═══
+
+— Prowadzisz mnie od początku do końca. Nie mam żadnych innych poleceń do wklejenia.
+— JEDNO pytanie naraz. Zadaj je i czekaj na odpowiedź.
+— Za każdym razem, gdy coś wytworzysz — POKAŻ MI TO i ZAPYTAJ: czy o to chodziło i co zmienić.
+  Nie przechodź dalej, dopóki nie powiem, że pasuje.
+— Ciągnij mnie za język. Ja nie wiem, co jest tu ważne. Ty wiesz.
+— Jeśli odpowiem ogólnikiem, dopytaj o konkrety zamiast zgadywać.
+— Po każdym etapie powiedz jednym zdaniem, co mamy i co dalej.
+— Jeśli czegoś nie wiesz na pewno — powiedz wprost i wskaż, gdzie sprawdzić. Nie zgaduj.
+— Mogę zmienić zdanie w każdej chwili. To normalne.
+— Nie streszczaj — po prostu zacznij.
+— ZANIM O COŚ ZAPYTASZ — SPRAWDŹ, CZY JUŻ TEGO NIE WIESZ: pamięć, pliki które wgrałem,
+  wcześniejsza część rozmowy, „Karteczka", którą wkleiłem. Co już wiesz — wypisz jednym
+  zdaniem do potwierdzenia i o to drugi raz nie pytaj. Gdy wracam po tygodniu albo
+  miesiącu — nie prowadź mnie tą samą ścieżką od nowa: pokaż, co masz zapisane, i
+  dopytaj tylko o to, co mogło się zmienić.
+— GDY WIDZISZ, ŻE NIE WIEM, JAK COŚ NAPISAĆ — powiedz mi wprost, że mogę pisać na
+  luzie, urwać w pół zdania, opisać naokoło, wrzucić zdjęcie albo zrzut ekranu. Im
+  więcej sobie wyjaśnimy, tym lepszy wynik. Nie poprawiaj mojego sposobu mówienia.
+— NA SAMYM KOŃCU, gdy powiem że jest dobrze, zapytaj jeszcze o dwie rzeczy: GDZIE MAM
+  TO ZAPISAĆ (konkretne miejsce, żebym znalazł to jutro i za miesiąc) oraz CZY MAM TO
+  ZAPAMIĘTAĆ NA PRZYSZŁOŚĆ. Jeśli powiem „tak" — zapisz w pamięci, jeśli u mnie działa,
+  i wypisz co zapamiętujesz; jeśli nie potrafisz — powiedz to szczerze i daj mi
+  „Karteczkę do wklejenia" na następny raz.
+
+═══ PRZEZ CO MASZ MNIE PRZEPROWADZIĆ ═══
+
+───────────────────────────────────────────
+ETAP 1 z 3 — Powołaj zespół i opisz pomysł
+
+ZESPÓŁ: ENTUZJASTA pomysłu, SCEPTYK (szuka dziury w każdym założeniu), OSOBA KTÓRA BĘDZIE TO WDRAŻAĆ RĘKAMI (wie, co naprawdę jest trudne). Niech się nie zgadzają, zanim dojdą do wspólnego wniosku.
+
+Opisz mi pomysł swoimi słowami, tak jak akurat wpadnie Ci do głowy — nie musisz
+go porządkować. Dopytaj mnie tylko o to, czego naprawdę nie da się zrozumieć bez
+odpowiedzi (dla kogo to jest i co ma się zmienić, gdy zadziała).
+
+  Na koniec tego etapu mam mieć: pomysł opisany na tyle jasno, żeby zespół mógł się do niego odnieść.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 2: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 2 z 3 — Zróbcie audyt — pokażcie spór
+
+ZESPÓŁ się NARADZA.
+
+ENTUZJASTA mówi, co w tym pomyśle jest naprawdę mocne. SCEPTYK mówi, co go
+najbardziej martwi i dlaczego — bez łagodzenia. OSOBA WDRAŻAJĄCA mówi, co realnie
+zajmie najwięcej czasu albo pieniędzy. Nie uzgadniajcie jednej gładkiej odpowiedzi —
+pokażcie mi trzy osobne zdania, a na końcu jedno wspólne: co sprawdzić jako pierwsze,
+zanim zainwestuję więcej czasu.
+
+  Na koniec tego etapu mam mieć: trzy niezależne spojrzenia na pomysł i jeden konkretny następny krok.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 3: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 3 z 3 — Uczciwe podsumowanie
+
+
+
+Powiedzcie wprost: czy ten pomysł da się sprawdzić małym kosztem, zanim
+zaangażuję w niego więcej — i jak wyglądałby taki najmniejszy test.
+
+  Na koniec tego etapu mam mieć: plan taniego sprawdzenia pomysłu zamiast domysłów.
+
+ZACZYNAJ TERAZ od etapu 1. Zadaj mi pierwsze pytanie i czekaj.</pre></div>
+<h4 style="font-family:var(--f);font-size:15px;color:var(--z-800);margin:22px 0 6px;">5. Research konkurencji</h4>
+<div class="promptbox"><div class="promptbox-top"><span>KOPIUJ CAŁY GOTOWIEC</span><button class="promptbox-copy">Kopiuj</button></div><pre>═══ W KTÓRYM PROGRAMIE JESTEŚ ═══
+
+Pracuję w ChatGPT i to jest okno, w którym właśnie czytasz to polecenie.
+Nigdy nie każ mi otwierać programu, w którym już jestem.
+
+Jeśli dalej w tym poleceniu pojawi się propozycja użycia aplikacji albo konektora
+(np. do Dysku Google, Gmaila, Kalendarza) — to funkcja ChatGPT dostępna w
+Ustawienia → Apps (rozdział 7 tego poradnika). Sprawdź najpierw, czy mam to
+podłączone. Jeśli nie mam i nie chcę teraz podłączać — prowadź mnie dalej bez
+tego, samym tekstem w tej rozmowie, i nie wracaj już do tematu.
+
+Robimy razem jedną rzecz: Research konkurencji — porównaj się z konkretnymi konkurentami pod kątem decyzji, którą musisz podjąć.
+
+Prowadź mnie od początku do końca. To jest jedyne polecenie, jakie dostaniesz —
+nie będę wklejał kolejnych.
+
+═══ JAK MASZ ZE MNĄ PRACOWAĆ — to jest ważniejsze niż samo zadanie ═══
+
+— Prowadzisz mnie od początku do końca. Nie mam żadnych innych poleceń do wklejenia.
+— JEDNO pytanie naraz. Zadaj je i czekaj na odpowiedź.
+— Za każdym razem, gdy coś wytworzysz — POKAŻ MI TO i ZAPYTAJ: czy o to chodziło i co zmienić.
+  Nie przechodź dalej, dopóki nie powiem, że pasuje.
+— Ciągnij mnie za język. Ja nie wiem, co jest tu ważne. Ty wiesz.
+— Jeśli odpowiem ogólnikiem, dopytaj o konkrety zamiast zgadywać.
+— Po każdym etapie powiedz jednym zdaniem, co mamy i co dalej.
+— Jeśli czegoś nie wiesz na pewno — powiedz wprost i wskaż, gdzie sprawdzić. Nie zgaduj.
+— Mogę zmienić zdanie w każdej chwili. To normalne.
+— Nie streszczaj — po prostu zacznij.
+— ZANIM O COŚ ZAPYTASZ — SPRAWDŹ, CZY JUŻ TEGO NIE WIESZ: pamięć, pliki które wgrałem,
+  wcześniejsza część rozmowy, „Karteczka", którą wkleiłem. Co już wiesz — wypisz jednym
+  zdaniem do potwierdzenia i o to drugi raz nie pytaj. Gdy wracam po tygodniu albo
+  miesiącu — nie prowadź mnie tą samą ścieżką od nowa: pokaż, co masz zapisane, i
+  dopytaj tylko o to, co mogło się zmienić.
+— GDY WIDZISZ, ŻE NIE WIEM, JAK COŚ NAPISAĆ — powiedz mi wprost, że mogę pisać na
+  luzie, urwać w pół zdania, opisać naokoło, wrzucić zdjęcie albo zrzut ekranu. Im
+  więcej sobie wyjaśnimy, tym lepszy wynik. Nie poprawiaj mojego sposobu mówienia.
+— NA SAMYM KOŃCU, gdy powiem że jest dobrze, zapytaj jeszcze o dwie rzeczy: GDZIE MAM
+  TO ZAPISAĆ (konkretne miejsce, żebym znalazł to jutro i za miesiąc) oraz CZY MAM TO
+  ZAPAMIĘTAĆ NA PRZYSZŁOŚĆ. Jeśli powiem „tak" — zapisz w pamięci, jeśli u mnie działa,
+  i wypisz co zapamiętujesz; jeśli nie potrafisz — powiedz to szczerze i daj mi
+  „Karteczkę do wklejenia" na następny raz.
+
+═══ PRZEZ CO MASZ MNIE PRZEPROWADZIĆ ═══
+
+───────────────────────────────────────────
+ETAP 1 z 4 — Powołaj zespół i ustal zakres
+
+ZESPÓŁ: OSOBA ZNAJĄCA TEN RYNEK OD ŚRODKA (odróżnia realną przewagę od
+marketingowego blichtru), SCEPTYK (nie wierzy w żadną liczbę bez źródła, pyta
+„skąd to wiesz?"), JA (mam podjąć decyzję, nie przeczytać ciekawostkę).
+
+Zapytaj mnie: kim są konkretnie ci konkurenci (nazwy, nie „branża ogólnie"), i
+jaką decyzję ma mi ten research ułatwić — bo inny research robi się pod cenę, a inny
+pod pozycjonowanie.
+
+  Na koniec tego etapu mam mieć: jasny zakres i cel researchu, nie ogólnikowe „sprawdź konkurencję".
+
+  ZANIM PRZEJDZIESZ DO ETAPU 2: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 2 z 4 — Zróbcie research
+
+ZESPÓŁ się NARADZA.
+
+OSOBA ZNAJĄCA RYNEK zbiera fakty (ceny, ofertę, pozycjonowanie) TYLKO z tego,
+co Ci realnie dostępne — jeśli nie masz dostępu do żywych danych, powiedz to wprost i
+poproś mnie o wklejenie stron/cenników zamiast zmyślać liczby. SCEPTYK sprawdza każdą
+liczbę: skąd ona się wzięła. Pokażcie tabelę porównawczą i osobno: co jest faktem, a
+co Waszą interpretacją.
+
+  Na koniec tego etapu mam mieć: porównanie konkurentów z jasno oznaczoną granicą między faktem a opinią.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 3: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 3 z 4 — Wyciągnijcie wniosek pod moją decyzję
+
+
+
+Na podstawie researchu i decyzji z Etapu 1 — powiedzcie wprost, co z tego wynika
+dla mnie, nie tylko „oni robią X, Y, Z".
+
+  Na koniec tego etapu mam mieć: konkretny wniosek, nie stertę faktów bez puenty.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 4: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 4 z 4 — Uczciwe podsumowanie
+
+
+
+Powiedzcie, czego NIE udało się sprawdzić (bo dane były niedostępne albo
+nieaktualne) i gdzie ja sam powinienem to zweryfikować przed decyzją.
+
+  Na koniec tego etapu mam mieć: świadomość granic tego researchu, zamiast fałszywej pewności.
+
+ZACZYNAJ TERAZ od etapu 1. Zadaj mi pierwsze pytanie i czekaj.</pre></div>
+<h4 style="font-family:var(--f);font-size:15px;color:var(--z-800);margin:22px 0 6px;">6. Nauka nowej umiejętności</h4>
+<div class="promptbox"><div class="promptbox-top"><span>KOPIUJ CAŁY GOTOWIEC</span><button class="promptbox-copy">Kopiuj</button></div><pre>═══ W KTÓRYM PROGRAMIE JESTEŚ ═══
+
+Pracuję w ChatGPT i to jest okno, w którym właśnie czytasz to polecenie.
+Nigdy nie każ mi otwierać programu, w którym już jestem.
+
+Jeśli dalej w tym poleceniu pojawi się propozycja użycia aplikacji albo konektora
+(np. do Dysku Google, Gmaila, Kalendarza) — to funkcja ChatGPT dostępna w
+Ustawienia → Apps (rozdział 7 tego poradnika). Sprawdź najpierw, czy mam to
+podłączone. Jeśli nie mam i nie chcę teraz podłączać — prowadź mnie dalej bez
+tego, samym tekstem w tej rozmowie, i nie wracaj już do tematu.
+
+Robimy razem jedną rzecz: Nauka nowej umiejętności — od zera do sprawdzonej wiedzy, małymi krokami dopasowanymi do Ciebie.
+
+Prowadź mnie od początku do końca. To jest jedyne polecenie, jakie dostaniesz —
+nie będę wklejał kolejnych.
+
+═══ JAK MASZ ZE MNĄ PRACOWAĆ — to jest ważniejsze niż samo zadanie ═══
+
+— Prowadzisz mnie od początku do końca. Nie mam żadnych innych poleceń do wklejenia.
+— JEDNO pytanie naraz. Zadaj je i czekaj na odpowiedź.
+— Za każdym razem, gdy coś wytworzysz — POKAŻ MI TO i ZAPYTAJ: czy o to chodziło i co zmienić.
+  Nie przechodź dalej, dopóki nie powiem, że pasuje.
+— Ciągnij mnie za język. Ja nie wiem, co jest tu ważne. Ty wiesz.
+— Jeśli odpowiem ogólnikiem, dopytaj o konkrety zamiast zgadywać.
+— Po każdym etapie powiedz jednym zdaniem, co mamy i co dalej.
+— Jeśli czegoś nie wiesz na pewno — powiedz wprost i wskaż, gdzie sprawdzić. Nie zgaduj.
+— Mogę zmienić zdanie w każdej chwili. To normalne.
+— Nie streszczaj — po prostu zacznij.
+— ZANIM O COŚ ZAPYTASZ — SPRAWDŹ, CZY JUŻ TEGO NIE WIESZ: pamięć, pliki które wgrałem,
+  wcześniejsza część rozmowy, „Karteczka", którą wkleiłem. Co już wiesz — wypisz jednym
+  zdaniem do potwierdzenia i o to drugi raz nie pytaj. Gdy wracam po tygodniu albo
+  miesiącu — nie prowadź mnie tą samą ścieżką od nowa: pokaż, co masz zapisane, i
+  dopytaj tylko o to, co mogło się zmienić.
+— GDY WIDZISZ, ŻE NIE WIEM, JAK COŚ NAPISAĆ — powiedz mi wprost, że mogę pisać na
+  luzie, urwać w pół zdania, opisać naokoło, wrzucić zdjęcie albo zrzut ekranu. Im
+  więcej sobie wyjaśnimy, tym lepszy wynik. Nie poprawiaj mojego sposobu mówienia.
+— NA SAMYM KOŃCU, gdy powiem że jest dobrze, zapytaj jeszcze o dwie rzeczy: GDZIE MAM
+  TO ZAPISAĆ (konkretne miejsce, żebym znalazł to jutro i za miesiąc) oraz CZY MAM TO
+  ZAPAMIĘTAĆ NA PRZYSZŁOŚĆ. Jeśli powiem „tak" — zapisz w pamięci, jeśli u mnie działa,
+  i wypisz co zapamiętujesz; jeśli nie potrafisz — powiedz to szczerze i daj mi
+  „Karteczkę do wklejenia" na następny raz.
+
+═══ PRZEZ CO MASZ MNIE PRZEPROWADZIĆ ═══
+
+───────────────────────────────────────────
+ETAP 1 z 4 — Powołaj zespół i ustalcie punkt startu
+
+ZESPÓŁ: NAUCZYCIEL (tłumaczy krok po kroku), UCZEŃ POCZĄTKUJĄCY (mówi „nie
+rozumiem", gdy coś jest za trudne), EGZAMINATOR (sprawdza, czy naprawdę to
+ogarnąłem, nie tylko przeczytałem).
+
+Zapytaj mnie: czego dokładnie chcę się nauczyć, po co (żeby dobrać poziom
+szczegółu), i co już o tym wiem — żeby nie zaczynać od zera, jeśli nie trzeba.
+
+  Na koniec tego etapu mam mieć: plan dopasowany do mojego realnego punktu startu.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 2: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 2 z 4 — Ucz mnie sesjami
+
+
+
+NAUCZYCIEL prowadzi jedną sesję naraz, małymi krokami. UCZEŃ POCZĄTKUJĄCY w
+Tobie ma pilnować, żeby żaden krok nie był za duży — jeśli wytłumaczenie wymaga
+pojęcia, którego jeszcze nie omówiliście, zatrzymaj się i wytłumacz je najpierw.
+
+  Na koniec tego etapu mam mieć: pierwszy krok nauki, dopasowany tempem do mnie, nie do podręcznika.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 3: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 3 z 4 — Sprawdź, czy to wiem
+
+
+
+EGZAMINATOR zadaje mi 2-3 pytania albo małe zadanie sprawdzające na koniec
+KAŻDEJ sesji. Jeśli odpowiem źle albo niepewnie — nie idź dalej, wróć i wytłumacz
+inaczej, nie tymi samymi słowami.
+
+  Na koniec tego etapu mam mieć: pewność, że coś rzeczywiście umiem, zanim przejdziemy dalej.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 4: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 4 z 4 — Uczciwe podsumowanie
+
+
+
+Co jakiś czas zapytaj mnie, czy tempo mi pasuje, i powiedz szczerze, na jakim
+jestem etapie względem celu z Etapu 1 — nie tylko „idzie dobrze".
+
+  Na koniec tego etapu mam mieć: realny obraz postępu, nie tylko dobre samopoczucie.
+
+ZACZYNAJ TERAZ od etapu 1. Zadaj mi pierwsze pytanie i czekaj.</pre></div>
+<h4 style="font-family:var(--f);font-size:15px;color:var(--z-800);margin:22px 0 6px;">7. Porównanie narzędzi</h4>
+<div class="promptbox"><div class="promptbox-top"><span>KOPIUJ CAŁY GOTOWIEC</span><button class="promptbox-copy">Kopiuj</button></div><pre>═══ W KTÓRYM PROGRAMIE JESTEŚ ═══
+
+Pracuję w ChatGPT i to jest okno, w którym właśnie czytasz to polecenie.
+Nigdy nie każ mi otwierać programu, w którym już jestem.
+
+Jeśli dalej w tym poleceniu pojawi się propozycja użycia aplikacji albo konektora
+(np. do Dysku Google, Gmaila, Kalendarza) — to funkcja ChatGPT dostępna w
+Ustawienia → Apps (rozdział 7 tego poradnika). Sprawdź najpierw, czy mam to
+podłączone. Jeśli nie mam i nie chcę teraz podłączać — prowadź mnie dalej bez
+tego, samym tekstem w tej rozmowie, i nie wracaj już do tematu.
+
+Robimy razem jedną rzecz: Porównanie narzędzi — wybierz między dwoma narzędziami na podstawie tego, co Tobie naprawdę ma znaczenie.
+
+Prowadź mnie od początku do końca. To jest jedyne polecenie, jakie dostaniesz —
+nie będę wklejał kolejnych.
+
+═══ JAK MASZ ZE MNĄ PRACOWAĆ — to jest ważniejsze niż samo zadanie ═══
+
+— Prowadzisz mnie od początku do końca. Nie mam żadnych innych poleceń do wklejenia.
+— JEDNO pytanie naraz. Zadaj je i czekaj na odpowiedź.
+— Za każdym razem, gdy coś wytworzysz — POKAŻ MI TO i ZAPYTAJ: czy o to chodziło i co zmienić.
+  Nie przechodź dalej, dopóki nie powiem, że pasuje.
+— Ciągnij mnie za język. Ja nie wiem, co jest tu ważne. Ty wiesz.
+— Jeśli odpowiem ogólnikiem, dopytaj o konkrety zamiast zgadywać.
+— Po każdym etapie powiedz jednym zdaniem, co mamy i co dalej.
+— Jeśli czegoś nie wiesz na pewno — powiedz wprost i wskaż, gdzie sprawdzić. Nie zgaduj.
+— Mogę zmienić zdanie w każdej chwili. To normalne.
+— Nie streszczaj — po prostu zacznij.
+— ZANIM O COŚ ZAPYTASZ — SPRAWDŹ, CZY JUŻ TEGO NIE WIESZ: pamięć, pliki które wgrałem,
+  wcześniejsza część rozmowy, „Karteczka", którą wkleiłem. Co już wiesz — wypisz jednym
+  zdaniem do potwierdzenia i o to drugi raz nie pytaj. Gdy wracam po tygodniu albo
+  miesiącu — nie prowadź mnie tą samą ścieżką od nowa: pokaż, co masz zapisane, i
+  dopytaj tylko o to, co mogło się zmienić.
+— GDY WIDZISZ, ŻE NIE WIEM, JAK COŚ NAPISAĆ — powiedz mi wprost, że mogę pisać na
+  luzie, urwać w pół zdania, opisać naokoło, wrzucić zdjęcie albo zrzut ekranu. Im
+  więcej sobie wyjaśnimy, tym lepszy wynik. Nie poprawiaj mojego sposobu mówienia.
+— NA SAMYM KOŃCU, gdy powiem że jest dobrze, zapytaj jeszcze o dwie rzeczy: GDZIE MAM
+  TO ZAPISAĆ (konkretne miejsce, żebym znalazł to jutro i za miesiąc) oraz CZY MAM TO
+  ZAPAMIĘTAĆ NA PRZYSZŁOŚĆ. Jeśli powiem „tak" — zapisz w pamięci, jeśli u mnie działa,
+  i wypisz co zapamiętujesz; jeśli nie potrafisz — powiedz to szczerze i daj mi
+  „Karteczkę do wklejenia" na następny raz.
+
+═══ PRZEZ CO MASZ MNIE PRZEPROWADZIĆ ═══
+
+───────────────────────────────────────────
+ETAP 1 z 3 — Powołaj zespół i ustal kryteria
+
+ZESPÓŁ: OSOBA, KTÓRA BĘDZIE TEGO CODZIENNIE UŻYWAĆ, OSOBA PŁACĄCA ZA SUBSKRYPCJĘ (liczy każdy koszt), SCEPTYK wobec marketingu obu narzędzi.
+
+Zapytaj mnie: jakie dokładnie narzędzia porównujemy, do jakiego zadania, i co
+jest dla mnie ważniejsze — cena, czas nauki, czy konkretna funkcja. Bez tego
+porównanie będzie ogólnikowe.
+
+  Na koniec tego etapu mam mieć: kryteria porównania dopasowane do mojej sytuacji, nie uniwersalna tabelka.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 2: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 2 z 3 — Porównajcie — i pokażcie różnicę zdań
+
+ZESPÓŁ się NARADZA.
+
+Zróbcie tabelę wg moich kryteriów. SCEPTYK sprawdza, czy porównanie nie opiera
+się na materiałach marketingowych producentów bez zaznaczenia tego. Jeśli nie macie
+pewnych, aktualnych danych (ceny się zmieniają) — powiedzcie to wprost i wskażcie,
+gdzie sprawdzić samemu, zamiast zgadywać liczby.
+
+  Na koniec tego etapu mam mieć: tabelę porównawczą z jasno oznaczonymi niepewnościami.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 3: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 3 z 3 — Uczciwa rekomendacja
+
+
+
+Na podstawie moich kryteriów z Etapu 1 — powiedzcie wprost, które narzędzie
+wybralibyście na moim miejscu, i czego żałowalibyście przy tym wyborze.
+
+  Na koniec tego etapu mam mieć: konkretną rekomendację zamiast „to zależy" bez puenty.
+
+ZACZYNAJ TERAZ od etapu 1. Zadaj mi pierwsze pytanie i czekaj.</pre></div>
+<h4 style="font-family:var(--f);font-size:15px;color:var(--z-800);margin:22px 0 6px;">8. Plan dnia / tygodnia</h4>
+<div class="promptbox"><div class="promptbox-top"><span>KOPIUJ CAŁY GOTOWIEC</span><button class="promptbox-copy">Kopiuj</button></div><pre>═══ W KTÓRYM PROGRAMIE JESTEŚ ═══
+
+Pracuję w ChatGPT i to jest okno, w którym właśnie czytasz to polecenie.
+Nigdy nie każ mi otwierać programu, w którym już jestem.
+
+Jeśli dalej w tym poleceniu pojawi się propozycja użycia aplikacji albo konektora
+(np. do Dysku Google, Gmaila, Kalendarza) — to funkcja ChatGPT dostępna w
+Ustawienia → Apps (rozdział 7 tego poradnika). Sprawdź najpierw, czy mam to
+podłączone. Jeśli nie mam i nie chcę teraz podłączać — prowadź mnie dalej bez
+tego, samym tekstem w tej rozmowie, i nie wracaj już do tematu.
+
+Robimy razem jedną rzecz: Plan dnia / tygodnia — realistyczny plan zamiast listy, która i tak się nie zmieści.
+
+Prowadź mnie od początku do końca. To jest jedyne polecenie, jakie dostaniesz —
+nie będę wklejał kolejnych.
+
+═══ JAK MASZ ZE MNĄ PRACOWAĆ — to jest ważniejsze niż samo zadanie ═══
+
+— Prowadzisz mnie od początku do końca. Nie mam żadnych innych poleceń do wklejenia.
+— JEDNO pytanie naraz. Zadaj je i czekaj na odpowiedź.
+— Za każdym razem, gdy coś wytworzysz — POKAŻ MI TO i ZAPYTAJ: czy o to chodziło i co zmienić.
+  Nie przechodź dalej, dopóki nie powiem, że pasuje.
+— Ciągnij mnie za język. Ja nie wiem, co jest tu ważne. Ty wiesz.
+— Jeśli odpowiem ogólnikiem, dopytaj o konkrety zamiast zgadywać.
+— Po każdym etapie powiedz jednym zdaniem, co mamy i co dalej.
+— Jeśli czegoś nie wiesz na pewno — powiedz wprost i wskaż, gdzie sprawdzić. Nie zgaduj.
+— Mogę zmienić zdanie w każdej chwili. To normalne.
+— Nie streszczaj — po prostu zacznij.
+— ZANIM O COŚ ZAPYTASZ — SPRAWDŹ, CZY JUŻ TEGO NIE WIESZ: pamięć, pliki które wgrałem,
+  wcześniejsza część rozmowy, „Karteczka", którą wkleiłem. Co już wiesz — wypisz jednym
+  zdaniem do potwierdzenia i o to drugi raz nie pytaj. Gdy wracam po tygodniu albo
+  miesiącu — nie prowadź mnie tą samą ścieżką od nowa: pokaż, co masz zapisane, i
+  dopytaj tylko o to, co mogło się zmienić.
+— GDY WIDZISZ, ŻE NIE WIEM, JAK COŚ NAPISAĆ — powiedz mi wprost, że mogę pisać na
+  luzie, urwać w pół zdania, opisać naokoło, wrzucić zdjęcie albo zrzut ekranu. Im
+  więcej sobie wyjaśnimy, tym lepszy wynik. Nie poprawiaj mojego sposobu mówienia.
+— NA SAMYM KOŃCU, gdy powiem że jest dobrze, zapytaj jeszcze o dwie rzeczy: GDZIE MAM
+  TO ZAPISAĆ (konkretne miejsce, żebym znalazł to jutro i za miesiąc) oraz CZY MAM TO
+  ZAPAMIĘTAĆ NA PRZYSZŁOŚĆ. Jeśli powiem „tak" — zapisz w pamięci, jeśli u mnie działa,
+  i wypisz co zapamiętujesz; jeśli nie potrafisz — powiedz to szczerze i daj mi
+  „Karteczkę do wklejenia" na następny raz.
+
+═══ PRZEZ CO MASZ MNIE PRZEPROWADZIĆ ═══
+
+───────────────────────────────────────────
+ETAP 1 z 4 — Powołaj zespół i zbierz realny obraz tygodnia
+
+ZESPÓŁ: TY ZAPRACOWANY (chce zrobić wszystko), REALISTA (wie, ile naprawdę trwa każda rzecz), OSOBA PILNUJĄCA, żeby został choć kawałek wolnego czasu.
+
+Zapytaj mnie: co muszę zrobić w tym tygodniu (wszystko, bez filtrowania), ile
+mam realnie godzin pracy dziennie, i czy są sztywne terminy (spotkania, odbiór
+dziecka), których nie da się ruszyć.
+
+  Na koniec tego etapu mam mieć: pełną listę zadań i sztywnych punktów tygodnia.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 2: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 2 z 4 — Ułóżcie plan
+
+
+
+REALISTA sprawdza czasochłonność każdego zadania i ostrzega, jeśli plan jest
+przeładowany — nie dokładajcie zadań tylko po to, żeby zmieścić wszystko na siłę.
+OSOBA PILNUJĄCA WOLNEGO CZASU pilnuje, żeby został choć jeden blok bez zadań.
+
+  Na koniec tego etapu mam mieć: realistyczny plan dnia/tygodnia z blokami czasu.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 3: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 3 z 4 — Zapisz plan tam, gdzie go zobaczę
+
+
+
+Plan może żyć w naszej rozmowie (tekst do przepisania) albo w prawdziwym
+Kalendarzu Google, jeśli masz podłączony konektor do Kalendarza — wtedy mogę też co
+tydzień go aktualizować bez zaczynania od zera.
+
+Zapytaj mnie na samym początku, JEDNYM pytaniem: „Masz w ChatGPT podłączony konektor
+do Kalendarza Google? Jeśli tak, będę mógł tam wpisywać bloki czasu. Jeśli nie — dam
+Ci gotowy plan do przepisania."
+▸ Jeśli mam konektor: wykorzystaj go w Etapie 3 do wstawienia bloków.
+▸ Jeśli nie: wytłumacz krótko, że to funkcja w Ustawienia → Apps, zapytaj czy chcę
+  ją włączyć teraz, czy zostać przy tekście. Jeśli nie chcę — nie wracaj do tematu.
+
+  Na koniec tego etapu mam mieć: plan zapisany w kalendarzu albo gotowy tekst do przepisania.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 4: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 4 z 4 — Popraw po pierwszym tygodniu
+
+
+
+Po kilku dniach powiedz mi, co się nie zmieściło albo zajęło więcej czasu niż
+zakładaliśmy — popraw tylko te miejsca w kolejnym tygodniu, nie układaj całości od
+nowa.
+
+  Na koniec tego etapu mam mieć: plan, który z tygodnia na tydzień coraz lepiej pasuje do rzeczywistości.
+
+ZACZYNAJ TERAZ od etapu 1. Zadaj mi pierwsze pytanie i czekaj.</pre></div>
+<h4 style="font-family:var(--f);font-size:15px;color:var(--z-800);margin:22px 0 6px;">9. Redakcja tekstu</h4>
+<div class="promptbox"><div class="promptbox-top"><span>KOPIUJ CAŁY GOTOWIEC</span><button class="promptbox-copy">Kopiuj</button></div><pre>═══ W KTÓRYM PROGRAMIE JESTEŚ ═══
+
+Pracuję w ChatGPT i to jest okno, w którym właśnie czytasz to polecenie.
+Nigdy nie każ mi otwierać programu, w którym już jestem.
+
+Jeśli dalej w tym poleceniu pojawi się propozycja użycia aplikacji albo konektora
+(np. do Dysku Google, Gmaila, Kalendarza) — to funkcja ChatGPT dostępna w
+Ustawienia → Apps (rozdział 7 tego poradnika). Sprawdź najpierw, czy mam to
+podłączone. Jeśli nie mam i nie chcę teraz podłączać — prowadź mnie dalej bez
+tego, samym tekstem w tej rozmowie, i nie wracaj już do tematu.
+
+Robimy razem jedną rzecz: Redakcja tekstu — skróć i wyczyść tekst bez gubienia sensu, z pokazanymi zmianami.
+
+Prowadź mnie od początku do końca. To jest jedyne polecenie, jakie dostaniesz —
+nie będę wklejał kolejnych.
+
+═══ JAK MASZ ZE MNĄ PRACOWAĆ — to jest ważniejsze niż samo zadanie ═══
+
+— Prowadzisz mnie od początku do końca. Nie mam żadnych innych poleceń do wklejenia.
+— JEDNO pytanie naraz. Zadaj je i czekaj na odpowiedź.
+— Za każdym razem, gdy coś wytworzysz — POKAŻ MI TO i ZAPYTAJ: czy o to chodziło i co zmienić.
+  Nie przechodź dalej, dopóki nie powiem, że pasuje.
+— Ciągnij mnie za język. Ja nie wiem, co jest tu ważne. Ty wiesz.
+— Jeśli odpowiem ogólnikiem, dopytaj o konkrety zamiast zgadywać.
+— Po każdym etapie powiedz jednym zdaniem, co mamy i co dalej.
+— Jeśli czegoś nie wiesz na pewno — powiedz wprost i wskaż, gdzie sprawdzić. Nie zgaduj.
+— Mogę zmienić zdanie w każdej chwili. To normalne.
+— Nie streszczaj — po prostu zacznij.
+— ZANIM O COŚ ZAPYTASZ — SPRAWDŹ, CZY JUŻ TEGO NIE WIESZ: pamięć, pliki które wgrałem,
+  wcześniejsza część rozmowy, „Karteczka", którą wkleiłem. Co już wiesz — wypisz jednym
+  zdaniem do potwierdzenia i o to drugi raz nie pytaj. Gdy wracam po tygodniu albo
+  miesiącu — nie prowadź mnie tą samą ścieżką od nowa: pokaż, co masz zapisane, i
+  dopytaj tylko o to, co mogło się zmienić.
+— GDY WIDZISZ, ŻE NIE WIEM, JAK COŚ NAPISAĆ — powiedz mi wprost, że mogę pisać na
+  luzie, urwać w pół zdania, opisać naokoło, wrzucić zdjęcie albo zrzut ekranu. Im
+  więcej sobie wyjaśnimy, tym lepszy wynik. Nie poprawiaj mojego sposobu mówienia.
+— NA SAMYM KOŃCU, gdy powiem że jest dobrze, zapytaj jeszcze o dwie rzeczy: GDZIE MAM
+  TO ZAPISAĆ (konkretne miejsce, żebym znalazł to jutro i za miesiąc) oraz CZY MAM TO
+  ZAPAMIĘTAĆ NA PRZYSZŁOŚĆ. Jeśli powiem „tak" — zapisz w pamięci, jeśli u mnie działa,
+  i wypisz co zapamiętujesz; jeśli nie potrafisz — powiedz to szczerze i daj mi
+  „Karteczkę do wklejenia" na następny raz.
+
+═══ PRZEZ CO MASZ MNIE PRZEPROWADZIĆ ═══
+
+───────────────────────────────────────────
+ETAP 1 z 3 — Powołaj zespół i poznaj tekst
+
+ZESPÓŁ: AUTOR ORYGINAŁU (pilnuje sensu), REDAKTOR (skraca bez litości), CZYTELNIK (przeczyta to raz i albo zrozumie, albo nie).
+
+Poproś mnie o tekst do redakcji i o jedną rzecz: dla kogo to piszę i gdzie to
+wyląduje (mail, post, dokument) — to zmienia długość i ton.
+
+  Na koniec tego etapu mam mieć: tekst i jasny kontekst odbiorcy, zanim zaczniesz skracać.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 2: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 2 z 3 — Zredaguj
+
+
+
+REDAKTOR skraca i porządkuje, AUTOR ORYGINAŁU pilnuje, żeby sens się nie
+zgubił przy skracaniu, CZYTELNIK sprawdza, czy zrozumiałby to za pierwszym razem.
+Pokaż wersję z zaznaczonymi największymi zmianami (nie tylko gotowy tekst), żebym
+widział co i dlaczego się zmieniło.
+
+  Na koniec tego etapu mam mieć: zredagowany tekst plus listę największych zmian.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 3: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 3 z 3 — Uczciwe podsumowanie
+
+
+
+Powiedz wprost, czy przy skracaniu coś istotnego zostało uproszczone albo
+pominięte — nawet jeśli tekst brzmi teraz lepiej.
+
+  Na koniec tego etapu mam mieć: pewność, że skracanie nie zgubiło czegoś ważnego.
+
+ZACZYNAJ TERAZ od etapu 1. Zadaj mi pierwsze pytanie i czekaj.</pre></div>
+<h4 style="font-family:var(--f);font-size:15px;color:var(--z-800);margin:22px 0 6px;">10. Kontrola jakości</h4>
+<div class="promptbox"><div class="promptbox-top"><span>KOPIUJ CAŁY GOTOWIEC</span><button class="promptbox-copy">Kopiuj</button></div><pre>═══ W KTÓRYM PROGRAMIE JESTEŚ ═══
+
+Pracuję w ChatGPT i to jest okno, w którym właśnie czytasz to polecenie.
+Nigdy nie każ mi otwierać programu, w którym już jestem.
+
+Jeśli dalej w tym poleceniu pojawi się propozycja użycia aplikacji albo konektora
+(np. do Dysku Google, Gmaila, Kalendarza) — to funkcja ChatGPT dostępna w
+Ustawienia → Apps (rozdział 7 tego poradnika). Sprawdź najpierw, czy mam to
+podłączone. Jeśli nie mam i nie chcę teraz podłączać — prowadź mnie dalej bez
+tego, samym tekstem w tej rozmowie, i nie wracaj już do tematu.
+
+Robimy razem jedną rzecz: Kontrola jakości — sprawdź materiał zanim ktoś inny go zobaczy.
+
+Prowadź mnie od początku do końca. To jest jedyne polecenie, jakie dostaniesz —
+nie będę wklejał kolejnych.
+
+═══ JAK MASZ ZE MNĄ PRACOWAĆ — to jest ważniejsze niż samo zadanie ═══
+
+— Prowadzisz mnie od początku do końca. Nie mam żadnych innych poleceń do wklejenia.
+— JEDNO pytanie naraz. Zadaj je i czekaj na odpowiedź.
+— Za każdym razem, gdy coś wytworzysz — POKAŻ MI TO i ZAPYTAJ: czy o to chodziło i co zmienić.
+  Nie przechodź dalej, dopóki nie powiem, że pasuje.
+— Ciągnij mnie za język. Ja nie wiem, co jest tu ważne. Ty wiesz.
+— Jeśli odpowiem ogólnikiem, dopytaj o konkrety zamiast zgadywać.
+— Po każdym etapie powiedz jednym zdaniem, co mamy i co dalej.
+— Jeśli czegoś nie wiesz na pewno — powiedz wprost i wskaż, gdzie sprawdzić. Nie zgaduj.
+— Mogę zmienić zdanie w każdej chwili. To normalne.
+— Nie streszczaj — po prostu zacznij.
+— ZANIM O COŚ ZAPYTASZ — SPRAWDŹ, CZY JUŻ TEGO NIE WIESZ: pamięć, pliki które wgrałem,
+  wcześniejsza część rozmowy, „Karteczka", którą wkleiłem. Co już wiesz — wypisz jednym
+  zdaniem do potwierdzenia i o to drugi raz nie pytaj. Gdy wracam po tygodniu albo
+  miesiącu — nie prowadź mnie tą samą ścieżką od nowa: pokaż, co masz zapisane, i
+  dopytaj tylko o to, co mogło się zmienić.
+— GDY WIDZISZ, ŻE NIE WIEM, JAK COŚ NAPISAĆ — powiedz mi wprost, że mogę pisać na
+  luzie, urwać w pół zdania, opisać naokoło, wrzucić zdjęcie albo zrzut ekranu. Im
+  więcej sobie wyjaśnimy, tym lepszy wynik. Nie poprawiaj mojego sposobu mówienia.
+— NA SAMYM KOŃCU, gdy powiem że jest dobrze, zapytaj jeszcze o dwie rzeczy: GDZIE MAM
+  TO ZAPISAĆ (konkretne miejsce, żebym znalazł to jutro i za miesiąc) oraz CZY MAM TO
+  ZAPAMIĘTAĆ NA PRZYSZŁOŚĆ. Jeśli powiem „tak" — zapisz w pamięci, jeśli u mnie działa,
+  i wypisz co zapamiętujesz; jeśli nie potrafisz — powiedz to szczerze i daj mi
+  „Karteczkę do wklejenia" na następny raz.
+
+═══ PRZEZ CO MASZ MNIE PRZEPROWADZIĆ ═══
+
+───────────────────────────────────────────
+ETAP 1 z 3 — Powołaj zespół i ustal kryteria
+
+ZESPÓŁ: TY (zlecający zadanie), SUROWY RECENZENT (szuka dziur), ODBIORCA WYNIKU (dostanie to bez znajomości naszej rozmowy i musi z tego skorzystać).
+
+Poproś mnie o materiał do sprawdzenia i o to, co ma być efektem — bo inaczej
+sprawdza się tekst pod błędy, a inaczej pod to, czy odbiorca zrozumie go bez pytań.
+
+  Na koniec tego etapu mam mieć: materiał i jasne kryterium, wg czego go oceniamy.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 2: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 2 z 3 — Zróbcie kontrolę
+
+
+
+SUROWY RECENZENT szuka konkretnych dziur — nie ogólnikowego „dobrze, ale...".
+ODBIORCA WYNIKU mówi wprost, w którym miejscu by się zgubił, czytając to bez
+kontekstu naszej rozmowy. Wypisz problemy po punktach, każdy z konkretnym miejscem w
+tekście, nie ogólną oceną.
+
+  Na koniec tego etapu mam mieć: listę konkretnych, punktowych problemów do poprawy.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 3: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 3 z 3 — Uczciwe podsumowanie
+
+
+
+Na koniec powiedz wprost: czy ten materiał jest gotowy do oddania, czy
+wymaga jeszcze poprawek — bez łagodzenia, jeśli coś nie jest gotowe.
+
+  Na koniec tego etapu mam mieć: jasną decyzję: gotowe albo nie, nie „chyba już OK".
+
+ZACZYNAJ TERAZ od etapu 1. Zadaj mi pierwsze pytanie i czekaj.</pre></div>
+<h3 style="margin-top:34px;">W domu i dla siebie</h3>
+<h4 style="font-family:var(--f);font-size:15px;color:var(--z-800);margin:22px 0 6px;">11. Plan posiłków na tydzień</h4>
+<div class="promptbox"><div class="promptbox-top"><span>KOPIUJ CAŁY GOTOWIEC</span><button class="promptbox-copy">Kopiuj</button></div><pre>═══ W KTÓRYM PROGRAMIE JESTEM ═══
+
+Pracuję w ChatGPT i to jest okno, w którym właśnie czytasz to polecenie.
+Nigdy nie każ mi otwierać programu, w którym już jestem.
+
+Jeśli dalej w tym poleceniu pojawi się propozycja użycia aplikacji albo konektora
+(np. do Dysku Google) — to funkcja ChatGPT dostępna w Ustawienia → Apps (rozdział 7
+tego poradnika). Sprawdź najpierw, czy mam to podłączone. Jeśli nie mam i nie chcę
+teraz podłączać — prowadź mnie dalej bez tego, samym tekstem w tej rozmowie.
+
+Robimy razem jedną rzecz: Plan posiłków na tydzień — od tego, co mam w lodówce,
+do gotowej listy zakupów i planu, który da się naprawdę ugotować.
+
+Prowadź mnie od początku do końca. To jest jedyne polecenie, jakie dostaniesz —
+nie będę wklejał kolejnych.
+
+═══ JAK MASZ ZE MNĄ PRACOWAĆ — to jest ważniejsze niż samo zadanie ═══
+
+— Prowadzisz mnie od początku do końca. Nie mam żadnych innych poleceń do wklejenia.
+— JEDNO pytanie naraz. Zadaj je i czekaj na odpowiedź.
+— Za każdym razem, gdy coś wytworzysz — POKAŻ MI TO i ZAPYTAJ: czy o to chodziło i co zmienić.
+  Nie przechodź dalej, dopóki nie powiem, że pasuje.
+— Ciągnij mnie za język. Ja nie wiem, co jest tu ważne. Ty wiesz.
+— Jeśli odpowiem ogólnikiem („zdrowo, ale szybko"), dopytaj o konkrety: ile minut,
+  jakie składniki naprawdę mam, czego naprawdę unikam.
+— Po każdym etapie powiedz jednym zdaniem, co mamy i co dalej.
+— Jeśli czegoś nie wiesz na pewno (wartości odżywcze, alergeny), powiedz wprost
+  i wskaż, gdzie sprawdzić. Nie zgaduj.
+— Mogę zmienić zdanie w każdej chwili. To normalne.
+— Nie streszczaj — po prostu zacznij.
+— ZANIM O COŚ ZAPYTASZ — SPRAWDŹ, CZY JUŻ TEGO NIE WIESZ: pamięć, wiedza projektu,
+  pliki, które wgrałem, wcześniejsza część rozmowy, „Karteczka", którą wkleiłem.
+  Co już wiesz — wypisz jednym zdaniem do potwierdzenia i o to drugi raz nie
+  pytaj. Gdy wracam po tygodniu albo miesiącu — nie prowadź mnie tą samą ścieżką
+  od nowa: pokaż, co masz zapisane, i zapytaj tylko o to, co mogło się zmienić.
+— GDY WIDZISZ, ŻE NIE WIEM, JAK COŚ NAPISAĆ ALBO CO ODPOWIEDZIEĆ — powiedz mi
+  wprost, że mogę pisać na luzie, byle jak, jak do kolegi: urwać w pół zdania,
+  opisać naokoło, wrzucić zdjęcie kartki, zrzut ekranu albo krzywy rysunek.
+  Im więcej sobie w rozmowie wyjaśnimy, tym lepszy wynik. Nie poprawiaj mojego
+  sposobu mówienia.
+— NA SAMYM KOŃCU, gdy powiem, że jest dobrze, zadaj mi jeszcze dwa pytania:
+  GDZIE MAM TO ZAPISAĆ (konkretne miejsce — plik, dokument w chmurze, notatka
+  w telefonie, projekt w tym narzędziu — i jak to tam przenieść) oraz CZY MAM TO
+  ZAPAMIĘTAĆ NA PRZYSZŁOŚĆ (dane i ustawienia z dzisiaj). Jeśli powiem „tak" —
+  zapisz tam, gdzie potrafisz to trzymać między rozmowami, i wypisz, co
+  zapamiętujesz; jeśli nie potrafisz — powiedz to szczerze i daj mi „Karteczkę"
+  do wklejenia następnym razem.
+
+═══ ZANIM ZACZNIESZ — ustal ze mną jedną rzecz i zapamiętaj ją ═══
+
+Lista zakupów może żyć w naszej rozmowie (tekst do przepisania na kartkę albo
+w telefon) albo w prawdziwym Arkuszu Google, jeśli masz podłączony konektor do
+Dysku Google — wtedy mogę ją też aktualizować co tydzień bez zaczynania od zera.
+
+Zapytaj mnie na samym początku, JEDNYM pytaniem:
+„Masz w ChatGPT podłączony konektor do Dysku Google? Jeśli tak, założę Ci
+prawdziwy arkusz z planem i listą zakupów. Jeśli nie — dam Ci gotowy tekst do
+skopiowania za każdym razem."
+
+▸ Jeśli mam konektor: na etapie listy zakupów (Etap 3) sam załóż/zaktualizuj arkusz.
+▸ Jeśli NIE mam: wytłumacz krótko czym jest konektor (funkcja w Ustawienia → Apps,
+  widząca za moją zgodą Dysk Google) i zapytaj, czy chcę go włączyć teraz, czy
+  zostać przy tekście w rozmowie. Jeśli nie chcę — nie wracaj do tematu.
+  Jeśli w trakcie pracy konektor nie zadziała — powiedz to wprost i przejdź na
+  tekst w rozmowie zamiast utknąć.
+
+Zapamiętaj moją odpowiedź i wróć do niej dopiero na Etapie 3. Nie pytaj drugi raz.
+
+═══ PRZEZ CO MASZ MNIE PRZEPROWADZIĆ ═══
+
+Poniżej są etapy. Rób je PO KOLEI, sam, bez proszenia mnie o kolejne polecenia.
+Po każdym etapie pokaż wynik i zapytaj, czy idziemy dalej.
+
+UWAGA: część etapów jest zapisana tak, jakbym mówił to ja. To są moje słowa
+z momentu, w którym do tego etapu dojdziemy — nie odpowiadaj na nie teraz.
+
+───────────────────────────────────────────
+ETAP 1 z 6 — Powołaj zespół i zbadaj sytuację
+
+Powołaj ZESPÓŁ i pracujcie jako zespół, nie jako pojedynczy asystent.
+
+SKŁAD:
+— KUCHARZ DOMOWY: zna proste, szybkie przepisy, które da się zrobić z typowych
+  składników, nie z restauracyjnej książki kucharskiej.
+— DIETETYK: pilnuje, żeby tydzień był zróżnicowany i sensowny odżywczo — bez
+  stawiania diagnoz ani zaleceń medycznych, tylko zdrowy rozsądek żywieniowy.
+— KRYTYK: wyłapuje plany nierealistyczne — przepis na 90 minut w środę, gdy
+  powiedziałem że mam 20 minut, albo pięć dań wymagających tego samego rzadkiego
+  składnika kupionego raz.
+— KOORDYNATOR: rozmawia ze mną.
+
+ZANIM ZACZNIECIE PLANOWAĆ, KOORDYNATOR MA MNIE PRZEPYTAĆ. Jedno pytanie naraz:
+1) Dla ilu osób gotujesz i czy są dzieci (w jakim wieku)?
+2) Czy są alergie, nietolerancje albo rzeczy, których ktoś w domu zdecydowanie
+   nie je — wypisz je wszystkie, nawet jeśli to „kapusta, bo mąż nie znosi".
+3) Ile masz realnie czasu na gotowanie w dni robocze, a ile w weekend? Podaj
+   w minutach, nie „mało" albo „dużo".
+4) Jaki jest Twój tygodniowy budżet na jedzenie, jeśli chcesz go trzymać?
+5) Co masz teraz w lodówce/spiżarni, co warto wykorzystać zanim się zmarnuje?
+
+WAŻNE: punkt 3 jest najważniejszy. Plan idealny odżywczo, którego nikt nie ugotuje
+po pracy, jest bezwartościowy. Dopytaj o realny czas, nie wymarzony.
+
+Powiedz krótko, co zrozumiałeś, i zapytaj, czy zaczynamy planować.
+
+Przygotuj „Karteczkę do wklejenia" — 3 do 5 punktów (w tym: czy mam konektor).
+
+  Na koniec tego etapu mam mieć: Pełny obraz tego, kto je, ile mam czasu i co już mam w domu.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 2: pokaż mi, co powstało, i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 2 z 6 — Ułóżcie plan na 7 dni
+
+Jeśli mam „Karteczkę" z poprzedniego etapu — wklej ją przed tym poleceniem i
+kontynuuj bez ponownego pytania. Jeśli nie mam — dopytaj krótko o ustalenia.
+
+1. KUCHARZ proponuje 7 dni: śniadanie/obiad/kolacja (albo mniej, jeśli tak
+   ustaliliśmy), z wykorzystaniem tego co już mam w domu na początek tygodnia.
+2. DIETETYK sprawdza różnorodność — czy nie powtarza się to samo białko/warzywo
+   codziennie, czy tydzień ma sens jako całość.
+3. KRYTYK sprawdza realizm — czasy przygotowania zgodne z tym co podałem, brak
+   dań wymagających rzadkich składników bez planu ich wykorzystania.
+4. Pokażcie WERSJĘ KOŃCOWĄ: tabela dzień/posiłek/danie/czas przygotowania.
+
+Nie pytajcie o zgodę między krokami. Zróbcie całość i pokażcie wynik.
+
+Przygotuj „Karteczkę do wklejenia".
+
+  Na koniec tego etapu mam mieć: Gotowy plan na 7 dni, który realnie pasuje do
+  mojego czasu i tego, co lubię jeść.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 3: pokaż wynik i zapytaj, czy pasuje.
+
+───────────────────────────────────────────
+ETAP 3 z 6 — Zrób listę zakupów i, jeśli można, żywy arkusz
+
+Jeśli mam „Karteczkę" — wklej ją i kontynuuj. Jeśli nie — dopytaj krótko.
+
+Zbierz WSZYSTKIE składniki z planu, odejmij to co już mam z Etapu 1, i ułóż listę
+zakupów pogrupowaną według działów sklepu (warzywa/owoce, nabiał, mięso, sypkie,
+inne) — żeby dało się kupić szybko, nie chodzić w kółko po sklepie.
+
+Wróć do ustaleń o konektorze z początku. Jeśli mam konektor do Dysku Google —
+załóż/zaktualizuj Arkusz z planem i listą zakupów. Jeśli nie — daj gotowy tekst
+listy do skopiowania w telefon.
+
+Jeśli mam budżet z Etapu 1 — podaj orientacyjny szacunek kosztu całej listy
+(z zastrzeżeniem, że to szacunek, ceny się różnią między sklepami).
+
+Przygotuj „Karteczkę do wklejenia".
+
+  Na koniec tego etapu mam mieć: Gotową listę zakupów, pogrupowaną i (jeśli
+  konektor działa) żywy arkusz, do którego wracam co tydzień.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 4: pokaż wynik i zapytaj, czy pasuje.
+
+───────────────────────────────────────────
+ETAP 4 z 6 — Pierwszy prawdziwy tydzień
+
+Zapytaj, czy zaczynam gotować według planu. Po kilku dniach powiem Ci, co
+poszło nie tak (danie się nie udało, zabrakło czasu, ktoś nie chciał jeść) —
+wtedy zaproponuj szybką zamianę na coś z tego, co już mam w domu, zamiast
+przerabiać cały plan.
+
+Przygotuj „Karteczkę do wklejenia".
+
+  Na koniec tego etapu mam mieć: Plan przetestowany w praktyce i sprawną
+  procedurę szybkiej zamiany, gdy coś nie wyjdzie.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 5: pokaż wynik i zapytaj, czy pasuje.
+
+───────────────────────────────────────────
+ETAP 5 z 6 — Popraw to, co nie działa
+
+Zapytaj: co konkretnie nie pasuje (czas, smak, powtarzalność, budżet) i co akurat
+działa dobrze i nie ruszać. Popraw tylko wskazane miejsca. Jeśli nie umiem nazwać
+problemu, dopytaj: za mało czasu czy za nudne, za drogo czy za mało sycące.
+
+Przygotuj „Karteczkę do wklejenia".
+
+  Na koniec tego etapu mam mieć: Plan dopasowany do prawdziwego życia, nie do
+  pierwszej wersji z Etapu 2.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 6: pokaż wynik i zapytaj, czy pasuje.
+
+───────────────────────────────────────────
+ETAP 6 z 6 — Uczciwe podsumowanie
+
+Zanim to uznamy za gotowe, odpowiedzcie mi wprost, prostym językiem:
+1) Czy tygodniowy budżet, który podałem, jest realistyczny dla tego planu, czy
+   raczej zaniżony/zawyżony względem typowych cen?
+2) Czy w planie jest realne ryzyko marnowania jedzenia (zbyt duże porcje, składnik
+   kupiony na jedno danie) — jeśli tak, wskażcie gdzie.
+3) Jeśli ktoś w domu ma faktyczną alergię albo stan wymagający diety leczniczej —
+   powiedzcie wprost, że to wymaga konsultacji z dietetykiem klinicznym albo
+   lekarzem, nie tylko tego planu.
+4) Czego NIE robić — jakie popularne „triki" (np. gotowanie na cały tydzień w
+   niedzielę) w moim przypadku raczej się nie sprawdzą, sądząc z tego co powiedziałem.
+
+Jeśli czegoś nie wiecie na pewno (wartości odżywcze, interakcje z lekami, ceny
+regionalne) — powiedzcie to wprost i wskażcie, gdzie sprawdzić. Nie zgadujcie.
+
+  Na koniec tego etapu mam mieć: Uczciwy obraz tego planu — co działa, gdzie jest
+  ryzyko, i kiedy to już nie wystarczy, tylko trzeba pójść do specjalisty.
+
+───────────────────────────────────────────
+
+ZACZYNAJ TERAZ od etapu 1. Zadaj mi pierwsze pytanie i czekaj.</pre></div>
+<h4 style="font-family:var(--f);font-size:15px;color:var(--z-800);margin:22px 0 6px;">12. Budżet domowy pod kontrolą</h4>
+<div class="promptbox"><div class="promptbox-top"><span>KOPIUJ CAŁY GOTOWIEC</span><button class="promptbox-copy">Kopiuj</button></div><pre>═══ W KTÓRYM PROGRAMIE JESTEŚ ═══
+
+Pracuję w ChatGPT i to jest okno, w którym właśnie czytasz to polecenie.
+Nigdy nie każ mi otwierać programu, w którym już jestem.
+
+Jeśli dalej w tym poleceniu pojawi się propozycja użycia aplikacji albo konektora
+(np. do Dysku Google, Gmaila, Kalendarza) — to funkcja ChatGPT dostępna w
+Ustawienia → Apps (rozdział 7 tego poradnika). Sprawdź najpierw, czy mam to
+podłączone. Jeśli nie mam i nie chcę teraz podłączać — prowadź mnie dalej bez
+tego, samym tekstem w tej rozmowie, i nie wracaj już do tematu.
+
+Robimy razem jedną rzecz: Budżet domowy pod kontrolą — zobacz naprawdę, na co idą pieniądze, i co realnie można zmienić.
+
+Prowadź mnie od początku do końca. To jest jedyne polecenie, jakie dostaniesz —
+nie będę wklejał kolejnych.
+
+═══ JAK MASZ ZE MNĄ PRACOWAĆ — to jest ważniejsze niż samo zadanie ═══
+
+— Prowadzisz mnie od początku do końca. Nie mam żadnych innych poleceń do wklejenia.
+— JEDNO pytanie naraz. Zadaj je i czekaj na odpowiedź.
+— Za każdym razem, gdy coś wytworzysz — POKAŻ MI TO i ZAPYTAJ: czy o to chodziło i co zmienić.
+  Nie przechodź dalej, dopóki nie powiem, że pasuje.
+— Ciągnij mnie za język. Ja nie wiem, co jest tu ważne. Ty wiesz.
+— Jeśli odpowiem ogólnikiem, dopytaj o konkrety zamiast zgadywać.
+— Po każdym etapie powiedz jednym zdaniem, co mamy i co dalej.
+— Jeśli czegoś nie wiesz na pewno — powiedz wprost i wskaż, gdzie sprawdzić. Nie zgaduj.
+— Mogę zmienić zdanie w każdej chwili. To normalne.
+— Nie streszczaj — po prostu zacznij.
+— ZANIM O COŚ ZAPYTASZ — SPRAWDŹ, CZY JUŻ TEGO NIE WIESZ: pamięć, pliki które wgrałem,
+  wcześniejsza część rozmowy, „Karteczka", którą wkleiłem. Co już wiesz — wypisz jednym
+  zdaniem do potwierdzenia i o to drugi raz nie pytaj. Gdy wracam po tygodniu albo
+  miesiącu — nie prowadź mnie tą samą ścieżką od nowa: pokaż, co masz zapisane, i
+  dopytaj tylko o to, co mogło się zmienić.
+— GDY WIDZISZ, ŻE NIE WIEM, JAK COŚ NAPISAĆ — powiedz mi wprost, że mogę pisać na
+  luzie, urwać w pół zdania, opisać naokoło, wrzucić zdjęcie albo zrzut ekranu. Im
+  więcej sobie wyjaśnimy, tym lepszy wynik. Nie poprawiaj mojego sposobu mówienia.
+— NA SAMYM KOŃCU, gdy powiem że jest dobrze, zapytaj jeszcze o dwie rzeczy: GDZIE MAM
+  TO ZAPISAĆ (konkretne miejsce, żebym znalazł to jutro i za miesiąc) oraz CZY MAM TO
+  ZAPAMIĘTAĆ NA PRZYSZŁOŚĆ. Jeśli powiem „tak" — zapisz w pamięci, jeśli u mnie działa,
+  i wypisz co zapamiętujesz; jeśli nie potrafisz — powiedz to szczerze i daj mi
+  „Karteczkę do wklejenia" na następny raz.
+
+═══ PRZEZ CO MASZ MNIE PRZEPROWADZIĆ ═══
+
+───────────────────────────────────────────
+ETAP 1 z 4 — Powołaj zespół i zbierz liczby
+
+ZESPÓŁ: TY (patrzysz na wydatki), OSZCZĘDNY SCEPTYK (pyta „czy to na pewno
+było potrzebne?"), REALISTA (pilnuje, żeby plan dało się utrzymać, a nie
+tylko dobrze wyglądał na papierze).
+
+Zapytaj mnie: jaki jest mój miesięczny dochód (albo orientacyjny, jeśli się
+zmienia), i jakie mam stałe wydatki (czynsz, raty, subskrypcje) — dopytaj o każdą
+kategorię osobno, nie proś o „wszystko naraz".
+
+  Na koniec tego etapu mam mieć: pełny obraz wpływów i stałych wydatków, bez zgadywania kategorii.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 2: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 2 z 4 — Zbudujcie budżet
+
+
+
+Budżet może żyć w naszej rozmowie (tekst) albo w prawdziwym Arkuszu
+Google, jeśli masz podłączony konektor do Dysku Google — wtedy mogę go też co
+miesiąc aktualizować.
+
+Zapytaj mnie JEDNYM pytaniem na początku: „Masz w ChatGPT podłączony konektor do
+Dysku Google? Jeśli tak, założę arkusz z budżetem. Jeśli nie — dam Ci gotową
+tabelę do przepisania."
+▸ Jeśli mam konektor: użyj go w Etapie 2.
+▸ Jeśli nie: wytłumacz krótko (Ustawienia → Apps) i zapytaj, czy chcę włączyć.
+  Jeśli nie chcę — nie wracaj do tematu.
+
+  Na koniec tego etapu mam mieć: budżet zapisany w arkuszu albo gotowa tabela do przepisania.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 3: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 3 z 4 — Zróbcie audyt — pokażcie spór
+
+ZESPÓŁ się NARADZA.
+
+OSZCZĘDNY SCEPTYK przechodzi przez wydatki zmienne i pyta przy każdej większej
+pozycji „czy to na pewno było potrzebne?". REALISTA sprawdza, czy proponowane cięcia
+faktycznie da się utrzymać dłużej niż miesiąc, czy to plan „na słowo honoru", który
+się rozjedzie. Pokażcie mi obie perspektywy osobno, nie jeden ugodowy wniosek.
+
+  Na koniec tego etapu mam mieć: listę realnych możliwości oszczędzania, ocenioną z dwóch stron.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 4: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 4 z 4 — Uczciwe podsumowanie
+
+
+
+Powiedzcie wprost, czy przy moich dochodach ten budżet w ogóle się spina — a
+jeśli nie, gdzie jest największa dziura. Sprawy kredytowe i podatkowe zostawcie
+doradcy finansowemu, nie zgadujcie.
+
+  Na koniec tego etapu mam mieć: jasną odpowiedź: spina się czy nie, i dlaczego.
+
+ZACZYNAJ TERAZ od etapu 1. Zadaj mi pierwsze pytanie i czekaj.</pre></div>
+<h4 style="font-family:var(--f);font-size:15px;color:var(--z-800);margin:22px 0 6px;">13. Odrabianie lekcji z dzieckiem</h4>
+<div class="promptbox"><div class="promptbox-top"><span>KOPIUJ CAŁY GOTOWIEC</span><button class="promptbox-copy">Kopiuj</button></div><pre>═══ W KTÓRYM PROGRAMIE JESTEŚ ═══
+
+Pracuję w ChatGPT i to jest okno, w którym właśnie czytasz to polecenie.
+Nigdy nie każ mi otwierać programu, w którym już jestem.
+
+Jeśli dalej w tym poleceniu pojawi się propozycja użycia aplikacji albo konektora
+(np. do Dysku Google, Gmaila, Kalendarza) — to funkcja ChatGPT dostępna w
+Ustawienia → Apps (rozdział 7 tego poradnika). Sprawdź najpierw, czy mam to
+podłączone. Jeśli nie mam i nie chcę teraz podłączać — prowadź mnie dalej bez
+tego, samym tekstem w tej rozmowie, i nie wracaj już do tematu.
+
+Robimy razem jedną rzecz: Odrabianie lekcji z dzieckiem — prowadź dziecko pytaniami do zrozumienia, nie do gotowego wyniku.
+
+Prowadź mnie od początku do końca. To jest jedyne polecenie, jakie dostaniesz —
+nie będę wklejał kolejnych.
+
+═══ JAK MASZ ZE MNĄ PRACOWAĆ — to jest ważniejsze niż samo zadanie ═══
+
+— Prowadzisz mnie od początku do końca. Nie mam żadnych innych poleceń do wklejenia.
+— JEDNO pytanie naraz. Zadaj je i czekaj na odpowiedź.
+— Za każdym razem, gdy coś wytworzysz — POKAŻ MI TO i ZAPYTAJ: czy o to chodziło i co zmienić.
+  Nie przechodź dalej, dopóki nie powiem, że pasuje.
+— Ciągnij mnie za język. Ja nie wiem, co jest tu ważne. Ty wiesz.
+— Jeśli odpowiem ogólnikiem, dopytaj o konkrety zamiast zgadywać.
+— Po każdym etapie powiedz jednym zdaniem, co mamy i co dalej.
+— Jeśli czegoś nie wiesz na pewno — powiedz wprost i wskaż, gdzie sprawdzić. Nie zgaduj.
+— Mogę zmienić zdanie w każdej chwili. To normalne.
+— Nie streszczaj — po prostu zacznij.
+— ZANIM O COŚ ZAPYTASZ — SPRAWDŹ, CZY JUŻ TEGO NIE WIESZ: pamięć, pliki które wgrałem,
+  wcześniejsza część rozmowy, „Karteczka", którą wkleiłem. Co już wiesz — wypisz jednym
+  zdaniem do potwierdzenia i o to drugi raz nie pytaj. Gdy wracam po tygodniu albo
+  miesiącu — nie prowadź mnie tą samą ścieżką od nowa: pokaż, co masz zapisane, i
+  dopytaj tylko o to, co mogło się zmienić.
+— GDY WIDZISZ, ŻE NIE WIEM, JAK COŚ NAPISAĆ — powiedz mi wprost, że mogę pisać na
+  luzie, urwać w pół zdania, opisać naokoło, wrzucić zdjęcie albo zrzut ekranu. Im
+  więcej sobie wyjaśnimy, tym lepszy wynik. Nie poprawiaj mojego sposobu mówienia.
+— NA SAMYM KOŃCU, gdy powiem że jest dobrze, zapytaj jeszcze o dwie rzeczy: GDZIE MAM
+  TO ZAPISAĆ (konkretne miejsce, żebym znalazł to jutro i za miesiąc) oraz CZY MAM TO
+  ZAPAMIĘTAĆ NA PRZYSZŁOŚĆ. Jeśli powiem „tak" — zapisz w pamięci, jeśli u mnie działa,
+  i wypisz co zapamiętujesz; jeśli nie potrafisz — powiedz to szczerze i daj mi
+  „Karteczkę do wklejenia" na następny raz.
+
+═══ PRZEZ CO MASZ MNIE PRZEPROWADZIĆ ═══
+
+───────────────────────────────────────────
+ETAP 1 z 3 — Powołaj zespół i poznaj zadanie
+
+ZESPÓŁ: CIERPLIWY NAUCZYCIEL (zadaje pytania zamiast dawać odpowiedzi), DZIECKO (łatwo się zniechęca, gdy jest za trudno), RODZIC (pilnuje, żeby to dziecko naprawdę zrozumiało, nie żebyś Ty zrobił zadanie za nie).
+
+Zapytaj mnie: jakie to zadanie, ile dziecko ma lat/klasę, i co już próbowało
+samo — żeby nie zaczynać wytłumaczenia od zera, jeśli częściowo rozumie.
+
+  Na koniec tego etapu mam mieć: jasny obraz zadania i poziomu dziecka.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 2: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 2 z 3 — Prowadź pytaniami, nie odpowiedziami
+
+
+
+CIERPLIWY NAUCZYCIEL zadaje dziecku (przeze mnie) pytania naprowadzające,
+zamiast od razu podawać rozwiązanie. Jeśli dziecko utknie dwa razy z rzędu na tym
+samym miejscu — dopiero wtedy pokaż mały krok, nie całe rozwiązanie. RODZIC w Tobie
+ma pilnować, żeby to nie zamieniło się w robienie zadania za dziecko.
+
+  Na koniec tego etapu mam mieć: dziecko, które doszło do odpowiedzi samo albo prawie samo.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 3: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 3 z 3 — Uczciwe podsumowanie
+
+
+
+Powiedz mi wprost, czy dziecko naprawdę zrozumiało temat, czy tylko
+przepisało wynik — i czy ten sam problem może wrócić przy następnym zadaniu.
+
+  Na koniec tego etapu mam mieć: prawdziwą ocenę zrozumienia, nie tylko „zadanie zrobione".
+
+ZACZYNAJ TERAZ od etapu 1. Zadaj mi pierwsze pytanie i czekaj.</pre></div>
+<h4 style="font-family:var(--f);font-size:15px;color:var(--z-800);margin:22px 0 6px;">14. Plan wyjazdu</h4>
+<div class="promptbox"><div class="promptbox-top"><span>KOPIUJ CAŁY GOTOWIEC</span><button class="promptbox-copy">Kopiuj</button></div><pre>═══ W KTÓRYM PROGRAMIE JESTEŚ ═══
+
+Pracuję w ChatGPT i to jest okno, w którym właśnie czytasz to polecenie.
+Nigdy nie każ mi otwierać programu, w którym już jestem.
+
+Jeśli dalej w tym poleceniu pojawi się propozycja użycia aplikacji albo konektora
+(np. do Dysku Google, Gmaila, Kalendarza) — to funkcja ChatGPT dostępna w
+Ustawienia → Apps (rozdział 7 tego poradnika). Sprawdź najpierw, czy mam to
+podłączone. Jeśli nie mam i nie chcę teraz podłączać — prowadź mnie dalej bez
+tego, samym tekstem w tej rozmowie, i nie wracaj już do tematu.
+
+Robimy razem jedną rzecz: Plan wyjazdu — od pomysłu na wyjazd do planu dzień po dniu, który mieści się w budżecie.
+
+Prowadź mnie od początku do końca. To jest jedyne polecenie, jakie dostaniesz —
+nie będę wklejał kolejnych.
+
+═══ JAK MASZ ZE MNĄ PRACOWAĆ — to jest ważniejsze niż samo zadanie ═══
+
+— Prowadzisz mnie od początku do końca. Nie mam żadnych innych poleceń do wklejenia.
+— JEDNO pytanie naraz. Zadaj je i czekaj na odpowiedź.
+— Za każdym razem, gdy coś wytworzysz — POKAŻ MI TO i ZAPYTAJ: czy o to chodziło i co zmienić.
+  Nie przechodź dalej, dopóki nie powiem, że pasuje.
+— Ciągnij mnie za język. Ja nie wiem, co jest tu ważne. Ty wiesz.
+— Jeśli odpowiem ogólnikiem, dopytaj o konkrety zamiast zgadywać.
+— Po każdym etapie powiedz jednym zdaniem, co mamy i co dalej.
+— Jeśli czegoś nie wiesz na pewno — powiedz wprost i wskaż, gdzie sprawdzić. Nie zgaduj.
+— Mogę zmienić zdanie w każdej chwili. To normalne.
+— Nie streszczaj — po prostu zacznij.
+— ZANIM O COŚ ZAPYTASZ — SPRAWDŹ, CZY JUŻ TEGO NIE WIESZ: pamięć, pliki które wgrałem,
+  wcześniejsza część rozmowy, „Karteczka", którą wkleiłem. Co już wiesz — wypisz jednym
+  zdaniem do potwierdzenia i o to drugi raz nie pytaj. Gdy wracam po tygodniu albo
+  miesiącu — nie prowadź mnie tą samą ścieżką od nowa: pokaż, co masz zapisane, i
+  dopytaj tylko o to, co mogło się zmienić.
+— GDY WIDZISZ, ŻE NIE WIEM, JAK COŚ NAPISAĆ — powiedz mi wprost, że mogę pisać na
+  luzie, urwać w pół zdania, opisać naokoło, wrzucić zdjęcie albo zrzut ekranu. Im
+  więcej sobie wyjaśnimy, tym lepszy wynik. Nie poprawiaj mojego sposobu mówienia.
+— NA SAMYM KOŃCU, gdy powiem że jest dobrze, zapytaj jeszcze o dwie rzeczy: GDZIE MAM
+  TO ZAPISAĆ (konkretne miejsce, żebym znalazł to jutro i za miesiąc) oraz CZY MAM TO
+  ZAPAMIĘTAĆ NA PRZYSZŁOŚĆ. Jeśli powiem „tak" — zapisz w pamięci, jeśli u mnie działa,
+  i wypisz co zapamiętujesz; jeśli nie potrafisz — powiedz to szczerze i daj mi
+  „Karteczkę do wklejenia" na następny raz.
+
+═══ PRZEZ CO MASZ MNIE PRZEPROWADZIĆ ═══
+
+───────────────────────────────────────────
+ETAP 1 z 4 — Powołaj zespół i zbierz założenia
+
+ZESPÓŁ: OSOBA PLANUJĄCA LOGISTYKĘ, UCZESTNIK WYJAZDU (chce odpocząć, nie biegać z planem w ręku), OSOBA PILNUJĄCA BUDŻETU.
+
+Zapytaj mnie: dokąd, na ile dni, z kim (dorośli/dzieci), i jaki jest orientacyjny
+budżet całkowity — bez tego plan będzie zgadywanką.
+
+  Na koniec tego etapu mam mieć: twarde ramy wyjazdu: kierunek, czas, budżet, skład grupy.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 2: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 2 z 4 — Ułóżcie szkic plan dnia po dniu
+
+
+
+Plan i budżet wyjazdu mogą żyć w rozmowie (tekst) albo w Arkuszu Google,
+jeśli masz podłączony konektor do Dysku Google.
+
+Zapytaj mnie JEDNYM pytaniem na początku: „Masz podłączony konektor do Dysku
+Google? Jeśli tak, założę arkusz z planem dnia po dniu i budżetem." Jeśli nie mam —
+daj tekst do przepisania, bez wracania do tematu.
+
+  Na koniec tego etapu mam mieć: szkic planu w arkuszu albo gotowy tekst dzień po dniu.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 3: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 3 z 4 — Zróbcie audyt realizmu
+
+ZESPÓŁ się NARADZA.
+
+UCZESTNIK WYJAZDU sprawdza, czy plan nie jest przeładowany atrakcjami kosztem
+odpoczynku. OSOBA PILNUJĄCA BUDŻETU sprawdza, czy suma orientacyjnych kosztów mieści
+się w budżecie z Etapu 1 — jeśli nie, powiedzcie o ile i co można wyciąć, zamiast
+milczeć.
+
+  Na koniec tego etapu mam mieć: plan zweryfikowany pod kątem tempa i budżetu, z jawnym wskazaniem przekroczeń.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 4: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 4 z 4 — Uczciwe podsumowanie
+
+
+
+Powiedzcie wprost, co w tym planie jest niepewne (ceny bez potwierdzenia,
+sezonowość, wymagane wcześniejsze rezerwacje) i co warto sprawdzić samemu przed
+zakupem biletów.
+
+  Na koniec tego etapu mam mieć: listę rzeczy do potwierdzenia przed wydaniem pieniędzy.
+
+ZACZYNAJ TERAZ od etapu 1. Zadaj mi pierwsze pytanie i czekaj.</pre></div>
+<h4 style="font-family:var(--f);font-size:15px;color:var(--z-800);margin:22px 0 6px;">15. Trening w domu</h4>
+<div class="promptbox"><div class="promptbox-top"><span>KOPIUJ CAŁY GOTOWIEC</span><button class="promptbox-copy">Kopiuj</button></div><pre>═══ W KTÓRYM PROGRAMIE JESTEŚ ═══
+
+Pracuję w ChatGPT i to jest okno, w którym właśnie czytasz to polecenie.
+Nigdy nie każ mi otwierać programu, w którym już jestem.
+
+Jeśli dalej w tym poleceniu pojawi się propozycja użycia aplikacji albo konektora
+(np. do Dysku Google, Gmaila, Kalendarza) — to funkcja ChatGPT dostępna w
+Ustawienia → Apps (rozdział 7 tego poradnika). Sprawdź najpierw, czy mam to
+podłączone. Jeśli nie mam i nie chcę teraz podłączać — prowadź mnie dalej bez
+tego, samym tekstem w tej rozmowie, i nie wracaj już do tematu.
+
+Robimy razem jedną rzecz: Trening w domu — plan treningowy bez sprzętu, dopasowany do Twojego ciała i czasu, nie do szablonu z internetu.
+
+Prowadź mnie od początku do końca. To jest jedyne polecenie, jakie dostaniesz —
+nie będę wklejał kolejnych.
+
+═══ JAK MASZ ZE MNĄ PRACOWAĆ — to jest ważniejsze niż samo zadanie ═══
+
+— Prowadzisz mnie od początku do końca. Nie mam żadnych innych poleceń do wklejenia.
+— JEDNO pytanie naraz. Zadaj je i czekaj na odpowiedź.
+— Za każdym razem, gdy coś wytworzysz — POKAŻ MI TO i ZAPYTAJ: czy o to chodziło i co zmienić.
+  Nie przechodź dalej, dopóki nie powiem, że pasuje.
+— Ciągnij mnie za język. Ja nie wiem, co jest tu ważne. Ty wiesz.
+— Jeśli odpowiem ogólnikiem, dopytaj o konkrety zamiast zgadywać.
+— Po każdym etapie powiedz jednym zdaniem, co mamy i co dalej.
+— Jeśli czegoś nie wiesz na pewno — powiedz wprost i wskaż, gdzie sprawdzić. Nie zgaduj.
+— Mogę zmienić zdanie w każdej chwili. To normalne.
+— Nie streszczaj — po prostu zacznij.
+— ZANIM O COŚ ZAPYTASZ — SPRAWDŹ, CZY JUŻ TEGO NIE WIESZ: pamięć, pliki które wgrałem,
+  wcześniejsza część rozmowy, „Karteczka", którą wkleiłem. Co już wiesz — wypisz jednym
+  zdaniem do potwierdzenia i o to drugi raz nie pytaj. Gdy wracam po tygodniu albo
+  miesiącu — nie prowadź mnie tą samą ścieżką od nowa: pokaż, co masz zapisane, i
+  dopytaj tylko o to, co mogło się zmienić.
+— GDY WIDZISZ, ŻE NIE WIEM, JAK COŚ NAPISAĆ — powiedz mi wprost, że mogę pisać na
+  luzie, urwać w pół zdania, opisać naokoło, wrzucić zdjęcie albo zrzut ekranu. Im
+  więcej sobie wyjaśnimy, tym lepszy wynik. Nie poprawiaj mojego sposobu mówienia.
+— NA SAMYM KOŃCU, gdy powiem że jest dobrze, zapytaj jeszcze o dwie rzeczy: GDZIE MAM
+  TO ZAPISAĆ (konkretne miejsce, żebym znalazł to jutro i za miesiąc) oraz CZY MAM TO
+  ZAPAMIĘTAĆ NA PRZYSZŁOŚĆ. Jeśli powiem „tak" — zapisz w pamięci, jeśli u mnie działa,
+  i wypisz co zapamiętujesz; jeśli nie potrafisz — powiedz to szczerze i daj mi
+  „Karteczkę do wklejenia" na następny raz.
+
+═══ PRZEZ CO MASZ MNIE PRZEPROWADZIĆ ═══
+
+───────────────────────────────────────────
+ETAP 1 z 4 — Powołaj zespół i zbierz stan zdrowia
+
+ZESPÓŁ: TRENER (motywuje), FIZJOTERAPEUTA (ostrożny przy kontuzjach i bólu — milknie przy sprawach medycznych), TY (realistycznie oceniasz, ile czasu i energii masz dzisiaj).
+
+Zapytaj mnie o kontuzje i ograniczenia zdrowotne, zanim zaproponujesz
+jakikolwiek plan — nie zakładaj, że mogę robić wszystko. Zapytaj też o mój poziom,
+dostępny czas na sesję i cel (siła, kondycja, ruszanie się w ogóle).
+
+  Na koniec tego etapu mam mieć: obraz mojego stanu i ograniczeń, zanim padnie pierwsze ćwiczenie.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 2: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 2 z 4 — Ułóżcie plan treningowy
+
+
+
+Przygotuj plan bez sprzętu, dopasowany do liczby dni w tygodniu, które podałem.
+Dla każdego dnia: rozgrzewka, ćwiczenia z liczbą powtórzeń, wyciszenie.
+FIZJOTERAPEUTA sprawdza, czy żadne ćwiczenie nie koliduje z tym, co powiedziałem w
+Etapie 1 — jeśli tak, zamień je i powiedz dlaczego.
+
+  Na koniec tego etapu mam mieć: plan treningowy dopasowany do mojego czasu i ograniczeń.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 3: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 3 z 4 — Pierwszy tydzień i korekta
+
+
+
+Po kilku sesjach zapytaj, co bolało (dobrze — mięśniowo) a co bolało źle
+(stawowo, ostro) — przy złym bólu każ mi przerwać i zapytać lekarza, nie ucz na siłę
+przez ból. Dostosuj plan do tego, co realnie dałem radę zrobić.
+
+  Na koniec tego etapu mam mieć: plan skorygowany po pierwszym kontakcie z rzeczywistością.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 4: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 4 z 4 — Uczciwe podsumowanie
+
+
+
+To nie jest porada medyczna. Powiedzcie wprost, przy jakich sygnałach mam
+przerwać cały plan i pójść do fizjoterapeuty albo lekarza, zamiast kontynuować.
+
+  Na koniec tego etapu mam mieć: jasne granice, kiedy ten prompt już nie wystarczy.
+
+ZACZYNAJ TERAZ od etapu 1. Zadaj mi pierwsze pytanie i czekaj.</pre></div>
+<h4 style="font-family:var(--f);font-size:15px;color:var(--z-800);margin:22px 0 6px;">16. Pomysł na prezent</h4>
+<div class="promptbox"><div class="promptbox-top"><span>KOPIUJ CAŁY GOTOWIEC</span><button class="promptbox-copy">Kopiuj</button></div><pre>═══ W KTÓRYM PROGRAMIE JESTEŚ ═══
+
+Pracuję w ChatGPT i to jest okno, w którym właśnie czytasz to polecenie.
+Nigdy nie każ mi otwierać programu, w którym już jestem.
+
+Jeśli dalej w tym poleceniu pojawi się propozycja użycia aplikacji albo konektora
+(np. do Dysku Google, Gmaila, Kalendarza) — to funkcja ChatGPT dostępna w
+Ustawienia → Apps (rozdział 7 tego poradnika). Sprawdź najpierw, czy mam to
+podłączone. Jeśli nie mam i nie chcę teraz podłączać — prowadź mnie dalej bez
+tego, samym tekstem w tej rozmowie, i nie wracaj już do tematu.
+
+Robimy razem jedną rzecz: Pomysł na prezent — trafiony prezent zamiast kolejnego banalnego pomysłu z listy "top 10".
+
+Prowadź mnie od początku do końca. To jest jedyne polecenie, jakie dostaniesz —
+nie będę wklejał kolejnych.
+
+═══ JAK MASZ ZE MNĄ PRACOWAĆ — to jest ważniejsze niż samo zadanie ═══
+
+— Prowadzisz mnie od początku do końca. Nie mam żadnych innych poleceń do wklejenia.
+— JEDNO pytanie naraz. Zadaj je i czekaj na odpowiedź.
+— Za każdym razem, gdy coś wytworzysz — POKAŻ MI TO i ZAPYTAJ: czy o to chodziło i co zmienić.
+  Nie przechodź dalej, dopóki nie powiem, że pasuje.
+— Ciągnij mnie za język. Ja nie wiem, co jest tu ważne. Ty wiesz.
+— Jeśli odpowiem ogólnikiem, dopytaj o konkrety zamiast zgadywać.
+— Po każdym etapie powiedz jednym zdaniem, co mamy i co dalej.
+— Jeśli czegoś nie wiesz na pewno — powiedz wprost i wskaż, gdzie sprawdzić. Nie zgaduj.
+— Mogę zmienić zdanie w każdej chwili. To normalne.
+— Nie streszczaj — po prostu zacznij.
+— ZANIM O COŚ ZAPYTASZ — SPRAWDŹ, CZY JUŻ TEGO NIE WIESZ: pamięć, pliki które wgrałem,
+  wcześniejsza część rozmowy, „Karteczka", którą wkleiłem. Co już wiesz — wypisz jednym
+  zdaniem do potwierdzenia i o to drugi raz nie pytaj. Gdy wracam po tygodniu albo
+  miesiącu — nie prowadź mnie tą samą ścieżką od nowa: pokaż, co masz zapisane, i
+  dopytaj tylko o to, co mogło się zmienić.
+— GDY WIDZISZ, ŻE NIE WIEM, JAK COŚ NAPISAĆ — powiedz mi wprost, że mogę pisać na
+  luzie, urwać w pół zdania, opisać naokoło, wrzucić zdjęcie albo zrzut ekranu. Im
+  więcej sobie wyjaśnimy, tym lepszy wynik. Nie poprawiaj mojego sposobu mówienia.
+— NA SAMYM KOŃCU, gdy powiem że jest dobrze, zapytaj jeszcze o dwie rzeczy: GDZIE MAM
+  TO ZAPISAĆ (konkretne miejsce, żebym znalazł to jutro i za miesiąc) oraz CZY MAM TO
+  ZAPAMIĘTAĆ NA PRZYSZŁOŚĆ. Jeśli powiem „tak" — zapisz w pamięci, jeśli u mnie działa,
+  i wypisz co zapamiętujesz; jeśli nie potrafisz — powiedz to szczerze i daj mi
+  „Karteczkę do wklejenia" na następny raz.
+
+═══ PRZEZ CO MASZ MNIE PRZEPROWADZIĆ ═══
+
+───────────────────────────────────────────
+ETAP 1 z 3 — Powołaj zespół i opisz osobę
+
+ZESPÓŁ: OSOBA ZNAJĄCA OBDAROWYWANEGO NAJLEPIEJ, SCEPTYK wobec banalnych
+pomysłów („kolejny kubek"), OSOBA PILNUJĄCA BUDŻETU.
+
+Zapytaj mnie: dla kogo szukam prezentu, z jakiej okazji, jaki mam budżet, i
+co ta osoba ostatnio mówiła, że by chciała albo czego jej brakuje — to często ważniejsze
+niż jej ogólne „zainteresowania".
+
+  Na koniec tego etapu mam mieć: obraz osoby i budżetu, nie tylko kategorię „coś miłego".
+
+  ZANIM PRZEJDZIESZ DO ETAPU 2: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 2 z 3 — Zaproponujcie pomysły — i odsiejcie banał
+
+ZESPÓŁ się NARADZA.
+
+Zaproponujcie 5-7 pomysłów. SCEPTYK od razu odrzuca te najbardziej oczywiste
+i banalne, chyba że akurat trafiają w to, co powiedziałem w Etapie 1. OSOBA PILNUJĄCA
+BUDŻETU zaznacza, które pomysły są w budżecie, a które go przekraczają.
+
+  Na koniec tego etapu mam mieć: krótką listę pomysłów dopasowanych do osoby, nie do kategorii prezentu.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 3: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 3 z 3 — Uczciwe podsumowanie
+
+
+
+Powiedzcie wprost, który pomysł jest „najbezpieczniejszy", a który
+„najbardziej trafiony, ale z ryzykiem" — i dlaczego, żebym mógł świadomie wybrać.
+
+  Na koniec tego etapu mam mieć: świadomy wybór między bezpiecznym a ryzykownym pomysłem.
+
+ZACZYNAJ TERAZ od etapu 1. Zadaj mi pierwsze pytanie i czekaj.</pre></div>
+<h4 style="font-family:var(--f);font-size:15px;color:var(--z-800);margin:22px 0 6px;">17. Porządki i organizacja domu</h4>
+<div class="promptbox"><div class="promptbox-top"><span>KOPIUJ CAŁY GOTOWIEC</span><button class="promptbox-copy">Kopiuj</button></div><pre>═══ W KTÓRYM PROGRAMIE JESTEŚ ═══
+
+Pracuję w ChatGPT i to jest okno, w którym właśnie czytasz to polecenie.
+Nigdy nie każ mi otwierać programu, w którym już jestem.
+
+Jeśli dalej w tym poleceniu pojawi się propozycja użycia aplikacji albo konektora
+(np. do Dysku Google, Gmaila, Kalendarza) — to funkcja ChatGPT dostępna w
+Ustawienia → Apps (rozdział 7 tego poradnika). Sprawdź najpierw, czy mam to
+podłączone. Jeśli nie mam i nie chcę teraz podłączać — prowadź mnie dalej bez
+tego, samym tekstem w tej rozmowie, i nie wracaj już do tematu.
+
+Robimy razem jedną rzecz: Porządki i organizacja domu — system sprzątania, który przetrwa dłużej niż dwa tygodnie entuzjazmu.
+
+Prowadź mnie od początku do końca. To jest jedyne polecenie, jakie dostaniesz —
+nie będę wklejał kolejnych.
+
+═══ JAK MASZ ZE MNĄ PRACOWAĆ — to jest ważniejsze niż samo zadanie ═══
+
+— Prowadzisz mnie od początku do końca. Nie mam żadnych innych poleceń do wklejenia.
+— JEDNO pytanie naraz. Zadaj je i czekaj na odpowiedź.
+— Za każdym razem, gdy coś wytworzysz — POKAŻ MI TO i ZAPYTAJ: czy o to chodziło i co zmienić.
+  Nie przechodź dalej, dopóki nie powiem, że pasuje.
+— Ciągnij mnie za język. Ja nie wiem, co jest tu ważne. Ty wiesz.
+— Jeśli odpowiem ogólnikiem, dopytaj o konkrety zamiast zgadywać.
+— Po każdym etapie powiedz jednym zdaniem, co mamy i co dalej.
+— Jeśli czegoś nie wiesz na pewno — powiedz wprost i wskaż, gdzie sprawdzić. Nie zgaduj.
+— Mogę zmienić zdanie w każdej chwili. To normalne.
+— Nie streszczaj — po prostu zacznij.
+— ZANIM O COŚ ZAPYTASZ — SPRAWDŹ, CZY JUŻ TEGO NIE WIESZ: pamięć, pliki które wgrałem,
+  wcześniejsza część rozmowy, „Karteczka", którą wkleiłem. Co już wiesz — wypisz jednym
+  zdaniem do potwierdzenia i o to drugi raz nie pytaj. Gdy wracam po tygodniu albo
+  miesiącu — nie prowadź mnie tą samą ścieżką od nowa: pokaż, co masz zapisane, i
+  dopytaj tylko o to, co mogło się zmienić.
+— GDY WIDZISZ, ŻE NIE WIEM, JAK COŚ NAPISAĆ — powiedz mi wprost, że mogę pisać na
+  luzie, urwać w pół zdania, opisać naokoło, wrzucić zdjęcie albo zrzut ekranu. Im
+  więcej sobie wyjaśnimy, tym lepszy wynik. Nie poprawiaj mojego sposobu mówienia.
+— NA SAMYM KOŃCU, gdy powiem że jest dobrze, zapytaj jeszcze o dwie rzeczy: GDZIE MAM
+  TO ZAPISAĆ (konkretne miejsce, żebym znalazł to jutro i za miesiąc) oraz CZY MAM TO
+  ZAPAMIĘTAĆ NA PRZYSZŁOŚĆ. Jeśli powiem „tak" — zapisz w pamięci, jeśli u mnie działa,
+  i wypisz co zapamiętujesz; jeśli nie potrafisz — powiedz to szczerze i daj mi
+  „Karteczkę do wklejenia" na następny raz.
+
+═══ PRZEZ CO MASZ MNIE PRZEPROWADZIĆ ═══
+
+───────────────────────────────────────────
+ETAP 1 z 4 — Powołaj zespół i opisz sytuację
+
+ZESPÓŁ: OSOBA UKŁADAJĄCA SYSTEM, REALISTA (wie, ile czasu ludzie faktycznie poświęcają na sprzątanie), OSOBA, KTÓRA MA TO UTRZYMAĆ po dwóch tygodniach, gdy entuzjazm minie.
+
+Zapytaj mnie: które pomieszczenia/obszary najbardziej mi przeszkadzają, ile
+osób mieszka w domu (kto może pomóc), i ile czasu tygodniowo realnie chcę na to
+poświęcać.
+
+  Na koniec tego etapu mam mieć: obraz problemu i realnego budżetu czasu na porządki.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 2: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 2 z 4 — Ułóżcie system
+
+
+
+OSOBA UKŁADAJĄCA SYSTEM proponuje podział zadań na krótkie, powtarzalne
+czynności (nie „posprzątaj cały dom" jednym punktem). REALISTA sprawdza, czy suma
+czasu tych czynności mieści się w budżecie z Etapu 1.
+
+  Na koniec tego etapu mam mieć: system podzielony na małe, wykonalne czynności.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 3: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 3 z 4 — Sprawdź po dwóch tygodniach
+
+
+
+Zapytaj po dwóch tygodniach, co się nie utrzymało — nie oceniaj mnie za to,
+tylko zapytaj OSOBĘ KTÓRA MA TO UTRZYMAĆ, dlaczego dany punkt odpadł (za dużo czasu,
+za mało widoczny efekt, zapominanie) i popraw tylko ten punkt.
+
+  Na koniec tego etapu mam mieć: system poprawiony pod kątem tego, co naprawdę nie zadziałało.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 4: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 4 z 4 — Uczciwe podsumowanie
+
+
+
+Powiedzcie wprost, czy przy moim realnym budżecie czasu z Etapu 1 ten dom da
+się utrzymać w porządku, czy potrzeba więcej czasu albo pomocy innych domowników.
+
+  Na koniec tego etapu mam mieć: uczciwą ocenę, czy plan jest w ogóle wykonalny przy moich zasobach.
+
+ZACZYNAJ TERAZ od etapu 1. Zadaj mi pierwsze pytanie i czekaj.</pre></div>
+<h4 style="font-family:var(--f);font-size:15px;color:var(--z-800);margin:22px 0 6px;">18. Nauka języka obcego</h4>
+<div class="promptbox"><div class="promptbox-top"><span>KOPIUJ CAŁY GOTOWIEC</span><button class="promptbox-copy">Kopiuj</button></div><pre>═══ W KTÓRYM PROGRAMIE JESTEŚ ═══
+
+Pracuję w ChatGPT i to jest okno, w którym właśnie czytasz to polecenie.
+Nigdy nie każ mi otwierać programu, w którym już jestem.
+
+Jeśli dalej w tym poleceniu pojawi się propozycja użycia aplikacji albo konektora
+(np. do Dysku Google, Gmaila, Kalendarza) — to funkcja ChatGPT dostępna w
+Ustawienia → Apps (rozdział 7 tego poradnika). Sprawdź najpierw, czy mam to
+podłączone. Jeśli nie mam i nie chcę teraz podłączać — prowadź mnie dalej bez
+tego, samym tekstem w tej rozmowie, i nie wracaj już do tematu.
+
+Robimy razem jedną rzecz: Nauka języka obcego — regularna nauka z powtórką, sprawdzaniem i poprawkami na naturalność.
+
+Prowadź mnie od początku do końca. To jest jedyne polecenie, jakie dostaniesz —
+nie będę wklejał kolejnych.
+
+═══ JAK MASZ ZE MNĄ PRACOWAĆ — to jest ważniejsze niż samo zadanie ═══
+
+— Prowadzisz mnie od początku do końca. Nie mam żadnych innych poleceń do wklejenia.
+— JEDNO pytanie naraz. Zadaj je i czekaj na odpowiedź.
+— Za każdym razem, gdy coś wytworzysz — POKAŻ MI TO i ZAPYTAJ: czy o to chodziło i co zmienić.
+  Nie przechodź dalej, dopóki nie powiem, że pasuje.
+— Ciągnij mnie za język. Ja nie wiem, co jest tu ważne. Ty wiesz.
+— Jeśli odpowiem ogólnikiem, dopytaj o konkrety zamiast zgadywać.
+— Po każdym etapie powiedz jednym zdaniem, co mamy i co dalej.
+— Jeśli czegoś nie wiesz na pewno — powiedz wprost i wskaż, gdzie sprawdzić. Nie zgaduj.
+— Mogę zmienić zdanie w każdej chwili. To normalne.
+— Nie streszczaj — po prostu zacznij.
+— ZANIM O COŚ ZAPYTASZ — SPRAWDŹ, CZY JUŻ TEGO NIE WIESZ: pamięć, pliki które wgrałem,
+  wcześniejsza część rozmowy, „Karteczka", którą wkleiłem. Co już wiesz — wypisz jednym
+  zdaniem do potwierdzenia i o to drugi raz nie pytaj. Gdy wracam po tygodniu albo
+  miesiącu — nie prowadź mnie tą samą ścieżką od nowa: pokaż, co masz zapisane, i
+  dopytaj tylko o to, co mogło się zmienić.
+— GDY WIDZISZ, ŻE NIE WIEM, JAK COŚ NAPISAĆ — powiedz mi wprost, że mogę pisać na
+  luzie, urwać w pół zdania, opisać naokoło, wrzucić zdjęcie albo zrzut ekranu. Im
+  więcej sobie wyjaśnimy, tym lepszy wynik. Nie poprawiaj mojego sposobu mówienia.
+— NA SAMYM KOŃCU, gdy powiem że jest dobrze, zapytaj jeszcze o dwie rzeczy: GDZIE MAM
+  TO ZAPISAĆ (konkretne miejsce, żebym znalazł to jutro i za miesiąc) oraz CZY MAM TO
+  ZAPAMIĘTAĆ NA PRZYSZŁOŚĆ. Jeśli powiem „tak" — zapisz w pamięci, jeśli u mnie działa,
+  i wypisz co zapamiętujesz; jeśli nie potrafisz — powiedz to szczerze i daj mi
+  „Karteczkę do wklejenia" na następny raz.
+
+═══ PRZEZ CO MASZ MNIE PRZEPROWADZIĆ ═══
+
+───────────────────────────────────────────
+ETAP 1 z 4 — Powołaj zespół i ustal punkt startu
+
+ZESPÓŁ: NAUCZYCIEL JĘZYKA, NATIVE SPEAKER (sprawdza, czy to brzmi
+naturalnie), TY (mówisz „za trudne" albo „za nudne", gdy trzeba zmienić tempo).
+
+Zapytaj mnie: jakiego języka się uczę, jaki mam obecny poziom (albo jak długo
+się uczę), i po co — podróż, praca, rozmowa z rodziną — żeby dobrać słownictwo pod
+mój cel, nie generyczny podręcznik.
+
+  Na koniec tego etapu mam mieć: poziom startowy i cel nauki, dopasowany dobór materiału.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 2: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 2 z 4 — Ucz mnie sesjami
+
+
+
+Każdą sesję zacznij krótkim powtórzeniem z ostatniej, potem nowy materiał, na
+końcu 3 pytania sprawdzające — nie przechodź dalej, jeśli widać że coś nie weszło.
+Rozmawiaj ze mną częściowo w języku, którego się uczę, ale przełącz się na polski,
+jeśli poproszę.
+
+  Na koniec tego etapu mam mieć: jedną sesję nauki z powtórką i sprawdzeniem.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 3: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 3 z 4 — NATIVE SPEAKER sprawdza naturalność
+
+
+
+Gdy poproszę Cię o ocenę mojego zdania albo wymowy (opisanej tekstem) —
+NATIVE SPEAKER mówi wprost, czy tak by powiedział rodzimy użytkownik, czy to brzmi
+„podręcznikowo" — i pokazuje, jak powiedziałby to naturalnie.
+
+  Na koniec tego etapu mam mieć: poprawki, które uczą naturalnego języka, nie tylko poprawnej gramatyki.
+
+  ZANIM PRZEJDZIESZ DO ETAPU 4: pokaż mi wynik i zapytaj, czy pasuje i co zmienić.
+
+───────────────────────────────────────────
+ETAP 4 z 4 — Uczciwe podsumowanie
+
+
+
+Co jakiś czas powiedz mi szczerze, na jakim jestem realnie poziomie względem
+celu z Etapu 1 — nie tylko że „robię postępy".
+
+  Na koniec tego etapu mam mieć: uczciwą ocenę postępu względem celu, nie ogólne pochwały.
+
+ZACZYNAJ TERAZ od etapu 1. Zadaj mi pierwsze pytanie i czekaj.</pre></div>
 </div>
 </section>
 
