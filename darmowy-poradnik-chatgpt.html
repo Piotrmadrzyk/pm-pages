@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ChatGPT w praktyce — darmowy poradnik Akademii AI Probatum</title>
-<meta name="description" content="Od pytania do gotowej pracy: 26 rozdziałów, 50+ przykładów i promptów do skopiowania, w tym prompty do codziennego życia. Darmowy poradnik Akademii AI Probatum.">
+<title>ChatGPT w praktyce — pełny przewodnik Akademii AI Probatum</title>
+<meta name="description" content="Kompletny, darmowy przewodnik po ChatGPT: od zakładania konta po Projekty, Deep Research, Codex i analizę danych. Realne zrzuty ekranu, słowniczek pojęć i prompty najwyższej klasy z Akademii AI Probatum.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://probatum.pl/darmowy-poradnik-chatgpt.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Probatum">
 <meta property="og:locale" content="pl_PL">
-<meta property="og:title" content="ChatGPT w praktyce — darmowy poradnik Akademii AI Probatum">
-<meta property="og:description" content="Od pytania do gotowej pracy: 26 rozdziałów, 50+ przykładów i promptów do skopiowania, w tym prompty do codziennego życia.">
+<meta property="og:title" content="ChatGPT w praktyce — pełny przewodnik Akademii AI Probatum">
+<meta property="og:description" content="Kompletny, darmowy przewodnik po ChatGPT: od zakładania konta po Projekty, Deep Research, Codex i analizę danych. Realne zrzuty ekranu i prompty najwyższej klasy.">
 <meta property="og:url" content="https://probatum.pl/darmowy-poradnik-chatgpt.html">
 <meta property="og:image" content="https://probatum.pl/assets/ebook-gpt/zrzut-start.jpg">
 <meta property="og:image:width" content="1456">
 <meta property="og:image:height" content="767">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ChatGPT w praktyce — darmowy poradnik Akademii AI Probatum">
-<meta name="twitter:description" content="Od pytania do gotowej pracy: 26 rozdziałów, 50+ przykładów i promptów do skopiowania, w tym prompty do codziennego życia.">
+<meta name="twitter:title" content="ChatGPT w praktyce — pełny przewodnik Akademii AI Probatum">
+<meta name="twitter:description" content="Kompletny, darmowy przewodnik po ChatGPT: od zakładania konta po Projekty, Deep Research, Codex i analizę danych.">
 <meta name="twitter:image" content="https://probatum.pl/assets/ebook-gpt/zrzut-start.jpg">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <style>
@@ -47,24 +47,24 @@ img{max-width:100%; display:block; border-radius:12px;}
 .skip{position:absolute; left:-9999px;}
 .skip:focus{left:8px; top:8px; z-index:400; background:var(--z-600); color:#fff; padding:10px 16px; border-radius:8px;}
 
-/* ===== Sidebar (wzór z .ak-side Akademii) ===== */
+/* ===== Sidebar ===== */
 .side{position:fixed; top:0; left:0; bottom:0; width:var(--side); z-index:120; display:flex; flex-direction:column;
-  gap:10px; padding:22px 16px 18px; background:#FEFCFB; border-right:1px solid var(--line); font-family:var(--f); overflow-y:auto;}
-.marka{display:flex; align-items:center; gap:11px; padding:0 6px 10px; text-decoration:none!important; border-bottom:1px solid var(--line); margin-bottom:6px;}
+  gap:8px; padding:20px 16px 16px; background:#FEFCFB; border-right:1px solid var(--line); font-family:var(--f); overflow-y:auto;}
+.marka{display:flex; align-items:center; gap:11px; padding:0 6px 10px; text-decoration:none!important; border-bottom:1px solid var(--line); margin-bottom:4px;}
 .marka i{width:36px; height:36px; border-radius:11px; flex:none; display:grid; place-items:center;
   background:linear-gradient(150deg,var(--z-600),var(--z-800)); color:#fff; font-style:normal; font-weight:700; font-size:17px;}
 .marka b{display:block; font-size:14.5px; color:var(--tekst); font-weight:700;}
 .marka span span{display:block; font-family:var(--f-mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#93A099; margin-top:2px;}
-.side-eyebrow{font-family:var(--f-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#93A099; padding:8px 6px 0;}
-.menu{display:flex; flex-direction:column; gap:1px;}
-.menu a{display:block; padding:7px 10px; border-radius:10px; font-size:13.3px; font-weight:500; color:#40504A!important;
+.side-eyebrow{font-family:var(--f-mono); font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:#93A099; padding:6px 6px 0;}
+.menu{display:flex; flex-direction:column; gap:0;}
+.menu a{display:block; padding:5px 10px; border-radius:9px; font-size:12.6px; font-weight:500; color:#40504A!important;
   text-decoration:none!important; line-height:1.3;}
 .menu a:hover{background:#F4F6F1; color:var(--tekst)!important;}
 .menu a.on{background:var(--z-100); color:#1D3B2C!important; font-weight:700; box-shadow:inset 3px 0 0 var(--z-600);}
-.menu .grp{font-family:var(--f-mono); font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:#93A099; margin:14px 10px 3px;}
-.side-dol{margin-top:auto; padding:14px 6px 0; border-top:1px solid var(--line); font-size:11.5px; line-height:1.6; color:#93A099;}
-.side-cta{display:block; margin-top:10px; text-align:center; background:var(--z-600); color:#fff!important; border-radius:100px;
-  padding:10px 12px; font-weight:700; font-size:13px; text-decoration:none!important;}
+.menu .grp{font-family:var(--f-mono); font-size:9px; letter-spacing:.09em; text-transform:uppercase; color:#93A099; margin:10px 10px 2px;}
+.side-dol{margin-top:auto; padding:12px 6px 0; border-top:1px solid var(--line); font-size:11px; line-height:1.6; color:#93A099;}
+.side-cta{display:block; margin-top:8px; text-align:center; background:var(--z-600); color:#fff!important; border-radius:100px;
+  padding:9px 12px; font-weight:700; font-size:12.5px; text-decoration:none!important;}
 .side-cta:hover{background:var(--z-700);}
 .menu-otw{display:none;}
 .zaslona{display:none;}
@@ -80,7 +80,7 @@ img{max-width:100%; display:block; border-radius:12px;}
   .menu-otw svg{width:19px; height:19px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round;}
 }
 
-/* ===== Hero / okładka ===== */
+/* ===== Hero ===== */
 .hero{background:linear-gradient(107deg,#12261E 0%,#173026 38%,#22402F 68%,#2C4B36 100%); color:#fff; padding:76px 0 56px;}
 .eyebrow{display:inline-block; font-family:var(--f-mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
   color:var(--z-300); background:rgba(158,210,160,.12); border:1px solid rgba(158,210,160,.3); border-radius:100px;
@@ -97,25 +97,27 @@ img{max-width:100%; display:block; border-radius:12px;}
 @media (max-width:640px){ .hero h1{font-size:32px;} .hero .accent{font-size:24px;} .hero-cards{grid-template-columns:1fr;} }
 
 /* ===== Sekcje ===== */
-.section{padding:56px 0;}
+.section{padding:52px 0;}
 .section.alt{background:var(--z-050);}
 .section-eyebrow{font-family:var(--f-mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--z-600); font-weight:700; margin-bottom:8px;}
-h2.tytul-rozdzialu{display:flex; align-items:center; gap:14px; font-size:26px; margin-bottom:10px;}
-.nr{flex:none; width:40px; height:40px; border-radius:12px; background:linear-gradient(150deg,var(--z-700),var(--z-900));
-  color:#fff; display:grid; place-items:center; font-family:var(--f); font-weight:700; font-size:17px;}
-.rozdzial{padding:44px 0; border-bottom:1px solid var(--line);}
+h2.tytul-rozdzialu{display:flex; align-items:center; gap:14px; font-size:25px; margin-bottom:10px;}
+.nr{flex:none; width:38px; height:38px; border-radius:11px; background:linear-gradient(150deg,var(--z-700),var(--z-900));
+  color:#fff; display:grid; place-items:center; font-family:var(--f); font-weight:700; font-size:15px;}
+.dzial-tag{display:inline-block; font-family:var(--f-mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--z-600); background:var(--z-100); border-radius:100px; padding:4px 12px; margin-bottom:10px;}
+.rozdzial{padding:40px 0; border-bottom:1px solid var(--line);}
 .rozdzial:last-of-type{border-bottom:none;}
-.lead-r{font-size:17px; color:var(--dim); max-width:66ch;}
+.lead-r{font-size:16.5px; color:var(--dim); max-width:66ch;}
 
 /* Tabele */
 .tabwrap{overflow-x:auto; margin:18px 0; border:1px solid var(--line); border-radius:var(--r); }
-table.ak-tab{width:100%; border-collapse:collapse; font-size:14.5px;}
+table.ak-tab{width:100%; border-collapse:collapse; font-size:14px;}
 table.ak-tab th{background:var(--z-050); text-align:left; padding:10px 14px; font-weight:700; color:var(--z-800); border-bottom:1px solid var(--line);}
 table.ak-tab td{padding:10px 14px; border-bottom:1px solid var(--line); vertical-align:top;}
 table.ak-tab tr:last-child td{border-bottom:none;}
 
 /* Callouts */
-.callout{border-radius:var(--r); padding:16px 18px; margin:18px 0; border-left:4px solid; font-size:14.8px;}
+.callout{border-radius:var(--r); padding:16px 18px; margin:18px 0; border-left:4px solid; font-size:14.6px;}
 .callout b.lab{display:block; font-family:var(--f-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:6px;}
 .tip{background:var(--z-050); border-color:var(--z-600);}
 .tip b.lab{color:var(--z-700);}
@@ -140,6 +142,31 @@ ul.zw, ol.zw{padding-left:1.3em; margin:0 0 1em;}
 ul.zw li, ol.zw li{margin-bottom:.4em;}
 .zrob-teraz{background:var(--z-100); border-radius:var(--r-lg); padding:18px 20px; margin:18px 0;}
 .zrob-teraz b.lab{display:block; font-family:var(--f-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--z-700); margin-bottom:6px;}
+
+/* Zrzuty ekranu interfejsu (prawdziwe) */
+.zrzut{margin:18px 0; background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--cien-1);}
+.zrzut img{display:block; width:100%; border-radius:0;}
+.zrzut figcaption{padding:11px 16px; font-size:13px; color:var(--dim); border-top:1px solid var(--line); background:var(--ink-1); line-height:1.5;}
+.kroki{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin:18px 0;}
+.kroki .zrzut{margin:0;}
+@media (max-width:640px){ .kroki{grid-template-columns:1fr;} }
+.kroki .krok-n{font-family:var(--f-mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--z-600); font-weight:700; padding:10px 16px 0;}
+
+/* Przed/po */
+.przed-po{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:16px 0;}
+.przed-po>div{border-radius:var(--r); padding:14px 16px; font-size:13.8px;}
+.przed-po .slabo{background:var(--terra-bg); border:1px solid #e3cfc5;}
+.przed-po .lepiej{background:var(--z-050); border:1px solid var(--line-2);}
+.przed-po b.lab{display:block; font-family:var(--f-mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:6px;}
+.przed-po .slabo b.lab{color:var(--terra-ink);}
+.przed-po .lepiej b.lab{color:var(--z-700);}
+@media (max-width:640px){ .przed-po{grid-template-columns:1fr;} }
+
+/* Słowniczek */
+.pojecie{margin:0 0 22px; padding-bottom:20px; border-bottom:1px solid var(--line);}
+.pojecie:last-child{border-bottom:none;}
+.pojecie h4{font-size:16.5px; margin-bottom:6px;}
+.pojecie p{font-size:14.6px;}
 
 /* Czym jest Akademia */
 .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:28px 0;}
@@ -191,58 +218,66 @@ ul.zw li, ol.zw li{margin-bottom:.4em;}
   <div class="side-eyebrow">Spis treści</div>
   <div class="menu">
     <a href="#czym-jest">Czym jest Akademia</a>
-    <div class="grp">Podstawy</div>
-    <a href="#r1">1. Sposób myślenia</a>
-    <a href="#r2">2. Modele i myślenie</a>
-    <a href="#r3">3. Dobry prompt</a>
-    <a href="#r4">4. Pamięć</a>
-    <div class="grp">Narzędzia</div>
-    <a href="#r5">5. Projekty</a>
-    <a href="#r6">6. Pliki i dane</a>
-    <a href="#r7">7. Search / Deep Research</a>
-    <a href="#r8">8. Obrazy</a>
-    <a href="#r9">9. Głos</a>
-    <a href="#r10">10. Aplikacje i wtyczki</a>
-    <a href="#r11">11. Zadania</a>
-    <a href="#r12">12. Study Mode</a>
-    <a href="#r13">13. Writing blocks</a>
-    <a href="#r14">14. ChatGPT Work</a>
-    <a href="#r15">15. Codex</a>
-    <div class="grp">Świadome korzystanie</div>
-    <a href="#r16">16. Weryfikacja</a>
-    <a href="#r17">17. Prywatność</a>
-    <a href="#r18">18. Rozmowy bez bałaganu</a>
-    <a href="#r19">19. Kontrola danych</a>
-    <a href="#r20">20. Plany i limity</a>
-    <a href="#r21">21. GPT-y własne</a>
-    <div class="grp">Praktyka</div>
-    <a href="#r22">22. Analiza danych</a>
-    <a href="#r23">23. Case study: marketing</a>
-    <a href="#r24">24. Case study: biuro</a>
-    <a href="#r25">25. Naprawianie słabych odpowiedzi</a>
+    <div class="grp">Dział 0 · Start i konto</div>
+    <a href="#r1">1. Czym jest ChatGPT, konto</a>
+    <a href="#r2">2. Ekran główny</a>
+    <a href="#r3">3. Rozmowa, edycja, foldery</a>
+    <div class="grp">Dział 1 · Ustawienia</div>
+    <a href="#r4">4. Personalizacja i pamięć</a>
+    <a href="#r5">5. Głos</a>
+    <a href="#r6">6. Bezpieczeństwo i dane</a>
+    <a href="#r7">7. Aplikacje i konektory</a>
+    <div class="grp">Dział 2 · Plany i modele</div>
+    <a href="#r8">8. Plany i ceny</a>
+    <a href="#r9">9. Modele: GPT-6, obrazy</a>
+    <a href="#r10">10. ChatGPT Work</a>
+    <a href="#r11">11. Study Mode</a>
+    <div class="grp">Dział 3 · Codzienna praca</div>
+    <a href="#r12">12. Custom GPT</a>
+    <a href="#r13">13. Projekty</a>
+    <a href="#r14">14. Search i Deep Research</a>
+    <a href="#r15">15. Zaplanowane zadania</a>
+    <a href="#r16">16. Canvas</a>
+    <a href="#r17">17. Pliki i analiza danych</a>
+    <div class="grp">Dział 4-6</div>
+    <a href="#r18">18. Aplikacje mobilne, desktop</a>
+    <a href="#r19">19. Codex</a>
+    <a href="#r20">20. Dla firm i deweloperów</a>
+    <div class="grp">Dział 7 · Szerszy kontekst</div>
+    <a href="#r21">21. Weryfikacja i halucynacje</a>
+    <a href="#r22">22. Słowniczek pojęć</a>
+    <div class="grp">Dział 8 · Prompty</div>
+    <a href="#r23">23. Formuła dobrego promptu</a>
+    <a href="#r24">24. Zastosowania wg profesji</a>
+    <a href="#r25">25. Case study: marketing</a>
+    <a href="#r26">26. Case study: biuro</a>
+    <a href="#r27">27. Gdy GPT daje słaby wynik</a>
+    <div class="grp">Dział 9-10</div>
+    <a href="#r28">28. Subskrypcja i płatności</a>
+    <a href="#r29">29. FAQ</a>
     <div class="grp">Biblioteka</div>
-    <a href="#r26">26. 18 gotowych promptów</a>
+    <a href="#r30">30. 18 gotowych promptów</a>
   </div>
   <a class="side-cta" href="https://akademia.probatum.pl/?free=1">Wypróbuj Akademię →</a>
-  <div class="side-dol">Wersja 21.09.2026 · Akademia AI Probatum</div>
+  <div class="side-dol">Wersja 22.09.2026 · Akademia AI Probatum</div>
 </nav>
 
 <main id="glowna">
 
 <section class="hero">
   <div class="wrap">
-    <span class="eyebrow">Akademia AI · darmowy poradnik · edycja 21.09.2026</span>
-    <h1>ChatGPT w praktyce.<span class="accent">Od pytania do gotowej pracy.</span></h1>
-    <p class="lead">Poradnik dla osoby, która nie chce „bawić się AI", tylko naprawdę z niego korzystać. Zobaczysz, gdzie kliknąć, kiedy użyć konkretnej funkcji i jak formułować polecenia, które prowadzą do wyniku — w pracy i w domu.</p>
+    <span class="eyebrow">Akademia AI · darmowy poradnik · edycja 22.09.2026</span>
+    <h1>ChatGPT w praktyce.<span class="accent">Pełny przewodnik od zera.</span></h1>
+    <p class="lead">Zakładamy, że nigdy wcześniej nie korzystałeś z ChatGPT. Zaczynamy od zupełnych podstaw — jak wygląda ekran, co znaczy każdy przycisk — a kończymy na Projektach, Deep Research, Codeksie i analizie danych. Z prawdziwymi zrzutami ekranu, słowniczkiem pojęć i promptami gotowymi do skopiowania.</p>
     <div class="badges">
-      <span class="badge">26 rozdziałów</span>
-      <span class="badge">50+ przykładów i promptów</span>
+      <span class="badge">30 rozdziałów</span>
+      <span class="badge">17 realnych zrzutów ekranu</span>
+      <span class="badge">18 gotowych promptów</span>
       <span class="badge">Aktywne przyciski „Kopiuj"</span>
-      <span class="badge">Zrzuty z Akademii AI</span>
     </div>
     <div class="hero-cards">
       <div class="hero-card"><h4>Jak czytać</h4><p>Nie musisz zaczynać od początku. Wejdź od razu do funkcji, której potrzebujesz — spis treści po lewej prowadzi wszędzie jednym kliknięciem.</p></div>
-      <div class="hero-card"><h4>Co jest aktualne</h4><p>Funkcje sprawdzone na 21 września 2026 na bazie oficjalnej dokumentacji OpenAI. Tam, gdzie interfejs zależy od planu, zaznaczam to wprost.</p></div>
+      <div class="hero-card"><h4>Co jest aktualne</h4><p>Fakty sprawdzone na 5 września 2026 na bazie oficjalnej dokumentacji OpenAI. Tam, gdzie coś zmienia się szybko, zaznaczamy to wprost.</p></div>
     </div>
     <div class="cta-row">
       <a class="btn primary" href="https://akademia.probatum.pl/?free=1">Wypróbuj Akademię za darmo →</a>
@@ -255,9 +290,9 @@ ul.zw li, ol.zw li{margin-bottom:.4em;}
   <div class="wrap">
     <div class="section-eyebrow">Zanim zaczniesz</div>
     <h2>Ten poradnik to fragment czegoś większego.</h2>
-    <p class="lead-r">To, co czytasz, jest darmowym wycinkiem <b>Akademii AI Probatum</b> — platformy, w której uczysz się AI robiąc konkretne zadania, nie oglądając wykłady. W środku znajdziesz m.in.:</p>
+    <p class="lead-r">To, co czytasz, pochodzi z <b>Akademii AI Probatum</b> — platformy, w której uczysz się AI robiąc konkretne zadania, nie oglądając wykłady. W środku znajdziesz m.in.:</p>
     <ul class="zw">
-      <li><b>Podręczniki</b> — 47 pełnych przewodników (GPT, Claude, Gemini, Perplexity i inne), każdy dużo głębszy niż ten dokument.</li>
+      <li><b>Podręczniki</b> — 47 pełnych przewodników (GPT, Claude, Gemini, Perplexity i inne).</li>
       <li><b>Ucz się</b> — ponad 20 prezentacji krok po kroku, od zupełnych podstaw do pracy w firmie i poza nią.</li>
       <li><b>Zrób to teraz</b> — 114+ gotowców dopasowanych do konkretnej branży albo zawodu: kopiujesz, wklejasz, masz wynik.</li>
       <li><b>Poprowadź mnie</b> — 60 lekcji ułożonych w pełny proces: marketing, obsługa klienta, administracja, finanse, zespół.</li>
@@ -271,7 +306,7 @@ ul.zw li, ol.zw li{margin-bottom:.4em;}
       <figure><img src="assets/ebook-gpt/zrzut-poprowadz.jpg" alt="Zakładka Poprowadź mnie w Akademii AI Probatum" loading="lazy"><figcaption>Poprowadź mnie — 60 lekcji</figcaption></figure>
       <figure><img src="assets/ebook-gpt/zrzut-projekty.jpg" alt="Zakładka Moje projekty w Akademii AI Probatum" loading="lazy"><figcaption>Moje projekty — 9 gotowych</figcaption></figure>
     </div>
-    <p>Ten poradnik uczy Cię dobrze rozmawiać z ChatGPT. Akademia idzie krok dalej: prowadzi Cię za rękę przez konkretny efekt — stronę WWW, film, skill, który pracuje za Ciebie. Możesz wejść i zobaczyć to na własnych oczach, zero zobowiązań.</p>
+    <p>Ten poradnik uczy Cię ChatGPT od zera do zaawansowanych funkcji. Akademia idzie krok dalej: prowadzi Cię za rękę przez konkretny efekt — stronę WWW, film, skill, który pracuje za Ciebie, z prawdziwym mentoringiem i praktyką na Twoich zadaniach.</p>
     <div class="cta-row">
       <a class="btn primary" href="https://akademia.probatum.pl/?free=1">Wypróbuj Akademię za darmo →</a>
       <a class="btn ghost" href="https://probatum.pl/akademia.html">Zobacz pełną ofertę</a>
@@ -279,278 +314,321 @@ ul.zw li, ol.zw li{margin-bottom:.4em;}
   </div>
 </section>
 
-<!-- ROZDZIAŁ 1 -->
+<!-- DZIAŁ 0 -->
 <section class="section alt">
 <div class="wrap">
 <article class="rozdzial" id="r1">
-<h2 class="tytul-rozdzialu"><span class="nr">1</span>Zacznij od właściwego sposobu myślenia</h2>
-<p class="lead-r">ChatGPT nie jest „mądrą wyszukiwarką". To narzędzie do rozmowy, tworzenia i wykonywania pracy. Im lepiej określisz cel, tym mniej będzie zgadywania.</p>
-<p>Nie zaczynaj od pytania: <i>„co potrafi GPT?"</i>. Zacznij od pytania: <i>„co chcę dziś załatwić?"</i>. To drobna zmiana, ale robi ogromną różnicę. Gdy pytasz o funkcje, dostajesz listę funkcji. Gdy opisujesz efekt końcowy, ChatGPT może dobrać sposób dojścia do celu: zwykłą rozmowę, wyszukiwanie, analizę pliku, głębokie badanie, aplikację, zadanie albo Work.</p>
-<p><b>Przykład.</b> Zamiast pisać „co potrafisz z Excelem?", napisz: „Mam arkusz kosztów za ostatnie 12 miesięcy. Chcę znaleźć trzy największe źródła wzrostu wydatków i dostać wykres oraz krótkie rekomendacje". To od razu ustawia kierunek pracy.</p>
-<div class="callout tip"><b class="lab">Pro tip</b>Jeżeli nie wiesz, z jakiej funkcji skorzystać, nie musisz wybierać jej na ślepo. Napisz: „Najpierw zdecyduj, jaki tryb pracy będzie najlepszy do tego zadania i krótko uzasadnij wybór."</div>
-<h3>Trzy poziomy pracy</h3>
-<div class="tabwrap"><table class="ak-tab">
-<tr><th>Poziom</th><th>Kiedy używać</th><th>Przykład</th></tr>
-<tr><td><b>Rozmowa</b></td><td>Szybkie pytanie, tekst, pomysł, korekta.</td><td>„Popraw ten mail."</td></tr>
-<tr><td><b>Narzędzie</b></td><td>Potrzebujesz pliku, źródeł, obrazu, danych, aplikacji.</td><td>„Przeanalizuj ten PDF i porównaj z aktualnymi źródłami."</td></tr>
-<tr><td><b>Praca wieloetapowa</b></td><td>Wynik wymaga kilku kroków, kilku źródeł i artefaktu końcowego.</td><td>„Zbadaj rynek i przygotuj raport oraz prezentację."</td></tr>
-</table></div>
-<p>Zanim zaczniesz cokolwiek pisać, poświęć 30 sekund na trzy pytania: <i>co chcę dostać, co już mam, i po czym rozpoznam, że to jest gotowe.</i> To krótsze niż poprawianie trzeciej, wciąż nietrafionej wersji.</p>
-<div class="zrob-teraz"><b class="lab">Zrób teraz</b>Weź jedno zadanie, które odkładasz. Opisz wyłącznie efekt końcowy i materiały, które masz. Nie pytaj „jak to zrobić". Poproś ChatGPT, żeby sam dobrał sposób pracy i powiedz, jak chcesz odebrać wynik: krótko, tabela, plan krok po kroku.</div>
+<span class="dzial-tag">Dział 0 · Start i konto</span>
+<h2 class="tytul-rozdzialu"><span class="nr">1</span>Czym jest ChatGPT i jak założyć konto</h2>
+<p class="lead-r">Ten dokument zakłada, że nigdy wcześniej nie korzystałeś z ChatGPT. Zaczynamy od zera.</p>
+<p>ChatGPT to program, z którym rozmawiasz, pisząc zwykłym językiem — zadajesz pytanie albo prosisz o coś (napisanie tekstu, wyjaśnienie tematu, pomoc w liczeniu, poprawienie maila), a on odpowiada tekstem generowanym „na żywo" przez model sztucznej inteligencji. To nie jest wyszukiwarka internetowa — model nie „szuka odpowiedzi w bazie danych", tylko przewiduje, jaki tekst najlepiej pasuje, na podstawie ogromnej ilości materiału, na którym się uczył.</p>
+<h3>Trzy rzeczy, które warto wiedzieć od razu</h3>
+<ul class="zw">
+<li><b>Może się mylić.</b> Nawet gdy odpowiedź brzmi pewnie, bywa nieprawdziwa (to „halucynacja" — pełne wyjaśnienie w rozdziale 22). Ważne fakty zawsze warto zweryfikować.</li>
+<li><b>Nie widzi internetu „na żywo"</b>, chyba że włączysz wyszukiwanie (Search) — sam model „wie" tylko to, czego nauczył się do pewnej daty granicznej.</li>
+<li><b>Twoje rozmowy mogą trenować przyszłe modele</b>, chyba że to wyłączysz w ustawieniach (rozdział 6) — a wszystko, co wygenerujesz, możesz wykorzystywać, także komercyjnie.</li>
+</ul>
+<h3>Jak założyć konto</h3>
+<ol class="zw">
+<li>Wejdź na stronę chatgpt.com (albo pobierz aplikację mobilną/desktopową — rozdział 18).</li>
+<li>Kliknij „Sign up" — możesz użyć adresu e-mail i hasła, albo zalogować się przez istniejące konto Google, Microsoft lub Apple.</li>
+<li>Potwierdź adres e-mail, jeśli rejestrowałeś się bez logowania społecznościowego.</li>
+<li>Gotowe — korzystanie z planu Free jest darmowe, płatne plany (rozdział 8) są opcjonalne.</li>
+</ol>
+<div class="callout tip"><b class="lab">Pro tip</b>Nie zaczynaj od pytania „co potrafi GPT?". Zacznij od pytania „co chcę dziś załatwić?". Gdy opisujesz efekt końcowy, ChatGPT może dobrać sposób dojścia do celu, zamiast zmuszać Cię do zgadywania, z której funkcji skorzystać.</div>
 </article>
 </div>
 </section>
 
-<!-- ROZDZIAŁ 2 -->
+<!-- DZIAŁ 0 cd -->
 <section class="section">
 <div class="wrap">
 <article class="rozdzial" id="r2">
-<h2 class="tytul-rozdzialu"><span class="nr">2</span>Modele i „myślenie": nie używaj młota do każdej śrubki</h2>
-<p class="lead-r">Najmocniejszy model nie jest automatycznie najlepszym wyborem do każdej wiadomości. Dobieraj poziom mocy do kosztu błędu i trudności zadania.</p>
-<p>Do poprawienia przecinka nie potrzebujesz najgłębszego rozumowania. Do analizy umowy, planu biznesowego, kodu albo decyzji kosztującej tysiące złotych — warto dać modelowi więcej czasu na analizę i poprosić o weryfikację.</p>
-<p>Nazwy modeli i zakres planów mogą zmieniać się szybciej niż ten dokument. Dlatego nie ucz się nazw na pamięć. Naucz się kategorii: <b>szybki</b>, <b>rozumujący</b>, <b>najmocniejszy / Pro</b> oraz dodatkowy poziom „Think" lub wyższy wysiłek rozumowania tam, gdzie jest dostępny.</p>
-<h3>Metoda 2-etapowa — bardzo praktyczna</h3>
-<p>Najpierw w szybkim modelu dopracuj problem i prompt. Dopiero finalne wykonanie przekaż mocniejszemu modelowi. Dzięki temu nie zużywasz mocniejszego trybu na rozmowę organizacyjną.</p>
-<div class="callout uwaga"><b class="lab">Uwaga</b>Nie przywiązuj się do jednej nazwy modelu. Interfejs i dostępność modeli zmieniają się. Patrz na opis funkcji i charakter zadania, nie na nazwę.</div>
-<div class="promptbox"><div class="promptbox-top"><span>PROMPT DO PRZYGOTOWANIA ZADANIA</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Pomóż mi przygotować możliwie precyzyjne polecenie dla mocniejszego modelu.
-Cel: [CEL].
-Kontekst: [KONTEKST].
-Najpierw wykryj brakujące informacje i ryzyka.
-Następnie przygotuj jeden finalny prompt, który poprowadzi model od analizy do gotowego wyniku i kontroli jakości.</pre></div>
-<div class="promptbox"><div class="promptbox-top"><span>PROMPT DO FINALNEGO WYKONANIA</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Wykonaj poniższe zadanie jako finalną wersję, nie szkic.
-1. Najpierw sprawdź wymagania i dane wejściowe — wypisz, czego brakuje.
-2. Zaproponuj podejście i krótko je uzasadnij.
-3. Wykonaj zadanie: [ZADANIE].
-4. Na końcu zrób własną kontrolę jakości i popraw słabe miejsca przed pokazaniem wyniku.</pre></div>
-<div class="zrob-teraz"><b class="lab">Zrób teraz</b>Wybierz jedno banalne i jedno trudne zadanie. Zrób oba w szybkim trybie, a trudne powtórz z większym poziomem rozumowania. Porównaj nie długość odpowiedzi, tylko liczbę zauważonych ryzyk i jakość uzasadnienia.</div>
+<span class="dzial-tag">Dział 0 · Start i konto</span>
+<h2 class="tytul-rozdzialu"><span class="nr">2</span>Jak wygląda ekran główny</h2>
+<p class="lead-r">Po zalogowaniu na komputerze widzisz trzy główne obszary — poznaj je raz, a reszta podręcznika będzie miała sens.</p>
+<figure class="zrzut">
+<img src="assets/ebook-gpt/interfejs/f-gptl2-01.jpg" alt="Ekran główny ChatGPT: pasek boczny, pole do pisania i podpowiedzi na start" loading="lazy">
+<figcaption>Ekran główny ChatGPT: pasek boczny (Obrazy, Library, Zaplanowane, Wtyczki, Projekty, Codex), pole do pisania i trzy podpowiedzi na start.</figcaption>
+</figure>
+<ul class="zw">
+<li><b>Panel boczny po lewej</b> — przycisk „New chat" na górze, pod nim sekcja przypiętych rozmów, lista Projektów, „Explore GPTs" (katalog gotowych wersji ChatGPT), „Scheduled" (zaplanowane zadania), „Library" (Twoje pliki i obrazy), a niżej cała historia wcześniejszych rozmów.</li>
+<li><b>Środek ekranu</b> — tu toczy się rozmowa: Twoje wiadomości i odpowiedzi modelu, jedna pod drugą.</li>
+<li><b>Pole do pisania na dole</b> — ikona „+" po lewej (dołącz plik/zdjęcie albo włącz narzędzie, np. Deep Research), mikrofon i przycisk wysyłania po prawej.</li>
+</ul>
+<figure class="zrzut">
+<img src="assets/ebook-gpt/interfejs/f-gptl2-02.jpg" alt="Menu plus przy polu do pisania" loading="lazy">
+<figcaption>Menu „+" przy polu do pisania: pliki, biblioteka, tworzenie obrazu, wyszukiwanie w sieci, głębokie badanie i podłączone aplikacje.</figcaption>
+</figure>
+<p>W prawym górnym rogu (albo przy ikonie profilu) znajdziesz dostęp do Ustawień — pełny opis w rozdziałach 4-7.</p>
+<h3>Jak przebiega rozmowa</h3>
+<ul class="zw">
+<li>Wpisujesz wiadomość i wysyłasz klawiszem Enter (Shift+Enter dodaje nową linię bez wysyłania).</li>
+<li>Odpowiedź pojawia się „strumieniowo" — fragment po fragmencie, jakby ktoś pisał ją na żywo.</li>
+<li>Pod odpowiedzią: kopiuj tekst, kciuk w górę/w dół (ocena jakości), Regenerate (wygeneruj inną wersję) i głośnik (odsłuchaj).</li>
+</ul>
+<div class="tabwrap"><table class="ak-tab">
+<tr><th>Skrót</th><th>Działanie</th></tr>
+<tr><td>Enter</td><td>Wyślij wiadomość</td></tr>
+<tr><td>Shift+Enter</td><td>Nowa linia bez wysyłania</td></tr>
+<tr><td>Ctrl/Cmd + /</td><td>Pokaż wszystkie skróty</td></tr>
+<tr><td>Ctrl/Cmd + Shift + C</td><td>Skopiuj ostatnią odpowiedź / blok kodu</td></tr>
+<tr><td>Alt+Space (Win) / Option+Space (Mac)</td><td>Otwórz okienko-towarzysza z dowolnego miejsca w systemie</td></tr>
+</table></div>
 </article>
 </div>
 </section>
 
-<!-- ROZDZIAŁ 3 -->
 <section class="section alt">
 <div class="wrap">
 <article class="rozdzial" id="r3">
-<h2 class="tytul-rozdzialu"><span class="nr">3</span>Prompt, który daje wynik zamiast papki</h2>
-<p class="lead-r">Nie potrzebujesz magicznych formuł. Potrzebujesz pięciu elementów: celu, kontekstu, materiału, ograniczeń i formatu wyniku.</p>
-<p><b>Największy błąd początkujących:</b> każą GPT zgadywać. „Napisz mi reklamę" brzmi prosto, ale model musi zgadnąć produkt, odbiorcę, kanał, długość, ton, cel, ofertę i wezwanie do działania. Im więcej zgadywania, tym bardziej przeciętny wynik.</p>
-<div class="tabwrap"><table class="ak-tab">
-<tr><th>Słabo</th><th>Lepiej</th></tr>
-<tr><td>„Napisz post o moim szkoleniu."</td><td>„Napisz post na Facebook dla właścicieli małych firm, którzy boją się AI. Celem jest zapis na darmową lekcję. 900–1200 znaków, prosty język, bez frazesów, jedno konkretne CTA."</td></tr>
-</table></div>
-<h3>Formuła 5 elementów</h3>
-<ol class="zw">
-<li><b>CEL</b> — co dokładnie ma powstać?</li>
-<li><b>KONTEKST</b> — dla kogo, po co, w jakiej sytuacji?</li>
-<li><b>MATERIAŁ</b> — jakie dane, pliki, przykłady ma wykorzystać?</li>
-<li><b>OGRANICZENIA</b> — długość, ton, czego unikać, co musi zostać zachowane?</li>
-<li><b>FORMAT</b> — tabela, mail, lista kroków, JSON, prezentacja, tekst gotowy do publikacji?</li>
-</ol>
-<div class="callout tip"><b class="lab">Pro tip</b>Jeśli materiał ma brzmieć naturalnie, podaj modelowi przykład własnego tekstu albo bardzo konkretny opis tonu. „Pisz naturalnie" jest zbyt ogólne.</div>
-<div class="promptbox"><div class="promptbox-top"><span>UNIWERSALNY PROMPT 5-ELEMENTOWY</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>CEL: [co ma powstać]
-KONTEKST: [dla kogo i po co]
-MATERIAŁ: [wklej / dołącz materiały, które mam]
-OGRANICZENIA: [długość, ton, czego unikać]
-FORMAT: [jak ma wyglądać wynik]</pre></div>
-<div class="promptbox"><div class="promptbox-top"><span>PROMPT Z KONTROLĄ JAKOŚCI</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Przygotuj [MATERIAŁ].
-Za GOTOWE uznaj zadanie dopiero wtedy, gdy:
-- wynik odpowiada celowi,
-- nie ma powtórzeń i ogólników,
-- wszystkie liczby i zmienne fakty są zweryfikowane,
-- język brzmi naturalnie,
-- wynik jest gotowy do skopiowania / publikacji bez dalszej obróbki.
-Przed pokazaniem wyniku wykonaj własną kontrolę jakości i popraw słabe miejsca.</pre></div>
+<span class="dzial-tag">Dział 0 · Start i konto</span>
+<h2 class="tytul-rozdzialu"><span class="nr">3</span>Regenerowanie, edycja i organizacja rozmów</h2>
+<p class="lead-r">Trzy podobne funkcje, warto je rozróżnić — a potem poznać, jak trzymać porządek w rozmowach.</p>
+<h3>Regenerate, edycja i „rozgałęzianie"</h3>
+<ul class="zw">
+<li><b>Regenerate</b> — każesz modelowi spróbować odpowiedzieć jeszcze raz na to samo pytanie. Strzałkami (◀ ▶) przełączasz się między wersjami.</li>
+<li><b>Edycja własnej wiadomości</b> — poprawiasz dowolną swoją wcześniejszą wiadomość. Wszystko „po niej" zostaje zastąpione nową odpowiedzią, ale poprzednia wersja jest dostępna do przełączenia.</li>
+<li><b>„Branch in a new chat"</b> — z menu trzech kropek tworzysz nową, osobną rozmowę zawierającą całą historię do tego momentu. Przydatne, gdy chcesz sprawdzić alternatywny kierunek, nie tracąc oryginału.</li>
+</ul>
+<h3>Organizacja rozmów</h3>
+<ul class="zw">
+<li><b>Wyszukiwanie</b> — pole nad listą czatów przeszukuje tytuły i treść wiadomości.</li>
+<li><b>Przypinanie</b> — trzy kropki przy czacie → Pin. Czat trafia do stałej sekcji na górze.</li>
+<li><b>Foldery</b> — ChatGPT nie ma klasycznych folderów; najbliższym odpowiednikiem są Projekty (rozdział 13).</li>
+<li><b>Archiwizacja</b> — trzy kropki → Archive. Czat znika z sidebara, ale zostaje przeszukiwalny.</li>
+<li><b>Usuwanie</b> — trzy kropki → Delete → potwierdzenie. Nieodwracalne (trafia do kolejki trwałego usunięcia w ciągu 30 dni).</li>
+</ul>
+<div class="callout uwaga"><b class="lab">Czat tymczasowy</b>Przycisk „Temporary" w prawym górnym rogu nowej rozmowy — dwa warianty: niespersonalizowany (nie korzysta z pamięci, nie pojawia się w historii) i spersonalizowany (odwołuje się do wspomnień, ale niczego nowego nie zapamiętuje). Mimo to OpenAI przechowuje te rozmowy do 30 dni ze względów bezpieczeństwa — nigdy nie służą do trenowania modeli.</div>
+<div class="zrob-teraz"><b class="lab">Zrób teraz</b>Otwórz Ctrl/Cmd+/ i przejrzyj pełną listę skrótów na swoim koncie — część zależy od platformy (web/desktop/mobile).</div>
 </article>
 </div>
 </section>
 
-<!-- ROZDZIAŁ 4 -->
+<!-- DZIAŁ 1 -->
 <section class="section">
 <div class="wrap">
 <article class="rozdzial" id="r4">
-<h2 class="tytul-rozdzialu"><span class="nr">4</span>Pamięć i personalizacja: przestań tłumaczyć się od zera</h2>
-<p class="lead-r">Pamięć potrafi wykorzystać istotny kontekst z wcześniejszych rozmów i innych dostępnych źródeł. To wygoda, ale warto wiedzieć, co jest używane.</p>
-<p>To już nie jest wyłącznie mała lista ręcznie zapisanych faktów. W zależności od planu i ustawień ChatGPT może korzystać z wcześniejszych czatów, zapisanych wspomnień, instrukcji niestandardowych, plików w Bibliotece oraz kontekstu z połączonych aplikacji. Nie oznacza to jednak, że pamięta każde zdanie z każdej rozmowy.</p>
-<p><b>Praktyczna zasada:</b> pamięć ma pomagać w dopasowaniu odpowiedzi, ale ważne wymagania dla konkretnego zadania i tak wpisuj w prompt. Nie zakładaj, że krytyczna informacja „na pewno jest w pamięci".</p>
-<h3>Kiedy nie polegać na pamięci</h3>
+<span class="dzial-tag">Dział 1 · Ustawienia od A do Z</span>
+<h2 class="tytul-rozdzialu"><span class="nr">4</span>Personalizacja i pamięć</h2>
+<p class="lead-r">Ustawienia otwierasz, klikając ikonę profilu → Settings. Ta sekcja to serce personalizacji: jak ChatGPT dopasowuje się do Ciebie.</p>
+<figure class="zrzut">
+<img src="assets/ebook-gpt/interfejs/f-gptl7-02.jpg" alt="Ustawienia - Personalizacja" loading="lazy">
+<figcaption>Ustawienia → Personalizacja: przełącznik personalizacji, szybkie odpowiedzi i pole instrukcji niestandardowych.</figcaption>
+</figure>
+<h3>Custom Instructions</h3>
+<p>Settings → Personalization → Custom Instructions (telefon: Settings → Customize ChatGPT). Trzeba włączyć „Enable customization". Limit znaków: 1500 na Free/Go, 5000 na Plus/Pro. Dwa pola:</p>
 <ul class="zw">
-<li>umowy, stawki, terminy i dane, które mogą się zmienić;</li>
-<li>ważne instrukcje dla jednego projektu;</li>
-<li>dane poufne, których nie powinieneś przekazywać szerzej niż to konieczne;</li>
-<li>każdy przypadek, w którym pomyłka może kosztować pieniądze lub decyzję.</li>
+<li><b>„What would you like ChatGPT to know about you?"</b> — kontekst o Tobie (zawód, poziom wiedzy, zainteresowania).</li>
+<li><b>„How would you like ChatGPT to respond?"</b> — preferencje tonu, formatu i długości odpowiedzi.</li>
 </ul>
-<div class="callout uwaga"><b class="lab">Ważne</b>Wyłączenie pamięci nie usuwa automatycznie wcześniejszych rozmów. Jeżeli zależy Ci na pełnym usunięciu określonej informacji, sprawdź również historię rozmów i pozostałe źródła kontekstu.</div>
+<p>Zmiany działają natychmiast we wszystkich czatach, ale są prywatne — ktoś oglądający udostępniony link ich nie zobaczy.</p>
+<h3>Characteristics i Personality</h3>
+<p>Cztery suwaki intensywności (Warm, Enthusiastic, Headers & Lists, Emojis) plus siedem gotowych presetów stylu (Default, Cynical, Efficient, Friendly, Professional, Quirky, Candid).</p>
+<h3>Pamięć (Memory)</h3>
+<p>Dwa rodzaje pamięci, warto je rozróżnić:</p>
+<ul class="zw">
+<li><b>Saved memories</b> — jawne, konkretne fakty zapisane na Twoją prośbę albo wywnioskowane z rozmowy. To lista, którą otwierasz i edytujesz albo kasujesz pojedynczo.</li>
+<li><b>„Reference chat history"</b> (Plus i Pro) — model automatycznie korzysta z informacji z wcześniejszych rozmów, bez proszenia go wprost o zapamiętanie czegokolwiek.</li>
+</ul>
+<div class="callout uwaga"><b class="lab">Ważne</b>Żeby w pełni usunąć informacje o sobie, trzeba skasować je z: przeszłych i zarchiwizowanych czatów, plików, podsumowania pamięci — oraz odłączyć podłączone aplikacje. Samo wyłączenie pamięci tego nie robi.</div>
 <div class="promptbox"><div class="promptbox-top"><span>AUDYT PAMIĘCI</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Pokaż podsumowanie tego, co wiesz o mnie z pamięci i wcześniejszych rozmów.
 Podziel na: fakty stałe, fakty które mogły się zmienić, i te, których nie jesteś pewien.
-Jeśli coś jest nieaktualne, powiedz mi, żebym poprawił to u źródła.</pre></div>
+Jeśli coś jest nieaktualne, powiedz mi, żebym poprawił to u źródła — nie zgaduj, że nadal jest prawdziwe.</pre></div>
 </article>
 </div>
 </section>
 
-<!-- ROZDZIAŁ 5 -->
 <section class="section alt">
 <div class="wrap">
 <article class="rozdzial" id="r5">
-<h2 class="tytul-rozdzialu"><span class="nr">5</span>Projekty: jeden temat, jedno miejsce, mniej chaosu</h2>
-<p class="lead-r">Projekt zbiera rozmowy, pliki i instrukcje wokół jednego celu. To najlepsza opcja, gdy temat wraca przez kilka dni lub tygodni.</p>
-<p>Jeżeli po tygodniu masz sześć rozmów o tej samej firmie, trzy wersje briefu i pięć plików rozsianych po komputerze, nie potrzebujesz kolejnego promptu. Potrzebujesz porządku. Projekt pozwala trzymać materiał roboczy w jednym kontekście.</p>
-<div class="tabwrap"><table class="ak-tab">
-<tr><th>Dobra nazwa</th><th>Zła nazwa</th><th>Dlaczego</th></tr>
-<tr><td>„Akademia AI — GPT"</td><td>„Różne"</td><td>Od razu wiesz, czego dotyczy kontekst.</td></tr>
-<tr><td>„Klient ABC — oferta 2026"</td><td>„Klient"</td><td>Oddzielasz projekty i wersje.</td></tr>
-<tr><td>„Marketing — Q4 2026"</td><td>„Posty"</td><td>Cel jest większy niż jeden rodzaj treści.</td></tr>
-</table></div>
-<h3>Co wrzucać do projektu</h3>
-<ul class="zw"><li>brief i cele,</li><li>aktualne pliki źródłowe,</li><li>ustalone zasady i ograniczenia,</li><li>rozmowy, które rozwijają ten sam temat,</li><li>wersję „prawdy obowiązującej" zamiast pięciu sprzecznych wersji.</li></ul>
-<div class="callout tip"><b class="lab">Pro tip</b>Projekt to nie archiwum wszystkiego. Usuwaj stare lub sprzeczne materiały. Więcej plików nie zawsze oznacza lepszy kontekst.</div>
-<div class="promptbox"><div class="promptbox-top"><span>INSTRUKCJA STARTOWA DO PROJEKTU</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Ten projekt dotyczy: [TEMAT].
-Cel końcowy: [EFEKT].
-Najważniejsze źródła prawdy: [PLIKI / DOKUMENTY].
-Zasady pracy:
-1. Nie wymyślaj brakujących danych.
-2. Jeżeli nowszy dokument przeczy starszemu — pokaż konflikt.
-3. Zanim poprosisz mnie o informację, sprawdź materiały w projekcie.
-4. Wynik ma być praktyczny i gotowy do użycia.</pre></div>
-</article>
-</div>
-</section>
-
-<!-- ROZDZIAŁ 6 -->
-<section class="section">
-<div class="wrap">
-<article class="rozdzial" id="r6">
-<h2 class="tytul-rozdzialu"><span class="nr">6</span>Pliki i analiza danych: nie proś tylko o streszczenie</h2>
-<p class="lead-r">Wgrywanie pliku to dopiero początek. Największa wartość pojawia się wtedy, gdy z dokumentu wyciągasz decyzje, błędy, porównania i następne kroki.</p>
-<p>Po wgraniu pliku nie pytaj: „co tu jest?". Powiedz, jaki wynik chcesz dostać i co jest ważne.</p>
-<ol class="zw">
-<li>Powiedz, czym jest plik i po co go analizujesz.</li>
-<li>Wskaż, które elementy są najważniejsze: liczby, warunki, terminy, błędy, różnice.</li>
-<li>Poproś o wynik w formie, która pomaga podjąć działanie.</li>
-</ol>
-<p>W aktualnym ChatGPT długie wklejki mogą zostać automatycznie potraktowane jako załącznik. To pomaga utrzymać pole rozmowy czytelne. Gdy pracujesz na bardzo długim materiale, plik jest zwykle lepszy niż kilkadziesiąt ekranów wklejonego tekstu.</p>
-<div class="callout blad"><b class="lab">Błąd</b>„Przeanalizuj ten plik" jest za szerokie. Model może poświęcić uwagę temu, co akurat wygląda ciekawie, a nie temu, co jest ważne dla Twojej decyzji.</div>
-<div class="promptbox"><div class="promptbox-top"><span>PDF / UMOWA / RAPORT — ANALIZA DECYZYJNA</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Przeanalizuj załączony dokument pod kątem decyzji, którą muszę podjąć: [DECYZJA].
-Wskaż: najważniejsze liczby i warunki, ryzyka, terminy, elementy niejasne lub niekorzystne dla mnie.
-Podsumuj w 5 punktach, co powinienem zrobić dalej.
-Jeśli czegoś nie da się jednoznacznie ustalić z dokumentu — napisz to wprost, nie zgaduj.</pre></div>
-</article>
-</div>
-</section>
-
-<!-- ROZDZIAŁ 7 -->
-<section class="section alt">
-<div class="wrap">
-<article class="rozdzial" id="r7">
-<h2 class="tytul-rozdzialu"><span class="nr">7</span>Search czy Deep Research? To nie jest to samo</h2>
-<p class="lead-r">Search sprawdza bieżące informacje szybko. Deep Research jest lepsze, gdy pytanie ma wiele części, źródła sobie przeczą albo potrzebujesz raportu z uzasadnieniem.</p>
-<p><b>Kiedy zwykłe wyszukiwanie wystarczy:</b> aktualna cena, data wydarzenia, godziny otwarcia, jedna specyfikacja produktu, proste sprawdzenie „czy to nadal aktualne". Tu liczy się szybkość.</p>
-<p><b>Kiedy przełączyć się na Deep Research:</b> porównujesz kilka firm lub technologii, potrzebujesz wielu źródeł, źródła mogą sobie przeczyć, chcesz raport z cytowaniami, decyzja jest ważna biznesowo, prawnie, finansowo lub technicznie.</p>
-<div class="callout tip"><b class="lab">Pro tip</b>Najwięcej jakości zyskujesz nie na końcu, lecz przed startem badania: popraw plan, usuń nieistotne kryteria i dodaj źródła, którym ufasz.</div>
-<div class="promptbox"><div class="promptbox-top"><span>PROMPT DO DEEP RESEARCH</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Przeprowadź głębokie badanie tematu: [TEMAT].
-DECYZJA, KTÓRĄ CHCĘ PODJĄĆ: [DECYZJA].
-KRYTERIA: [KRYTERIA].
-ZAKRES CZASOWY / RYNEK: [ZAKRES].
-ŹRÓDŁA: preferuj źródła pierwotne i oficjalne; opinie społeczności traktuj jako uzupełnienie, nie jako fakt.
-Najpierw pokaż plan badania.
-Po akceptacji przygotuj raport z: faktami, rozbieżnościami między źródłami, i jasną rekomendacją.</pre></div>
-</article>
-</div>
-</section>
-
-<!-- ROZDZIAŁ 8 -->
-<section class="section">
-<div class="wrap">
-<article class="rozdzial" id="r8">
-<h2 class="tytul-rozdzialu"><span class="nr">8</span>Obrazy: opisuj efekt, nie „ładny obrazek"</h2>
-<p class="lead-r">Dobra grafika zaczyna się od funkcji: reklama, miniatura, ilustracja do podręcznika, mockup, plakat. Dopiero potem styl.</p>
-<h3>Pięć rzeczy, które warto podać</h3>
-<ol class="zw">
-<li>Co ma być głównym tematem?</li>
-<li>Do czego użyjesz obrazu?</li>
-<li>Jaki styl i poziom realizmu?</li>
-<li>Jaki kadr, proporcje i światło?</li>
-<li>Czy potrzebny jest tekst na grafice — i jaki dokładnie?</li>
-</ol>
-<p>Jeżeli chcesz zmienić konkretną grafikę, dołącz ją i napisz dokładnie, co ma zostać bez zmian. To szczególnie ważne przy twarzy, produkcie, logo, układzie lub tle.</p>
-<div class="callout uwaga"><b class="lab">Uwaga</b>Przy grafice z tekstem zawsze sprawdź literówki. Nawet bardzo dobry obraz może wymagać korekty napisu.</div>
-<div class="promptbox"><div class="promptbox-top"><span>PROMPT DO GRAFIKI REKLAMOWEJ</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Stwórz grafikę do [KANAŁ / FORMAT].
-CEL: [co odbiorca ma zrozumieć / zrobić].
-TEMAT: [główny motyw].
-STYL: [np. nowoczesna ilustracja 3D / fotografia produktowa / czysty minimalizm].
-KADR: [np. 1:1, centralny obiekt, wolne miejsce po prawej na nagłówek].
-ŚWIATŁO / KOLORY: [opis].
-TEKST NA GRAFICE: [dokładnie, jeśli potrzebny].
-NIE DODAWAJ: [elementy niepożądane].</pre></div>
-</article>
-</div>
-</section>
-
-<!-- ROZDZIAŁ 9 -->
-<section class="section alt">
-<div class="wrap">
-<article class="rozdzial" id="r9">
-<h2 class="tytul-rozdzialu"><span class="nr">9</span>Głos: kiedy mówienie jest szybsze niż pisanie</h2>
-<p class="lead-r">Tryb głosowy jest świetny do burzy mózgów, nauki, dyktowania i rozmowy podczas ruchu. Trzeba tylko mówić inaczej niż do zwykłego czatu tekstowego.</p>
-<p>Na koncie mogą być dostępne różne warianty: Na żywo, Zaawansowany oraz Standardowy. Live stawia na naturalną rozmowę; tryby i funkcje mobilne mogą się różnić zależnie od wersji aplikacji, planu i regionu.</p>
-<p><b>Najlepsza technika: krótkie rundy.</b> W głosie nie dyktuj pięciominutowego promptu. Powiedz cel, pozwól odpowiedzieć, doprecyzuj. Rozmowa działa najlepiej wtedy, gdy przypomina rozmowę z człowiekiem, a nie odczytywanie instrukcji obsługi.</p>
-<h3>Przykładowe zastosowania</h3>
-<ul class="zw"><li>dyktowanie notatek po spotkaniu,</li><li>ćwiczenie angielskiego,</li><li>symulacja rozmowy kwalifikacyjnej,</li><li>przegadanie pomysłu podczas spaceru,</li><li>przygotowanie listy zadań, gdy masz zajęte ręce.</li></ul>
+<span class="dzial-tag">Dział 1 · Ustawienia od A do Z</span>
+<h2 class="tytul-rozdzialu"><span class="nr">5</span>Głos: kiedy mówienie jest szybsze niż pisanie</h2>
+<p class="lead-r">Tryb głosowy jest świetny do burzy mózgów, nauki, dyktowania i rozmowy podczas ruchu.</p>
+<figure class="zrzut">
+<img src="assets/ebook-gpt/interfejs/f-gptl15-02.jpg" alt="Ustawienia - Głos" loading="lazy">
+<figcaption>Ustawienia → Głos: wybór głosu (tu Ember), model i język.</figcaption>
+</figure>
+<p>Settings → Voice → wybór trybu: <b>Live</b> (słucha i mówi jednocześnie, naturalne przerywanie, korzysta z wyszukiwania i pamięci) albo <b>Advanced</b> (płynniejsza, bardziej „ludzka" rozmowa z niuansami tempa i emocji). Do wyboru 9 głosów o odrębnym charakterze.</p>
+<div class="callout uwaga"><b class="lab">Nowość: GPT-Live</b>8 lipca 2026 OpenAI zastąpiło Advanced Voice Mode systemem GPT-Live — w pełni przebudowany, „full-duplex" (słucha i mówi naraz, jak człowiek), podczas gdy stary tryb był „half-duplex" (sztywna wymiana turami).</div>
+<h3>Najlepsza technika: krótkie rundy</h3>
+<p>W głosie nie dyktuj pięciominutowego promptu. Powiedz cel, pozwól odpowiedzieć, doprecyzuj.</p>
 <div class="promptbox"><div class="promptbox-top"><span>SCENARIUSZ DO ROZMOWY GŁOSOWEJ</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Będziemy rozmawiać głosowo. Pomóż mi przemyśleć [TEMAT].
-Zadawaj jedno pytanie naraz.
-Po każdej mojej odpowiedzi krótko podsumuj wniosek i przejdź dalej.
+Zadawaj jedno pytanie naraz i czekaj na moją odpowiedź, zanim zadasz kolejne.
+Po każdej mojej odpowiedzi krótko podsumuj wniosek.
 Nie twórz finalnego planu, dopóki nie powiem: „podsumuj".
 Gdy powiem „podsumuj", przygotuj 5 najważniejszych decyzji i listę następnych kroków.</pre></div>
 </article>
 </div>
 </section>
 
-<!-- ROZDZIAŁ 10 -->
+<section class="section">
+<div class="wrap">
+<article class="rozdzial" id="r6">
+<span class="dzial-tag">Dział 1 · Ustawienia od A do Z</span>
+<h2 class="tytul-rozdzialu"><span class="nr">6</span>Bezpieczeństwo i kontrola danych</h2>
+<p class="lead-r">To miejsce, w którym decydujesz, co dzieje się z Twoimi danymi i kto ma dostęp do konta.</p>
+<figure class="zrzut">
+<img src="assets/ebook-gpt/interfejs/f-gptl20-03.jpg" alt="Ustawienia - Zabezpieczenia i logowanie" loading="lazy">
+<figcaption>Ustawienia → Zabezpieczenia i logowanie: hasło, klucze dostępu, uwierzytelnianie dwuskładnikowe i lista aktywnych sesji.</figcaption>
+</figure>
+<h3>Security</h3>
+<ul class="zw">
+<li><b>Uwierzytelnianie dwuskładnikowe (MFA/2FA)</b> — aplikacja uwierzytelniająca, powiadomienie push, kod SMS/WhatsApp albo passkey. Nie wylogowuje automatycznie z innych urządzeń.</li>
+<li><b>„Log out of all devices"</b> — wylogowanie ze wszystkich sesji naraz (może potrwać do 30 minut).</li>
+</ul>
+<figure class="zrzut">
+<img src="assets/ebook-gpt/interfejs/f-gptl20-04.jpg" alt="Ustawienia - Kontrola danych" loading="lazy">
+<figcaption>Ustawienia → Kontrola danych: „Ulepsz model dla wszystkich", lokalizacja, udostępnione linki, eksport i usunięcie czatów. To jest ekran, na którym decydujesz, co zostaje u OpenAI.</figcaption>
+</figure>
+<h3>Data Controls</h3>
+<ul class="zw">
+<li><b>„Improve the model for everyone"</b> — WŁ. (domyślnie) = Twoje rozmowy mogą trenować przyszłe modele; WYŁ. = nadal widoczne w historii, ale nie trenują modeli.</li>
+<li><b>„Shared links" → Manage</b> — lista udostępnionych linków. Usunięcie linku blokuje przyszły dostęp, ale nie kasuje kopii, jeśli odbiorca już ją zapisał.</li>
+<li><b>„Export data"</b> — OpenAI wysyła e-mail z linkiem do pobrania archiwum Twoich danych.</li>
+<li><b>„Delete all chats"</b> — kasuje wszystkie rozmowy, także w Projektach.</li>
+</ul>
+<div class="callout tip"><b class="lab">Dla firm</b>Na planach Business/Enterprise/Edu dane domyślnie NIE trenują modeli (odwrotnie niż na Free/Plus/Pro, gdzie trzeba samemu wyłączyć opcję).</div>
+<div class="promptbox"><div class="promptbox-top"><span>CHECKLISTA PRYWATNOŚCI DLA FIRMY</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Przygotuj checklistę ustawień ChatGPT dla małej firmy.
+Uwzględnij: pamięć, kontrolę danych, udostępnione linki, aplikacje i ich uprawnienia, zasady dla danych klientów, zasady dla haseł i sekretów.
+Podziel wynik na: „ustaw raz", „sprawdzaj co miesiąc", „przypomnij zespołowi".
+Jeśli czegoś nie jesteś pewien co do aktualnych ustawień OpenAI — powiedz to wprost zamiast zgadywać, i wskaż gdzie to sprawdzić.</pre></div>
+</article>
+</div>
+</section>
+
+<section class="section alt">
+<div class="wrap">
+<article class="rozdzial" id="r7">
+<span class="dzial-tag">Dział 1 · Ustawienia od A do Z</span>
+<h2 class="tytul-rozdzialu"><span class="nr">7</span>Aplikacje i konektory</h2>
+<p class="lead-r">Połączone aplikacje pozwalają pracować na informacjach z usług, których już używasz, bez ręcznego kopiowania treści.</p>
+<p>Settings → Apps (czasem „Plugins"). Gotowe integracje: Google Drive, Gmail, Google Calendar, Outlook, SharePoint, Dropbox, Box, Microsoft Teams, Slack, GitHub, GitLab, Notion, HubSpot, Linear, Canva, Zendesk, OneNote — a dla ChatGPT Work katalog ponad 1400 aplikacji przez standard MCP (wyjaśniony w rozdziale 22).</p>
+<h3>Jak podłączyć aplikację — na przykładzie Google Drive</h3>
+<ol class="zw">
+<li>Otwórz Settings → Apps.</li>
+<li>Znajdź Google Drive na liście i kliknij Connect.</li>
+<li>Zaloguj się na konto Google, którego chcesz użyć.</li>
+<li>Przejrzyj żądane uprawnienia (odczyt plików i metadanych).</li>
+<li>Zatwierdź logowanie — od teraz możesz poprosić model o pracę na plikach z dysku.</li>
+</ol>
+<p>Odłączanie: Settings → Apps → wybierz aplikację → „Connected accounts" → (•••) → Disconnect. Blokuje przyszły dostęp, ale nie kasuje już wykonanej pracy.</p>
+<div class="callout uwaga"><b class="lab">Bezpieczeństwo</b>Przed połączeniem konta sprawdź zakres uprawnień. Przy działaniach wychodzących — wysyłka maila, zmiana danych, publikacja — stosuj zasadę potwierdzenia przed wykonaniem.</div>
+<div class="promptbox"><div class="promptbox-top"><span>PRACA Z DYSKIEM GOOGLE</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Znajdź na moim Dysku Google najnowszy dokument dotyczący [TEMAT].
+Najpierw potwierdź nazwę i datę dokumentu, z którego korzystasz — jeśli znajdziesz więcej niż jeden pasujący, zapytaj który mam na myśli, zamiast zgadywać.
+Następnie: 1. podsumuj ustalenia, 2. wypisz otwarte decyzje, 3. znajdź terminy i osoby odpowiedzialne, 4. przygotuj listę następnych kroków.</pre></div>
+</article>
+</div>
+</section>
+
+<!-- DZIAŁ 2 -->
+<section class="section">
+<div class="wrap">
+<article class="rozdzial" id="r8">
+<span class="dzial-tag">Dział 2 · Plany, modele, tryby</span>
+<h2 class="tytul-rozdzialu"><span class="nr">8</span>Plany i ceny ChatGPT</h2>
+<p class="lead-r">Osiem warstw cenowych — od darmowego konta po enterprise. Nie wybieraj planu „na zapas": sprawdź tydzień użycia, zanim dopłacisz.</p>
+<div class="tabwrap"><table class="ak-tab">
+<tr><th>Plan</th><th>Cena</th><th>Najważniejsze fakty</th></tr>
+<tr><td><b>Free</b></td><td>0 USD</td><td>Od 6.08.2026 nieograniczone czaty tekstowe (limity zostają na obrazy/pliki/głos). Model domyślny: GPT-5.6 Luna.</td></tr>
+<tr><td><b>Go</b></td><td>8 USD/mies. (USA)</td><td>Ten sam model co Free, wyższe limity obrazów/plików/głosu, bez reklam. Dostępny w ~170 krajach.</td></tr>
+<tr><td><b>Plus</b></td><td>20 USD/mies.</td><td>Model GPT-5.6 Sol z suwakiem intensywności rozumowania. Pełny zestaw: obrazy, analiza danych, głos, Projects, Deep Research.</td></tr>
+<tr><td><b>Pro</b></td><td>100 lub 200 USD/mies.</td><td>Dwa warianty: Pro Codex (wyższe limity dla programistów) i Pro Max (najwyższe limity Deep Research i modelu Pro).</td></tr>
+<tr><td><b>Business</b></td><td>Standard 20-25 USD, Premium 100-125 USD/os./mies.</td><td>Premium daje 5× więcej użycia i brak 5-godzinnego limitu okna. Minimum 2 miejsca. SSO, panel admina.</td></tr>
+<tr><td><b>Enterprise</b></td><td>45-75 USD/os./mies. (szacunek)</td><td>Brak publicznego cennika. Minimum ok. 150 miejsc przy rocznych kontraktach.</td></tr>
+</table></div>
+<h3>Porównanie funkcji</h3>
+<div class="tabwrap"><table class="ak-tab">
+<tr><th>Funkcja</th><th>Free</th><th>Go</th><th>Plus</th><th>Pro</th></tr>
+<tr><td>Model flagowy (GPT-6 Astra)</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>Okno kontekstu (model szybki)</td><td>27K</td><td>54K</td><td>54K</td><td>128K</td></tr>
+<tr><td>Deep Research</td><td>Ograniczony</td><td>Ograniczony</td><td>✓</td><td>✓</td></tr>
+<tr><td>Tworzenie i udostępnianie GPT-ów</td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>Library — limit miejsca</td><td>500 MB</td><td>4 GB</td><td>20 GB</td><td>100 GB</td></tr>
+</table></div>
+<div class="callout uwaga"><b class="lab">Stan na 5.09.2026</b>Ceny i warianty Pro zmieniały się już kilka razy w ciągu kilku miesięcy — sprawdź aktualny ekran rozliczeń przed decyzją.</div>
+<div class="promptbox"><div class="promptbox-top"><span>CZY WYŻSZY PLAN SIĘ OPŁACA?</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Pomóż mi ocenić, czy wyższy plan ChatGPT ma dla mnie sens.
+Obecny plan: [PLAN]. Miesięcznie używam ChatGPT około: [GODZINY]. Najczęstsze zadania: [LISTA].
+Najbardziej przeszkadza mi: [LIMITY / BRAK FUNKCJI / SZYBKOŚĆ]. Wartość mojej godziny pracy: [KWOTA].
+Porównaj koszt abonamentu z realną oszczędnością czasu. Nie uznawaj „więcej funkcji" za wartość samą w sobie — zapytaj mnie, jeśli nie wiesz, czy dana funkcja jest mi w ogóle potrzebna.</pre></div>
+</article>
+</div>
+</section>
+
+<section class="section alt">
+<div class="wrap">
+<article class="rozdzial" id="r9">
+<span class="dzial-tag">Dział 2 · Plany, modele, tryby</span>
+<h2 class="tytul-rozdzialu"><span class="nr">9</span>Modele: GPT-6, obrazy i wideo</h2>
+<p class="lead-r">Nie ucz się nazw modeli na pamięć — zmieniają się szybciej niż ten dokument. Naucz się kategorii.</p>
+<h3>Chronologia rodziny GPT-5.x/GPT-6</h3>
+<p>GPT-5 → GPT-5.1 → GPT-5.2 → GPT-5.3-Codex → GPT-5.4 → GPT-5.5 (pierwszy w pełni retrenowany model bazowy od GPT-4.5, jawnie trenowany „agentic-first") → GPT-5.6 (GA 9.07.2026) → GPT-6 Astra — najnowszy model flagowy, dostępny na Plus i wyżej.</p>
+<h3>Trzy warianty GPT-5.6</h3>
+<div class="tabwrap"><table class="ak-tab">
+<tr><th>Wariant</th><th>Charakter</th></tr>
+<tr><td><b>Sol</b></td><td>Flagowy, „najlepszy dotychczasowy model OpenAI do kodowania", silnik ChatGPT Work.</td></tr>
+<tr><td><b>Terra</b></td><td>Środkowy — wydajność GPT-5.5 za połowę kosztu.</td></tr>
+<tr><td><b>Luna</b></td><td>Budżetowy, szybki; domyślny dla Free/Go od sierpnia 2026.</td></tr>
+</table></div>
+<p>Wszystkie trzy: 1,05 mln tokenów okna kontekstu, 128K tokenów max output.</p>
+<h3>GPT Image 2 — obrazy</h3>
+<p>Następca DALL·E (usuniętego z API 12.05.2026): rozumowanie przy generowaniu, ~99% skuteczność renderowania tekstu (vs ~60% DALL-E 3), 4K, edycja „subject-lock" (zachowanie identyczności obiektu przy zmianie tła/stroju), natywna wielojęzyczność.</p>
+<div class="callout uwaga"><b class="lab">Sora — wygaszana</b>API Sora ma zostać wygaszone 24 września 2026. Nie ucz się jej jako aktywnej funkcji — zweryfikuj status przed użyciem.</div>
+<h3>Pięć elementów dobrego promptu obrazkowego</h3>
+<p>Przedmiot (co/kto), styl (fotografia, akwarela, 3D, minimalizm), oświetlenie, kompozycja/kadr i nastrój.</p>
+<div class="przed-po">
+<div class="slabo"><b class="lab">Słabo</b>kot na kanapie</div>
+<div class="lepiej"><b class="lab">Lepiej</b>Rudy kot śpiący zwinięty w kłębek na szarej lnianej kanapie, miękkie popołudniowe światło z lewej strony, fotografia lifestyle, płytka głębia ostrości, ciepłe kolory.</div>
+</div>
+<div class="promptbox"><div class="promptbox-top"><span>PROMPT DO GRAFIKI</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Stwórz grafikę do [KANAŁ / FORMAT].
+PRZEDMIOT: [co/kto ma być na obrazie].
+STYL: [fotografia / ilustracja 3D / akwarela / minimalizm].
+OŚWIETLENIE: [miękkie, studyjne, zachód słońca].
+KOMPOZYCJA: [zbliżenie, szeroki plan, z lotu ptaka].
+NASTRÓJ: [spokojny, dynamiczny, melancholijny].
+TEKST NA GRAFICE: [dokładnie, jeśli potrzebny — sprawdź literówki po wygenerowaniu].
+NIE DODAWAJ: [elementy niepożądane].</pre></div>
+</article>
+</div>
+</section>
+
 <section class="section">
 <div class="wrap">
 <article class="rozdzial" id="r10">
-<h2 class="tytul-rozdzialu"><span class="nr">10</span>Aplikacje i wtyczki: nie kopiuj ręcznie tego, co GPT może pobrać</h2>
-<p class="lead-r">Połączone aplikacje pozwalają pracować na informacjach z usług, których już używasz. Wtyczki mogą łączyć aplikacje, instrukcje i gotowe przepływy pracy.</p>
-<p>Aplikacja to połączenie z usługą zewnętrzną, np. Dyskiem Google albo Slackiem. Wtyczka może opakować kilka możliwości w gotowy proces — np. instrukcje + aplikację + dodatkowe umiejętności.</p>
-<div class="callout uwaga"><b class="lab">Bezpieczeństwo</b>Przed połączeniem konta sprawdź zakres uprawnień. Przy działaniach wychodzących — wysyłka maila, zmiana danych, publikacja — stosuj zasadę potwierdzenia przed wykonaniem.</div>
-<div class="promptbox"><div class="promptbox-top"><span>PRACA Z DYSKIEM GOOGLE</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Znajdź na moim Dysku Google najnowszy dokument dotyczący [TEMAT].
-Najpierw potwierdź nazwę i datę dokumentu, z którego korzystasz.
-Następnie: 1. podsumuj ustalenia, 2. wypisz otwarte decyzje, 3. znajdź terminy i osoby odpowiedzialne, 4. przygotuj listę następnych kroków.
-Jeśli znajdziesz więcej niż jeden pasujący dokument — zapytaj, który mam na myśli, zanim zaczniesz.</pre></div>
+<span class="dzial-tag">Dział 2 · Plany, modele, tryby</span>
+<h2 class="tytul-rozdzialu"><span class="nr">10</span>ChatGPT Work</h2>
+<p class="lead-r">To najbardziej przebudowana część produktu w 2026 roku — osobny, płatny produkt, nie tylko „tryb".</p>
+<figure class="zrzut">
+<img src="assets/ebook-gpt/interfejs/f-gptl2-11.jpg" alt="ChatGPT proponuje przejście na Work" loading="lazy">
+<figcaption>Tak ChatGPT sam proponuje przejście na tryb Work — zwróć uwagę, że to osobny, płatny plan.</figcaption>
+</figure>
+<ul class="zw">
+<li><b>Agent zorientowany na cel</b>, nie na pojedynczy prompt: podajesz pożądany rezultat (raport, arkusz, prezentację, stronę www), a Work planuje kroki, korzysta z podłączonych narzędzi i plików, zatrzymuje się na punktach kontrolnych, oddaje gotowy szkic.</li>
+<li><b>Trwałe połączenia</b> ze Slackiem, Microsoft Teams, Google Drive, SharePoint, pocztą, kalendarzami, CRM-ami.</li>
+<li><b>„Sites"</b> — zamiana planów/danych w interaktywne strony www, trackery lub prototypy do udostępnienia zespołowi.</li>
+<li>Zaplanowane zadania mogą reagować na webhooki z podłączonych aplikacji (nowy e-mail, wiadomość na Slacku, aktywność na GitHub PR).</li>
+</ul>
+<div class="callout tip"><b class="lab">Różnica: Czat vs Work</b>W zwykłym czacie prosisz o odpowiedź. W Work zlecasz rezultat wymagający wielu kroków: researchu, pracy na plikach, tworzenia dokumentu i kontroli jakości. Work ma sens, gdy potrafisz zdefiniować rezultat końcowy — jeśli sam jeszcze nie wiesz, czego chcesz, najpierw doprecyzuj to w zwykłym czacie.</div>
+<div class="promptbox"><div class="promptbox-top"><span>DELEGOWANIE PROJEKTU DO WORK</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>CEL KOŃCOWY: [GOTOWY REZULTAT].
+ŹRÓDŁA: [PLIKI / APLIKACJE / INTERNET].
+KRYTERIA JAKOŚCI: [CO MUSI BYĆ PRAWDĄ, ŻEBY WYNIK BYŁ DOBRY].
+OGRANICZENIA: [BUDŻET / CZAS / ZAKRES / CZEGO NIE ROBIĆ].
+Przed rozpoczęciem: 1. rozbij pracę na etapy, 2. wskaż ryzyka i zależności, 3. zaplanuj punkty kontroli, przy których potrzebujesz mojego zatwierdzenia.
+Jeśli którejś z powyższych informacji brakuje — zapytaj, zanim zaczniesz, zamiast zakładać.</pre></div>
 </article>
 </div>
 </section>
 
-<!-- ROZDZIAŁ 11 -->
 <section class="section alt">
 <div class="wrap">
 <article class="rozdzial" id="r11">
-<h2 class="tytul-rozdzialu"><span class="nr">11</span>Zaplanowane zadania: nie wszystko musi zaczynać się od Ciebie</h2>
-<p class="lead-r">ChatGPT może wykonywać zadania później, cyklicznie albo obserwować warunek — jeśli dana funkcja jest dostępna na Twoim koncie.</p>
-<div class="tabwrap"><table class="ak-tab">
-<tr><th>Typ</th><th>Przykład</th></tr>
-<tr><td>Jednorazowe</td><td>„Przypomnij mi jutro o 9:00, żebym wysłał fakturę."</td></tr>
-<tr><td>Cykliczne</td><td>„Co poniedziałek rano przygotuj podsumowanie rynku."</td></tr>
-<tr><td>Warunkowe</td><td>„Powiadom mnie, gdy pojawi się istotna zmiana w…"</td></tr>
-</table></div>
-<p>Aktualne limity liczby aktywnych zadań zależą od planu i mogą się zmieniać. Sprawdzaj je w sekcji Zaplanowane albo w bieżącej dokumentacji.</p>
-<div class="promptbox"><div class="promptbox-top"><span>COTYGODNIOWY RAPORT</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>W każdy poniedziałek rano przygotuj krótki raport z najważniejszych zmian w [BRANŻA / TEMAT] z poprzednich 7 dni.
-Uwzględnij tylko informacje, które mogą wpłynąć na [MÓJ CEL].
-Dla każdej informacji podaj źródło i datę.
-Na końcu dodaj sekcję: „Co warto zrobić w tym tygodniu".</pre></div>
-</article>
-</div>
-</section>
-
-<!-- ROZDZIAŁ 12 -->
-<section class="section">
-<div class="wrap">
-<article class="rozdzial" id="r12">
-<h2 class="tytul-rozdzialu"><span class="nr">12</span>Study Mode: niech GPT uczy, a nie tylko podaje odpowiedź</h2>
-<p class="lead-r">Tryb nauki prowadzi pytaniami, wyjaśnia krok po kroku i sprawdza zrozumienie. To zupełnie inny sposób korzystania z AI niż „daj mi odpowiedź".</p>
-<p>W aktualnym interfejsie web możesz wpisać <b>@study</b> albo otworzyć menu „+" i wyszukać tryb Nauka. Na telefonie znajdziesz go w narzędziach. Funkcja jest dostępna globalnie na wszystkich planach, ale nie działa w czatach tymczasowych, GPT-ach ani Projektach.</p>
-<p>Gdy prosisz o gotową odpowiedź, możesz ją przeczytać i… niczego nie zapamiętać. W trybie nauki model może wymusić aktywne przypominanie, zadawać pytania po jednym i wracać do tego, czego nie rozumiesz.</p>
+<span class="dzial-tag">Dział 2 · Plany, modele, tryby</span>
+<h2 class="tytul-rozdzialu"><span class="nr">11</span>Study Mode: niech GPT uczy, a nie tylko podaje odpowiedź</h2>
+<p class="lead-r">Prawdziwa, oficjalna funkcja (uruchomiona 29.07.2025, rozwijana dalej w 2026) — tryb sokratejski.</p>
+<p>ChatGPT zadaje pytania naprowadzające zamiast dawać gotową odpowiedź, sprawdza zrozumienie i odwołuje się do materiałów ucznia. Dostępny na web/iOS/Android, na planach Free/Plus/Pro/Business — aktywacja przez „Study and learn" w narzędziach albo wpisanie <b>@study</b>.</p>
+<div class="callout uwaga"><b class="lab">Uwaga</b>Nie działa w czatach tymczasowych, GPT-ach ani Projektach.</div>
 <div class="promptbox"><div class="promptbox-top"><span>NAUKA OD ZERA</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Chcę nauczyć się [TEMAT] od zera.
-Najpierw oceń mój poziom w 5 krótkich pytaniach.
+Najpierw oceń mój poziom w 5 krótkich pytaniach — nie zakładaj go z góry.
 Potem ułóż ścieżkę nauki na 7 etapów.
 Ucz mnie etapami: krótkie wyjaśnienie → przykład → moje zadanie → informacja zwrotna.
 Nie przechodź dalej, dopóki nie pokażę, że rozumiem poprzedni etap.</pre></div>
@@ -558,76 +636,260 @@ Nie przechodź dalej, dopóki nie pokażę, że rozumiem poprzedni etap.</pre></
 </div>
 </section>
 
-<!-- ROZDZIAŁ 13 -->
+<!-- DZIAŁ 3 -->
+<section class="section">
+<div class="wrap">
+<article class="rozdzial" id="r12">
+<span class="dzial-tag">Dział 3 · Codzienna praca</span>
+<h2 class="tytul-rozdzialu"><span class="nr">12</span>Custom GPT: co dziś jest możliwe</h2>
+<p class="lead-r">GPT to skonfigurowana wersja ChatGPT do konkretnego celu. W 2026 zmieniły się zasady tworzenia nowych GPT na kontach osobistych.</p>
+<div class="callout uwaga"><b class="lab">Ważna zmiana</b>Tworzenie nowych GPT-ów jest dziś zarezerwowane dla kont w workspace'ach Business, Enterprise i Edu. Konta osobiste (Free, Go, Plus, Pro) mogą EDYTOWAĆ istniejące GPT-y, ale nie tworzyć nowych od zera — to zmiana względem starszych poradników, gdzie każdy Plus mógł tworzyć GPT-y.</div>
+<h3>Jak wygląda tworzenie (tam, gdzie jest dostępne)</h3>
+<ol class="zw">
+<li>Otwórz Explore GPTs w sidebarze albo chatgpt.com/gpts, kliknij Create.</li>
+<li>Wybierz sposób budowania: builder konwersacyjny (opisujesz słowami) albo widok konfiguracji (ręcznie edytujesz pola).</li>
+<li>Wypełnij: Name, Description, Instructions (konkretne przykłady, jasna struktura, dyrektywy pozytywne zamiast zakazów), Conversation starters.</li>
+<li>Dodaj Knowledge — pliki referencyjne (maks. 20 plików, 512 MB/plik). Reguły zachowania trzymaj w Instructions, nie w plikach.</li>
+<li>Zaznacz Capabilities: Web search, Image generation, Canvas, Code Interpreter, Apps.</li>
+<li>Przetestuj w Preview, potem Create lub Update.</li>
+</ol>
+<div class="promptbox"><div class="promptbox-top"><span>ZASTĘPNIK WŁASNEGO GPT — INSTRUKCJA PROJEKTU</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>W tym projekcie pełnisz rolę: [ROLA].
+Stały cel: [CEL].
+Korzystaj z plików projektu jako pierwszego źródła prawdy.
+Styl odpowiedzi: [STYL].
+Zasady: [ZASADA 1], [ZASADA 2], [ZASADA 3].
+Gdy dostajesz nowe zadanie, najpierw dopasuj je do tych zasad, a potem wykonaj. Nie pytaj ponownie o informacje, które już znajdują się w projekcie.</pre></div>
+</article>
+</div>
+</section>
+
 <section class="section alt">
 <div class="wrap">
 <article class="rozdzial" id="r13">
-<h2 class="tytul-rozdzialu"><span class="nr">13</span>Writing blocks: pracuj na tekście jak na dokumencie</h2>
-<p class="lead-r">Gdy tworzysz mail, opis, post lub dłuższy tekst, blok pisania pozwala łatwiej go poprawiać i kopiować bez mieszania go z komentarzem modelu.</p>
-<p>ChatGPT może umieszczać drafty w edytowalnych blokach pisania. To wygodne, gdy chcesz wielokrotnie poprawiać ten sam tekst. Zamiast prosić za każdym razem „napisz od nowa", możesz pracować na jednej wersji.</p>
-<div class="promptbox"><div class="promptbox-top"><span>TEKST W BLOKU PISANIA</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Przygotuj ten materiał jako edytowalny blok pisania.
-Rodzaj: [MAIL / POST / OFERTA / NOTATKA].
-Cel: [CEL].
-Odbiorca: [ODBIORCA].
-Ton: [TON].
-Długość: [DŁUGOŚĆ].
-Poza blokiem dodaj tylko krótką listę 3 decyzji redakcyjnych, które podjąłeś.</pre></div>
+<span class="dzial-tag">Dział 3 · Codzienna praca</span>
+<h2 class="tytul-rozdzialu"><span class="nr">13</span>Projekty: jeden temat, jedno miejsce</h2>
+<p class="lead-r">Projekt zbiera rozmowy, pliki i instrukcje wokół jednego celu — najlepsza opcja, gdy temat wraca przez tygodnie.</p>
+<div class="kroki">
+<div><span class="krok-n">Krok 1</span><figure class="zrzut"><img src="assets/ebook-gpt/interfejs/f-gptl5-19.jpg" alt="Zakładka Projekty" loading="lazy"><figcaption>Zakładka Projekty i przycisk „Nowy projekt".</figcaption></figure></div>
+<div><span class="krok-n">Krok 2</span><figure class="zrzut"><img src="assets/ebook-gpt/interfejs/f-gptl16-11.jpg" alt="Puste ustawienia projektu" loading="lazy"><figcaption>Puste ustawienia projektu — nazwa, instrukcje, pamięć, dostęp do plików.</figcaption></figure></div>
+<div><span class="krok-n">Krok 3</span><figure class="zrzut"><img src="assets/ebook-gpt/interfejs/f-gptl16-12.jpg" alt="Instrukcje wypełnione" loading="lazy"><figcaption>Instrukcje wypełnione. To one odróżniają projekt od zwykłego czatu — ChatGPT dostaje je przy każdej nowej rozmowie.</figcaption></figure></div>
+<div><span class="krok-n">Krok 4</span><figure class="zrzut"><img src="assets/ebook-gpt/interfejs/f-gptl16-14.jpg" alt="Projekt prosi o źródła" loading="lazy"><figcaption>Projekt prosi o źródła. Pliki i dyski wgrane tutaj są widoczne we wszystkich rozmowach w tym projekcie.</figcaption></figure></div>
+</div>
+<h3>Jak zbudować dobry projekt</h3>
+<ol class="zw">
+<li>Kliknij „New project" i nadaj mu nazwę — konkretną, nie „Różne" (np. „Klient ABC — oferta 2026", nie „Klient").</li>
+<li>Dodaj pliki (PDF, arkusze, dokumenty, obrazy) albo wklej tekst bezpośrednio.</li>
+<li>Dodaj instrukcje projektu — np. „Bądź moim mentorem marketingowym. Pisz zwięźle, dopytuj, jeśli coś niejasne." Instrukcje projektu nadpisują globalne Custom Instructions.</li>
+<li>Przenieś istniejące czaty do projektu (czatów z Custom GPT nie da się przenieść).</li>
+</ol>
+<div class="tabwrap"><table class="ak-tab">
+<tr><th>Plan</th><th>Limit plików/projekt</th></tr>
+<tr><td>Free</td><td>5</td></tr>
+<tr><td>Go, Plus</td><td>25</td></tr>
+<tr><td>Pro, Business, Edu, Enterprise</td><td>40</td></tr>
+</table></div>
+<div class="callout tip"><b class="lab">Pro tip</b>Projekt to nie archiwum wszystkiego. Usuwaj stare lub sprzeczne materiały — więcej plików nie zawsze oznacza lepszy kontekst.</div>
+<div class="promptbox"><div class="promptbox-top"><span>INSTRUKCJA STARTOWA DO PROJEKTU</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Ten projekt dotyczy: [TEMAT]. Cel końcowy: [EFEKT].
+Najważniejsze źródła prawdy: [PLIKI / DOKUMENTY].
+Zasady pracy:
+1. Nie wymyślaj brakujących danych — zapytaj.
+2. Jeżeli nowszy dokument przeczy starszemu — pokaż konflikt, nie wybieraj sam.
+3. Zanim poprosisz mnie o informację, sprawdź materiały w projekcie.
+4. Wynik ma być praktyczny i gotowy do użycia.</pre></div>
 </article>
 </div>
 </section>
 
-<!-- ROZDZIAŁ 14 -->
 <section class="section">
 <div class="wrap">
 <article class="rozdzial" id="r14">
-<h2 class="tytul-rozdzialu"><span class="nr">14</span>ChatGPT Work: kiedy chcesz oddać całe zadanie</h2>
-<p class="lead-r">Work służy do dłuższych, złożonych zadań. Może zbierać kontekst, pracować na plikach i aplikacjach oraz tworzyć gotowe rezultaty.</p>
-<div class="tabwrap"><table class="ak-tab">
-<tr><th>Czat</th><th>Work</th></tr>
-<tr><td>„Jak zrobić analizę konkurencji?"</td><td>„Zrób analizę 8 konkurentów, zbierz ceny, pozycjonowanie i kanały sprzedaży, a na końcu przygotuj raport i prezentację."</td></tr>
-</table></div>
-<div class="callout tip"><b class="lab">Pro tip</b>Work ma sens wtedy, gdy można zdefiniować rezultat końcowy. Jeśli sam jeszcze nie wiesz, czego chcesz, najpierw użyj zwykłego czatu do doprecyzowania problemu.</div>
-<div class="promptbox"><div class="promptbox-top"><span>DELEGOWANIE PROJEKTU DO WORK</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>CEL KOŃCOWY: [GOTOWY REZULTAT].
-ŹRÓDŁA: [PLIKI / APLIKACJE / INTERNET].
-KRYTERIA JAKOŚCI: [CO MUSI BYĆ PRAWDĄ, ŻEBY WYNIK BYŁ DOBRY].
-OGRANICZENIA: [BUDŻET / CZAS / ZAKRES / CZEGO NIE ROBIĆ].
-Przed rozpoczęciem: 1. rozbij pracę na etapy, 2. wskaż ryzyka i zależności, 3. zaplanuj punkty kontroli, przy których potrzebujesz mojego zatwierdzenia.
-Następnie wykonuj pracę do skutku.</pre></div>
+<span class="dzial-tag">Dział 3 · Codzienna praca</span>
+<h2 class="tytul-rozdzialu"><span class="nr">14</span>Search czy Deep Research?</h2>
+<p class="lead-r">Search sprawdza bieżące informacje szybko. Deep Research jest lepsze, gdy pytanie ma wiele części, a źródła mogą sobie przeczyć.</p>
+<h3>Trzy sposoby rozpoczęcia Deep Research</h3>
+<p>Wpisz <b>/Deepresearch</b> w polu promptu, wybierz „Deep research" z menu narzędzi (ikona „+"), albo z menu bocznego.</p>
+<figure class="zrzut">
+<img src="assets/ebook-gpt/interfejs/f-gptl13-07.jpg" alt="Głębokie badanie włączone" loading="lazy">
+<figcaption>Włączone „Głębokie badanie" widać jako etykietę w polu do pisania — to inny tryb niż zwykłe wyszukiwanie.</figcaption>
+</figure>
+<ol class="zw">
+<li>Wpisz temat/pytanie badawcze — ChatGPT może dopytać, żeby potwierdzić Twoje cele.</li>
+<li>System generuje plan badawczy, który możesz przejrzeć i edytować przed rozpoczęciem.</li>
+<li>Autonomiczne przeglądanie sieci: dziesiątki-setki źródeł, odczyt PDF-ów, tabel, obrazów.</li>
+<li>Krytyczna synteza: filtrowanie niepewnych stron, agregacja faktów, porównanie dowodów.</li>
+<li>Czekasz 5-30 minut (możesz wyjść z aplikacji — dostaniesz powiadomienie).</li>
+</ol>
+<figure class="zrzut">
+<img src="assets/ebook-gpt/interfejs/f-gptl12-02.jpg" alt="Wynik głębokiego badania" loading="lazy">
+<figcaption>Wynik głębokiego badania: raport z datą sprawdzenia źródeł i podziałem na fakty, wnioski i rekomendacje.</figcaption>
+</figure>
+<p>Finalny raport: spis treści, sekcja źródeł do weryfikacji, historia przebiegu badania, eksport do Markdown/Word/PDF.</p>
+<div class="callout tip"><b class="lab">Pro tip</b>Najwięcej jakości zyskujesz przed startem badania: popraw plan, usuń nieistotne kryteria i dodaj źródła, którym ufasz.</div>
+<div class="promptbox"><div class="promptbox-top"><span>PROMPT DO DEEP RESEARCH</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Przeprowadź głębokie badanie tematu: [TEMAT].
+DECYZJA, KTÓRĄ CHCĘ PODJĄĆ: [DECYZJA]. KRYTERIA: [KRYTERIA]. ZAKRES CZASOWY / RYNEK: [ZAKRES].
+ŹRÓDŁA: preferuj źródła pierwotne i oficjalne; opinie społeczności traktuj jako uzupełnienie, nie fakt.
+Najpierw pokaż plan badania. Po akceptacji przygotuj raport z: faktami, rozbieżnościami między źródłami, i jasną rekomendacją zależną od nazwanych założeń.</pre></div>
 </article>
 </div>
 </section>
 
-<!-- ROZDZIAŁ 15 -->
 <section class="section alt">
 <div class="wrap">
 <article class="rozdzial" id="r15">
-<h2 class="tytul-rozdzialu"><span class="nr">15</span>Codex: GPT do pracy z kodem i projektami technicznymi</h2>
-<p class="lead-r">Codex potrafi pracować na repozytorium, modyfikować wiele plików, testować zmiany i realizować zadania programistyczne.</p>
-<p>Mały fragment kodu, wyjaśnienie błędu, pojedyncza funkcja, nauka składni — tu wystarczy zwykły czat. Gdy projekt ma wiele plików, zależności, testy i repozytorium — Codex daje znacznie lepszy przepływ pracy.</p>
-<div class="callout blad"><b class="lab">Błąd</b>„Napraw aplikację" to zbyt szerokie. Najpierw nazwij objaw, oczekiwane zachowanie i granice zmiany.</div>
-<div class="promptbox"><div class="promptbox-top"><span>ZADANIE DO CODEX</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Pracujesz w istniejącym repozytorium.
-CEL: [CO MA DZIAŁAĆ].
-OBJAW / PROBLEM: [CO DZIEJE SIĘ TERAZ].
-OGRANICZENIA: [CZEGO NIE ZMIENIAĆ, KOMPATYBILNOŚĆ, TECHNOLOGIE].
-KRYTERIUM GOTOWE:
-- zmiana działa,
-- istniejące testy przechodzą,
-- dodane są testy dla nowej funkcji / poprawki,
-- nie ma niepotrzebnego refaktoru,
-- na końcu podaj listę zmienionych plików.</pre></div>
+<span class="dzial-tag">Dział 3 · Codzienna praca</span>
+<h2 class="tytul-rozdzialu"><span class="nr">15</span>Zaplanowane zadania</h2>
+<p class="lead-r">ChatGPT może wykonywać zadania później, cyklicznie albo obserwować warunek.</p>
+<ol class="zw">
+<li>Przejdź do sekcji Scheduled w menu bocznym (web lub mobile).</li>
+<li>Poproś o czynność zawierającą czas lub powtarzalność, np. „Codziennie w dni robocze o 8:00 podsumuj najważniejsze wiadomości AI z ostatnich 24h."</li>
+<li>ChatGPT pokaże kartę potwierdzenia harmonogramu — potwierdzasz.</li>
+</ol>
+<div class="tabwrap"><table class="ak-tab">
+<tr><th>Plan</th><th>Aktywne zadania</th><th>Częstotliwość</th></tr>
+<tr><td>Free / Go</td><td>3</td><td>maks. raz dziennie</td></tr>
+<tr><td>Plus</td><td>5</td><td>do raz na godzinę</td></tr>
+<tr><td>Business / Edu</td><td>10</td><td>do raz na godzinę</td></tr>
+<tr><td>Pro / Enterprise</td><td>15</td><td>do raz na godzinę</td></tr>
+</table></div>
+<p>Zarządzanie: sekcja Scheduled, Settings → Notifications → „Manage tasks", albo bezpośrednio chatgpt.com/schedules.</p>
+<div class="promptbox"><div class="promptbox-top"><span>COTYGODNIOWY RAPORT</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>W każdy poniedziałek rano przygotuj krótki raport z najważniejszych zmian w [BRANŻA / TEMAT] z poprzednich 7 dni.
+Uwzględnij tylko informacje, które mogą wpłynąć na [MÓJ CEL]. Dla każdej informacji podaj źródło i datę.
+Na końcu dodaj sekcję: „Co warto zrobić w tym tygodniu".</pre></div>
 </article>
 </div>
 </section>
 
-<!-- ROZDZIAŁ 16 -->
 <section class="section">
 <div class="wrap">
 <article class="rozdzial" id="r16">
-<h2 class="tytul-rozdzialu"><span class="nr">16</span>Weryfikacja: GPT może brzmieć pewnie i nadal się mylić</h2>
-<p class="lead-r">Ważne liczby, prawo, finanse, zdrowie, ceny, funkcje produktów i decyzje biznesowe wymagają sprawdzenia. Pewny ton nie jest dowodem.</p>
-<p><b>Oddziel fakt od wniosku.</b> Fakt można sprawdzić w źródle. Wniosek powstaje na podstawie faktów. Hipoteza wymaga dalszego potwierdzenia. Rekomendacja zależy od celu i założeń.</p>
+<span class="dzial-tag">Dział 3 · Codzienna praca</span>
+<h2 class="tytul-rozdzialu"><span class="nr">16</span>Canvas: pracuj na tekście i kodzie jak na dokumencie</h2>
+<p class="lead-r">Otwiera się jako osobny panel obok czatu — świetne, gdy chcesz wielokrotnie poprawiać ten sam tekst albo kod.</p>
+<p>Otwieranie: wpisz <b>/canvas</b> w czacie albo kliknij „+" i wybierz Canvas. ChatGPT często sam otwiera Canvas przy prośbie o długą treść lub kod.</p>
+<ul class="zw">
+<li><b>Edycja</b> — edytuj tekst bezpośrednio, zaznacz fragment i poproś o poprawkę inline, albo kliknij „Edit" i opisz zmianę zwykłym językiem.</li>
+<li><b>Skróty pisarskie</b> — sugerowane poprawki, dostosowanie długości i czytelności, „final polish".</li>
+<li><b>Dla kodu</b> — przycisk Execute uruchamia kod Python w przeglądarce; przy błędzie pojawia się „Fix bug".</li>
+</ul>
+<div class="callout uwaga"><b class="lab">Dostępność</b>Free, Plus, Pro — tylko wersja web, brak w aplikacjach mobilnych.</div>
+<div class="promptbox"><div class="promptbox-top"><span>TEKST W CANVAS</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Przygotuj ten materiał w Canvas, jako edytowalny dokument.
+Rodzaj: [MAIL / POST / OFERTA / NOTATKA]. Cel: [CEL]. Odbiorca: [ODBIORCA]. Ton: [TON]. Długość: [DŁUGOŚĆ].
+Poza dokumentem dodaj tylko krótką listę 3 decyzji redakcyjnych, które podjąłeś.</pre></div>
+</article>
+</div>
+</section>
+
+<section class="section alt">
+<div class="wrap">
+<article class="rozdzial" id="r17">
+<span class="dzial-tag">Dział 3 · Codzienna praca</span>
+<h2 class="tytul-rozdzialu"><span class="nr">17</span>Pliki i analiza danych</h2>
+<p class="lead-r">Wgrywanie pliku to dopiero początek. Największa wartość pojawia się, gdy z dokumentu wyciągasz decyzje, błędy i następne kroki.</p>
+<p>Obsługiwane formaty: .xls, .xlsx, .csv, PDF, JSON, XML, YAML, tekst. Dla dobrych wyników: opisowe nagłówki kolumn, jeden rekord na wiersz, brak pustych wierszy i wielu tabel w jednym arkuszu.</p>
+<div class="kroki">
+<div><span class="krok-n">Krok 1</span><figure class="zrzut"><img src="assets/ebook-gpt/interfejs/f-gptl11-04.jpg" alt="Plik CSV dołączony" loading="lazy"><figcaption>Plik CSV dołączony do pola do pisania.</figcaption></figure></div>
+<div><span class="krok-n">Krok 2</span><figure class="zrzut"><img src="assets/ebook-gpt/interfejs/f-gptl11-06.jpg" alt="Analiza z zastrzeżeniem" loading="lazy"><figcaption>ChatGPT liczy sumy w tabeli i wprost pisze, czego z tego pliku potwierdzić się NIE da — o to trzeba prosić w poleceniu.</figcaption></figure></div>
+<div><span class="krok-n">Krok 3</span><figure class="zrzut"><img src="assets/ebook-gpt/interfejs/f-gptl11-08.jpg" alt="Poprawiona analiza" loading="lazy"><figcaption>Poprawiona analiza po jednej uwadze — z wzorami, kosztami i zastrzeżeniem, że wynik po kosztach to nie zysk netto.</figcaption></figure></div>
+</div>
+<div class="callout blad"><b class="lab">Błąd</b>„Przeanalizuj ten plik" jest za szerokie. Model może poświęcić uwagę temu, co akurat wygląda ciekawie, a nie temu, co jest ważne dla Twojej decyzji. Powiedz, czym jest plik i po co go analizujesz, zanim poprosisz o wynik.</div>
+<div class="callout uwaga"><b class="lab">Ważne</b>ChatGPT działa w stanowym środowisku Jupyter — generuje kod Python, warto przejrzeć go przed poleganiem na wynikach. Środowisko NIE ma dostępu do internetu — wszystkie dane trzeba wgrać z góry.</div>
+<div class="promptbox"><div class="promptbox-top"><span>PEŁNA ANALIZA ARKUSZA</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Pracuj na załączonym pliku jak analityk danych.
+ETAP 1 — JAKOŚĆ: sprawdź braki, duplikaty, anomalie, typy danych i jednostki. Powiedz wprost, czego NIE da się z tego pliku potwierdzić.
+ETAP 2 — PYTANIA: zaproponuj 5 pytań biznesowych, na które ten plik może odpowiedzieć.
+ETAP 3 — ANALIZA: policz potrzebne metryki, pokaż metodę obliczenia i wzory.
+ETAP 4 — WYKRES: tylko dla wniosku, który realnie wpływa na decyzję.
+ETAP 5 — DECYZJA: podsumuj, co z tego wynika. Nie nazywaj przychodu zyskiem, jeśli nie odjąłeś kosztów.</pre></div>
+</article>
+</div>
+</section>
+
+<!-- DZIAŁ 4-6 -->
+<section class="section">
+<div class="wrap">
+<article class="rozdzial" id="r18">
+<span class="dzial-tag">Dział 4 · Aplikacje</span>
+<h2 class="tytul-rozdzialu"><span class="nr">18</span>Aplikacje mobilne, desktop i integracje</h2>
+<p class="lead-r">ChatGPT wychodzi dziś daleko poza okno przeglądarki.</p>
+<ul class="zw">
+<li><b>Desktop (Mac/Windows)</b> — błyskawiczne wywołanie skrótem (Alt+Space / Option+Space), obsługa zrzutów ekranu, na macOS integracja z VS Code, Xcode, Terminal, iTerm2 (Plus/Business).</li>
+<li><b>Mobilne (iOS/Android)</b> — pełen zestaw funkcji, w tym Study Mode; Codex ma osobną natywną appkę iOS.</li>
+<li><b>Widżety</b> — na iOS i Android jedno dotknięcie uruchamia nowy czat albo rozmowę głosową bez otwierania aplikacji.</li>
+<li><b>Siri Shortcuts / Google Assistant</b> — „Hey Siri, ask ChatGPT"; na iPhone 16 z Action Button można przypisać przycisk do natychmiastowego uruchomienia.</li>
+<li><b>CarPlay</b> (od 2.04.2026) — bezpieczna asystencja podczas jazdy.</li>
+<li><b>1-800-ChatGPT</b> — można dzwonić/pisać do ChatGPT z dowolnego telefonu, nawet bez aplikacji.</li>
+<li><b>Slack/Teams</b> — panel inline odpowiadający na pytania, streszczanie dyskusji, wyszukiwanie w wiadomościach i plikach.</li>
+</ul>
+<div class="callout uwaga"><b class="lab">Zamknięty produkt</b>ChatGPT Atlas — własna przeglądarka OpenAI (macOS, od 21.10.2025) — została zamknięta 9 sierpnia 2026, niecały rok po starcie. Zakładki i historia przeglądania nie migrowały automatycznie.</div>
+</article>
+</div>
+</section>
+
+<section class="section alt">
+<div class="wrap">
+<article class="rozdzial" id="r19">
+<span class="dzial-tag">Dział 5 · Codex</span>
+<h2 class="tytul-rozdzialu"><span class="nr">19</span>Codex: GPT do pracy z kodem</h2>
+<p class="lead-r">Codex to „agentowy" pomocnik programistyczny — czyta cały projekt kodu, sam edytuje pliki, uruchamia komendy i otwiera gotowe zmiany do przejrzenia (pull request).</p>
+<figure class="zrzut">
+<img src="assets/ebook-gpt/interfejs/f-gptl18-06.jpg" alt="Strona Codex na chatgpt.com" loading="lazy">
+<figcaption>Strona Codex na chatgpt.com.</figcaption>
+</figure>
+<p>Jeśli nie programujesz, prawdopodobnie nie skorzystasz z tego bezpośrednio — ale warto wiedzieć, że istnieje, bo to on stoi za funkcją ChatGPT Work (rozdział 10).</p>
+<h3>Powierzchnie dostępu</h3>
+<ul class="zw">
+<li>CLI w terminalu; rozszerzenie VS Code i JetBrains.</li>
+<li>Web app, aplikacja iOS, aplikacja desktopowa.</li>
+<li>GitHub — zadanie chmurowe uruchamiasz oznaczając @codex w issue/PR.</li>
+</ul>
+<div class="tabwrap"><table class="ak-tab">
+<tr><th>Plan</th><th>Cena</th><th>Uwagi</th></tr>
+<tr><td>Plus</td><td>20 USD/mies.</td><td>Web/CLI/IDE/iOS, integracje chmurowe</td></tr>
+<tr><td>Pro Codex</td><td>100 USD/mies.</td><td>5× większy zapas użycia</td></tr>
+<tr><td>Pro Max</td><td>200 USD/mies.</td><td>Najwyższe limity</td></tr>
+</table></div>
+<div class="callout blad"><b class="lab">Błąd</b>„Napraw aplikację" to zbyt szerokie. Najpierw nazwij objaw, oczekiwane zachowanie i granice zmiany.</div>
+<div class="promptbox"><div class="promptbox-top"><span>ZADANIE DO CODEX</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Pracujesz w istniejącym repozytorium.
+CEL: [CO MA DZIAŁAĆ]. OBJAW / PROBLEM: [CO DZIEJE SIĘ TERAZ]. OGRANICZENIA: [CZEGO NIE ZMIENIAĆ, KOMPATYBILNOŚĆ].
+KRYTERIUM GOTOWE: zmiana działa, istniejące testy przechodzą, dodane są testy dla poprawki, nie ma niepotrzebnego refaktoru.
+Na końcu podaj listę zmienionych plików.</pre></div>
+</article>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+<article class="rozdzial" id="r20">
+<span class="dzial-tag">Dział 6 · Dla firm i deweloperów</span>
+<h2 class="tytul-rozdzialu"><span class="nr">20</span>Dla firm i deweloperów</h2>
+<p class="lead-r">Krótko o tym, co dzieje się poza samym ChatGPT — przydatne, jeśli Twoja firma rozważa wdrożenie na szerszą skalę.</p>
+<h3>Platforma deweloperska / API</h3>
+<div class="callout uwaga"><b class="lab">Twarde odcięcie</b>Assistants API oficjalnie wygaszony 26 sierpnia 2026. Zastępca: Responses API — lepsza wydajność dla przepływów wieloetapowych, obejmuje deep research, MCP, computer use.</div>
+<ul class="zw">
+<li><b>Structured Outputs</b> — gwarantuje zgodność ze schematem, nie tylko poprawny JSON.</li>
+<li><b>Realtime API</b> — niskolatencyjna, dwukierunkowa, natywnie speech-to-speech.</li>
+<li><b>Batch API</b> — przetwarzanie asynchroniczne z 50% zniżką.</li>
+</ul>
+<h3>Enterprise i administracja</h3>
+<ul class="zw">
+<li>Global Admin Console — RBAC, weryfikacja domeny, SSO/SAML.</li>
+<li>Zgodność: SOC 2 Type 2, end-to-end encryption, ISO/IEC 27001:2022.</li>
+<li>Rezydencja danych: USA, Europa, Wielka Brytania, Japonia.</li>
+</ul>
+</article>
+</div>
+</section>
+
+<!-- DZIAŁ 7 -->
+<section class="section alt">
+<div class="wrap">
+<article class="rozdzial" id="r21">
+<span class="dzial-tag">Dział 7 · Kontekst szerszy</span>
+<h2 class="tytul-rozdzialu"><span class="nr">21</span>Weryfikacja: GPT może brzmieć pewnie i się mylić</h2>
+<p class="lead-r">Ważne liczby, prawo, finanse, zdrowie i decyzje biznesowe wymagają sprawdzenia. Pewny ton nie jest dowodem.</p>
+<p><b>Oddziel fakt od wniosku.</b> Fakt można sprawdzić w źródle. Wniosek powstaje na podstawie faktów. Hipoteza wymaga dalszego potwierdzenia.</p>
 <h3>Trzy czerwone lampki</h3>
 <ul class="zw"><li>bardzo dokładna liczba bez źródła,</li><li>cytat, którego nie potrafisz znaleźć,</li><li>funkcja programu opisana tak pewnie, jakby na pewno istniała na Twoim koncie.</li></ul>
+<div class="callout uwaga"><b class="lab">Badania</b>Badania Duke University (styczeń 2026) potwierdzają: modele, w tym ChatGPT, nadal produkują wiarygodnie brzmiące, ale błędne informacje — bez wiarygodnego wewnętrznego sygnału ostrzegawczego.</div>
 <div class="callout tip"><b class="lab">Pro tip</b>Do ważnych zadań dopisz: „Jeżeli czegoś nie możesz potwierdzić, napisz NIEPOTWIERDZONE zamiast zgadywać." To proste zdanie mocno zmienia jakość odpowiedzi.</div>
 <div class="promptbox"><div class="promptbox-top"><span>TRYB WERYFIKACJI</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Przeanalizuj odpowiedź w czterech warstwach:
 FAKTY — co można bezpośrednio potwierdzić.
@@ -639,149 +901,125 @@ Dla zmiennych lub ważnych faktów użyj aktualnych źródeł. Jeżeli źródła
 </div>
 </section>
 
-<!-- ROZDZIAŁ 17 -->
-<section class="section alt">
-<div class="wrap">
-<article class="rozdzial" id="r17">
-<h2 class="tytul-rozdzialu"><span class="nr">17</span>Prywatność i bezpieczeństwo: wygoda nie zwalnia z myślenia</h2>
-<p class="lead-r">Połączenia z plikami, pocztą i aplikacjami są bardzo wygodne. Dlatego trzeba pilnować zakresu danych oraz działań wychodzących.</p>
-<p><b>Zasada minimalnego dostępu.</b> Podłączaj tylko te konta i uprawnienia, których potrzebujesz do konkretnej pracy. Jeżeli aplikacja prosi o możliwość działania, nie zakładaj, że każda akcja powinna być wykonywana automatycznie.</p>
-<p>Ustawienia przetwarzania danych zależą od planu i przestrzeni roboczej. Dla kont osobistych sprawdź Data Controls. W środowiskach firmowych obowiązują inne ustawienia domyślne. Nie zakładaj, że jedna zasada dotyczy wszystkich planów.</p>
-<div class="callout uwaga"><b class="lab">Ważne</b>Nie wklejaj sekretów technicznych, danych logowania ani informacji, których ujawnienie byłoby szkodliwe. „AI jest wygodne" nie jest kontrolą bezpieczeństwa.</div>
-<div class="promptbox"><div class="promptbox-top"><span>INSTRUKCJA BEZPIECZEŃSTWA DO PROJEKTU</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Zasady bezpieczeństwa dla tego projektu:
-1. Odczyt i analiza — możesz wykonywać samodzielnie.
-2. Każda akcja wychodząca (mail, publikacja, zmiana danych) — dopiero po moim wyraźnym potwierdzeniu.
-3. Nie zapisuj w pamięci danych poufnych: haseł, numerów kont, danych klientów.
-4. Jeśli nie jesteś pewien, czy coś jest bezpieczne do wykonania — zapytaj, zanim zrobisz.</pre></div>
-</article>
-</div>
-</section>
-
-<!-- ROZDZIAŁ 18 -->
-<section class="section">
-<div class="wrap">
-<article class="rozdzial" id="r18">
-<h2 class="tytul-rozdzialu"><span class="nr">18</span>Rozmowy bez bałaganu: nowy czat, rozgałęzienie, czat tymczasowy</h2>
-<p class="lead-r">Dobra organizacja rozmów jest równie ważna jak dobry prompt. Nie ciągnij jednego czatu przez wszystko, ale też nie zaczynaj od zera bez potrzeby.</p>
-<p><b>Kiedy zacząć nowy czat.</b> Ma sens, gdy zmieniasz temat, cel albo odbiorcę. Jeżeli w jednej rozmowie najpierw planujesz stronę, potem analizujesz umowę, a na końcu pytasz o trening, model dostaje coraz więcej niepotrzebnego kontekstu i rośnie ryzyko, że zacznie mieszać założenia.</p>
-<p><b>Kiedy zostać w tym samym czacie.</b> Jeśli nadal pracujesz nad tym samym rezultatem — nawet gdy zmieniasz format, poprawiasz wersję albo dodajesz dane — zostań. Model widzi wcześniejsze decyzje i nie zaczyna od zera.</p>
-<p><b>Rozgałęzienie rozmowy</b> pozwala sprawdzić alternatywny kierunek bez niszczenia głównego wątku, jeśli opcja jest dostępna. Świetne przy ofertach i strategiach: jedna wersja zostaje bazowa, druga może być eksperymentalna.</p>
-<p><b>Czat tymczasowy</b> przyda się, gdy temat jest jednorazowy. To nie znaczy, że „nic nigdzie nie istnieje" — nadal obowiązują zasady retencji i bezpieczeństwa usługi.</p>
-<div class="callout tip"><b class="lab">Pro tip</b>Jeśli temat ma żyć dłużej niż kilka rozmów, przenieś go do Projektu. Jeśli jest jednorazowy — zwykły lub tymczasowy czat wystarczy.</div>
-</article>
-</div>
-</section>
-
-<!-- ROZDZIAŁ 19 -->
-<section class="section alt">
-<div class="wrap">
-<article class="rozdzial" id="r19">
-<h2 class="tytul-rozdzialu"><span class="nr">19</span>Kontrola danych: co wyłączyć, co zostawić i gdzie to znaleźć</h2>
-<p class="lead-r">To miejsce, w którym decydujesz m.in. czy Twoje rozmowy mogą pomagać w ulepszaniu modeli oraz zarządzasz eksportem i udostępnieniami.</p>
-<p>W Ustawieniach → Kontrola danych znajdziesz opcję „Ulepszaj model dla wszystkich". Po jej wyłączeniu rozmowy nadal mogą pozostać w historii, ale nie są używane do trenowania ChatGPT. To osobna decyzja od pamięci: możesz mieć historię i jednocześnie wyłączyć wykorzystanie do ulepszania modeli.</p>
-<p>Jeżeli udostępniałeś rozmowy linkiem, okresowo przejrzyj listę udostępnień. Usunięcie linku blokuje dalszy dostęp przez ten link, ale nie cofa kopii, które ktoś wcześniej zapisał.</p>
-<div class="callout uwaga"><b class="lab">Ważne</b>Ustawienia kont osobistych i przestrzeni firmowych różnią się. Nie przenoś automatycznie zasad z jednego planu na drugi.</div>
-<div class="promptbox"><div class="promptbox-top"><span>CHECKLISTA PRYWATNOŚCI DLA FIRMY</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Przygotuj checklistę ustawień ChatGPT dla małej firmy.
-Uwzględnij: pamięć, kontrolę danych, udostępnione linki, aplikacje i ich uprawnienia, zasady dla danych klientów, zasady dla haseł i sekretów oraz bramkę zgody przed działaniami wychodzącymi.
-Podziel wynik na: „ustaw raz", „sprawdzaj co miesiąc", „przypomnij zespołowi".</pre></div>
-</article>
-</div>
-</section>
-
-<!-- ROZDZIAŁ 20 -->
-<section class="section">
-<div class="wrap">
-<article class="rozdzial" id="r20">
-<h2 class="tytul-rozdzialu"><span class="nr">20</span>Plany i limity: patrz na sposób pracy, nie tylko cenę</h2>
-<p class="lead-r">Plan ma znaczenie wtedy, gdy trafiasz na limity, potrzebujesz mocniejszych modeli lub funkcji pracy z plikami, agentami i aplikacjami.</p>
-<p>Najpierw sprawdź przez tydzień, czego naprawdę używasz: rozmów, plików, obrazów, głosu, Deep Research, Codex, Work. Dopiero wtedy ma sens dopłata. Wiele osób płaci za funkcje, których nie używa, albo przeciwnie — oszczędza na abonamencie, a potem traci godziny miesięcznie na obchodzenie limitów.</p>
-<div class="tabwrap"><table class="ak-tab">
-<tr><th>Poziom</th><th>Dla kogo</th><th>Co sprawdzić</th></tr>
-<tr><td>Free / Go</td><td>codzienna pomoc, nauka, proste pliki i obrazy</td><td>limity narzędzi, pamięć, region</td></tr>
-<tr><td>Plus</td><td>regularna praca, badania, pliki, trudniejsze zadania</td><td>limity Deep Research/Work, dostęp do mocniejszych modeli</td></tr>
-<tr><td>Pro</td><td>praca zawodowa na dużą skalę, agenci, kod</td><td>cennik i dostępność wariantów bywają zmienne — sprawdź na bieżąco</td></tr>
-</table></div>
-<div class="callout uwaga"><b class="lab">Stan na 21.09.2026</b>Cenniki i warianty Pro są dynamiczne; we wrześniu 2026 OpenAI czasowo wstrzymało nowe zapisy do części wariantów Pro. Sprawdzaj aktualny ekran rozliczeń.</div>
-<div class="promptbox"><div class="promptbox-top"><span>CZY WYŻSZY PLAN SIĘ OPŁACA?</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Pomóż mi ocenić, czy wyższy plan ChatGPT ma dla mnie sens.
-Obecny plan: [PLAN].
-Miesięcznie używam ChatGPT około: [GODZINY].
-Najczęstsze zadania: [LISTA].
-Najbardziej przeszkadza mi: [LIMITY / BRAK FUNKCJI / SZYBKOŚĆ].
-Wartość mojej godziny pracy: [KWOTA].
-Porównaj koszt abonamentu z realną oszczędnością czasu. Nie uznawaj „więcej funkcji" za wartość samą w sobie.</pre></div>
-</article>
-</div>
-</section>
-
-<!-- ROZDZIAŁ 21 -->
-<section class="section alt">
-<div class="wrap">
-<article class="rozdzial" id="r21">
-<h2 class="tytul-rozdzialu"><span class="nr">21</span>GPT-y własne i gotowe: co dziś jest możliwe</h2>
-<p class="lead-r">GPT to skonfigurowana wersja ChatGPT do konkretnego celu. W 2026 zmieniły się zasady tworzenia nowych GPT na kontach osobistych.</p>
-<p>Na osobistych kontach Free, Go, Plus i Pro nie można obecnie tworzyć ani publikować nowych GPT. Nadal można korzystać z GPT, do których masz dostęp, a w określonych przypadkach edytować wcześniej utworzone. Tworzenie nowych GPT pozostało w zarządzanych przestrzeniach Business, Enterprise i Edu — zależnie od uprawnień.</p>
-<div class="callout uwaga"><b class="lab">Uwaga</b>Jeżeli oglądasz kurs nagrany wcześniej, sprawdź datę. Sekcje o tworzeniu Custom GPT na Plus/Pro mogą prowadzić do funkcji, której dziś nie ma.</div>
-<div class="promptbox"><div class="promptbox-top"><span>ZASTĘPNIK WŁASNEGO GPT — INSTRUKCJA PROJEKTU</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>W tym projekcie pełnisz rolę: [ROLA].
-Stały cel: [CEL].
-Korzystaj z plików projektu jako pierwszego źródła prawdy.
-Styl odpowiedzi: [STYL].
-Zasady:
-- [ZASADA 1]
-- [ZASADA 2]
-- [ZASADA 3]
-Gdy dostajesz nowe zadanie, najpierw dopasuj je do tych zasad, a potem wykonaj. Nie pytaj ponownie o informacje, które już znajdują się w projekcie.</pre></div>
-</article>
-</div>
-</section>
-
-<!-- ROZDZIAŁ 22 -->
 <section class="section">
 <div class="wrap">
 <article class="rozdzial" id="r22">
-<h2 class="tytul-rozdzialu"><span class="nr">22</span>Analiza danych: od pliku do decyzji, nie do „ładnego wykresu"</h2>
-<p class="lead-r">Najlepsza analiza danych kończy się decyzją. Wykres jest narzędziem, a nie celem.</p>
-<p>Model może policzyć średnią z błędnej tabeli równie sprawnie jak z poprawnej. Pierwszym krokiem powinno być sprawdzenie braków, duplikatów, dziwnych wartości i jednostek. Dopiero potem licz metryki.</p>
-<div class="tabwrap"><table class="ak-tab">
-<tr><th>Słabo</th><th>Lepiej</th></tr>
-<tr><td>„Zrób wykres sprzedaży."</td><td>„Pokaż, które trzy kategorie odpowiadają za największy wzrost sprzedaży miesiąc do miesiąca i czy to trend, czy jednorazowy skok."</td></tr>
-</table></div>
-<div class="callout tip"><b class="lab">Pro tip</b>Przy każdej ważnej liczbie poproś o metodę obliczenia. To ułatwia szybkie wychwycenie błędu.</div>
-<div class="promptbox"><div class="promptbox-top"><span>PEŁNA ANALIZA ARKUSZA</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Pracuj na załączonym pliku jak analityk danych.
-ETAP 1 — JAKOŚĆ: sprawdź braki, duplikaty, anomalie, typy danych i jednostki.
-ETAP 2 — PYTANIA: zaproponuj 5 pytań biznesowych, na które ten plik może odpowiedzieć.
-ETAP 3 — ANALIZA: policz potrzebne metryki, pokaż metodę obliczenia.
-ETAP 4 — WYKRES: tylko dla wniosku, który realnie wpływa na decyzję.
-ETAP 5 — DECYZJA: podsumuj, co z tego wynika i co warto zrobić dalej.</pre></div>
+<span class="dzial-tag">Dział 7 · Kontekst szerszy</span>
+<h2 class="tytul-rozdzialu"><span class="nr">22</span>Słowniczek pojęć</h2>
+<p class="lead-r">Te terminy pojawiają się wielokrotnie w tym podręczniku i we wszystkich materiałach o AI — tu wyjaśnione bez żargonu, jak dla osoby, która widzi je pierwszy raz.</p>
+
+<div class="pojecie"><h4>Model AI</h4><p>To „silnik", który faktycznie generuje odpowiedzi. ChatGPT to nazwa aplikacji/interfejsu, a „model" (np. GPT-6 Astra, GPT-5.6 Luna) to konkretny „mózg" wybrany do rozmowy — jak nazwa samochodu (ChatGPT) vs silnik pod maską (model).</p></div>
+
+<div class="pojecie"><h4>Token</h4><p>Najmniejszy kawałek tekstu, jaki model „widzi" naraz — mniej więcej ¾ słowa w angielskim. Model nie czyta zdań jak człowiek — dzieli tekst na tokeny i przewiduje kolejny token krok po kroku. Limity (długość pliku, długość odpowiedzi) liczone są w tokenach, nie w znakach czy stronach.</p></div>
+
+<div class="pojecie"><h4>Context window (okno kontekstu)</h4><p>To „ile model pamięta naraz" w trakcie jednej rozmowy, mierzone w tokenach. Porównanie: biurko — im większe okno, tym więcej dokumentów model może mieć „rozłożonych" jednocześnie. Gdy rozmowa przekroczy okno kontekstu, najstarsze fragmenty „spadają z biurka".</p></div>
+
+<div class="pojecie"><h4>Prompt i system prompt</h4><p><b>Prompt</b> to po prostu Twoje polecenie wpisane do modelu. „Dobry prompt" jasno mówi, czego chcesz, w jakim kontekście i w jakiej formie ma odpowiedzieć. <b>System prompt</b> to ukryta instrukcja ustawiana z góry (przez OpenAI, twórcę Custom GPT, albo Ciebie w Custom Instructions), obowiązująca przed Twoją wiadomością przez całą rozmowę.</p></div>
+
+<div class="pojecie"><h4>Halucynacja</h4><p>Sytuacja, w której model podaje informację brzmiącą pewnie i wiarygodnie, która jest fałszywa lub zmyślona. Dzieje się tak, bo model nie „sprawdza faktów" w bazie danych — przewiduje najbardziej prawdopodobny kolejny fragment tekstu. Dlatego zawsze warto sprawdzać ważne fakty.</p></div>
+
+<div class="pojecie"><h4>Reasoning effort („myślenie")</h4><p>Ile czasu i wewnętrznych kroków rozumowania model poświęca, zanim odpowie. Niski poziom = szybka odpowiedź „z marszu"; wysoki = model dłużej „myśli" wewnętrznie, kosztem czasu, ale zyskiem dokładności przy trudnych zadaniach.</p></div>
+
+<div class="pojecie"><h4>Agent (czym różni się od zwykłego czatu)</h4><p>W zwykłym czacie model tylko rozmawia z Tobą tekstem. „Agent" to model, który dostaje wirtualną przeglądarkę i „ręce" — robi zrzuty ekranu strony, klika przyciski, wypełnia formularze, może dokonać zakupu czy zaplanować powtarzalne zadanie. Działa za Ciebie, a nie tylko doradza.</p></div>
+
+<div class="pojecie"><h4>MCP / connector</h4><p>MCP (Model Context Protocol) to rodzaj „uniwersalnego gniazdka" (jak USB-C dla danych), które pozwala modelowi bezpiecznie łączyć się z zewnętrznymi programami i danymi bez budowania osobnego połączenia dla każdej aplikacji. „Connector" (albo „App") to konkretne, gotowe podłączenie zbudowane na tym standardzie.</p></div>
+
+<div class="pojecie"><h4>RAG (Retrieval-Augmented Generation)</h4><p>Po polsku: „generowanie wspomagane wyszukiwaniem". Model, zanim odpowie, najpierw wyszukuje trafne fragmenty z zewnętrznego źródła (Twoich plików w Projekcie, internetu przez Search) i dopiero na tej podstawie buduje odpowiedź. Dzieje się to dokładnie wtedy, gdy wgrywasz plik albo włączasz Search.</p></div>
+
 </article>
 </div>
 </section>
 
-<!-- ROZDZIAŁ 23 -->
+<!-- DZIAŁ 8 -->
 <section class="section alt">
 <div class="wrap">
 <article class="rozdzial" id="r23">
-<h2 class="tytul-rozdzialu"><span class="nr">23</span>Case study: marketing od briefu do gotowej kampanii</h2>
+<span class="dzial-tag">Dział 8 · Prompty i zastosowania</span>
+<h2 class="tytul-rozdzialu"><span class="nr">23</span>Formuła dobrego promptu</h2>
+<p class="lead-r">Nie potrzebujesz magicznych formuł. Potrzebujesz pięciu zasad, które działają zawsze.</p>
+<ol class="zw">
+<li><b>Podaj kontekst</b> — kim jesteś, do czego to potrzebne, dla kogo jest odpowiedź. Model nie wie nic poza tym, co mu napiszesz.</li>
+<li><b>Określ format wyniku</b> — poproś wprost o listę, tabelę, kod, e-mail. Bez tego model sam zgaduje formę.</li>
+<li><b>Podaj ograniczenia</b> — długość, ton, poziom trudności, czego unikać.</li>
+<li><b>Daj przykład (few-shot)</b> — jeśli chcesz konkretnego stylu, pokaż jeden wzorcowy przykład, a model go naśladuje.</li>
+<li><b>Iteruj</b> — pierwsza odpowiedź rzadko jest ostateczna. Traktuj rozmowę jak dialog z redaktorem: „skróć to o połowę", „zmień na bardziej formalny ton".</li>
+</ol>
+<h3>Przykłady „przed / po"</h3>
+<p><b>Pisanie e-maila</b></p>
+<div class="przed-po">
+<div class="slabo"><b class="lab">Słabo</b>napisz mail do klienta o opóźnieniu</div>
+<div class="lepiej"><b class="lab">Lepiej</b>Napisz krótki e-mail (max 100 słów) do klienta B2B informujący o 3-dniowym opóźnieniu dostawy z powodu problemów logistycznych. Ton: przepraszający, ale rzeczowy. Zaproponuj 5% zniżki na następne zamówienie. Zakończ pytaniem, czy nowy termin (piątek) jest akceptowalny.</div>
+</div>
+<p><b>Programowanie / debugowanie</b></p>
+<div class="przed-po">
+<div class="slabo"><b class="lab">Słabo</b>mój kod nie działa</div>
+<div class="lepiej"><b class="lab">Lepiej</b>Ten kod Python ma zwracać sumę liczb parzystych z listy, ale zwraca 0 dla każdej listy. Oto kod: [wklej]. Oto błąd/wynik, jaki dostaję: [wklej]. Wyjaśnij, co jest nie tak, i pokaż poprawioną wersję z komentarzem przy poprawce.</div>
+</div>
+<p><b>Analiza / nauka</b></p>
+<div class="przed-po">
+<div class="slabo"><b class="lab">Słabo</b>wytłumacz inflację</div>
+<div class="lepiej"><b class="lab">Lepiej</b>Wytłumacz, czym jest inflacja, jakbyś tłumaczył 15-latkowi bez wiedzy ekonomicznej. Użyj jednej analogii z życia codziennego. Maksymalnie 150 słów. Na końcu zadaj mi jedno pytanie sprawdzające, czy zrozumiałem.</div>
+</div>
+<h3>Technika „chain of thought"</h3>
+<p>Przy zadaniach wymagających rozumowania (matematyka, logika, planowanie) dopisanie „Rozłóż to na kroki i wyjaśnij swoje rozumowanie, zanim podasz ostateczną odpowiedź" zauważalnie poprawia trafność. W modelach z suwakiem „Think" ten efekt jest częściowo wbudowany, ale jawna prośba nadal pomaga przy nietypowych zadaniach.</p>
+<h3>Czego unikać</h3>
+<ul class="zw">
+<li>Bardzo ogólnych próśb bez kontekstu („napisz coś o marketingu") — dostaniesz ogólnikową odpowiedź.</li>
+<li>Ukrywania prawdziwego celu — jeśli piszesz do inwestora, powiedz to wprost, zamiast liczyć, że model się domyśli.</li>
+<li>Jednego, bardzo długiego promptu zamiast rozmowy — często szybciej wychodzi zadać pytanie, ocenić odpowiedź, doprecyzować.</li>
+</ul>
+</article>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+<article class="rozdzial" id="r24">
+<span class="dzial-tag">Dział 8 · Prompty i zastosowania</span>
+<h2 class="tytul-rozdzialu"><span class="nr">24</span>Zastosowania według profesji</h2>
+<p class="lead-r">Konkretne, praktyczne przykłady użycia — z gotowymi promptami do skopiowania i dostosowania.</p>
+<h3>Uczeń / student</h3>
+<p>Study Mode (rozdział 11) zamiast gotowych odpowiedzi — model prowadzi Cię pytaniami zamiast rozwiązywać zadanie za Ciebie.</p>
+<div class="promptbox"><div class="promptbox-top"><span>PRZYGOTOWANIE DO EGZAMINU</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Jestem na studiach, przygotowuję się do egzaminu z [PRZEDMIOT].
+Przepytaj mnie z [TEMAT] — zadawaj pytania jedno po drugim, czekaj na moją odpowiedź, oceniaj ją i wyjaśniaj, jeśli się mylę.
+Nie przechodź do kolejnego pytania, dopóki nie zrozumiem poprzedniego.</pre></div>
+<div class="callout uwaga"><b class="lab">Uwaga etyczna</b>Sprawdź zasady swojej uczelni dot. korzystania z AI przy pracach zaliczeniowych — traktuj ChatGPT jako korepetytora do nauki, nie jako narzędzie do oddawania cudzej (wygenerowanej) pracy jako własnej.</div>
+<h3>Marketing i social media</h3>
+<div class="promptbox"><div class="promptbox-top"><span>KALENDARZ TREŚCI</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Zaplanuj kalendarz treści na Instagram na 2 tygodnie dla [TYP FIRMY].
+Dla każdego dnia: temat posta, sugerowany format (zdjęcie/rolka/karuzela), przykładowy podpis (max 3 zdania) i 5 hashtagów.
+Nie wymyślaj promocji ani cen, których nie podałem — zapytaj, jeśli chcesz je uwzględnić.</pre></div>
+<h3>Programista / analityk danych</h3>
+<p>Canvas (rozdział 16) do iteracyjnej pracy nad jednym plikiem kodu z podglądem na żywo. Codex (rozdział 19) do poważniejszych, wieloplikowych zadań.</p>
+<h3>Przedsiębiorca / freelancer</h3>
+<div class="promptbox"><div class="promptbox-top"><span>SCHEDULED TASK — PODSUMOWANIE BRANŻY</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Co poniedziałek o 8:00 zbierz i podsumuj najważniejsze wiadomości z mojej branży ([BRANŻA]) z ostatniego tygodnia.
+Podaj źródło i datę przy każdej informacji. Jeśli nie znajdziesz nic istotnego — powiedz to wprost, nie wypełniaj raportu na siłę.</pre></div>
+</article>
+</div>
+</section>
+
+<section class="section alt">
+<div class="wrap">
+<article class="rozdzial" id="r25">
+<span class="dzial-tag">Case study</span>
+<h2 class="tytul-rozdzialu"><span class="nr">25</span>Case study: marketing od briefu do kampanii</h2>
 <p class="lead-r">Zobacz przepływ pracy, w którym ChatGPT nie tylko wymyśla post, ale prowadzi od celu biznesowego do materiałów i pomiaru.</p>
-<p><b>Etap 1 — strategia.</b> Zacznij od produktu, odbiorcy, problemu i celu kampanii. Nie twórz rolek, reklam ani maili, zanim nie wiadomo, co mają sprzedać i komu.</p>
-<p><b>Etap 2 — materiały.</b> Dopiero teraz konkretne teksty i grafiki — na bazie ustalonego pozycjonowania i kątów komunikacji, nie od zera.</p>
-<p><b>Etap 3 — pomiar.</b> Na końcu poproś o tabelę: element kampanii → cel → hipoteza → metryka → kiedy uznać test za nieudany. Dzięki temu AI pomaga w pętli uczenia, a nie tylko produkuje tekst.</p>
+<p><b>Etap 1 — strategia.</b> Zacznij od produktu, odbiorcy, problemu i celu kampanii. Nie twórz reklam ani maili, zanim nie wiadomo, co mają sprzedać i komu.</p>
+<p><b>Etap 2 — materiały.</b> Dopiero teraz konkretne teksty i grafiki — na bazie ustalonego pozycjonowania.</p>
+<p><b>Etap 3 — pomiar.</b> Na końcu poproś o tabelę: element kampanii → cel → hipoteza → metryka → kiedy uznać test za nieudany.</p>
 <div class="callout tip"><b class="lab">Pro tip</b>Nie proś o 30 postów na start. Najpierw przetestuj 2–3 komunikaty. Skaluj dopiero to, co działa.</div>
-<div class="promptbox"><div class="promptbox-top"><span>BRIEF KAMPANII</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Produkt: [PRODUKT]. Cena: [CENA]. Odbiorca: [ODBIORCA].
-Największy problem odbiorcy: [PROBLEM].
-Dowody / przewagi: [DOWODY].
-Cel kampanii: [CEL]. Budżet / kanały: [BUDŻET I KANAŁY].
+<div class="promptbox"><div class="promptbox-top"><span>BRIEF KAMPANII</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Produkt: [PRODUKT]. Cena: [CENA]. Odbiorca: [ODBIORCA]. Największy problem odbiorcy: [PROBLEM].
+Dowody / przewagi: [DOWODY]. Cel kampanii: [CEL]. Budżet / kanały: [BUDŻET I KANAŁY].
 Przygotuj: 1) jedno pozycjonowanie, 2) trzy kąty komunikacji, 3) główne obiekcje, 4) obietnicę, której możemy uczciwie bronić, 5) plan testów A/B. Nie twórz jeszcze finalnych reklam.</pre></div>
 </article>
 </div>
 </section>
 
-<!-- ROZDZIAŁ 24 -->
 <section class="section">
 <div class="wrap">
-<article class="rozdzial" id="r24">
-<h2 class="tytul-rozdzialu"><span class="nr">24</span>Case study: poczta, kalendarz i Drive jako jeden przepływ</h2>
-<p class="lead-r">Największa oszczędność czasu pojawia się wtedy, gdy nie przenosisz ręcznie informacji między narzędziami.</p>
-<p>Masz jutro rozmowę z klientem. Zamiast szukać ręcznie ostatniego maila, prezentacji i terminu, możesz zbudować jedno polecenie obejmujące kilka źródeł — o ile aplikacje są połączone i mają odpowiednie uprawnienia.</p>
+<article class="rozdzial" id="r26">
+<span class="dzial-tag">Case study</span>
+<h2 class="tytul-rozdzialu"><span class="nr">26</span>Case study: poczta, kalendarz i Drive jako jeden przepływ</h2>
+<p class="lead-r">Największa oszczędność czasu pojawia się, gdy nie przenosisz ręcznie informacji między narzędziami.</p>
 <div class="callout uwaga"><b class="lab">Uwaga</b>Zawsze odróżniaj odczyt danych od działania wychodzącego. Mail do klienta, zmiana wydarzenia czy udostępnienie pliku powinny mieć bramkę zgody.</div>
 <div class="promptbox"><div class="promptbox-top"><span>BRIEF PRZED SPOTKANIEM</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Przygotuj mnie do najbliższego spotkania z [KLIENT].
 1. Sprawdź w Kalendarzu termin, uczestników i opis spotkania.
@@ -791,17 +1029,16 @@ Przygotuj: 1) jedno pozycjonowanie, 2) trzy kąty komunikacji, 3) główne obiek
 Nie wysyłaj maili i nie zmieniaj wydarzenia bez mojej zgody.</pre></div>
 <div class="promptbox"><div class="promptbox-top"><span>FOLLOW-UP PO SPOTKANIU</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Na podstawie moich notatek ze spotkania przygotuj podsumowanie do wysłania klientowi: [NOTATKI].
 Uwzględnij: co ustaliliśmy, kto co robi, do kiedy.
-Ton: rzeczowy i przyjazny.
 Przygotuj mail jako szkic — nie wysyłaj go, dopóki nie przeczytam i nie zatwierdzę.</pre></div>
 </article>
 </div>
 </section>
 
-<!-- ROZDZIAŁ 25 -->
 <section class="section alt">
 <div class="wrap">
-<article class="rozdzial" id="r25">
-<h2 class="tytul-rozdzialu"><span class="nr">25</span>Gdy GPT daje słaby wynik: 10 rzeczy do sprawdzenia</h2>
+<article class="rozdzial" id="r27">
+<span class="dzial-tag">Diagnostyka</span>
+<h2 class="tytul-rozdzialu"><span class="nr">27</span>Gdy GPT daje słaby wynik: 10 rzeczy do sprawdzenia</h2>
 <p class="lead-r">Słaba odpowiedź często nie oznacza „słabego modelu". Najpierw sprawdź kontekst, materiał, zakres i kryterium gotowe.</p>
 <div class="tabwrap"><table class="ak-tab">
 <tr><th>Objaw</th><th>Przyczyna</th><th>Poprawka</th></tr>
@@ -810,102 +1047,145 @@ Przygotuj mail jako szkic — nie wysyłaj go, dopóki nie przeczytam i nie zatw
 <tr><td>Ignoruje polecenie</td><td>prompt za długi lub sprzeczny</td><td>skróć i ustaw priorytety</td></tr>
 <tr><td>Zły styl</td><td>opis tonu jest ogólny</td><td>pokaż wzorzec</td></tr>
 <tr><td>Myli projekt</td><td>za dużo kontekstu</td><td>nowy czat / osobny Projekt</td></tr>
-<tr><td>Za dużo pytań</td><td>brak zgody na założenia</td><td>powiedz, kiedy może założyć</td></tr>
 <tr><td>Za długi wynik</td><td>brak formatu</td><td>limit + struktura</td></tr>
 <tr><td>Kończy na planie</td><td>nie zleciłeś wykonania</td><td>„nie kończ na planie"</td></tr>
 </table></div>
-<div class="callout tip"><b class="lab">Pro tip</b>Najlepsza poprawka brzmi konkretnie: „skróć wstęp o połowę, zostaw liczby, usuń frazesy, dodaj jeden przykład". „Zrób lepiej" oddaje modelowi zbyt dużo zgadywania.</div>
 <div class="promptbox"><div class="promptbox-top"><span>PROMPT NAPRAWCZY</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Twoja poprzednia odpowiedź nie spełnia celu.
 Nie generuj od razu nowej wersji.
 Najpierw wskaż 3–5 konkretnych powodów, dlaczego wynik był słaby względem mojego celu.
 Następnie zaproponuj poprawki i dopiero potem przygotuj nową wersję.
-Zachowaj elementy, które były dobre. Nie zaczynaj całego zadania od zera bez potrzeby.</pre></div>
+Zachowaj elementy, które były dobre.</pre></div>
 </article>
 </div>
 </section>
 
-<!-- ROZDZIAŁ 26 — BIBLIOTEKA -->
-<section class="section" id="r26">
+<!-- DZIAŁ 9-10 -->
+<section class="section">
 <div class="wrap">
-<div class="section-eyebrow">Rozdział 26</div>
-<h2 class="tytul-rozdzialu"><span class="nr">26</span>Biblioteka gotowych promptów: kopiuj, dopasuj, użyj</h2>
-<p class="lead-r">18 promptów do codziennej pracy i do domu. Każdy ma aktywny przycisk „Kopiuj" — kopiuje się całe polecenie, nie tylko to, co widać. Nie kopiuj promptu bezmyślnie: zmień elementy w nawiasach, usuń zbędne warunki, dopisz jeden konkretny cel.</p>
+<article class="rozdzial" id="r28">
+<span class="dzial-tag">Dział 9 · Subskrypcja</span>
+<h2 class="tytul-rozdzialu"><span class="nr">28</span>Zarządzanie subskrypcją i płatnościami</h2>
+<h3>Zmiana planu</h3>
+<p>Profil → Settings → Account (lub „Upgrade plan" w sidebarze na Free). Podwyżka planu działa natychmiast; obniżka zwykle od następnego okresu rozliczeniowego.</p>
+<h3>Anulowanie</h3>
+<p>Settings → Account → „Manage my subscription" → Cancel plan. Dostęp utrzymuje się zwykle do końca opłaconego okresu.</p>
+<div class="callout uwaga"><b class="lab">Zwroty pieniędzy</b>Ogólna, standardowa praktyka usług subskrypcyjnych: opłacony okres zwykle nie podlega zwrotowi proporcjonalnemu po anulowaniu w jego trakcie — sprawdź dokładne warunki na stronie rozliczeń przed rezygnacją.</div>
+</article>
+</div>
+</section>
+
+<section class="section alt">
+<div class="wrap">
+<article class="rozdzial" id="r29">
+<span class="dzial-tag">Dział 10 · FAQ</span>
+<h2 class="tytul-rozdzialu"><span class="nr">29</span>Najczęstsze pytania</h2>
+
+<div class="pojecie"><h4>Czy moje rozmowy są prywatne?</h4><p>Widzi je OpenAI (do wglądu wewnętrznego/moderacji) i — jeśli nie wyłączysz tego w Data Controls (rozdział 6) — mogą trenować przyszłe modele. Nikt inny nie ma do nich dostępu, chyba że sam udostępnisz link.</p></div>
+
+<div class="pojecie"><h4>Czy mogę komercyjnie wykorzystywać to, co wygeneruje ChatGPT?</h4><p>Tak, OpenAI przyznaje prawa do wygenerowanych treści i pozwala na użycie komercyjne — ale warto samodzielnie zweryfikować oryginalność ważniejszych materiałów.</p></div>
+
+<div class="pojecie"><h4>Dlaczego odpowiedź urwała się w połowie?</h4><p>Najczęściej odpowiedź osiągnęła maksymalną długość, jaką model może wygenerować za jednym razem. Napisz „kontynuuj", a model dokończy od miejsca, w którym przerwał.</p></div>
+
+<div class="pojecie"><h4>ChatGPT podał błędną informację — co teraz?</h4><p>To „halucynacja" (rozdział 21) — zawsze warto zweryfikować ważne fakty w niezależnym źródle. Możesz ocenić odpowiedź kciukiem w dół — to pomaga OpenAI poprawiać model.</p></div>
+
+<div class="pojecie"><h4>Czym różni się ChatGPT od „API OpenAI"?</h4><p>ChatGPT to gotowa aplikacja, w której rozmawiasz bezpośrednio. API to sposób, w jaki programiści łączą modele OpenAI z własnymi aplikacjami. Jeśli nie programujesz, prawdopodobnie nigdy nie będziesz potrzebować API.</p></div>
+
+<div class="pojecie"><h4>Czy mogę bezpiecznie wklejać dane firmowe/poufne?</h4><p>Na planie Free/Plus/Pro — tylko po wyłączeniu „Improve the model for everyone" (rozdział 6), i nawet wtedy zachowaj ostrożność z danymi naprawdę wrażliwymi. Na planach Business/Enterprise dane domyślnie nie trenują modeli.</p></div>
+
+</article>
+</div>
+</section>
+
+<!-- BIBLIOTEKA -->
+<section class="section" id="r30">
+<div class="wrap">
+<div class="section-eyebrow">Rozdział 30 · Biblioteka</div>
+<h2 class="tytul-rozdzialu"><span class="nr">30</span>Biblioteka gotowych promptów: kopiuj, dopasuj, użyj</h2>
+<p class="lead-r">18 promptów do codziennej pracy i do domu, napisanych na tym samym standardzie co gotowce w Akademii: nie zgadują Twoich danych, pytają zanim założą, zatrzymują się gdy czegoś brakuje, i nie kończą rozmowy na samym wyniku. Każdy ma aktywny przycisk „Kopiuj" — kopiuje się całe polecenie.</p>
+
+<div class="promptbox"><div class="promptbox-top"><span>ZASADY, KTÓRE OBOWIĄZUJĄ PRZEZ CAŁĄ ROZMOWĘ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Zanim zaczniesz wykonywać moje polecenia, trzymaj się tych zasad przez całą naszą rozmowę:
+1. Nie wymyślaj moich danych, cen ani faktów. Czegoś brakuje — zapytaj. Ale najpierw sprawdź, co już wiesz z tej rozmowy i z plików, które wgrałem, i o to drugi raz nie pytaj.
+2. Sprawy prawne, podatkowe, umowne i zdrowotne — nie zgaduj, powiedz że to pytanie do specjalisty, i napisz dalej to, co da się napisać bez tej wiedzy.
+3. Jeśli powiem, że czegoś nie mam — zatrzymaj się, zanim ruszysz dalej. Powiedz, co to zmienia, i zaproponuj inną kolejność pracy, zamiast brnąć w pytania.
+4. Nie zostawiaj mnie samego z wynikiem. Powiedz krótko, co dostałem i do czego to służy. Jeśli wynik jest długi albo wieloczęściowy — zapytaj, czy wolę go w tym oknie, czy jako plik.
+5. Nie kończ na samym wyniku. Zapytaj wprost, czy o to chodziło i co zmienić — a jeśli sprawa jest firmowa, dopytaj też, co ma zostać po mojemu (szablon, ton, nazwy). Jeśli sprawa jest prywatna (dom, rodzina, nauka) — o firmę ani logo nie pytaj w ogóle.
+6. Pamiętaj, że to nie jest wersja ostateczna — mogę zmienić zdanie w trakcie, nawet po tym, jak coś już ustaliliśmy.</pre></div>
+<p style="font-size:14px;color:var(--dim);margin-top:-6px;">Wklej ten blok raz, na początku rozmowy — potem używaj dowolnego polecenia z biblioteki poniżej, ile razy chcesz, w tej samej rozmowie.</p>
 
 <div class="lib-grp">Praca</div>
 <div class="lib-grid">
-<div class="lib-card"><h4>1. Mail do klienta</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Napisz krótki mail do [ODBIORCA] w sprawie [TEMAT].
-Cel: [CEL]. Ton: rzeczowy, ludzki, bez korporacyjnych frazesów.
-Maksymalnie 130 słów. Na końcu jedno konkretne pytanie lub CTA.</pre></div></div>
-<div class="lib-card"><h4>2. Spotkanie → plan</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Na podstawie poniższych notatek przygotuj:
-1. decyzje, 2. zadania, 3. właściciela każdego zadania, 4. termin, jeśli występuje, 5. pytania bez odpowiedzi.
-Nie dopowiadaj brakujących osób ani dat.
+<div class="lib-card"><h4>1. Mail do klienta</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Napisz krótki mail do [ODBIORCA] w sprawie [TEMAT]. Cel: [CEL]. Ton: rzeczowy, ludzki, bez korporacyjnych frazesów.
+Jeśli mam już podobny mail z przeszłości albo swój styl pisania — zapytaj, czy mogę go wkleić jako wzór, zanim zaczniesz pisać od zera.
+Maksymalnie 130 słów. Na końcu jedno konkretne pytanie lub CTA, i zapytaj, czy wysyłam to teraz, czy jeszcze coś zmienić.</pre></div></div>
+<div class="lib-card"><h4>2. Spotkanie → plan</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Na podstawie poniższych notatek przygotuj: 1. decyzje, 2. zadania, 3. właściciela każdego zadania, 4. termin, jeśli występuje, 5. pytania bez odpowiedzi.
+Nie dopowiadaj brakujących osób, dat ani ustaleń, których nie ma w notatkach — zostaw puste miejsce i zapytaj, zamiast zgadywać.
+Na końcu zapytaj, czy to rozesłać zespołowi teraz, czy najpierw coś poprawić.
 
 NOTATKI: [WKLEJ NOTATKI]</pre></div></div>
-<div class="lib-card"><h4>3. Oferta</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Przygotuj ofertę dla [KLIENT]. Problem klienta: [PROBLEM].
-Zakres: [ZAKRES]. Wartość: [KORZYŚĆ]. Ograniczenia: [WARUNKI].
-Najpierw pokaż krótką strukturę oferty, potem napisz wersję finalną gotową do wysłania.</pre></div></div>
+<div class="lib-card"><h4>3. Oferta</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Przygotuj ofertę dla [KLIENT]. Problem klienta: [PROBLEM]. Zakres: [ZAKRES]. Wartość: [KORZYŚĆ]. Ograniczenia: [WARUNKI].
+Zanim zaczniesz, zapytaj, czy mam już swój szablon oferty albo wzór z poprzedniego projektu.
+Nie wymyślaj cen, terminów ani warunków, których nie podałem.
+Najpierw pokaż krótką strukturę oferty, potem wersję finalną. Na końcu zapytaj, czy to ma iść jako mail, czy jako osobny plik.</pre></div></div>
 <div class="lib-card"><h4>4. Audyt pomysłu</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Przeprowadź krytyczny audyt tego pomysłu: [POMYSŁ].
 Znajdź: założenia, które mogą być fałszywe; ukryte koszty; ryzyka wdrożenia; prostsze alternatywy; test, który można zrobić najtaniej przed większą inwestycją.
-Na końcu podaj jedną skonsolidowaną rekomendację zależną od jasno nazwanych założeń.</pre></div></div>
+Jeśli czegoś o mojej sytuacji nie wiesz (budżet, czas, dla kogo to jest) — zapytaj, zanim ocenisz, zamiast zgadywać.
+Na końcu podaj jedną skonsolidowaną rekomendację, zależną od jasno nazwanych założeń.</pre></div></div>
 <div class="lib-card"><h4>5. Research konkurencji</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Zbadaj [RYNEK] i porównaj [FIRMY]. Kryteria: [KRYTERIA].
-Preferuj źródła oficjalne. Oddziel dane od opinii.
-W tabeli pokaż tylko potwierdzone informacje, a braki oznacz „brak danych".
-Na końcu napisz, co z tego wynika dla [MOJA FIRMA / CEL].</pre></div></div>
+Jeśli masz dostęp do wyszukiwania — użyj go i podaj źródło przy każdej informacji. Jeśli nie masz — powiedz to wprost, zamiast zmyślać dane.
+W tabeli pokaż tylko potwierdzone informacje, a braki oznacz „brak danych". Na końcu napisz, co z tego wynika dla [MOJA FIRMA / CEL].</pre></div></div>
 <div class="lib-card"><h4>6. Nauka nowej umiejętności</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Naucz mnie [TEMAT] tak, żebym potrafił zastosować go w praktyce.
-Mój poziom: [POZIOM].
-Najpierw wyjaśnij podstawę jednym przykładem. Potem daj mi zadanie.
-Oceń moją odpowiedź i dopiero wtedy przejdź dalej.</pre></div></div>
+Najpierw zapytaj o mój poziom w kilku krótkich pytaniach — nie zakładaj go z góry.
+Wyjaśnij podstawę jednym przykładem, potem daj mi zadanie. Oceń moją odpowiedź konkretnie, nie tylko „dobrze".
+Nie przechodź do kolejnego etapu, dopóki nie pokażę, że rozumiem ten.</pre></div></div>
 <div class="lib-card"><h4>7. Porównanie narzędzi</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Porównaj [A] i [B] dla mojego zastosowania: [ZASTOSOWANIE].
-Nie rób ogólnego zestawienia funkcji.
-Oceń: koszt całkowity, czas wdrożenia, ograniczenia, integracje i ryzyko.
-Jeśli dane są zmienne — sprawdź je. Na końcu wskaż, od jakiego założenia zależy wybór.</pre></div></div>
+Nie rób ogólnego zestawienia funkcji ze stron marketingowych — oceń pod kątem MOJEGO przypadku: koszt całkowity, czas wdrożenia, ograniczenia, ryzyko.
+Jeśli dane mogą być nieaktualne — sprawdź je, zamiast podawać z pamięci.
+Na końcu wskaż, od jakiego JEDNEGO założenia zależy wybór.</pre></div></div>
 <div class="lib-card"><h4>8. Plan dnia / tygodnia</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Mam następujące zadania: [LISTA]. Dostępny czas: [CZAS].
-Najpierw oddziel zadania pilne od ważnych.
-Następnie ułóż realistyczny plan bez upychania wszystkiego. Zostaw bufor 20% czasu.
-Jeżeli czegoś nie da się zrobić — powiedz wprost, co przesunąć.</pre></div></div>
+Najpierw oddziel zadania pilne od ważnych — zapytaj, jeśli nie jest oczywiste, które to które.
+Ułóż realistyczny plan bez upychania wszystkiego. Zostaw bufor 20% czasu.
+Jeżeli czegoś nie da się zmieścić — powiedz to wprost i zapytaj, co przesunąć.</pre></div></div>
 <div class="lib-card"><h4>9. Redakcja tekstu</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Zredaguj poniższy tekst: [WKLEJ TEKST]
-Zachowaj mój sens i fakty.
-Usuń powtórzenia, sztuczne zwroty i frazesy.
+Zachowaj mój sens i fakty — nie dopisuj niczego, czego nie było, nawet jeśli „brzmiałoby lepiej".
+Usuń powtórzenia, sztuczne zwroty i frazesy. Jeśli coś jest niejasne — zapytaj, o co mi chodziło, zamiast zgadywać.
 Pokaż wersję finalną gotową do publikacji, bez komentarza pod nią.</pre></div></div>
-<div class="lib-card"><h4>10. Kontrola jakości</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Zanim oddasz wynik, zrób kontrolę jakości. Sprawdź:
-- czy odpowiedziałeś na właściwe pytanie,
-- czy nie ma sprzeczności,
-- czy liczby są potwierdzone,
-- czy nie pominąłeś ograniczeń,
-- czy istnieje prostsze rozwiązanie.
-Popraw błędy przed pokazaniem finalnej odpowiedzi.</pre></div></div>
+<div class="lib-card"><h4>10. Kontrola jakości</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Zanim oddasz wynik, zrób kontrolę jakości. Sprawdź: czy odpowiedziałeś na właściwe pytanie, czy nie ma sprzeczności, czy liczby i fakty są potwierdzone, a nie zmyślone, czy nie pominąłeś moich ograniczeń, czy istnieje prostsze rozwiązanie.
+Popraw błędy przed pokazaniem finalnej odpowiedzi, a na końcu zapytaj, czy to trafione, zamiast zakładać, że tak.</pre></div></div>
 </div>
 
 <div class="lib-grp">W domu i dla siebie</div>
 <div class="lib-grid">
 <div class="lib-card"><h4>11. Plan posiłków na tydzień</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Ułóż plan posiłków na 7 dni dla [LICZBA OSÓB] osób.
-Preferencje / ograniczenia: [np. bez laktozy, budżetowo, szybkie obiady do 30 min].
-Nie powtarzaj tego samego dania częściej niż raz.
-Na końcu przygotuj jedną zbiorczą listę zakupów, pogrupowaną według działów sklepu (warzywnik, nabiał, suche produkty…).</pre></div></div>
+Zanim zaczniesz, zapytaj o alergie, nielubiane składniki i budżet — nie zakładaj, że mogę jeść wszystko.
+Nie powtarzaj tego samego dania częściej niż raz, chyba że o to poproszę.
+Na końcu przygotuj jedną zbiorczą listę zakupów wg działów sklepu, i zapytaj, czy mam już coś z tego w domu.</pre></div></div>
 <div class="lib-card"><h4>12. Budżet domowy pod kontrolą</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Pomóż mi przejrzeć wydatki domowe za ostatni miesiąc: [WKLEJ LISTĘ / OPIS WYDATKÓW].
-Pogrupuj je w kategorie i wskaż trzy, na których najłatwiej oszczędzić bez utraty jakości życia.
-Zaproponuj konkretne, małe kroki na następny miesiąc — nie ogólne „ograniczaj wydatki".</pre></div></div>
+Nie zgaduj kategorii, których nie jesteś pewien — zapytaj, do czego zaliczyć niejasny wydatek.
+Pogrupuj wydatki i wskaż trzy, na których najłatwiej oszczędzić bez utraty jakości życia. Zaproponuj konkretne, małe kroki na następny miesiąc.
+To sprawy finansowe, nie porady podatkowe — jeśli coś dotyka podatków czy kredytu, powiedz, że to pytanie do doradcy.</pre></div></div>
 <div class="lib-card"><h4>13. Odrabianie lekcji z dzieckiem</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Moje dziecko (klasa [KLASA]) ma zadanie z [PRZEDMIOT]: [TREŚĆ ZADANIA].
-Nie rozwiązuj zadania za nie.
-Zadawaj pytania, które naprowadzą je na rozwiązanie, po jednym na raz.
-Jeśli utknie, daj podpowiedź, nie gotową odpowiedź.</pre></div></div>
-<div class="lib-card"><h4>14. Plan wyjazdu</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Planuję wyjazd do [MIEJSCE] na [LICZBA DNI] dni, z [KTO JEDZIE].
-Budżet: [BUDŻET]. Styl: [np. spokojnie, aktywnie, z dzieckiem].
-Zaproponuj plan dzień po dniu z jedną alternatywą na wypadek złej pogody.
-Zaznacz, co warto zarezerwować wcześniej, a co można ustalić na miejscu.</pre></div></div>
+Nie rozwiązuj zadania za nie i nie podawaj gotowej odpowiedzi, nawet jeśli o nią poprosi wprost.
+Zadawaj pytania, które naprowadzą je na rozwiązanie, po jednym na raz — czekaj na odpowiedź. Jeśli utknie, daj podpowiedź o jeden krok, nie całe rozwiązanie.
+Na końcu zapytaj, czy potrafi wytłumaczyć rozwiązanie własnymi słowami.</pre></div></div>
+<div class="lib-card"><h4>14. Plan wyjazdu</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Planuję wyjazd do [MIEJSCE] na [LICZBA DNI] dni, z [KTO JEDZIE]. Budżet: [BUDŻET]. Styl: [np. spokojnie, aktywnie, z dzieckiem].
+Jeśli masz dostęp do wyszukiwania — sprawdź aktualne ceny i godziny otwarcia; jeśli nie masz, powiedz to wprost i zaznacz, co warto zweryfikować samemu.
+Zaproponuj plan dzień po dniu z jedną alternatywą na złą pogodę. Zapytaj, czy przygotować listę rzeczy do spakowania.</pre></div></div>
 <div class="lib-card"><h4>15. Trening w domu</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Przygotuj plan treningowy w domu, bez sprzętu, na [LICZBA] dni w tygodniu.
-Mój poziom: [POCZĄTKUJĄCY / ŚREDNI / ZAAWANSOWANY]. Czas na sesję: [MINUTY].
-Cel: [np. wytrzymałość, siła, ruchliwość].
-Dla każdego dnia podaj rozgrzewkę, ćwiczenia z liczbą powtórzeń i krótkie wyciszenie.</pre></div></div>
+Zanim ułożysz plan, zapytaj o kontuzje i ograniczenia zdrowotne — nie zakładaj, że mogę robić wszystko.
+To nie jest porada medyczna — jeśli coś boli, powiedz, żebym zapytał lekarza, nie ucz mnie na siłę przez ból.
+Mój poziom: [POZIOM]. Czas na sesję: [MINUTY]. Cel: [CEL]. Dla każdego dnia: rozgrzewka, ćwiczenia z liczbą powtórzeń, wyciszenie.</pre></div></div>
 <div class="lib-card"><h4>16. Pomysł na prezent</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Szukam prezentu dla [OSOBA], z okazji [OKAZJA]. Budżet: [BUDŻET].
-Osoba lubi / interesuje się: [ZAINTERESOWANIA]. Czego na pewno unikać: [OGRANICZENIA].
-Zaproponuj 5 konkretnych pomysłów, nie kategorii ogólnych — dla każdego podaj, czemu akurat ten pomysł, a nie inny.</pre></div></div>
+Zanim zaczniesz zgadywać — zapytaj o wiek, zainteresowania i czego na pewno unikać, jeśli tego jeszcze nie podałem.
+Zaproponuj 5 konkretnych pomysłów, nie kategorii ogólnych — dla każdego napisz, czemu pasuje do TEJ osoby.
+Nie wymyślaj, że coś jest dostępne w konkretnym sklepie czy cenie, jeśli tego nie sprawdziłeś.</pre></div></div>
 <div class="lib-card"><h4>17. Porządki i organizacja domu</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Chcę wprowadzić trwały system porządków w domu, nie jednorazową akcję.
-Pomieszczenia: [LISTA]. Ile osób pomaga: [LICZBA]. Dostępny czas dziennie/tygodniowo: [CZAS].
-Zaproponuj podział zadań i harmonogram, który realnie da się utrzymać dłużej niż dwa tygodnie.</pre></div></div>
+Zapytaj najpierw, ile osób realnie pomaga i ile czasu dziennie/tygodniowo mamy. Pomieszczenia: [LISTA].
+Zaproponuj podział zadań i harmonogram, który realnie da się utrzymać dłużej niż dwa tygodnie — jeśli plan wygląda na zbyt ambitny, powiedz to wprost.
+Zapytaj, czy mam już listę obowiązków, którą ktoś prowadzi — jeśli tak, poproś o nią jako punkt wyjścia.</pre></div></div>
 <div class="lib-card"><h4>18. Nauka języka obcego</h4><div class="promptbox"><div class="promptbox-top"><span>KOPIUJ</span><button class="promptbox-copy">Kopiuj</button></div><pre>Ucz mnie [JĘZYK] codziennie po [MINUTY] minut. Mój poziom: [POZIOM]. Cel: [np. rozmowa w podróży, praca, egzamin].
-Każdą sesję zacznij krótkim powtórzeniem z ostatniej, potem nowy materiał, na końcu 3 pytania sprawdzające.
-Rozmawiaj ze mną częściowo w [JĘZYK], żebym ćwiczył rozumienie.</pre></div></div>
+Zapytaj na start, czego już się uczyłem i czego unikać powtarzania od zera.
+Każdą sesję zacznij krótkim powtórzeniem z ostatniej, potem nowy materiał, na końcu 3 pytania sprawdzające — nie przechodź dalej, jeśli widzisz, że coś nie weszło.
+Rozmawiaj ze mną częściowo w [JĘZYK], ale przełącz się na polski, jeśli poproszę.</pre></div></div>
 </div>
 </div>
 </section>
@@ -925,7 +1205,7 @@ Rozmawiaj ze mną częściowo w [JĘZYK], żebym ćwiczył rozumienie.</pre></di
   </div>
 </section>
 
-<div class="footer-note">Wersja: 21.09.2026 · Poradnik Akademii AI Probatum · źródła funkcji: oficjalna dokumentacja OpenAI.</div>
+<div class="footer-note">Wersja: 22.09.2026 · Poradnik Akademii AI Probatum · źródła funkcji: oficjalna dokumentacja OpenAI (openai.com, help.openai.com, developers.openai.com), stan na 5 września 2026.</div>
 
 <button class="print-btn" id="printBtn">⬇ Pobierz jako PDF</button>
 
