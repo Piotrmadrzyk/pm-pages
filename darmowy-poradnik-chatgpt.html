@@ -411,7 +411,7 @@ ul.zw li, ol.zw li{margin-bottom:.4em;}
 <h3>Trzy rzeczy, które warto wiedzieć od razu</h3>
 <ul class="zw">
 <li><b>Może się mylić.</b> Nawet gdy odpowiedź brzmi pewnie, bywa nieprawdziwa (to „halucynacja" — pełne wyjaśnienie w rozdziale 22). Ważne fakty zawsze warto zweryfikować.</li>
-<li><b>Nie widzi internetu „na żywo"</b>, chyba że włączysz wyszukiwanie (Search) — sam model „wie" tylko to, czego nauczył się do pewnej daty granicznej.</li>
+<li><b>Nie zawsze widzi internet „na żywo"</b> — może z niego skorzystać przez Search, Deep Research albo agenta, i czasem dobiera to sam, ale nie zakładaj, że zrobił to zawsze. Bez wyszukiwania model „wie" tylko to, czego nauczył się do pewnej daty granicznej.</li>
 <li><b>Twoje rozmowy mogą trenować przyszłe modele</b>, chyba że to wyłączysz w ustawieniach (rozdział 6) — a to, co wygenerujesz, możesz co do zasady wykorzystywać komercyjnie, ale bez gwarancji unikalności czy ochrony prawnoautorskiej i z odpowiedzialnością po Twojej stronie za prawa osób trzecich, znaki towarowe i wizerunek.</li>
 </ul>
 <h3>ChatGPT to nie wyszukiwarka — inne narzędzie do innej pracy</h3>
@@ -602,6 +602,13 @@ Gdy powiem „podsumuj", przygotuj 5 najważniejszych decyzji i listę następny
 <h3>Dyktowanie to nie to samo co rozmowa głosowa</h3>
 <p><b>Dyktowanie</b> zamienia mowę na tekst w polu wiadomości — Ty sprawdzasz i poprawiasz, zanim wyślesz. Dobre do maili, promptów i notatek z nazwiskami/liczbami, które trzeba sprawdzić wzrokiem. <b>Rozmowa głosowa</b> to dialog na bieżąco — dobra do nauki i burzy mysli, słaba do finalnej redakcji, bo łatwo przeoczyć błąd, którego nie widzisz na ekranie. Praktyczny schemat: myśl głosem, domykaj tekstem — po rozmowie głosowej poproś o krótki brief tekstowy do wklejenia w nowym czacie.</p>
 <div class="callout uwaga"><b class="lab">Otoczenie słyszy więcej niż ekran</b>Głos zdradza treść, ton i to, że w ogóle coś konsultujesz — w kawiarni, pociągu czy open space to realne ryzyko. Nie dyktuj/nie wypowiadaj na głos haseł, numerów kont, PESEL ani danych klienta. Zamiast: „Klient Kowalski, faktura 2024/11/18, zalega 27 840 zł" — powiedz: „Pomóż mi ułożyć wiadomość o zaległej płatności, bez konkretnych danych, zostawię placeholdery" — a dane uzupełnij później w tekście.</div>
+<h3>Record — spotkanie zamienione w materiał roboczy</h3>
+<p>Record nagrywa rozmowę lub spotkanie, tworzy transkrypcję i pozwala dalej nad nią pracować. To NIE to samo co rozmowa głosowa: w rozmowie głosowej mówisz do ChatGPT, w Record rejestrujesz wydarzenie z udziałem innych ludzi. Dostępność zależy od planu, platformy, regionu i ustawień workspace.</p>
+<div class="callout uwaga"><b class="lab">Przed nagraniem</b>Uzyskaj zgodę uczestników — obecność na spotkaniu nie oznacza zgody na nagranie. Powiedz, w jakim celu powstaje nagranie, kto zobaczy transkrypcję i kiedy materiał zostanie usunięty. Sprawdź zasady firmy i prawo właściwe dla uczestników; przy danych wrażliwych wybierz zatwierdzone narzędzie albo zrezygnuj z nagrania.</div>
+<p><b>Po nagraniu:</b> najpierw popraw nazwiska, liczby, terminy i przypisanie wypowiedzi — transkrypcja nie jest stenogramem gwarantowanym co do słowa. Oddziel decyzje od pomysłów i luźnych propozycji. Dopiero potem twórz podsumowanie, listę zadań i szkic maila. Usunięcie rozmowy z materiałem Record wpływa na dalsze użycie transkrypcji — zasady organizacji mogą się różnić.</p>
+<div class="promptbox"><div class="promptbox-top"><span>Z TRANSKRYPCJI DO DECYZJI</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Pracuj na tej transkrypcji, ale niczego nie dopowiadaj. Utwórz cztery sekcje: DECYZJE, ZADANIA (osoba, termin, status), PYTANIA OTWARTE, FRAGMENTY NIEPEWNE.
+Przy każdej pozycji wskaż cytowany fragment lub znacznik czasu, jeśli jest dostępny. Nazwiska, kwoty i terminy oznacz do ręcznej weryfikacji.
+Na końcu przygotuj krótki szkic maila, ale go nie wysyłaj.</pre></div>
 </article>
 </div>
 </section>
@@ -650,6 +657,17 @@ Gdy powiem „podsumuj", przygotuj 5 najważniejszych decyzji i listę następny
 Uwzględnij: pamięć, kontrolę danych, udostępnione linki, aplikacje i ich uprawnienia, zasady dla danych klientów, zasady dla haseł i sekretów.
 Podziel wynik na: „ustaw raz", „sprawdzaj co miesiąc", „przypomnij zespołowi".
 Jeśli czegoś nie jesteś pewien co do aktualnych ustawień OpenAI — powiedz to wprost zamiast zgadywać, i wskaż gdzie to sprawdzić.</pre></div>
+<h3>Udostępnianie rozmów i zadań — co naprawdę widzi odbiorca</h3>
+<p>Link udostępniony nie daje dostępu do całego Twojego konta, ale osoba, która go otworzy, widzi całą zawartość objętą podglądem — pojedynczą odpowiedź, całą rozmowę, załączone obrazy albo pliki. Dlatego zanim skopiujesz link, przeczytaj podgląd od początku do końca, nie tylko ostatnią wiadomość.</p>
+<ol class="zw">
+<li>Wybierz Share i sprawdź, czy udostępniasz jedną odpowiedź, czy całą rozmowę.</li>
+<li>Przejrzyj wiadomości wcześniejsze niż finalny wynik — często zawierają dane, których nie widać w ostatniej odpowiedzi.</li>
+<li>Sprawdź załączniki, obrazy, nazwiska, adresy, ceny i treści z połączonych aplikacji.</li>
+<li>Ustal odbiorcę — link przekazany dalej może trafić poza pierwotną grupę, jeśli ustawienia tego nie ograniczają.</li>
+<li>Po zakończeniu potrzeby usuń link: Ustawienia → Kontrola danych → Shared links → Manage.</li>
+</ol>
+<div class="callout uwaga"><b class="lab">Udostępnione zadania</b>Link do zaplanowanego zadania (rozdział 15) może ujawnić tytuł, pełną instrukcję, harmonogram i strefę czasową. Odbiorca planuje własną kopię na własnych limitach i uprawnieniach — udostępnienie zadania NIE przekazuje Twojego konta Gmail ani Drive.</div>
+<p><b>Checklista 20 sekund przed wysłaniem linku:</b> czy podgląd zawiera tylko to, co odbiorca ma zobaczyć? Czy nie ma w nim wcześniejszych promptów, plików ani danych z aplikacji? Czy odbiorca może przekazać link dalej? Czy pamiętasz, gdzie go później unieważnić?</p>
 </article>
 </div>
 </section>
@@ -660,7 +678,7 @@ Jeśli czegoś nie jesteś pewien co do aktualnych ustawień OpenAI — powiedz 
 <span class="dzial-tag">Dział 1 · Ustawienia od A do Z</span>
 <h2 class="tytul-rozdzialu"><span class="nr">7</span>Aplikacje i konektory</h2>
 <p class="lead-r">Połączone aplikacje pozwalają pracować na informacjach z usług, których już używasz, bez ręcznego kopiowania treści.</p>
-<p>Settings → Apps (czasem „Plugins"). Gotowe integracje: Google Drive, Gmail, Google Calendar, Outlook, SharePoint, Dropbox, Box, Microsoft Teams, Slack, GitHub, GitLab, Notion, HubSpot, Linear, Canva, Zendesk, OneNote — a dla ChatGPT Work katalog ponad 1400 aplikacji przez standard MCP (wyjaśniony w rozdziale 22).</p>
+<p>Settings → Apps (czasem „Plugins"). Gotowe integracje: Google Drive, Gmail, Google Calendar, Outlook, SharePoint, Dropbox, Box, Microsoft Teams, Slack, GitHub, GitLab, Notion, HubSpot, Linear, Canva, Zendesk, OneNote — a dla ChatGPT Work rozbudowany katalog aplikacji i pluginów przez standard MCP (wyjaśniony w rozdziale 22) — liczba i dostępność zmieniają się, nie ma stałego, oficjalnego licznika.</p>
 <h3>Jak podłączyć aplikację — na przykładzie Google Drive</h3>
 <ol class="zw">
 <li>Otwórz Settings → Apps.</li>
@@ -698,6 +716,8 @@ Następnie: 1. podsumuj ustalenia, 2. wypisz otwarte decyzje, 3. znajdź terminy
 <h2 class="tytul-rozdzialu"><span class="nr">8</span>Plany i ceny ChatGPT</h2>
 <p class="lead-r">Sześć warstw cenowych — od darmowego konta po enterprise (Pro i Business mają dodatkowo po dwa warianty wewnątrz). Nie wybieraj planu „na zapas": sprawdź tydzień użycia, zanim dopłacisz.</p>
 <div class="callout uwaga"><b class="lab">Dlaczego u znajomego wygląda to inaczej</b>ChatGPT nie jest jedną identyczną aplikacją dla wszystkich. To, co widzisz, zależy od planu, limitów w danym momencie, kraju, urządzenia (przeglądarka vs aplikacja), typu konta (prywatne vs firmowe) i stopniowego wdrażania nowych funkcji — OpenAI często testuje coś najpierw na części użytkowników. Jeśli nie widzisz jakiejś funkcji z tego podręcznika, to niekoniecznie „źle klikasz" — sprawdź plan i wersję aplikacji, zanim uznasz to za błąd.</div>
+<h3>Jak wybierać plan bez uczenia się tabeli na pamięć</h3>
+<p>Wybieraj plan według brakującej możliwości albo realnego limitu, nie według najdłuższej listy funkcji. Przed zakupem sprawdź trzy miejsca na WŁASNYM koncie — to one są źródłem prawdy, nie żadna tabela w podręczniku: ekran Upgrade/Plan, artykuł pomocy o danym planie, i model picker razem z licznikiem użycia. Nie kupuj wyższego planu tylko dlatego, że istnieje mocniejszy model — najpierw zapisz przez tydzień, z jakiej funkcji korzystasz, ile razy trafiasz na limit i ile czasu przez to tracisz. Dopiero ta notatka jest dobrym powodem do zmiany planu.</p>
 <div class="tabwrap"><table class="ak-tab">
 <tr><th>Plan</th><th>Cena</th><th>Najważniejsze fakty</th></tr>
 <tr><td><b>Free</b></td><td>0 USD</td><td>Od 6.08.2026 nieograniczone czaty tekstowe (limity zostają na obrazy/pliki/głos). Model domyślny: GPT-5.6 Luna.</td></tr>
@@ -719,7 +739,7 @@ Następnie: 1. podsumuj ustalenia, 2. wypisz otwarte decyzje, 3. znajdź terminy
 <h3>Dostępność to nie to samo co limit</h3>
 <p><b>Dostępność</b> oznacza, czy w ogóle widzisz daną funkcję (np. tryb głosowy, wyszukiwanie, projekty). <b>Limit</b> oznacza, jak długo albo jak często możesz z niej korzystać, zanim system przełączy Cię na słabszy tryb albo każe poczekać. Zdanie „mam tę funkcję" jest niepełne — pełne brzmi: „mam tę funkcję w określonym zakresie, na tym planie, w tej chwili".</p>
 <div class="callout tip"><b class="lab">Zanim porównasz swoje konto z cudzym</b>Sprawdź: (1) czy to ta sama platforma — komputer czy telefon, (2) czy ten sam język interfejsu, (3) czy znasz plan drugiej osoby, (4) czy materiał, który oglądasz, jest aktualny, (5) czy funkcja mogła zostać wdrożona tylko u części użytkowników, (6) czy szukasz tej samej rzeczy pod inną polską nazwą. Brak przycisku u Ciebie rzadko oznacza usterkę.</div>
-<div class="callout uwaga"><b class="lab">Stan na 5.09.2026</b>Ceny i warianty Pro zmieniały się już kilka razy w ciągu kilku miesięcy — sprawdź aktualny ekran rozliczeń przed decyzją.</div>
+<div class="callout uwaga"><b class="lab">Stan na 22.09.2026</b>Ceny, warianty i limity w tabelach powyżej zmieniały się już kilka razy w ciągu kilku miesięcy — traktuj je jako zdjęcie chwili, nie stały fakt, i zawsze sprawdź aktualny ekran rozliczeń przed decyzją.</div>
 <div class="promptbox"><div class="promptbox-top"><span>CZY WYŻSZY PLAN SIĘ OPŁACA?</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Pomóż mi ocenić, czy wyższy plan ChatGPT ma dla mnie sens.
 Obecny plan: [PLAN]. Miesięcznie używam ChatGPT około: [GODZINY]. Najczęstsze zadania: [LISTA].
 Najbardziej przeszkadza mi: [LIMITY / BRAK FUNKCJI / SZYBKOŚĆ]. Wartość mojej godziny pracy: [KWOTA].
@@ -1133,6 +1153,25 @@ Jeśli kadr jest niepełny albo brakuje strony, napisz to wprost zamiast zakład
 Porównaj je. Nie twórz nowej, gładkiej wersji — chcę zobaczyć różnice.
 Podziel różnice na: merytoryczne, liczbowe, stylistyczne i potencjalnie ryzykowne. Przy każdej wskaż plik i lokalizację, jeśli da się ją ustalić.
 Jeśli czegoś nie ma w jednym z plików, napisz "brak zapisu" — nie uznawaj milczenia za zgodność.</pre></div>
+<h3>Library — gdzie naprawdę są Twoje pliki</h3>
+<p>Library to osobna przestrzeń do odnajdywania i ponownego używania plików wgranych do ChatGPT albo przez niego utworzonych. To ważna różnica: rozmowa jest historią pracy, a Library może przechowywać plik niezależnie od tej rozmowy. Pliki z połączonego Google Drive, Box, Dropbox czy SharePoint zostają w usłudze źródłowej — Library pokazuje połączenie, nie tworzy automatycznie osobnej kopii każdego pliku. Pliki z czatu tymczasowego nie trafiają do Library, dopóki czat pozostaje tymczasowy.</p>
+<div class="callout uwaga"><b class="lab">Zapamiętaj</b>Usunięcie czatu nie musi usunąć pliku z Library — to dwa osobne ślady, sprawdzaj oba. Działa to też w drugą stronę: usunięcie pliku z Library nie cofa treści, którą wcześniej wkleiłeś do rozmowy albo udostępniłeś innej usłudze.</div>
+<p><b>Jak znaleźć i wykorzystać ponownie plik:</b> otwórz Library w menu bocznym → wpisz nazwę albo użyj filtrów typu/pochodzenia → otwórz plik i sprawdź nazwę, datę i wersję (nie zakładaj, że pierwszy wynik jest najnowszy) → dodaj go do bieżącej rozmowy i napisz, co model ma z nim zrobić → po zakończeniu zdecyduj: zachować, pobrać czy usunąć.</p>
+<div class="tabwrap"><table class="ak-tab">
+<tr><th>Co</th><th>Limit</th></tr>
+<tr><td>Pojedynczy plik w rozmowie/GPT</td><td>do 512 MB</td></tr>
+<tr><td>Dokument tekstowy</td><td>ok. 2 mln tokenów</td></tr>
+<tr><td>Arkusz/CSV</td><td>ok. 50 MB, zależnie od liczby wierszy</td></tr>
+<tr><td>Obraz</td><td>20 MB</td></tr>
+<tr><td>Library — Free</td><td>500 MB</td></tr>
+<tr><td>Library — Go</td><td>4 GB</td></tr>
+<tr><td>Library — Plus/Business</td><td>20 GB</td></tr>
+<tr><td>Library — Pro</td><td>100 GB</td></tr>
+</table></div>
+<p>Jeśli funkcja jest dostępna, Ustawienia → Personalizacja → Zaawansowane → Library search decyduje, czy ChatGPT może samodzielnie odnosić się do kwalifikujących się plików z Library. Wyłączenie jej nie blokuje ręcznego przeglądania ani dołączania pliku.</p>
+<div class="promptbox"><div class="promptbox-top"><span>ZNAJDŹ WŁAŚCIWY PLIK W LIBRARY</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Znajdź w mojej Library pliki dotyczące [TEMAT]. Nie wybieraj od razu jednego.
+Najpierw pokaż tabelę: nazwa, typ, data, skąd pochodzi i dlaczego może być właściwy. Jeśli daty albo wersji nie da się potwierdzić, oznacz „niepotwierdzone".
+Po moim wyborze wykonaj: [ZADANIE].</pre></div>
 </article>
 </div>
 </section>
@@ -1273,6 +1312,11 @@ WNIOSKI — co wynika z faktów.
 HIPOTEZY — czego nie wiemy na pewno.
 REKOMENDACJE — co proponujesz i od jakich założeń to zależy.
 Dla zmiennych lub ważnych faktów użyj aktualnych źródeł. Jeżeli źródła sobie przeczą, pokaż rozbieżność. Nie uśredniaj sprzeczności.</pre></div>
+<h3>Cytowania nie gwarantują prawdy — test pięciu pytań</h3>
+<p>Sam link pod odpowiedzią niczego nie dowodzi. Zanim uznasz cytowane źródło za potwierdzenie, sprawdź: (1) czy źródło NAPRAWDĘ zawiera zdanie, które ma potwierdzać, (2) czy data publikacji i data opisywanego wydarzenia się zgadzają, (3) czy to źródło pierwotne, czy cudze streszczenie, (4) czy cytowany fragment nie został wyrwany z warunku, wyjątku albo innego kraju, (5) czy dla informacji wysokiego ryzyka istnieje drugie, niezależne źródło.</p>
+<div class="promptbox"><div class="promptbox-top"><span>ZWERYFIKUJ ODPOWIEDŹ ZDANIE PO ZDANIU</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Zweryfikuj poniższą odpowiedź zdanie po zdaniu: [WKLEJ].
+Dla każdego istotnego twierdzenia podaj: FAKT / WNIOSEK / HIPOTEZA, źródło pierwotne, datę źródła, krótki fragment potwierdzający sens (bez długich cytatów) oraz ocenę: potwierdzone / częściowo / niepotwierdzone / sprzeczne.
+Nie traktuj samego istnienia linku jako dowodu. Na końcu popraw wyłącznie zdania niepotwierdzone lub mylące.</pre></div>
 </article>
 </div>
 </section>
@@ -1286,7 +1330,7 @@ Dla zmiennych lub ważnych faktów użyj aktualnych źródeł. Jeżeli źródła
 
 <div class="pojecie"><h4>Model AI</h4><p>To „silnik", który faktycznie generuje odpowiedzi. ChatGPT to nazwa aplikacji/interfejsu, a „model" (np. GPT-6 Astra, GPT-5.6 Luna) to konkretny „mózg" wybrany do rozmowy — jak nazwa samochodu (ChatGPT) vs silnik pod maską (model).</p></div>
 
-<div class="pojecie"><h4>Token</h4><p>Najmniejszy kawałek tekstu, jaki model „widzi" naraz — mniej więcej ¾ słowa w angielskim. Model nie czyta zdań jak człowiek — dzieli tekst na tokeny i przewiduje kolejny token krok po kroku. Limity (długość pliku, długość odpowiedzi) liczone są w tokenach, nie w znakach czy stronach.</p></div>
+<div class="pojecie"><h4>Token</h4><p>Najmniejszy kawałek tekstu, jaki model „widzi" naraz — fragment słowa, całe słowo albo znak, zależnie od języka i użytego tokenizera (dla angielskiego bywa to zgrubnie ¾ słowa, ale to tylko przybliżenie, nie reguła). Model nie czyta zdań jak człowiek — dzieli tekst na tokeny i przewiduje kolejny token krok po kroku. Limity (długość pliku, długość odpowiedzi) liczone są w tokenach, nie w znakach czy stronach.</p></div>
 
 <div class="pojecie"><h4>Context window (okno kontekstu)</h4><p>To „ile model pamięta naraz" w trakcie jednej rozmowy, mierzone w tokenach. Porównanie: biurko — im większe okno, tym więcej dokumentów model może mieć „rozłożonych" jednocześnie. Gdy rozmowa przekroczy okno kontekstu, najstarsze fragmenty „spadają z biurka".</p></div>
 
@@ -1300,7 +1344,7 @@ Dla zmiennych lub ważnych faktów użyj aktualnych źródeł. Jeżeli źródła
 
 <div class="pojecie"><h4>MCP / connector</h4><p>MCP (Model Context Protocol) to rodzaj „uniwersalnego gniazdka" (jak USB-C dla danych), które pozwala modelowi bezpiecznie łączyć się z zewnętrznymi programami i danymi bez budowania osobnego połączenia dla każdej aplikacji. „Connector" (albo „App") to konkretne, gotowe podłączenie zbudowane na tym standardzie.</p></div>
 
-<div class="pojecie"><h4>RAG (Retrieval-Augmented Generation)</h4><p>Po polsku: „generowanie wspomagane wyszukiwaniem". Model, zanim odpowie, najpierw wyszukuje trafne fragmenty z zewnętrznego źródła (Twoich plików w Projekcie, internetu przez Search) i dopiero na tej podstawie buduje odpowiedź. Dzieje się to dokładnie wtedy, gdy wgrywasz plik albo włączasz Search.</p></div>
+<div class="pojecie"><h4>RAG (Retrieval-Augmented Generation)</h4><p>Po polsku: „generowanie wspomagane wyszukiwaniem". Model, zanim odpowie, najpierw wyszukuje trafne fragmenty z zewnętrznego źródła (Twoich plików w Projekcie, internetu przez Search) i dopiero na tej podstawie buduje odpowiedź. To może się zdarzyć, gdy wgrywasz plik albo włączasz Search — samo wgranie pliku nie gwarantuje jeszcze, że model faktycznie wyszuka w nim właściwy fragment.</p></div>
 
 </article>
 </div>
@@ -1353,8 +1397,8 @@ Dla zmiennych lub ważnych faktów użyj aktualnych źródeł. Jeżeli źródła
 <tr><td>Projekt wieloetapowy, oferta, analiza</td><td>Poziom 5</td><td>Gotowiec, który ładnie wygląda, a omija sedno</td></tr>
 </table></div>
 <p>Możesz zmieniać poziom w trakcie tej samej rozmowy — zaczynasz od 1-2, a gdy odpowiedź jest za ogólna, dopisujesz kontekst i ograniczenia zamiast zaczynać od zera.</p>
-<h3>Technika „chain of thought"</h3>
-<p>Przy zadaniach wymagających rozumowania (matematyka, logika, planowanie) dopisanie „Rozłóż to na kroki i wyjaśnij swoje rozumowanie, zanim podasz ostateczną odpowiedź" zauważalnie poprawia trafność. W modelach z suwakiem „Think" ten efekt jest częściowo wbudowany, ale jawna prośba nadal pomaga przy nietypowych zadaniach.</p>
+<h3>Technika „sprawdzalnego uzasadnienia"</h3>
+<p>Przy trudnym zadaniu nie proś o ujawnienie całego wewnętrznego toku myślenia modelu — to nie jest to, czego naprawdę potrzebujesz, i nie powinno być uniwersalną techniką. Potrzebujesz rezultatu, krótkiego sposobu dojścia do niego, jawnych założeń i elementów, które sam możesz sprawdzić. W matematyce żądaj działań i kontroli wyniku; w analizie — kryteriów, źródeł i argumentów za/przeciw; w planowaniu — zależności, ryzyk i warunków zmiany decyzji. Dobre polecenie: „Podaj odpowiedź, następnie zwięzłe uzasadnienie, przyjęte założenia oraz sposób samodzielnego sprawdzenia wyniku. Jeśli danych brakuje, oznacz to zamiast zgadywać".</p>
 <h3>Czego unikać</h3>
 <ul class="zw">
 <li>Bardzo ogólnych próśb bez kontekstu („napisz coś o marketingu") — dostaniesz ogólnikową odpowiedź.</li>
@@ -1459,6 +1503,19 @@ Zachowaj elementy, które były dobre.</pre></div>
 <div class="callout tip"><b class="lab">Nieaktualne założenia w długiej rozmowie</b>Jeśli w trakcie czatu zmieniłeś wcześniejszą decyzję (np. budżet), model może dalej ważyć starą wersję. Unieważnij ją wprost: „Budżet obowiązujący od teraz to [KWOTA]. Wcześniejsza kwota [STARA KWOTA] jest nieaktualna, nie używaj jej." Jeśli takich odwołań robi się dużo, czytelniejszy będzie nowy czat z aktualnym briefem niż kolejne łatanie tego samego.</div>
 <h3>Zanim uznasz wynik za gotowy — siedem kryteriów</h3>
 <p>Gładki tekst to nie to samo co dobry tekst. Zanim użyjesz rezultatu, sprawdź czy jest: <b>poprawny</b> (zgodny z faktami, które podałeś, bez dopisanych „dla kompletności" szczegółów), <b>kompletny</b> (braki są nazwane, nie ukryte), <b>zrozumiały</b> (odbiorca nie musi zgadywać), <b>dopasowany do odbiorcy</b> (ton i poziom szczegółu, nie Twój żargon wewnętrzny), <b>aktualny</b> tam, gdzie czas ma znaczenie, <b>możliwy do wykorzystania</b> od razu (właściwy format i długość, nie tylko „ogólnie słuszny"), i <b>zgodny z ograniczeniami</b>, które podałeś na starcie. Jeśli na którekolwiek z tych pytań nie umiesz odpowiedzieć „tak" — to jeszcze szkic, nie finalny rezultat.</p>
+<h3>Gdy funkcji nie ma albo coś nie działa — kolejność sprawdzania</h3>
+<p>Zanim zaczniesz losowo klikać w ustawienia, przejdź tę listę po kolei:</p>
+<ol class="zw">
+<li>Sprawdź, czy jesteś na właściwym koncie i workspace — prywatne i firmowe mogą mieć inne funkcje.</li>
+<li>Sprawdź plan i aktualny tryb: Chat, Work, Codex, GPT i Projekt to różne powierzchnie z różną dostępnością.</li>
+<li>Otwórz model picker i licznik użycia — brak funkcji i wyczerpany limit to dwa różne problemy.</li>
+<li>Na telefonie zaktualizuj oficjalną aplikację; na komputerze odśwież stronę, wyloguj i zaloguj ponownie.</li>
+<li>Sprawdź status.openai.com — jeśli trwa incydent po stronie OpenAI, lokalne poprawki nic nie dadzą.</li>
+<li>Wyłącz rozszerzenia blokujące skrypty dla chatgpt.com albo sprawdź w oknie prywatnym.</li>
+<li>Na koncie firmowym sprawdź, czy administrator nie wyłączył danego modelu, aplikacji czy funkcji.</li>
+<li>Jeśli problem dotyczy pliku — sprawdź format, rozmiar, limit dzienny i pojemność Library (rozdział 17).</li>
+</ol>
+<div class="callout blad"><b class="lab">Czego nie robić</b>Nie usuwaj od razu projektu ani czatu, nie kupuj wyższego planu bez potwierdzenia przyczyny, i nie wklejaj publicznie pełnego zrzutu ekranu z danymi konta — do zgłoszenia wystarczy data i godzina, plan, urządzenie/przeglądarka, dokładny komunikat błędu i zrzut z zasłoniętymi danymi poufnymi.</div>
 </article>
 </div>
 </section>
@@ -1490,11 +1547,11 @@ Zachowaj elementy, które były dobre.</pre></div>
 
 <div class="pojecie"><h4>Dlaczego odpowiedź urwała się w połowie?</h4><p>Najczęściej odpowiedź osiągnęła maksymalną długość, jaką model może wygenerować za jednym razem. Napisz „kontynuuj", a model dokończy od miejsca, w którym przerwał.</p></div>
 
-<div class="pojecie"><h4>ChatGPT podał błędną informację — co teraz?</h4><p>To „halucynacja" (rozdział 21) — zawsze warto zweryfikować ważne fakty w niezależnym źródle. Możesz ocenić odpowiedź kciukiem w dół — to pomaga OpenAI poprawiać model.</p></div>
+<div class="pojecie"><h4>ChatGPT podał błędną informację — co teraz?</h4><p>To „halucynacja" (rozdział 21) — zawsze warto zweryfikować ważne fakty w niezależnym źródle. Możesz ocenić odpowiedź kciukiem w dół — wysłanie opinii może przekazać powiązaną treść rozmowy do analizy, zgodnie z ustawieniami i komunikatem formularza, więc zanim wyślesz, sprawdź, co dokładnie obejmuje zgłoszenie.</p></div>
 
 <div class="pojecie"><h4>Czym różni się ChatGPT od „API OpenAI"?</h4><p>ChatGPT to gotowa aplikacja, w której rozmawiasz bezpośrednio. API to sposób, w jaki programiści łączą modele OpenAI z własnymi aplikacjami. Jeśli nie programujesz, prawdopodobnie nigdy nie będziesz potrzebować API.</p></div>
 
-<div class="pojecie"><h4>Czy mogę bezpiecznie wklejać dane firmowe/poufne?</h4><p>Na planie Free/Plus/Pro — tylko po wyłączeniu „Improve the model for everyone" (rozdział 6), i nawet wtedy zachowaj ostrożność z danymi naprawdę wrażliwymi. Na planach Business/Enterprise dane domyślnie nie trenują modeli.</p></div>
+<div class="pojecie"><h4>Czy mogę bezpiecznie wklejać dane firmowe/poufne?</h4><p>Nie ma jednej odpowiedzi „tak". Wyłączenie „Ulepszaj model dla wszystkich" ogranicza wykorzystanie treści do trenowania modeli — to NIE zamienia prywatnego konta w zatwierdzony sejf na dane firmowe. Zanim wgrasz cudze albo poufne dane, sprawdź jednocześnie: czy masz podstawę i zgodę na ich przetwarzanie, czy regulamin firmy pozwala na użycie tej usługi, czy jesteś na właściwym koncie/workspace, czy możesz ograniczyć materiał do minimum i zanonimizować, i czy podłączona aplikacja nie udostępnia szerszego zakresu niż potrzeba. Haseł, kluczy API, kodów jednorazowych i danych, których ujawnienie może kogoś skrzywdzić, nie wklejaj nigdy. Na planach Business/Enterprise/Edu dane domyślnie nie trenują modeli, ale nadal obowiązują uprawnienia, retencja, polityka firmy i przepisy — to nie zwalnia z oceny sytuacji. Jeśli nie potrafisz ocenić tych warunków, użyj danych przykładowych albo zapytaj administratora.</p></div>
 
 </article>
 </div>
