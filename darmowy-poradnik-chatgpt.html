@@ -526,6 +526,7 @@ ul.zw li, ol.zw li{margin-bottom:.4em;}
 </ul>
 <div class="callout uwaga"><b class="lab">Czat tymczasowy</b>Przycisk „Temporary" w prawym górnym rogu nowej rozmowy — dwa warianty: niespersonalizowany (nie korzysta z pamięci, nie pojawia się w historii) i spersonalizowany (odwołuje się do wspomnień, ale niczego nowego nie zapamiętuje). Mimo to OpenAI przechowuje te rozmowy do 30 dni ze względów bezpieczeństwa — nigdy nie służą do trenowania modeli.</div>
 <div class="callout tip"><b class="lab">Dobra praktyka</b>Regenerate nie zastępuje jasnego polecenia — jeśli wynik jest słaby, bo pytanie było niejasne, najpierw popraw pytanie, nie klikaj w kółko „spróbuj jeszcze raz". Trzymaj się też zasady: jedna rozmowa = jeden temat albo jeden projekt — a skoro wyszukiwanie działa po tytule, nazywaj rozmowy jak pliki („Oferta — klient X", nie „Napisz maila"), żeby po tygodniu dało się je odnaleźć.</div>
+<div class="callout uwaga"><b class="lab">Czat to ślad pracy, nie źródło prawdy</b>Stara rozmowa wygląda jak zapisana wiedza, ale to zapis PROCESU: obok trafnych faktów mogą tam leżeć odrzucone pomysły, wersje robocze i ustalenia, które później się zmieniły — model odtworzy to wszystko z równą pewnością, jeśli poprosisz „przypomnij ustalenia". Czat może pomóc uporządkować źródła (dokument, oficjalną stronę, notatkę), ale sam rzadko zasługuje na status jedynego archiwum faktów.</div>
 <div class="zrob-teraz"><b class="lab">Zrób teraz</b>Otwórz Ctrl/Cmd+/ i przejrzyj pełną listę skrótów na swoim koncie — część zależy od platformy (web/desktop/mobile).</div>
 </article>
 </div>
@@ -558,6 +559,7 @@ ul.zw li, ol.zw li{margin-bottom:.4em;}
 <li><b>„Reference chat history"</b> (Plus i Pro) — model automatycznie korzysta z informacji z wcześniejszych rozmów, bez proszenia go wprost o zapamiętanie czegokolwiek.</li>
 </ul>
 <div class="callout uwaga"><b class="lab">Ważne</b>Żeby w pełni usunąć informacje o sobie, trzeba skasować je z: przeszłych i zarchiwizowanych czatów, plików, podsumowania pamięci — oraz odłączyć podłączone aplikacje. Samo wyłączenie pamięci tego nie robi.</div>
+<div class="callout uwaga"><b class="lab">Czego nie wpisywać do pamięci ani instrukcji</b>Custom Instructions i Saved memories mają opisywać JAK ChatGPT ma z Tobą pracować (język, ton, poziom szczegółowości) — nie przechowywać haseł, kluczy dostępu, danych klientów ani innych poufnych faktów firmowych. To pole zapamiętane „na zawsze" w każdej przyszłej rozmowie, nie sejf.</div>
 <div class="promptbox"><div class="promptbox-top"><span>AUDYT PAMIĘCI</span><button class="promptbox-copy">Kopiuj polecenie</button></div><pre>Pokaż podsumowanie tego, co wiesz o mnie z pamięci i wcześniejszych rozmów.
 Podziel na: fakty stałe, fakty które mogły się zmienić, i te, których nie jesteś pewien.
 Jeśli coś jest nieaktualne, powiedz mi, żebym poprawił to u źródła — nie zgaduj, że nadal jest prawdziwe.</pre></div>
@@ -945,7 +947,9 @@ ETAP 5 — DECYZJA: podsumuj, co z tego wynika. Nie nazywaj przychodu zyskiem, j
 <span class="dzial-tag">Dział 4 · Aplikacje</span>
 <h2 class="tytul-rozdzialu"><span class="nr">18</span>Aplikacje mobilne, desktop i integracje</h2>
 <p class="lead-r">ChatGPT wychodzi dziś daleko poza okno przeglądarki.</p>
+<div class="callout tip"><b class="lab">Kiedy telefon, kiedy komputer</b>Telefon jest świetny do rozpoczęcia zadania, zebrania materiału i krótkiej interwencji — zdjęcie, dyktowanie, szybka notatka w podróży. Komputer zwykle wygodniej obsługuje długą redakcję, porównywanie kilku plików naraz i pracę wieloetapową. To nie sztywny zakaz — chodzi o wygodę, nie regułę. Jedna praktyczna uwaga do zdjęć: zdjęcie bez polecenia daje ogólny opis, zdjęcie z jasno podanym celem („to zrzut z aplikacji bankowej, wyjaśnij ten komunikat") daje użyteczną odpowiedź — jakość zdjęcia i celu razem tworzą Twój prompt.</div>
 <ul class="zw">
+<li><b>Udostępnij do ChatGPT</b> — z menu „Udostępnij" w przeglądarce, poczcie czy innej aplikacji na telefonie możesz wysłać tekst, link albo zdjęcie prosto do ChatGPT, bez kopiowania i przełączania aplikacji. Pamiętaj: system przekazuje tylko to, co faktycznie udostępnisz (fragment, link, obraz) — nie cały wątek maila ani uprawnienia do konta źródłowego.</li>
 <li><b>Desktop (Mac/Windows)</b> — błyskawiczne wywołanie skrótem (Alt+Space / Option+Space), obsługa zrzutów ekranu, na macOS integracja z VS Code, Xcode, Terminal, iTerm2 (Plus/Business).</li>
 <li><b>Mobilne (iOS/Android)</b> — pełen zestaw funkcji, w tym Study Mode; Codex ma osobną natywną appkę iOS.</li>
 <li><b>Widżety</b> — na iOS i Android jedno dotknięcie uruchamia nowy czat albo rozmowę głosową bez otwierania aplikacji.</li>
